@@ -127,15 +127,19 @@
   #intro-overlay.exit-left { transform: translateX(-100%); }
   #intro-overlay.exit-right { transform: translateX(100%); }
   #intro-overlay.exit-fade { opacity: 0; }
-  #intro-mark {
+  .intro-letter {
+    display: inline-block;
     opacity: 0;
-    transform: scale(0.82);
-    animation: intro-mark-in 0.7s cubic-bezier(0.22,1,0.36,1) 0.15s forwards;
+    transform: translateY(26px);
+    animation: intro-letter-in 0.55s cubic-bezier(0.22,1,0.36,1) forwards;
   }
-  @keyframes intro-mark-in {
-    0% { opacity: 0; transform: scale(0.82); }
-    65% { opacity: 1; transform: scale(1.05); }
-    100% { opacity: 1; transform: scale(1); }
+  .intro-letter:nth-child(1) { animation-delay: 0.1s; }
+  .intro-letter:nth-child(2) { animation-delay: 0.2s; }
+  .intro-letter:nth-child(3) { animation-delay: 0.3s; }
+  .intro-letter:nth-child(4) { animation-delay: 0.42s; }
+  @keyframes intro-letter-in {
+    0% { opacity: 0; transform: translateY(26px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
 
   /* Marquee */
@@ -406,9 +410,15 @@
   }
 
   .phone-stagger {
-    transition: transform 0.45s cubic-bezier(0.22,1,0.36,1);
+    opacity: 0;
+    transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), opacity 0.7s ease var(--reveal-delay, 0s);
     will-change: transform;
   }
+  #phone-carousel.in .phone-stagger { opacity: 1; }
+  .phone-stagger:nth-child(1) { --reveal-delay: 0.05s; }
+  .phone-stagger:nth-child(2) { --reveal-delay: 0.22s; }
+  .phone-stagger:nth-child(3) { --reveal-delay: 0.39s; }
+  .phone-stagger:nth-child(4) { --reveal-delay: 0.56s; }
   .stagger-1 { transform: translateY(6px) rotate(-3deg); }
   .stagger-2 { transform: translateY(-34px) rotate(2.5deg); }
   .stagger-3 { transform: translateY(14px) rotate(-2deg); }
@@ -421,7 +431,7 @@
     .phone-stagger:hover { transform: none !important; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .phone-stagger { transition: none; }
+    .phone-stagger { transition: none; opacity: 1; }
   }
 </style>
 </head>
@@ -430,7 +440,9 @@
 <!-- INTRO -->
 <div id="intro-overlay" class="fixed inset-0 z-[100] bg-ink flex items-center justify-center">
   <div class="grain opacity-10"></div>
-  <p id="intro-mark" class="font-display text-5xl sm:text-6xl tracking-tight text-sand relative">A2H<span class="text-copper">.</span></p>
+  <p id="intro-mark" class="font-display text-5xl sm:text-6xl tracking-tight text-sand relative not-italic" aria-label="A2H.">
+    <span class="intro-letter">A</span><span class="intro-letter">2</span><span class="intro-letter">H</span><span class="intro-letter text-copper">.</span>
+  </p>
 </div>
 <script>
   (function () {
@@ -453,8 +465,8 @@
     setTimeout(function () {
       overlay.classList.add(dir);
       overlay.addEventListener('transitionend', cleanup, { once: true });
-    }, 950);
-    setTimeout(cleanup, 2400);
+    }, 1150);
+    setTimeout(cleanup, 2600);
   })();
 </script>
 
@@ -683,6 +695,7 @@
         </div>
       </div>
       <p class="text-xs text-fog uppercase tracking-wider">Solid State Construction</p>
+      <p class="text-[10px] text-copper-light uppercase tracking-wider">Professional Plan</p>
     </div>
     <div class="phone-stagger stagger-2 flex flex-col items-center gap-4 snap-center shrink-0">
       <div class="phone-frame">
@@ -692,6 +705,7 @@
         </div>
       </div>
       <p class="text-xs text-fog uppercase tracking-wider">Quality Halal Market</p>
+      <p class="text-[10px] text-copper-light uppercase tracking-wider">Premium Plan</p>
     </div>
     <div class="phone-stagger stagger-3 flex flex-col items-center gap-4 snap-center shrink-0">
       <div class="phone-frame">
@@ -701,6 +715,7 @@
         </div>
       </div>
       <p class="text-xs text-fog uppercase tracking-wider">Azul Bio Research</p>
+      <p class="text-[10px] text-copper-light uppercase tracking-wider">Professional Plan</p>
     </div>
     <div class="phone-stagger stagger-4 flex flex-col items-center gap-4 snap-center shrink-0">
       <div class="phone-frame">
@@ -710,6 +725,7 @@
         </div>
       </div>
       <p class="text-xs text-fog uppercase tracking-wider">CareMedBill</p>
+      <p class="text-[10px] text-copper-light uppercase tracking-wider">Premium Plan</p>
     </div>
     <div class="shrink-0 w-px sm:hidden" aria-hidden="true"></div>
   </div>
