@@ -199,6 +199,13 @@
   .phone-screen.tall {
     height: 540px;
   }
+  /* On mobile, the dedicated carousel uses one big dominant card with peeks
+     of the next/previous card at the edges, matching how jweis.com does its
+     mobile testimonial carousel — it reads as more alive, pulls you to swipe. */
+  @media (max-width: 639px) {
+    #phone-carousel .phone-frame { width: min(74vw, 300px); }
+    #phone-carousel .phone-screen { height: auto; aspect-ratio: 200 / 420; }
+  }
   .phone-notch {
     position: absolute;
     top: 8px;
