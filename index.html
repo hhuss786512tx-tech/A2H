@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A2H — Web &amp; Growth Agency for Texas Businesses</title>
+<meta name="description" content="Hand-coded, conversion-first websites and growth systems for Texas businesses. Real results, transparent pricing, zero page-builder bloat.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141110'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-style='italic' fill='%23c9702f' text-anchor='middle'%3EA2H%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="A2H — Web &amp; Growth Agency for Texas Businesses">
+<meta property="og:description" content="Hand-coded, conversion-first websites and growth systems for Texas businesses. Real results, transparent pricing, zero page-builder bloat.">
+<meta property="og:image" content="https://a2h.info/assets/og-image.png">
+<meta property="og:url" content="https://a2h.info/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A2H — Web &amp; Growth Agency for Texas Businesses">
+<meta name="twitter:description" content="Hand-coded, conversion-first websites and growth systems for Texas businesses.">
+<meta name="twitter:image" content="https://a2h.info/assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#141110',
+          surface: '#1b1613',
+          elevated: '#231c18',
+          copper: '#c9702f',
+          'copper-light': '#e2924f',
+          brass: '#b8823f',
+          sand: '#e9dfd2',
+          fog: '#a89a8c',
+        },
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          sans: ['Hanken Grotesk', 'sans-serif'],
+        },
+      },
+    },
+  }
+</script>
+<style>
+  :root { color-scheme: dark; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #141110;
+    font-family: 'Hanken Grotesk', sans-serif;
+  }
+  .font-display { font-family: 'Fraunces', serif; }
+
+  .grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .glow-copper {
+    background:
+      radial-gradient(60% 50% at 15% 0%, rgba(201,112,47,0.22), transparent 60%),
+      radial-gradient(50% 40% at 90% 20%, rgba(184,130,63,0.14), transparent 60%),
+      radial-gradient(70% 60% at 50% 100%, rgba(20,17,16,0.9), #141110 70%);
+  }
+
+  .shadow-elevated {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px -8px rgba(201,112,47,0.18), 0 2px 6px rgba(0,0,0,0.35);
+  }
+  .shadow-floating {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.45), 0 24px 48px -12px rgba(201,112,47,0.28);
+  }
+  .shadow-btn {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.3), 0 8px 20px -6px rgba(201,112,47,0.45);
+  }
+
+  .ease-spring { transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+  .ease-smooth { transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .card-hover {
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s cubic-bezier(0.22,1,0.36,1), border-color 0.35s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+  }
+
+  .btn-primary {
+    transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, background-color 0.25s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px) scale(1.015); }
+  .btn-primary:active { transform: translateY(0) scale(0.98); }
+
+  .link-underline {
+    background-image: linear-gradient(#e2924f, #e2924f);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s cubic-bezier(0.22,1,0.36,1);
+  }
+  .link-underline:hover { background-size: 100% 1px; }
+
+  ::selection { background: #c9702f; color: #141110; }
+
+  input:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible {
+    outline: 2px solid #e2924f;
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body class="text-sand antialiased">
+
+<!-- NAV -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/5 bg-ink/80 backdrop-blur-md">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="#top" class="font-display text-xl tracking-tight text-sand">A2H<span class="text-copper">.</span></a>
+    <nav class="hidden md:flex items-center gap-8 text-sm text-fog">
+      <a href="#work" class="link-underline hover:text-sand transition-colors">Work</a>
+      <a href="#process" class="link-underline hover:text-sand transition-colors">Process</a>
+      <a href="#pricing" class="link-underline hover:text-sand transition-colors">Pricing</a>
+      <a href="#contact" class="link-underline hover:text-sand transition-colors">Contact</a>
+    </nav>
+    <a href="#contact" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-2.5 rounded-full">
+      Get My Free Audit
+    </a>
+  </div>
+</header>
+
+<!-- PERSISTENT FLOATING CTA -->
+<div id="floating-cta" class="fixed bottom-6 right-6 z-40 pointer-events-none opacity-0 translate-y-4 transition-all duration-500 ease-out">
+  <a href="#contact" class="pointer-events-auto btn-primary shadow-floating bg-copper hover:bg-copper-light text-ink font-semibold pl-5 pr-6 py-3 rounded-full text-sm flex items-center gap-2 border border-black/10">
+    <span class="inline-flex h-2 w-2 rounded-full bg-ink/70"></span>
+    Get My Free Audit
+  </a>
+</div>
+
+<!-- HERO -->
+<section id="top" class="relative glow-copper pt-40 pb-28 px-6 overflow-hidden">
+  <div class="grain"></div>
+  <div class="max-w-4xl mx-auto text-center relative">
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Web &amp; Growth Agency for Contractors, Medical Practices &amp; Local Retail</p>
+    <h1 class="reveal font-display text-[2.75rem] leading-[1.1] sm:text-6xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">
+      Websites that turn strangers into <span class="italic text-copper-light">paying customers.</span>
+    </h1>
+    <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto mb-10">
+      Hand-coded, conversion-first sites for Texas businesses — no templates, no page-builder bloat.
+      We build the site, get you found, and make sure every lead gets answered before your competitor even wakes up.
+    </p>
+    <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="#contact" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px]">
+        Get My Free Audit
+      </a>
+      <a href="#work" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">
+        See Our Work
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF STRIP -->
+<section class="border-y border-white/5 bg-surface/60 py-6 px-6">
+  <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-sm text-fog">
+    <span class="uppercase tracking-widest text-xs text-fog/70">Live sites we've shipped</span>
+    <span class="text-sand/80">Solid State Construction</span>
+    <span class="text-white/15">·</span>
+    <span class="text-sand/80">Quality Halal Market</span>
+    <span class="text-white/15">·</span>
+    <span class="text-sand/80">CareMedBill</span>
+  </div>
+</section>
+
+<!-- REAL RESULTS -->
+<section class="py-24 px-6">
+  <div class="max-w-3xl mx-auto reveal text-center">
+    <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Verified Result — Solid State Construction, Google Ads</p>
+    <p class="font-display leading-none text-copper-light mb-6" style="font-size: clamp(4.5rem, 12vw, 8rem);">270+</p>
+    <p class="text-lg sm:text-xl text-sand leading-[1.6] max-w-xl mx-auto mb-8">organic clicks in 14 days on a $200 budget — nearly 2&times; the industry projection, verifiable in Google Ads.</p>
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <span class="rounded-full bg-elevated border border-white/10 px-5 py-2.5 text-sm text-fog"><span class="text-copper-light font-semibold">$0.74</span> cost per click — ~50% below industry average</span>
+      <span class="rounded-full bg-elevated border border-white/10 px-5 py-2.5 text-sm text-fog"><span class="text-copper-light font-semibold">90+</span> PageSpeed target on every build</span>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="py-8 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal mb-12 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Selected Work</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Real businesses, real launches</h2>
+    </div>
+    <div class="reveal grid sm:grid-cols-3 gap-6">
+      <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" class="group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover overflow-hidden flex flex-col">
+        <div class="flex items-center gap-1.5 px-4 py-3 bg-surface border-b border-white/5">
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="ml-2 text-xs text-fog/70 truncate">solidstatesconstruction.com</span>
+        </div>
+        <div class="h-40 overflow-hidden">
+          <img src="assets/portfolio/ssc.png" alt="Solid State Construction live website" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Construction</p>
+          <h3 class="font-display text-xl text-sand mb-2">Solid State Construction</h3>
+          <p class="text-sm text-fog leading-[1.7] flex-1">Full site rebuild + Google Ads campaign. Delivered 270+ clicks in 14 days at $0.74 CPC.</p>
+        </div>
+      </a>
+      <a href="https://hhuss786512tx-tech.github.io/Quality-Halal-Market/" target="_blank" rel="noopener" class="group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover overflow-hidden flex flex-col">
+        <div class="flex items-center gap-1.5 px-4 py-3 bg-surface border-b border-white/5">
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="ml-2 text-xs text-fog/70 truncate">Quality Halal Market — live preview</span>
+        </div>
+        <div class="h-40 overflow-hidden">
+          <img src="assets/portfolio/qhm.png" alt="Quality Halal Market live website" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Food &amp; Retail</p>
+          <h3 class="font-display text-xl text-sand mb-2">Quality Halal Market</h3>
+          <p class="text-sm text-fog leading-[1.7] flex-1">Custom Shopify build for a specialty grocer — product catalog, cart, and mobile-first checkout, live today.</p>
+        </div>
+      </a>
+      <a href="https://caremedbill.com" target="_blank" rel="noopener" class="group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover overflow-hidden flex flex-col">
+        <div class="flex items-center gap-1.5 px-4 py-3 bg-surface border-b border-white/5">
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="ml-2 text-xs text-fog/70 truncate">caremedbill.com</span>
+        </div>
+        <div class="h-40 overflow-hidden">
+          <img src="assets/portfolio/caremedbill.png" alt="CareMedBill live website" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Medical Billing</p>
+          <h3 class="font-display text-xl text-sand mb-2">CareMedBill</h3>
+          <p class="text-sm text-fog leading-[1.7] flex-1">Trust-first site for a medical billing platform — built to convert practice-owner visitors into calls.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="py-28 px-6 bg-surface/40 border-y border-white/5">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal mb-14 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">How It Works</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Three steps. No fluff.</h2>
+    </div>
+    <div class="reveal grid sm:grid-cols-3 gap-10">
+      <div>
+        <p class="font-display text-3xl text-copper mb-3">01</p>
+        <h3 class="text-sand font-semibold mb-2">Free Audit</h3>
+        <p class="text-sm text-fog leading-[1.7]">We tear down your current site — speed, design, SEO, missed leads — and show you exactly what's costing you customers.</p>
+      </div>
+      <div>
+        <p class="font-display text-3xl text-copper mb-3">02</p>
+        <h3 class="text-sand font-semibold mb-2">Build</h3>
+        <p class="text-sm text-fog leading-[1.7]">Hand-coded, conversion-first site. No page builders. Mobile-first, fast, and wired to real lead capture from day one.</p>
+      </div>
+      <div>
+        <p class="font-display text-3xl text-copper mb-3">03</p>
+        <h3 class="text-sand font-semibold mb-2">Launch &amp; Grow</h3>
+        <p class="text-sm text-fog leading-[1.7]">SEO foundation, tracking, and instant lead-reply automation so every visitor turns into a followed-up lead.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="py-28 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal mb-14 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Transparent Pricing</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Startup pricing, no surprise invoices</h2>
+    </div>
+    <div class="reveal grid sm:grid-cols-3 gap-6 items-stretch">
+      <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
+        <h3 class="text-sand font-semibold text-lg mb-1">Get Online</h3>
+        <p class="font-display text-3xl text-copper-light mb-4">$1,500</p>
+        <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
+          <li>Custom 5-page website</li>
+          <li>Mobile responsive</li>
+          <li>Contact form → email</li>
+          <li>Basic SEO foundation</li>
+          <li>Google Business Profile setup</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-elevated border border-copper/40 shadow-floating card-hover p-8 flex flex-col relative">
+        <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">Most Popular</span>
+        <h3 class="text-sand font-semibold text-lg mb-1">Get Found</h3>
+        <p class="font-display text-3xl text-copper-light mb-4">$2,500</p>
+        <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
+          <li>Everything in Get Online</li>
+          <li>5 city/location landing pages</li>
+          <li>GA4 + conversion tracking</li>
+          <li>Local SEO optimization</li>
+          <li>Search Console setup</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
+        <h3 class="text-sand font-semibold text-lg mb-1">Get Leads</h3>
+        <p class="font-display text-3xl text-copper-light mb-4">$4,500</p>
+        <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
+          <li>Everything in Get Found</li>
+          <li>Speed-to-Lead™ instant reply engine</li>
+          <li>Google Ads campaign setup</li>
+          <li>Retargeting + exit-intent capture</li>
+          <li>First month retainer included</li>
+        </ul>
+      </div>
+    </div>
+    <p class="reveal text-center text-sm text-fog mt-8">Every project starts with the free audit — we scope exact pricing after we see your site.</p>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="py-24 px-6 bg-surface/40 border-y border-white/5">
+  <div class="max-w-4xl mx-auto">
+    <div class="reveal mb-12 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Why A2H</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Not another page-builder shop</h2>
+    </div>
+    <div class="reveal grid sm:grid-cols-2 gap-x-10 gap-y-6">
+      <div class="flex gap-3">
+        <span class="text-copper-light mt-0.5">—</span>
+        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Real results, not promises.</span> 270+ organic clicks in 14 days at $0.74 CPC for a real client, verifiable in Google Ads.</p>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-copper-light mt-0.5">—</span>
+        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Hand-coded, not templated.</span> No Divi, no Elementor, no bloated builders — clean, fast code.</p>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-copper-light mt-0.5">—</span>
+        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Texas-based.</span> We understand Texas businesses, Texas markets, and Texas customers.</p>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-copper-light mt-0.5">—</span>
+        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Conversion-first.</span> We don't just build pretty sites — we build sites that turn visitors into customers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / LEAD FORM -->
+<section id="contact" class="py-28 px-6">
+  <div class="max-w-2xl mx-auto">
+    <div class="reveal mb-10 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Free Site Audit</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Let's see what your site is costing you</h2>
+      <p class="text-fog leading-[1.7]">Drop your site URL and we'll send back 3 specific things costing you leads right now — no charge, no obligation.</p>
+    </div>
+
+    <form id="audit-form" class="reveal rounded-2xl bg-elevated border border-white/5 shadow-floating p-8 space-y-5">
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="name">Name</label>
+          <input required id="name" name="name" type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Jane Rivera">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="business">Business Name</label>
+          <input required id="business" name="business" type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Rivera Concrete Co.">
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="url">Website URL</label>
+        <input required id="url" name="url" type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="yourbusiness.com">
+      </div>
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="email">Email</label>
+          <input required id="email" name="email" type="email" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="jane@rivera.com">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
+        </div>
+      </div>
+      <button type="submit" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px]">
+        Get My Free Audit
+      </button>
+      <p id="form-status" class="text-sm text-center text-fog"></p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/5 py-10 px-6">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-fog">
+    <p class="font-display text-sand text-base">A2H<span class="text-copper">.</span></p>
+    <p>haider@a2h.info · Texas-based</p>
+    <p class="text-fog/60">© 2026 A2H Agency</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Persistent floating CTA: hidden near the top (nav CTA already covers it)
+  // and hidden once the contact form itself is on screen.
+  const floatingCta = document.getElementById('floating-cta');
+  const contactSection = document.getElementById('contact');
+  const heroSection = document.getElementById('top');
+  let contactVisible = false;
+
+  const setFloatingCtaVisible = (show) => {
+    floatingCta.classList.toggle('opacity-0', !show);
+    floatingCta.classList.toggle('translate-y-4', !show);
+    floatingCta.classList.toggle('pointer-events-none', !show);
+  };
+
+  new IntersectionObserver((entries) => {
+    contactVisible = entries[0].isIntersecting;
+    setFloatingCtaVisible(window.scrollY > heroSection.offsetHeight * 0.6 && !contactVisible);
+  }, { threshold: 0.2 }).observe(contactSection);
+
+  window.addEventListener('scroll', () => {
+    setFloatingCtaVisible(window.scrollY > heroSection.offsetHeight * 0.6 && !contactVisible);
+  }, { passive: true });
+
+  // Form submission via Web3Forms (free, no backend needed).
+  // Sign up free at https://web3forms.com, get an access key, and replace
+  // WEB3FORMS_ACCESS_KEY below. Until then the form falls back to opening
+  // a mailto draft so no lead is ever silently lost.
+  const WEB3FORMS_ACCESS_KEY = "";
+
+  const form = document.getElementById('audit-form');
+  const status = document.getElementById('form-status');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    if (!WEB3FORMS_ACCESS_KEY) {
+      const body = `Business: ${data.business}%0AURL: ${data.url}%0APhone: ${data.phone}%0A%0ARequesting a free site audit.`;
+      window.location.href = `mailto:haider@a2h.info?subject=Free Audit Request — ${encodeURIComponent(data.business)}&body=${body}`;
+      status.textContent = "Opening your email client to send the request…";
+      return;
+    }
+
+    status.textContent = "Sending…";
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ access_key: WEB3FORMS_ACCESS_KEY, subject: `Free Audit Request — ${data.business}`, ...data }),
+      });
+      const result = await res.json();
+      if (result.success) {
+        status.textContent = "Got it — we'll send your audit within 24 hours.";
+        form.reset();
+      } else {
+        status.textContent = "Something went wrong. Email haider@a2h.info directly.";
+      }
+    } catch (err) {
+      status.textContent = "Something went wrong. Email haider@a2h.info directly.";
+    }
+  });
+</script>
+</body>
+</html>
