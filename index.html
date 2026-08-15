@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A2H — Web &amp; Growth Agency for Texas Businesses</title>
-<meta name="description" content="Hand-coded, conversion-first websites and growth systems for Texas businesses. Real results, transparent pricing, zero page-builder bloat.">
+<title>A2H — Website Design &amp; Development for Texas Businesses</title>
+<meta name="description" content="Hand-coded, conversion-first websites for Texas businesses. Real launches, transparent pricing, zero page-builder bloat.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141110'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-style='italic' fill='%23c9702f' text-anchor='middle'%3EA2H%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
-<meta property="og:title" content="A2H — Web &amp; Growth Agency for Texas Businesses">
-<meta property="og:description" content="Hand-coded, conversion-first websites and growth systems for Texas businesses. Real results, transparent pricing, zero page-builder bloat.">
+<meta property="og:title" content="A2H — Website Design &amp; Development for Texas Businesses">
+<meta property="og:description" content="Hand-coded, conversion-first websites for Texas businesses. Real launches, transparent pricing, zero page-builder bloat.">
 <meta property="og:image" content="https://a2h.info/assets/og-image.png">
 <meta property="og:url" content="https://a2h.info/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="A2H — Web &amp; Growth Agency for Texas Businesses">
-<meta name="twitter:description" content="Hand-coded, conversion-first websites and growth systems for Texas businesses.">
+<meta name="twitter:title" content="A2H — Website Design &amp; Development for Texas Businesses">
+<meta name="twitter:description" content="Hand-coded, conversion-first websites for Texas businesses.">
 <meta name="twitter:image" content="https://a2h.info/assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,6 +32,7 @@
           brass: '#b8823f',
           sand: '#e9dfd2',
           fog: '#a89a8c',
+          live: '#7fb88a',
         },
         fontFamily: {
           display: ['Fraunces', 'serif'],
@@ -116,6 +117,47 @@
     outline: 2px solid #e2924f;
     outline-offset: 2px;
   }
+
+  /* Marquee */
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+  .marquee-track {
+    animation: marquee 28s linear infinite;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Live status dot */
+  .pulse-dot {
+    animation: pulse-dot 2.2s cubic-bezier(0.4,0,0.6,1) infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(127,184,138,0.5); }
+    50% { box-shadow: 0 0 0 5px rgba(127,184,138,0); }
+  }
+
+  /* Ghost footer wordmark */
+  .ghost-word {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(233,223,210,0.08);
+    line-height: 0.8;
+    user-select: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .card-hover, .btn-primary, .marquee-track, .pulse-dot {
+      animation: none !important;
+      transition: none !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+  }
 </style>
 </head>
 <body class="text-sand antialiased">
@@ -136,7 +178,7 @@
   </div>
 </header>
 
-<!-- PERSISTENT FLOATING CTA -->
+<!-- PERSISTENT FLOATING CTA (mobile) -->
 <div id="floating-cta" class="fixed bottom-6 right-6 z-40 pointer-events-none opacity-0 translate-y-4 transition-all duration-500 ease-out">
   <a href="#contact" class="pointer-events-auto btn-primary shadow-floating bg-copper hover:bg-copper-light text-ink font-semibold pl-5 pr-6 py-3 rounded-full text-sm flex items-center gap-2 border border-black/10">
     <span class="inline-flex h-2 w-2 rounded-full bg-ink/70"></span>
@@ -148,13 +190,13 @@
 <section id="top" class="relative glow-copper pt-40 pb-28 px-6 overflow-hidden">
   <div class="grain"></div>
   <div class="max-w-4xl mx-auto text-center relative">
-    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Web &amp; Growth Agency for Contractors, Medical Practices &amp; Local Retail</p>
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Website Design &amp; Development for Contractors, Medical Practices &amp; Local Retail</p>
     <h1 class="reveal font-display text-[2.75rem] leading-[1.1] sm:text-6xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">
       Websites that turn strangers into <span class="italic text-copper-light">paying customers.</span>
     </h1>
     <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto mb-10">
       Hand-coded, conversion-first sites for Texas businesses — no templates, no page-builder bloat.
-      We build the site, get you found, and make sure every lead gets answered before your competitor even wakes up.
+      We design it, build it, and ship it fast, so every visitor lands on something that actually works.
     </p>
     <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
       <a href="#contact" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px]">
@@ -167,87 +209,153 @@
   </div>
 </section>
 
-<!-- PROOF STRIP -->
-<section class="border-y border-white/5 bg-surface/60 py-6 px-6">
-  <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-sm text-fog">
-    <span class="uppercase tracking-widest text-xs text-fog/70">Live sites we've shipped</span>
-    <span class="text-sand/80">Solid State Construction</span>
-    <span class="text-white/15">·</span>
-    <span class="text-sand/80">Quality Halal Market</span>
-    <span class="text-white/15">·</span>
-    <span class="text-sand/80">CareMedBill</span>
+<!-- PROOF MARQUEE -->
+<section class="relative border-y border-white/5 bg-surface/60 py-6 overflow-hidden">
+  <div class="marquee-mask">
+    <div class="marquee-track flex items-center gap-16 w-max whitespace-nowrap">
+      <div class="flex items-center gap-16">
+        <span class="uppercase tracking-widest text-xs text-fog/70 shrink-0">Live sites we've shipped</span>
+        <span class="text-sand/80 text-sm">Solid State Construction</span>
+        <span class="text-white/15">·</span>
+        <span class="text-sand/80 text-sm">Quality Halal Market</span>
+        <span class="text-white/15">·</span>
+        <span class="text-sand/80 text-sm">Azul Bio Research</span>
+        <span class="text-white/15">·</span>
+        <span class="text-sand/80 text-sm">CareMedBill</span>
+      </div>
+      <div class="flex items-center gap-16" aria-hidden="true">
+        <span class="uppercase tracking-widest text-xs text-fog/70 shrink-0">Live sites we've shipped</span>
+        <span class="text-sand/80 text-sm">Solid State Construction</span>
+        <span class="text-white/15">·</span>
+        <span class="text-sand/80 text-sm">Quality Halal Market</span>
+        <span class="text-white/15">·</span>
+        <span class="text-sand/80 text-sm">Azul Bio Research</span>
+        <span class="text-white/15">·</span>
+        <span class="text-sand/80 text-sm">CareMedBill</span>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- REAL RESULTS -->
-<section class="py-24 px-6">
-  <div class="max-w-3xl mx-auto reveal text-center">
-    <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Verified Result — Solid State Construction, Google Ads</p>
-    <p class="font-display leading-none text-copper-light mb-6" style="font-size: clamp(4.5rem, 12vw, 8rem);">270+</p>
-    <p class="text-lg sm:text-xl text-sand leading-[1.6] max-w-xl mx-auto mb-8">organic clicks in 14 days on a $200 budget — nearly 2&times; the industry projection, verifiable in Google Ads.</p>
-    <div class="flex flex-wrap items-center justify-center gap-4">
-      <span class="rounded-full bg-elevated border border-white/10 px-5 py-2.5 text-sm text-fog"><span class="text-copper-light font-semibold">$0.74</span> cost per click — ~50% below industry average</span>
-      <span class="rounded-full bg-elevated border border-white/10 px-5 py-2.5 text-sm text-fog"><span class="text-copper-light font-semibold">90+</span> PageSpeed target on every build</span>
+<!-- STAT BAR -->
+<section class="py-20 px-6">
+  <div class="max-w-5xl mx-auto reveal">
+    <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3 text-center">Verified Result — Solid State Construction, Google Ads</p>
+    <h2 class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand text-center mb-10">Bet on the work, not the promises.</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center">
+        <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);"><span data-countup="4">0</span>+</p>
+        <p class="text-xs text-fog uppercase tracking-wider">Live sites shipped</p>
+      </div>
+      <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center">
+        <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);"><span data-countup="270">0</span>+</p>
+        <p class="text-xs text-fog uppercase tracking-wider">Organic clicks in 14 days</p>
+      </div>
+      <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center">
+        <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);">$<span data-countup="0.74" data-decimals="2">0</span></p>
+        <p class="text-xs text-fog uppercase tracking-wider">Cost per click (~50% below avg)</p>
+      </div>
+      <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center">
+        <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);"><span data-countup="90">0</span>+</p>
+        <p class="text-xs text-fog uppercase tracking-wider">PageSpeed target, every build</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- WORK -->
 <section id="work" class="py-8 px-6">
-  <div class="max-w-5xl mx-auto">
+  <div class="max-w-6xl mx-auto">
     <div class="reveal mb-12 text-center">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Selected Work</p>
-      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Real businesses, real launches</h2>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Real businesses, <span class="italic text-copper-light">real launches.</span></h2>
     </div>
-    <div class="reveal grid sm:grid-cols-3 gap-6">
-      <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" class="group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover overflow-hidden flex flex-col">
+    <div class="reveal grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" class="group relative rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover overflow-hidden flex flex-col">
+        <span class="absolute top-3 right-3 z-10 flex items-center gap-1.5 rounded-full bg-ink/90 border border-white/10 pl-2 pr-2.5 py-1">
+          <span class="relative flex h-1.5 w-1.5"><span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-live"></span><span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-live"></span></span>
+          <span class="text-[10px] font-semibold tracking-wide text-sand/80">LIVE</span>
+        </span>
         <div class="flex items-center gap-1.5 px-4 py-3 bg-surface border-b border-white/5">
           <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
           <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
           <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
           <span class="ml-2 text-xs text-fog/70 truncate">solidstatesconstruction.com</span>
         </div>
-        <div class="h-40 overflow-hidden">
+        <div class="h-36 overflow-hidden">
           <img src="assets/portfolio/ssc.png" alt="Solid State Construction live website" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
         </div>
-        <div class="p-6 flex flex-col flex-1">
-          <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Construction</p>
-          <h3 class="font-display text-xl text-sand mb-2">Solid State Construction</h3>
-          <p class="text-sm text-fog leading-[1.7] flex-1">Full site rebuild + Google Ads campaign. Delivered 270+ clicks in 14 days at $0.74 CPC.</p>
+        <div class="p-5 flex flex-col flex-1">
+          <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Construction</p>
+          <h3 class="font-display text-lg text-sand mb-2">Solid State Construction</h3>
+          <p class="text-sm text-fog leading-[1.6] flex-1">Full site rebuild + Google Ads campaign. 270+ clicks in 14 days at $0.74 CPC.</p>
         </div>
       </a>
-      <a href="https://hhuss786512tx-tech.github.io/Quality-Halal-Market/" target="_blank" rel="noopener" class="group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover overflow-hidden flex flex-col">
+
+      <a href="https://hhuss786512tx-tech.github.io/Quality-Halal-Market/" target="_blank" rel="noopener" class="group relative rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover overflow-hidden flex flex-col">
+        <span class="absolute top-3 right-3 z-10 flex items-center gap-1.5 rounded-full bg-ink/90 border border-white/10 pl-2 pr-2.5 py-1">
+          <span class="relative flex h-1.5 w-1.5"><span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-live"></span><span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-live"></span></span>
+          <span class="text-[10px] font-semibold tracking-wide text-sand/80">LIVE</span>
+        </span>
         <div class="flex items-center gap-1.5 px-4 py-3 bg-surface border-b border-white/5">
           <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
           <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
           <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
-          <span class="ml-2 text-xs text-fog/70 truncate">Quality Halal Market — live preview</span>
+          <span class="ml-2 text-xs text-fog/70 truncate">Quality Halal Market</span>
         </div>
-        <div class="h-40 overflow-hidden">
+        <div class="h-36 overflow-hidden">
           <img src="assets/portfolio/qhm.png" alt="Quality Halal Market live website" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
         </div>
-        <div class="p-6 flex flex-col flex-1">
-          <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Food &amp; Retail</p>
-          <h3 class="font-display text-xl text-sand mb-2">Quality Halal Market</h3>
-          <p class="text-sm text-fog leading-[1.7] flex-1">Custom Shopify build for a specialty grocer — product catalog, cart, and mobile-first checkout, live today.</p>
+        <div class="p-5 flex flex-col flex-1">
+          <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Food &amp; Retail — Meat Shop</p>
+          <h3 class="font-display text-lg text-sand mb-2">Quality Halal Market</h3>
+          <p class="text-sm text-fog leading-[1.6] flex-1">Custom build for a specialty grocer — product catalog, cart, and mobile-first checkout.</p>
         </div>
       </a>
-      <a href="https://caremedbill.com" target="_blank" rel="noopener" class="group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover overflow-hidden flex flex-col">
+
+      <a href="https://azulbioresearch.com" target="_blank" rel="noopener" class="group relative rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover overflow-hidden flex flex-col">
+        <span class="absolute top-3 right-3 z-10 flex items-center gap-1.5 rounded-full bg-ink/90 border border-white/10 pl-2 pr-2.5 py-1">
+          <span class="relative flex h-1.5 w-1.5"><span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-live"></span><span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-live"></span></span>
+          <span class="text-[10px] font-semibold tracking-wide text-sand/80">LIVE</span>
+        </span>
         <div class="flex items-center gap-1.5 px-4 py-3 bg-surface border-b border-white/5">
           <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
           <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
           <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
-          <span class="ml-2 text-xs text-fog/70 truncate">caremedbill.com</span>
+          <span class="ml-2 text-xs text-fog/70 truncate">azulbioresearch.com</span>
         </div>
-        <div class="h-40 overflow-hidden">
-          <img src="assets/portfolio/caremedbill.png" alt="CareMedBill live website" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+        <div class="h-36 overflow-hidden">
+          <img src="assets/portfolio/azulbio.png" alt="Azul Bio Research live website" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
         </div>
-        <div class="p-6 flex flex-col flex-1">
-          <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Medical Billing</p>
-          <h3 class="font-display text-xl text-sand mb-2">CareMedBill</h3>
-          <p class="text-sm text-fog leading-[1.7] flex-1">Trust-first site for a medical billing platform — built to convert practice-owner visitors into calls.</p>
+        <div class="p-5 flex flex-col flex-1">
+          <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Biotech / Clinical Research</p>
+          <h3 class="font-display text-lg text-sand mb-2">Azul Bio Research</h3>
+          <p class="text-sm text-fog leading-[1.6] flex-1">Credibility-first site for a clinical research network — built to convert sponsor &amp; patient inquiries.</p>
         </div>
       </a>
+
+      <a href="https://hhuss786512tx-tech.github.io/Caremedbill/" target="_blank" rel="noopener" class="group relative rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover overflow-hidden flex flex-col">
+        <span class="absolute top-3 right-3 z-10 flex items-center gap-1.5 rounded-full bg-ink/90 border border-white/10 pl-2 pr-2.5 py-1">
+          <span class="relative flex h-1.5 w-1.5"><span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-live"></span><span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-live"></span></span>
+          <span class="text-[10px] font-semibold tracking-wide text-sand/80">LIVE</span>
+        </span>
+        <div class="flex items-center gap-1.5 px-4 py-3 bg-surface border-b border-white/5">
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="ml-2 text-xs text-fog/70 truncate">CareMedBill — preview build</span>
+        </div>
+        <div class="h-36 overflow-hidden">
+          <img src="assets/portfolio/caremedbill.png" alt="CareMedBill live website" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Medical Billing</p>
+          <h3 class="font-display text-lg text-sand mb-2">CareMedBill</h3>
+          <p class="text-sm text-fog leading-[1.6] flex-1">Trust-first site for a medical billing platform — built to convert practice-owner visitors into calls.</p>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
@@ -263,7 +371,7 @@
       <div>
         <p class="font-display text-3xl text-copper mb-3">01</p>
         <h3 class="text-sand font-semibold mb-2">Free Audit</h3>
-        <p class="text-sm text-fog leading-[1.7]">We tear down your current site — speed, design, SEO, missed leads — and show you exactly what's costing you customers.</p>
+        <p class="text-sm text-fog leading-[1.7]">We tear down your current site — speed, design, mobile experience — and show you exactly what's costing you visitors.</p>
       </div>
       <div>
         <p class="font-display text-3xl text-copper mb-3">02</p>
@@ -272,8 +380,8 @@
       </div>
       <div>
         <p class="font-display text-3xl text-copper mb-3">03</p>
-        <h3 class="text-sand font-semibold mb-2">Launch &amp; Grow</h3>
-        <p class="text-sm text-fog leading-[1.7]">SEO foundation, tracking, and instant lead-reply automation so every visitor turns into a followed-up lead.</p>
+        <h3 class="text-sand font-semibold mb-2">Launch</h3>
+        <p class="text-sm text-fog leading-[1.7]">Fully tested, mobile-first, and live on your domain — with a walkthrough so you know exactly how to update it yourself.</p>
       </div>
     </div>
   </div>
@@ -288,37 +396,37 @@
     </div>
     <div class="reveal grid sm:grid-cols-3 gap-6 items-stretch">
       <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
-        <h3 class="text-sand font-semibold text-lg mb-1">Get Online</h3>
+        <h3 class="text-sand font-semibold text-lg mb-1">Starter</h3>
         <p class="font-display text-3xl text-copper-light mb-4">$1,500</p>
         <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
           <li>Custom 5-page website</li>
-          <li>Mobile responsive</li>
+          <li>Mobile-first responsive design</li>
           <li>Contact form → email</li>
-          <li>Basic SEO foundation</li>
-          <li>Google Business Profile setup</li>
+          <li>90+ PageSpeed target</li>
+          <li>2 rounds of revisions</li>
         </ul>
       </div>
       <div class="rounded-2xl bg-elevated border border-copper/40 shadow-floating card-hover p-8 flex flex-col relative">
         <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">Most Popular</span>
-        <h3 class="text-sand font-semibold text-lg mb-1">Get Found</h3>
+        <h3 class="text-sand font-semibold text-lg mb-1">Professional</h3>
         <p class="font-display text-3xl text-copper-light mb-4">$2,500</p>
         <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
-          <li>Everything in Get Online</li>
-          <li>5 city/location landing pages</li>
-          <li>GA4 + conversion tracking</li>
-          <li>Local SEO optimization</li>
-          <li>Search Console setup</li>
+          <li>Everything in Starter</li>
+          <li>Up to 10 pages</li>
+          <li>Custom animation &amp; interactions</li>
+          <li>Photo &amp; copy integration</li>
+          <li>Priority turnaround</li>
         </ul>
       </div>
       <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
-        <h3 class="text-sand font-semibold text-lg mb-1">Get Leads</h3>
+        <h3 class="text-sand font-semibold text-lg mb-1">Premium</h3>
         <p class="font-display text-3xl text-copper-light mb-4">$4,500</p>
         <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
-          <li>Everything in Get Found</li>
-          <li>Speed-to-Lead™ instant reply engine</li>
-          <li>Google Ads campaign setup</li>
-          <li>Retargeting + exit-intent capture</li>
-          <li>First month retainer included</li>
+          <li>Everything in Professional</li>
+          <li>Unlimited pages</li>
+          <li>Custom functionality (booking, cart, calculators)</li>
+          <li>First month of edits included</li>
+          <li>Dedicated launch support</li>
         </ul>
       </div>
     </div>
@@ -336,7 +444,7 @@
     <div class="reveal grid sm:grid-cols-2 gap-x-10 gap-y-6">
       <div class="flex gap-3">
         <span class="text-copper-light mt-0.5">—</span>
-        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Real results, not promises.</span> 270+ organic clicks in 14 days at $0.74 CPC for a real client, verifiable in Google Ads.</p>
+        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Real launches, not mockups.</span> Four live sites shipped, including 270+ organic clicks in 14 days at $0.74 CPC for a real client, verifiable in Google Ads.</p>
       </div>
       <div class="flex gap-3">
         <span class="text-copper-light mt-0.5">—</span>
@@ -354,13 +462,25 @@
   </div>
 </section>
 
+<!-- CTA BANNER -->
+<section class="px-6 py-20">
+  <div class="reveal max-w-5xl mx-auto rounded-3xl bg-gradient-to-r from-copper to-brass px-8 py-14 sm:py-16 text-center relative overflow-hidden shadow-floating">
+    <div class="grain opacity-10"></div>
+    <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-ink mb-4 relative">Ready to see your <span class="italic">new site?</span></h2>
+    <p class="text-ink/80 max-w-xl mx-auto mb-8 relative">Free audit, no pressure, no obligation. We'll show you exactly what your current site is costing you.</p>
+    <a href="#contact" class="btn-primary relative inline-block bg-ink hover:bg-ink/90 text-sand font-semibold px-7 py-3.5 rounded-full text-[15px] shadow-btn">
+      Get My Free Audit
+    </a>
+  </div>
+</section>
+
 <!-- CONTACT / LEAD FORM -->
-<section id="contact" class="py-28 px-6">
+<section id="contact" class="py-16 px-6">
   <div class="max-w-2xl mx-auto">
     <div class="reveal mb-10 text-center">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Free Site Audit</p>
       <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Let's see what your site is costing you</h2>
-      <p class="text-fog leading-[1.7]">Drop your site URL and we'll send back 3 specific things costing you leads right now — no charge, no obligation.</p>
+      <p class="text-fog leading-[1.7]">Drop your site URL and we'll send back 3 specific things costing you visitors right now — no charge, no obligation.</p>
     </div>
 
     <form id="audit-form" class="reveal rounded-2xl bg-elevated border border-white/5 shadow-floating p-8 space-y-5">
@@ -397,12 +517,13 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="border-t border-white/5 py-10 px-6">
-  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-fog">
+<footer class="relative border-t border-white/5 pt-10 overflow-hidden">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-fog px-6 pb-10 relative z-10">
     <p class="font-display text-sand text-base">A2H<span class="text-copper">.</span></p>
     <p>haider@a2h.info · Texas-based</p>
     <p class="text-fog/60">© 2026 A2H Agency</p>
   </div>
+  <p class="ghost-word text-center select-none pointer-events-none" style="font-size: clamp(4rem, 16vw, 11rem); margin-bottom: -0.12em;" aria-hidden="true">A2H Agency</p>
 </footer>
 
 <script>
@@ -418,7 +539,7 @@
   }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
 
-  // Persistent floating CTA: hidden near the top (nav CTA already covers it)
+  // Mobile floating CTA: hidden near the top (nav CTA already covers it)
   // and hidden once the contact form itself is on screen.
   const floatingCta = document.getElementById('floating-cta');
   const contactSection = document.getElementById('contact');
@@ -439,6 +560,33 @@
   window.addEventListener('scroll', () => {
     setFloatingCtaVisible(window.scrollY > heroSection.offsetHeight * 0.6 && !contactVisible);
   }, { passive: true });
+
+  // Count-up stat numbers on scroll into view.
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const countEls = document.querySelectorAll('[data-countup]');
+  const countIo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseFloat(el.dataset.countup);
+      const decimals = parseInt(el.dataset.decimals || '0', 10);
+      countIo.unobserve(el);
+      if (reduceMotion) {
+        el.textContent = target.toFixed(decimals);
+        return;
+      }
+      const duration = 1200;
+      const start = performance.now();
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = (target * eased).toFixed(decimals);
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.5 });
+  countEls.forEach(el => countIo.observe(el));
 
   // Form submission via Web3Forms (free, no backend needed).
   // Sign up free at https://web3forms.com, get an access key, and replace
