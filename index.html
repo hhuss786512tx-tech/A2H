@@ -158,6 +158,66 @@
     }
     .reveal { opacity: 1; transform: none; }
   }
+
+  /* Phone mockup */
+  .phone-frame {
+    width: 200px;
+    background: #0a0807;
+    border-radius: 2.25rem;
+    padding: 9px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5), 0 24px 48px -12px rgba(201,112,47,0.28), inset 0 0 0 1px rgba(255,255,255,0.06);
+    flex-shrink: 0;
+  }
+  .phone-screen {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    border-radius: 1.65rem;
+    overflow: hidden;
+    background: #141110;
+  }
+  .phone-screen.tall {
+    height: 540px;
+  }
+  .phone-notch {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 76px;
+    height: 20px;
+    background: #0a0807;
+    border-radius: 999px;
+    z-index: 20;
+  }
+  .phone-scroll-img {
+    display: block;
+    width: 100%;
+    animation: phone-scroll 16s ease-in-out infinite alternate;
+  }
+  .phone-screen:hover .phone-scroll-img { animation-play-state: paused; }
+  @keyframes phone-scroll {
+    0%, 6% { transform: translateY(0); }
+    94%, 100% { transform: translateY(-76%); }
+  }
+
+  /* Chatbot mockup */
+  .chat-bubble {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .reveal.in .chat-bubble { opacity: 1; transform: none; }
+  .chat-bubble:nth-child(1) { transition-delay: 0.1s; }
+  .chat-bubble:nth-child(2) { transition-delay: 0.45s; }
+  .chat-bubble:nth-child(3) { transition-delay: 0.8s; }
+  .chat-bubble:nth-child(4) { transition-delay: 1.15s; }
+  .chat-bubble:nth-child(5) { transition-delay: 1.5s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .phone-scroll-img { animation: none !important; }
+    .chat-bubble { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
 </style>
 </head>
 <body class="text-sand antialiased">
@@ -360,6 +420,54 @@
   </div>
 </section>
 
+<!-- MOBILE PREVIEW -->
+<section class="py-24 px-6 overflow-hidden">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal mb-14 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Mobile-First, Always</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Every build. <span class="italic text-copper-light">Every phone.</span></h2>
+    </div>
+    <div class="reveal flex flex-wrap items-start justify-center gap-8">
+      <div class="flex flex-col items-center gap-4">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <img src="assets/portfolio/mobile-ssc.jpg" alt="Solid State Construction on mobile" class="phone-scroll-img">
+          </div>
+        </div>
+        <p class="text-xs text-fog uppercase tracking-wider">Solid State Construction</p>
+      </div>
+      <div class="flex flex-col items-center gap-4">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <img src="assets/portfolio/mobile-qhm.jpg" alt="Quality Halal Market on mobile" class="phone-scroll-img">
+          </div>
+        </div>
+        <p class="text-xs text-fog uppercase tracking-wider">Quality Halal Market</p>
+      </div>
+      <div class="flex flex-col items-center gap-4">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <img src="assets/portfolio/mobile-azulbio.jpg" alt="Azul Bio Research on mobile" class="phone-scroll-img">
+          </div>
+        </div>
+        <p class="text-xs text-fog uppercase tracking-wider">Azul Bio Research</p>
+      </div>
+      <div class="flex flex-col items-center gap-4">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <img src="assets/portfolio/mobile-caremedbill.jpg" alt="CareMedBill on mobile" class="phone-scroll-img">
+          </div>
+        </div>
+        <p class="text-xs text-fog uppercase tracking-wider">CareMedBill</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PROCESS -->
 <section id="process" class="py-28 px-6 bg-surface/40 border-y border-white/5">
   <div class="max-w-5xl mx-auto">
@@ -435,14 +543,70 @@
 
     <div class="reveal">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5 text-center">Add-Ons</p>
-      <div class="max-w-2xl mx-auto rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center gap-5">
-        <div class="flex-1">
-          <h3 class="text-sand font-semibold text-base mb-1">AI Website Chatbot</h3>
-          <p class="text-sm text-fog leading-[1.7]">Trained on your business — answers FAQs, qualifies visitors, and captures leads 24/7, even after hours.</p>
+      <div class="max-w-4xl mx-auto rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-6 sm:p-8 flex flex-col md:flex-row items-center gap-8">
+
+        <div class="phone-frame shrink-0">
+          <div class="phone-screen tall flex flex-col">
+            <div class="phone-notch"></div>
+            <div class="flex items-center justify-between px-4 pt-2.5 pb-1 text-[10px] font-semibold text-sand">
+              <span>9:41</span>
+              <span class="flex items-center gap-1">
+                <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><rect x="0" y="6" width="2.5" height="4" rx="0.5" fill="#e9dfd2"/><rect x="4" y="4" width="2.5" height="6" rx="0.5" fill="#e9dfd2"/><rect x="8" y="2" width="2.5" height="8" rx="0.5" fill="#e9dfd2"/><rect x="12" y="0" width="2.5" height="10" rx="0.5" fill="#e9dfd2"/></svg>
+                <svg width="14" height="10" viewBox="0 0 16 12" fill="none"><path d="M8 9.5C8.55 9.5 9 9.05 9 8.5C9 7.95 8.55 7.5 8 7.5C7.45 7.5 7 7.95 7 8.5C7 9.05 7.45 9.5 8 9.5Z" fill="#e9dfd2"/><path d="M5 6.3C5.75 5.6 6.8 5.2 8 5.2C9.2 5.2 10.25 5.6 11 6.3" stroke="#e9dfd2" stroke-width="1.1" stroke-linecap="round"/><path d="M2.5 3.7C4 2.3 5.9 1.5 8 1.5C10.1 1.5 12 2.3 13.5 3.7" stroke="#e9dfd2" stroke-width="1.1" stroke-linecap="round"/></svg>
+                <span class="inline-flex items-center border border-sand/70 rounded-[3px] px-[1.5px] py-[1px]"><span class="block w-[16px] h-[7px] bg-sand/90 rounded-[1px]"></span></span>
+              </span>
+            </div>
+            <div class="flex items-center gap-2.5 px-4 py-2.5 border-b border-white/10">
+              <span class="h-7 w-7 rounded-full bg-gradient-to-br from-copper to-brass flex items-center justify-center text-[10px] font-bold text-ink shrink-0">A2H</span>
+              <div class="min-w-0">
+                <p class="text-xs font-semibold text-sand truncate">A2H AI Agent</p>
+                <p class="text-[10px] text-live flex items-center gap-1"><span class="h-1.5 w-1.5 rounded-full bg-live inline-block"></span>Active · Responding now</p>
+              </div>
+            </div>
+            <div class="flex-1 overflow-hidden px-3 py-2 space-y-2 text-[11px] leading-snug">
+              <div class="chat-bubble flex justify-start">
+                <div class="max-w-[80%] bg-white/10 text-sand rounded-2xl rounded-bl-sm px-3 py-2">
+                  Hey, saw your site — what's turnaround on a new build?
+                  <p class="text-[9px] text-fog/70 mt-1">9:03 AM</p>
+                </div>
+              </div>
+              <div class="chat-bubble flex justify-end">
+                <div class="max-w-[80%] bg-gradient-to-br from-copper to-brass text-ink rounded-2xl rounded-br-sm px-3 py-2">
+                  Hi! Most builds take 2–3 weeks. Want a free audit of your current site first?
+                  <p class="text-[9px] text-ink/60 mt-1 text-right">AI · 9:03 AM ✓✓</p>
+                </div>
+              </div>
+              <div class="chat-bubble flex justify-start">
+                <div class="max-w-[80%] bg-white/10 text-sand rounded-2xl rounded-bl-sm px-3 py-2">
+                  Sure, riveraconcreteco.com
+                  <p class="text-[9px] text-fog/70 mt-1">9:04 AM</p>
+                </div>
+              </div>
+              <div class="chat-bubble flex justify-end">
+                <div class="max-w-[80%] bg-gradient-to-br from-copper to-brass text-ink rounded-2xl rounded-br-sm px-3 py-2">
+                  Got it — booking you a call. Tomorrow 2pm or 4pm?
+                  <p class="text-[9px] text-ink/60 mt-1 text-right">AI · 9:04 AM ✓✓</p>
+                </div>
+              </div>
+            </div>
+            <div class="px-3 pb-3 pt-1">
+              <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-3 py-1.5">
+                <span class="text-[10px] text-fog/60 flex-1 truncate">AI handling this conversation…</span>
+                <span class="h-5 w-5 rounded-full bg-copper flex items-center justify-center shrink-0">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 12L20 4L14 20L11 13L4 12Z" fill="#141110"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="flex items-center justify-between sm:flex-col sm:items-end gap-1 sm:text-right shrink-0">
-          <p class="font-display text-2xl text-copper-light">+$750</p>
-          <p class="text-xs text-fog uppercase tracking-wider">one-time setup</p>
+
+        <div class="flex-1 text-center md:text-left">
+          <h3 class="text-sand font-semibold text-lg mb-2">AI Website Chatbot</h3>
+          <p class="text-sm text-fog leading-[1.7] mb-5">Trained on your business — answers FAQs, qualifies visitors, and captures leads 24/7, even after hours, right on your site.</p>
+          <div class="flex items-center justify-center md:justify-start gap-2">
+            <p class="font-display text-2xl text-copper-light">+$750</p>
+            <p class="text-xs text-fog uppercase tracking-wider">one-time setup</p>
+          </div>
         </div>
       </div>
     </div>
