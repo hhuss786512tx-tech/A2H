@@ -233,6 +233,25 @@
     scroll-snap-type: none;
   }
   .carousel-track > div { scroll-snap-align: center; }
+
+  .phone-stagger {
+    transition: transform 0.45s cubic-bezier(0.22,1,0.36,1);
+    will-change: transform;
+  }
+  .stagger-1 { transform: translateY(6px) rotate(-3deg); }
+  .stagger-2 { transform: translateY(-34px) rotate(2.5deg); }
+  .stagger-3 { transform: translateY(14px) rotate(-2deg); }
+  .stagger-4 { transform: translateY(-26px) rotate(3deg); }
+  .phone-stagger:hover {
+    transform: translateY(-10px) rotate(0deg) !important;
+  }
+  @media (max-width: 639px) {
+    .stagger-1, .stagger-2, .stagger-3, .stagger-4 { transform: none; }
+    .phone-stagger:hover { transform: none !important; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .phone-stagger { transition: none; }
+  }
 </style>
 </head>
 <body class="text-sand antialiased">
@@ -453,8 +472,8 @@
       </div>
     </div>
   </div>
-  <div id="phone-carousel" class="reveal carousel-track flex items-start gap-8 overflow-x-auto snap-x snap-mandatory px-6 sm:px-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] pb-4">
-    <div class="flex flex-col items-center gap-4 snap-center shrink-0">
+  <div id="phone-carousel" class="reveal carousel-track flex items-start gap-8 overflow-x-auto snap-x snap-mandatory px-6 sm:px-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] pt-6 pb-14">
+    <div class="phone-stagger stagger-1 flex flex-col items-center gap-4 snap-center shrink-0">
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
@@ -463,7 +482,7 @@
       </div>
       <p class="text-xs text-fog uppercase tracking-wider">Solid State Construction</p>
     </div>
-    <div class="flex flex-col items-center gap-4 snap-center shrink-0">
+    <div class="phone-stagger stagger-2 flex flex-col items-center gap-4 snap-center shrink-0">
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
@@ -472,7 +491,7 @@
       </div>
       <p class="text-xs text-fog uppercase tracking-wider">Quality Halal Market</p>
     </div>
-    <div class="flex flex-col items-center gap-4 snap-center shrink-0">
+    <div class="phone-stagger stagger-3 flex flex-col items-center gap-4 snap-center shrink-0">
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
@@ -481,7 +500,7 @@
       </div>
       <p class="text-xs text-fog uppercase tracking-wider">Azul Bio Research</p>
     </div>
-    <div class="flex flex-col items-center gap-4 snap-center shrink-0">
+    <div class="phone-stagger stagger-4 flex flex-col items-center gap-4 snap-center shrink-0">
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
