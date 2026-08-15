@@ -218,6 +218,21 @@
     .phone-scroll-img { animation: none !important; }
     .chat-bubble { opacity: 1 !important; transform: none !important; transition: none !important; }
   }
+
+  /* Phone carousel */
+  .carousel-track {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+    scroll-behavior: smooth;
+  }
+  .carousel-track::-webkit-scrollbar { display: none; }
+  .carousel-track.dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+  .carousel-track > div { scroll-snap-align: center; }
 </style>
 </head>
 <body class="text-sand antialiased">
@@ -421,50 +436,61 @@
 </section>
 
 <!-- MOBILE PREVIEW -->
-<section class="py-24 px-6 overflow-hidden">
-  <div class="max-w-6xl mx-auto">
-    <div class="reveal mb-14 text-center">
-      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Mobile-First, Always</p>
-      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Every build. <span class="italic text-copper-light">Every phone.</span></h2>
-    </div>
-    <div class="reveal flex flex-wrap items-start justify-center gap-8">
-      <div class="flex flex-col items-center gap-4">
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <div class="phone-notch"></div>
-            <img src="assets/portfolio/mobile-ssc.jpg" alt="Solid State Construction on mobile" class="phone-scroll-img">
-          </div>
-        </div>
-        <p class="text-xs text-fog uppercase tracking-wider">Solid State Construction</p>
+<section class="py-24 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal mb-10 flex items-end justify-between gap-6">
+      <div>
+        <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Mobile-First, Always</p>
+        <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Every build. <span class="italic text-copper-light">Every phone.</span></h2>
       </div>
-      <div class="flex flex-col items-center gap-4">
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <div class="phone-notch"></div>
-            <img src="assets/portfolio/mobile-qhm.jpg" alt="Quality Halal Market on mobile" class="phone-scroll-img">
-          </div>
-        </div>
-        <p class="text-xs text-fog uppercase tracking-wider">Quality Halal Market</p>
-      </div>
-      <div class="flex flex-col items-center gap-4">
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <div class="phone-notch"></div>
-            <img src="assets/portfolio/mobile-azulbio.jpg" alt="Azul Bio Research on mobile" class="phone-scroll-img">
-          </div>
-        </div>
-        <p class="text-xs text-fog uppercase tracking-wider">Azul Bio Research</p>
-      </div>
-      <div class="flex flex-col items-center gap-4">
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <div class="phone-notch"></div>
-            <img src="assets/portfolio/mobile-caremedbill.jpg" alt="CareMedBill on mobile" class="phone-scroll-img">
-          </div>
-        </div>
-        <p class="text-xs text-fog uppercase tracking-wider">CareMedBill</p>
+      <div class="hidden sm:flex items-center gap-2 shrink-0">
+        <button type="button" id="phone-carousel-prev" aria-label="Scroll left" class="btn-primary h-10 w-10 rounded-full border border-white/15 hover:border-copper-light/60 flex items-center justify-center text-sand">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" id="phone-carousel-next" aria-label="Scroll right" class="btn-primary h-10 w-10 rounded-full border border-white/15 hover:border-copper-light/60 flex items-center justify-center text-sand">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
       </div>
     </div>
+  </div>
+  <div id="phone-carousel" class="reveal carousel-track flex items-start gap-8 overflow-x-auto snap-x snap-mandatory px-6 sm:px-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] pb-4">
+    <div class="flex flex-col items-center gap-4 snap-center shrink-0">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <img src="assets/portfolio/mobile-ssc.jpg" alt="Solid State Construction on mobile" class="phone-scroll-img">
+        </div>
+      </div>
+      <p class="text-xs text-fog uppercase tracking-wider">Solid State Construction</p>
+    </div>
+    <div class="flex flex-col items-center gap-4 snap-center shrink-0">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <img src="assets/portfolio/mobile-qhm.jpg" alt="Quality Halal Market on mobile" class="phone-scroll-img">
+        </div>
+      </div>
+      <p class="text-xs text-fog uppercase tracking-wider">Quality Halal Market</p>
+    </div>
+    <div class="flex flex-col items-center gap-4 snap-center shrink-0">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <img src="assets/portfolio/mobile-azulbio.jpg" alt="Azul Bio Research on mobile" class="phone-scroll-img">
+        </div>
+      </div>
+      <p class="text-xs text-fog uppercase tracking-wider">Azul Bio Research</p>
+    </div>
+    <div class="flex flex-col items-center gap-4 snap-center shrink-0">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <img src="assets/portfolio/mobile-caremedbill.jpg" alt="CareMedBill on mobile" class="phone-scroll-img">
+        </div>
+      </div>
+      <p class="text-xs text-fog uppercase tracking-wider">CareMedBill</p>
+    </div>
+    <div class="shrink-0 w-px sm:hidden" aria-hidden="true"></div>
   </div>
 </section>
 
@@ -739,6 +765,39 @@
   window.addEventListener('scroll', () => {
     setFloatingCtaVisible(window.scrollY > heroSection.offsetHeight * 0.6 && !contactVisible);
   }, { passive: true });
+
+  // Phone carousel: arrow buttons + click-and-drag scrolling.
+  const carousel = document.getElementById('phone-carousel');
+  if (carousel) {
+    const cardWidth = () => carousel.querySelector(':scope > div')?.getBoundingClientRect().width || 200;
+    document.getElementById('phone-carousel-prev')?.addEventListener('click', () => {
+      carousel.scrollBy({ left: -(cardWidth() + 32), behavior: 'smooth' });
+    });
+    document.getElementById('phone-carousel-next')?.addEventListener('click', () => {
+      carousel.scrollBy({ left: cardWidth() + 32, behavior: 'smooth' });
+    });
+
+    let isDown = false, startX = 0, startScroll = 0, dragged = false;
+    carousel.addEventListener('pointerdown', (e) => {
+      isDown = true;
+      dragged = false;
+      carousel.classList.add('dragging');
+      startX = e.clientX;
+      startScroll = carousel.scrollLeft;
+      carousel.setPointerCapture(e.pointerId);
+    });
+    carousel.addEventListener('pointermove', (e) => {
+      if (!isDown) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 4) dragged = true;
+      carousel.scrollLeft = startScroll - dx;
+    });
+    const endDrag = () => { isDown = false; carousel.classList.remove('dragging'); };
+    carousel.addEventListener('pointerup', endDrag);
+    carousel.addEventListener('pointerleave', endDrag);
+    carousel.addEventListener('pointercancel', endDrag);
+    carousel.addEventListener('click', (e) => { if (dragged) e.preventDefault(); }, true);
+  }
 
   // Count-up stat numbers on scroll into view.
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
