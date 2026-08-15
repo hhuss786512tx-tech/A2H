@@ -118,6 +118,26 @@
     outline-offset: 2px;
   }
 
+  /* Intro */
+  #intro-overlay {
+    transition: transform 0.75s cubic-bezier(0.76,0,0.24,1), opacity 0.6s ease;
+  }
+  #intro-overlay.exit-up { transform: translateY(-100%); }
+  #intro-overlay.exit-down { transform: translateY(100%); }
+  #intro-overlay.exit-left { transform: translateX(-100%); }
+  #intro-overlay.exit-right { transform: translateX(100%); }
+  #intro-overlay.exit-fade { opacity: 0; }
+  #intro-mark {
+    opacity: 0;
+    transform: scale(0.82);
+    animation: intro-mark-in 0.7s cubic-bezier(0.22,1,0.36,1) 0.15s forwards;
+  }
+  @keyframes intro-mark-in {
+    0% { opacity: 0; transform: scale(0.82); }
+    65% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
   /* Marquee */
   .marquee-mask {
     -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
@@ -237,6 +257,99 @@
     .chat-bubble { opacity: 1 !important; transform: none !important; transition: none !important; }
   }
 
+  /* 3D company card */
+  .card3d-stage {
+    perspective: 1200px;
+  }
+  .card3d {
+    position: relative;
+    width: 320px;
+    height: 190px;
+    max-width: 84vw;
+    transform-style: preserve-3d;
+    cursor: grab;
+    touch-action: none;
+    will-change: transform;
+    transform: rotateX(-8deg) rotateY(18deg);
+  }
+  .card3d.dragging { cursor: grabbing; }
+  .card3d-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    backface-visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 20px 50px -12px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);
+  }
+  .card3d-front {
+    background: linear-gradient(155deg, #f3ece1 0%, #e9dfd2 100%);
+    color: #141110;
+  }
+  .card3d-back {
+    background: linear-gradient(155deg, #1b1613 0%, #141110 100%);
+    color: #e9dfd2;
+    border: 1px solid rgba(255,255,255,0.08);
+    transform: rotateY(180deg);
+  }
+  .card3d-mark {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #1b3a5c, #2c5583);
+    position: relative;
+  }
+  .card3d-mark::after {
+    content: '';
+    position: absolute;
+    inset: 9px;
+    border: 2px solid #e9dfd2;
+    border-radius: 4px;
+  }
+  .card3d-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  .card3d-tagline {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #b8823f;
+  }
+  .card3d-back-title {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+  .card3d-back-line {
+    font-size: 0.8rem;
+    color: #a89a8c;
+  }
+  .card3d-sheen {
+    position: absolute;
+    inset: -50%;
+    background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.28) 48%, transparent 60%);
+    pointer-events: none;
+    animation: card3d-sheen-move 5s ease-in-out infinite;
+  }
+  @keyframes card3d-sheen-move {
+    0%, 100% { transform: translateX(-30%); }
+    50% { transform: translateX(30%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card3d-sheen { animation: none; }
+  }
+
   /* Phone carousel */
   .carousel-track {
     scrollbar-width: none;
@@ -310,6 +423,37 @@
 </style>
 </head>
 <body class="text-sand antialiased">
+
+<!-- INTRO -->
+<div id="intro-overlay" class="fixed inset-0 z-[100] bg-ink flex items-center justify-center">
+  <div class="grain opacity-10"></div>
+  <p id="intro-mark" class="font-display text-5xl sm:text-6xl tracking-tight text-sand relative">A2H<span class="text-copper">.</span></p>
+</div>
+<script>
+  (function () {
+    var overlay = document.getElementById('intro-overlay');
+    if (!overlay) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      overlay.remove();
+      return;
+    }
+    document.documentElement.style.overflow = 'hidden';
+    var dirs = ['exit-up', 'exit-down', 'exit-left', 'exit-right', 'exit-fade'];
+    var dir = dirs[Math.floor(Math.random() * dirs.length)];
+    var cleaned = false;
+    var cleanup = function () {
+      if (cleaned) return;
+      cleaned = true;
+      document.documentElement.style.overflow = '';
+      overlay.remove();
+    };
+    setTimeout(function () {
+      overlay.classList.add(dir);
+      overlay.addEventListener('transitionend', cleanup, { once: true });
+    }, 950);
+    setTimeout(cleanup, 2400);
+  })();
+</script>
 
 <!-- NAV -->
 <header class="fixed top-0 inset-x-0 z-50 border-b border-white/5 bg-ink/80 backdrop-blur-md">
@@ -820,6 +964,41 @@
   </div>
 </section>
 
+<!-- 3D COMPANY CARD -->
+<section id="card3d-section" class="py-24 px-6 overflow-hidden">
+  <div class="reveal max-w-2xl mx-auto text-center mb-12">
+    <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">New Add-On</p>
+    <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Your brand, <span class="italic text-copper-light">in three dimensions.</span></h2>
+    <p class="text-fog leading-[1.7] max-w-xl mx-auto">An interactive 3D company card for your website — drag to rotate, spin it around to see the back. Here's a live example built for Solid State Construction.</p>
+  </div>
+
+  <div class="reveal flex justify-center py-4">
+    <div class="card3d-stage">
+      <div class="card3d" id="ssc-card3d">
+        <div class="card3d-face card3d-front">
+          <div class="card3d-mark"></div>
+          <p class="card3d-name">SOLID STATE<br>CONSTRUCTION</p>
+          <p class="card3d-tagline">Building Your Foundation</p>
+          <div class="card3d-sheen"></div>
+        </div>
+        <div class="card3d-face card3d-back">
+          <p class="card3d-back-title">Get In Touch</p>
+          <p class="card3d-back-line">(512) 595-2332</p>
+          <p class="card3d-back-line">Leander, TX</p>
+          <p class="card3d-back-line text-copper-light">solidstatesconstruction.com</p>
+          <div class="card3d-sheen"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="reveal text-center text-xs text-fog/70 uppercase tracking-wider mt-2">Drag to rotate</p>
+
+  <div class="reveal flex items-center justify-center gap-2 mt-10">
+    <p class="font-display text-2xl text-copper-light">+$400</p>
+    <p class="text-xs text-fog uppercase tracking-wider">per company card</p>
+  </div>
+</section>
+
 <!-- CTA BANNER -->
 <section class="px-6 py-20">
   <div class="reveal max-w-5xl mx-auto rounded-3xl bg-gradient-to-r from-copper to-brass px-8 py-14 sm:py-16 text-center relative overflow-hidden shadow-floating">
@@ -937,7 +1116,7 @@
       carousel.classList.add('dragging');
       startX = e.clientX;
       startScroll = carousel.scrollLeft;
-      carousel.setPointerCapture(e.pointerId);
+      try { carousel.setPointerCapture(e.pointerId); } catch (err) {}
     });
     carousel.addEventListener('pointermove', (e) => {
       if (!isDown) return;
@@ -950,7 +1129,79 @@
     carousel.addEventListener('pointerleave', endDrag);
     carousel.addEventListener('pointercancel', endDrag);
     carousel.addEventListener('click', (e) => { if (dragged) e.preventDefault(); }, true);
+
+    // Auto-rotate: advance one card every few seconds, looping back at the end.
+    // Pauses on hover/drag and while the carousel is off-screen.
+    const carouselNoMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let carouselVisible = false;
+    let autoRotateTimer = null;
+    const stopAutoRotate = () => { clearInterval(autoRotateTimer); autoRotateTimer = null; };
+    const startAutoRotate = () => {
+      if (carouselNoMotion || autoRotateTimer || !carouselVisible) return;
+      autoRotateTimer = setInterval(() => {
+        const atEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 8;
+        carousel.scrollTo({ left: atEnd ? 0 : carousel.scrollLeft + cardWidth() + 32, behavior: 'smooth' });
+      }, 3500);
+    };
+    if (!carouselNoMotion) {
+      new IntersectionObserver((entries) => {
+        carouselVisible = entries[0].isIntersecting;
+        if (carouselVisible) startAutoRotate(); else stopAutoRotate();
+      }, { threshold: 0.4 }).observe(carousel);
+      carousel.addEventListener('pointerdown', stopAutoRotate);
+      carousel.addEventListener('mouseenter', stopAutoRotate);
+      carousel.addEventListener('mouseleave', () => { if (carouselVisible) startAutoRotate(); });
+    }
   }
+
+  // 3D company card: drag to rotate, slow idle spin when untouched.
+  (function () {
+    const card = document.getElementById('ssc-card3d');
+    if (!card) return;
+    const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let dragging = false, startX = 0, startY = 0;
+    let rotX = -8, rotY = 18, baseRotX = -8, baseRotY = 18;
+    let idleSpin = noMotion ? 0 : 0.06;
+    let cardVisible = true;
+
+    const setTransform = () => { card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`; };
+
+    new IntersectionObserver((entries) => { cardVisible = entries[0].isIntersecting; }, { threshold: 0 }).observe(card);
+
+    const tick = () => {
+      if (!dragging && cardVisible) rotY += idleSpin;
+      if (cardVisible) setTransform();
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+
+    card.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      idleSpin = 0;
+      card.classList.add('dragging');
+      startX = e.clientX;
+      startY = e.clientY;
+      baseRotX = rotX;
+      baseRotY = rotY;
+      try { card.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    card.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      rotY = baseRotY + dx * 0.4;
+      rotX = Math.max(-40, Math.min(40, baseRotX - dy * 0.4));
+    });
+    const endDrag = () => {
+      if (!dragging) return;
+      dragging = false;
+      card.classList.remove('dragging');
+      if (!noMotion) idleSpin = 0.06;
+    };
+    card.addEventListener('pointerup', endDrag);
+    card.addEventListener('pointerleave', endDrag);
+    card.addEventListener('pointercancel', endDrag);
+  })();
 
   // Count-up stat numbers on scroll into view.
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
