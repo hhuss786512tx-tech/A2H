@@ -200,6 +200,24 @@
     0%, 6% { transform: translateY(0); }
     94%, 100% { transform: translateY(-76%); }
   }
+  .phone-interaction-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    z-index: 5;
+    animation: interaction-flash 16s ease-in-out infinite;
+  }
+  .phone-screen:hover .phone-interaction-frame { animation-play-state: paused; }
+  @keyframes interaction-flash {
+    0%, 13% { opacity: 1; }
+    24%, 100% { opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .phone-interaction-frame { animation: none !important; opacity: 0 !important; }
+  }
 
   /* Chatbot mockup */
   .chat-bubble {
@@ -514,7 +532,7 @@
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
-          <img src="assets/portfolio/mobile-ssc.jpg" alt="Solid State Construction on mobile" class="phone-scroll-img">
+          <img src="assets/portfolio/mobile-ssc-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-ssc.jpg" alt="Solid State Construction on mobile" class="phone-scroll-img">
         </div>
       </div>
       <p class="text-xs text-fog uppercase tracking-wider">Solid State Construction</p>
@@ -523,7 +541,7 @@
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
-          <img src="assets/portfolio/mobile-qhm.jpg" alt="Quality Halal Market on mobile" class="phone-scroll-img">
+          <img src="assets/portfolio/mobile-qhm-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-qhm.jpg" alt="Quality Halal Market on mobile" class="phone-scroll-img">
         </div>
       </div>
       <p class="text-xs text-fog uppercase tracking-wider">Quality Halal Market</p>
@@ -532,7 +550,7 @@
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
-          <img src="assets/portfolio/mobile-azulbio.jpg" alt="Azul Bio Research on mobile" class="phone-scroll-img">
+          <img src="assets/portfolio/mobile-azulbio-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-azulbio.jpg" alt="Azul Bio Research on mobile" class="phone-scroll-img">
         </div>
       </div>
       <p class="text-xs text-fog uppercase tracking-wider">Azul Bio Research</p>
@@ -541,7 +559,7 @@
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
-          <img src="assets/portfolio/mobile-caremedbill.jpg" alt="CareMedBill on mobile" class="phone-scroll-img">
+          <img src="assets/portfolio/mobile-caremedbill-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-caremedbill.jpg" alt="CareMedBill on mobile" class="phone-scroll-img">
         </div>
       </div>
       <p class="text-xs text-fog uppercase tracking-wider">CareMedBill</p>
@@ -759,23 +777,23 @@
     <div class="showcase-track flex items-center gap-8 w-max px-6">
       <div class="flex items-center gap-8">
         <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img src="assets/portfolio/ssc.png" alt="Solid State Construction desktop view"></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-ssc.jpg" alt="Solid State Construction mobile view" class="phone-scroll-img"></div></div>
+        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-ssc-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-ssc.jpg" alt="Solid State Construction mobile view" class="phone-scroll-img"></div></div>
         <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img src="assets/portfolio/qhm.png" alt="Quality Halal Market desktop view"></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-qhm.jpg" alt="Quality Halal Market mobile view" class="phone-scroll-img"></div></div>
+        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-qhm-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-qhm.jpg" alt="Quality Halal Market mobile view" class="phone-scroll-img"></div></div>
         <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img src="assets/portfolio/azulbio.png" alt="Azul Bio Research desktop view"></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-azulbio.jpg" alt="Azul Bio Research mobile view" class="phone-scroll-img"></div></div>
+        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-azulbio-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-azulbio.jpg" alt="Azul Bio Research mobile view" class="phone-scroll-img"></div></div>
         <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img src="assets/portfolio/caremedbill.png" alt="CareMedBill desktop view"></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-caremedbill.jpg" alt="CareMedBill mobile view" class="phone-scroll-img"></div></div>
+        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-caremedbill-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-caremedbill.jpg" alt="CareMedBill mobile view" class="phone-scroll-img"></div></div>
       </div>
       <div class="flex items-center gap-8" aria-hidden="true">
         <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img src="assets/portfolio/ssc.png" alt=""></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-ssc.jpg" alt="" class="phone-scroll-img"></div></div>
+        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-ssc-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-ssc.jpg" alt="" class="phone-scroll-img"></div></div>
         <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img src="assets/portfolio/qhm.png" alt=""></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-qhm.jpg" alt="" class="phone-scroll-img"></div></div>
+        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-qhm-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-qhm.jpg" alt="" class="phone-scroll-img"></div></div>
         <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img src="assets/portfolio/azulbio.png" alt=""></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-azulbio.jpg" alt="" class="phone-scroll-img"></div></div>
+        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-azulbio-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-azulbio.jpg" alt="" class="phone-scroll-img"></div></div>
         <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img src="assets/portfolio/caremedbill.png" alt=""></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-caremedbill.jpg" alt="" class="phone-scroll-img"></div></div>
+        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-caremedbill-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-caremedbill.jpg" alt="" class="phone-scroll-img"></div></div>
       </div>
     </div>
   </div>
