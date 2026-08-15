@@ -409,26 +409,46 @@
     .showcase-track { animation: none !important; }
   }
 
+  .price-toggle-btn {
+    color: #a89a8c;
+  }
+  .price-toggle-btn.active {
+    background: #c9702f;
+    color: #141110;
+  }
+
   .phone-stagger {
     opacity: 0;
-    transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), opacity 0.7s ease var(--reveal-delay, 0s);
-    will-change: transform;
+    will-change: transform, opacity;
+    transition: transform 0.9s cubic-bezier(0.16,1,0.3,1) var(--reveal-delay, 0s),
+                opacity 0.9s ease var(--reveal-delay, 0s);
   }
+  .phone-stagger:nth-child(1) { --reveal-delay: 0s; }
+  .phone-stagger:nth-child(2) { --reveal-delay: 0.45s; }
+  .phone-stagger:nth-child(3) { --reveal-delay: 0.9s; }
+  .phone-stagger:nth-child(4) { --reveal-delay: 1.35s; }
+  /* Resting (revealed) tilt per card */
+  #phone-carousel.in .stagger-1 { transform: translateY(6px) rotate(-3deg); }
+  #phone-carousel.in .stagger-2 { transform: translateY(-34px) rotate(2.5deg); }
+  #phone-carousel.in .stagger-3 { transform: translateY(14px) rotate(-2deg); }
+  #phone-carousel.in .stagger-4 { transform: translateY(-26px) rotate(3deg); }
   #phone-carousel.in .phone-stagger { opacity: 1; }
-  .phone-stagger:nth-child(1) { --reveal-delay: 0.05s; }
-  .phone-stagger:nth-child(2) { --reveal-delay: 0.22s; }
-  .phone-stagger:nth-child(3) { --reveal-delay: 0.39s; }
-  .phone-stagger:nth-child(4) { --reveal-delay: 0.56s; }
-  .stagger-1 { transform: translateY(6px) rotate(-3deg); }
-  .stagger-2 { transform: translateY(-34px) rotate(2.5deg); }
-  .stagger-3 { transform: translateY(14px) rotate(-2deg); }
-  .stagger-4 { transform: translateY(-26px) rotate(3deg); }
-  .phone-stagger:hover {
+  /* Hidden (pre-reveal) state: same tilt, lifted lower + faded, revealed one at a time */
+  .stagger-1 { transform: translateY(70px) rotate(-3deg); }
+  .stagger-2 { transform: translateY(30px) rotate(2.5deg); }
+  .stagger-3 { transform: translateY(78px) rotate(-2deg); }
+  .stagger-4 { transform: translateY(38px) rotate(3deg); }
+  #phone-carousel.in .phone-stagger:hover {
     transform: translateY(-10px) rotate(0deg) !important;
+    transition-delay: 0s !important;
   }
   @media (max-width: 639px) {
-    .stagger-1, .stagger-2, .stagger-3, .stagger-4 { transform: none; }
-    .phone-stagger:hover { transform: none !important; }
+    .stagger-1, .stagger-2, .stagger-3, .stagger-4 { transform: translateY(36px); }
+    #phone-carousel.in .stagger-1,
+    #phone-carousel.in .stagger-2,
+    #phone-carousel.in .stagger-3,
+    #phone-carousel.in .stagger-4 { transform: translateY(0); }
+    .phone-stagger:hover { transform: translateY(0) !important; }
   }
   @media (prefers-reduced-motion: reduce) {
     .phone-stagger { transition: none; opacity: 1; }
@@ -766,10 +786,18 @@
       <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">No upfront cost. One monthly plan.</h2>
       <p class="text-fog text-sm">$0 due at signup &nbsp;·&nbsp; cancel anytime &nbsp;·&nbsp; hosting &amp; maintenance included</p>
     </div>
+
+    <div class="reveal text-center mb-10">
+      <div id="price-toggle" class="inline-flex items-center gap-1 rounded-full bg-elevated border border-white/10 p-1">
+        <button type="button" id="toggle-monthly" class="price-toggle-btn active px-5 py-2 rounded-full text-sm font-semibold transition-colors">Monthly</button>
+        <button type="button" id="toggle-annual" class="price-toggle-btn px-5 py-2 rounded-full text-sm font-semibold transition-colors">Annual <span class="text-copper-light">· 2 months free</span></button>
+      </div>
+    </div>
+
     <div class="reveal grid sm:grid-cols-3 gap-6 items-stretch mt-8">
       <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
         <h3 class="text-sand font-semibold text-lg mb-1">Starter</h3>
-        <p class="font-display text-3xl text-copper-light mb-4">$349<span class="text-base text-fog font-sans">/mo</span></p>
+        <p class="font-display text-3xl text-copper-light mb-4"><span class="price-amount" data-monthly="$349" data-annual="$3,490">$349</span><span class="price-period text-base text-fog font-sans" data-monthly="/mo" data-annual="/yr">/mo</span></p>
         <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
           <li>Custom 5-page website</li>
           <li>Mobile-first responsive design</li>
@@ -786,7 +814,7 @@
       <div class="rounded-2xl bg-elevated border border-copper/40 shadow-floating card-hover p-8 flex flex-col relative">
         <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">Most Popular</span>
         <h3 class="text-sand font-semibold text-lg mb-1">Professional</h3>
-        <p class="font-display text-3xl text-copper-light mb-4">$549<span class="text-base text-fog font-sans">/mo</span></p>
+        <p class="font-display text-3xl text-copper-light mb-4"><span class="price-amount" data-monthly="$549" data-annual="$5,490">$549</span><span class="price-period text-base text-fog font-sans" data-monthly="/mo" data-annual="/yr">/mo</span></p>
         <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
           <li>Everything in Starter</li>
           <li>Up to 10 pages</li>
@@ -801,7 +829,7 @@
       </div>
       <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
         <h3 class="text-sand font-semibold text-lg mb-1">Premium</h3>
-        <p class="font-display text-3xl text-copper-light mb-4">$849<span class="text-base text-fog font-sans">/mo</span></p>
+        <p class="font-display text-3xl text-copper-light mb-4"><span class="price-amount" data-monthly="$849" data-annual="$8,490">$849</span><span class="price-period text-base text-fog font-sans" data-monthly="/mo" data-annual="/yr">/mo</span></p>
         <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
           <li>Everything in Professional</li>
           <li>Unlimited pages</li>
@@ -1185,6 +1213,23 @@
       carousel.addEventListener('mouseleave', () => { if (carouselVisible) startAutoRotate(); });
     }
   }
+
+  // Pricing toggle: Monthly / Annual (2 months free).
+  (function () {
+    const btnMonthly = document.getElementById('toggle-monthly');
+    const btnAnnual = document.getElementById('toggle-annual');
+    if (!btnMonthly || !btnAnnual) return;
+    const amounts = document.querySelectorAll('.price-amount');
+    const periods = document.querySelectorAll('.price-period');
+    const setPlan = (plan) => {
+      btnMonthly.classList.toggle('active', plan === 'monthly');
+      btnAnnual.classList.toggle('active', plan === 'annual');
+      amounts.forEach((el) => { el.textContent = el.dataset[plan]; });
+      periods.forEach((el) => { el.textContent = el.dataset[plan]; });
+    };
+    btnMonthly.addEventListener('click', () => setPlan('monthly'));
+    btnAnnual.addEventListener('click', () => setPlan('annual'));
+  })();
 
   // 3D company card: drag to rotate, slow idle spin when untouched.
   (function () {
