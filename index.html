@@ -290,8 +290,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 24px;
+    gap: 3px;
+    padding: 16px;
     text-align: center;
     box-shadow: 0 20px 50px -12px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);
   }
@@ -305,41 +305,37 @@
     border: 1px solid rgba(255,255,255,0.08);
     transform: rotateY(180deg);
   }
-  .card3d-mark {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #1b3a5c, #2c5583);
+  .card3d-logo {
+    width: auto;
+    height: 130px;
+    max-width: 80%;
+    object-fit: contain;
     position: relative;
   }
-  .card3d-mark::after {
-    content: '';
-    position: absolute;
-    inset: 9px;
-    border: 2px solid #e9dfd2;
-    border-radius: 4px;
-  }
-  .card3d-name {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    font-size: 1.05rem;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-  }
-  .card3d-tagline {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: #b8823f;
+  .card3d-founder-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 999px;
+    object-fit: cover;
+    border: 2px solid rgba(233,223,210,0.25);
+    position: relative;
   }
   .card3d-back-title {
     font-family: 'Fraunces', serif;
     font-style: italic;
-    font-size: 1.1rem;
-    margin-bottom: 4px;
+    font-size: 1.05rem;
+    line-height: 1.1;
+  }
+  .card3d-back-role {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #b8823f;
+    line-height: 1.1;
   }
   .card3d-back-line {
-    font-size: 0.8rem;
+    font-size: 0.74rem;
+    line-height: 1.2;
     color: #a89a8c;
   }
   .card3d-sheen {
@@ -749,51 +745,64 @@
 <!-- PRICING -->
 <section id="pricing" class="py-28 px-6">
   <div class="max-w-5xl mx-auto">
-    <div class="reveal mb-14 text-center">
+    <div class="reveal mb-6 text-center">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Transparent Pricing</p>
-      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Startup pricing, no surprise invoices</h2>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">No upfront cost. One monthly plan.</h2>
+      <p class="text-fog text-sm">$0 due at signup &nbsp;·&nbsp; cancel anytime &nbsp;·&nbsp; hosting &amp; maintenance included</p>
     </div>
-    <div class="reveal grid sm:grid-cols-3 gap-6 items-stretch">
+    <div class="reveal grid sm:grid-cols-3 gap-6 items-stretch mt-8">
       <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
         <h3 class="text-sand font-semibold text-lg mb-1">Starter</h3>
-        <p class="font-display text-3xl text-copper-light mb-4">$1,500</p>
+        <p class="font-display text-3xl text-copper-light mb-4">$349<span class="text-base text-fog font-sans">/mo</span></p>
         <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
           <li>Custom 5-page website</li>
           <li>Mobile-first responsive design</li>
           <li>Contact form → email</li>
           <li>Google Business Profile / Maps setup</li>
+          <li>Hosting &amp; maintenance included</li>
           <li>90+ PageSpeed target</li>
-          <li>2 rounds of revisions</li>
         </ul>
+        <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-copper-light shrink-0"><path d="M12 2C10 6 6 8 4 8C4 16 8 20 12 22C16 20 20 16 20 8C18 8 14 6 12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <p class="text-xs text-fog">+ Add AI Chatbot for <span class="text-copper-light font-semibold">$99/mo</span></p>
+        </div>
       </div>
       <div class="rounded-2xl bg-elevated border border-copper/40 shadow-floating card-hover p-8 flex flex-col relative">
         <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">Most Popular</span>
         <h3 class="text-sand font-semibold text-lg mb-1">Professional</h3>
-        <p class="font-display text-3xl text-copper-light mb-4">$2,500</p>
+        <p class="font-display text-3xl text-copper-light mb-4">$549<span class="text-base text-fog font-sans">/mo</span></p>
         <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
           <li>Everything in Starter</li>
           <li>Up to 10 pages</li>
           <li>Custom animation &amp; interactions</li>
           <li>Photo &amp; copy integration</li>
-          <li>Priority turnaround</li>
+          <li>Priority support &amp; updates</li>
         </ul>
+        <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-copper-light shrink-0"><path d="M12 2C10 6 6 8 4 8C4 16 8 20 12 22C16 20 20 16 20 8C18 8 14 6 12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <p class="text-xs text-fog">+ Add AI Chatbot for <span class="text-copper-light font-semibold">$99/mo</span></p>
+        </div>
       </div>
       <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
         <h3 class="text-sand font-semibold text-lg mb-1">Premium</h3>
-        <p class="font-display text-3xl text-copper-light mb-4">$4,500</p>
+        <p class="font-display text-3xl text-copper-light mb-4">$849<span class="text-base text-fog font-sans">/mo</span></p>
         <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
           <li>Everything in Professional</li>
           <li>Unlimited pages</li>
           <li>Custom functionality (booking, cart, calculators)</li>
-          <li>First month of edits included</li>
+          <li>Monthly content edits included</li>
           <li>Dedicated launch support</li>
         </ul>
+        <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-copper-light shrink-0"><path d="M12 2C10 6 6 8 4 8C4 16 8 20 12 22C16 20 20 16 20 8C18 8 14 6 12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <p class="text-xs text-fog">+ Add AI Chatbot for <span class="text-copper-light font-semibold">$99/mo</span></p>
+        </div>
       </div>
     </div>
-    <p class="reveal text-center text-sm text-fog mt-8 mb-14">Every project starts with the free audit — we scope exact pricing after we see your site.</p>
+    <p class="reveal text-center text-sm text-fog mt-8 mb-14">Every plan starts with the free audit — no setup fees, no long-term contract, cancel anytime.</p>
 
     <div class="reveal">
-      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5 text-center">Add-Ons</p>
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5 text-center">See The Chatbot Upgrade In Action</p>
       <div class="max-w-4xl mx-auto rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-6 sm:p-8 flex flex-col md:flex-row items-center gap-8">
 
         <div class="phone-frame shrink-0">
@@ -853,10 +862,10 @@
 
         <div class="flex-1 text-center md:text-left">
           <h3 class="text-sand font-semibold text-lg mb-2">AI Website Chatbot</h3>
-          <p class="text-sm text-fog leading-[1.7] mb-5">Trained on your business — answers FAQs, qualifies visitors, and captures leads 24/7, even after hours, right on your site.</p>
+          <p class="text-sm text-fog leading-[1.7] mb-5">Trained on your business — answers FAQs, qualifies visitors, and captures leads 24/7, even after hours, right on your site. Add it to any plan.</p>
           <div class="flex items-center justify-center md:justify-start gap-2">
-            <p class="font-display text-2xl text-copper-light">+$750</p>
-            <p class="text-xs text-fog uppercase tracking-wider">one-time setup</p>
+            <p class="font-display text-2xl text-copper-light">+$99</p>
+            <p class="text-xs text-fog uppercase tracking-wider">per month, any plan</p>
           </div>
         </div>
       </div>
@@ -983,13 +992,13 @@
     <div class="card3d-stage">
       <div class="card3d" id="ssc-card3d">
         <div class="card3d-face card3d-front">
-          <div class="card3d-mark"></div>
-          <p class="card3d-name">SOLID STATE<br>CONSTRUCTION</p>
-          <p class="card3d-tagline">Building Your Foundation</p>
+          <img src="assets/portfolio/ssc-logo.png" alt="Solid State Construction logo" class="card3d-logo">
           <div class="card3d-sheen"></div>
         </div>
         <div class="card3d-face card3d-back">
-          <p class="card3d-back-title">Get In Touch</p>
+          <img src="assets/portfolio/ssc-founder.jpg" alt="Shaan, Founder &amp; CEO of Solid State Construction" class="card3d-founder-pic">
+          <p class="card3d-back-title">Shaan</p>
+          <p class="card3d-back-role">Founder &amp; CEO</p>
           <p class="card3d-back-line">(512) 595-2332</p>
           <p class="card3d-back-line">Leander, TX</p>
           <p class="card3d-back-line text-copper-light">solidstatesconstruction.com</p>
