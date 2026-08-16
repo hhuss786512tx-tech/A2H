@@ -394,18 +394,39 @@
   }
 
   /* Mobile preview: one company "chapter" per normal-flow section — the next
-     site's phones simply scroll into view like any other section, each with
-     its own scroll-triggered fade-in via the sitewide .reveal observer. */
+     site's phone + laptop simply scroll into view like any other section,
+     each with its own scroll-triggered fade-in via the sitewide .reveal
+     observer. Real muted screen-capture video plays inside each mockup. */
   .mscroll-stage-block { margin-bottom: 6rem; }
   .mscroll-stage-block:last-child { margin-bottom: 0; }
-  .mscroll-phones .phone-frame:nth-child(1) { transform: translateY(-18px) rotate(-3deg); }
-  .mscroll-phones .phone-frame:nth-child(2) { transform: translateY(32px) rotate(3deg); }
+  .mscroll-phones .phone-frame { transform: translateY(-18px) rotate(-3deg); }
+  .phone-screen video { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .laptop-frame {
+    width: 300px;
+    max-width: 60vw;
+    border-radius: 0.7rem;
+    overflow: hidden;
+    background: #0a0807;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 20px 50px -12px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);
+    flex-shrink: 0;
+    transform: translateY(30px) rotate(3deg);
+  }
+  .laptop-chrome {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 10px;
+    background: #1b1613;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .laptop-chrome span { width: 6px; height: 6px; border-radius: 999px; background: rgba(255,255,255,0.15); }
+  .laptop-frame video { width: 100%; height: auto; aspect-ratio: 1280 / 800; object-fit: cover; object-position: top; display: block; }
   @media (max-width: 767px) {
     .mscroll-stage-block { margin-bottom: 3.5rem; }
-    .mscroll-phones .phone-frame { width: 130px; }
-    .mscroll-phones .phone-screen { height: auto; aspect-ratio: 200 / 420; }
-    .mscroll-phones .phone-frame:nth-child(1) { transform: translateY(-8px) rotate(-3deg); }
-    .mscroll-phones .phone-frame:nth-child(2) { transform: translateY(16px) rotate(3deg); }
+    .mscroll-phones { flex-direction: column; }
+    .mscroll-phones .phone-frame { width: 150px; transform: none; }
+    .laptop-frame { width: 260px; max-width: 78vw; transform: none; }
   }
 </style>
 </head>
@@ -668,14 +689,12 @@
             <div class="phone-frame">
               <div class="phone-screen">
                 <div class="phone-notch"></div>
-                <img src="assets/portfolio/mobile-ssc-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-ssc.jpg" alt="Solid State Construction on mobile" class="phone-scroll-img">
+                <video data-src="assets/portfolio/video/mobile-ssc.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Solid State Construction on mobile"></video>
               </div>
             </div>
-            <div class="phone-frame">
-              <div class="phone-screen">
-                <div class="phone-notch"></div>
-                <img src="assets/portfolio/mobile-ssc-menu.jpg" alt="Solid State Construction mobile menu" class="w-full h-full object-cover object-top">
-              </div>
+            <div class="laptop-frame">
+              <div class="laptop-chrome"><span></span><span></span><span></span></div>
+              <video data-src="assets/portfolio/video/laptop-ssc.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Solid State Construction on desktop"></video>
             </div>
           </div>
         </div>
@@ -694,14 +713,12 @@
             <div class="phone-frame">
               <div class="phone-screen">
                 <div class="phone-notch"></div>
-                <img src="assets/portfolio/mobile-qhm-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-qhm.jpg" alt="Quality Halal Market on mobile" class="phone-scroll-img">
+                <video data-src="assets/portfolio/video/mobile-qhm.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Quality Halal Market on mobile"></video>
               </div>
             </div>
-            <div class="phone-frame">
-              <div class="phone-screen">
-                <div class="phone-notch"></div>
-                <img src="assets/portfolio/mobile-qhm-menu.jpg" alt="Quality Halal Market mobile menu" class="w-full h-full object-cover object-top">
-              </div>
+            <div class="laptop-frame">
+              <div class="laptop-chrome"><span></span><span></span><span></span></div>
+              <video data-src="assets/portfolio/video/laptop-qhm.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Quality Halal Market on desktop"></video>
             </div>
           </div>
         </div>
@@ -720,14 +737,12 @@
             <div class="phone-frame">
               <div class="phone-screen">
                 <div class="phone-notch"></div>
-                <img src="assets/portfolio/mobile-azulbio-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-azulbio.jpg" alt="Azul Bio Research on mobile" class="phone-scroll-img">
+                <video data-src="assets/portfolio/video/mobile-azulbio.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Azul Bio Research on mobile"></video>
               </div>
             </div>
-            <div class="phone-frame">
-              <div class="phone-screen">
-                <div class="phone-notch"></div>
-                <img src="assets/portfolio/mobile-azulbio-menu.jpg" alt="Azul Bio Research mobile menu" class="w-full h-full object-cover object-top">
-              </div>
+            <div class="laptop-frame">
+              <div class="laptop-chrome"><span></span><span></span><span></span></div>
+              <video data-src="assets/portfolio/video/laptop-azulbio.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Azul Bio Research on desktop"></video>
             </div>
           </div>
         </div>
@@ -746,14 +761,12 @@
             <div class="phone-frame">
               <div class="phone-screen">
                 <div class="phone-notch"></div>
-                <img src="assets/portfolio/mobile-caremedbill-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-caremedbill.jpg" alt="CareMedBill on mobile" class="phone-scroll-img">
+                <video data-src="assets/portfolio/video/mobile-caremedbill.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="CareMedBill on mobile"></video>
               </div>
             </div>
-            <div class="phone-frame">
-              <div class="phone-screen">
-                <div class="phone-notch"></div>
-                <img src="assets/portfolio/mobile-caremedbill-menu.jpg" alt="CareMedBill mobile menu" class="w-full h-full object-cover object-top">
-              </div>
+            <div class="laptop-frame">
+              <div class="laptop-chrome"><span></span><span></span><span></span></div>
+              <video data-src="assets/portfolio/video/laptop-caremedbill.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="CareMedBill on desktop"></video>
             </div>
           </div>
         </div>
@@ -1169,6 +1182,20 @@
     });
   }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
+
+  // Portfolio phone/laptop screen-capture videos: don't fetch any of them
+  // until their chapter is about to scroll into view, then play on a loop.
+  const lazyVideoIo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const video = entry.target;
+      lazyVideoIo.unobserve(video);
+      video.src = video.dataset.src;
+      video.load();
+      video.play().catch(() => {});
+    });
+  }, { threshold: 0.1, rootMargin: '200px 0px' });
+  document.querySelectorAll('video.lazy-video').forEach(v => lazyVideoIo.observe(v));
 
   // Chatbot mockup: stagger each bubble in with JS-driven delays rather than
   // CSS transition-delay nested under the parent .reveal fade — some browsers
