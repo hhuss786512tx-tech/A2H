@@ -274,6 +274,11 @@
     will-change: transform;
     transform: rotateX(-8deg) rotateY(18deg);
   }
+  /* Sized to each card's own front/back photo proportions so nothing gets
+     cropped — object-fit: contain still needs a box in the right ballpark
+     or one face ends up letterboxed to a sliver. */
+  .card3d.card-ssc { width: 460px; height: 148px; }
+  .card3d.card-qhm { width: 340px; height: 204px; }
   .card3d.dragging { cursor: grabbing; }
   .card3d-face {
     position: absolute;
@@ -304,7 +309,7 @@
   .card3d-photo {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
     display: block;
     position: relative;
@@ -1035,9 +1040,9 @@
   <div class="reveal flex flex-wrap justify-center gap-x-14 gap-y-10 py-4">
     <div class="flex flex-col items-center gap-3">
       <div class="card3d-stage">
-        <div class="card3d">
+        <div class="card3d card-ssc">
           <div class="card3d-face card3d-front photo">
-            <img src="assets/portfolio/ssc-card-front.jpg" alt="Solid State Construction business card front" class="card3d-photo" style="object-position: 10% center;">
+            <img src="assets/portfolio/ssc-card-front.jpg" alt="Solid State Construction business card front" class="card3d-photo">
             <div class="card3d-sheen"></div>
           </div>
           <div class="card3d-face card3d-back photo">
@@ -1051,7 +1056,7 @@
 
     <div class="flex flex-col items-center gap-3">
       <div class="card3d-stage">
-        <div class="card3d">
+        <div class="card3d card-qhm">
           <div class="card3d-face card3d-front photo">
             <img src="assets/portfolio/qhm-card-front.jpg" alt="Quality Halal Market business card front" class="card3d-photo">
             <div class="card3d-sheen"></div>
