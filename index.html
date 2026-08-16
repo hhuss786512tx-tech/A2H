@@ -206,10 +206,6 @@
   /* On mobile, the dedicated carousel uses one big dominant card with peeks
      of the next/previous card at the edges, matching how jweis.com does its
      mobile testimonial carousel — it reads as more alive, pulls you to swipe. */
-  @media (max-width: 639px) {
-    #phone-carousel .phone-frame { width: min(74vw, 300px); }
-    #phone-carousel .phone-screen { height: auto; aspect-ratio: 200 / 420; }
-  }
   .phone-notch {
     position: absolute;
     top: 8px;
@@ -254,14 +250,9 @@
   .chat-bubble {
     opacity: 0;
     transform: translateY(10px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition: opacity 0.45s ease, transform 0.45s ease;
   }
-  .reveal.in .chat-bubble { opacity: 1; transform: none; }
-  .chat-bubble:nth-child(1) { transition-delay: 0.1s; }
-  .chat-bubble:nth-child(2) { transition-delay: 0.45s; }
-  .chat-bubble:nth-child(3) { transition-delay: 0.8s; }
-  .chat-bubble:nth-child(4) { transition-delay: 1.15s; }
-  .chat-bubble:nth-child(5) { transition-delay: 1.5s; }
+  .chat-bubble.in { opacity: 1; transform: none; }
 
   @media (prefers-reduced-motion: reduce) {
     .phone-scroll-img { animation: none !important; }
@@ -357,21 +348,6 @@
     .card3d-sheen { animation: none; }
   }
 
-  /* Phone carousel */
-  .carousel-track {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    cursor: grab;
-    scroll-behavior: smooth;
-  }
-  .carousel-track::-webkit-scrollbar { display: none; }
-  .carousel-track.dragging {
-    cursor: grabbing;
-    scroll-behavior: auto;
-    scroll-snap-type: none;
-  }
-  .carousel-track > div { scroll-snap-align: center; }
-
   /* Desktop mockup */
   .desktop-frame {
     width: 460px;
@@ -417,41 +393,19 @@
     color: #141110;
   }
 
-  .phone-stagger {
-    opacity: 0;
-    will-change: transform, opacity;
-    transition: transform 0.9s cubic-bezier(0.16,1,0.3,1) var(--reveal-delay, 0s),
-                opacity 0.9s ease var(--reveal-delay, 0s);
-  }
-  .phone-stagger:nth-child(1) { --reveal-delay: 0s; }
-  .phone-stagger:nth-child(2) { --reveal-delay: 0.45s; }
-  .phone-stagger:nth-child(3) { --reveal-delay: 0.9s; }
-  .phone-stagger:nth-child(4) { --reveal-delay: 1.35s; }
-  /* Resting (revealed) tilt per card */
-  #phone-carousel.in .stagger-1 { transform: translateY(6px) rotate(-3deg); }
-  #phone-carousel.in .stagger-2 { transform: translateY(-34px) rotate(2.5deg); }
-  #phone-carousel.in .stagger-3 { transform: translateY(14px) rotate(-2deg); }
-  #phone-carousel.in .stagger-4 { transform: translateY(-26px) rotate(3deg); }
-  #phone-carousel.in .phone-stagger { opacity: 1; }
-  /* Hidden (pre-reveal) state: same tilt, lifted lower + faded, revealed one at a time */
-  .stagger-1 { transform: translateY(70px) rotate(-3deg); }
-  .stagger-2 { transform: translateY(30px) rotate(2.5deg); }
-  .stagger-3 { transform: translateY(78px) rotate(-2deg); }
-  .stagger-4 { transform: translateY(38px) rotate(3deg); }
-  #phone-carousel.in .phone-stagger:hover {
-    transform: translateY(-10px) rotate(0deg) !important;
-    transition-delay: 0s !important;
-  }
-  @media (max-width: 639px) {
-    .stagger-1, .stagger-2, .stagger-3, .stagger-4 { transform: translateY(36px); }
-    #phone-carousel.in .stagger-1,
-    #phone-carousel.in .stagger-2,
-    #phone-carousel.in .stagger-3,
-    #phone-carousel.in .stagger-4 { transform: translateY(0); }
-    .phone-stagger:hover { transform: translateY(0) !important; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .phone-stagger { transition: none; opacity: 1; }
+  /* Mobile preview: one company "chapter" per normal-flow section — the next
+     site's phones simply scroll into view like any other section, each with
+     its own scroll-triggered fade-in via the sitewide .reveal observer. */
+  .mscroll-stage-block { margin-bottom: 6rem; }
+  .mscroll-stage-block:last-child { margin-bottom: 0; }
+  .mscroll-phones .phone-frame:nth-child(1) { transform: translateY(-18px) rotate(-3deg); }
+  .mscroll-phones .phone-frame:nth-child(2) { transform: translateY(32px) rotate(3deg); }
+  @media (max-width: 767px) {
+    .mscroll-stage-block { margin-bottom: 3.5rem; }
+    .mscroll-phones .phone-frame { width: 130px; }
+    .mscroll-phones .phone-screen { height: auto; aspect-ratio: 200 / 420; }
+    .mscroll-phones .phone-frame:nth-child(1) { transform: translateY(-8px) rotate(-3deg); }
+    .mscroll-phones .phone-frame:nth-child(2) { transform: translateY(16px) rotate(3deg); }
   }
 </style>
 </head>
@@ -689,65 +643,122 @@
 </section>
 
 <!-- MOBILE PREVIEW -->
-<section class="py-24 overflow-hidden">
+<section class="pt-24 pb-6 overflow-hidden">
   <div class="max-w-6xl mx-auto px-6">
-    <div class="reveal mb-10 flex items-end justify-between gap-6">
-      <div>
-        <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Mobile-First, Always</p>
-        <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Every build. <span class="italic text-copper-light">Every phone.</span></h2>
-      </div>
-      <div class="hidden sm:flex items-center gap-2 shrink-0">
-        <button type="button" id="phone-carousel-prev" aria-label="Scroll left" class="btn-primary h-10 w-10 rounded-full border border-white/15 hover:border-copper-light/60 flex items-center justify-center text-sand">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <button type="button" id="phone-carousel-next" aria-label="Scroll right" class="btn-primary h-10 w-10 rounded-full border border-white/15 hover:border-copper-light/60 flex items-center justify-center text-sand">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
+    <div class="reveal">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Mobile-First, Always</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Every build. <span class="italic text-copper-light">Every phone.</span></h2>
     </div>
   </div>
-  <div id="phone-carousel" class="reveal carousel-track flex items-start gap-8 overflow-x-auto snap-x snap-mandatory px-6 sm:px-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] pt-6 pb-14">
-    <div class="phone-stagger stagger-1 flex flex-col items-center gap-4 snap-center shrink-0">
-      <div class="phone-frame">
-        <div class="phone-screen">
-          <div class="phone-notch"></div>
-          <img src="assets/portfolio/mobile-ssc-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-ssc.jpg" alt="Solid State Construction on mobile" class="phone-scroll-img">
+</section>
+
+<section id="mobile-scroll" class="relative px-6">
+  <div class="max-w-6xl mx-auto">
+
+      <div class="reveal mscroll-stage-block">
+        <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center w-full">
+          <div>
+            <p class="font-display text-3xl text-copper mb-4">01</p>
+            <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Construction</p>
+            <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Solid State <span class="italic text-copper-light">Construction.</span></h3>
+            <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Full site rebuild for a growing construction crew — fast, mobile-first, built to convert.</p>
+            <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Professional Plan</p>
+          </div>
+          <div class="mscroll-phones flex items-start justify-center gap-6">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="phone-notch"></div>
+                <img src="assets/portfolio/mobile-ssc-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-ssc.jpg" alt="Solid State Construction on mobile" class="phone-scroll-img">
+              </div>
+            </div>
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="phone-notch"></div>
+                <img src="assets/portfolio/mobile-ssc-menu.jpg" alt="Solid State Construction mobile menu" class="w-full h-full object-cover object-top">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <p class="text-xs text-fog uppercase tracking-wider">Solid State Construction</p>
-      <p class="text-[10px] text-copper-light uppercase tracking-wider">Professional Plan</p>
-    </div>
-    <div class="phone-stagger stagger-2 flex flex-col items-center gap-4 snap-center shrink-0">
-      <div class="phone-frame">
-        <div class="phone-screen">
-          <div class="phone-notch"></div>
-          <img src="assets/portfolio/mobile-qhm-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-qhm.jpg" alt="Quality Halal Market on mobile" class="phone-scroll-img">
+
+      <div class="reveal mscroll-stage-block">
+        <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center w-full">
+          <div>
+            <p class="font-display text-3xl text-copper mb-4">02</p>
+            <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Food &amp; Retail — Meat Shop</p>
+            <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Quality Halal <span class="italic text-copper-light">Market.</span></h3>
+            <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Custom build for a specialty grocer — product catalog, cart, and mobile-first checkout.</p>
+            <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Premium Plan</p>
+          </div>
+          <div class="mscroll-phones flex items-start justify-center gap-6">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="phone-notch"></div>
+                <img src="assets/portfolio/mobile-qhm-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-qhm.jpg" alt="Quality Halal Market on mobile" class="phone-scroll-img">
+              </div>
+            </div>
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="phone-notch"></div>
+                <img src="assets/portfolio/mobile-qhm-menu.jpg" alt="Quality Halal Market mobile menu" class="w-full h-full object-cover object-top">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <p class="text-xs text-fog uppercase tracking-wider">Quality Halal Market</p>
-      <p class="text-[10px] text-copper-light uppercase tracking-wider">Premium Plan</p>
-    </div>
-    <div class="phone-stagger stagger-3 flex flex-col items-center gap-4 snap-center shrink-0">
-      <div class="phone-frame">
-        <div class="phone-screen">
-          <div class="phone-notch"></div>
-          <img src="assets/portfolio/mobile-azulbio-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-azulbio.jpg" alt="Azul Bio Research on mobile" class="phone-scroll-img">
+
+      <div class="reveal mscroll-stage-block">
+        <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center w-full">
+          <div>
+            <p class="font-display text-3xl text-copper mb-4">03</p>
+            <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Biotech / Clinical Research</p>
+            <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Azul Bio <span class="italic text-copper-light">Research.</span></h3>
+            <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Credibility-first site for a clinical research network — built to convert sponsor &amp; patient inquiries.</p>
+            <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Professional Plan</p>
+          </div>
+          <div class="mscroll-phones flex items-start justify-center gap-6">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="phone-notch"></div>
+                <img src="assets/portfolio/mobile-azulbio-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-azulbio.jpg" alt="Azul Bio Research on mobile" class="phone-scroll-img">
+              </div>
+            </div>
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="phone-notch"></div>
+                <img src="assets/portfolio/mobile-azulbio-menu.jpg" alt="Azul Bio Research mobile menu" class="w-full h-full object-cover object-top">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <p class="text-xs text-fog uppercase tracking-wider">Azul Bio Research</p>
-      <p class="text-[10px] text-copper-light uppercase tracking-wider">Professional Plan</p>
-    </div>
-    <div class="phone-stagger stagger-4 flex flex-col items-center gap-4 snap-center shrink-0">
-      <div class="phone-frame">
-        <div class="phone-screen">
-          <div class="phone-notch"></div>
-          <img src="assets/portfolio/mobile-caremedbill-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-caremedbill.jpg" alt="CareMedBill on mobile" class="phone-scroll-img">
+
+      <div class="reveal mscroll-stage-block">
+        <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center w-full">
+          <div>
+            <p class="font-display text-3xl text-copper mb-4">04</p>
+            <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Medical Billing</p>
+            <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">CareMed<span class="italic text-copper-light">Bill.</span></h3>
+            <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Trust-first site for a medical billing platform — built to convert practice-owner visitors into calls.</p>
+            <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Premium Plan</p>
+          </div>
+          <div class="mscroll-phones flex items-start justify-center gap-6">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="phone-notch"></div>
+                <img src="assets/portfolio/mobile-caremedbill-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-caremedbill.jpg" alt="CareMedBill on mobile" class="phone-scroll-img">
+              </div>
+            </div>
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="phone-notch"></div>
+                <img src="assets/portfolio/mobile-caremedbill-menu.jpg" alt="CareMedBill mobile menu" class="w-full h-full object-cover object-top">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <p class="text-xs text-fog uppercase tracking-wider">CareMedBill</p>
-      <p class="text-[10px] text-copper-light uppercase tracking-wider">Premium Plan</p>
-    </div>
-    <div class="shrink-0 w-px sm:hidden" aria-hidden="true"></div>
+
   </div>
 </section>
 
@@ -1029,26 +1040,49 @@
   <div class="reveal max-w-2xl mx-auto text-center mb-12">
     <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">New Add-On</p>
     <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Your brand, <span class="italic text-copper-light">in three dimensions.</span></h2>
-    <p class="text-fog leading-[1.7] max-w-xl mx-auto">An interactive 3D company card for your website — drag to rotate, spin it around to see the back. Here's a live example built for Solid State Construction.</p>
+    <p class="text-fog leading-[1.7] max-w-xl mx-auto">An interactive 3D company card for your website — drag to rotate, spin it around to see the back. Here are live examples built for Solid State Construction and Quality Halal Market.</p>
   </div>
 
-  <div class="reveal flex justify-center py-4">
-    <div class="card3d-stage">
-      <div class="card3d" id="ssc-card3d">
-        <div class="card3d-face card3d-front">
-          <img src="assets/portfolio/ssc-logo.png" alt="Solid State Construction logo" class="card3d-logo">
-          <div class="card3d-sheen"></div>
-        </div>
-        <div class="card3d-face card3d-back">
-          <img src="assets/portfolio/ssc-founder.jpg" alt="Shaan, Founder &amp; CEO of Solid State Construction" class="card3d-founder-pic">
-          <p class="card3d-back-title">Shaan</p>
-          <p class="card3d-back-role">Founder &amp; CEO</p>
-          <p class="card3d-back-line">(512) 595-2332</p>
-          <p class="card3d-back-line">Leander, TX</p>
-          <p class="card3d-back-line text-copper-light">solidstatesconstruction.com</p>
-          <div class="card3d-sheen"></div>
+  <div class="reveal flex flex-wrap justify-center gap-x-14 gap-y-10 py-4">
+    <div class="flex flex-col items-center gap-3">
+      <div class="card3d-stage">
+        <div class="card3d">
+          <div class="card3d-face card3d-front">
+            <img src="assets/portfolio/ssc-logo.png" alt="Solid State Construction logo" class="card3d-logo">
+            <div class="card3d-sheen"></div>
+          </div>
+          <div class="card3d-face card3d-back">
+            <img src="assets/portfolio/ssc-founder.jpg" alt="Shaan, Founder &amp; CEO of Solid State Construction" class="card3d-founder-pic">
+            <p class="card3d-back-title">Shaan</p>
+            <p class="card3d-back-role">Founder &amp; CEO</p>
+            <p class="card3d-back-line">(512) 595-2332</p>
+            <p class="card3d-back-line">Leander, TX</p>
+            <p class="card3d-back-line text-copper-light">solidstatesconstruction.com</p>
+            <div class="card3d-sheen"></div>
+          </div>
         </div>
       </div>
+      <p class="text-xs text-fog/70 uppercase tracking-wider">Solid State Construction</p>
+    </div>
+
+    <div class="flex flex-col items-center gap-3">
+      <div class="card3d-stage">
+        <div class="card3d">
+          <div class="card3d-face card3d-front">
+            <img src="assets/portfolio/qhm-logo.png" alt="Quality Halal Market logo" class="card3d-logo">
+            <div class="card3d-sheen"></div>
+          </div>
+          <div class="card3d-face card3d-back">
+            <p class="card3d-back-title">Ali</p>
+            <p class="card3d-back-role">Store Contact</p>
+            <p class="card3d-back-line">(512) 260-7677</p>
+            <p class="card3d-back-line">12920 W Parmer Ln #106, Cedar Park, TX</p>
+            <p class="card3d-back-line text-copper-light">Quality Halal Market</p>
+            <div class="card3d-sheen"></div>
+          </div>
+        </div>
+      </div>
+      <p class="text-xs text-fog/70 uppercase tracking-wider">Quality Halal Market</p>
     </div>
   </div>
   <p class="reveal text-center text-xs text-fog/70 uppercase tracking-wider mt-2">Drag to rotate</p>
@@ -1136,6 +1170,28 @@
   }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
 
+  // Chatbot mockup: stagger each bubble in with JS-driven delays rather than
+  // CSS transition-delay nested under the parent .reveal fade — some browsers
+  // fail to fire a child's delayed transition when the parent is fading in at
+  // the same time, silently leaving alternating bubbles stuck at opacity 0.
+  (function () {
+    const bubbles = document.querySelectorAll('.chat-bubble');
+    if (!bubbles.length) return;
+    const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const container = bubbles[0].closest('.reveal') || bubbles[0].parentElement;
+    const bubbleIo = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        bubbleIo.unobserve(entry.target);
+        bubbles.forEach((bubble, i) => {
+          if (noMotion) { bubble.classList.add('in'); return; }
+          setTimeout(() => bubble.classList.add('in'), 100 + i * 350);
+        });
+      });
+    }, { threshold: 0.15 });
+    bubbleIo.observe(container);
+  })();
+
   // Mobile floating CTA: hidden near the top (nav CTA already covers it)
   // and hidden once the contact form itself is on screen.
   const floatingCta = document.getElementById('floating-cta');
@@ -1158,61 +1214,9 @@
     setFloatingCtaVisible(window.scrollY > heroSection.offsetHeight * 0.6 && !contactVisible);
   }, { passive: true });
 
-  // Phone carousel: arrow buttons + click-and-drag scrolling.
-  const carousel = document.getElementById('phone-carousel');
-  if (carousel) {
-    const cardWidth = () => carousel.querySelector(':scope > div')?.getBoundingClientRect().width || 200;
-    document.getElementById('phone-carousel-prev')?.addEventListener('click', () => {
-      carousel.scrollBy({ left: -(cardWidth() + 32), behavior: 'smooth' });
-    });
-    document.getElementById('phone-carousel-next')?.addEventListener('click', () => {
-      carousel.scrollBy({ left: cardWidth() + 32, behavior: 'smooth' });
-    });
-
-    let isDown = false, startX = 0, startScroll = 0, dragged = false;
-    carousel.addEventListener('pointerdown', (e) => {
-      isDown = true;
-      dragged = false;
-      carousel.classList.add('dragging');
-      startX = e.clientX;
-      startScroll = carousel.scrollLeft;
-      try { carousel.setPointerCapture(e.pointerId); } catch (err) {}
-    });
-    carousel.addEventListener('pointermove', (e) => {
-      if (!isDown) return;
-      const dx = e.clientX - startX;
-      if (Math.abs(dx) > 4) dragged = true;
-      carousel.scrollLeft = startScroll - dx;
-    });
-    const endDrag = () => { isDown = false; carousel.classList.remove('dragging'); };
-    carousel.addEventListener('pointerup', endDrag);
-    carousel.addEventListener('pointerleave', endDrag);
-    carousel.addEventListener('pointercancel', endDrag);
-    carousel.addEventListener('click', (e) => { if (dragged) e.preventDefault(); }, true);
-
-    // Auto-rotate: advance one card every few seconds, looping back at the end.
-    // Pauses on hover/drag and while the carousel is off-screen.
-    const carouselNoMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let carouselVisible = false;
-    let autoRotateTimer = null;
-    const stopAutoRotate = () => { clearInterval(autoRotateTimer); autoRotateTimer = null; };
-    const startAutoRotate = () => {
-      if (carouselNoMotion || autoRotateTimer || !carouselVisible) return;
-      autoRotateTimer = setInterval(() => {
-        const atEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 8;
-        carousel.scrollTo({ left: atEnd ? 0 : carousel.scrollLeft + cardWidth() + 32, behavior: 'smooth' });
-      }, 3500);
-    };
-    if (!carouselNoMotion) {
-      new IntersectionObserver((entries) => {
-        carouselVisible = entries[0].isIntersecting;
-        if (carouselVisible) startAutoRotate(); else stopAutoRotate();
-      }, { threshold: 0.4 }).observe(carousel);
-      carousel.addEventListener('pointerdown', stopAutoRotate);
-      carousel.addEventListener('mouseenter', stopAutoRotate);
-      carousel.addEventListener('mouseleave', () => { if (carouselVisible) startAutoRotate(); });
-    }
-  }
+  // Mobile preview: each company's chapter is a plain stacked section now —
+  // it just scrolls into view normally and fades in via the .reveal observer
+  // above, same as every other section on the page.
 
   // Pricing toggle: Monthly / Annual (2 months free).
   (function () {
@@ -1231,10 +1235,8 @@
     btnAnnual.addEventListener('click', () => setPlan('annual'));
   })();
 
-  // 3D company card: drag to rotate, slow idle spin when untouched.
-  (function () {
-    const card = document.getElementById('ssc-card3d');
-    if (!card) return;
+  // 3D company card(s): drag to rotate, slow idle spin when untouched.
+  document.querySelectorAll('.card3d').forEach((card) => {
     const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let dragging = false, startX = 0, startY = 0;
     let rotX = -8, rotY = 18, baseRotX = -8, baseRotY = 18;
@@ -1278,7 +1280,7 @@
     card.addEventListener('pointerup', endDrag);
     card.addEventListener('pointerleave', endDrag);
     card.addEventListener('pointercancel', endDrag);
-  })();
+  });
 
   // Count-up stat numbers on scroll into view.
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
