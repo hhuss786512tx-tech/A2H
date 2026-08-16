@@ -265,8 +265,8 @@
   }
   .card3d {
     position: relative;
-    width: 320px;
-    height: 190px;
+    width: 340px;
+    height: 180px;
     max-width: 84vw;
     transform-style: preserve-3d;
     cursor: grab;
@@ -300,38 +300,14 @@
     border: 1px solid rgba(255,255,255,0.08);
     transform: rotateY(180deg);
   }
-  .card3d-logo {
-    width: auto;
-    height: 130px;
-    max-width: 80%;
-    object-fit: contain;
-    position: relative;
-  }
-  .card3d-founder-pic {
-    width: 50px;
-    height: 50px;
-    border-radius: 999px;
+  .card3d-face.photo { padding: 0; }
+  .card3d-photo {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border: 2px solid rgba(233,223,210,0.25);
+    object-position: center;
+    display: block;
     position: relative;
-  }
-  .card3d-back-title {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 1.05rem;
-    line-height: 1.1;
-  }
-  .card3d-back-role {
-    font-size: 0.6rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #b8823f;
-    line-height: 1.1;
-  }
-  .card3d-back-line {
-    font-size: 0.74rem;
-    line-height: 1.2;
-    color: #a89a8c;
   }
   .card3d-sheen {
     position: absolute;
@@ -1060,17 +1036,12 @@
     <div class="flex flex-col items-center gap-3">
       <div class="card3d-stage">
         <div class="card3d">
-          <div class="card3d-face card3d-front">
-            <img src="assets/portfolio/ssc-logo.png" alt="Solid State Construction logo" class="card3d-logo">
+          <div class="card3d-face card3d-front photo">
+            <img src="assets/portfolio/ssc-card-front.jpg" alt="Solid State Construction business card front" class="card3d-photo" style="object-position: 10% center;">
             <div class="card3d-sheen"></div>
           </div>
-          <div class="card3d-face card3d-back">
-            <img src="assets/portfolio/ssc-founder.jpg" alt="Shaan, Founder &amp; CEO of Solid State Construction" class="card3d-founder-pic">
-            <p class="card3d-back-title">Shaan</p>
-            <p class="card3d-back-role">Founder &amp; CEO</p>
-            <p class="card3d-back-line">(512) 595-2332</p>
-            <p class="card3d-back-line">Leander, TX</p>
-            <p class="card3d-back-line text-copper-light">solidstatesconstruction.com</p>
+          <div class="card3d-face card3d-back photo">
+            <img src="assets/portfolio/ssc-card-back.jpg" alt="Solid State Construction business card back" class="card3d-photo">
             <div class="card3d-sheen"></div>
           </div>
         </div>
@@ -1081,16 +1052,12 @@
     <div class="flex flex-col items-center gap-3">
       <div class="card3d-stage">
         <div class="card3d">
-          <div class="card3d-face card3d-front">
-            <img src="assets/portfolio/qhm-logo.png" alt="Quality Halal Market logo" class="card3d-logo">
+          <div class="card3d-face card3d-front photo">
+            <img src="assets/portfolio/qhm-card-front.jpg" alt="Quality Halal Market business card front" class="card3d-photo">
             <div class="card3d-sheen"></div>
           </div>
-          <div class="card3d-face card3d-back">
-            <p class="card3d-back-title">Ali</p>
-            <p class="card3d-back-role">Store Contact</p>
-            <p class="card3d-back-line">(512) 260-7677</p>
-            <p class="card3d-back-line">12920 W Parmer Ln #106, Cedar Park, TX</p>
-            <p class="card3d-back-line text-copper-light">Quality Halal Market</p>
+          <div class="card3d-face card3d-back photo">
+            <img src="assets/portfolio/qhm-card-back.jpg" alt="Quality Halal Market business card back" class="card3d-photo">
             <div class="card3d-sheen"></div>
           </div>
         </div>
