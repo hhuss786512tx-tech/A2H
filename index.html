@@ -1707,11 +1707,17 @@
   })();
 
   // Mobile floating CTA: hidden near the top (nav CTA already covers it)
-  // and hidden once the contact form itself is on screen.
+  // and hidden once the contact form or the pricing cards are on screen —
+  // both already have their own CTA buttons, and on mobile the pricing
+  // grid's per-tier buttons land right under this fixed button otherwise
+  // (same class of bug as the chat-nudge-over-CTA fixes elsewhere on this
+  // page — a fixed bottom-right element sitting on top of a real CTA).
   const floatingCta = document.getElementById('floating-cta');
   const contactSection = document.getElementById('contact');
+  const pricingSection = document.getElementById('pricing');
   const heroSection = document.getElementById('top');
   let contactVisible = false;
+  let pricingVisible = false;
 
   const setFloatingCtaVisible = (show) => {
     floatingCta.classList.toggle('opacity-0', !show);
@@ -1719,14 +1725,21 @@
     floatingCta.classList.toggle('pointer-events-none', !show);
   };
 
+  const updateFloatingCta = () => {
+    setFloatingCtaVisible(window.scrollY > heroSection.offsetHeight * 0.6 && !contactVisible && !pricingVisible);
+  };
+
   new IntersectionObserver((entries) => {
     contactVisible = entries[0].isIntersecting;
-    setFloatingCtaVisible(window.scrollY > heroSection.offsetHeight * 0.6 && !contactVisible);
+    updateFloatingCta();
   }, { threshold: 0.2 }).observe(contactSection);
 
-  window.addEventListener('scroll', () => {
-    setFloatingCtaVisible(window.scrollY > heroSection.offsetHeight * 0.6 && !contactVisible);
-  }, { passive: true });
+  new IntersectionObserver((entries) => {
+    pricingVisible = entries[0].isIntersecting;
+    updateFloatingCta();
+  }, { threshold: 0.2 }).observe(pricingSection);
+
+  window.addEventListener('scroll', updateFloatingCta, { passive: true });
 
   // Mobile preview: each company's chapter is a plain stacked section now —
   // it just scrolls into view normally and fades in via the .reveal observer
