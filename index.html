@@ -66,12 +66,14 @@
       radial-gradient(70% 60% at 50% 100%, rgba(20,17,16,0.9), #141110 70%);
   }
 
-  /* Hero embers: slow-rising warm sparks behind the headline — a nod to
-     "hand-coded" craftsmanship (forge/workshop) rather than another
-     spinning conic-gradient ring, since cta-ring/blueprint-ring already
-     own that motif elsewhere on the page. Pure CSS, one shared keyframe,
-     per-ember drift set via --ember-drift so no two paths match. */
-  .hero-embers { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+  /* Embers: slow-rising warm sparks — a nod to "hand-coded" craftsmanship
+     (forge/workshop) rather than another spinning conic-gradient ring,
+     since cta-ring/blueprint-ring already own that motif elsewhere on the
+     page. One shared keyframe, parameterized by custom properties so the
+     hero gets a bright, energetic version and other sections get a quiet
+     ambient one instead of copy-pasted variants. Per-ember drift/duration
+     set inline so no two paths match. */
+  .hero-embers, .ambient-embers { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
   .ember {
     position: absolute;
     bottom: 6%;
@@ -80,16 +82,30 @@
     box-shadow: 0 0 8px 1px rgba(226,146,79,0.5);
     animation: ember-rise linear infinite;
     will-change: transform, opacity;
+    --ember-peak: 0.85;
+    --ember-rise: -280px;
+    --ember-drift: 16px;
   }
   @keyframes ember-rise {
-    0%   { transform: translate(0, 0) scale(0.6); opacity: 0; }
-    12%  { opacity: 0.85; }
-    55%  { transform: translate(var(--ember-drift, 16px), -280px) scale(1); }
-    88%  { opacity: 0.35; }
-    100% { transform: translate(calc(var(--ember-drift, 16px) * 1.6), -560px) scale(0.6); opacity: 0; }
+    0%   { transform: translate(0, 0) scale(0.55); opacity: 0; }
+    12%  { opacity: var(--ember-peak); }
+    55%  { transform: translate(var(--ember-drift), var(--ember-rise)) scale(1); }
+    88%  { opacity: calc(var(--ember-peak) * 0.4); }
+    100% { transform: translate(calc(var(--ember-drift) * 1.6), calc(var(--ember-rise) * 2)) scale(0.55); opacity: 0; }
   }
+  /* Hero: bigger, brighter, faster — the flagship version. A few
+     .ember-spark ones run white-hot for punch instead of every ember
+     being equally bright. */
+  .hero-embers .ember { box-shadow: 0 0 16px 3px rgba(226,146,79,0.7); }
+  .hero-embers .ember.ember-spark {
+    background: radial-gradient(circle at 35% 35%, #ffffff, #fff8ef 45%, #e2924f 70%, transparent 82%);
+    box-shadow: 0 0 24px 6px rgba(255,248,239,0.85);
+  }
+  /* Other sections: same motion, dialed way down so it reads as texture,
+     not a second hero. */
+  .ambient-embers .ember { --ember-peak: 0.4; --ember-rise: -160px; box-shadow: 0 0 6px 1px rgba(226,146,79,0.3); }
   @media (prefers-reduced-motion: reduce) {
-    .hero-embers { display: none; }
+    .hero-embers, .ambient-embers { display: none; }
   }
 
   .shadow-elevated {
@@ -783,20 +799,26 @@
 <section id="top" class="relative glow-copper pt-40 pb-28 px-6 overflow-hidden">
   <div class="grain"></div>
   <div class="hero-embers" aria-hidden="true">
-    <span class="ember" style="left:6%;  width:5px; height:5px; animation-duration:11s; animation-delay:-2s;  --ember-drift:22px;"></span>
-    <span class="ember" style="left:14%; width:3px; height:3px; animation-duration:8s;  animation-delay:-6s;  --ember-drift:-14px;"></span>
-    <span class="ember" style="left:22%; width:6px; height:6px; animation-duration:13s; animation-delay:-1s;  --ember-drift:10px;"></span>
-    <span class="ember" style="left:31%; width:4px; height:4px; animation-duration:9s;  animation-delay:-4.5s; --ember-drift:-20px;"></span>
-    <span class="ember" style="left:39%; width:3px; height:3px; animation-duration:10s; animation-delay:-8s;  --ember-drift:18px;"></span>
-    <span class="ember" style="left:47%; width:5px; height:5px; animation-duration:12s; animation-delay:-3s;  --ember-drift:-12px;"></span>
-    <span class="ember" style="left:56%; width:4px; height:4px; animation-duration:8.5s; animation-delay:-5.5s; --ember-drift:24px;"></span>
-    <span class="ember" style="left:64%; width:6px; height:6px; animation-duration:11.5s; animation-delay:-9s; --ember-drift:-16px;"></span>
-    <span class="ember" style="left:72%; width:3px; height:3px; animation-duration:9.5s; animation-delay:-2.5s; --ember-drift:14px;"></span>
-    <span class="ember" style="left:79%; width:5px; height:5px; animation-duration:13.5s; animation-delay:-7s; --ember-drift:-22px;"></span>
-    <span class="ember" style="left:86%; width:4px; height:4px; animation-duration:10.5s; animation-delay:-4s; --ember-drift:12px;"></span>
-    <span class="ember" style="left:92%; width:3px; height:3px; animation-duration:8s;  animation-delay:-1.5s; --ember-drift:-18px;"></span>
-    <span class="ember" style="left:10%; width:4px; height:4px; animation-duration:14s; animation-delay:-10s; --ember-drift:16px;"></span>
-    <span class="ember" style="left:97%; width:5px; height:5px; animation-duration:9s;  animation-delay:-6.5s; --ember-drift:-10px;"></span>
+    <span class="ember" style="left:4%;  width:6px; height:6px; animation-duration:7.5s; animation-delay:-2s;  --ember-drift:26px; --ember-rise:-320px;"></span>
+    <span class="ember ember-spark" style="left:11%; width:9px; height:9px; animation-duration:6s; animation-delay:-4.5s; --ember-drift:-18px; --ember-rise:-360px;"></span>
+    <span class="ember" style="left:18%; width:4px; height:4px; animation-duration:6.5s; animation-delay:-1s;  --ember-drift:14px; --ember-rise:-300px;"></span>
+    <span class="ember" style="left:25%; width:7px; height:7px; animation-duration:8.5s; animation-delay:-6s;  --ember-drift:12px; --ember-rise:-340px;"></span>
+    <span class="ember" style="left:32%; width:5px; height:5px; animation-duration:7s;  animation-delay:-3.5s; --ember-drift:-22px; --ember-rise:-310px;"></span>
+    <span class="ember ember-spark" style="left:39%; width:8px; height:8px; animation-duration:6.5s; animation-delay:-7s;  --ember-drift:20px; --ember-rise:-380px;"></span>
+    <span class="ember" style="left:46%; width:4px; height:4px; animation-duration:9s;  animation-delay:-2.5s; --ember-drift:-14px; --ember-rise:-280px;"></span>
+    <span class="ember" style="left:53%; width:6px; height:6px; animation-duration:7.5s; animation-delay:-5s;  --ember-drift:26px; --ember-rise:-330px;"></span>
+    <span class="ember" style="left:60%; width:5px; height:5px; animation-duration:8s;  animation-delay:-8.5s; --ember-drift:-18px; --ember-rise:-300px;"></span>
+    <span class="ember ember-spark" style="left:67%; width:9px; height:9px; animation-duration:6s;  animation-delay:-3s;  --ember-drift:16px; --ember-rise:-370px;"></span>
+    <span class="ember" style="left:74%; width:4px; height:4px; animation-duration:9.5s; animation-delay:-6.5s; --ember-drift:-24px; --ember-rise:-290px;"></span>
+    <span class="ember" style="left:81%; width:7px; height:7px; animation-duration:7s;  animation-delay:-1.5s; --ember-drift:18px; --ember-rise:-340px;"></span>
+    <span class="ember" style="left:88%; width:5px; height:5px; animation-duration:8.5s; animation-delay:-4s;  --ember-drift:-16px; --ember-rise:-310px;"></span>
+    <span class="ember ember-spark" style="left:94%; width:8px; height:8px; animation-duration:6.5s; animation-delay:-9s;  --ember-drift:22px; --ember-rise:-360px;"></span>
+    <span class="ember" style="left:8%;  width:5px; height:5px; animation-duration:7.5s; animation-delay:-7.5s; --ember-drift:20px; --ember-rise:-300px;"></span>
+    <span class="ember" style="left:97%; width:6px; height:6px; animation-duration:8s;  animation-delay:-2.8s; --ember-drift:-12px; --ember-rise:-320px;"></span>
+    <span class="ember" style="left:29%; width:3px; height:3px; animation-duration:9s;  animation-delay:-5.5s; --ember-drift:10px; --ember-rise:-270px;"></span>
+    <span class="ember" style="left:63%; width:3px; height:3px; animation-duration:9.5s; animation-delay:-1.2s; --ember-drift:-10px; --ember-rise:-270px;"></span>
+    <span class="ember ember-spark" style="left:50%; width:7px; height:7px; animation-duration:6.8s; animation-delay:-8s;  --ember-drift:-20px; --ember-rise:-350px;"></span>
+    <span class="ember" style="left:16%; width:4px; height:4px; animation-duration:8s;  animation-delay:-10s; --ember-drift:16px; --ember-rise:-290px;"></span>
   </div>
   <div class="max-w-4xl mx-auto text-center relative z-[1]">
     <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Websites &amp; Google Maps Listings for Contractors, Medical Practices &amp; Local Retail</p>
@@ -853,7 +875,16 @@
 </section>
 
 <!-- STAT BAR -->
-<section class="py-20 px-6">
+<section class="relative py-20 px-6 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:3%;  width:3px; height:3px; animation-duration:12s; animation-delay:-2s;  --ember-drift:14px;"></span>
+    <span class="ember" style="left:15%; width:2px; height:2px; animation-duration:15s; animation-delay:-7s;  --ember-drift:-10px;"></span>
+    <span class="ember" style="left:30%; width:4px; height:4px; animation-duration:11s; animation-delay:-4s;  --ember-drift:12px;"></span>
+    <span class="ember" style="left:50%; width:3px; height:3px; animation-duration:13s; animation-delay:-9s;  --ember-drift:-14px;"></span>
+    <span class="ember" style="left:70%; width:2px; height:2px; animation-duration:14s; animation-delay:-3s;  --ember-drift:10px;"></span>
+    <span class="ember" style="left:85%; width:4px; height:4px; animation-duration:12.5s; animation-delay:-6s; --ember-drift:-12px;"></span>
+    <span class="ember" style="left:96%; width:3px; height:3px; animation-duration:11.5s; animation-delay:-1s; --ember-drift:16px;"></span>
+  </div>
   <div class="max-w-5xl mx-auto reveal">
     <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3 text-center">What You Get</p>
     <h2 class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand text-center mb-10">Built to be found. No ad spend required.</h2>
@@ -1344,7 +1375,16 @@
 </section>
 
 <!-- WHY -->
-<section class="py-24 px-6 bg-surface/40 border-y border-white/5">
+<section class="relative py-24 px-6 bg-surface/40 border-y border-white/5 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:5%;  width:3px; height:3px; animation-duration:13s; animation-delay:-3s;  --ember-drift:12px;"></span>
+    <span class="ember" style="left:20%; width:2px; height:2px; animation-duration:15s; animation-delay:-8s;  --ember-drift:-10px;"></span>
+    <span class="ember" style="left:40%; width:4px; height:4px; animation-duration:11s; animation-delay:-5s;  --ember-drift:14px;"></span>
+    <span class="ember" style="left:60%; width:3px; height:3px; animation-duration:14s; animation-delay:-1s;  --ember-drift:-12px;"></span>
+    <span class="ember" style="left:78%; width:2px; height:2px; animation-duration:12s; animation-delay:-6.5s; --ember-drift:10px;"></span>
+    <span class="ember" style="left:90%; width:4px; height:4px; animation-duration:13.5s; animation-delay:-4s; --ember-drift:-14px;"></span>
+    <span class="ember" style="left:97%; width:3px; height:3px; animation-duration:11.5s; animation-delay:-9s; --ember-drift:16px;"></span>
+  </div>
   <div class="max-w-4xl mx-auto">
     <div class="reveal mb-12 text-center">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Why A2H</p>
@@ -1517,7 +1557,13 @@
 </section>
 
 <!-- CONTACT / LEAD FORM -->
-<section id="contact" class="py-16 px-6">
+<section id="contact" class="relative py-16 px-6 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:4%;  width:3px; height:3px; animation-duration:13s; animation-delay:-2s;  --ember-drift:14px;"></span>
+    <span class="ember" style="left:18%; width:2px; height:2px; animation-duration:15s; animation-delay:-7s;  --ember-drift:-10px;"></span>
+    <span class="ember" style="left:82%; width:4px; height:4px; animation-duration:12s; animation-delay:-4.5s; --ember-drift:-12px;"></span>
+    <span class="ember" style="left:95%; width:3px; height:3px; animation-duration:14s; animation-delay:-9s;  --ember-drift:16px;"></span>
+  </div>
   <div class="max-w-2xl mx-auto">
     <div class="reveal mb-10 text-center">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Free Site Audit</p>
