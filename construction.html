@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website &amp; Ad Management for Texas Contractors | A2H</title>
+<meta name="description" content="Done-for-you website, Google/Meta ads, and instant lead response for Central Texas contractors. Built and run by the team behind Solid State Construction's site.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141110'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-style='italic' fill='%23c9702f' text-anchor='middle'%3EA2H%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Website & Ad Management for Texas Contractors | A2H">
+<meta property="og:description" content="Done-for-you website, Google/Meta ads, and instant lead response for Central Texas contractors.">
+<meta property="og:image" content="https://a2h.info/assets/og-image.png">
+<meta property="og:url" content="https://a2h.info/construction.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#141110', surface: '#1b1613', elevated: '#231c18',
+          copper: '#c9702f', 'copper-light': '#e2924f', brass: '#b8823f',
+          sand: '#e9dfd2', fog: '#a89a8c', live: '#7fb88a',
+        },
+        fontFamily: { display: ['Fraunces', 'serif'], sans: ['Hanken Grotesk', 'sans-serif'] },
+      },
+    },
+  }
+</script>
+<!-- GA4 — real Measurement ID, property "A2H Agency Site". Keep in sync
+     with index.html if this ever changes. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L9L2CVTSBB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L9L2CVTSBB');
+</script>
+<style>
+  :root { color-scheme: dark; }
+  html { scroll-behavior: smooth; }
+  body { background-color: #141110; font-family: 'Hanken Grotesk', sans-serif; }
+  .font-display { font-family: 'Fraunces', serif; }
+  .glow-copper {
+    background:
+      radial-gradient(60% 50% at 15% 0%, rgba(201,112,47,0.22), transparent 60%),
+      radial-gradient(50% 40% at 90% 20%, rgba(184,130,63,0.14), transparent 60%),
+      radial-gradient(70% 60% at 50% 100%, rgba(20,17,16,0.9), #141110 70%);
+  }
+  .shadow-floating { box-shadow: 0 4px 12px rgba(0,0,0,0.45), 0 24px 48px -12px rgba(201,112,47,0.28); }
+  .shadow-btn { box-shadow: 0 1px 1px rgba(0,0,0,0.3), 0 8px 20px -6px rgba(201,112,47,0.45); }
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .btn-primary { transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, background-color 0.25s ease; }
+  .btn-primary:hover { transform: translateY(-2px) scale(1.015); }
+  .btn-primary:active { transform: translateY(0) scale(0.98); }
+  .link-underline {
+    background-image: linear-gradient(#e2924f, #e2924f); background-size: 0% 1px;
+    background-position: 0 100%; background-repeat: no-repeat;
+    transition: background-size 0.3s cubic-bezier(0.22,1,0.36,1);
+  }
+  .link-underline:hover { background-size: 100% 1px; }
+  ::selection { background: #c9702f; color: #141110; }
+  input:focus-visible, button:focus-visible, a:focus-visible { outline: 2px solid #e2924f; outline-offset: 2px; }
+  @property --cta-ring-angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+  .cta-ring {
+    position: relative; border-radius: 999px;
+    background: conic-gradient(from var(--cta-ring-angle), transparent 0deg, transparent 250deg, #141110 285deg, #e2924f 315deg, #fff8ef 335deg, #e2924f 350deg, transparent 360deg);
+    animation: cta-ring-spin 2.5s linear infinite; will-change: --cta-ring-angle;
+  }
+  .cta-ring::before {
+    content: ''; position: absolute; inset: -5px; border-radius: 999px;
+    background: conic-gradient(from var(--cta-ring-angle), transparent 0deg, transparent 270deg, #e2924f 315deg, #fff8ef 335deg, #e2924f 350deg, transparent 360deg);
+    filter: blur(10px); opacity: 0.75; z-index: -1; pointer-events: none;
+  }
+  @keyframes cta-ring-spin { to { --cta-ring-angle: 360deg; } }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .btn-primary, .cta-ring { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body class="text-sand antialiased">
+
+<!-- NAV -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/5 bg-ink/80 backdrop-blur-md">
+  <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="/" class="font-display text-xl tracking-tight text-sand">A2H<span class="text-copper">.</span></a>
+    <nav class="hidden sm:flex items-center gap-8 text-sm text-fog">
+      <a href="#offer" class="link-underline hover:text-sand transition-colors">The System</a>
+      <a href="#pricing" class="link-underline hover:text-sand transition-colors">Pricing</a>
+      <a href="#contact" class="link-underline hover:text-sand transition-colors">Get Started</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="glow-copper pt-32 pb-20 px-6">
+  <div class="max-w-3xl mx-auto text-center">
+    <p class="reveal in text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-4">For Central Texas Contractors</p>
+    <h1 class="reveal in font-display text-4xl sm:text-5xl md:text-6xl tracking-[-0.03em] leading-[1.05] text-sand mb-6">
+      More calls. Faster follow-up. No wasted ad spend.
+    </h1>
+    <p class="reveal in text-fog text-lg leading-[1.7] max-w-xl mx-auto mb-10">
+      A done-for-you site, Google/Meta ad management, and instant lead response —
+      built and run for one contractor's business at a time, not a template
+      farm. The same instant-reply system already running live for
+      <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" class="link-underline text-copper-light">Solid State Construction</a>.
+    </p>
+    <span class="cta-ring rounded-full p-[2px] inline-block">
+      <a href="#contact" class="btn-primary shadow-btn inline-block bg-copper hover:bg-copper-light text-ink font-semibold px-8 py-4 rounded-full text-[15px]">
+        Get My Free Audit
+      </a>
+    </span>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="py-12 px-6 border-y border-white/5 bg-surface/40">
+  <div class="max-w-3xl mx-auto text-center">
+    <p class="reveal in text-sm text-fog leading-[1.7]">
+      A $200 Google Ads test on a Central Texas contractor's new site delivered
+      <span class="text-sand font-semibold">270+ clicks in 14 days at $0.74/click</span>
+      — nearly 2× the industry projection. That's what a fast, mobile-first
+      landing page does to your cost per click before a single lead follows up.
+    </p>
+  </div>
+</section>
+
+<!-- THE OFFER -->
+<section id="offer" class="py-20 px-6">
+  <div class="max-w-4xl mx-auto">
+    <div class="reveal mb-12 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">The System</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Everything between an ad click and a booked job</h2>
+      <p class="text-fog leading-[1.7] max-w-2xl mx-auto">One bundle, one point of contact, nothing hand-balled between three different vendors.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-5">
+      <div class="reveal rounded-2xl bg-elevated border border-white/5 p-7">
+        <p class="text-copper-light text-sm font-semibold mb-2">01 — Built to convert</p>
+        <h3 class="font-display text-xl text-sand mb-2">Site or landing page</h3>
+        <p class="text-fog text-sm leading-[1.7]">Hand-coded, mobile-first, quote-request form above the fold. No page builder bloat dragging down your ad quality score.</p>
+      </div>
+      <div class="reveal rounded-2xl bg-elevated border border-white/5 p-7">
+        <p class="text-copper-light text-sm font-semibold mb-2">02 — Run for you</p>
+        <h3 class="font-display text-xl text-sand mb-2">Google &amp; Meta ads</h3>
+        <p class="text-fog text-sm leading-[1.7]">Campaign structure, negative keywords, weekly reporting. You approve the budget — we run the account.</p>
+      </div>
+      <div class="reveal rounded-2xl bg-elevated border border-white/5 p-7">
+        <p class="text-copper-light text-sm font-semibold mb-2">03 — Answered in minutes</p>
+        <h3 class="font-display text-xl text-sand mb-2">Instant lead response</h3>
+        <p class="text-fog text-sm leading-[1.7]">Every form submission gets a personalized reply in under 5 minutes, day or night, before the customer calls the next contractor on the list.</p>
+      </div>
+      <div class="reveal rounded-2xl bg-elevated border border-white/5 p-7">
+        <p class="text-copper-light text-sm font-semibold mb-2">04 — Compounds after</p>
+        <h3 class="font-display text-xl text-sand mb-2">Local SEO foundation</h3>
+        <p class="text-fog text-sm leading-[1.7]">Schema markup, Google Business Profile, city pages — so the same page keeps bringing in calls after the ad budget stops.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="py-20 px-6 bg-surface/40 border-y border-white/5">
+  <div class="max-w-2xl mx-auto text-center">
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Pricing</p>
+    <h2 class="reveal font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-6">Straightforward, not hidden in a sales call</h2>
+    <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-floating p-8 text-left">
+      <p class="text-sand font-display text-2xl mb-1">Construction Client Acquisition System</p>
+      <p class="text-fog text-sm mb-6">Site build + ads setup + instant lead response, one contractor at a time</p>
+      <ul class="space-y-3 text-sm text-fog mb-6">
+        <li class="flex gap-2"><span class="text-live">✓</span> Custom quote-request site, 5–8 pages</li>
+        <li class="flex gap-2"><span class="text-live">✓</span> Google/Meta ads setup + first 30 days managed</li>
+        <li class="flex gap-2"><span class="text-live">✓</span> Instant text/email reply on every lead</li>
+        <li class="flex gap-2"><span class="text-live">✓</span> Local SEO foundation + Google Business Profile</li>
+      </ul>
+      <p class="text-sand text-3xl font-display mb-1">$2,500 <span class="text-base text-fog font-sans">setup</span></p>
+      <p class="text-fog text-sm mb-6">then $400–800/mo ad management + Care Plan, cancel anytime. Ad spend paid directly to Google/Meta by you.</p>
+      <span class="cta-ring rounded-full p-[2px] block w-full">
+        <a href="#contact" class="btn-primary shadow-btn block w-full text-center bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px]">
+          Book a Free Audit
+        </a>
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / LEAD FORM -->
+<section id="contact" class="py-20 px-6">
+  <div class="max-w-2xl mx-auto">
+    <div class="reveal mb-10 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Free Site Audit</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Let's see what your site is costing you</h2>
+      <p class="text-fog leading-[1.7]">No charge, no obligation. We'll show you exactly what's costing you calls right now.</p>
+    </div>
+
+    <form id="audit-form" class="reveal rounded-2xl bg-elevated border border-white/5 shadow-floating p-8 space-y-5">
+      <input type="hidden" id="plan" name="plan" value="Construction Client Acquisition System">
+      <input type="hidden" name="vertical" value="construction">
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="name">Name</label>
+          <input required id="name" name="name" type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Jane Rivera">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="business">Business Name</label>
+          <input required id="business" name="business" type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Rivera Concrete Co.">
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="url">Website URL <span class="normal-case text-fog/60">(optional — leave blank if you don't have one yet)</span></label>
+        <input id="url" name="url" type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="yourbusiness.com">
+      </div>
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="email">Email</label>
+          <input required id="email" name="email" type="email" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="jane@rivera.com">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
+        </div>
+      </div>
+      <span class="cta-ring rounded-full p-[2px] block w-full">
+        <button type="submit" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px]">
+          Get My Free Audit
+        </button>
+      </span>
+      <p id="form-status" class="text-sm text-center text-fog"></p>
+    </form>
+
+    <div id="audit-success" class="hidden reveal rounded-2xl bg-elevated border border-white/5 shadow-floating p-8 sm:p-12 text-center">
+      <div class="mx-auto mb-5 h-14 w-14 rounded-full bg-live/15 border border-live/30 flex items-center justify-center">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L9.5 17L19 7" stroke="#7fb88a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-3">Thank You!</h3>
+      <p class="text-fog leading-[1.7] max-w-md mx-auto mb-8">Your request has been sent — check your inbox for a confirmation. We'll follow up with your free audit within 24 hours.</p>
+      <button type="button" id="audit-success-reset" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm">
+        Send Another Request
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/5 py-10 px-6">
+  <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-fog">
+    <p class="font-display text-sand text-base">A2H<span class="text-copper">.</span></p>
+    <p>hhuss786512tx@gmail.com · Texas-based</p>
+    <p class="text-fog/60">© 2026 A2H Agency</p>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Ad attribution capture — identical to index.html. Kept duplicated
+  // rather than shared as a module: this is a single static ad-landing
+  // page, not worth a build step for one repeated block.
+  const AD_PARAMS = ['gclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  (function captureAdAttribution() {
+    const params = new URLSearchParams(window.location.search);
+    let found = false;
+    AD_PARAMS.forEach((key) => {
+      const val = params.get(key);
+      if (val) { sessionStorage.setItem('a2h_' + key, val); found = true; }
+    });
+    if (found) sessionStorage.setItem('a2h_landing_page', window.location.pathname);
+  })();
+
+  const form = document.getElementById('audit-form');
+  const status = document.getElementById('form-status');
+  const successBlock = document.getElementById('audit-success');
+  const successReset = document.getElementById('audit-success-reset');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  const showSuccess = () => {
+    form.classList.add('hidden');
+    successBlock.classList.remove('hidden');
+    successBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+    AD_PARAMS.concat(['landing_page']).forEach((key) => {
+      const val = sessionStorage.getItem('a2h_' + key);
+      if (val) data[key] = val;
+    });
+
+    status.textContent = "Sending…";
+    submitBtn.disabled = true;
+
+    try {
+      const res = await fetch('/api/audit-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json().catch(() => ({}));
+
+      if (result.success) {
+        status.textContent = '';
+        if (typeof gtag === 'function') {
+          gtag('event', 'generate_lead', {
+            plan: data.plan || '',
+            vertical: 'construction',
+            source: data.utm_source || (data.gclid ? 'google_ads' : 'organic'),
+          });
+        }
+        form.reset();
+        showSuccess();
+        return;
+      }
+
+      if (result.reason === 'not_configured') {
+        const enc = encodeURIComponent;
+        const body = `Business: ${enc(data.business)}%0AURL: ${enc(data.url || 'none yet')}%0APhone: ${enc(data.phone)}%0A%0ARequesting a free site audit (construction landing page).`;
+        window.location.href = `mailto:hhuss786512tx@gmail.com?subject=${enc(`Free Audit Request — ${data.business}`)}&body=${body}`;
+        status.textContent = "Opening your email client to send the request…";
+      } else {
+        status.textContent = "Something went wrong. Email hhuss786512tx@gmail.com directly.";
+      }
+    } catch (err) {
+      status.textContent = "Something went wrong. Email hhuss786512tx@gmail.com directly.";
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+
+  successReset && successReset.addEventListener('click', () => {
+    successBlock.classList.add('hidden');
+    form.classList.remove('hidden');
+  });
+</script>
+</body>
+</html>

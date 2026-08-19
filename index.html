@@ -110,6 +110,12 @@
     transition: background-size 0.3s cubic-bezier(0.22,1,0.36,1);
   }
   .link-underline:hover { background-size: 100% 1px; }
+  [data-nav-link].active { color: #e9dfd2; background-size: 100% 1px; }
+
+  #site-header.is-scrolled { box-shadow: 0 8px 24px rgba(0,0,0,0.4); background-color: rgba(20,17,16,0.9); }
+
+  #mobile-menu { opacity: 0; transform: translateY(-8px); transition: opacity 0.25s ease, transform 0.25s ease; }
+  #mobile-menu.is-open { opacity: 1; transform: translateY(0); }
 
   ::selection { background: #c9702f; color: #141110; }
 
@@ -165,6 +171,66 @@
     50% { box-shadow: 0 0 0 5px rgba(127,184,138,0); }
   }
 
+  /* Results blueprint: rotating conic-gradient border, same trick jweis.com
+     uses on its "blueprint" card — a spinning --angle custom property driving
+     a conic-gradient, not a JS animation. */
+  @property --blueprint-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+  }
+  .blueprint-ring {
+    position: relative;
+    background: conic-gradient(from var(--blueprint-angle), transparent 0deg, transparent 270deg, #c9702f 300deg, #e2924f 320deg, #b8823f 340deg, #7fb88a 358deg, transparent 360deg);
+    animation: blueprint-spin 5s linear infinite;
+    will-change: --blueprint-angle;
+  }
+  .blueprint-ring::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 40px;
+    background: conic-gradient(from var(--blueprint-angle), transparent 0deg, transparent 280deg, #c9702f 310deg, #7fb88a 355deg, transparent 360deg);
+    filter: blur(16px);
+    opacity: 0.5;
+    z-index: -1;
+    pointer-events: none;
+  }
+  @keyframes blueprint-spin {
+    to { --blueprint-angle: 360deg; }
+  }
+
+  /* CTA banner button: same spinning conic-gradient trick as
+     .blueprint-ring, scaled down to a pill and sped up so the black
+     button reads as "lit up" against the orange card instead of just
+     sitting flat on it. */
+  @property --cta-ring-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+  }
+  .cta-ring {
+    position: relative;
+    border-radius: 999px;
+    background: conic-gradient(from var(--cta-ring-angle), transparent 0deg, transparent 250deg, #141110 285deg, #e2924f 315deg, #fff8ef 335deg, #e2924f 350deg, transparent 360deg);
+    animation: cta-ring-spin 2.5s linear infinite;
+    will-change: --cta-ring-angle;
+  }
+  .cta-ring::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 999px;
+    background: conic-gradient(from var(--cta-ring-angle), transparent 0deg, transparent 270deg, #e2924f 315deg, #fff8ef 335deg, #e2924f 350deg, transparent 360deg);
+    filter: blur(10px);
+    opacity: 0.75;
+    z-index: -1;
+    pointer-events: none;
+  }
+  @keyframes cta-ring-spin {
+    to { --cta-ring-angle: 360deg; }
+  }
+
   /* Ghost footer wordmark */
   .ghost-word {
     font-family: 'Fraunces', serif;
@@ -176,7 +242,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .reveal, .card-hover, .btn-primary, .marquee-track, .pulse-dot {
+    .reveal, .card-hover, .btn-primary, .marquee-track, .pulse-dot, .blueprint-ring, .cta-ring {
       animation: none !important;
       transition: none !important;
     }
@@ -201,7 +267,7 @@
     background: #141110;
   }
   .phone-screen.tall {
-    height: 540px;
+    height: 500px;
   }
   /* On mobile, the dedicated carousel uses one big dominant card with peeks
      of the next/previous card at the edges, matching how jweis.com does its
@@ -254,9 +320,83 @@
   }
   .chat-bubble.in { opacity: 1; transform: none; }
 
+  .typing-indicator {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .typing-indicator.in { opacity: 1; transform: none; }
+  .typing-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: currentColor;
+    opacity: 0.5;
+    animation: typing-bounce 1.1s ease-in-out infinite;
+  }
+  .typing-dot:nth-child(2) { animation-delay: 0.15s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  /* Live AI chat widget */
+  #chat-panel.open {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  #chat-thread-live::-webkit-scrollbar { width: 6px; }
+  #chat-thread-live::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 999px; }
+  .chat-live-bubble {
+    max-width: 82%;
+    padding: 0.5rem 0.75rem;
+    border-radius: 1rem;
+  }
+  .chat-live-bubble.user {
+    background: rgba(255,255,255,0.1);
+    color: #e9dfd2;
+    border-bottom-right-radius: 0.25rem;
+  }
+  .chat-live-bubble.ai {
+    background: linear-gradient(to bottom right, #0b93f6, #0066e0);
+    color: #fff;
+    border-bottom-left-radius: 0.25rem;
+  }
+  @media (max-width: 480px) {
+    #chat-panel { left: 12px !important; right: 12px !important; width: auto !important; }
+    /* Shorter reach + wider bubble than desktop: on short mobile viewports the
+       default 3-line-tall nudge overlapped the hero's secondary CTA/pricing
+       link underneath it (confirmed via bounding-box check against a2h.info
+       live) since pointer-events:auto on `.show` blocked clicks on that area. */
+    #chat-nudge { left: 4.25rem !important; bottom: 4.25rem !important; }
+    #chat-nudge .relative { white-space: normal; max-width: 176px; padding-top: 0.4rem; padding-bottom: 0.4rem; }
+  }
+  #chat-nudge.show {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+  #chat-fab-btn.nudging {
+    animation: chat-fab-wiggle 2.4s ease-in-out infinite;
+  }
+  @keyframes chat-fab-wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    4% { transform: rotate(-10deg); }
+    8% { transform: rotate(9deg); }
+    12% { transform: rotate(-6deg); }
+    16% { transform: rotate(3deg); }
+    20% { transform: rotate(0deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #chat-fab-btn.nudging { animation: none !important; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .phone-scroll-img { animation: none !important; }
     .chat-bubble { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .typing-indicator { display: none !important; }
   }
 
   /* 3D company card */
@@ -276,10 +416,23 @@
   }
   /* Sized to each card's own front/back photo proportions so nothing gets
      cropped — object-fit: contain still needs a box in the right ballpark
-     or one face ends up letterboxed to a sliver. */
-  .card3d.card-ssc { width: 340px; height: 204px; }
+     or a face ends up letterboxed. SSC's front and back photos are both
+     900x354 (2.54:1) — the back was originally a 900x228 banner crop that
+     letterboxed hard inside this box; it's now been re-canvased (blurred
+     bleed of its own content, not a hard color) to the same 2.54:1 as the
+     front so both faces fill the box edge to edge with zero dead space. */
+  .card3d.card-ssc { width: 340px; height: 134px; }
   .card3d.card-qhm { width: 340px; height: 204px; }
   .card3d.dragging { cursor: grabbing; }
+  /* QHM's back face is a real photo of the (light-colored) card back with
+     its denim/table background cut out to transparent — the shared
+     .card3d-back dark-navy gradient was designed for a literal dark card
+     back and showed through the cutout as black voids, so this one photo
+     face overrides it to match the photo's own light paper tone instead. */
+  .card3d-back.card3d-back-light {
+    background: linear-gradient(155deg, #f3ece1 0%, #e9dfd2 100%);
+    color: #141110;
+  }
   .card3d-face {
     position: absolute;
     inset: 0;
@@ -366,21 +519,12 @@
     .showcase-track { animation: none !important; }
   }
 
-  .price-toggle-btn {
-    color: #a89a8c;
-  }
-  .price-toggle-btn.active {
-    background: #c9702f;
-    color: #141110;
-  }
-
   /* Mobile preview: one company "chapter" per normal-flow section — the next
      site's phone + laptop simply scroll into view like any other section,
      each with its own scroll-triggered fade-in via the sitewide .reveal
      observer. Real muted screen-capture video plays inside each mockup. */
   .mscroll-stage-block { margin-bottom: 6rem; }
   .mscroll-stage-block:last-child { margin-bottom: 0; }
-  .mscroll-phones .phone-frame { transform: translateY(-18px) rotate(-3deg); }
   .phone-screen video { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
   .laptop-frame {
     width: 300px;
@@ -391,7 +535,22 @@
     border: 1px solid rgba(255,255,255,0.08);
     box-shadow: 0 20px 50px -12px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);
     flex-shrink: 0;
-    transform: translateY(30px) rotate(3deg);
+  }
+  /* Drag-to-tilt, same interaction language as the 3D company card —
+     baseline stagger (translateY + rotate) still set by JS at rest, this
+     just adds the perspective + spring-back-on-release feel. */
+  .mscroll-phones { perspective: 1000px; }
+  .mscroll-phones .phone-frame,
+  .mscroll-phones .laptop-frame {
+    cursor: grab;
+    touch-action: none;
+    will-change: transform;
+    transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .mscroll-phones .phone-frame.dragging,
+  .mscroll-phones .laptop-frame.dragging {
+    cursor: grabbing;
+    transition: none;
   }
   .laptop-chrome {
     display: flex;
@@ -403,13 +562,60 @@
   }
   .laptop-chrome span { width: 6px; height: 6px; border-radius: 999px; background: rgba(255,255,255,0.15); }
   .laptop-frame video { width: 100%; height: auto; aspect-ratio: 1280 / 800; object-fit: cover; object-position: top; display: block; }
-  @media (max-width: 767px) {
+  /* Bigger mockups for this section specifically (not the shared base
+     .phone-frame used elsewhere on the page) — clamp() so they grow to
+     fill the empty space on wide desktops without overflowing the
+     narrower md-breakpoint tablet widths. aspect-ratio replaces the
+     fixed phone-screen height so it stays proportional as width scales. */
+  .mscroll-phones .phone-frame { width: clamp(200px, 19vw, 280px); }
+  .mscroll-phones .phone-frame .phone-screen { height: auto; aspect-ratio: 9 / 19.5; }
+  .mscroll-phones .laptop-frame { width: clamp(300px, 27vw, 420px); }
+  /* The sticky-text/scrolling-media two-column layout now only activates
+     at xl (1280px) — see the xl: classes below — specifically because at
+     200px phone + 300px laptop + gap, anything narrower than ~1160px of
+     viewport couldn't fit both side by side in a 50/50 split without
+     overflowing (confirmed: this was already broken pre-existing at
+     768–1160px, not something this pass introduced). Below xl the section
+     falls back to the single full-width column (inline chapter text
+     stacked above its phone/laptop pair), which has enough room for the
+     row layout down to phone width — only true small phones need to
+     stack phone-over-laptop instead of side by side. */
+  @media (max-width: 640px) {
     .mscroll-stage-block { margin-bottom: 3.5rem; }
     .mscroll-phones { flex-direction: column; }
-    .mscroll-phones .phone-frame { width: 150px; transform: none; }
-    .laptop-frame { width: 260px; max-width: 78vw; transform: none; }
+    .mscroll-phones .phone-frame { width: 190px; transform: none; }
+    .mscroll-phones .laptop-frame { width: 320px; max-width: 82vw; transform: none; }
+  }
+
+  /* Desktop "Every phone. Every build." scrollytelling: left-column chapter
+     text stays pinned via position:sticky while the right-column phone
+     pairs scroll past underneath at normal speed; an IntersectionObserver
+     crossfades which chapter's text is active as its phones cross the
+     viewport center. Mobile keeps the original simple stacked layout
+     (separate markup, .md:hidden / hidden.md:block split) untouched. */
+  @media (min-width: 768px) {
+    .mscroll-text-chapter {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+    }
+    .mscroll-text-chapter.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
   }
 </style>
+<!-- GA4 — real Measurement ID, property "A2H Agency Site". Keep in sync
+     with construction.html if this ever changes. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L9L2CVTSBB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L9L2CVTSBB');
+</script>
 </head>
 <body class="text-sand antialiased">
 
@@ -447,27 +653,104 @@
 </script>
 
 <!-- NAV -->
-<header class="fixed top-0 inset-x-0 z-50 border-b border-white/5 bg-ink/80 backdrop-blur-md">
-  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="#top" class="font-display text-xl tracking-tight text-sand">A2H<span class="text-copper">.</span></a>
-    <nav class="hidden md:flex items-center gap-8 text-sm text-fog">
-      <a href="#work" class="link-underline hover:text-sand transition-colors">Work</a>
-      <a href="#process" class="link-underline hover:text-sand transition-colors">Process</a>
-      <a href="#pricing" class="link-underline hover:text-sand transition-colors">Pricing</a>
-      <a href="#contact" class="link-underline hover:text-sand transition-colors">Contact</a>
-    </nav>
-    <a href="#contact" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-2.5 rounded-full">
-      Get My Free Audit
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 bg-ink/70 backdrop-blur-md transition-[box-shadow,background-color] duration-300">
+  <div class="h-px bg-gradient-to-r from-transparent via-copper-light/50 to-transparent"></div>
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
+    <a href="#top" class="font-display text-xl tracking-tight text-sand flex items-center gap-3 shrink-0">
+      A2H<span class="text-copper">.</span>
+      <span class="hidden lg:inline-flex items-center gap-1.5 text-[11px] font-sans font-medium tracking-wide text-fog border border-white/10 rounded-full pl-2 pr-2.5 py-1">
+        <span class="relative flex h-1.5 w-1.5">
+          <span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-live"></span>
+          <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-live"></span>
+        </span>
+        Open for new projects
+      </span>
     </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm text-fog">
+      <a href="#work" data-nav-link class="link-underline hover:text-sand transition-colors">Work</a>
+      <a href="#process" data-nav-link class="link-underline hover:text-sand transition-colors">Process</a>
+      <a href="#pricing" data-nav-link class="link-underline hover:text-sand transition-colors">Pricing</a>
+      <a href="#contact" data-nav-link class="link-underline hover:text-sand transition-colors">Contact</a>
+    </nav>
+    <div class="flex items-center gap-3 shrink-0">
+      <span class="cta-ring rounded-full p-[2px] hidden sm:inline-block">
+        <a href="#contact" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-2.5 rounded-full block">
+          Get My Free Audit
+        </a>
+      </span>
+      <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden h-10 w-10 flex items-center justify-center rounded-full border border-white/10 text-sand hover:border-copper-light/60 active:scale-95 transition-[border-color,transform] focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light focus-visible:outline-offset-2">
+        <svg id="menu-icon-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg id="menu-icon-close" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="md:hidden hidden border-t border-white/5 bg-ink/95 backdrop-blur-md">
+    <nav class="max-w-6xl mx-auto px-6 py-3 flex flex-col text-[15px]">
+      <a href="#work" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">Work</a>
+      <a href="#process" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">Process</a>
+      <a href="#pricing" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">Pricing</a>
+      <a href="#contact" class="mobile-nav-link py-3 text-fog hover:text-sand transition-colors">Contact</a>
+      <span class="cta-ring rounded-full p-[2px] inline-block mt-4 mb-1">
+        <a href="#contact" class="mobile-nav-link btn-primary shadow-btn block text-center bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-3 rounded-full">
+          Get My Free Audit
+        </a>
+      </span>
+    </nav>
   </div>
 </header>
 
 <!-- PERSISTENT FLOATING CTA (mobile) -->
 <div id="floating-cta" class="fixed bottom-6 right-6 z-40 pointer-events-none opacity-0 translate-y-4 transition-all duration-500 ease-out">
-  <a href="#contact" class="pointer-events-auto btn-primary shadow-floating bg-copper hover:bg-copper-light text-ink font-semibold pl-5 pr-6 py-3 rounded-full text-sm flex items-center gap-2 border border-black/10">
-    <span class="inline-flex h-2 w-2 rounded-full bg-ink/70"></span>
-    Get My Free Audit
-  </a>
+  <span class="cta-ring rounded-full p-[2px] inline-block pointer-events-auto">
+    <a href="#contact" class="btn-primary shadow-floating bg-copper hover:bg-copper-light text-ink font-semibold pl-5 pr-6 py-3 rounded-full text-sm flex items-center gap-2 border border-black/10">
+      <span class="inline-flex h-2 w-2 rounded-full bg-ink/70"></span>
+      Get My Free Audit
+    </a>
+  </span>
+</div>
+
+<!-- AI CHAT WIDGET -->
+<div class="fixed bottom-6 left-6 z-50">
+  <button id="chat-fab-btn" type="button" aria-label="Chat with the A2H AI Agent" aria-expanded="false" class="relative h-14 w-14 rounded-full bg-gradient-to-br from-copper to-brass shadow-floating flex items-center justify-center hover:scale-105 active:scale-95 transition-transform duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light focus-visible:outline-offset-2">
+    <span class="absolute -top-0.5 -right-0.5 flex h-3 w-3">
+      <span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-live"></span>
+      <span class="relative inline-flex h-3 w-3 rounded-full bg-live border-2 border-ink"></span>
+    </span>
+    <span id="chat-fab-icon-open" class="text-[26px] leading-none select-none" aria-hidden="true">👾</span>
+    <svg id="chat-fab-icon-close" class="hidden" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#141110" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+</div>
+
+<!-- Nudge: draws attention to the chat widget once, then never again -->
+<div id="chat-nudge" class="fixed bottom-[4.75rem] left-[4.75rem] z-50 flex items-end gap-1.5 opacity-0 scale-90 pointer-events-none transition-all duration-400 ease-spring" style="transform-origin: 12px 100%;">
+  <svg width="38" height="46" viewBox="0 0 38 46" fill="none" class="text-copper-light shrink-0 -mb-1" aria-hidden="true">
+    <path d="M33 4C29 16 20 26 6 32" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-dasharray="1 6"/>
+    <path d="M12 27L5 32.5L13 35" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </svg>
+  <div class="relative bg-sand text-ink text-sm font-semibold pl-4 pr-7 py-2.5 rounded-2xl rounded-bl-sm shadow-floating whitespace-nowrap mb-2">
+    👋 Got questions? Click me!
+    <button id="chat-nudge-close" type="button" aria-label="Dismiss" class="absolute top-1 right-1 h-5 w-5 rounded-full bg-ink/10 hover:bg-ink/20 text-ink/70 text-[10px] leading-none flex items-center justify-center transition-colors">✕</button>
+  </div>
+</div>
+
+<div id="chat-panel" class="fixed bottom-24 left-6 z-50 flex flex-col overflow-hidden rounded-2xl bg-elevated border border-white/10 shadow-floating opacity-0 translate-y-3 pointer-events-none transition-all duration-300 ease-out" style="width: 360px; max-width: calc(100vw - 32px); height: min(520px, 70vh);">
+  <div class="flex items-center gap-2.5 px-4 py-3 border-b border-white/10 bg-surface/60 shrink-0">
+    <span class="h-8 w-8 rounded-full bg-gradient-to-br from-copper to-brass flex items-center justify-center text-base shrink-0">👾</span>
+    <div class="min-w-0 flex-1">
+      <p class="text-xs font-semibold text-sand truncate">A2H AI Agent</p>
+      <p class="text-[10px] text-live flex items-center gap-1"><span class="h-1.5 w-1.5 rounded-full bg-live inline-block"></span>Active now</p>
+    </div>
+    <button id="chat-close-btn" type="button" aria-label="Close chat" class="text-fog hover:text-sand transition-colors p-1">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div id="chat-thread-live" class="flex-1 overflow-y-auto px-3 py-3 space-y-2.5 text-[13px] leading-snug"></div>
+  <form id="chat-form" class="flex items-center gap-2 px-3 py-3 border-t border-white/10 shrink-0">
+    <input id="chat-input" type="text" autocomplete="off" maxlength="600" placeholder="Ask about pricing, turnaround…" class="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2.5 text-sm text-sand placeholder:text-fog/60 focus:border-copper-light/60 focus:outline-none transition-colors">
+    <button type="submit" aria-label="Send message" class="h-9 w-9 rounded-full bg-copper hover:bg-copper-light flex items-center justify-center shrink-0 transition-colors">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12L20 4L14 20L11 13L4 12Z" fill="#141110"/></svg>
+    </button>
+  </form>
 </div>
 
 <!-- HERO -->
@@ -483,13 +766,19 @@
       so you show up on Maps — no templates, no page-builder bloat, no ad spend required to get found.
     </p>
     <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="#contact" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px]">
-        Get My Free Audit
-      </a>
+      <span class="cta-ring rounded-full p-[2px] inline-block">
+        <a href="#contact" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">
+          Get My Free Audit
+        </a>
+      </span>
       <a href="#work" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">
         See Our Work
       </a>
     </div>
+    <a href="#pricing" class="reveal inline-flex items-center gap-2 mt-7 bg-white/5 border border-white/10 hover:border-copper-light/40 hover:bg-white/[0.08] rounded-full px-4 py-2 text-xs text-fog transition-colors">
+      <span class="h-1.5 w-1.5 rounded-full bg-live shrink-0"></span>
+      Flat-rate builds from <span class="text-sand font-semibold">$1,497</span> — see pricing
+    </a>
   </div>
 </section>
 
@@ -526,7 +815,11 @@
   <div class="max-w-5xl mx-auto reveal">
     <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3 text-center">What You Get</p>
     <h2 class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand text-center mb-10">Built to be found. No ad spend required.</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+    <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
+      <div class="rounded-2xl bg-elevated border border-copper-light/30 shadow-elevated px-4 py-7 text-center">
+        <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);">2–3 Days</p>
+        <p class="text-xs text-fog uppercase tracking-wider">Fully custom site + AI chatbot, live</p>
+      </div>
       <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center">
         <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);"><span data-countup="4">0</span>+</p>
         <p class="text-xs text-fog uppercase tracking-wider">Live sites shipped</p>
@@ -553,6 +846,7 @@
     <div class="reveal mb-12 text-center">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Selected Work</p>
       <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Real businesses, <span class="italic text-copper-light">real launches.</span></h2>
+      <p class="text-fog text-sm mt-4">Built by the same person now operating as A2H.</p>
     </div>
     <div class="reveal grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
@@ -574,6 +868,7 @@
           <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Construction</p>
           <h3 class="font-display text-lg text-sand mb-2">Solid State Construction</h3>
           <p class="text-sm text-fog leading-[1.6] flex-1">Full site rebuild for a growing construction crew — fast, mobile-first, built to convert.</p>
+          <p class="text-xs text-copper-light font-semibold mt-3 pt-3 border-t border-white/10">270+ organic clicks in 14 days · $0.74 CPC on a $200 budget</p>
         </div>
       </a>
 
@@ -650,134 +945,193 @@
     <div class="reveal">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Mobile-First, Always</p>
       <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Every build. <span class="italic text-copper-light">Every phone.</span></h2>
+      <p class="text-xs text-fog/70 uppercase tracking-wider mt-3 hidden md:block">Drag to tilt</p>
     </div>
   </div>
 </section>
 
 <section id="mobile-scroll" class="relative px-6">
   <div class="max-w-6xl mx-auto">
+    <div class="grid xl:grid-cols-2 gap-10 xl:gap-16">
 
-      <div class="reveal mscroll-stage-block">
-        <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center w-full">
-          <div>
+      <!-- Desktop-only: pinned chapter text, crossfades as phones scroll past on the right -->
+      <div class="hidden xl:block xl:sticky xl:top-32 xl:self-start" style="grid-column: 1; grid-row: 1 / span 4;">
+        <div class="relative" style="min-height: 260px;">
+          <div class="mscroll-text-chapter active" data-chapter="0">
             <p class="font-display text-3xl text-copper mb-4">01</p>
             <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Construction</p>
             <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Solid State <span class="italic text-copper-light">Construction.</span></h3>
             <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Full site rebuild for a growing construction crew — fast, mobile-first, built to convert.</p>
             <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Professional Plan</p>
           </div>
-          <div class="mscroll-phones flex items-start justify-center gap-6">
-            <div class="phone-frame">
-              <div class="phone-screen">
-                <div class="phone-notch"></div>
-                <video data-src="assets/portfolio/video/mobile-ssc.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Solid State Construction on mobile"></video>
-              </div>
-            </div>
-            <div class="laptop-frame">
-              <div class="laptop-chrome"><span></span><span></span><span></span></div>
-              <video data-src="assets/portfolio/video/laptop-ssc.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Solid State Construction on desktop"></video>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="reveal mscroll-stage-block">
-        <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center w-full">
-          <div>
+          <div class="mscroll-text-chapter" data-chapter="1">
             <p class="font-display text-3xl text-copper mb-4">02</p>
             <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Food &amp; Retail — Meat Shop</p>
             <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Quality Halal <span class="italic text-copper-light">Market.</span></h3>
             <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Custom build for a specialty grocer — product catalog, cart, and mobile-first checkout.</p>
             <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Premium Plan</p>
           </div>
-          <div class="mscroll-phones flex items-start justify-center gap-6">
-            <div class="phone-frame">
-              <div class="phone-screen">
-                <div class="phone-notch"></div>
-                <video data-src="assets/portfolio/video/mobile-qhm.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Quality Halal Market on mobile"></video>
-              </div>
-            </div>
-            <div class="laptop-frame">
-              <div class="laptop-chrome"><span></span><span></span><span></span></div>
-              <video data-src="assets/portfolio/video/laptop-qhm.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Quality Halal Market on desktop"></video>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="reveal mscroll-stage-block">
-        <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center w-full">
-          <div>
+          <div class="mscroll-text-chapter" data-chapter="2">
             <p class="font-display text-3xl text-copper mb-4">03</p>
             <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Biotech / Clinical Research</p>
             <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Azul Bio <span class="italic text-copper-light">Research.</span></h3>
             <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Credibility-first site for a clinical research network — built to convert sponsor &amp; patient inquiries.</p>
             <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Professional Plan</p>
           </div>
-          <div class="mscroll-phones flex items-start justify-center gap-6">
-            <div class="phone-frame">
-              <div class="phone-screen">
-                <div class="phone-notch"></div>
-                <video data-src="assets/portfolio/video/mobile-azulbio.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Azul Bio Research on mobile"></video>
-              </div>
-            </div>
-            <div class="laptop-frame">
-              <div class="laptop-chrome"><span></span><span></span><span></span></div>
-              <video data-src="assets/portfolio/video/laptop-azulbio.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Azul Bio Research on desktop"></video>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="reveal mscroll-stage-block">
-        <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center w-full">
-          <div>
+          <div class="mscroll-text-chapter" data-chapter="3">
             <p class="font-display text-3xl text-copper mb-4">04</p>
             <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Medical Billing</p>
             <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">CareMed<span class="italic text-copper-light">Bill.</span></h3>
             <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Trust-first site for a medical billing platform — built to convert practice-owner visitors into calls.</p>
             <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Premium Plan</p>
           </div>
-          <div class="mscroll-phones flex items-start justify-center gap-6">
-            <div class="phone-frame">
-              <div class="phone-screen">
-                <div class="phone-notch"></div>
-                <video data-src="assets/portfolio/video/mobile-caremedbill.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="CareMedBill on mobile"></video>
-              </div>
+        </div>
+      </div>
+
+      <!-- Chapter 1: Solid State Construction -->
+      <div class="reveal xl:hidden">
+        <p class="font-display text-3xl text-copper mb-4">01</p>
+        <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Construction</p>
+        <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Solid State <span class="italic text-copper-light">Construction.</span></h3>
+        <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Full site rebuild for a growing construction crew — fast, mobile-first, built to convert.</p>
+        <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Professional Plan</p>
+      </div>
+      <div class="reveal mscroll-stage-block mscroll-phones-chapter xl:col-start-2 xl:py-24 flex items-center justify-center" data-chapter="0">
+        <div class="mscroll-phones flex items-start justify-center gap-6">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video data-src="assets/portfolio/video/mobile-ssc.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Solid State Construction on mobile"></video>
             </div>
-            <div class="laptop-frame">
-              <div class="laptop-chrome"><span></span><span></span><span></span></div>
-              <video data-src="assets/portfolio/video/laptop-caremedbill.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="CareMedBill on desktop"></video>
-            </div>
+          </div>
+          <div class="laptop-frame">
+            <div class="laptop-chrome"><span></span><span></span><span></span></div>
+            <video data-src="assets/portfolio/video/laptop-ssc.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Solid State Construction on desktop"></video>
           </div>
         </div>
       </div>
 
+      <!-- Chapter 2: Quality Halal Market -->
+      <div class="reveal xl:hidden">
+        <p class="font-display text-3xl text-copper mb-4">02</p>
+        <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Food &amp; Retail — Meat Shop</p>
+        <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Quality Halal <span class="italic text-copper-light">Market.</span></h3>
+        <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Custom build for a specialty grocer — product catalog, cart, and mobile-first checkout.</p>
+        <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Premium Plan</p>
+      </div>
+      <div class="reveal mscroll-stage-block mscroll-phones-chapter xl:col-start-2 xl:py-24 flex items-center justify-center" data-chapter="1">
+        <div class="mscroll-phones flex items-start justify-center gap-6">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video data-src="assets/portfolio/video/mobile-qhm.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Quality Halal Market on mobile"></video>
+            </div>
+          </div>
+          <div class="laptop-frame">
+            <div class="laptop-chrome"><span></span><span></span><span></span></div>
+            <video data-src="assets/portfolio/video/laptop-qhm.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Quality Halal Market on desktop"></video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter 3: Azul Bio Research -->
+      <div class="reveal xl:hidden">
+        <p class="font-display text-3xl text-copper mb-4">03</p>
+        <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Biotech / Clinical Research</p>
+        <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Azul Bio <span class="italic text-copper-light">Research.</span></h3>
+        <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Credibility-first site for a clinical research network — built to convert sponsor &amp; patient inquiries.</p>
+        <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Professional Plan</p>
+      </div>
+      <div class="reveal mscroll-stage-block mscroll-phones-chapter xl:col-start-2 xl:py-24 flex items-center justify-center" data-chapter="2">
+        <div class="mscroll-phones flex items-start justify-center gap-6">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video data-src="assets/portfolio/video/mobile-azulbio.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Azul Bio Research on mobile"></video>
+            </div>
+          </div>
+          <div class="laptop-frame">
+            <div class="laptop-chrome"><span></span><span></span><span></span></div>
+            <video data-src="assets/portfolio/video/laptop-azulbio.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Azul Bio Research on desktop"></video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter 4: CareMedBill -->
+      <div class="reveal xl:hidden">
+        <p class="font-display text-3xl text-copper mb-4">04</p>
+        <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Medical Billing</p>
+        <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">CareMed<span class="italic text-copper-light">Bill.</span></h3>
+        <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Trust-first site for a medical billing platform — built to convert practice-owner visitors into calls.</p>
+        <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Premium Plan</p>
+      </div>
+      <div class="reveal mscroll-stage-block mscroll-phones-chapter xl:col-start-2 xl:py-24 flex items-center justify-center" data-chapter="3">
+        <div class="mscroll-phones flex items-start justify-center gap-6">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video data-src="assets/portfolio/video/mobile-caremedbill.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="CareMedBill on mobile"></video>
+            </div>
+          </div>
+          <div class="laptop-frame">
+            <div class="laptop-chrome"><span></span><span></span><span></span></div>
+            <video data-src="assets/portfolio/video/laptop-caremedbill.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="CareMedBill on desktop"></video>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
 <!-- PROCESS -->
 <section id="process" class="py-28 px-6 bg-surface/40 border-y border-white/5">
   <div class="max-w-5xl mx-auto">
-    <div class="reveal mb-14 text-center">
+    <div class="reveal mb-12 text-center">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">How It Works</p>
-      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Three steps. No fluff.</h2>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">The blueprint for <span class="italic text-copper-light">real results</span></h2>
     </div>
-    <div class="reveal grid sm:grid-cols-3 gap-10">
-      <div>
-        <p class="font-display text-3xl text-copper mb-3">01</p>
-        <h3 class="text-sand font-semibold mb-2">Free Audit</h3>
-        <p class="text-sm text-fog leading-[1.7]">We tear down your current site — speed, design, mobile experience — and show you exactly what's costing you visitors.</p>
-      </div>
-      <div>
-        <p class="font-display text-3xl text-copper mb-3">02</p>
-        <h3 class="text-sand font-semibold mb-2">Build</h3>
-        <p class="text-sm text-fog leading-[1.7]">Hand-coded, conversion-first site. No page builders. Mobile-first, fast, and wired to real lead capture from day one.</p>
-      </div>
-      <div>
-        <p class="font-display text-3xl text-copper mb-3">03</p>
-        <h3 class="text-sand font-semibold mb-2">Launch</h3>
-        <p class="text-sm text-fog leading-[1.7]">Fully tested, mobile-first, and live on your domain — with a walkthrough so you know exactly how to update it yourself.</p>
+
+    <div class="reveal relative rounded-[34px] p-[2px] blueprint-ring">
+      <div class="relative rounded-[32px] bg-gradient-to-br from-elevated to-ink p-8 sm:p-10 md:p-14 overflow-hidden">
+        <div class="grain"></div>
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(50% 40% at 15% 0%, rgba(201,112,47,0.14), transparent 60%), radial-gradient(45% 35% at 90% 100%, rgba(127,184,138,0.10), transparent 60%);"></div>
+
+        <div class="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8">
+          <div class="hidden lg:block absolute top-8 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-copper/50 via-brass/50 to-live/50"></div>
+
+          <div class="flex flex-col items-center text-center px-2 relative">
+            <div class="w-16 h-16 rounded-full border-2 border-copper/60 bg-ink flex items-center justify-center mb-6 relative z-10">
+              <span class="font-display text-lg font-semibold text-copper">01</span>
+            </div>
+            <h3 class="text-sand font-semibold text-sm mb-2">We audit what's broken</h3>
+            <p class="text-fog text-sm leading-[1.7]">Speed, mobile experience, what's costing you visitors — before a line of code changes.</p>
+          </div>
+
+          <div class="flex flex-col items-center text-center px-2 relative">
+            <div class="w-16 h-16 rounded-full border-2 border-copper-light/60 bg-ink flex items-center justify-center mb-6 relative z-10">
+              <span class="font-display text-lg font-semibold text-copper-light">02</span>
+            </div>
+            <h3 class="text-sand font-semibold text-sm mb-2">We build it hand-coded</h3>
+            <p class="text-fog text-sm leading-[1.7]">No page builders, no templates. A conversion-first site wired to real lead capture from day one.</p>
+          </div>
+
+          <div class="flex flex-col items-center text-center px-2 relative">
+            <div class="w-16 h-16 rounded-full border-2 border-brass/60 bg-ink flex items-center justify-center mb-6 relative z-10">
+              <span class="font-display text-lg font-semibold text-brass">03</span>
+            </div>
+            <h3 class="text-sand font-semibold text-sm mb-2">We launch and hand it off</h3>
+            <p class="text-fog text-sm leading-[1.7]">Fully tested, live on your domain, plus a walkthrough so you're never locked out of your own site.</p>
+          </div>
+
+          <div class="flex flex-col items-center text-center px-2 relative">
+            <div class="w-16 h-16 rounded-full border-2 border-live/60 bg-ink flex items-center justify-center mb-6 relative z-10">
+              <span class="font-display text-lg font-semibold text-live">04</span>
+            </div>
+            <h3 class="text-sand font-semibold text-sm mb-2">We prove it with data</h3>
+            <p class="text-fog text-sm leading-[1.7]">270+ organic clicks in 14 days at $0.74 CPC for Solid State Construction — real numbers, not projections.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -788,28 +1142,21 @@
   <div class="max-w-5xl mx-auto">
     <div class="reveal mb-6 text-center">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Transparent Pricing</p>
-      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">No upfront cost. One monthly plan.</h2>
-      <p class="text-fog text-sm">$0 due at signup &nbsp;·&nbsp; cancel anytime &nbsp;·&nbsp; hosting &amp; maintenance included</p>
-    </div>
-
-    <div class="reveal text-center mb-10">
-      <div id="price-toggle" class="inline-flex items-center gap-1 rounded-full bg-elevated border border-white/10 p-1">
-        <button type="button" id="toggle-monthly" class="price-toggle-btn active px-5 py-2 rounded-full text-sm font-semibold transition-colors">Monthly</button>
-        <button type="button" id="toggle-annual" class="price-toggle-btn px-5 py-2 rounded-full text-sm font-semibold transition-colors">Annual <span class="text-copper-light">· 2 months free</span></button>
-      </div>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">One flat price. Your site, live in 2–3 days.</h2>
+      <p class="text-fog text-sm">50% to start, 50% at launch &nbsp;·&nbsp; fixed scope, no surprises &nbsp;·&nbsp; Care Plan included with every tier</p>
     </div>
 
     <div class="reveal grid sm:grid-cols-3 gap-6 items-stretch mt-8">
       <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
         <h3 class="text-sand font-semibold text-lg mb-1">Starter</h3>
-        <p class="font-display text-3xl text-copper-light mb-4"><span class="price-amount" data-monthly="$349" data-annual="$3,490">$349</span><span class="price-period text-base text-fog font-sans" data-monthly="/mo" data-annual="/yr">/mo</span></p>
+        <p class="font-display text-3xl text-copper-light mb-4">$1,497<span class="price-period text-base text-fog font-sans"> one-time</span></p>
         <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
           <li>Custom 5-page website</li>
           <li>Mobile-first responsive design</li>
           <li>Contact form → email</li>
           <li>Google Business Profile / Maps setup</li>
-          <li>Hosting &amp; maintenance included</li>
           <li>90+ PageSpeed target</li>
+          <li><span class="text-sand">2 months of Care Plan included</span> — then $249/mo, cancel anytime</li>
         </ul>
         <div class="mt-5 pt-4 border-t border-white/10 space-y-2">
           <div class="flex items-center gap-2">
@@ -818,45 +1165,59 @@
           </div>
           <div class="flex items-center gap-2">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-copper-light shrink-0"><path d="M12 2C10 6 6 8 4 8C4 16 8 20 12 22C16 20 20 16 20 8C18 8 14 6 12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            <p class="text-xs text-fog">+ Add 3D Company Card for <span class="text-copper-light font-semibold">$99 flat</span></p>
+            <p class="text-xs text-fog">+ Add 3D Company Card for <span class="text-copper-light font-semibold">$99</span></p>
           </div>
         </div>
+        <a href="#contact" data-plan="Starter" class="plan-cta btn-primary block w-full text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm text-center mt-6">
+          Start with Starter
+        </a>
       </div>
       <div class="rounded-2xl bg-elevated border border-copper/40 shadow-floating card-hover p-8 flex flex-col relative">
         <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">Most Popular</span>
         <h3 class="text-sand font-semibold text-lg mb-1">Professional</h3>
-        <p class="font-display text-3xl text-copper-light mb-4"><span class="price-amount" data-monthly="$549" data-annual="$5,490">$549</span><span class="price-period text-base text-fog font-sans" data-monthly="/mo" data-annual="/yr">/mo</span></p>
+        <p class="font-display text-3xl text-copper-light mb-4">$2,997<span class="price-period text-base text-fog font-sans"> one-time</span></p>
         <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
           <li>Everything in Starter</li>
           <li>Up to 10 pages</li>
           <li>Custom animation &amp; interactions</li>
           <li>Photo &amp; copy integration</li>
-          <li>Priority support &amp; updates</li>
-          <li>3D Company Card included</li>
+          <li>Priority build &amp; launch support</li>
+          <li><span class="text-sand">3D interactive company card included</span></li>
+          <li><span class="text-sand">6 months of Care Plan included</span> — then $249/mo, cancel anytime</li>
         </ul>
         <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-copper-light shrink-0"><path d="M12 2C10 6 6 8 4 8C4 16 8 20 12 22C16 20 20 16 20 8C18 8 14 6 12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
           <p class="text-xs text-fog">+ Add AI Chatbot for <span class="text-copper-light font-semibold">$99/mo</span></p>
         </div>
+        <a href="#contact" data-plan="Professional" class="plan-cta btn-primary block w-full shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm text-center mt-6">
+          Go Professional
+        </a>
       </div>
       <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
         <h3 class="text-sand font-semibold text-lg mb-1">Premium</h3>
-        <p class="font-display text-3xl text-copper-light mb-4"><span class="price-amount" data-monthly="$849" data-annual="$8,490">$849</span><span class="price-period text-base text-fog font-sans" data-monthly="/mo" data-annual="/yr">/mo</span></p>
+        <p class="font-display text-3xl text-copper-light mb-4">$4,997<span class="price-period text-base text-fog font-sans"> one-time</span></p>
         <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
           <li>Everything in Professional</li>
           <li>Unlimited pages</li>
           <li>Custom functionality (booking, cart, calculators)</li>
-          <li>Monthly content edits included</li>
+          <li>Logo design &amp; brand refresh included</li>
+          <li>Full UI design pass + custom animation</li>
+          <li><span class="text-sand">AI Chatbot included</span> — not a $99/mo add-on</li>
+          <li><span class="text-sand">3D interactive company card included</span></li>
           <li>Dedicated launch support</li>
-          <li>3D Company Card included</li>
+          <li><span class="text-sand">12 months of Care Plan included</span> — then $249/mo, cancel anytime</li>
         </ul>
         <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-copper-light shrink-0"><path d="M12 2C10 6 6 8 4 8C4 16 8 20 12 22C16 20 20 16 20 8C18 8 14 6 12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-          <p class="text-xs text-fog">+ Add AI Chatbot for <span class="text-copper-light font-semibold">$99/mo</span></p>
+          <p class="text-xs text-fog">Full-service build — logo, UI, and motion all included</p>
         </div>
+        <a href="#contact" data-plan="Premium" class="plan-cta btn-primary block w-full text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm text-center mt-6">
+          Start with Premium
+        </a>
       </div>
     </div>
-    <p class="reveal text-center text-sm text-fog mt-8 mb-14">Every plan starts with the free audit — no setup fees, no long-term contract, cancel anytime.</p>
+    <p class="reveal text-center text-sm text-fog mt-8 mb-4">Every project starts with a free audit — fixed price, clear scope, no long-term contract.</p>
+    <p class="reveal text-center text-sm text-fog mb-14">Care Plan (hosting, maintenance &amp; monthly edits) is included with every tier — 2, 6, or 12 months depending on plan — then continues at <span class="text-copper-light font-semibold">$249/mo</span>, cancel anytime.</p>
 
     <div class="reveal">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5 text-center">See The Chatbot Upgrade In Action</p>
@@ -880,17 +1241,22 @@
                 <p class="text-[10px] text-live flex items-center gap-1"><span class="h-1.5 w-1.5 rounded-full bg-live inline-block"></span>Active · Responding now</p>
               </div>
             </div>
-            <div class="flex-1 overflow-hidden px-3 py-2 space-y-2 text-[11px] leading-snug">
+            <div id="chatbot-thread" class="flex-1 overflow-hidden px-3 py-2 space-y-2 text-[11px] leading-snug">
               <div class="chat-bubble flex justify-start">
                 <div class="max-w-[80%] bg-white/10 text-sand rounded-2xl rounded-bl-sm px-3 py-2">
                   Hey, saw your site — what's turnaround on a new build?
                   <p class="text-[9px] text-fog/70 mt-1">9:03 AM</p>
                 </div>
               </div>
+              <div class="typing-indicator flex justify-end">
+                <div class="bg-gradient-to-br from-[#0b93f6] to-[#0066e0] text-white rounded-2xl rounded-br-sm px-3.5 py-2.5 flex items-center gap-1">
+                  <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+                </div>
+              </div>
               <div class="chat-bubble flex justify-end">
-                <div class="max-w-[80%] bg-gradient-to-br from-copper to-brass text-ink rounded-2xl rounded-br-sm px-3 py-2">
-                  Hi! Most builds take 2–3 weeks. Want a free audit of your current site first?
-                  <p class="text-[9px] text-ink/60 mt-1 text-right">AI · 9:03 AM ✓✓</p>
+                <div class="max-w-[80%] bg-gradient-to-br from-[#0b93f6] to-[#0066e0] text-white rounded-2xl rounded-br-sm px-3 py-2">
+                  About 2–3 days — a fully custom site with an AI chatbot built in. Free audit?
+                  <p class="text-[9px] text-white/70 mt-1 text-right">AI · 9:03 AM ✓✓</p>
                 </div>
               </div>
               <div class="chat-bubble flex justify-start">
@@ -899,10 +1265,15 @@
                   <p class="text-[9px] text-fog/70 mt-1">9:04 AM</p>
                 </div>
               </div>
+              <div class="typing-indicator flex justify-end">
+                <div class="bg-gradient-to-br from-[#0b93f6] to-[#0066e0] text-white rounded-2xl rounded-br-sm px-3.5 py-2.5 flex items-center gap-1">
+                  <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+                </div>
+              </div>
               <div class="chat-bubble flex justify-end">
-                <div class="max-w-[80%] bg-gradient-to-br from-copper to-brass text-ink rounded-2xl rounded-br-sm px-3 py-2">
+                <div class="max-w-[80%] bg-gradient-to-br from-[#0b93f6] to-[#0066e0] text-white rounded-2xl rounded-br-sm px-3 py-2">
                   Got it — booking you a call. Tomorrow 2pm or 4pm?
-                  <p class="text-[9px] text-ink/60 mt-1 text-right">AI · 9:04 AM ✓✓</p>
+                  <p class="text-[9px] text-white/70 mt-1 text-right">AI · 9:04 AM ✓✓</p>
                 </div>
               </div>
             </div>
@@ -1066,11 +1437,11 @@
       <div class="card3d-stage">
         <div class="card3d card-qhm">
           <div class="card3d-face card3d-front photo">
-            <img src="assets/portfolio/qhm-card-front.jpg" alt="Quality Halal Market business card front" class="card3d-photo">
+            <img src="assets/portfolio/qhm-card-front.png" alt="Quality Halal Market business card front" class="card3d-photo">
             <div class="card3d-sheen"></div>
           </div>
-          <div class="card3d-face card3d-back photo">
-            <img src="assets/portfolio/qhm-card-back.jpg" alt="Quality Halal Market business card back" class="card3d-photo">
+          <div class="card3d-face card3d-back photo card3d-back-light">
+            <img src="assets/portfolio/qhm-card-back.png" alt="Quality Halal Market business card back" class="card3d-photo">
             <div class="card3d-sheen"></div>
           </div>
         </div>
@@ -1080,9 +1451,12 @@
   </div>
   <p class="reveal text-center text-xs text-fog/70 uppercase tracking-wider mt-2">Drag to rotate</p>
 
-  <div class="reveal flex items-center justify-center gap-2 mt-10">
-    <p class="font-display text-2xl text-copper-light">$99</p>
-    <p class="text-xs text-fog uppercase tracking-wider">flat fee per company card &middot; included free on Professional &amp; Premium</p>
+  <div class="reveal flex flex-col items-center gap-1 mt-10">
+    <div class="flex items-center gap-2">
+      <p class="font-display text-2xl text-copper-light">$99</p>
+      <p class="text-xs text-fog uppercase tracking-wider">one-time, Starter plan</p>
+    </div>
+    <p class="text-xs text-fog/70">Included free on Professional &amp; Premium</p>
   </div>
 </section>
 
@@ -1090,11 +1464,13 @@
 <section class="px-6 py-20">
   <div class="reveal max-w-5xl mx-auto rounded-3xl bg-gradient-to-r from-copper to-brass px-8 py-14 sm:py-16 text-center relative overflow-hidden shadow-floating">
     <div class="grain opacity-10"></div>
-    <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-ink mb-4 relative">Ready to see your <span class="italic">new site?</span></h2>
-    <p class="text-ink/80 max-w-xl mx-auto mb-8 relative">Free audit, no pressure, no obligation. We'll show you exactly what your current site is costing you.</p>
-    <a href="#contact" class="btn-primary relative inline-block bg-ink hover:bg-ink/90 text-sand font-semibold px-7 py-3.5 rounded-full text-[15px] shadow-btn">
-      Get My Free Audit
-    </a>
+    <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4 relative" style="text-shadow: 0 2px 10px rgba(20,17,16,0.35);">Ready to see your <span class="italic">new site?</span></h2>
+    <p class="text-sand/90 max-w-xl mx-auto mb-8 relative" style="text-shadow: 0 1px 6px rgba(20,17,16,0.3);">Free audit, no pressure, no obligation. We'll show you exactly what your current site is costing you.</p>
+    <span class="relative inline-block rounded-full p-[2px] cta-ring">
+      <a href="#contact" class="btn-primary relative inline-block bg-ink hover:bg-ink/90 text-sand font-semibold px-7 py-3.5 rounded-full text-[15px] shadow-btn">
+        Get My Free Audit
+      </a>
+    </span>
   </div>
 </section>
 
@@ -1104,10 +1480,14 @@
     <div class="reveal mb-10 text-center">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Free Site Audit</p>
       <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Let's see what your site is costing you</h2>
-      <p class="text-fog leading-[1.7]">Drop your site URL and we'll send back 3 specific things costing you visitors right now — no charge, no obligation.</p>
+      <p class="text-fog leading-[1.7]">Tell us about your business — with or without a site — and we'll show you exactly what's costing you customers right now. No charge, no obligation.</p>
     </div>
 
     <form id="audit-form" class="reveal rounded-2xl bg-elevated border border-white/5 shadow-floating p-8 space-y-5">
+      <input type="hidden" id="plan" name="plan" value="">
+      <p id="plan-banner" class="hidden items-center gap-2 bg-copper/10 border border-copper/30 rounded-lg px-4 py-2.5 text-sm text-copper-light">
+        Inquiring about the <span id="plan-banner-name" class="font-semibold"></span> plan
+      </p>
       <div class="grid sm:grid-cols-2 gap-5">
         <div>
           <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="name">Name</label>
@@ -1119,8 +1499,8 @@
         </div>
       </div>
       <div>
-        <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="url">Website URL</label>
-        <input required id="url" name="url" type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="yourbusiness.com">
+        <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="url">Website URL <span class="normal-case text-fog/60">(optional — leave blank if you don't have one yet)</span></label>
+        <input id="url" name="url" type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="yourbusiness.com">
       </div>
       <div class="grid sm:grid-cols-2 gap-5">
         <div>
@@ -1132,11 +1512,24 @@
           <input id="phone" name="phone" type="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
         </div>
       </div>
-      <button type="submit" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px]">
-        Get My Free Audit
-      </button>
+      <span class="cta-ring rounded-full p-[2px] block w-full">
+        <button type="submit" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px]">
+          Get My Free Audit
+        </button>
+      </span>
       <p id="form-status" class="text-sm text-center text-fog"></p>
     </form>
+
+    <div id="audit-success" class="hidden reveal rounded-2xl bg-elevated border border-white/5 shadow-floating p-8 sm:p-12 text-center">
+      <div class="mx-auto mb-5 h-14 w-14 rounded-full bg-live/15 border border-live/30 flex items-center justify-center">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L9.5 17L19 7" stroke="#7fb88a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-3">Thank You!</h3>
+      <p class="text-fog leading-[1.7] max-w-md mx-auto mb-8">Your request has been sent — check your inbox for a confirmation. We'll follow up with your free audit within 24 hours.</p>
+      <button type="button" id="audit-success-reset" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm">
+        Send Another Request
+      </button>
+    </div>
   </div>
 </section>
 
@@ -1144,13 +1537,66 @@
 <footer class="relative border-t border-white/5 pt-10 overflow-hidden">
   <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-fog px-6 pb-10 relative z-10">
     <p class="font-display text-sand text-base">A2H<span class="text-copper">.</span></p>
-    <p>haider@a2h.info · Texas-based</p>
+    <p>hhuss786512tx@gmail.com · Texas-based</p>
     <p class="text-fog/60">© 2026 A2H Agency</p>
   </div>
   <p class="ghost-word text-center select-none pointer-events-none" style="font-size: clamp(4rem, 16vw, 11rem); margin-bottom: -0.12em;" aria-hidden="true">A2H Agency</p>
 </footer>
 
 <script>
+  // Header: shrink/shadow once the hero's own background stops showing
+  // through the blur, and highlight whichever nav section is in view.
+  (function () {
+    const header = document.getElementById('site-header');
+    if (!header) return;
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    const navLinks = document.querySelectorAll('[data-nav-link]');
+    const sections = Array.from(navLinks)
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+    if (sections.length) {
+      const sectionIo = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          navLinks.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+          });
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      sections.forEach((section) => sectionIo.observe(section));
+    }
+  })();
+
+  // Mobile menu
+  (function () {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+    if (!btn || !menu) return;
+
+    const setOpen = (open) => {
+      btn.setAttribute('aria-expanded', String(open));
+      iconOpen.classList.toggle('hidden', open);
+      iconClose.classList.toggle('hidden', !open);
+      if (open) {
+        menu.classList.remove('hidden');
+        requestAnimationFrame(() => menu.classList.add('is-open'));
+      } else {
+        menu.classList.remove('is-open');
+        setTimeout(() => menu.classList.add('hidden'), 250);
+      }
+    };
+
+    btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
+    menu.querySelectorAll('.mobile-nav-link').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+  })();
+
   // Scroll reveal
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
@@ -1177,22 +1623,41 @@
   }, { threshold: 0.1, rootMargin: '200px 0px' });
   document.querySelectorAll('video.lazy-video').forEach(v => lazyVideoIo.observe(v));
 
-  // Chatbot mockup: stagger each bubble in with JS-driven delays rather than
+  // Chatbot mockup: stagger each item in with JS-driven delays rather than
   // CSS transition-delay nested under the parent .reveal fade — some browsers
   // fail to fire a child's delayed transition when the parent is fading in at
   // the same time, silently leaving alternating bubbles stuck at opacity 0.
+  // Typing-indicator items show a bouncing-dots bubble, then swap out for the
+  // real AI reply right after, so the thread reads as a live conversation.
   (function () {
-    const bubbles = document.querySelectorAll('.chat-bubble');
-    if (!bubbles.length) return;
+    const thread = document.getElementById('chatbot-thread');
+    if (!thread) return;
+    const items = Array.from(thread.children);
+    if (!items.length) return;
     const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const container = bubbles[0].closest('.reveal') || bubbles[0].parentElement;
+    const container = thread.closest('.reveal') || thread;
     const bubbleIo = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         bubbleIo.unobserve(entry.target);
-        bubbles.forEach((bubble, i) => {
-          if (noMotion) { bubble.classList.add('in'); return; }
-          setTimeout(() => bubble.classList.add('in'), 100 + i * 350);
+        if (noMotion) {
+          items.forEach(item => {
+            if (item.classList.contains('typing-indicator')) { item.style.display = 'none'; }
+            else { item.classList.add('in'); }
+          });
+          return;
+        }
+        let delay = 150;
+        items.forEach((item) => {
+          if (item.classList.contains('typing-indicator')) {
+            setTimeout(() => item.classList.add('in'), delay);
+            delay += 900;
+            setTimeout(() => { item.classList.remove('in'); item.style.display = 'none'; }, delay);
+            delay += 80;
+          } else {
+            setTimeout(() => item.classList.add('in'), delay);
+            delay += 450;
+          }
         });
       });
     }, { threshold: 0.15 });
@@ -1224,23 +1689,6 @@
   // Mobile preview: each company's chapter is a plain stacked section now —
   // it just scrolls into view normally and fades in via the .reveal observer
   // above, same as every other section on the page.
-
-  // Pricing toggle: Monthly / Annual (2 months free).
-  (function () {
-    const btnMonthly = document.getElementById('toggle-monthly');
-    const btnAnnual = document.getElementById('toggle-annual');
-    if (!btnMonthly || !btnAnnual) return;
-    const amounts = document.querySelectorAll('.price-amount');
-    const periods = document.querySelectorAll('.price-period');
-    const setPlan = (plan) => {
-      btnMonthly.classList.toggle('active', plan === 'monthly');
-      btnAnnual.classList.toggle('active', plan === 'annual');
-      amounts.forEach((el) => { el.textContent = el.dataset[plan]; });
-      periods.forEach((el) => { el.textContent = el.dataset[plan]; });
-    };
-    btnMonthly.addEventListener('click', () => setPlan('monthly'));
-    btnAnnual.addEventListener('click', () => setPlan('annual'));
-  })();
 
   // 3D company card(s): drag to rotate, slow idle spin when untouched.
   document.querySelectorAll('.card3d').forEach((card) => {
@@ -1289,6 +1737,71 @@
     card.addEventListener('pointercancel', endDrag);
   });
 
+  // "Every build. Every phone." mockups: same drag-to-tilt interaction as
+  // the 3D company card, springing back to the baseline stagger on release.
+  // Matches the row-layout breakpoint (see the 640px media query) — below
+  // that, phones stack flat and skip the tilt.
+  if (window.matchMedia('(min-width: 641px)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.mscroll-phones .phone-frame, .mscroll-phones .laptop-frame').forEach((el) => {
+      const baseY = el.classList.contains('phone-frame') ? -18 : 30;
+      const baseRotZ = el.classList.contains('phone-frame') ? -3 : 3;
+      let dragging = false, startX = 0, startY = 0, rotX = 0, rotY = 0, baseRotX = 0, baseRotY = 0;
+
+      const setTransform = () => {
+        el.style.transform = `translateY(${baseY}px) rotate(${baseRotZ}deg) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+      };
+      setTransform();
+
+      el.addEventListener('pointerdown', (e) => {
+        dragging = true;
+        el.classList.add('dragging');
+        startX = e.clientX;
+        startY = e.clientY;
+        baseRotX = rotX;
+        baseRotY = rotY;
+        try { el.setPointerCapture(e.pointerId); } catch (err) {}
+      });
+      el.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        rotY = Math.max(-25, Math.min(25, baseRotY + dx * 0.3));
+        rotX = Math.max(-20, Math.min(20, baseRotX - dy * 0.3));
+        setTransform();
+      });
+      const endDrag = () => {
+        if (!dragging) return;
+        dragging = false;
+        el.classList.remove('dragging');
+        rotX = 0;
+        rotY = 0;
+        setTransform();
+      };
+      el.addEventListener('pointerup', endDrag);
+      el.addEventListener('pointerleave', endDrag);
+      el.addEventListener('pointercancel', endDrag);
+    });
+  }
+
+  // "Every build. Every phone." desktop scrollytelling: the left chapter
+  // text is pinned via CSS position:sticky (no JS needed for that part);
+  // this just crossfades which chapter's text is .active as its phone pair
+  // crosses the vertical center of the viewport while scrolling past.
+  (function () {
+    const textChapters = document.querySelectorAll('.mscroll-text-chapter');
+    const phoneChapters = document.querySelectorAll('.mscroll-phones-chapter');
+    if (!textChapters.length || !phoneChapters.length) return;
+    const setActive = (i) => {
+      textChapters.forEach((el) => el.classList.toggle('active', el.dataset.chapter === String(i)));
+    };
+    const chapterIo = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActive(entry.target.dataset.chapter);
+      });
+    }, { threshold: 0, rootMargin: '-45% 0px -45% 0px' });
+    phoneChapters.forEach((el) => chapterIo.observe(el));
+  })();
+
   // Count-up stat numbers on scroll into view.
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const countEls = document.querySelectorAll('[data-countup]');
@@ -1316,44 +1829,242 @@
   }, { threshold: 0.5 });
   countEls.forEach(el => countIo.observe(el));
 
-  // Form submission via Web3Forms (free, no backend needed).
-  // Sign up free at https://web3forms.com, get an access key, and replace
-  // WEB3FORMS_ACCESS_KEY below. Until then the form falls back to opening
-  // a mailto draft so no lead is ever silently lost.
-  const WEB3FORMS_ACCESS_KEY = "";
+  // Per-tier pricing CTAs carry the chosen plan into the audit form, so a
+  // visitor who already picked a tier doesn't land in a plan-agnostic form.
+  const planField = document.getElementById('plan');
+  const planBanner = document.getElementById('plan-banner');
+  const planBannerName = document.getElementById('plan-banner-name');
+  document.querySelectorAll('.plan-cta').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const plan = btn.dataset.plan;
+      if (!planField || !planBanner || !planBannerName) return;
+      planField.value = plan;
+      planBannerName.textContent = plan;
+      planBanner.classList.remove('hidden');
+      planBanner.classList.add('flex');
+    });
+  });
 
+  // Form submission via /api/audit-request (Vercel serverless function,
+  // proxies Resend — key never touches the browser). Sends a notification
+  // to Haider AND a speed-to-lead auto-reply to the visitor, then swaps
+  // the form for an inline "Thank You!" state so nobody leaves the page.
   const form = document.getElementById('audit-form');
   const status = document.getElementById('form-status');
+  const successBlock = document.getElementById('audit-success');
+  const successReset = document.getElementById('audit-success-reset');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  const showSuccess = () => {
+    form.classList.add('hidden');
+    successBlock.classList.remove('hidden');
+    successBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+
+  // Paid-traffic attribution: capture whatever ad-platform params brought
+  // this visitor in, once, on page load, so a lead who converts minutes or
+  // days later still carries them. sessionStorage survives the in-page
+  // form submit; a fresh session (new tab, different day) re-captures from
+  // the URL if present. Without this every lead looks organic once the
+  // querystring is gone, which is exactly the "can't tell if ads worked"
+  // trap workflows/paid_ads_client_acquisition.md calls out.
+  const AD_PARAMS = ['gclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  (function captureAdAttribution() {
+    const params = new URLSearchParams(window.location.search);
+    let found = false;
+    AD_PARAMS.forEach((key) => {
+      const val = params.get(key);
+      if (val) {
+        sessionStorage.setItem('a2h_' + key, val);
+        found = true;
+      }
+    });
+    if (found) sessionStorage.setItem('a2h_landing_page', window.location.pathname);
+  })();
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(form).entries());
-
-    if (!WEB3FORMS_ACCESS_KEY) {
-      const body = `Business: ${data.business}%0AURL: ${data.url}%0APhone: ${data.phone}%0A%0ARequesting a free site audit.`;
-      window.location.href = `mailto:haider@a2h.info?subject=Free Audit Request — ${encodeURIComponent(data.business)}&body=${body}`;
-      status.textContent = "Opening your email client to send the request…";
-      return;
-    }
+    AD_PARAMS.concat(['landing_page']).forEach((key) => {
+      const val = sessionStorage.getItem('a2h_' + key);
+      if (val) data[key] = val;
+    });
 
     status.textContent = "Sending…";
+    submitBtn.disabled = true;
+
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ access_key: WEB3FORMS_ACCESS_KEY, subject: `Free Audit Request — ${data.business}`, ...data }),
+      const res = await fetch('/api/audit-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
       });
-      const result = await res.json();
+      const result = await res.json().catch(() => ({}));
+
       if (result.success) {
-        status.textContent = "Got it — we'll send your audit within 24 hours.";
+        status.textContent = '';
+        if (typeof gtag === 'function') {
+          gtag('event', 'generate_lead', {
+            plan: data.plan || '',
+            source: data.utm_source || (data.gclid ? 'google_ads' : 'organic'),
+          });
+        }
         form.reset();
+        showSuccess();
+        return;
+      }
+
+      if (result.reason === 'not_configured') {
+        // Backend isn't wired up yet — fall back to mailto so no lead is
+        // ever silently lost, same safety net as before.
+        // Every interpolated value is URI-encoded individually — a raw
+        // "&" or "%" in a name/business field could otherwise inject
+        // extra mailto parameters (e.g. a stray "&cc=").
+        const enc = encodeURIComponent;
+        const planLine = data.plan ? `Plan: ${enc(data.plan)}%0A` : '';
+        const body = `${planLine}Business: ${enc(data.business)}%0AURL: ${enc(data.url || 'none yet')}%0APhone: ${enc(data.phone)}%0A%0ARequesting a free site audit.`;
+        window.location.href = `mailto:hhuss786512tx@gmail.com?subject=${enc(`Free Audit Request — ${data.business}`)}&body=${body}`;
+        status.textContent = "Opening your email client to send the request…";
       } else {
-        status.textContent = "Something went wrong. Email haider@a2h.info directly.";
+        status.textContent = "Something went wrong. Email hhuss786512tx@gmail.com directly.";
       }
     } catch (err) {
-      status.textContent = "Something went wrong. Email haider@a2h.info directly.";
+      status.textContent = "Something went wrong. Email hhuss786512tx@gmail.com directly.";
+    } finally {
+      submitBtn.disabled = false;
     }
   });
+
+  successReset && successReset.addEventListener('click', () => {
+    successBlock.classList.add('hidden');
+    form.classList.remove('hidden');
+    planBanner && planBanner.classList.add('hidden');
+    planBanner && planBanner.classList.remove('flex');
+  });
+
+  // Live AI chat widget — talks to /api/chat (Vercel serverless function
+  // proxying Gemini, key never touches the browser).
+  (function () {
+    const fabBtn = document.getElementById('chat-fab-btn');
+    const iconOpen = document.getElementById('chat-fab-icon-open');
+    const iconClose = document.getElementById('chat-fab-icon-close');
+    const panel = document.getElementById('chat-panel');
+    const closeBtn = document.getElementById('chat-close-btn');
+    const thread = document.getElementById('chat-thread-live');
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('chat-input');
+    if (!fabBtn || !panel || !form) return;
+
+    const history = [];
+    let opened = false;
+    let sending = false;
+
+    const scrollToBottom = () => { thread.scrollTop = thread.scrollHeight; };
+
+    const addBubble = (role, text) => {
+      const row = document.createElement('div');
+      row.className = 'flex ' + (role === 'user' ? 'justify-end' : 'justify-start');
+      const bubble = document.createElement('div');
+      bubble.className = 'chat-live-bubble ' + (role === 'user' ? 'user' : 'ai');
+      bubble.style.whiteSpace = 'pre-wrap';
+      bubble.textContent = text;
+      row.appendChild(bubble);
+      thread.appendChild(row);
+      scrollToBottom();
+    };
+
+    let typingEl = null;
+    const showTyping = () => {
+      typingEl = document.createElement('div');
+      typingEl.className = 'flex justify-start';
+      typingEl.innerHTML = '<div class="chat-live-bubble ai flex items-center gap-1 py-2.5"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>';
+      thread.appendChild(typingEl);
+      scrollToBottom();
+    };
+    const hideTyping = () => { if (typingEl) { typingEl.remove(); typingEl = null; } };
+
+    // Nudge: a "click me" callout with an arrow, so visitors notice the
+    // widget instead of scrolling straight past it. Shows on every page
+    // load (not just once) per explicit instruction.
+    const nudge = document.getElementById('chat-nudge');
+    const nudgeClose = document.getElementById('chat-nudge-close');
+    const dismissNudge = () => {
+      if (!nudge) return;
+      nudge.classList.remove('show');
+      fabBtn.classList.remove('nudging');
+    };
+    if (nudge && !opened) {
+      setTimeout(() => {
+        if (panel.classList.contains('open')) return;
+        nudge.classList.add('show');
+        fabBtn.classList.add('nudging');
+        // Being fixed-position, the nudge can land on top of whatever CTA/form
+        // control the visitor has scrolled to (confirmed: it covered the
+        // audit-form submit button on mobile) — dismiss on their first scroll
+        // rather than blocking clicks on content it happens to overlap.
+        window.addEventListener('scroll', dismissNudge, { once: true, passive: true });
+      }, 2200);
+      setTimeout(dismissNudge, 11000);
+    }
+    nudgeClose && nudgeClose.addEventListener('click', (e) => { e.stopPropagation(); dismissNudge(); });
+
+    const openPanel = () => {
+      panel.classList.add('open');
+      fabBtn.setAttribute('aria-expanded', 'true');
+      iconOpen.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+      dismissNudge();
+      if (!opened) {
+        opened = true;
+        addBubble('ai', "Hi! I'm the A2H AI Agent. Ask me about pricing, turnaround, or what's included — or click \"Get My Free Audit\" to get started.");
+      }
+      setTimeout(() => input && input.focus(), 300);
+    };
+    nudge && nudge.addEventListener('click', () => openPanel());
+    const closePanel = () => {
+      panel.classList.remove('open');
+      fabBtn.setAttribute('aria-expanded', 'false');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    };
+
+    fabBtn.addEventListener('click', () => {
+      panel.classList.contains('open') ? closePanel() : openPanel();
+    });
+    closeBtn && closeBtn.addEventListener('click', closePanel);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const message = input.value.trim();
+      if (!message || sending) return;
+      sending = true;
+      input.value = '';
+      addBubble('user', message);
+      history.push({ role: 'user', text: message });
+      showTyping();
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message, history: history.slice(-6) }),
+        });
+        const data = await res.json();
+        hideTyping();
+        const reply = (data && data.reply) || "Sorry, something went wrong — please use the contact form below.";
+        addBubble('ai', reply);
+        history.push({ role: 'ai', text: reply });
+      } catch (err) {
+        hideTyping();
+        addBubble('ai', "Something went wrong on my end — please use the contact form below and Haider will get back to you directly.");
+      } finally {
+        sending = false;
+      }
+    });
+  })();
 </script>
 </body>
 </html>
