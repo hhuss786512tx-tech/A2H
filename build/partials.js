@@ -193,17 +193,27 @@ function scripts() {
     }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
     els.forEach(function (el) { io.observe(el); });
 
-    // Safety net: anything still hidden after load — because it was never
-    // scrolled past, or the observer never fired — is shown rather than left
-    // as invisible text. Content must never be unreachable.
-    window.addEventListener('load', function () {
-      setTimeout(function () {
-        els.forEach(function (el) {
-          var r = el.getBoundingClientRect();
-          if (r.top < window.innerHeight && !el.classList.contains('in')) el.classList.add('in');
-        });
-      }, 300);
-    });
+    // Safety sweep: since .reveal starts hidden, an observer miss means copy
+    // the visitor can never read. Anything already scrolled past or currently
+    // in view gets revealed outright, on every scroll and resize.
+    var sweep = function () {
+      var vh = window.innerHeight;
+      els.forEach(function (el) {
+        if (el.classList.contains('in')) return;
+        var r = el.getBoundingClientRect();
+        if (r.top < vh * 0.95) { el.classList.add('in'); io.unobserve(el); }
+      });
+    };
+    var queued = false;
+    var onScroll = function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () { queued = false; sweep(); });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    window.addEventListener('load', sweep);
+    sweep();
   })();
 
   // Footer year — never goes stale

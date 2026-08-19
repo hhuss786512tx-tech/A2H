@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- Tailwind is compiled ahead of time by tailwind.config.js (see README).
      Rebuild after changing any utility class:  npm run build:css -->
-<link rel="stylesheet" href="assets/tailwind.css?v=db8f1b92">
+<link rel="stylesheet" href="assets/tailwind.css?v=6e7f3446">
 <link rel="stylesheet" href="assets/site.css?v=697d826d">
 <!-- Gates the .reveal opacity:0 rule in site.css. If this never runs, the
      hiding rule never applies and all copy stays visible rather than being
@@ -1229,7 +1229,11 @@
     });
   })();
 
-  // Scroll reveal
+  // Scroll reveal.
+  // threshold 0 + a negative bottom margin rather than a fraction threshold:
+  // a fraction is measured against the element's own height, so a block
+  // taller than the viewport can never reach 0.15 and would stay invisible.
+  // Several sections here are exactly that tall.
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1238,8 +1242,35 @@
         io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
   revealEls.forEach(el => io.observe(el));
+
+  // Safety sweep. The observer alone was leaving a number of blocks stuck at
+  // opacity 0 on this page — long sections, elements that were display:none
+  // at load and only became visible at another breakpoint, and anything the
+  // callback simply never fired for. Since .reveal now starts hidden, a miss
+  // means copy the visitor can never read, so anything already scrolled past
+  // or currently in view gets revealed outright.
+  (function revealSweep() {
+    var sweep = function () {
+      var vh = window.innerHeight;
+      revealEls.forEach(function (el) {
+        if (el.classList.contains('in')) return;
+        var r = el.getBoundingClientRect();
+        if (r.top < vh * 0.95) { el.classList.add('in'); io.unobserve(el); }
+      });
+    };
+    var queued = false;
+    var onScroll = function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () { queued = false; sweep(); });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    window.addEventListener('load', sweep);
+    sweep();
+  })();
 
   // Portfolio phone/laptop screen-capture videos: don't fetch any of them
   // until their chapter is about to scroll into view, then play on a loop.
