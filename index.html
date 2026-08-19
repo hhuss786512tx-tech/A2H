@@ -138,6 +138,18 @@
     transform: translateY(-4px);
   }
 
+  /* Stat cards: lift + soft copper glow on hover, same recipe as SSC's
+     dark-mode button treatment (lift, brightened border, outer glow +
+     inset highlight) ported to A2H's own copper palette. */
+  .stat-card {
+    transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .stat-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(226,146,79,0.65);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.55), 0 0 22px rgba(226,146,79,0.4), inset 0 1px 1px rgba(255,248,239,0.12);
+  }
+
   .btn-primary {
     transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, background-color 0.25s ease;
   }
@@ -284,7 +296,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .reveal, .card-hover, .btn-primary, .marquee-track, .pulse-dot, .blueprint-ring, .cta-ring {
+    .reveal, .card-hover, .stat-card, .btn-primary, .marquee-track, .pulse-dot, .blueprint-ring, .cta-ring {
       animation: none !important;
       transition: none !important;
     }
@@ -893,27 +905,27 @@
     <span class="ember" style="left:87%; width:3px; height:3px; animation-duration:13s;  animation-delay:-1s;  --ember-drift:16px;"></span>
     <span class="ember" style="left:96%; width:4px; height:4px; animation-duration:9s;   animation-delay:-8s;  --ember-drift:-14px;"></span>
   </div>
-  <div class="max-w-5xl mx-auto reveal">
-    <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3 text-center">What You Get</p>
-    <h2 class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand text-center mb-10">Built to be found. No ad spend required.</h2>
+  <div class="max-w-5xl mx-auto">
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3 text-center">What You Get</p>
+    <h2 class="reveal font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand text-center mb-10">Built to be found. No ad spend required.</h2>
     <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
-      <div class="rounded-2xl bg-elevated border border-copper-light/30 shadow-elevated px-4 py-7 text-center">
+      <div class="stat-card reveal rounded-2xl bg-elevated border border-copper-light/30 shadow-elevated px-4 py-7 text-center" style="transition-delay:0ms">
         <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);">2–3 Days</p>
         <p class="text-xs text-fog uppercase tracking-wider">Fully custom site + AI chatbot, live</p>
       </div>
-      <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center">
+      <div class="stat-card reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center" style="transition-delay:90ms">
         <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);"><span data-countup="4">0</span>+</p>
         <p class="text-xs text-fog uppercase tracking-wider">Live sites shipped</p>
       </div>
-      <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center">
+      <div class="stat-card reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center" style="transition-delay:180ms">
         <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);"><span data-countup="90">0</span>+</p>
         <p class="text-xs text-fog uppercase tracking-wider">PageSpeed target, every build</p>
       </div>
-      <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center">
+      <div class="stat-card reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center" style="transition-delay:270ms">
         <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);">100%</p>
         <p class="text-xs text-fog uppercase tracking-wider">Hand-coded, zero templates</p>
       </div>
-      <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center">
+      <div class="stat-card reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center" style="transition-delay:360ms">
         <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);">Maps</p>
         <p class="text-xs text-fog uppercase tracking-wider">Google Business Profile included</p>
       </div>
