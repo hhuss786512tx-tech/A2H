@@ -18,30 +18,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          ink: '#141110',
-          surface: '#1b1613',
-          elevated: '#231c18',
-          copper: '#c9702f',
-          'copper-light': '#e2924f',
-          brass: '#b8823f',
-          sand: '#e9dfd2',
-          fog: '#a89a8c',
-          live: '#7fb88a',
-        },
-        fontFamily: {
-          display: ['Fraunces', 'serif'],
-          sans: ['Hanken Grotesk', 'sans-serif'],
-        },
-      },
-    },
-  }
-</script>
+<!-- Tailwind is compiled ahead of time by tailwind.config.js (see README).
+     Rebuild after changing any utility class:  npm run build:css -->
+<link rel="stylesheet" href="assets/tailwind.css">
 <style>
   :root { color-scheme: dark; }
   html { scroll-behavior: smooth; }
@@ -738,12 +717,24 @@
       return;
     }
 
+    // Play the full intro once per session only. A returning visitor — anyone
+    // who navigates to a sub-page and comes back, or reloads — has already
+    // seen it, and making them sit through ~3s of locked scroll again is a
+    // straight conversion tax. Deep links (?utm, #pricing) skip it outright.
+    var seen;
+    try { seen = sessionStorage.getItem('a2h_intro_seen'); } catch (e) { seen = null; }
+    if (seen || window.location.hash) {
+      cleanup();
+      return;
+    }
+    try { sessionStorage.setItem('a2h_intro_seen', '1'); } catch (e) {}
+
     var mark = document.getElementById('intro-mark');
     var spark = document.getElementById('intro-spark');
     var letters = Array.prototype.slice.call(mark.querySelectorAll('.intro-fire-letter'));
     var markRect = mark.getBoundingClientRect();
-    var stagger = 90;
-    var startDelay = 300;
+    var stagger = 60;
+    var startDelay = 150;
 
     letters.forEach(function (letter, i) {
       var delay = startDelay + i * stagger;
@@ -759,8 +750,8 @@
       }, delay + stagger * 0.8);
     });
 
-    var writeDone = startDelay + letters.length * stagger + 700;
-    var holdAfterWrite = 550;
+    var writeDone = startDelay + letters.length * stagger + 350;
+    var holdAfterWrite = 250;
     var exitAt = writeDone + holdAfterWrite;
     var dirs = ['exit-up', 'exit-down', 'exit-left', 'exit-right', 'exit-fade'];
     var dir = dirs[Math.floor(Math.random() * dirs.length)];
@@ -982,7 +973,7 @@
       </div>
       <div class="stat-card reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center" style="transition-delay:90ms">
         <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);"><span data-countup="4">0</span>+</p>
-        <p class="text-xs text-fog uppercase tracking-wider">Live sites shipped</p>
+        <p class="text-xs text-fog uppercase tracking-wider">Sites designed &amp; shipped</p>
       </div>
       <div class="stat-card reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center" style="transition-delay:180ms">
         <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);"><span data-countup="90">0</span>+</p>
@@ -1028,29 +1019,29 @@
           <span class="ml-2 text-xs text-fog/70 truncate">solidstatesconstruction.com</span>
         </div>
         <div class="h-36 overflow-hidden">
-          <img src="assets/portfolio/ssc.png" alt="Solid State Construction live website" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+          <img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/ssc.webp" alt="Solid State Construction live website" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
         </div>
         <div class="p-5 flex flex-col flex-1">
           <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Construction</p>
           <h3 class="font-display text-lg text-sand mb-2">Solid State Construction</h3>
           <p class="text-sm text-fog leading-[1.6] flex-1">Full site rebuild for a growing construction crew — fast, mobile-first, built to convert.</p>
-          <p class="text-xs text-copper-light font-semibold mt-3 pt-3 border-t border-white/10">270+ organic clicks in 14 days · $0.74 CPC on a $200 budget</p>
+          <p class="text-xs text-copper-light font-semibold mt-3 pt-3 border-t border-white/10">270+ clicks in 14 days · $0.74 cost per click on a $200 test budget</p>
         </div>
       </a>
 
       <a href="https://hhuss786512tx-tech.github.io/Quality-Halal-Market/" target="_blank" rel="noopener" class="group relative rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover overflow-hidden flex flex-col">
         <span class="absolute top-3 right-3 z-10 flex items-center gap-1.5 rounded-full bg-ink/90 border border-white/10 pl-2 pr-2.5 py-1">
-          <span class="relative flex h-1.5 w-1.5"><span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-live"></span><span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-live"></span></span>
-          <span class="text-[10px] font-semibold tracking-wide text-sand/80">LIVE</span>
+          <span class="relative flex h-1.5 w-1.5"><span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-fog/70"></span></span>
+          <span class="text-[10px] font-semibold tracking-wide text-sand/80">DEMO BUILD</span>
         </span>
         <div class="flex items-center gap-1.5 px-4 py-3 bg-surface border-b border-white/5">
           <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
           <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
           <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
-          <span class="ml-2 text-xs text-fog/70 truncate">Quality Halal Market</span>
+          <span class="ml-2 text-xs text-fog/70 truncate">hhuss786512tx-tech.github.io/Quality-Halal-Market</span>
         </div>
         <div class="h-36 overflow-hidden">
-          <img src="assets/portfolio/qhm.png" alt="Quality Halal Market live website" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+          <img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/qhm.webp" alt="Quality Halal Market demo build" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
         </div>
         <div class="p-5 flex flex-col flex-1">
           <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Food &amp; Retail — Meat Shop</p>
@@ -1071,7 +1062,7 @@
           <span class="ml-2 text-xs text-fog/70 truncate">azulbioresearch.com</span>
         </div>
         <div class="h-36 overflow-hidden">
-          <img src="assets/portfolio/azulbio.png" alt="Azul Bio Research live website" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+          <img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/azulbio.webp" alt="Azul Bio Research live website" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
         </div>
         <div class="p-5 flex flex-col flex-1">
           <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Biotech / Clinical Research</p>
@@ -1082,17 +1073,17 @@
 
       <a href="https://hhuss786512tx-tech.github.io/Caremedbill/" target="_blank" rel="noopener" class="group relative rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover overflow-hidden flex flex-col">
         <span class="absolute top-3 right-3 z-10 flex items-center gap-1.5 rounded-full bg-ink/90 border border-white/10 pl-2 pr-2.5 py-1">
-          <span class="relative flex h-1.5 w-1.5"><span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-live"></span><span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-live"></span></span>
-          <span class="text-[10px] font-semibold tracking-wide text-sand/80">LIVE</span>
+          <span class="relative flex h-1.5 w-1.5"><span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-fog/70"></span></span>
+          <span class="text-[10px] font-semibold tracking-wide text-sand/80">DEMO BUILD</span>
         </span>
         <div class="flex items-center gap-1.5 px-4 py-3 bg-surface border-b border-white/5">
           <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
           <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
           <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
-          <span class="ml-2 text-xs text-fog/70 truncate">CareMedBill — preview build</span>
+          <span class="ml-2 text-xs text-fog/70 truncate">hhuss786512tx-tech.github.io/Caremedbill</span>
         </div>
         <div class="h-36 overflow-hidden">
-          <img src="assets/portfolio/caremedbill.png" alt="CareMedBill live website" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+          <img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/caremedbill.webp" alt="CareMedBill demo build" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
         </div>
         <div class="p-5 flex flex-col flex-1">
           <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Medical Billing</p>
@@ -1306,7 +1297,7 @@
               <span class="font-display text-lg font-semibold text-live">04</span>
             </div>
             <h3 class="text-sand font-semibold text-sm mb-2">We prove it with data</h3>
-            <p class="text-fog text-sm leading-[1.7]">270+ organic clicks in 14 days at $0.74 CPC for Solid State Construction — real numbers, not projections.</p>
+            <p class="text-fog text-sm leading-[1.7]">270+ clicks in 14 days at $0.74 cost per click for Solid State Construction, on a $200 test budget — real numbers, not projections.</p>
           </div>
         </div>
       </div>
@@ -1561,24 +1552,24 @@
   <div class="marquee-mask">
     <div class="showcase-track flex items-center gap-8 w-max px-6">
       <div class="flex items-center gap-8">
-        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img src="assets/portfolio/ssc.png" alt="Solid State Construction desktop view"></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-ssc-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-ssc.jpg" alt="Solid State Construction mobile view" class="phone-scroll-img"></div></div>
-        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img src="assets/portfolio/qhm.png" alt="Quality Halal Market desktop view"></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-qhm-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-qhm.jpg" alt="Quality Halal Market mobile view" class="phone-scroll-img"></div></div>
-        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img src="assets/portfolio/azulbio.png" alt="Azul Bio Research desktop view"></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-azulbio-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-azulbio.jpg" alt="Azul Bio Research mobile view" class="phone-scroll-img"></div></div>
-        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img src="assets/portfolio/caremedbill.png" alt="CareMedBill desktop view"></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-caremedbill-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-caremedbill.jpg" alt="CareMedBill mobile view" class="phone-scroll-img"></div></div>
+        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/ssc.webp" alt="Solid State Construction desktop view"></div>
+        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img width="390" height="844" loading="lazy" decoding="async" src="assets/portfolio/mobile-ssc-menu.webp" alt="" class="phone-interaction-frame" aria-hidden="true"><img width="390" height="4200" loading="lazy" decoding="async" src="assets/portfolio/mobile-ssc.webp" alt="Solid State Construction mobile view" class="phone-scroll-img"></div></div>
+        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/qhm.webp" alt="Quality Halal Market desktop view"></div>
+        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img width="390" height="844" loading="lazy" decoding="async" src="assets/portfolio/mobile-qhm-menu.webp" alt="" class="phone-interaction-frame" aria-hidden="true"><img width="390" height="4200" loading="lazy" decoding="async" src="assets/portfolio/mobile-qhm.webp" alt="Quality Halal Market mobile view" class="phone-scroll-img"></div></div>
+        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/azulbio.webp" alt="Azul Bio Research desktop view"></div>
+        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img width="390" height="844" loading="lazy" decoding="async" src="assets/portfolio/mobile-azulbio-menu.webp" alt="" class="phone-interaction-frame" aria-hidden="true"><img width="390" height="4200" loading="lazy" decoding="async" src="assets/portfolio/mobile-azulbio.webp" alt="Azul Bio Research mobile view" class="phone-scroll-img"></div></div>
+        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/caremedbill.webp" alt="CareMedBill desktop view"></div>
+        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img width="390" height="844" loading="lazy" decoding="async" src="assets/portfolio/mobile-caremedbill-menu.webp" alt="" class="phone-interaction-frame" aria-hidden="true"><img width="390" height="4200" loading="lazy" decoding="async" src="assets/portfolio/mobile-caremedbill.webp" alt="CareMedBill mobile view" class="phone-scroll-img"></div></div>
       </div>
       <div class="flex items-center gap-8" aria-hidden="true">
-        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img src="assets/portfolio/ssc.png" alt=""></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-ssc-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-ssc.jpg" alt="" class="phone-scroll-img"></div></div>
-        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img src="assets/portfolio/qhm.png" alt=""></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-qhm-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-qhm.jpg" alt="" class="phone-scroll-img"></div></div>
-        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img src="assets/portfolio/azulbio.png" alt=""></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-azulbio-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-azulbio.jpg" alt="" class="phone-scroll-img"></div></div>
-        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img src="assets/portfolio/caremedbill.png" alt=""></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img src="assets/portfolio/mobile-caremedbill-menu.jpg" alt="" class="phone-interaction-frame" aria-hidden="true"><img src="assets/portfolio/mobile-caremedbill.jpg" alt="" class="phone-scroll-img"></div></div>
+        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/ssc.webp" alt=""></div>
+        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img width="390" height="844" loading="lazy" decoding="async" src="assets/portfolio/mobile-ssc-menu.webp" alt="" class="phone-interaction-frame" aria-hidden="true"><img width="390" height="4200" loading="lazy" decoding="async" src="assets/portfolio/mobile-ssc.webp" alt="" class="phone-scroll-img"></div></div>
+        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/qhm.webp" alt=""></div>
+        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img width="390" height="844" loading="lazy" decoding="async" src="assets/portfolio/mobile-qhm-menu.webp" alt="" class="phone-interaction-frame" aria-hidden="true"><img width="390" height="4200" loading="lazy" decoding="async" src="assets/portfolio/mobile-qhm.webp" alt="" class="phone-scroll-img"></div></div>
+        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/azulbio.webp" alt=""></div>
+        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img width="390" height="844" loading="lazy" decoding="async" src="assets/portfolio/mobile-azulbio-menu.webp" alt="" class="phone-interaction-frame" aria-hidden="true"><img width="390" height="4200" loading="lazy" decoding="async" src="assets/portfolio/mobile-azulbio.webp" alt="" class="phone-scroll-img"></div></div>
+        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/caremedbill.webp" alt=""></div>
+        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img width="390" height="844" loading="lazy" decoding="async" src="assets/portfolio/mobile-caremedbill-menu.webp" alt="" class="phone-interaction-frame" aria-hidden="true"><img width="390" height="4200" loading="lazy" decoding="async" src="assets/portfolio/mobile-caremedbill.webp" alt="" class="phone-scroll-img"></div></div>
       </div>
     </div>
   </div>
@@ -1624,11 +1615,11 @@
       <div class="card3d-stage">
         <div class="card3d card-ssc">
           <div class="card3d-face card3d-front photo">
-            <img src="assets/portfolio/ssc-card-front.jpg" alt="Solid State Construction business card front" class="card3d-photo">
+            <img width="900" height="354" loading="lazy" decoding="async" src="assets/portfolio/ssc-card-front.webp" alt="Solid State Construction business card front" class="card3d-photo">
             <div class="card3d-sheen"></div>
           </div>
           <div class="card3d-face card3d-back photo">
-            <img src="assets/portfolio/ssc-card-back.jpg" alt="Solid State Construction business card back" class="card3d-photo">
+            <img width="900" height="228" loading="lazy" decoding="async" src="assets/portfolio/ssc-card-back.webp" alt="Solid State Construction business card back" class="card3d-photo">
             <div class="card3d-sheen"></div>
           </div>
         </div>
@@ -1640,11 +1631,11 @@
       <div class="card3d-stage">
         <div class="card3d card-qhm">
           <div class="card3d-face card3d-front photo">
-            <img src="assets/portfolio/qhm-card-front.png" alt="Quality Halal Market business card front" class="card3d-photo">
+            <img width="760" height="452" loading="lazy" decoding="async" src="assets/portfolio/qhm-card-front.webp" alt="Quality Halal Market business card front" class="card3d-photo">
             <div class="card3d-sheen"></div>
           </div>
           <div class="card3d-face card3d-back photo card3d-back-light">
-            <img src="assets/portfolio/qhm-card-back.png" alt="Quality Halal Market business card back" class="card3d-photo">
+            <img width="760" height="448" loading="lazy" decoding="async" src="assets/portfolio/qhm-card-back.webp" alt="Quality Halal Market business card back" class="card3d-photo">
             <div class="card3d-sheen"></div>
           </div>
         </div>
