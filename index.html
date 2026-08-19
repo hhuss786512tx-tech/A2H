@@ -66,6 +66,32 @@
       radial-gradient(70% 60% at 50% 100%, rgba(20,17,16,0.9), #141110 70%);
   }
 
+  /* Hero embers: slow-rising warm sparks behind the headline — a nod to
+     "hand-coded" craftsmanship (forge/workshop) rather than another
+     spinning conic-gradient ring, since cta-ring/blueprint-ring already
+     own that motif elsewhere on the page. Pure CSS, one shared keyframe,
+     per-ember drift set via --ember-drift so no two paths match. */
+  .hero-embers { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+  .ember {
+    position: absolute;
+    bottom: 6%;
+    border-radius: 999px;
+    background: radial-gradient(circle at 35% 35%, #fff8ef, #e2924f 55%, transparent 75%);
+    box-shadow: 0 0 8px 1px rgba(226,146,79,0.5);
+    animation: ember-rise linear infinite;
+    will-change: transform, opacity;
+  }
+  @keyframes ember-rise {
+    0%   { transform: translate(0, 0) scale(0.6); opacity: 0; }
+    12%  { opacity: 0.85; }
+    55%  { transform: translate(var(--ember-drift, 16px), -280px) scale(1); }
+    88%  { opacity: 0.35; }
+    100% { transform: translate(calc(var(--ember-drift, 16px) * 1.6), -560px) scale(0.6); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-embers { display: none; }
+  }
+
   .shadow-elevated {
     box-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px -8px rgba(201,112,47,0.18), 0 2px 6px rgba(0,0,0,0.35);
   }
@@ -756,7 +782,23 @@
 <!-- HERO -->
 <section id="top" class="relative glow-copper pt-40 pb-28 px-6 overflow-hidden">
   <div class="grain"></div>
-  <div class="max-w-4xl mx-auto text-center relative">
+  <div class="hero-embers" aria-hidden="true">
+    <span class="ember" style="left:6%;  width:5px; height:5px; animation-duration:11s; animation-delay:-2s;  --ember-drift:22px;"></span>
+    <span class="ember" style="left:14%; width:3px; height:3px; animation-duration:8s;  animation-delay:-6s;  --ember-drift:-14px;"></span>
+    <span class="ember" style="left:22%; width:6px; height:6px; animation-duration:13s; animation-delay:-1s;  --ember-drift:10px;"></span>
+    <span class="ember" style="left:31%; width:4px; height:4px; animation-duration:9s;  animation-delay:-4.5s; --ember-drift:-20px;"></span>
+    <span class="ember" style="left:39%; width:3px; height:3px; animation-duration:10s; animation-delay:-8s;  --ember-drift:18px;"></span>
+    <span class="ember" style="left:47%; width:5px; height:5px; animation-duration:12s; animation-delay:-3s;  --ember-drift:-12px;"></span>
+    <span class="ember" style="left:56%; width:4px; height:4px; animation-duration:8.5s; animation-delay:-5.5s; --ember-drift:24px;"></span>
+    <span class="ember" style="left:64%; width:6px; height:6px; animation-duration:11.5s; animation-delay:-9s; --ember-drift:-16px;"></span>
+    <span class="ember" style="left:72%; width:3px; height:3px; animation-duration:9.5s; animation-delay:-2.5s; --ember-drift:14px;"></span>
+    <span class="ember" style="left:79%; width:5px; height:5px; animation-duration:13.5s; animation-delay:-7s; --ember-drift:-22px;"></span>
+    <span class="ember" style="left:86%; width:4px; height:4px; animation-duration:10.5s; animation-delay:-4s; --ember-drift:12px;"></span>
+    <span class="ember" style="left:92%; width:3px; height:3px; animation-duration:8s;  animation-delay:-1.5s; --ember-drift:-18px;"></span>
+    <span class="ember" style="left:10%; width:4px; height:4px; animation-duration:14s; animation-delay:-10s; --ember-drift:16px;"></span>
+    <span class="ember" style="left:97%; width:5px; height:5px; animation-duration:9s;  animation-delay:-6.5s; --ember-drift:-10px;"></span>
+  </div>
+  <div class="max-w-4xl mx-auto text-center relative z-[1]">
     <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Websites &amp; Google Maps Listings for Contractors, Medical Practices &amp; Local Retail</p>
     <h1 class="reveal font-display text-[2.75rem] leading-[1.1] sm:text-6xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">
       Websites that turn strangers into <span class="italic text-copper-light">paying customers.</span>
