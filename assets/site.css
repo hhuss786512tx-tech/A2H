@@ -1,0 +1,661 @@
+/* A2H shared styles — extracted from the index.html <style> block so every
+   page (home, work, pricing, process, industry landing pages, legal) renders
+   from one source instead of duplicating ~650 lines each. Tailwind utilities
+   load first via assets/tailwind.css; these rules layer on top. */
+
+  :root { color-scheme: dark; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #141110;
+    font-family: 'Hanken Grotesk', sans-serif;
+  }
+  .font-display { font-family: 'Fraunces', serif; }
+
+  .grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .glow-copper {
+    background:
+      radial-gradient(60% 50% at 15% 0%, rgba(201,112,47,0.22), transparent 60%),
+      radial-gradient(50% 40% at 90% 20%, rgba(184,130,63,0.14), transparent 60%),
+      radial-gradient(70% 60% at 50% 100%, rgba(20,17,16,0.9), #141110 70%);
+  }
+
+  /* Embers: slow-rising warm sparks — a nod to "hand-coded" craftsmanship
+     (forge/workshop) rather than another spinning conic-gradient ring,
+     since cta-ring/blueprint-ring already own that motif elsewhere on the
+     page. One shared keyframe, parameterized by custom properties so the
+     hero gets a bright, energetic version and other sections get a quiet
+     ambient one instead of copy-pasted variants. Per-ember drift/duration
+     set inline so no two paths match. */
+  .hero-embers, .ambient-embers { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+  .ember {
+    position: absolute;
+    bottom: 6%;
+    border-radius: 999px;
+    background: radial-gradient(circle at 35% 35%, #fff8ef, #e2924f 55%, transparent 75%);
+    box-shadow: 0 0 8px 1px rgba(226,146,79,0.5);
+    animation: ember-rise linear infinite;
+    will-change: transform, opacity;
+    --ember-peak: 0.85;
+    --ember-rise: -280px;
+    --ember-drift: 16px;
+  }
+  @keyframes ember-rise {
+    0%   { transform: translate(0, 0) scale(0.55); opacity: 0; }
+    12%  { opacity: var(--ember-peak); }
+    55%  { transform: translate(var(--ember-drift), var(--ember-rise)) scale(1); }
+    88%  { opacity: calc(var(--ember-peak) * 0.4); }
+    100% { transform: translate(calc(var(--ember-drift) * 1.6), calc(var(--ember-rise) * 2)) scale(0.55); opacity: 0; }
+  }
+  /* Hero: bigger, brighter, faster — the flagship version. A few
+     .ember-spark ones run white-hot for punch instead of every ember
+     being equally bright. */
+  .hero-embers .ember { box-shadow: 0 0 16px 3px rgba(226,146,79,0.7); }
+  .hero-embers .ember.ember-spark {
+    background: radial-gradient(circle at 35% 35%, #ffffff, #fff8ef 45%, #e2924f 70%, transparent 82%);
+    box-shadow: 0 0 24px 6px rgba(255,248,239,0.85);
+  }
+  /* Other sections: same motion, dialed way down so it reads as texture,
+     not a second hero. */
+  .ambient-embers .ember { --ember-peak: 0.65; --ember-rise: -220px; box-shadow: 0 0 12px 2px rgba(226,146,79,0.55); }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-embers, .ambient-embers { display: none; }
+  }
+
+  .shadow-elevated {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px -8px rgba(201,112,47,0.18), 0 2px 6px rgba(0,0,0,0.35);
+  }
+  .shadow-floating {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.45), 0 24px 48px -12px rgba(201,112,47,0.28);
+  }
+  .shadow-btn {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.3), 0 8px 20px -6px rgba(201,112,47,0.45);
+  }
+
+  .ease-spring { transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+  .ease-smooth { transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
+
+  /* Scoped to .js, which an inline <head> script adds immediately. If that
+     script never runs — JS disabled, a parse error earlier in the page, a
+     blocked script — the hiding rule never applies and every .reveal block
+     renders normally. Unscoped, a single JS failure would leave most of the
+     page's copy permanently invisible at opacity 0. */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+  }
+  .js .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .card-hover {
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s cubic-bezier(0.22,1,0.36,1), border-color 0.35s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Stat cards: lift + soft copper glow on hover, same recipe as SSC's
+     dark-mode button treatment (lift, brightened border, outer glow +
+     inset highlight) ported to A2H's own copper palette. */
+  .stat-card {
+    transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .stat-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(226,146,79,0.65);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.55), 0 0 22px rgba(226,146,79,0.4), inset 0 1px 1px rgba(255,248,239,0.12);
+  }
+
+  .btn-primary {
+    transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, background-color 0.25s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px) scale(1.015); }
+  .btn-primary:active { transform: translateY(0) scale(0.98); }
+
+  .link-underline {
+    background-image: linear-gradient(#e2924f, #e2924f);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s cubic-bezier(0.22,1,0.36,1);
+  }
+  .link-underline:hover { background-size: 100% 1px; }
+  [data-nav-link].active { color: #e9dfd2; background-size: 100% 1px; }
+
+  #site-header.is-scrolled { box-shadow: 0 8px 24px rgba(0,0,0,0.4); background-color: rgba(20,17,16,0.9); }
+
+  #mobile-menu { opacity: 0; transform: translateY(-8px); transition: opacity 0.25s ease, transform 0.25s ease; }
+  #mobile-menu.is-open { opacity: 1; transform: translateY(0); }
+
+  ::selection { background: #c9702f; color: #141110; }
+
+  input:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible {
+    outline: 2px solid #e2924f;
+    outline-offset: 2px;
+  }
+
+  /* Intro */
+  #intro-overlay {
+    transition: transform 0.75s cubic-bezier(0.76,0,0.24,1), opacity 0.6s ease;
+  }
+  #intro-overlay.exit-up { transform: translateY(-100%); }
+  #intro-overlay.exit-down { transform: translateY(100%); }
+  #intro-overlay.exit-left { transform: translateX(-100%); }
+  #intro-overlay.exit-right { transform: translateX(100%); }
+  #intro-overlay.exit-fade { opacity: 0; }
+
+  /* Intro: "A2H Agency" written letter by letter as if traced in fire —
+     each glyph starts as the same faint ghost-outline the footer's
+     ghost-word uses, then ignites (bright white-hot flash + copper/brass
+     glow) and settles to a warm ember glow instead of fully cooling back
+     to the outline, so the finished word stays legible before it exits. */
+  .intro-fire-letter {
+    display: inline-block;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(233,223,210,0.15);
+    text-shadow: none;
+  }
+  .intro-fire-letter.lit {
+    animation: fire-write 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  .intro-fire-space { display: inline-block; width: 0.3em; }
+  @keyframes fire-write {
+    0% {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(233,223,210,0.15);
+      text-shadow: none;
+    }
+    40% {
+      color: #fff8ef;
+      -webkit-text-stroke: 0px transparent;
+      text-shadow: 0 0 10px #fff8ef, 0 0 26px #e2924f, 0 0 46px #c9702f;
+    }
+    100% {
+      color: #e9dfd2;
+      -webkit-text-stroke: 0px transparent;
+      text-shadow: 0 0 6px rgba(226,146,79,0.7), 0 0 22px rgba(201,112,47,0.45);
+    }
+  }
+  .intro-spark {
+    position: absolute;
+    top: 50%; left: 0;
+    width: 10px; height: 10px;
+    border-radius: 999px;
+    background: radial-gradient(circle, #fff8ef, #e2924f 55%, transparent 75%);
+    box-shadow: 0 0 16px 5px rgba(226,146,79,0.85);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: left 0.1s linear, top 0.1s linear, opacity 0.15s ease;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .intro-fire-letter, .intro-spark { display: none; }
+  }
+
+  /* Marquee */
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+  .marquee-track {
+    animation: marquee 28s linear infinite;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Live status dot */
+  .pulse-dot {
+    animation: pulse-dot 2.2s cubic-bezier(0.4,0,0.6,1) infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(127,184,138,0.5); }
+    50% { box-shadow: 0 0 0 5px rgba(127,184,138,0); }
+  }
+
+  /* Results blueprint: rotating conic-gradient border, same trick jweis.com
+     uses on its "blueprint" card — a spinning --angle custom property driving
+     a conic-gradient, not a JS animation. */
+  @property --blueprint-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+  }
+  .blueprint-ring {
+    position: relative;
+    background: conic-gradient(from var(--blueprint-angle), transparent 0deg, transparent 270deg, #c9702f 300deg, #e2924f 320deg, #b8823f 340deg, #7fb88a 358deg, transparent 360deg);
+    animation: blueprint-spin 5s linear infinite;
+    will-change: --blueprint-angle;
+  }
+  .blueprint-ring::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 40px;
+    background: conic-gradient(from var(--blueprint-angle), transparent 0deg, transparent 280deg, #c9702f 310deg, #7fb88a 355deg, transparent 360deg);
+    filter: blur(16px);
+    opacity: 0.5;
+    z-index: -1;
+    pointer-events: none;
+  }
+  @keyframes blueprint-spin {
+    to { --blueprint-angle: 360deg; }
+  }
+
+  /* CTA banner button: same spinning conic-gradient trick as
+     .blueprint-ring, scaled down to a pill and sped up so the black
+     button reads as "lit up" against the orange card instead of just
+     sitting flat on it. */
+  @property --cta-ring-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+  }
+  .cta-ring {
+    position: relative;
+    border-radius: 999px;
+    background: conic-gradient(from var(--cta-ring-angle), transparent 0deg, transparent 250deg, #141110 285deg, #e2924f 315deg, #fff8ef 335deg, #e2924f 350deg, transparent 360deg);
+    animation: cta-ring-spin 2.5s linear infinite;
+    will-change: --cta-ring-angle;
+  }
+  .cta-ring::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 999px;
+    background: conic-gradient(from var(--cta-ring-angle), transparent 0deg, transparent 270deg, #e2924f 315deg, #fff8ef 335deg, #e2924f 350deg, transparent 360deg);
+    filter: blur(10px);
+    opacity: 0.75;
+    z-index: -1;
+    pointer-events: none;
+  }
+  @keyframes cta-ring-spin {
+    to { --cta-ring-angle: 360deg; }
+  }
+
+  /* Ghost footer wordmark */
+  .ghost-word {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(233,223,210,0.08);
+    line-height: 0.8;
+    user-select: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .card-hover, .stat-card, .btn-primary, .marquee-track, .pulse-dot, .blueprint-ring, .cta-ring {
+      animation: none !important;
+      transition: none !important;
+    }
+    .reveal, .js .reveal { opacity: 1; transform: none; }
+  }
+
+  /* Phone mockup */
+  .phone-frame {
+    width: 200px;
+    background: #0a0807;
+    border-radius: 2.25rem;
+    padding: 9px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5), 0 24px 48px -12px rgba(201,112,47,0.28), inset 0 0 0 1px rgba(255,255,255,0.06);
+    flex-shrink: 0;
+  }
+  .phone-screen {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    border-radius: 1.65rem;
+    overflow: hidden;
+    background: #141110;
+  }
+  .phone-screen.tall {
+    height: 500px;
+  }
+  /* On mobile, the dedicated carousel uses one big dominant card with peeks
+     of the next/previous card at the edges, matching how jweis.com does its
+     mobile testimonial carousel — it reads as more alive, pulls you to swipe. */
+  .phone-notch {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 76px;
+    height: 20px;
+    background: #0a0807;
+    border-radius: 999px;
+    z-index: 20;
+  }
+  .phone-scroll-img {
+    display: block;
+    width: 100%;
+    animation: phone-scroll 16s ease-in-out infinite alternate;
+  }
+  .phone-screen:hover .phone-scroll-img { animation-play-state: paused; }
+  @keyframes phone-scroll {
+    0%, 6% { transform: translateY(0); }
+    94%, 100% { transform: translateY(-76%); }
+  }
+  .phone-interaction-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    z-index: 5;
+    animation: interaction-flash 16s ease-in-out infinite;
+  }
+  .phone-screen:hover .phone-interaction-frame { animation-play-state: paused; }
+  @keyframes interaction-flash {
+    0%, 13% { opacity: 1; }
+    24%, 100% { opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .phone-interaction-frame { animation: none !important; opacity: 0 !important; }
+  }
+
+  /* Chatbot mockup */
+  .chat-bubble {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+  .chat-bubble.in { opacity: 1; transform: none; }
+
+  .typing-indicator {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .typing-indicator.in { opacity: 1; transform: none; }
+  .typing-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: currentColor;
+    opacity: 0.5;
+    animation: typing-bounce 1.1s ease-in-out infinite;
+  }
+  .typing-dot:nth-child(2) { animation-delay: 0.15s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  /* Live AI chat widget */
+  #chat-panel.open {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  #chat-thread-live::-webkit-scrollbar { width: 6px; }
+  #chat-thread-live::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 999px; }
+  .chat-live-bubble {
+    max-width: 82%;
+    padding: 0.5rem 0.75rem;
+    border-radius: 1rem;
+  }
+  .chat-live-bubble.user {
+    background: rgba(255,255,255,0.1);
+    color: #e9dfd2;
+    border-bottom-right-radius: 0.25rem;
+  }
+  .chat-live-bubble.ai {
+    background: linear-gradient(to bottom right, #0b93f6, #0066e0);
+    color: #fff;
+    border-bottom-left-radius: 0.25rem;
+  }
+  @media (max-width: 480px) {
+    #chat-panel { left: 12px !important; right: 12px !important; width: auto !important; }
+    /* Shorter reach + wider bubble than desktop: on short mobile viewports the
+       default 3-line-tall nudge overlapped the hero's secondary CTA/pricing
+       link underneath it (confirmed via bounding-box check against a2h.info
+       live) since pointer-events:auto on `.show` blocked clicks on that area. */
+    #chat-nudge { left: 4.25rem !important; bottom: 4.25rem !important; }
+    #chat-nudge .relative { white-space: normal; max-width: 176px; padding-top: 0.4rem; padding-bottom: 0.4rem; }
+  }
+  #chat-nudge.show {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+  #chat-fab-btn.nudging {
+    animation: chat-fab-wiggle 2.4s ease-in-out infinite;
+  }
+  @keyframes chat-fab-wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    4% { transform: rotate(-10deg); }
+    8% { transform: rotate(9deg); }
+    12% { transform: rotate(-6deg); }
+    16% { transform: rotate(3deg); }
+    20% { transform: rotate(0deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #chat-fab-btn.nudging { animation: none !important; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .phone-scroll-img { animation: none !important; }
+    .chat-bubble { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .typing-indicator { display: none !important; }
+  }
+
+  /* 3D company card */
+  .card3d-stage {
+    perspective: 1200px;
+  }
+  .card3d {
+    position: relative;
+    width: 340px;
+    height: 180px;
+    max-width: 84vw;
+    transform-style: preserve-3d;
+    cursor: grab;
+    touch-action: none;
+    will-change: transform;
+    transform: rotateX(-8deg) rotateY(18deg);
+  }
+  /* Sized to each card's own front/back photo proportions so nothing gets
+     cropped — object-fit: contain still needs a box in the right ballpark
+     or a face ends up letterboxed. SSC's front and back photos are both
+     900x354 (2.54:1) — the back was originally a 900x228 banner crop that
+     letterboxed hard inside this box; it's now been re-canvased (blurred
+     bleed of its own content, not a hard color) to the same 2.54:1 as the
+     front so both faces fill the box edge to edge with zero dead space. */
+  .card3d.card-ssc { width: 340px; height: 134px; }
+  .card3d.card-qhm { width: 340px; height: 204px; }
+  .card3d.dragging { cursor: grabbing; }
+  /* QHM's back face is a real photo of the (light-colored) card back with
+     its denim/table background cut out to transparent — the shared
+     .card3d-back dark-navy gradient was designed for a literal dark card
+     back and showed through the cutout as black voids, so this one photo
+     face overrides it to match the photo's own light paper tone instead. */
+  .card3d-back.card3d-back-light {
+    background: linear-gradient(155deg, #f3ece1 0%, #e9dfd2 100%);
+    color: #141110;
+  }
+  .card3d-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    backface-visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 20px 50px -12px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);
+  }
+  .card3d-front {
+    background: linear-gradient(155deg, #f3ece1 0%, #e9dfd2 100%);
+    color: #141110;
+  }
+  .card3d-back {
+    background: linear-gradient(155deg, #1b1613 0%, #141110 100%);
+    color: #e9dfd2;
+    border: 1px solid rgba(255,255,255,0.08);
+    transform: rotateY(180deg);
+  }
+  .card3d-face.photo { padding: 0; }
+  .card3d-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    position: relative;
+  }
+  .card3d-sheen {
+    position: absolute;
+    inset: -50%;
+    background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.28) 48%, transparent 60%);
+    pointer-events: none;
+    animation: card3d-sheen-move 5s ease-in-out infinite;
+  }
+  @keyframes card3d-sheen-move {
+    0%, 100% { transform: translateX(-30%); }
+    50% { transform: translateX(30%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card3d-sheen { animation: none; }
+  }
+
+  /* Desktop mockup */
+  .desktop-frame {
+    width: 460px;
+    border-radius: 0.85rem;
+    overflow: hidden;
+    background: #0a0807;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5), 0 24px 48px -12px rgba(201,112,47,0.28);
+    flex-shrink: 0;
+  }
+  .desktop-chrome {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 12px;
+    background: #1b1613;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .desktop-chrome span { width: 8px; height: 8px; border-radius: 999px; background: rgba(255,255,255,0.15); }
+  .desktop-frame img { width: 100%; height: 380px; object-fit: cover; object-position: top; display: block; }
+
+  /* Showcase reel (desktop + mobile mixed marquee) */
+  .showcase-track {
+    animation: showcase-scroll 46s linear infinite;
+  }
+  .showcase-track:hover { animation-play-state: paused; }
+  @keyframes showcase-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .marquee-track.reverse {
+    animation-direction: reverse;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .showcase-track { animation: none !important; }
+  }
+
+  /* Mobile preview: one company "chapter" per normal-flow section — the next
+     site's phone + laptop simply scroll into view like any other section,
+     each with its own scroll-triggered fade-in via the sitewide .reveal
+     observer. Real muted screen-capture video plays inside each mockup. */
+  .mscroll-stage-block { margin-bottom: 6rem; }
+  .mscroll-stage-block:last-child { margin-bottom: 0; }
+  .phone-screen video { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .laptop-frame {
+    width: 300px;
+    max-width: 60vw;
+    border-radius: 0.7rem;
+    overflow: hidden;
+    background: #0a0807;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 20px 50px -12px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);
+    flex-shrink: 0;
+  }
+  /* Drag-to-tilt, same interaction language as the 3D company card —
+     baseline stagger (translateY + rotate) still set by JS at rest, this
+     just adds the perspective + spring-back-on-release feel. */
+  .mscroll-phones { perspective: 1000px; }
+  .mscroll-phones .phone-frame,
+  .mscroll-phones .laptop-frame {
+    cursor: grab;
+    touch-action: none;
+    will-change: transform;
+    transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .mscroll-phones .phone-frame.dragging,
+  .mscroll-phones .laptop-frame.dragging {
+    cursor: grabbing;
+    transition: none;
+  }
+  .laptop-chrome {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 10px;
+    background: #1b1613;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .laptop-chrome span { width: 6px; height: 6px; border-radius: 999px; background: rgba(255,255,255,0.15); }
+  .laptop-frame video { width: 100%; height: auto; aspect-ratio: 1280 / 800; object-fit: cover; object-position: top; display: block; }
+  /* Bigger mockups for this section specifically (not the shared base
+     .phone-frame used elsewhere on the page) — clamp() so they grow to
+     fill the empty space on wide desktops without overflowing the
+     narrower md-breakpoint tablet widths. aspect-ratio replaces the
+     fixed phone-screen height so it stays proportional as width scales. */
+  .mscroll-phones .phone-frame { width: clamp(200px, 19vw, 280px); }
+  .mscroll-phones .phone-frame .phone-screen { height: auto; aspect-ratio: 9 / 19.5; }
+  .mscroll-phones .laptop-frame { width: clamp(300px, 27vw, 420px); }
+  /* The sticky-text/scrolling-media two-column layout now only activates
+     at xl (1280px) — see the xl: classes below — specifically because at
+     200px phone + 300px laptop + gap, anything narrower than ~1160px of
+     viewport couldn't fit both side by side in a 50/50 split without
+     overflowing (confirmed: this was already broken pre-existing at
+     768–1160px, not something this pass introduced). Below xl the section
+     falls back to the single full-width column (inline chapter text
+     stacked above its phone/laptop pair), which has enough room for the
+     row layout down to phone width — only true small phones need to
+     stack phone-over-laptop instead of side by side. */
+  @media (max-width: 640px) {
+    .mscroll-stage-block { margin-bottom: 3.5rem; }
+    .mscroll-phones { flex-direction: column; }
+    .mscroll-phones .phone-frame { width: 190px; transform: none; }
+    .mscroll-phones .laptop-frame { width: 320px; max-width: 82vw; transform: none; }
+  }
+
+  /* Desktop "Every phone. Every build." scrollytelling: left-column chapter
+     text stays pinned via position:sticky while the right-column phone
+     pairs scroll past underneath at normal speed; an IntersectionObserver
+     crossfades which chapter's text is active as its phones cross the
+     viewport center. Mobile keeps the original simple stacked layout
+     (separate markup, .md:hidden / hidden.md:block split) untouched. */
+  @media (min-width: 768px) {
+    .mscroll-text-chapter {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+    }
+    .mscroll-text-chapter.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
