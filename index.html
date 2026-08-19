@@ -937,23 +937,23 @@
     <div class="marquee-track flex items-center gap-16 w-max whitespace-nowrap">
       <div class="flex items-center gap-16">
         <span class="uppercase tracking-widest text-xs text-fog/70 shrink-0">Live sites we've shipped</span>
-        <span class="text-sand/80 text-sm">Solid State Construction</span>
+        <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" class="link-underline text-sand/80 hover:text-sand text-sm transition-colors">Solid State Construction</a>
         <span class="text-white/15">·</span>
-        <span class="text-sand/80 text-sm">Quality Halal Market</span>
+        <a href="https://hhuss786512tx-tech.github.io/Quality-Halal-Market/" target="_blank" rel="noopener" class="link-underline text-sand/80 hover:text-sand text-sm transition-colors">Quality Halal Market</a>
         <span class="text-white/15">·</span>
-        <span class="text-sand/80 text-sm">Azul Bio Research</span>
+        <a href="https://azulbioresearch.com" target="_blank" rel="noopener" class="link-underline text-sand/80 hover:text-sand text-sm transition-colors">Azul Bio Research</a>
         <span class="text-white/15">·</span>
-        <span class="text-sand/80 text-sm">CareMedBill</span>
+        <a href="https://hhuss786512tx-tech.github.io/Caremedbill/" target="_blank" rel="noopener" class="link-underline text-sand/80 hover:text-sand text-sm transition-colors">CareMedBill</a>
       </div>
       <div class="flex items-center gap-16" aria-hidden="true">
         <span class="uppercase tracking-widest text-xs text-fog/70 shrink-0">Live sites we've shipped</span>
-        <span class="text-sand/80 text-sm">Solid State Construction</span>
+        <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" tabindex="-1" class="link-underline text-sand/80 hover:text-sand text-sm transition-colors">Solid State Construction</a>
         <span class="text-white/15">·</span>
-        <span class="text-sand/80 text-sm">Quality Halal Market</span>
+        <a href="https://hhuss786512tx-tech.github.io/Quality-Halal-Market/" target="_blank" rel="noopener" tabindex="-1" class="link-underline text-sand/80 hover:text-sand text-sm transition-colors">Quality Halal Market</a>
         <span class="text-white/15">·</span>
-        <span class="text-sand/80 text-sm">Azul Bio Research</span>
+        <a href="https://azulbioresearch.com" target="_blank" rel="noopener" tabindex="-1" class="link-underline text-sand/80 hover:text-sand text-sm transition-colors">Azul Bio Research</a>
         <span class="text-white/15">·</span>
-        <span class="text-sand/80 text-sm">CareMedBill</span>
+        <a href="https://hhuss786512tx-tech.github.io/Caremedbill/" target="_blank" rel="noopener" tabindex="-1" class="link-underline text-sand/80 hover:text-sand text-sm transition-colors">CareMedBill</a>
       </div>
     </div>
   </div>
@@ -1867,16 +1867,22 @@
           });
           return;
         }
-        let delay = 150;
+        // Kept short on purpose: real visitors scroll past this in under a
+        // second. The old 900ms typing-hold + 450ms bubble stagger meant the
+        // second (blue) AI reply didn't appear until ~3.5s in — long enough
+        // that anyone who scrolled by at a normal pace, or paused briefly to
+        // screenshot it, only ever saw the grey user bubbles and an empty
+        // gap where the AI reply belongs. Every reply now lands under 2s.
+        let delay = 100;
         items.forEach((item) => {
           if (item.classList.contains('typing-indicator')) {
             setTimeout(() => item.classList.add('in'), delay);
-            delay += 900;
+            delay += 350;
             setTimeout(() => { item.classList.remove('in'); item.style.display = 'none'; }, delay);
-            delay += 80;
+            delay += 50;
           } else {
             setTimeout(() => item.classList.add('in'), delay);
-            delay += 450;
+            delay += 280;
           }
         });
       });
