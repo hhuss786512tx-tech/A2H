@@ -284,7 +284,15 @@
     to { --cta-ring-angle: 360deg; }
   }
 
-  /* Ghost footer wordmark */
+  /* Ghost footer wordmark — was relying on the <footer>'s own overflow:hidden
+     to contain the ambient embers, but .ambient-embers already clips itself
+     (position:absolute + inset:0 + overflow:hidden, see above), so that
+     footer-level clip was doing nothing for the embers and instead cutting
+     the bottom off this oversized, tight-line-height, negative-margined text
+     — no amount of scrolling could ever reveal the rest of it. footer keeps
+     overflow-x:hidden only (this text is wider than the viewport at some
+     sizes) so the full glyph height still paints and is reachable by scroll. */
+  footer { overflow-x: hidden; }
   .ghost-word {
     font-family: 'Fraunces', serif;
     font-style: italic;
@@ -292,6 +300,42 @@
     -webkit-text-stroke: 1px rgba(233,223,210,0.08);
     line-height: 0.8;
     user-select: none;
+  }
+  /* Footer wordmark ignition — same fire-write keyframe the intro overlay
+     uses, replayed once the word scrolls into view instead of on page load
+     (it sits at the very bottom of the page, off-screen for most of a
+     visit). Starts at the same dim ghost-outline .ghost-word already used
+     before this existed, so at rest it looks identical to before. */
+  .footer-fire-letter {
+    display: inline-block;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(233,223,210,0.08);
+    text-shadow: none;
+  }
+  .footer-fire-letter.lit {
+    animation: fire-write 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  .footer-fire-space { display: inline-block; width: 0.3em; }
+  .footer-fire-spark {
+    position: absolute;
+    top: 50%; left: 0;
+    width: 10px; height: 10px;
+    border-radius: 999px;
+    background: radial-gradient(circle, #fff8ef, #e2924f 55%, transparent 75%);
+    box-shadow: 0 0 16px 5px rgba(226,146,79,0.85);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: left 0.1s linear, top 0.1s linear, opacity 0.15s ease;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .footer-fire-letter.lit {
+      animation: none;
+      color: #e9dfd2;
+      -webkit-text-stroke: 0px transparent;
+      text-shadow: 0 0 6px rgba(226,146,79,0.7), 0 0 22px rgba(201,112,47,0.45);
+    }
+    .footer-fire-spark { display: none; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -666,4 +710,17 @@
       opacity: 1;
       pointer-events: auto;
     }
+  }
+
+  /* Lead popup: fires on a timer (see leadPopupScript in partials.js), so the
+     fade/scale-in is the only cue it just appeared rather than always having
+     been there. Overlay itself just toggles hidden/flex — animating opacity
+     on a fixed, full-viewport backdrop is what actually needs the reduced-
+     motion guard, not the card. */
+  #lead-popup-overlay { opacity: 0; transition: opacity 0.25s ease; }
+  #lead-popup-overlay.is-open { opacity: 1; }
+  #lead-popup-card { transform: translateY(10px) scale(0.98); transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+  #lead-popup-overlay.is-open #lead-popup-card { transform: translateY(0) scale(1); }
+  @media (prefers-reduced-motion: reduce) {
+    #lead-popup-overlay, #lead-popup-card { transition: none; }
   }

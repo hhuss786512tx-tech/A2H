@@ -270,6 +270,7 @@ PAGES.push({
 // ---- book-a-call.html
 PAGES.push({
   slug: 'book-a-call.html',
+  noPopup: true,
   title: 'Book A Call — Schedule Time With A2H | A2H',
   description: 'Pick a time to talk through your free website score and what a hand-coded build would look like for your business. No forms, no phone tag.',
   jsonLd: [ORG],
@@ -280,6 +281,38 @@ PAGES.push({
     <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Book A Call</p>
     <h1 class="reveal font-display text-[2.5rem] leading-[1.1] sm:text-5xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">Let's talk about <span class="italic text-copper-light">your site.</span></h1>
     <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto">Pick a time that works for you — no forms, no phone tag. 30 minutes to walk through your free score and what a build would look like for your business.</p>
+  </div>
+</section>`,
+    `<section class="px-6 pb-24">
+  <div class="max-w-3xl mx-auto reveal">
+    <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated overflow-hidden">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/hhuss786512tx/new-meeting?hide_gdpr_banner=1&background_color=231c18&text_color=e9dfd2&primary_color=c9702f" style="min-width:280px;height:700px;"></div>
+    </div>
+    <p class="reveal text-center text-xs text-fog mt-6">Prefer email instead? Reach us at <a href="mailto:${EMAIL}" class="link-underline text-copper-light">${EMAIL}</a>.</p>
+  </div>
+</section>`,
+  ].join('\n\n'),
+  extraScripts: `<script src="https://assets.calendly.com/assets/external/widget.js" async></script>`,
+});
+
+// ---- mockup.html — where the lead popup (partials.js leadPopup) sends
+// someone right after they submit their info.
+PAGES.push({
+  slug: 'mockup.html',
+  noPopup: true,
+  title: "Let's Build Your Free Mockup — A2H",
+  description: "You're in. Pick a time and we'll show up with a real homepage mockup built for your business — free, no obligation.",
+  jsonLd: [ORG],
+  body: [
+    `<section class="relative glow-copper pt-36 pb-16 px-6 overflow-hidden">
+  <div class="grain"></div>
+  <div class="max-w-3xl mx-auto text-center relative">
+    <div class="reveal mx-auto mb-7 h-14 w-14 rounded-full bg-live/15 border border-live/30 flex items-center justify-center">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L9.5 17L19 7" stroke="#7fb88a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">You're In</p>
+    <h1 class="reveal font-display text-[2.5rem] leading-[1.1] sm:text-5xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">Let's build a free <span class="italic text-copper-light">website mockup</span> for you.</h1>
+    <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto">Pick a time below. We'll spend the next 2–3 days building a real homepage mockup for your business, then walk you through it live — no charge, no obligation either way.</p>
   </div>
 </section>`,
     `<section class="px-6 pb-24">
@@ -417,6 +450,7 @@ PAGES.push({
 // ---- privacy.html
 PAGES.push({
   slug: 'privacy.html',
+  noPopup: true,
   title: 'Privacy Policy | A2H Agency',
   description: 'How A2H Agency collects, uses and protects the information you submit through this website.',
   jsonLd: [ORG],
@@ -450,6 +484,7 @@ PAGES.push({
 // ---- terms.html
 PAGES.push({
   slug: 'terms.html',
+  noPopup: true,
   title: 'Terms of Service | A2H Agency',
   description: 'The terms that apply to using the A2H Agency website and engaging A2H for website design and development work.',
   jsonLd: [ORG],
@@ -480,6 +515,7 @@ PAGES.push({
 // ---- thank-you.html
 PAGES.push({
   slug: 'thank-you.html',
+  noPopup: true,
   title: 'Thank You — Your Free Score Request Is In | A2H',
   description: 'Your free website score request has been received. We follow up within 24 hours.',
   jsonLd: [],
@@ -538,7 +574,7 @@ fs.readdirSync(OUT)
 console.log(`\n  stylesheet cache-busting: site.css?v=${cssHashes['assets/site.css']}  tailwind.css?v=${cssHashes['assets/tailwind.css']}`);
 
 // robots.txt + sitemap.xml
-const urls = ['index.html', ...PAGES.map((p) => p.slug)].filter((s) => s !== 'thank-you.html');
+const urls = ['index.html', ...PAGES.map((p) => p.slug)].filter((s) => s !== 'thank-you.html' && s !== 'mockup.html');
 const today = new Date().toISOString().slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -554,6 +590,7 @@ fs.writeFileSync(path.join(OUT, 'sitemap.xml'), sitemap);
 fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *
 Allow: /
 Disallow: /thank-you.html
+Disallow: /mockup.html
 
 Sitemap: ${SITE}/sitemap.xml
 `);

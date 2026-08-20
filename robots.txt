@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /thank-you.html
+Disallow: /mockup.html
 
 Sitemap: https://a2h.info/sitemap.xml

@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/tailwind.css?v=61f4a80a">
-<link rel="stylesheet" href="assets/site.css?v=9c7d550f">
+<link rel="stylesheet" href="assets/site.css?v=737c2d9b">
 <script>document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">
 {
@@ -380,6 +380,41 @@
   </div>
 </footer>
 
+<div id="lead-popup-overlay" class="hidden fixed inset-0 z-[100] items-center justify-center bg-ink/80 backdrop-blur-sm px-4" role="dialog" aria-modal="true" aria-labelledby="lead-popup-heading">
+  <div id="lead-popup-card" class="relative w-full max-w-md rounded-2xl bg-elevated border border-white/10 shadow-floating p-7 sm:p-8">
+    <button type="button" id="lead-popup-close" aria-label="Close" class="absolute top-4 right-4 text-fog hover:text-sand transition-colors">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Quick Intro</p>
+    <h2 id="lead-popup-heading" class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-2">Let's get to know you.</h2>
+    <p class="text-sm text-fog leading-[1.6] mb-6">Tell us a bit about your business and we'll put together a free website mockup made just for you — no charge, no obligation.</p>
+    <form id="lead-popup-form" class="space-y-4">
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-name">Name</label>
+        <input required id="lp-name" name="name" type="text" autocomplete="name" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Jane Rivera">
+      </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-business">Business Name</label>
+        <input required id="lp-business" name="business" type="text" autocomplete="organization" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Rivera Concrete Co.">
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-email">Email</label>
+          <input required id="lp-email" name="email" type="email" autocomplete="email" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="jane@rivera.com">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-phone">Phone</label>
+          <input id="lp-phone" name="phone" type="tel" autocomplete="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
+        </div>
+      </div>
+      <button type="submit" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
+        Get My Free Mockup
+      </button>
+      <p id="lead-popup-status" class="text-xs text-center text-fog" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+
 <script>
   // Header shadow on scroll
   (function () {
@@ -474,6 +509,76 @@
     if (found) { try { sessionStorage.setItem('a2h_landing_page', window.location.pathname); } catch (e) {} }
   })();
 </script>
+<script>
+  (function () {
+    var overlay = document.getElementById('lead-popup-overlay');
+    if (!overlay) return;
+    var form = document.getElementById('lead-popup-form');
+    var status = document.getElementById('lead-popup-status');
+    var closeBtn = document.getElementById('lead-popup-close');
+    var DISMISSED_KEY = 'a2h_popup_dismissed';
+    var SUBMITTED_KEY = 'a2h_popup_submitted';
+
+    function alreadyHandled() {
+      try {
+        return sessionStorage.getItem(DISMISSED_KEY) === '1' || localStorage.getItem(SUBMITTED_KEY) === '1';
+      } catch (e) { return false; }
+    }
+
+    function open() {
+      if (alreadyHandled()) return;
+      overlay.classList.remove('hidden');
+      overlay.classList.add('flex');
+      document.body.classList.add('overflow-hidden');
+      requestAnimationFrame(function () { overlay.classList.add('is-open'); });
+      var first = form.querySelector('input');
+      if (first) first.focus();
+    }
+
+    function close(remember) {
+      overlay.classList.remove('is-open');
+      document.body.classList.remove('overflow-hidden');
+      setTimeout(function () { overlay.classList.add('hidden'); overlay.classList.remove('flex'); }, 250);
+      if (remember) { try { sessionStorage.setItem(DISMISSED_KEY, '1'); } catch (e) {} }
+    }
+
+    closeBtn.addEventListener('click', function () { close(true); });
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(true); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) close(true);
+    });
+
+    if (!alreadyHandled()) setTimeout(open, 10000);
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      status.textContent = 'Sending…';
+      var payload = {
+        name: form.name.value,
+        business: form.business.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        landing_page: window.location.pathname,
+      };
+      ['gclid', 'fbclid', 'utm_source', 'utm_campaign'].forEach(function (k) {
+        try { var v = sessionStorage.getItem('a2h_' + k); if (v) payload[k] = v; } catch (e) {}
+      });
+      fetch('/api/mockup-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      }).then(function () {
+        try { localStorage.setItem(SUBMITTED_KEY, '1'); } catch (e) {}
+        window.location.href = '/mockup.html';
+      }).catch(function () {
+        btn.disabled = false;
+        status.textContent = 'Something went wrong — email us directly at hhuss786512tx@gmail.com.';
+      });
+    });
+  })();
+  </script>
 
 </body>
 </html>
