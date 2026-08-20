@@ -11,10 +11,10 @@ TURNAROUND: 2–3 days for a fully custom site, live.
 
 PROCESS: 1) Free Website Score — we score the visitor's current site (or their Google Business Profile if they don't have one yet) out of 100 on speed, mobile experience and lead capture, and show what's costing them customers. 2) Build — hand-coded, conversion-first, no page builders, mobile-first. 3) Launch — fully tested, live on their domain, with a walkthrough.
 
-PRICING (one-time, 50% to start / 50% at launch, fixed scope):
-- Starter — $1,497: custom 5-page website, mobile-first responsive design, contact form to email, Google Business Profile / Maps setup, 90+ PageSpeed target, 2 months of Care Plan included (then $249/mo). Add AI Chatbot for $99/mo.
-- Professional (Most Popular) — $2,997: everything in Starter, up to 10 pages, custom animation & interactions, photo & copy integration, priority build & launch support, 6 months of Care Plan included (then $249/mo). Add AI Chatbot for $99/mo.
-- Premium — $4,997: everything in Professional, unlimited pages, custom functionality (booking, cart, calculators), logo design & brand refresh included, full UI design pass + custom animation, AI Chatbot INCLUDED (not an add-on), 3D interactive company card included, dedicated launch support, 12 months of Care Plan included (then $249/mo).
+PRICING (fixed scope, quoted in writing before any money changes hands):
+- Starter — $1,500 one-time (50% to start, 50% at launch): custom 5-page website, mobile-first responsive design, contact form to email, Google Business Profile / Maps setup, 90+ PageSpeed target, 2 months of Care Plan included (then $249/mo). Add AI Chatbot for $99/mo.
+- Professional (Most Popular) — $3,000 one-time, or $500/mo for 4 months ($2,000 total): everything in Starter, up to 10 pages, custom animation & interactions, photo & copy integration, priority build & launch support, 6 months of Care Plan included (then $249/mo). Add AI Chatbot for $99/mo.
+- Premium — $5,000 one-time, or $875/mo for 4 months ($3,500 total): everything in Professional, unlimited pages, custom functionality (booking, cart, calculators), logo design & brand refresh included, full UI design pass + custom animation, AI Chatbot INCLUDED (not an add-on), 3D interactive company card included, dedicated launch support, 12 months of Care Plan included (then $249/mo).
 
 ADD-ONS: AI Website Chatbot $99/mo (any plan) — trained on the client's business, answers FAQs, qualifies visitors, captures leads 24/7. 3D interactive company card $400 per card — a drag-to-rotate 3D business card for the website. Care Plan $249/mo (any tier, cancel anytime) — hosting, maintenance, monthly edits.
 

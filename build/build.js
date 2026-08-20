@@ -134,8 +134,8 @@ PAGES.push({
 
 // ---- pricing.html
 const PRICING_FAQ = [
-  ['How does payment work?', 'Fifty percent to start and fifty percent at launch if you pay in full. Starter and Premium can also be spread over 4 monthly payments instead — the scope is fixed in writing before any money changes hands either way, so the number you are quoted is the number you pay.'],
-  ['Can I pay monthly instead of all at once?', 'Yes, on Starter and Premium. Starter is $500/mo for 4 months ($2,000 total) instead of $1,497 in full; Premium is $1,750/mo for 4 months ($7,000 total) instead of $4,997 in full. Paying in full is the cheaper route — the monthly option exists so the cost doesn\'t have to hit all at once.'],
+  ['How does payment work?', 'Starter is billed 50% to start and 50% at launch. Professional and Premium can be paid in full up front, or spread over 4 monthly payments instead — the scope is fixed in writing before any money changes hands either way, so the number you are quoted is the number you pay.'],
+  ['Can I pay monthly instead of all at once?', 'Yes, on Professional and Premium. Professional is $500/mo for 4 months ($2,000 total) instead of $3,000 in full; Premium is $875/mo for 4 months ($3,500 total) instead of $5,000 in full. Spreading it out is the cheaper route on those two tiers — Starter does not have a monthly option, but its 50/50 split already means you are never paying it all at once.'],
   ['What is the Care Plan?', 'Hosting, maintenance and monthly content edits. It is included free for 2, 6 or 12 months depending on your tier, then continues at $249/mo. You can cancel it at any time and keep your site.'],
   ['Do I own the site?', 'Yes, completely. It is hand-coded static files — there is no proprietary platform to be locked into, and you get a walkthrough at handoff so you are never dependent on us to make a change.'],
   ['How fast is "2–3 days"?', 'That is the build-and-launch window once we have your content, photos and brand assets in hand. Gathering those from you is usually the longer part, which is why the free score comes first.'],
@@ -145,8 +145,8 @@ const PRICING_FAQ = [
 
 PAGES.push({
   slug: 'pricing.html',
-  title: 'Pricing — Flat-Rate Websites from $1,497 | A2H',
-  description: 'Transparent flat-rate website pricing for Texas businesses: $1,497 Starter, $2,997 Professional, $4,997 Premium. Care Plan included, no long-term contract.',
+  title: 'Pricing — Flat-Rate Websites from $1,500 | A2H',
+  description: 'Transparent flat-rate website pricing for Texas businesses: $1,500 Starter, $3,000 Professional, $5,000 Premium. Care Plan included, no long-term contract.',
   jsonLd: [ORG, faqLd(PRICING_FAQ)],
   body: [
     hero({
@@ -350,7 +350,7 @@ const MEDICAL_FAQ = [
 PAGES.push({
   slug: 'medical.html',
   title: 'Websites for Texas Medical Practices & Clinics | A2H',
-  description: 'Credibility-first websites and Google Business Profile setup for Texas medical practices, dental offices and clinics. Flat pricing from $1,497.',
+  description: 'Credibility-first websites and Google Business Profile setup for Texas medical practices, dental offices and clinics. Flat pricing from $1,500.',
   jsonLd: [ORG, serviceLd('Website design for medical practices', 'Credibility-first websites and Google Business Profile setup for Texas medical and dental practices.', 'Medical practices and clinics'), faqLd(MEDICAL_FAQ)],
   body: [
     hero({
@@ -387,7 +387,7 @@ const RETAIL_FAQ = [
 PAGES.push({
   slug: 'retail.html',
   title: 'Websites for Texas Local Retail, Shops & Markets | A2H',
-  description: 'Websites and Google Maps setup for Texas shops, markets and local retail. Show hours, stock and directions, and win the "near me" search. From $1,497.',
+  description: 'Websites and Google Maps setup for Texas shops, markets and local retail. Show hours, stock and directions, and win the "near me" search. From $1,500.',
   jsonLd: [ORG, serviceLd('Website design for local retail', 'Websites and Google Business Profile setup for Texas shops, markets and local retail businesses.', 'Local retail businesses'), faqLd(RETAIL_FAQ)],
   body: [
     hero({
@@ -461,7 +461,7 @@ PAGES.push({
       { h: 'What this site is', p: ['This site describes services A2H Agency offers and lets you get a free website score. Nothing here is a binding offer or a contract for work. A project only begins once we have agreed scope, price and timeline with you in writing.'] },
       { h: 'Pricing', p: ['Prices shown are current at the time of publication and apply to the scope described. The price for your project is the one stated in your written scope agreement, which takes precedence over anything on this page. Prices may change for new projects without notice.'] },
       { h: 'Work and payment', p: [
-        'Projects are billed 50% before work starts and 50% on launch, unless you choose the monthly payment plan offered on the Starter and Premium tiers, in which case the total is billed in 4 equal monthly installments starting when work begins. Scope is fixed in writing beforehand; changes to scope after that are quoted separately before any additional work is done.',
+        'Projects are billed 50% before work starts and 50% on launch, unless you choose the monthly payment plan offered on the Professional and Premium tiers, in which case the total is billed in 4 equal monthly installments starting when work begins. Scope is fixed in writing beforehand; changes to scope after that are quoted separately before any additional work is done.',
         'The Care Plan is a month-to-month service you can cancel at any time. Cancelling it does not affect your ownership of the delivered site.',
       ] },
       { h: 'Ownership', p: [

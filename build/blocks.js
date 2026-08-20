@@ -104,10 +104,8 @@ ${list.map(projectCard).join('\n')}
 const TIERS = [
   {
     name: 'Starter',
-    price: '$1,497',
-    anchor: '$3,000',
-    plan: { monthly: '$500', months: 4, total: '$2,000' },
-    savings: '$503',
+    price: '$1,500',
+    note: '50% to start, 50% at launch',
     featured: false,
     cta: 'Start with Starter',
     features: [
@@ -122,7 +120,8 @@ const TIERS = [
   },
   {
     name: 'Professional',
-    price: '$2,997',
+    price: '$3,000',
+    note: 'or <span class="text-sand font-semibold">$500</span>/mo &times; 4 <span class="text-fog">($2,000 total)</span>',
     featured: true,
     cta: 'Go Professional',
     features: [
@@ -138,10 +137,8 @@ const TIERS = [
   },
   {
     name: 'Premium',
-    price: '$4,997',
-    anchor: '$9,997',
-    plan: { monthly: '$1,750', months: 4, total: '$7,000' },
-    savings: '$2,003',
+    price: '$5,000',
+    note: 'or <span class="text-sand font-semibold">$875</span>/mo &times; 4 <span class="text-fog">($3,500 total)</span>',
     featured: false,
     cta: 'Start with Premium',
     features: [
@@ -168,10 +165,9 @@ function tierCard(t) {
   const btn = t.featured
     ? 'plan-cta btn-primary block w-full shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm text-center mt-6'
     : 'plan-cta btn-primary block w-full text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm text-center mt-6';
-  const priceBlock = t.plan
-    ? `        <p class="text-sm text-fog/50 line-through mb-1">${t.anchor}</p>
-        <p class="font-display text-3xl text-copper-light mb-1">${t.plan.monthly}<span class="price-period text-base text-fog font-sans">/mo &times; ${t.plan.months}</span></p>
-        <p class="text-xs text-fog mb-4">or <span class="text-sand font-semibold">${t.price}</span> paid in full <span class="text-live">— save ${t.savings}</span></p>`
+  const priceBlock = t.note
+    ? `        <p class="font-display text-3xl text-copper-light mb-1">${t.price}<span class="price-period text-base text-fog font-sans"> one-time</span></p>
+        <p class="text-xs text-fog mb-4">${t.note}</p>`
     : `        <p class="font-display text-3xl text-copper-light mb-4">${t.price}<span class="price-period text-base text-fog font-sans"> one-time</span></p>`;
   return `      <div class="${shell}">
 ${t.featured ? '        <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">Most Popular</span>\n' : ''}        <h3 class="text-sand font-semibold text-lg mb-1">${t.name}</h3>
