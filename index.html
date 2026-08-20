@@ -21,8 +21,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- Tailwind is compiled ahead of time by tailwind.config.js (see README).
      Rebuild after changing any utility class:  npm run build:css -->
-<link rel="stylesheet" href="assets/tailwind.css?v=61f4a80a">
-<link rel="stylesheet" href="assets/site.css?v=737c2d9b">
+<link rel="stylesheet" href="assets/tailwind.css?v=c9b9b344">
+<link rel="stylesheet" href="assets/site.css?v=dc4bfc53">
 <!-- Gates the .reveal opacity:0 rule in site.css. If this never runs, the
      hiding rule never applies and all copy stays visible rather than being
      stranded at opacity 0. -->
@@ -1454,6 +1454,13 @@
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('in');
+        // Stat cards get an extra "ignite" flare on their number the moment
+        // they land, timed to roughly the middle of the spring pop-in so it
+        // reads as the number catching light, not a separate effect.
+        if (entry.target.classList.contains('stat-card')) {
+          const num = entry.target.querySelector('.font-display');
+          if (num) setTimeout(() => num.classList.add('ignite'), 200);
+        }
         io.unobserve(entry.target);
       }
     });
@@ -1472,7 +1479,14 @@
       revealEls.forEach(function (el) {
         if (el.classList.contains('in')) return;
         var r = el.getBoundingClientRect();
-        if (r.top < vh * 0.95) { el.classList.add('in'); io.unobserve(el); }
+        if (r.top < vh * 0.95) {
+          el.classList.add('in');
+          if (el.classList.contains('stat-card')) {
+            var num = el.querySelector('.font-display');
+            if (num) setTimeout(function () { num.classList.add('ignite'); }, 200);
+          }
+          io.unobserve(el);
+        }
       });
     };
     var queued = false;
