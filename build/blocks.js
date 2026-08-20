@@ -105,6 +105,9 @@ const TIERS = [
   {
     name: 'Starter',
     price: '$1,497',
+    anchor: '$3,000',
+    plan: { monthly: '$500', months: 4, total: '$2,000' },
+    savings: '$503',
     featured: false,
     cta: 'Start with Starter',
     features: [
@@ -136,6 +139,9 @@ const TIERS = [
   {
     name: 'Premium',
     price: '$4,997',
+    anchor: '$9,997',
+    plan: { monthly: '$1,750', months: 4, total: '$7,000' },
+    savings: '$2,003',
     featured: false,
     cta: 'Start with Premium',
     features: [
@@ -162,9 +168,14 @@ function tierCard(t) {
   const btn = t.featured
     ? 'plan-cta btn-primary block w-full shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm text-center mt-6'
     : 'plan-cta btn-primary block w-full text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm text-center mt-6';
+  const priceBlock = t.plan
+    ? `        <p class="text-sm text-fog/50 line-through mb-1">${t.anchor}</p>
+        <p class="font-display text-3xl text-copper-light mb-1">${t.plan.monthly}<span class="price-period text-base text-fog font-sans">/mo &times; ${t.plan.months}</span></p>
+        <p class="text-xs text-fog mb-4">or <span class="text-sand font-semibold">${t.price}</span> paid in full <span class="text-live">— save ${t.savings}</span></p>`
+    : `        <p class="font-display text-3xl text-copper-light mb-4">${t.price}<span class="price-period text-base text-fog font-sans"> one-time</span></p>`;
   return `      <div class="${shell}">
 ${t.featured ? '        <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">Most Popular</span>\n' : ''}        <h3 class="text-sand font-semibold text-lg mb-1">${t.name}</h3>
-        <p class="font-display text-3xl text-copper-light mb-4">${t.price}<span class="price-period text-base text-fog font-sans"> one-time</span></p>
+${priceBlock}
         <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
 ${t.features.map((f) => `          <li>${f}</li>`).join('\n')}
         </ul>
@@ -181,7 +192,7 @@ function pricingTable({ heading = 'One flat price. Your site, live in 2–3 days
     <div class="reveal mb-6 text-center">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Transparent Pricing</p>
       <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">${heading}</h2>
-      <p class="text-fog text-sm">50% to start, 50% at launch &nbsp;·&nbsp; fixed scope, no surprises &nbsp;·&nbsp; Care Plan included with every tier</p>
+      <p class="text-fog text-sm">Pay in full or spread it over 4 months &nbsp;·&nbsp; fixed scope, no surprises &nbsp;·&nbsp; Care Plan included with every tier</p>
     </div>
     <div class="reveal grid sm:grid-cols-3 gap-6 items-stretch mt-8">
 ${TIERS.map(tierCard).join('\n')}
@@ -193,6 +204,38 @@ ${TIERS.map(tierCard).join('\n')}
 }
 
 // ------------------------------------------------------------------ form ---
+
+// A worked example so a visitor sees the payoff before typing anything —
+// shown inline, always visible, rather than gated behind a click or an
+// auto-triggered popup (popups on a lead form fight the form for attention
+// and read as spammy; showing the result up front removes friction instead).
+function exampleScoreCard() {
+  return `    <div class="reveal mx-auto mb-10 max-w-sm rounded-2xl bg-elevated border border-white/5 shadow-elevated overflow-hidden">
+      <div class="flex items-center gap-1.5 px-4 py-2.5 bg-surface border-b border-white/5">
+        <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+        <span class="ml-2 text-xs text-fog/70">a2h.info/score</span>
+      </div>
+      <div class="p-6 sm:p-7 text-center">
+        <p class="text-[10px] tracking-[0.2em] uppercase text-fog/60 mb-4">Example Result</p>
+        <div class="relative mx-auto mb-5 h-28 w-28 rounded-full" style="background: conic-gradient(#c9702f 0% 38%, rgba(255,255,255,0.08) 38% 100%);">
+          <div class="absolute inset-[6px] rounded-full bg-elevated flex flex-col items-center justify-center">
+            <span class="font-display text-3xl text-sand">38</span>
+            <span class="text-[10px] text-fog">/ 100</span>
+          </div>
+        </div>
+        <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-4">Your Online Presence Score</p>
+        <ul class="text-left text-sm text-fog space-y-2">
+          <li>❌ No professional website</li>
+          <li>⚠️ Missing lead capture</li>
+          <li>⚠️ Poor mobile presence</li>
+          <li>✅ Google Business Profile claimed</li>
+        </ul>
+      </div>
+    </div>
+    <p class="reveal text-center text-sm text-fog mb-10">That's a real example. Want to see how we can get <span class="text-sand font-semibold">your</span> score to 90+? Fill out the form below.</p>`;
+}
 
 function scoreForm({
   plan = '',
@@ -207,6 +250,7 @@ function scoreForm({
       <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">${heading}</h2>
       <p class="text-fog leading-[1.7]">${intro}</p>
     </div>
+${exampleScoreCard()}
     <form id="score-form" class="reveal rounded-2xl bg-elevated border border-white/5 shadow-floating p-8 space-y-5">
       <input type="hidden" id="plan" name="plan" value="${plan}">
 ${vertical ? `      <input type="hidden" name="vertical" value="${vertical}">\n` : ''}      <div class="grid sm:grid-cols-2 gap-5">

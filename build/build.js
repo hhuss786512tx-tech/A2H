@@ -134,7 +134,8 @@ PAGES.push({
 
 // ---- pricing.html
 const PRICING_FAQ = [
-  ['How does payment work?', 'Fifty percent to start and fifty percent at launch. The scope is fixed in writing before any money changes hands, so the number you are quoted is the number you pay.'],
+  ['How does payment work?', 'Fifty percent to start and fifty percent at launch if you pay in full. Starter and Premium can also be spread over 4 monthly payments instead — the scope is fixed in writing before any money changes hands either way, so the number you are quoted is the number you pay.'],
+  ['Can I pay monthly instead of all at once?', 'Yes, on Starter and Premium. Starter is $500/mo for 4 months ($2,000 total) instead of $1,497 in full; Premium is $1,750/mo for 4 months ($7,000 total) instead of $4,997 in full. Paying in full is the cheaper route — the monthly option exists so the cost doesn\'t have to hit all at once.'],
   ['What is the Care Plan?', 'Hosting, maintenance and monthly content edits. It is included free for 2, 6 or 12 months depending on your tier, then continues at $249/mo. You can cancel it at any time and keep your site.'],
   ['Do I own the site?', 'Yes, completely. It is hand-coded static files — there is no proprietary platform to be locked into, and you get a walkthrough at handoff so you are never dependent on us to make a change.'],
   ['How fast is "2–3 days"?', 'That is the build-and-launch window once we have your content, photos and brand assets in hand. Gathering those from you is usually the longer part, which is why the free score comes first.'],
@@ -433,7 +434,7 @@ PAGES.push({
       { h: 'What this site is', p: ['This site describes services A2H Agency offers and lets you get a free website score. Nothing here is a binding offer or a contract for work. A project only begins once we have agreed scope, price and timeline with you in writing.'] },
       { h: 'Pricing', p: ['Prices shown are current at the time of publication and apply to the scope described. The price for your project is the one stated in your written scope agreement, which takes precedence over anything on this page. Prices may change for new projects without notice.'] },
       { h: 'Work and payment', p: [
-        'Projects are billed 50% before work starts and 50% on launch. Scope is fixed in writing beforehand; changes to scope after that are quoted separately before any additional work is done.',
+        'Projects are billed 50% before work starts and 50% on launch, unless you choose the monthly payment plan offered on the Starter and Premium tiers, in which case the total is billed in 4 equal monthly installments starting when work begins. Scope is fixed in writing beforehand; changes to scope after that are quoted separately before any additional work is done.',
         'The Care Plan is a month-to-month service you can cancel at any time. Cancelling it does not affect your ownership of the delivered site.',
       ] },
       { h: 'Ownership', p: [
