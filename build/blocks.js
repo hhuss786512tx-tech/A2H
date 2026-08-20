@@ -210,28 +210,75 @@ ${TIERS.map(tierCard).join('\n')}
 // auto-triggered popup (popups on a lead form fight the form for attention
 // and read as spammy; showing the result up front removes friction instead).
 function exampleScoreCard() {
-  return `    <div class="reveal mx-auto mb-10 max-w-sm rounded-2xl bg-elevated border border-white/5 shadow-elevated overflow-hidden">
+  const factor = (icon, tone, name, status) => `          <div class="rounded-xl bg-surface border border-white/5 p-4 flex items-center gap-3">
+            <span class="h-9 w-9 shrink-0 rounded-full bg-${tone}/10 border border-${tone}/30 flex items-center justify-center text-base">${icon}</span>
+            <div><p class="text-sm text-sand font-semibold leading-tight">${name}</p><p class="text-xs text-fog">${status}</p></div>
+          </div>`;
+  const finding = (title, body) => `        <div class="px-5 py-4">
+          <p class="text-sm text-sand font-semibold mb-1">${title}</p>
+          <p class="text-xs text-fog leading-[1.6]">${body}</p>
+        </div>`;
+  return `    <div class="reveal mb-10 rounded-2xl bg-elevated border border-white/5 shadow-elevated overflow-hidden">
       <div class="flex items-center gap-1.5 px-4 py-2.5 bg-surface border-b border-white/5">
         <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
         <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
         <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
         <span class="ml-2 text-xs text-fog/70">a2h.info/score</span>
       </div>
-      <div class="p-6 sm:p-7 text-center">
-        <p class="text-[10px] tracking-[0.2em] uppercase text-fog/60 mb-4">Example Result</p>
-        <div class="relative mx-auto mb-5 h-28 w-28 rounded-full" style="background: conic-gradient(#c9702f 0% 38%, rgba(255,255,255,0.08) 38% 100%);">
-          <div class="absolute inset-[6px] rounded-full bg-elevated flex flex-col items-center justify-center">
-            <span class="font-display text-3xl text-sand">38</span>
-            <span class="text-[10px] text-fog">/ 100</span>
+
+      <div class="flex items-center justify-between px-5 sm:px-8 py-4 border-b border-white/5">
+        <p class="font-display text-lg text-sand">A2H<span class="text-copper">.</span></p>
+        <div class="hidden sm:flex items-center gap-5 text-xs text-fog">
+          <span>Work</span><span>Process</span><span>Pricing</span>
+        </div>
+        <span class="text-xs font-semibold text-ink bg-copper px-3 py-1.5 rounded-full">Get My Free Score</span>
+      </div>
+
+      <div class="px-5 sm:px-8 py-7">
+        <p class="text-[10px] tracking-[0.2em] uppercase text-fog/60 mb-1">Example Result</p>
+        <h3 class="font-display text-xl text-sand mb-1">Your Score Report</h3>
+        <p class="text-sm text-fog mb-6">Example check for Rivera Concrete Co.</p>
+
+        <div class="grid sm:grid-cols-[auto_1fr] gap-4 mb-6">
+          <div class="rounded-xl bg-surface border border-white/5 p-6 flex flex-col items-center justify-center text-center sm:w-48">
+            <p class="text-xs uppercase tracking-wider text-fog mb-4">Overall Score</p>
+            <div class="relative mb-4 h-24 w-24 rounded-full" style="background: conic-gradient(#c9702f 0% 38%, rgba(255,255,255,0.08) 38% 100%);">
+              <div class="absolute inset-[6px] rounded-full bg-surface flex flex-col items-center justify-center">
+                <span class="font-display text-2xl text-sand">38</span>
+                <span class="text-[10px] text-fog">/ 100</span>
+              </div>
+            </div>
+            <span class="text-[10px] font-semibold uppercase tracking-wide text-copper-light bg-copper/10 border border-copper/30 rounded-full px-3 py-1">Needs Work</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+${factor('❌', 'copper', 'Website', 'Missing')}
+${factor('⚠️', 'brass', 'Lead Capture', 'Needs work')}
+${factor('⚠️', 'brass', 'Mobile', 'Needs work')}
+${factor('✅', 'live', 'Google Business', 'Claimed')}
           </div>
         </div>
-        <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-4">Your Online Presence Score</p>
-        <ul class="text-left text-sm text-fog space-y-2">
-          <li>❌ No professional website</li>
-          <li>⚠️ Missing lead capture</li>
-          <li>⚠️ Poor mobile presence</li>
-          <li>✅ Google Business Profile claimed</li>
-        </ul>
+
+        <div class="rounded-xl bg-surface border border-white/5 overflow-hidden">
+          <div class="flex items-center justify-between px-5 py-3 border-b border-white/5">
+            <p class="text-sm font-semibold text-sand">The Breakdown</p>
+            <p class="text-[10px] uppercase tracking-wider text-copper-light font-semibold">What's Costing You</p>
+          </div>
+          <div class="divide-y divide-white/5">
+${finding('❌ No professional website', "Nothing to send an interested customer to — most of the gap starts here.")}
+${finding('⚠️ Missing lead capture', "No clear way for someone who finds you to actually become a lead.")}
+${finding('⚠️ Poor mobile presence', "Most local searches happen on a phone — this is where you're losing them.")}
+${finding('✅ Google Business Profile claimed', "Good — you already show up on Maps. That's the one thing already working in your favor.")}
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 px-5 sm:px-8 py-4 border-t border-white/5 text-[11px] text-fog/70">
+        <p class="font-display text-sand">A2H<span class="text-copper">.</span></p>
+        <div class="flex items-center gap-4">
+          <span>Privacy Policy</span>
+          <span>Terms of Service</span>
+        </div>
+        <p>&copy; 2026 A2H Agency</p>
       </div>
     </div>
     <p class="reveal text-center text-sm text-fog mb-10">That's a real example. Want to see how we can get <span class="text-sand font-semibold">your</span> score to 90+? Fill out the form below.</p>`;
