@@ -4,6 +4,14 @@
    load first via assets/tailwind.css; these rules layer on top. */
 
   :root { color-scheme: dark; }
+  /* Sitewide horizontal-scroll guard. Individual elements known to run wide
+     (the footer ghost-word, the proof marquee) already clip themselves, but
+     that's a per-element allowlist — anything else that ever overflows
+     (a rotated .reveal card mid-animation, a future addition) silently grows
+     the document and gives the page a second, horizontal scrollbar the site
+     was never meant to have. Clipping it here at the root is the actual fix;
+     the per-element ones stay as defense in depth. */
+  html, body { overflow-x: hidden; }
   html { scroll-behavior: smooth; }
   body {
     background-color: #141110;
