@@ -1310,17 +1310,14 @@
           });
           return;
         }
-        // Kept short on purpose: real visitors scroll past this in under a
-        // second. The old 900ms typing-hold + 450ms bubble stagger meant the
-        // second (blue) AI reply didn't appear until ~3.5s in — long enough
-        // that anyone who scrolled by at a normal pace, or paused briefly to
-        // screenshot it, only ever saw the grey user bubbles and an empty
-        // gap where the AI reply belongs. Every reply now lands under 2s.
+        // Typing indicator holds for ~2s before swapping to the reply, so
+        // visitors actually register the "AI is typing" beat instead of it
+        // reading as instant.
         let delay = 100;
         items.forEach((item) => {
           if (item.classList.contains('typing-indicator')) {
             setTimeout(() => item.classList.add('in'), delay);
-            delay += 350;
+            delay += 2000;
             setTimeout(() => { item.classList.remove('in'); item.style.display = 'none'; }, delay);
             delay += 50;
           } else {
