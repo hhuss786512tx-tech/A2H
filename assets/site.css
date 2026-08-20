@@ -492,6 +492,14 @@
     border-radius: 18px;
     backface-visibility: hidden;
     overflow: hidden;
+    /* Safari fails to clip overflow:hidden + border-radius on an element
+       whose ancestor has a 3D transform (this card rotates via
+       transform-style: preserve-3d) — the photo bleeds past the rounded
+       corners instead of being clipped. clip-path isn't subject to that
+       bug; the mask-image is the same fix via a different Safari code
+       path, kept for older WebKit versions that ignore clip-path here. */
+    clip-path: inset(0 round 18px);
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
     display: flex;
     flex-direction: column;
     align-items: center;
