@@ -107,19 +107,21 @@
     var markRect = mark.getBoundingClientRect();
     var stagger = 60;
     var startDelay = 150;
+    var timers = [];
+    var track = function (id) { timers.push(id); return id; };
 
     letters.forEach(function (letter, i) {
       var delay = startDelay + i * stagger;
-      setTimeout(function () {
+      track(setTimeout(function () {
         var r = letter.getBoundingClientRect();
         spark.style.left = (r.left - markRect.left + r.width / 2) + 'px';
         spark.style.top = (r.top - markRect.top + r.height * 0.3) + 'px';
         spark.style.opacity = '1';
-      }, delay);
-      setTimeout(function () {
+      }, delay));
+      track(setTimeout(function () {
         letter.classList.add('lit');
         spark.style.opacity = '0';
-      }, delay + stagger * 0.8);
+      }, delay + stagger * 0.8));
     });
 
     var writeDone = startDelay + letters.length * stagger + 350;
@@ -128,11 +130,29 @@
     var dirs = ['exit-up', 'exit-down', 'exit-left', 'exit-right', 'exit-fade'];
     var dir = dirs[Math.floor(Math.random() * dirs.length)];
 
-    setTimeout(function () {
+    var exit = function () {
       overlay.classList.add(dir);
       overlay.addEventListener('transitionend', cleanup, { once: true });
-    }, exitAt);
-    setTimeout(cleanup, exitAt + 1500);
+      track(setTimeout(cleanup, 1500));
+    };
+
+    track(setTimeout(exit, exitAt));
+
+    // Skippable: a returning-ish visitor who clicks or presses a key mid-write
+    // shouldn't be stuck watching the rest of it. Cancel the remaining
+    // schedule, light every letter immediately so it doesn't look broken
+    // mid-word, then jump straight to the exit transition.
+    var skipped = false;
+    var skip = function () {
+      if (skipped || cleaned) return;
+      skipped = true;
+      timers.forEach(function (id) { clearTimeout(id); });
+      letters.forEach(function (letter) { letter.classList.add('lit'); });
+      spark.style.opacity = '0';
+      exit();
+    };
+    overlay.addEventListener('click', skip);
+    document.addEventListener('keydown', skip, { once: true });
   })();
 </script>
 
@@ -254,18 +274,6 @@
     <span id="chat-fab-icon-open" class="text-[26px] leading-none select-none" aria-hidden="true">👾</span>
     <svg id="chat-fab-icon-close" class="hidden" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#141110" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
   </button>
-</div>
-
-<!-- Nudge: draws attention to the chat widget once, then never again -->
-<div id="chat-nudge" class="fixed bottom-[4.75rem] left-[4.75rem] z-50 flex items-end gap-1.5 opacity-0 scale-90 pointer-events-none transition-all duration-400 ease-spring" style="transform-origin: 12px 100%;">
-  <svg width="38" height="46" viewBox="0 0 38 46" fill="none" class="text-copper-light shrink-0 -mb-1" aria-hidden="true">
-    <path d="M33 4C29 16 20 26 6 32" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-dasharray="1 6"/>
-    <path d="M12 27L5 32.5L13 35" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  </svg>
-  <div class="relative bg-sand text-ink text-sm font-semibold pl-4 pr-7 py-2.5 rounded-2xl rounded-bl-sm shadow-floating whitespace-nowrap mb-2">
-    👋 Got questions? Click me!
-    <button id="chat-nudge-close" type="button" aria-label="Dismiss" class="absolute top-1 right-1 h-5 w-5 rounded-full bg-ink/10 hover:bg-ink/20 text-ink/70 text-[10px] leading-none flex items-center justify-center transition-colors">✕</button>
-  </div>
 </div>
 
 <div id="chat-panel" class="fixed bottom-24 left-6 z-50 flex flex-col overflow-hidden rounded-2xl bg-elevated border border-white/10 shadow-floating opacity-0 translate-y-3 pointer-events-none transition-all duration-300 ease-out" style="width: 360px; max-width: calc(100vw - 32px); height: min(520px, 70vh);">
@@ -672,6 +680,44 @@
   </div>
 </section>
 
+<!-- WHY -->
+<section class="relative py-24 px-6 bg-surface/40 border-y border-white/5 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:5%;  width:4px; height:4px; animation-duration:11s;  animation-delay:-3s;  --ember-drift:12px;"></span>
+    <span class="ember" style="left:16%; width:3px; height:3px; animation-duration:13s;  animation-delay:-8s;  --ember-drift:-10px;"></span>
+    <span class="ember" style="left:28%; width:5px; height:5px; animation-duration:10s;  animation-delay:-5s;  --ember-drift:14px;"></span>
+    <span class="ember" style="left:42%; width:3px; height:3px; animation-duration:12.5s; animation-delay:-2s;  --ember-drift:-12px;"></span>
+    <span class="ember" style="left:58%; width:4px; height:4px; animation-duration:10.5s; animation-delay:-6.5s; --ember-drift:16px;"></span>
+    <span class="ember" style="left:70%; width:3px; height:3px; animation-duration:12s;   animation-delay:-1s;  --ember-drift:-10px;"></span>
+    <span class="ember" style="left:82%; width:5px; height:5px; animation-duration:9.5s;  animation-delay:-4s;  --ember-drift:-14px;"></span>
+    <span class="ember" style="left:92%; width:3px; height:3px; animation-duration:11.5s; animation-delay:-9s;  --ember-drift:16px;"></span>
+  </div>
+  <div class="max-w-4xl mx-auto">
+    <div class="reveal mb-12 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Why A2H</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Not another page-builder shop</h2>
+    </div>
+    <div class="reveal grid sm:grid-cols-2 gap-x-10 gap-y-6">
+      <div class="flex gap-3">
+        <span class="text-copper-light mt-0.5">—</span>
+        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Found on Google Maps.</span> Every build includes a Google Business Profile setup, so customers find you right where they're already looking — no ad spend needed.</p>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-copper-light mt-0.5">—</span>
+        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Hand-coded, not templated.</span> No Divi, no Elementor, no bloated builders — clean, fast code.</p>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-copper-light mt-0.5">—</span>
+        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Texas-based.</span> We understand Texas businesses, Texas markets, and Texas customers.</p>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-copper-light mt-0.5">—</span>
+        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Conversion-first.</span> We don't just build pretty sites — we build sites that turn visitors into customers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PROCESS -->
 <section id="process" class="relative py-28 px-6 bg-surface/40 border-y border-white/5 overflow-hidden">
   <div class="ambient-embers" aria-hidden="true">
@@ -905,127 +951,6 @@
             <p class="text-xs text-fog uppercase tracking-wider">per month, any plan</p>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY -->
-<section class="relative py-24 px-6 bg-surface/40 border-y border-white/5 overflow-hidden">
-  <div class="ambient-embers" aria-hidden="true">
-    <span class="ember" style="left:5%;  width:4px; height:4px; animation-duration:11s;  animation-delay:-3s;  --ember-drift:12px;"></span>
-    <span class="ember" style="left:16%; width:3px; height:3px; animation-duration:13s;  animation-delay:-8s;  --ember-drift:-10px;"></span>
-    <span class="ember" style="left:28%; width:5px; height:5px; animation-duration:10s;  animation-delay:-5s;  --ember-drift:14px;"></span>
-    <span class="ember" style="left:42%; width:3px; height:3px; animation-duration:12.5s; animation-delay:-2s;  --ember-drift:-12px;"></span>
-    <span class="ember" style="left:58%; width:4px; height:4px; animation-duration:10.5s; animation-delay:-6.5s; --ember-drift:16px;"></span>
-    <span class="ember" style="left:70%; width:3px; height:3px; animation-duration:12s;   animation-delay:-1s;  --ember-drift:-10px;"></span>
-    <span class="ember" style="left:82%; width:5px; height:5px; animation-duration:9.5s;  animation-delay:-4s;  --ember-drift:-14px;"></span>
-    <span class="ember" style="left:92%; width:3px; height:3px; animation-duration:11.5s; animation-delay:-9s;  --ember-drift:16px;"></span>
-  </div>
-  <div class="max-w-4xl mx-auto">
-    <div class="reveal mb-12 text-center">
-      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Why A2H</p>
-      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Not another page-builder shop</h2>
-    </div>
-    <div class="reveal grid sm:grid-cols-2 gap-x-10 gap-y-6">
-      <div class="flex gap-3">
-        <span class="text-copper-light mt-0.5">—</span>
-        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Found on Google Maps.</span> Every build includes a Google Business Profile setup, so customers find you right where they're already looking — no ad spend needed.</p>
-      </div>
-      <div class="flex gap-3">
-        <span class="text-copper-light mt-0.5">—</span>
-        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Hand-coded, not templated.</span> No Divi, no Elementor, no bloated builders — clean, fast code.</p>
-      </div>
-      <div class="flex gap-3">
-        <span class="text-copper-light mt-0.5">—</span>
-        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Texas-based.</span> We understand Texas businesses, Texas markets, and Texas customers.</p>
-      </div>
-      <div class="flex gap-3">
-        <span class="text-copper-light mt-0.5">—</span>
-        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Conversion-first.</span> We don't just build pretty sites — we build sites that turn visitors into customers.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DESKTOP + MOBILE SHOWCASE -->
-<section class="relative py-16 overflow-hidden border-y border-white/5 bg-surface/40">
-  <div class="ambient-embers" aria-hidden="true">
-    <span class="ember" style="left:3%;  width:4px; height:4px; animation-duration:11s; animation-delay:-3s; --ember-drift:14px;"></span>
-    <span class="ember" style="left:97%; width:3px; height:3px; animation-duration:12s; animation-delay:-7s; --ember-drift:-10px;"></span>
-  </div>
-  <div class="marquee-mask border-b border-white/5 py-4">
-    <div class="marquee-track flex items-center gap-10 w-max whitespace-nowrap text-sm text-fog">
-      <div class="flex items-center gap-10">
-        <span class="text-sand/80">Construction</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Medical Billing</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Biotech &amp; Research</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Food &amp; Retail</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Contractors</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Local Retail</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Professional Services</span><span class="text-white/15">·</span>
-      </div>
-      <div class="flex items-center gap-10" aria-hidden="true">
-        <span class="text-sand/80">Construction</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Medical Billing</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Biotech &amp; Research</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Food &amp; Retail</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Contractors</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Local Retail</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Professional Services</span><span class="text-white/15">·</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="px-6 py-10">
-    <div class="reveal max-w-2xl mx-auto text-center">
-      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Desktop &amp; Mobile</p>
-      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Built to look right, <span class="italic text-copper-light">everywhere.</span></h2>
-    </div>
-  </div>
-
-  <div class="marquee-mask">
-    <div class="showcase-track flex items-center gap-8 w-max px-6">
-      <div class="flex items-center gap-8">
-        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/ssc.webp" alt="Solid State Construction desktop view"></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img width="390" height="844" loading="lazy" decoding="async" src="assets/portfolio/mobile-ssc-menu.webp" alt="" class="phone-interaction-frame" aria-hidden="true"><img width="390" height="4200" loading="lazy" decoding="async" src="assets/portfolio/mobile-ssc.webp" alt="Solid State Construction mobile view" class="phone-scroll-img"></div></div>
-        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/qhm.webp" alt="Quality Halal Market desktop view"></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img width="390" height="844" loading="lazy" decoding="async" src="assets/portfolio/mobile-qhm-menu.webp" alt="" class="phone-interaction-frame" aria-hidden="true"><img width="390" height="4200" loading="lazy" decoding="async" src="assets/portfolio/mobile-qhm.webp" alt="Quality Halal Market mobile view" class="phone-scroll-img"></div></div>
-        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/azulbio.webp" alt="Azul Bio Research desktop view"></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img width="390" height="844" loading="lazy" decoding="async" src="assets/portfolio/mobile-azulbio-menu.webp" alt="" class="phone-interaction-frame" aria-hidden="true"><img width="390" height="4200" loading="lazy" decoding="async" src="assets/portfolio/mobile-azulbio.webp" alt="Azul Bio Research mobile view" class="phone-scroll-img"></div></div>
-        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/caremedbill.webp" alt="CareMedBill desktop view"></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img width="390" height="844" loading="lazy" decoding="async" src="assets/portfolio/mobile-caremedbill-menu.webp" alt="" class="phone-interaction-frame" aria-hidden="true"><img width="390" height="4200" loading="lazy" decoding="async" src="assets/portfolio/mobile-caremedbill.webp" alt="CareMedBill mobile view" class="phone-scroll-img"></div></div>
-      </div>
-      <div class="flex items-center gap-8" aria-hidden="true">
-        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/ssc.webp" alt=""></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img width="390" height="844" loading="lazy" decoding="async" src="assets/portfolio/mobile-ssc-menu.webp" alt="" class="phone-interaction-frame" aria-hidden="true"><img width="390" height="4200" loading="lazy" decoding="async" src="assets/portfolio/mobile-ssc.webp" alt="" class="phone-scroll-img"></div></div>
-        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/qhm.webp" alt=""></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img width="390" height="844" loading="lazy" decoding="async" src="assets/portfolio/mobile-qhm-menu.webp" alt="" class="phone-interaction-frame" aria-hidden="true"><img width="390" height="4200" loading="lazy" decoding="async" src="assets/portfolio/mobile-qhm.webp" alt="" class="phone-scroll-img"></div></div>
-        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/azulbio.webp" alt=""></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img width="390" height="844" loading="lazy" decoding="async" src="assets/portfolio/mobile-azulbio-menu.webp" alt="" class="phone-interaction-frame" aria-hidden="true"><img width="390" height="4200" loading="lazy" decoding="async" src="assets/portfolio/mobile-azulbio.webp" alt="" class="phone-scroll-img"></div></div>
-        <div class="desktop-frame"><div class="desktop-chrome"><span></span><span></span><span></span></div><img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/caremedbill.webp" alt=""></div>
-        <div class="phone-frame"><div class="phone-screen"><div class="phone-notch"></div><img width="390" height="844" loading="lazy" decoding="async" src="assets/portfolio/mobile-caremedbill-menu.webp" alt="" class="phone-interaction-frame" aria-hidden="true"><img width="390" height="4200" loading="lazy" decoding="async" src="assets/portfolio/mobile-caremedbill.webp" alt="" class="phone-scroll-img"></div></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="marquee-mask border-t border-white/5 py-4 mt-10">
-    <div class="marquee-track reverse flex items-center gap-10 w-max whitespace-nowrap text-sm text-fog">
-      <div class="flex items-center gap-10">
-        <span class="text-sand/80">Custom Websites</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Google Maps Setup</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Mobile-First Design</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">AI Chatbots</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Hand-Coded Builds</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Fast Hosting</span><span class="text-white/15">·</span>
-      </div>
-      <div class="flex items-center gap-10" aria-hidden="true">
-        <span class="text-sand/80">Custom Websites</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Google Maps Setup</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Mobile-First Design</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">AI Chatbots</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Hand-Coded Builds</span><span class="text-white/15">·</span>
-        <span class="text-sand/80">Fast Hosting</span><span class="text-white/15">·</span>
       </div>
     </div>
   </div>
@@ -1389,6 +1314,9 @@
       requestAnimationFrame(function () { overlay.classList.add('is-open'); });
       var first = form.querySelector('input');
       if (first) first.focus();
+      // Lets the floating CTA hide itself while this is open — the two are
+      // both fixed-position asks and can otherwise land on screen together.
+      document.dispatchEvent(new Event('a2h:popup-toggle'));
     }
 
     function close(remember) {
@@ -1396,6 +1324,7 @@
       document.body.classList.remove('overflow-hidden');
       setTimeout(function () { overlay.classList.add('hidden'); overlay.classList.remove('flex'); }, 250);
       if (remember) { try { sessionStorage.setItem(DISMISSED_KEY, '1'); } catch (e) {} }
+      document.dispatchEvent(new Event('a2h:popup-toggle'));
     }
 
     closeBtn.addEventListener('click', function () { close(true); });
@@ -1404,7 +1333,32 @@
       if (e.key === 'Escape' && overlay.classList.contains('is-open')) close(true);
     });
 
-    if (!alreadyHandled()) setTimeout(open, 10000);
+    // Wait for whichever comes later of "10s elapsed" or "scrolled past the
+    // hero" — a fast scroller can otherwise get this before they've even
+    // read the headline.
+    if (!alreadyHandled()) {
+      var heroEl = document.getElementById('top');
+      var timerDone = false;
+      var pastHero = !heroEl;
+      var opened = false;
+      var maybeOpen = function () {
+        if (opened || !timerDone || !pastHero) return;
+        opened = true;
+        open();
+      };
+      setTimeout(function () { timerDone = true; maybeOpen(); }, 10000);
+      if (heroEl) {
+        var checkPastHero = function () {
+          if (window.scrollY > heroEl.offsetHeight * 0.6) {
+            pastHero = true;
+            window.removeEventListener('scroll', checkPastHero);
+            maybeOpen();
+          }
+        };
+        window.addEventListener('scroll', checkPastHero, { passive: true });
+        checkPastHero();
+      }
+    }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -1610,8 +1564,13 @@
     floatingCta.classList.toggle('pointer-events-none', !show);
   };
 
+  // Suppressed while the lead popup is open — both are fixed-position asks
+  // and could otherwise land on screen at the same time.
+  const leadPopupOverlay = document.getElementById('lead-popup-overlay');
+  const popupOpen = () => !!(leadPopupOverlay && leadPopupOverlay.classList.contains('is-open'));
+
   const updateFloatingCta = () => {
-    setFloatingCtaVisible(window.scrollY > heroSection.offsetHeight * 0.6 && !contactVisible && !pricingVisible);
+    setFloatingCtaVisible(window.scrollY > heroSection.offsetHeight * 0.6 && !contactVisible && !pricingVisible && !popupOpen());
   };
 
   new IntersectionObserver((entries) => {
@@ -1625,6 +1584,7 @@
   }, { threshold: 0.2 }).observe(pricingSection);
 
   window.addEventListener('scroll', updateFloatingCta, { passive: true });
+  document.addEventListener('a2h:popup-toggle', updateFloatingCta);
 
   // Mobile preview: each company's chapter is a plain stacked section now —
   // it just scrolls into view normally and fades in via the .reveal observer
@@ -1937,44 +1897,17 @@
     };
     const hideTyping = () => { if (typingEl) { typingEl.remove(); typingEl = null; } };
 
-    // Nudge: a "click me" callout with an arrow, so visitors notice the
-    // widget instead of scrolling straight past it. Shows on every page
-    // load (not just once) per explicit instruction.
-    const nudge = document.getElementById('chat-nudge');
-    const nudgeClose = document.getElementById('chat-nudge-close');
-    const dismissNudge = () => {
-      if (!nudge) return;
-      nudge.classList.remove('show');
-      fabBtn.classList.remove('nudging');
-    };
-    if (nudge && !opened) {
-      setTimeout(() => {
-        if (panel.classList.contains('open')) return;
-        nudge.classList.add('show');
-        fabBtn.classList.add('nudging');
-        // Being fixed-position, the nudge can land on top of whatever CTA/form
-        // control the visitor has scrolled to (confirmed: it covered the
-        // score-form submit button on mobile) — dismiss on their first scroll
-        // rather than blocking clicks on content it happens to overlap.
-        window.addEventListener('scroll', dismissNudge, { once: true, passive: true });
-      }, 2200);
-      setTimeout(dismissNudge, 11000);
-    }
-    nudgeClose && nudgeClose.addEventListener('click', (e) => { e.stopPropagation(); dismissNudge(); });
-
     const openPanel = () => {
       panel.classList.add('open');
       fabBtn.setAttribute('aria-expanded', 'true');
       iconOpen.classList.add('hidden');
       iconClose.classList.remove('hidden');
-      dismissNudge();
       if (!opened) {
         opened = true;
         addBubble('ai', "Hi! I'm the A2H AI Agent. Ask me about pricing, turnaround, or what's included — or click \"Get My Free Score\" to get started.");
       }
       setTimeout(() => input && input.focus(), 300);
     };
-    nudge && nudge.addEventListener('click', () => openPanel());
     const closePanel = () => {
       panel.classList.remove('open');
       fabBtn.setAttribute('aria-expanded', 'false');
