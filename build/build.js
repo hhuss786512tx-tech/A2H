@@ -267,6 +267,33 @@ PAGES.push({
   ].join('\n\n'),
 });
 
+// ---- book-a-call.html
+PAGES.push({
+  slug: 'book-a-call.html',
+  title: 'Book A Call — Schedule Time With A2H | A2H',
+  description: 'Pick a time to talk through your free website score and what a hand-coded build would look like for your business. No forms, no phone tag.',
+  jsonLd: [ORG],
+  body: [
+    `<section class="relative glow-copper pt-36 pb-16 px-6 overflow-hidden">
+  <div class="grain"></div>
+  <div class="max-w-3xl mx-auto text-center relative">
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Book A Call</p>
+    <h1 class="reveal font-display text-[2.5rem] leading-[1.1] sm:text-5xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">Let's talk about <span class="italic text-copper-light">your site.</span></h1>
+    <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto">Pick a time that works for you — no forms, no phone tag. 30 minutes to walk through your free score and what a build would look like for your business.</p>
+  </div>
+</section>`,
+    `<section class="px-6 pb-24">
+  <div class="max-w-3xl mx-auto reveal">
+    <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated overflow-hidden">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/hhuss786512tx/new-meeting?hide_gdpr_banner=1&background_color=231c18&text_color=e9dfd2&primary_color=c9702f" style="min-width:280px;height:700px;"></div>
+    </div>
+    <p class="reveal text-center text-xs text-fog mt-6">Prefer email instead? Reach us at <a href="mailto:${EMAIL}" class="link-underline text-copper-light">${EMAIL}</a>.</p>
+  </div>
+</section>`,
+  ].join('\n\n'),
+  extraScripts: `<script src="https://assets.calendly.com/assets/external/widget.js" async></script>`,
+});
+
 // ---- construction.html (rebuilt on the shared chrome)
 const CONSTRUCTION_FAQ = [
   ['Do I have to run ads to work with you?', 'No. The website build stands on its own and includes Google Business Profile setup, which brings in calls without any ad spend. Ad management is a separate service you can add if you want to accelerate.'],

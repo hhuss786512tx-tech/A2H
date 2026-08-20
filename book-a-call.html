@@ -1,77 +1,73 @@
-// Shared chrome for every generated page.
-//
-// index.html is deliberately NOT generated — it carries bespoke interactive
-// machinery (intro overlay, 3D card, carousels, live chat widget) that is
-// easier to maintain by hand. Everything else on the site is assembled from
-// the partials here so the nav, footer, head and structured data only ever
-// exist in one place.
-
-const SITE = 'https://a2h.info';
-const EMAIL = 'hhuss786512tx@gmail.com';
-const GA4 = 'G-L9L2CVTSBB';
-
-// ---------------------------------------------------------------- <head> ---
-
-function head({ title, description, slug, ogImage = '/assets/og-image.png', jsonLd = [] }) {
-  const url = slug === 'index.html' ? SITE + '/' : `${SITE}/${slug}`;
-  const ld = jsonLd.length
-    ? jsonLd.map((o) => `<script type="application/ld+json">\n${JSON.stringify(o, null, 2)}\n</script>`).join('\n')
-    : '';
-  return `<meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${title}</title>
-<meta name="description" content="${description}">
-<link rel="canonical" href="${url}">
+<title>Book A Call — Schedule Time With A2H | A2H</title>
+<meta name="description" content="Pick a time to talk through your free website score and what a hand-coded build would look like for your business. No forms, no phone tag.">
+<link rel="canonical" href="https://a2h.info/book-a-call.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141110'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-style='italic' fill='%23c9702f' text-anchor='middle'%3EA2H%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
-<meta property="og:title" content="${title}">
-<meta property="og:description" content="${description}">
-<meta property="og:image" content="${SITE}${ogImage}">
-<meta property="og:url" content="${url}">
+<meta property="og:title" content="Book A Call — Schedule Time With A2H | A2H">
+<meta property="og:description" content="Pick a time to talk through your free website score and what a hand-coded build would look like for your business. No forms, no phone tag.">
+<meta property="og:image" content="https://a2h.info/assets/og-image.png">
+<meta property="og:url" content="https://a2h.info/book-a-call.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${title}">
-<meta name="twitter:description" content="${description}">
-<meta name="twitter:image" content="${SITE}${ogImage}">
+<meta name="twitter:title" content="Book A Call — Schedule Time With A2H | A2H">
+<meta name="twitter:description" content="Pick a time to talk through your free website score and what a hand-coded build would look like for your business. No forms, no phone tag.">
+<meta name="twitter:image" content="https://a2h.info/assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/tailwind.css">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/tailwind.css?v=61f4a80a">
+<link rel="stylesheet" href="assets/site.css?v=9c7d550f">
 <script>document.documentElement.classList.add('js');</script>
-${ld}
-<script async src="https://www.googletagmanager.com/gtag/js?id=${GA4}"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://a2h.info/#organization",
+  "name": "A2H Agency",
+  "url": "https://a2h.info/",
+  "email": "hhuss786512tx@gmail.com",
+  "description": "Hand-coded websites and Google Business Profile setup for Texas businesses.",
+  "areaServed": {
+    "@type": "State",
+    "name": "Texas"
+  },
+  "serviceType": [
+    "Website Design",
+    "Website Development",
+    "Local SEO",
+    "Google Business Profile Setup"
+  ],
+  "knowsAbout": [
+    "Web design",
+    "Local SEO",
+    "Google Business Profile",
+    "Conversion optimization"
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L9L2CVTSBB"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', '${GA4}');
-</script>`;
-}
+  gtag('config', 'G-L9L2CVTSBB');
+</script>
+</head>
+<body class="text-sand antialiased">
 
-// ------------------------------------------------------------------- nav ---
-
-const NAV_ITEMS = [
-  ['work.html', 'Work'],
-  ['process.html', 'Process'],
-  ['pricing.html', 'Pricing'],
-  ['industries.html', 'Industries'],
-  ['book-a-call.html', 'Book A Call'],
-];
-
-function nav(current) {
-  const link = ([href, label]) => {
-    const active = href === current;
-    return `        <a href="${href}"${active ? ' aria-current="page"' : ''} class="link-underline ${active ? 'text-sand' : ''} hover:text-sand transition-colors">${label}</a>`;
-  };
-  const mobileLink = ([href, label]) => {
-    const active = href === current;
-    return `      <a href="${href}"${active ? ' aria-current="page"' : ''} class="mobile-nav-link block px-6 py-3 text-sm ${active ? 'text-sand' : 'text-fog'} hover:text-sand transition-colors">${label}</a>`;
-  };
-  return `<header id="site-header" class="fixed top-0 inset-x-0 z-50 bg-ink/70 backdrop-blur-md transition-[box-shadow,background-color] duration-300">
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 bg-ink/70 backdrop-blur-md transition-[box-shadow,background-color] duration-300">
   <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
     <a href="/" class="font-display text-xl tracking-tight text-sand">A2H<span class="text-copper">.</span></a>
     <nav class="hidden md:flex items-center gap-8 text-sm text-fog" aria-label="Primary">
-${NAV_ITEMS.map(link).join('\n')}
+        <a href="work.html" class="link-underline  hover:text-sand transition-colors">Work</a>
+        <a href="process.html" class="link-underline  hover:text-sand transition-colors">Process</a>
+        <a href="pricing.html" class="link-underline  hover:text-sand transition-colors">Pricing</a>
+        <a href="industries.html" class="link-underline  hover:text-sand transition-colors">Industries</a>
+        <a href="book-a-call.html" aria-current="page" class="link-underline text-sand hover:text-sand transition-colors">Book A Call</a>
     </nav>
     <div class="flex items-center gap-3">
       <span class="cta-ring rounded-full p-[2px] hidden sm:inline-block">
@@ -86,16 +82,34 @@ ${NAV_ITEMS.map(link).join('\n')}
     </div>
   </div>
   <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-ink/95 backdrop-blur-md pb-3">
-${NAV_ITEMS.map(mobileLink).join('\n')}
+      <a href="work.html" class="mobile-nav-link block px-6 py-3 text-sm text-fog hover:text-sand transition-colors">Work</a>
+      <a href="process.html" class="mobile-nav-link block px-6 py-3 text-sm text-fog hover:text-sand transition-colors">Process</a>
+      <a href="pricing.html" class="mobile-nav-link block px-6 py-3 text-sm text-fog hover:text-sand transition-colors">Pricing</a>
+      <a href="industries.html" class="mobile-nav-link block px-6 py-3 text-sm text-fog hover:text-sand transition-colors">Industries</a>
+      <a href="book-a-call.html" aria-current="page" class="mobile-nav-link block px-6 py-3 text-sm text-sand hover:text-sand transition-colors">Book A Call</a>
     <a href="index.html#contact" class="mobile-nav-link block px-6 py-3 text-sm text-copper-light font-semibold">Get My Free Score</a>
   </div>
-</header>`;
-}
+</header>
 
-// ---------------------------------------------------------------- footer ---
+<section class="relative glow-copper pt-36 pb-16 px-6 overflow-hidden">
+  <div class="grain"></div>
+  <div class="max-w-3xl mx-auto text-center relative">
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Book A Call</p>
+    <h1 class="reveal font-display text-[2.5rem] leading-[1.1] sm:text-5xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">Let's talk about <span class="italic text-copper-light">your site.</span></h1>
+    <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto">Pick a time that works for you — no forms, no phone tag. 30 minutes to walk through your free score and what a build would look like for your business.</p>
+  </div>
+</section>
 
-function footer() {
-  return `<footer class="relative border-t border-white/5 pt-14 pb-8 px-6 overflow-hidden">
+<section class="px-6 pb-24">
+  <div class="max-w-3xl mx-auto reveal">
+    <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated overflow-hidden">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/hhuss786512tx/new-meeting?hide_gdpr_banner=1&background_color=231c18&text_color=e9dfd2&primary_color=c9702f" style="min-width:280px;height:700px;"></div>
+    </div>
+    <p class="reveal text-center text-xs text-fog mt-6">Prefer email instead? Reach us at <a href="mailto:hhuss786512tx@gmail.com" class="link-underline text-copper-light">hhuss786512tx@gmail.com</a>.</p>
+  </div>
+</section>
+
+<footer class="relative border-t border-white/5 pt-14 pb-8 px-6 overflow-hidden">
   <div class="max-w-6xl mx-auto relative">
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 mb-12">
       <div>
@@ -121,7 +135,7 @@ function footer() {
       <div>
         <p class="text-xs uppercase tracking-[0.2em] text-copper-light font-semibold mb-4">Contact</p>
         <ul class="space-y-2 text-sm text-fog">
-          <li><a href="mailto:${EMAIL}" class="link-underline hover:text-sand transition-colors break-all">${EMAIL}</a></li>
+          <li><a href="mailto:hhuss786512tx@gmail.com" class="link-underline hover:text-sand transition-colors break-all">hhuss786512tx@gmail.com</a></li>
           <li>Texas-based</li>
           <li><a href="index.html#contact" class="link-underline text-copper-light hover:text-sand transition-colors">Get your free score</a></li>
           <li><a href="book-a-call.html" class="link-underline text-copper-light hover:text-sand transition-colors">Book a call</a></li>
@@ -136,13 +150,9 @@ function footer() {
       </div>
     </div>
   </div>
-</footer>`;
-}
+</footer>
 
-// --------------------------------------------------------- shared scripts ---
-
-function scripts() {
-  return `<script>
+<script>
   // Header shadow on scroll
   (function () {
     var header = document.getElementById('site-header');
@@ -235,30 +245,7 @@ function scripts() {
     });
     if (found) { try { sessionStorage.setItem('a2h_landing_page', window.location.pathname); } catch (e) {} }
   })();
-</script>`;
-}
-
-// ----------------------------------------------------------------- shell ---
-
-function page({ title, description, slug, jsonLd, body, extraScripts = '' }) {
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-${head({ title, description, slug, jsonLd })}
-</head>
-<body class="text-sand antialiased">
-
-${nav(slug)}
-
-${body}
-
-${footer()}
-
-${scripts()}
-${extraScripts}
+</script>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
-`;
-}
-
-module.exports = { page, head, nav, footer, scripts, SITE, EMAIL, GA4 };
