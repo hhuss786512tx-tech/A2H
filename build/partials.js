@@ -75,7 +75,7 @@ ${NAV_ITEMS.map(link).join('\n')}
     <div class="flex items-center gap-3">
       <span class="cta-ring rounded-full p-[2px] hidden sm:inline-block">
         <a href="index.html#contact" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-2.5 rounded-full block">
-          Get My Free Audit
+          Get My Free Score
         </a>
       </span>
       <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-sand p-2 -mr-2">
@@ -86,7 +86,7 @@ ${NAV_ITEMS.map(link).join('\n')}
   </div>
   <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-ink/95 backdrop-blur-md pb-3">
 ${NAV_ITEMS.map(mobileLink).join('\n')}
-    <a href="index.html#contact" class="mobile-nav-link block px-6 py-3 text-sm text-copper-light font-semibold">Get My Free Audit</a>
+    <a href="index.html#contact" class="mobile-nav-link block px-6 py-3 text-sm text-copper-light font-semibold">Get My Free Score</a>
   </div>
 </header>`;
 }
@@ -122,7 +122,7 @@ function footer() {
         <ul class="space-y-2 text-sm text-fog">
           <li><a href="mailto:${EMAIL}" class="link-underline hover:text-sand transition-colors break-all">${EMAIL}</a></li>
           <li>Texas-based</li>
-          <li><a href="index.html#contact" class="link-underline text-copper-light hover:text-sand transition-colors">Get a free audit</a></li>
+          <li><a href="index.html#contact" class="link-underline text-copper-light hover:text-sand transition-colors">Get your free score</a></li>
         </ul>
       </div>
     </div>

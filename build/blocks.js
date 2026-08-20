@@ -186,7 +186,7 @@ function pricingTable({ heading = 'One flat price. Your site, live in 2–3 days
     <div class="reveal grid sm:grid-cols-3 gap-6 items-stretch mt-8">
 ${TIERS.map(tierCard).join('\n')}
     </div>
-    <p class="reveal text-center text-sm text-fog mt-8">Every project starts with a free audit — fixed price, clear scope, no long-term contract.</p>
+    <p class="reveal text-center text-sm text-fog mt-8">Every project starts with a free website score — fixed price, clear scope, no long-term contract.</p>
     <p class="reveal text-center text-sm text-fog mt-3">Care Plan (hosting, maintenance &amp; monthly edits) is included with every tier — 2, 6, or 12 months depending on plan — then continues at <span class="text-copper-light font-semibold">$249/mo</span>, cancel anytime.</p>
   </div>
 </section>`;
@@ -194,15 +194,20 @@ ${TIERS.map(tierCard).join('\n')}
 
 // ------------------------------------------------------------------ form ---
 
-function auditForm({ plan = '', vertical = '', heading = "Let's see what your site is costing you", intro = "Tell us about your business — with or without a site — and we'll show you exactly what's costing you customers right now. No charge, no obligation." } = {}) {
+function scoreForm({
+  plan = '',
+  vertical = '',
+  heading = "How Strong Is Your Business's Online Presence?",
+  intro = "Enter your business info — with or without a site — and get your Online Presence Score out of 100 instantly. No charge, no obligation.",
+} = {}) {
   return `<section id="contact" class="py-20 px-6">
   <div class="max-w-2xl mx-auto">
     <div class="reveal mb-10 text-center">
-      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Free Site Audit</p>
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Free Website Score</p>
       <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">${heading}</h2>
       <p class="text-fog leading-[1.7]">${intro}</p>
     </div>
-    <form id="audit-form" class="reveal rounded-2xl bg-elevated border border-white/5 shadow-floating p-8 space-y-5">
+    <form id="score-form" class="reveal rounded-2xl bg-elevated border border-white/5 shadow-floating p-8 space-y-5">
       <input type="hidden" id="plan" name="plan" value="${plan}">
 ${vertical ? `      <input type="hidden" name="vertical" value="${vertical}">\n` : ''}      <div class="grid sm:grid-cols-2 gap-5">
         <div>
@@ -228,22 +233,35 @@ ${vertical ? `      <input type="hidden" name="vertical" value="${vertical}">\n`
           <input id="phone" name="phone" type="tel" autocomplete="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
         </div>
       </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="gbp">Have you claimed your Google Business Profile?</label>
+        <select id="gbp" name="gbp" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand focus:border-copper-light/60 transition-colors">
+          <option value="unsure" selected>Not sure</option>
+          <option value="yes">Yes, it's claimed</option>
+          <option value="no">No / not yet</option>
+        </select>
+      </div>
       <span class="cta-ring rounded-full p-[2px] block w-full">
         <button type="submit" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px]">
-          Get My Free Audit
+          Get My Free Score
         </button>
       </span>
-      <p class="text-xs text-fog/70 text-center leading-[1.6]">We use your details only to prepare and send your audit. No lists, no resale. See our <a href="privacy.html" class="link-underline text-copper-light hover:text-sand transition-colors">Privacy Policy</a>.</p>
+      <p class="text-xs text-fog/70 text-center leading-[1.6]">We use your details only to calculate and send your score. No lists, no resale. See our <a href="privacy.html" class="link-underline text-copper-light hover:text-sand transition-colors">Privacy Policy</a>.</p>
       <p id="form-status" class="text-sm text-center text-fog" role="status" aria-live="polite"></p>
     </form>
-    <div id="audit-success" class="hidden reveal rounded-2xl bg-elevated border border-white/5 shadow-floating p-8 sm:p-12 text-center">
-      <div class="mx-auto mb-5 h-14 w-14 rounded-full bg-live/15 border border-live/30 flex items-center justify-center">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L9.5 17L19 7" stroke="#7fb88a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <h3 class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-3">Thank You!</h3>
-      <p class="text-fog leading-[1.7] max-w-md mx-auto mb-8">Your request has been sent — check your inbox for a confirmation. We'll follow up with your free audit within 24 hours.</p>
-      <button type="button" id="audit-success-reset" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm">
-        Send Another Request
+    <div id="score-success" class="hidden reveal rounded-2xl bg-elevated border border-white/5 shadow-floating p-8 sm:p-12 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Your Online Presence Score</p>
+      <p id="score-total" class="font-display text-6xl sm:text-7xl tracking-[-0.02em] text-sand mb-8">—<span class="text-2xl text-fog font-sans">/100</span></p>
+      <ul id="score-breakdown" class="text-left max-w-sm mx-auto space-y-2.5 text-sm text-fog mb-8"></ul>
+      <p class="text-fog leading-[1.7] max-w-md mx-auto mb-6">Want to see how we can get you to <span class="text-copper-light font-semibold">90+</span>?</p>
+      <span class="cta-ring rounded-full p-[2px] inline-block mb-4">
+        <a href="pricing.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">
+          Show Me How to Get to 90+
+        </a>
+      </span>
+      <p class="text-xs text-fog/70 mb-6">We'll also follow up by email with your full breakdown within 24 hours.</p>
+      <button type="button" id="score-success-reset" class="text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm">
+        Check Another Business
       </button>
     </div>
   </div>
@@ -254,13 +272,23 @@ ${vertical ? `      <input type="hidden" name="vertical" value="${vertical}">\n`
 // so a lead is never silently dropped when the backend is unreachable.
 const FORM_SCRIPT = `<script>
 (function () {
-  var form = document.getElementById('audit-form');
+  var form = document.getElementById('score-form');
   if (!form) return;
   var status = document.getElementById('form-status');
-  var successBlock = document.getElementById('audit-success');
-  var successReset = document.getElementById('audit-success-reset');
+  var successBlock = document.getElementById('score-success');
+  var successReset = document.getElementById('score-success-reset');
+  var scoreTotal = document.getElementById('score-total');
+  var scoreBreakdown = document.getElementById('score-breakdown');
   var submitBtn = form.querySelector('button[type="submit"]');
   var AD_PARAMS = ['gclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  var BADGE = { pass: '✅', warn: '⚠️', fail: '❌' };
+
+  function renderScore(score, breakdown) {
+    scoreTotal.innerHTML = score + '<span class="text-2xl text-fog font-sans">/100</span>';
+    scoreBreakdown.innerHTML = (breakdown || []).map(function (item) {
+      return '<li>' + (BADGE[item.status] || '⚠️') + ' ' + item.label + '</li>';
+    }).join('');
+  }
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
@@ -271,41 +299,45 @@ const FORM_SCRIPT = `<script>
       if (val) data[key] = val;
     });
 
-    status.textContent = 'Sending…';
+    status.textContent = 'Calculating your score…';
     submitBtn.disabled = true;
 
     try {
-      var res = await fetch('/api/audit-request', {
+      var res = await fetch('/api/score-request', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
       var result = await res.json().catch(function () { return {}; });
 
-      if (result.success) {
-        status.textContent = '';
-        if (typeof gtag === 'function') {
-          gtag('event', 'generate_lead', {
-            plan: data.plan || '',
-            source: data.utm_source || (data.gclid ? 'google_ads' : 'organic'),
-          });
-        }
-        form.reset();
-        form.classList.add('hidden');
-        successBlock.classList.remove('hidden');
-        successBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (result.score === undefined) {
+        status.textContent = 'Something went wrong. Email ${EMAIL} directly.';
         return;
       }
 
+      renderScore(result.score, result.breakdown);
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          plan: data.plan || '',
+          source: data.utm_source || (data.gclid ? 'google_ads' : 'organic'),
+          score: result.score,
+        });
+      }
+
       if (result.reason === 'not_configured') {
+        // No email backend configured — open a mailto so Haider still gets
+        // notified, but the visitor already has their score on screen.
         var enc = encodeURIComponent;
         var planLine = data.plan ? 'Plan: ' + enc(data.plan) + '%0A' : '';
-        var body = planLine + 'Business: ' + enc(data.business) + '%0AURL: ' + enc(data.url || 'none yet') + '%0APhone: ' + enc(data.phone || '') + '%0A%0ARequesting a free site audit.';
-        window.location.href = 'mailto:${EMAIL}?subject=' + enc('Free Audit Request — ' + data.business) + '&body=' + body;
-        status.textContent = 'Opening your email client to send the request…';
-      } else {
-        status.textContent = 'Something went wrong. Email ${EMAIL} directly.';
+        var body = planLine + 'Business: ' + enc(data.business) + '%0AURL: ' + enc(data.url || 'none yet') + '%0APhone: ' + enc(data.phone || '') + '%0AScore: ' + result.score + '/100%0A%0ARequesting a free website score.';
+        window.location.href = 'mailto:${EMAIL}?subject=' + enc('Free Score Request — ' + data.business) + '&body=' + body;
       }
+
+      status.textContent = '';
+      form.reset();
+      form.classList.add('hidden');
+      successBlock.classList.remove('hidden');
+      successBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } catch (err) {
       status.textContent = 'Something went wrong. Email ${EMAIL} directly.';
     } finally {
@@ -324,14 +356,14 @@ const FORM_SCRIPT = `<script>
 
 // ------------------------------------------------------------------ misc ---
 
-function ctaBand({ heading = 'Ready to see your <span class="italic">new site?</span>', sub = 'Free audit, fixed price, live in 2–3 days.' } = {}) {
+function ctaBand({ heading = 'Ready to see your <span class="italic">new site?</span>', sub = 'Free website score, fixed price, live in 2–3 days.' } = {}) {
   return `<section class="px-6 py-20">
   <div class="max-w-3xl mx-auto text-center reveal">
     <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">${heading}</h2>
     <p class="text-fog leading-[1.7] mb-8">${sub}</p>
     <span class="cta-ring rounded-full p-[2px] inline-block">
       <a href="index.html#contact" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-8 py-4 rounded-full text-[15px] block">
-        Get My Free Audit
+        Get My Free Score
       </a>
     </span>
   </div>
@@ -353,4 +385,4 @@ ${sections.map((s) => `      <div>
 </section>`;
 }
 
-module.exports = { PROJECTS, TIERS, portfolioGrid, projectCard, pricingTable, auditForm, FORM_SCRIPT, ctaBand, legalShell };
+module.exports = { PROJECTS, TIERS, portfolioGrid, projectCard, pricingTable, scoreForm, FORM_SCRIPT, ctaBand, legalShell };

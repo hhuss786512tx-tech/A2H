@@ -56,7 +56,7 @@ const faqLd = (qas) => ({
   })),
 });
 
-const hero = ({ eyebrow, h1, sub, primary = 'Get My Free Audit', secondary = null }) => `<section class="relative glow-copper pt-36 pb-20 px-6 overflow-hidden">
+const hero = ({ eyebrow, h1, sub, primary = 'Get My Free Score', secondary = null }) => `<section class="relative glow-copper pt-36 pb-20 px-6 overflow-hidden">
   <div class="grain"></div>
   <div class="max-w-4xl mx-auto text-center relative">
     <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">${eyebrow}</p>
@@ -137,8 +137,8 @@ const PRICING_FAQ = [
   ['How does payment work?', 'Fifty percent to start and fifty percent at launch. The scope is fixed in writing before any money changes hands, so the number you are quoted is the number you pay.'],
   ['What is the Care Plan?', 'Hosting, maintenance and monthly content edits. It is included free for 2, 6 or 12 months depending on your tier, then continues at $249/mo. You can cancel it at any time and keep your site.'],
   ['Do I own the site?', 'Yes, completely. It is hand-coded static files — there is no proprietary platform to be locked into, and you get a walkthrough at handoff so you are never dependent on us to make a change.'],
-  ['How fast is "2–3 days"?', 'That is the build-and-launch window once we have your content, photos and brand assets in hand. Gathering those from you is usually the longer part, which is why the free audit comes first.'],
-  ['What if I do not have a website yet?', 'That is the most common case. Leave the URL field blank on the audit form and we will assess your Google Business Profile and local search position instead.'],
+  ['How fast is "2–3 days"?', 'That is the build-and-launch window once we have your content, photos and brand assets in hand. Gathering those from you is usually the longer part, which is why the free score comes first.'],
+  ['What if I do not have a website yet?', 'That is the most common case. Leave the URL field blank on the score form and we will score your Google Business Profile and local search position instead.'],
   ['Is the AI chatbot really $99/mo?', 'Yes, on Starter and Professional. It is trained on your business, answers FAQs and captures leads around the clock. It is included at no extra cost on Premium.'],
 ];
 
@@ -182,22 +182,22 @@ PAGES.push({
   </div>
 </section>`,
     faqSection(PRICING_FAQ),
-    B.ctaBand({ heading: 'Not sure which tier <span class="italic">you need?</span>', sub: 'The free audit tells you — no obligation either way.' }),
+    B.ctaBand({ heading: 'Not sure which tier <span class="italic">you need?</span>', sub: 'The free score tells you — no obligation either way.' }),
   ].join('\n\n'),
 });
 
 // ---- process.html
 PAGES.push({
   slug: 'process.html',
-  title: 'How We Work — From Audit to Launch in 2–3 Days | A2H',
-  description: 'The A2H process: free audit, hand-coded build, launch and handoff, then proof with real data. Fixed scope, fixed price, no long-term contract.',
+  title: 'How We Work — From Free Score to Launch in 2–3 Days | A2H',
+  description: 'The A2H process: free website score, hand-coded build, launch and handoff, then proof with real data. Fixed scope, fixed price, no long-term contract.',
   jsonLd: [ORG, {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: 'How A2H builds and launches a website',
-    description: 'A four-step process from free audit to launch and reporting.',
+    description: 'A four-step process from free website score to launch and reporting.',
     step: [
-      { '@type': 'HowToStep', position: 1, name: 'Free audit', text: 'We review your current site and Google Business Profile and show you what is costing you customers.' },
+      { '@type': 'HowToStep', position: 1, name: 'Free website score', text: 'We score your current site and Google Business Profile out of 100 and show you what is costing you customers.' },
       { '@type': 'HowToStep', position: 2, name: 'Hand-coded build', text: 'A conversion-first site is built by hand, wired to real lead capture from day one.' },
       { '@type': 'HowToStep', position: 3, name: 'Launch and handoff', text: 'Fully tested, live on your domain, with a walkthrough so you are never locked out of your own site.' },
       { '@type': 'HowToStep', position: 4, name: 'Prove it with data', text: 'Real performance numbers after launch, not projections.' },
@@ -211,7 +211,7 @@ PAGES.push({
       secondary: ['See Pricing', 'pricing.html'],
     }),
     cards('The Process', 'Four steps, start to finish', [
-      { tag: 'Free, no obligation', h: 'We audit what you have', p: 'We look at your current site, your Google Business Profile and what your competitors rank for, then show you specifically what is losing you customers. If the answer is "nothing, you are fine", we say that.' },
+      { tag: 'Free, no obligation', h: 'We score what you have', p: 'We look at your current site, your Google Business Profile and what your competitors rank for, then hand you a score out of 100 and show you specifically what is losing you customers. If the answer is "nothing, you are fine", we say that.' },
       { tag: 'Hand-coded', h: 'We build it properly', p: 'No page builders, no templates. A conversion-first site wired to real lead capture from day one, built mobile-first and tested on real devices before you ever see it.' },
       { tag: 'Yours to keep', h: 'We launch and hand it off', p: 'Fully tested, live on your domain, plus a walkthrough so you are never locked out of your own site. Static files you own outright — no proprietary platform, no hostage situation.' },
       { tag: 'Real numbers', h: 'We prove it with data', p: 'A $200 Google Ads test on Solid State Construction\'s new site returned 270+ clicks in 14 days at $0.74 per click. Measured results after launch, never projections before it.' },
@@ -220,10 +220,10 @@ PAGES.push({
   <div class="max-w-3xl mx-auto text-center">
     <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Why It Is Fast</p>
     <h2 class="reveal font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-6">Because we cut the parts that do not build your site</h2>
-    <p class="reveal text-fog leading-[1.8]">Most agencies spend weeks on discovery decks, stakeholder workshops and revision rounds that exist to justify a retainer. We publish our prices, fix the scope in writing, and start building. The audit is the discovery. The build takes 2–3 days once your content is in hand — gathering that from you is usually the longest part of the whole project.</p>
+    <p class="reveal text-fog leading-[1.8]">Most agencies spend weeks on discovery decks, stakeholder workshops and revision rounds that exist to justify a retainer. We publish our prices, fix the scope in writing, and start building. The score is the discovery. The build takes 2–3 days once your content is in hand — gathering that from you is usually the longest part of the whole project.</p>
   </div>
 </section>`,
-    B.ctaBand({ heading: 'Start with <span class="italic">the audit.</span>', sub: 'It is free, it takes us about a day, and there is no obligation attached to it.' }),
+    B.ctaBand({ heading: 'Start with <span class="italic">your score.</span>', sub: 'It is free, it takes seconds, and there is no obligation attached to it.' }),
   ].join('\n\n'),
 });
 
@@ -303,10 +303,10 @@ PAGES.push({
     B.portfolioGrid({ heading: 'Contractor work, <span class="italic text-copper-light">live right now.</span>', only: ['ssc'] }),
     B.pricingTable({ heading: 'Same flat pricing, no trade surcharge' }),
     faqSection(CONSTRUCTION_FAQ),
-    B.auditForm({
+    B.scoreForm({
       vertical: 'construction',
-      heading: "Let's see what your site is costing you",
-      intro: "No charge, no obligation. We'll show you exactly what's costing you calls right now.",
+      heading: "How Strong Is Your Business's Online Presence?",
+      intro: "No charge, no obligation. Get your Online Presence Score out of 100 and see exactly what's costing you calls right now.",
     }),
   ].join('\n\n'),
   extraScripts: B.FORM_SCRIPT,
@@ -340,10 +340,10 @@ PAGES.push({
     B.portfolioGrid({ heading: 'Medical work.', only: ['caremedbill'] }),
     B.pricingTable({ heading: 'Flat pricing, published openly' }),
     faqSection(MEDICAL_FAQ),
-    B.auditForm({
+    B.scoreForm({
       vertical: 'medical',
-      heading: "Let's see what your site is costing you",
-      intro: "No charge, no obligation. We'll show you what patients see — and what is sending them elsewhere.",
+      heading: "How Strong Is Your Practice's Online Presence?",
+      intro: "No charge, no obligation. Get your Online Presence Score out of 100 and see what patients see — and what is sending them elsewhere.",
     }),
   ].join('\n\n'),
   extraScripts: B.FORM_SCRIPT,
@@ -377,10 +377,10 @@ PAGES.push({
     B.portfolioGrid({ heading: 'Retail work.', only: ['qhm'] }),
     B.pricingTable({ heading: 'Flat pricing, published openly' }),
     faqSection(RETAIL_FAQ),
-    B.auditForm({
+    B.scoreForm({
       vertical: 'retail',
-      heading: "Let's see what your listing is costing you",
-      intro: "No charge, no obligation. We'll check what Google shows for your shop today and what it is sending to your competitors.",
+      heading: "How Strong Is Your Business's Online Presence?",
+      intro: "No charge, no obligation. Get your Online Presence Score out of 100 and see what Google shows for your shop today — and what it is sending to your competitors.",
     }),
   ].join('\n\n'),
   extraScripts: B.FORM_SCRIPT,
@@ -398,12 +398,13 @@ PAGES.push({
     sections: [
       { h: 'Who we are', p: [`A2H Agency ("A2H", "we", "us") builds websites for businesses in Texas. This policy explains what we collect through a2h.info and what we do with it. You can reach us any time at <a href="mailto:${EMAIL}" class="link-underline text-copper-light">${EMAIL}</a>.`] },
       { h: 'What we collect', p: [
-        'When you submit the audit request form we collect the name, business name, email address, website URL and phone number you enter. All of these except the URL and phone number are required to respond to you.',
+        'When you submit the free website score form we collect the name, business name, email address, website URL and phone number you enter, plus whether you have claimed your Google Business Profile. All of these except the URL and phone number are required to respond to you.',
+        'If you provide a website URL, our server fetches the public homepage of that URL to check for basic signals like a mobile-friendly tag and a lead-capture form. We do not store the fetched page content beyond calculating your score.',
         'If you use the AI chat widget, the messages you type are processed so the assistant can answer them. Do not enter sensitive personal, medical or financial information into the chat.',
         'We use Google Analytics 4, which sets cookies and records standard analytics data such as pages viewed, approximate location derived from IP address, referring site and device type. If you arrive from an advertisement we also record the campaign parameters in the link (for example utm_source or gclid) so we can tell which campaigns work.',
       ] },
       { h: 'How we use it', p: [
-        'Form submissions are used to prepare and send your free audit and to follow up about your enquiry. Analytics data is used in aggregate to understand how the site performs.',
+        'Form submissions are used to calculate and send your free website score and to follow up about your enquiry. Analytics data is used in aggregate to understand how the site performs.',
         'We do not sell your information, rent it, or add you to a marketing list you did not ask for. We do not share it with third parties except the service providers that operate this site — currently Vercel for hosting and Google for analytics — who process it only on our behalf.',
       ] },
       { h: 'How long we keep it', p: ['Enquiry details are kept for as long as needed to respond and for our business records. Google Analytics data is retained according to the retention period configured in that product. You can ask us to delete your enquiry at any time.'] },
@@ -429,7 +430,7 @@ PAGES.push({
     updated: 'August 19, 2026',
     sections: [
       { h: 'Using this site', p: ['By using a2h.info you agree to these terms. If you do not agree, please do not use the site. We may update these terms; the date at the top shows the current version.'] },
-      { h: 'What this site is', p: ['This site describes services A2H Agency offers and lets you request a free audit. Nothing here is a binding offer or a contract for work. A project only begins once we have agreed scope, price and timeline with you in writing.'] },
+      { h: 'What this site is', p: ['This site describes services A2H Agency offers and lets you get a free website score. Nothing here is a binding offer or a contract for work. A project only begins once we have agreed scope, price and timeline with you in writing.'] },
       { h: 'Pricing', p: ['Prices shown are current at the time of publication and apply to the scope described. The price for your project is the one stated in your written scope agreement, which takes precedence over anything on this page. Prices may change for new projects without notice.'] },
       { h: 'Work and payment', p: [
         'Projects are billed 50% before work starts and 50% on launch. Scope is fixed in writing beforehand; changes to scope after that are quoted separately before any additional work is done.',
@@ -451,8 +452,8 @@ PAGES.push({
 // ---- thank-you.html
 PAGES.push({
   slug: 'thank-you.html',
-  title: 'Thank You — Your Audit Request Is In | A2H',
-  description: 'Your free site audit request has been received. We follow up within 24 hours.',
+  title: 'Thank You — Your Free Score Request Is In | A2H',
+  description: 'Your free website score request has been received. We follow up within 24 hours.',
   jsonLd: [],
   body: `<section class="relative glow-copper pt-40 pb-24 px-6 overflow-hidden">
   <div class="grain"></div>
@@ -461,7 +462,7 @@ PAGES.push({
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L9.5 17L19 7" stroke="#7fb88a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
     <h1 class="font-display text-4xl sm:text-5xl tracking-[-0.03em] text-sand mb-5">Thank you.</h1>
-    <p class="text-lg text-fog leading-[1.7] mb-10">Your request is in. Check your inbox for a confirmation — we'll follow up with your free audit within 24 hours.</p>
+    <p class="text-lg text-fog leading-[1.7] mb-10">Your request is in. Check your inbox for a confirmation — we'll follow up with your free website score within 24 hours.</p>
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
       <a href="work.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">See Our Work</a>
       <a href="pricing.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">See Pricing</a>
