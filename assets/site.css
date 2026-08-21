@@ -318,8 +318,18 @@
     .intro-fire-letter, .intro-spark { display: none; }
   }
 
-  /* Marquee */
+  /* Marquee — the track is deliberately ~2x viewport width (two copies of
+     the ticker back to back, translated -50% to loop seamlessly), which
+     the mask-image alone doesn't clip: mask-image is a paint-time fade
+     effect, not a layout/scroll clip, so the track's true box still
+     extended hundreds of px past the viewport on both sides. The root
+     `html, body { overflow-x: hidden }` guard caught it so no scrollbar
+     ever appeared from this in Chromium, but Safari/macOS's own overlay-
+     scrollbar affordance could still flash based on the underlying
+     geometry during a scroll gesture. overflow:hidden here clips it at
+     the actual source instead of relying solely on the root guard. */
   .marquee-mask {
+    overflow: hidden;
     -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
     mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   }
