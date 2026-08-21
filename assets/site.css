@@ -10,8 +10,21 @@
      (a rotated .reveal card mid-animation, a future addition) silently grows
      the document and gives the page a second, horizontal scrollbar the site
      was never meant to have. Clipping it here at the root is the actual fix;
-     the per-element ones stay as defense in depth. */
-  html, body { overflow-x: hidden; }
+     the per-element ones stay as defense in depth.
+     html only, not body: setting overflow-x on an element forces its
+     overflow-y to compute as auto (the UA can't clip one axis and leave the
+     other truly visible), which makes that element a scroll container. On
+     html that's harmless — it's already the real viewport's scroller. On
+     body it isn't: body becomes an extra scroll container sitting between
+     the #mobile-scroll chapter text and the viewport, and position:sticky
+     resolves against the nearest scroll-container ancestor — so the pinned
+     "Solid State Construction. / Professional Plan" style text stopped
+     sticking at all and just scrolled off with the page, silently, since
+     nothing errors when sticky quietly degrades to static. Confirmed live:
+     dropping overflow-x from body (html alone still keeps scrollWidth ==
+     clientWidth) restores position:sticky's top:128px hold through the
+     entire scroll. */
+  html { overflow-x: hidden; }
   html { scroll-behavior: smooth; }
   body {
     background-color: #141110;
