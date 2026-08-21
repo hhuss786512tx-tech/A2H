@@ -295,6 +295,13 @@
       text-shadow: 0 0 6px rgba(226,146,79,0.7), 0 0 22px rgba(201,112,47,0.45);
     }
   }
+  /* Same settled ember glow the intro wordmark ends on (fire-write's 100%
+     keyframe) — reused as a static class for other big display type that
+     should read as "lit" without replaying the letter-by-letter ignition. */
+  .fire-glow {
+    color: #e9dfd2;
+    text-shadow: 0 0 6px rgba(226,146,79,0.7), 0 0 22px rgba(201,112,47,0.45);
+  }
   .intro-spark {
     position: absolute;
     top: 50%; left: 0;
@@ -401,7 +408,13 @@
      the bottom off this oversized, tight-line-height, negative-margined text
      — no amount of scrolling could ever reveal the rest of it. footer keeps
      overflow-x:hidden only (this text is wider than the viewport at some
-     sizes) so the full glyph height still paints and is reachable by scroll. */
+     sizes) so the full glyph height still paints and is reachable by scroll.
+     Follow-up: #footer-mark also carried an inline margin-bottom: -0.12em
+     (~21px at the 11rem cap) meant to remove leftover line-height air below
+     the glyphs, but line-height:0.8 means the descenders (g, y) already
+     paint outside their line box — the negative margin was clipping that
+     real ink out of the document's scrollHeight, same failure mode as
+     above. Removed; the ~0.2px that's left over is rounding noise. */
   footer { overflow-x: hidden; }
   .ghost-word {
     font-family: 'Fraunces', serif;
