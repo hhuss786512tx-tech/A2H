@@ -156,50 +156,6 @@
   })();
 </script>
 
-<script>
-  // Footer wordmark: same letter-by-letter fire-write as the intro overlay,
-  // replayed once when it scrolls into view instead of on page load — it
-  // sits at the very bottom of the page, off-screen for most of a visit.
-  (function () {
-    var mark = document.getElementById('footer-mark');
-    if (!mark) return;
-    var letters = Array.prototype.slice.call(mark.querySelectorAll('.footer-fire-letter'));
-    if (!letters.length) return;
-    var spark = document.getElementById('footer-fire-spark');
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    var ignite = function () {
-      if (reduced) {
-        letters.forEach(function (l) { l.classList.add('lit'); });
-        return;
-      }
-      var markRect = mark.getBoundingClientRect();
-      var stagger = 60;
-      letters.forEach(function (letter, i) {
-        var delay = i * stagger;
-        setTimeout(function () {
-          if (!spark) return;
-          var r = letter.getBoundingClientRect();
-          spark.style.left = (r.left - markRect.left + r.width / 2) + 'px';
-          spark.style.top = (r.top - markRect.top + r.height * 0.3) + 'px';
-          spark.style.opacity = '1';
-        }, delay);
-        setTimeout(function () {
-          letter.classList.add('lit');
-          if (spark) spark.style.opacity = '0';
-        }, delay + stagger * 0.8);
-      });
-    };
-
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { ignite(); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.3 });
-    io.observe(mark);
-  })();
-</script>
-
 <!-- NAV -->
 <header id="site-header" class="fixed top-0 inset-x-0 z-50 bg-ink/70 backdrop-blur-md transition-[box-shadow,background-color] duration-300">
   <div class="h-px bg-gradient-to-r from-transparent via-copper-light/50 to-transparent"></div>
@@ -1251,6 +1207,60 @@
   </div>
   <p id="footer-mark" class="ghost-word relative text-center select-none pointer-events-none" style="font-size: clamp(4rem, 16vw, 11rem); margin-bottom: -0.12em;" aria-hidden="true"><span class="footer-fire-letter">A</span><span class="footer-fire-letter">2</span><span class="footer-fire-letter">H</span><span class="footer-fire-space"></span><span class="footer-fire-letter">A</span><span class="footer-fire-letter">g</span><span class="footer-fire-letter">e</span><span class="footer-fire-letter">n</span><span class="footer-fire-letter">c</span><span class="footer-fire-letter">y</span><span id="footer-fire-spark" class="footer-fire-spark"></span></p>
 </footer>
+
+<script>
+  // Footer wordmark: same letter-by-letter fire-write as the intro overlay,
+  // replayed once when it scrolls into view instead of on page load — it
+  // sits at the very bottom of the page, off-screen for most of a visit.
+  // Placed here (right after the footer markup) rather than up near the
+  // intro script — a plain inline script element runs the instant the
+  // parser reaches it, and #footer-mark didn't exist yet when this lived
+  // near the top of the body, so getElementById returned null and the
+  // whole IIFE silently no-opped on its `if (!mark) return;` guard.
+  // Confirmed via live QA: 0 of 9 letters ever got `.lit` even after
+  // scrolling the footer fully into view, while a freshly-created
+  // observer on the same element in the same session reported
+  // isIntersecting:true correctly — the element and IntersectionObserver
+  // mechanics were fine, only the original script's position was wrong.
+  (function () {
+    var mark = document.getElementById('footer-mark');
+    if (!mark) return;
+    var letters = Array.prototype.slice.call(mark.querySelectorAll('.footer-fire-letter'));
+    if (!letters.length) return;
+    var spark = document.getElementById('footer-fire-spark');
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var ignite = function () {
+      if (reduced) {
+        letters.forEach(function (l) { l.classList.add('lit'); });
+        return;
+      }
+      var markRect = mark.getBoundingClientRect();
+      var stagger = 60;
+      letters.forEach(function (letter, i) {
+        var delay = i * stagger;
+        setTimeout(function () {
+          if (!spark) return;
+          var r = letter.getBoundingClientRect();
+          spark.style.left = (r.left - markRect.left + r.width / 2) + 'px';
+          spark.style.top = (r.top - markRect.top + r.height * 0.3) + 'px';
+          spark.style.opacity = '1';
+        }, delay);
+        setTimeout(function () {
+          letter.classList.add('lit');
+          if (spark) spark.style.opacity = '0';
+        }, delay + stagger * 0.8);
+      });
+    };
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { ignite(); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.3 });
+    io.observe(mark);
+  })();
+</script>
 
 <div id="lead-popup-overlay" class="hidden fixed inset-0 z-[100] items-center justify-center bg-ink/80 backdrop-blur-sm px-4" role="dialog" aria-modal="true" aria-labelledby="lead-popup-heading">
   <div id="lead-popup-card" class="relative w-full max-w-md rounded-2xl bg-elevated border border-white/10 shadow-floating p-7 sm:p-8">
