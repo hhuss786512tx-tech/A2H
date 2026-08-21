@@ -632,6 +632,18 @@
   }
 
   /* 3D company card */
+  /* #card3d-section already has Tailwind's overflow-hidden, but .card3d
+     rotates via transform-style: preserve-3d (continuous idle spin, plus
+     unclamped drag rotation — see the rotY handler in index.html) and
+     Safari doesn't reliably apply an ancestor's overflow:hidden to content
+     under a 3D transform, the same bug already worked around on
+     .card3d-face's rounded corners below. At certain rotation angles that
+     lets the card's projected width bleed past the section in Safari and
+     grow the document, producing a second, horizontal scrollbar that never
+     shows up in Chromium (where the overflow:hidden clips it as expected).
+     clip-path isn't subject to that bug, so it's added here as the
+     transform-safe backup, same pattern as the face-level fix. */
+  #card3d-section { clip-path: inset(0); }
   .card3d-stage {
     perspective: 1200px;
   }
@@ -778,7 +790,19 @@
   }
   /* Drag-to-tilt, same interaction language as the 3D company card —
      baseline stagger (translateY + rotate) still set by JS at rest, this
-     just adds the perspective + spring-back-on-release feel. */
+     just adds the perspective + spring-back-on-release feel.
+     #mobile-scroll has no overflow:hidden of its own (it can't — the
+     xl:sticky chapter text needs an ancestor that doesn't establish a
+     scroll/clip container, or sticky positioning breaks), so these tilted
+     phones/laptops rely entirely on the root html/body overflow-x:hidden
+     guard. That guard is a plain overflow property, and per the Safari
+     3D-transform-clipping bug documented on .card3d-face below, Safari can
+     fail to apply an ancestor's overflow:hidden to content under a
+     preserve-3d/perspective transform at any distance up the tree — not
+     just the direct parent. clip-path doesn't hit that bug and, unlike
+     overflow, doesn't create a scrolling container either, so it's safe to
+     add here without breaking the sticky column. */
+  #mobile-scroll { clip-path: inset(0); }
   .mscroll-phones { perspective: 1000px; }
   .mscroll-phones .phone-frame,
   .mscroll-phones .laptop-frame {
