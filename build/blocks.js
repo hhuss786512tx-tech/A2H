@@ -121,7 +121,7 @@ const TIERS = [
   {
     name: 'Professional',
     price: '$3,000',
-    note: 'or <span class="text-sand font-semibold">$500</span>/mo &times; 4 <span class="text-fog">($2,000 total)</span>',
+    note: 'or <span class="text-sand font-semibold">$568.75</span>/mo &times; 4 <span class="text-fog">($2,275 total)</span>',
     featured: true,
     cta: 'Go Professional',
     features: [
