@@ -687,15 +687,15 @@
     will-change: transform;
     transform: rotateX(-8deg) rotateY(18deg);
   }
-  /* Sized to each card's own front/back photo proportions so nothing gets
-     cropped — object-fit: contain still needs a box in the right ballpark
-     or a face ends up letterboxed. SSC's front and back photos are both
-     900x354 (2.54:1) — the back was originally a 900x228 banner crop that
-     letterboxed hard inside this box; it's now been re-canvased (blurred
-     bleed of its own content, not a hard color) to the same 2.54:1 as the
-     front so both faces fill the box edge to edge with zero dead space. */
-  .card3d.card-ssc { width: 340px; height: 134px; }
+  /* Both demo cards share one card-shaped box (QHM's real business-card
+     proportions) so the "3D Company Card" feature reads as one consistent
+     product, not two different shapes. SSC's own photos are a 2.54:1
+     banner (900x354) — much wider/shorter than a real card — so its face
+     uses object-fit: cover (below) to fill this box by cropping the
+     banner's sides instead of letterboxing it inside a taller frame. */
+  .card3d.card-ssc { width: 340px; height: 204px; }
   .card3d.card-qhm { width: 340px; height: 204px; }
+  .card-ssc .card3d-photo { object-fit: cover; object-position: 15% center; }
   .card3d.dragging { cursor: grabbing; }
   /* QHM's back face is a real photo of the (light-colored) card back with
      its denim/table background cut out to transparent — the shared
