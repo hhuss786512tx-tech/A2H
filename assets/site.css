@@ -4,6 +4,22 @@
    load first via assets/tailwind.css; these rules layer on top. */
 
   :root { color-scheme: dark; }
+  /* One continuous scrollbar, not the OS's default overlay one. macOS/Chrome
+     overlay scrollbars fade the thumb in on scroll and leave a separate,
+     much fainter track line behind it — at rest that reads as two broken
+     pieces instead of a single bar. Painting our own thumb+track removes
+     that fade entirely, in the same copper-on-ink treatment as the rest of
+     the page (bg-ink / copper). Firefox first (scrollbar-width/-color are
+     the only hooks it has), then the WebKit/Blink pseudo-elements. */
+  html { scrollbar-width: thin; scrollbar-color: #c9702f #1b1613; }
+  ::-webkit-scrollbar { width: 12px; }
+  ::-webkit-scrollbar-track { background: #1b1613; }
+  ::-webkit-scrollbar-thumb {
+    background: #c9702f;
+    border-radius: 999px;
+    border: 3px solid #1b1613;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: #e2924f; }
   /* Sitewide horizontal-scroll guard. Individual elements known to run wide
      (the footer ghost-word, the proof marquee) already clip themselves, but
      that's a per-element allowlist — anything else that ever overflows
