@@ -75,7 +75,7 @@ ${NAV_ITEMS.map(link).join('\n')}
     </nav>
     <div class="flex items-center gap-3">
       <span class="cta-ring rounded-full p-[2px] hidden sm:inline-block">
-        <a href="index.html#contact" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-2.5 rounded-full block">
+        <a href="#" class="score-trigger btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-2.5 rounded-full block">
           Get My Free Score
         </a>
       </span>
@@ -87,7 +87,7 @@ ${NAV_ITEMS.map(link).join('\n')}
   </div>
   <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-ink/95 backdrop-blur-md pb-3">
 ${NAV_ITEMS.map(mobileLink).join('\n')}
-    <a href="index.html#contact" class="mobile-nav-link block px-6 py-3 text-sm text-copper-light font-semibold">Get My Free Score</a>
+    <a href="#" class="score-trigger mobile-nav-link block px-6 py-3 text-sm text-copper-light font-semibold">Get My Free Score</a>
   </div>
 </header>`;
 }
@@ -123,7 +123,7 @@ function footer() {
         <ul class="space-y-2 text-sm text-fog">
           <li><a href="mailto:${EMAIL}" class="link-underline hover:text-sand transition-colors break-all">${EMAIL}</a></li>
           <li>Texas-based</li>
-          <li><a href="index.html#contact" class="link-underline text-copper-light hover:text-sand transition-colors">Get your free score</a></li>
+          <li><a href="#" class="score-trigger link-underline text-copper-light hover:text-sand transition-colors">Get your free score</a></li>
           <li><a href="book-a-call.html" class="link-underline text-copper-light hover:text-sand transition-colors">Book a call</a></li>
         </ul>
       </div>
@@ -139,53 +139,449 @@ function footer() {
 </footer>`;
 }
 
+// -------------------------------------------------------- score example ---
+
+// A worked example so a visitor sees the payoff before typing anything —
+// shown inline inside the score popup, above the real form.
+function exampleScoreCard() {
+  const factor = (icon, tone, name, status) => `          <div class="rounded-xl bg-surface border border-white/5 p-4 flex items-center gap-3">
+            <span class="h-9 w-9 shrink-0 rounded-full bg-${tone}/10 border border-${tone}/30 flex items-center justify-center text-base">${icon}</span>
+            <div><p class="text-sm text-sand font-semibold leading-tight">${name}</p><p class="text-xs text-fog">${status}</p></div>
+          </div>`;
+  const finding = (title, body) => `        <div class="px-5 py-4">
+          <p class="text-sm text-sand font-semibold mb-1">${title}</p>
+          <p class="text-xs text-fog leading-[1.6]">${body}</p>
+        </div>`;
+  return `    <div class="mb-8 rounded-2xl bg-surface border border-white/5 shadow-elevated overflow-hidden">
+      <div class="flex items-center gap-1.5 px-4 py-2.5 bg-ink/40 border-b border-white/5">
+        <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+        <span class="ml-2 text-xs text-fog/70">a2h.info/score</span>
+      </div>
+
+      <div class="px-5 sm:px-8 py-6">
+        <p class="text-[10px] tracking-[0.2em] uppercase text-fog/60 mb-1">Example Result</p>
+        <h3 class="font-display text-lg text-sand mb-1">Your Score Report</h3>
+        <p class="text-sm text-fog mb-5">Example check for Rivera Concrete Co.</p>
+
+        <div class="grid sm:grid-cols-[auto_1fr] gap-4 mb-5">
+          <div class="rounded-xl bg-elevated border border-white/5 p-5 flex flex-col items-center justify-center text-center sm:w-40">
+            <p class="text-xs uppercase tracking-wider text-fog mb-3">Overall Score</p>
+            <div class="relative mb-3 h-20 w-20 rounded-full" style="background: conic-gradient(#c9702f 0% 38%, rgba(255,255,255,0.08) 38% 100%);">
+              <div class="absolute inset-[6px] rounded-full bg-elevated flex flex-col items-center justify-center">
+                <span class="font-display text-xl text-sand">38</span>
+                <span class="text-[10px] text-fog">/ 100</span>
+              </div>
+            </div>
+            <span class="text-[10px] font-semibold uppercase tracking-wide text-copper-light bg-copper/10 border border-copper/30 rounded-full px-3 py-1">Needs Work</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+${factor('❌', 'copper', 'Website', 'Missing')}
+${factor('⚠️', 'brass', 'Lead Capture', 'Needs work')}
+${factor('⚠️', 'brass', 'Mobile', 'Needs work')}
+${factor('✅', 'live', 'Google Business', 'Claimed')}
+          </div>
+        </div>
+
+        <div class="rounded-xl bg-elevated border border-white/5 overflow-hidden">
+          <div class="flex items-center justify-between px-5 py-3 border-b border-white/5">
+            <p class="text-sm font-semibold text-sand">The Breakdown</p>
+            <p class="text-[10px] uppercase tracking-wider text-copper-light font-semibold">What's Costing You</p>
+          </div>
+          <div class="divide-y divide-white/5">
+${finding('❌ No professional website', "Nothing to send an interested customer to — most of the gap starts here.")}
+${finding('⚠️ Missing lead capture', "No clear way for someone who finds you to actually become a lead.")}
+${finding('⚠️ Poor mobile presence', "Most local searches happen on a phone — this is where you're losing them.")}
+${finding('✅ Google Business Profile claimed', "Good — you already show up on Maps. That's the one thing already working in your favor.")}
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="text-center text-sm text-fog mb-6">That's a real example. Want to see how we can get <span class="text-sand font-semibold">your</span> score to 90+? Fill out the form below.</p>`;
+}
+
+// ------------------------------------------------------------ score popup ---
+
+// Click-to-open modal, wired up on every page by any element carrying the
+// .score-trigger class (nav, footer, hero CTAs, cta bands, pricing tier
+// buttons). Replaces what used to be an inline #contact section repeated
+// (with per-vertical copy) across index.html/construction/medical/retail —
+// now one shared component, with the vertical inferred from the current
+// page's filename instead of baked into per-page copy (see
+// scorePopupScript's VERTICAL_BY_PAGE).
+function scorePopup() {
+  return `<div id="score-popup-overlay" class="hidden fixed inset-0 z-[100] items-center justify-center bg-ink/80 backdrop-blur-sm px-4 py-8" role="dialog" aria-modal="true" aria-labelledby="score-popup-heading">
+  <div id="score-popup-card" class="relative w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-2xl bg-elevated border border-white/10 shadow-floating p-7 sm:p-8">
+    <button type="button" id="score-popup-close" aria-label="Close" class="absolute top-4 right-4 text-fog hover:text-sand transition-colors">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Free Website Score</p>
+    <h2 id="score-popup-heading" class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-2">How Strong Is Your Business's Online Presence?</h2>
+    <p class="text-sm text-fog leading-[1.6] mb-6">Enter your business info — with or without a site — and get your Online Presence Score out of 100 instantly. No charge, no obligation.</p>
+${exampleScoreCard()}
+    <form id="score-form" class="space-y-4">
+      <input type="hidden" id="plan" name="plan" value="">
+      <input type="hidden" id="score-vertical" name="vertical" value="">
+      <p id="plan-banner" class="hidden items-center gap-2 bg-copper/10 border border-copper/30 rounded-lg px-4 py-2.5 text-sm text-copper-light">
+        Inquiring about the <span id="plan-banner-name" class="font-semibold"></span> plan
+      </p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="sp-name">Name</label>
+          <input required id="sp-name" name="name" type="text" autocomplete="name" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Jane Rivera">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="sp-business">Business Name</label>
+          <input required id="sp-business" name="business" type="text" autocomplete="organization" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Rivera Concrete Co.">
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="sp-url">Website URL <span class="normal-case text-fog/60">(optional — leave blank if you don't have one yet)</span></label>
+        <input id="sp-url" name="url" type="text" autocomplete="url" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="yourbusiness.com">
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="sp-email">Email</label>
+          <input required id="sp-email" name="email" type="email" autocomplete="email" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="jane@rivera.com">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="sp-phone">Phone</label>
+          <input id="sp-phone" name="phone" type="tel" autocomplete="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="sp-gbp">Have you claimed your Google Business Profile?</label>
+        <select id="sp-gbp" name="gbp" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 transition-colors">
+          <option value="unsure" selected>Not sure</option>
+          <option value="yes">Yes, it's claimed</option>
+          <option value="no">No / not yet</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="sp-captcha-answer">Quick check: <span id="sp-captcha-question">loading…</span></label>
+        <input required id="sp-captcha-answer" name="captcha_answer" type="text" inputmode="numeric" autocomplete="off" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Your answer">
+        <input type="hidden" name="captcha_token" id="sp-captcha-token">
+      </div>
+      <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
+        <label for="sp-company-site">Leave this field blank</label>
+        <input id="sp-company-site" name="company_site" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <span class="cta-ring rounded-full p-[2px] block w-full">
+        <button type="submit" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3 rounded-full text-sm">
+          Get My Free Score
+        </button>
+      </span>
+      <p class="text-xs text-fog/70 text-center leading-[1.6]">We use your details only to calculate and send your score. No lists, no resale. See our <a href="privacy.html" class="link-underline text-copper-light hover:text-sand transition-colors">Privacy Policy</a>.</p>
+      <p id="score-popup-status" class="text-sm text-center text-fog" role="status" aria-live="polite"></p>
+    </form>
+    <div id="score-success" class="hidden text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Your Online Presence Score</p>
+      <p id="score-total" class="font-display text-6xl sm:text-7xl tracking-[-0.02em] text-sand mb-8">—<span class="text-2xl text-fog font-sans">/100</span></p>
+      <ul id="score-breakdown" class="text-left max-w-sm mx-auto space-y-2.5 text-sm text-fog mb-8"></ul>
+      <p class="text-fog leading-[1.7] max-w-md mx-auto mb-6">Want to see how we can get you to <span class="text-copper-light font-semibold">90+</span>?</p>
+      <span class="cta-ring rounded-full p-[2px] inline-block mb-4">
+        <a href="pricing.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">
+          Show Me How to Get to 90+
+        </a>
+      </span>
+      <p class="text-xs text-fog/70 mb-6">We'll also follow up by email with your full breakdown within 24 hours.</p>
+      <button type="button" id="score-success-reset" class="text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm">
+        Check Another Business
+      </button>
+    </div>
+  </div>
+</div>`;
+}
+
+function scorePopupScript() {
+  return `<script>
+  (function () {
+    var overlay = document.getElementById('score-popup-overlay');
+    if (!overlay) return;
+    var form = document.getElementById('score-form');
+    var status = document.getElementById('score-popup-status');
+    var successBlock = document.getElementById('score-success');
+    var successReset = document.getElementById('score-success-reset');
+    var scoreTotal = document.getElementById('score-total');
+    var scoreBreakdown = document.getElementById('score-breakdown');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var closeBtn = document.getElementById('score-popup-close');
+    var planField = document.getElementById('plan');
+    var planBanner = document.getElementById('plan-banner');
+    var planBannerName = document.getElementById('plan-banner-name');
+    var verticalField = document.getElementById('score-vertical');
+    var BADGE = { pass: '✅', warn: '⚠️', fail: '❌' };
+    var AD_PARAMS = ['gclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+
+    // Infers the vertical from the current page's filename — keeps the
+    // per-industry attribution the old per-page forms used to bake in,
+    // without needing a separate copy of this popup on every page.
+    var VERTICAL_BY_PAGE = { 'construction.html': 'construction', 'medical.html': 'medical', 'retail.html': 'retail' };
+    var pageName = window.location.pathname.split('/').pop() || 'index.html';
+    if (verticalField) verticalField.value = VERTICAL_BY_PAGE[pageName] || '';
+
+    // Self-hosted captcha (see api/captcha-challenge.js) — no third-party
+    // script/signup. Fetched once on load and refreshed after every
+    // submit/failed-captcha since each challenge is meant to be answered once.
+    var captchaLoadedAt = 0;
+    var captchaQuestionEl = document.getElementById('sp-captcha-question');
+    var captchaTokenEl = document.getElementById('sp-captcha-token');
+    function loadCaptcha() {
+      captchaLoadedAt = Date.now();
+      fetch('/api/captcha-challenge').then(function (r) { return r.json(); }).then(function (d) {
+        if (captchaQuestionEl) captchaQuestionEl.textContent = d.question ? 'What is ' + d.question + '?' : 'skip this — verification unavailable';
+        if (captchaTokenEl) captchaTokenEl.value = d.token || '';
+      }).catch(function () {
+        if (captchaQuestionEl) captchaQuestionEl.textContent = 'skip this — verification unavailable';
+      });
+    }
+    loadCaptcha();
+
+    function renderScore(score, breakdown) {
+      scoreTotal.innerHTML = score + '<span class="text-2xl text-fog font-sans">/100</span>';
+      scoreBreakdown.innerHTML = (breakdown || []).map(function (item) {
+        return '<li>' + (BADGE[item.status] || '⚠️') + ' ' + item.label + '</li>';
+      }).join('');
+    }
+
+    // Every "Get My Free Score" trigger opens the same popup; the 3 pricing
+    // tier buttons additionally carry a plan to prefill (see tierCard() in
+    // blocks.js — they get both .score-trigger and .plan-cta).
+    function open(plan) {
+      form.classList.remove('hidden');
+      successBlock.classList.add('hidden');
+      if (plan) {
+        planField.value = plan;
+        planBannerName.textContent = plan;
+        planBanner.classList.remove('hidden');
+        planBanner.classList.add('flex');
+      } else {
+        planField.value = '';
+        planBanner.classList.add('hidden');
+        planBanner.classList.remove('flex');
+      }
+      overlay.classList.remove('hidden');
+      overlay.classList.add('flex');
+      document.body.classList.add('overflow-hidden');
+      requestAnimationFrame(function () { overlay.classList.add('is-open'); });
+      var first = form.querySelector('input, select');
+      if (first) first.focus();
+      document.dispatchEvent(new Event('a2h:popup-toggle'));
+    }
+
+    function close() {
+      overlay.classList.remove('is-open');
+      document.body.classList.remove('overflow-hidden');
+      setTimeout(function () { overlay.classList.add('hidden'); overlay.classList.remove('flex'); }, 250);
+      document.dispatchEvent(new Event('a2h:popup-toggle'));
+    }
+
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+    });
+
+    document.querySelectorAll('.score-trigger').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        open(el.dataset.plan || null);
+      });
+    });
+
+    var ERROR_COPY = {
+      captcha_failed: "That answer didn't match — double-check and try again.",
+      invalid_email: 'That email address looks invalid — please double-check it.',
+      disposable_email: 'Please use a permanent email address, not a temporary/disposable one.',
+      email_domain_unreachable: "That email's domain doesn't appear to accept mail — please double-check it.",
+      website_domain_unreachable: "That website URL doesn't appear to exist — check it or leave it blank.",
+    };
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var data = Object.fromEntries(new FormData(form).entries());
+      data.elapsed_ms = Date.now() - captchaLoadedAt;
+      AD_PARAMS.concat(['landing_page']).forEach(function (key) {
+        var val = null;
+        try { val = sessionStorage.getItem('a2h_' + key); } catch (err) {}
+        if (val) data[key] = val;
+      });
+
+      status.textContent = 'Calculating your score…';
+      submitBtn.disabled = true;
+
+      try {
+        var res = await fetch('/api/score-request', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        var result = await res.json().catch(function () { return {}; });
+
+        if (result.score === undefined) {
+          status.textContent = ERROR_COPY[result.error] || 'Something went wrong. Email ${EMAIL} directly.';
+          if (result.error === 'captcha_failed') loadCaptcha();
+          return;
+        }
+
+        renderScore(result.score, result.breakdown);
+        if (typeof gtag === 'function') {
+          gtag('event', 'generate_lead', {
+            plan: data.plan || '',
+            source: data.utm_source || (data.gclid ? 'google_ads' : 'organic'),
+            score: result.score,
+          });
+        }
+
+        if (result.reason === 'not_configured') {
+          // No email backend configured — open a mailto so Haider still gets
+          // notified, but the visitor already has their score on screen.
+          var enc = encodeURIComponent;
+          var planLine = data.plan ? 'Plan: ' + enc(data.plan) + '%0A' : '';
+          var body = planLine + 'Business: ' + enc(data.business) + '%0AURL: ' + enc(data.url || 'none yet') + '%0APhone: ' + enc(data.phone || '') + '%0AScore: ' + result.score + '/100%0A%0ARequesting a free website score.';
+          window.location.href = 'mailto:${EMAIL}?subject=' + enc('Free Score Request — ' + data.business) + '&body=' + body;
+        }
+
+        status.textContent = '';
+        form.reset();
+        loadCaptcha();
+        form.classList.add('hidden');
+        successBlock.classList.remove('hidden');
+      } catch (err) {
+        status.textContent = 'Something went wrong. Email ${EMAIL} directly.';
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+
+    if (successReset) {
+      successReset.addEventListener('click', function () {
+        successBlock.classList.add('hidden');
+        form.classList.remove('hidden');
+        planBanner.classList.add('hidden');
+        planBanner.classList.remove('flex');
+      });
+    }
+  })();
+  </script>`;
+}
+
 // ------------------------------------------------------------- lead popup ---
 
-// Fires 10s after page load asking for name/business/email/phone, then sends
-// the lead to mockup.html to book a free-mockup call. Suppressed for the
-// session once dismissed, and permanently (via localStorage) once submitted,
-// so a visitor who already converted or said no is never asked again.
+// Two-step "What kind of website do you want?" / "How do we reach you?"
+// popup — this IS the mockup lead-capture mechanism (not a form buried on
+// mockup.html). Fires 10s after page load, then sends the lead to
+// mockup.html to book a call. Suppressed for the session once dismissed,
+// and permanently (via localStorage) once submitted, so a visitor who
+// already converted or said no is never asked again.
 function leadPopup() {
-  return `<div id="lead-popup-overlay" class="hidden fixed inset-0 z-[100] items-center justify-center bg-ink/80 backdrop-blur-sm px-4" role="dialog" aria-modal="true" aria-labelledby="lead-popup-heading">
-  <div id="lead-popup-card" class="relative w-full max-w-md rounded-2xl bg-elevated border border-white/10 shadow-floating p-7 sm:p-8">
+  return `<div id="lead-popup-overlay" class="hidden fixed inset-0 z-[100] items-center justify-center bg-ink/80 backdrop-blur-sm px-4 py-8" role="dialog" aria-modal="true" aria-labelledby="lead-popup-heading">
+  <div id="lead-popup-card" class="relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-elevated border border-white/10 shadow-floating p-7 sm:p-8">
     <button type="button" id="lead-popup-close" aria-label="Close" class="absolute top-4 right-4 text-fog hover:text-sand transition-colors">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
-    <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Quick Intro</p>
-    <h2 id="lead-popup-heading" class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-2">Let's get to know you.</h2>
-    <p class="text-sm text-fog leading-[1.6] mb-6">Tell us a bit about your business and we'll put together a free website mockup made just for you — no charge, no obligation.</p>
     <form id="lead-popup-form" class="space-y-4">
-      <div>
-        <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-name">Name</label>
-        <input required id="lp-name" name="name" type="text" autocomplete="name" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Jane Rivera">
-      </div>
-      <div>
-        <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-business">Business Name</label>
-        <input required id="lp-business" name="business" type="text" autocomplete="organization" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Rivera Concrete Co.">
-      </div>
-      <div class="grid grid-cols-2 gap-3">
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-email">Email</label>
-          <input required id="lp-email" name="email" type="email" autocomplete="email" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="jane@rivera.com">
+      <div id="lead-popup-step-1">
+        <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Step 1 of 2</p>
+        <h2 id="lead-popup-heading" class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-2">What kind of website do you want?</h2>
+        <p class="text-sm text-fog leading-[1.6] mb-6">Tell us the vision — we'll put together a free homepage mockup made just for you, no charge, no obligation.</p>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-niche">What's your niche?</label>
+            <select required id="lp-niche" name="niche" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 transition-colors">
+              <option value="" selected disabled>Choose one</option>
+              <option value="construction">Construction &amp; Contracting</option>
+              <option value="medical">Medical &amp; Healthcare</option>
+              <option value="restaurant">Restaurant &amp; Food Service</option>
+              <option value="retail">Retail &amp; Local Shop</option>
+              <option value="professional">Professional Services</option>
+              <option value="beauty">Beauty &amp; Wellness</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div id="lp-niche-other-wrap" class="hidden">
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-niche-other">What's your industry?</label>
+            <input id="lp-niche-other" name="niche_other" type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="e.g. pet grooming, event rentals">
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-pages">How many pages?</label>
+            <select id="lp-pages" name="page_count" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 transition-colors">
+              <option value="unsure" selected>Not sure yet</option>
+              <option value="1">Just 1 (single-page site)</option>
+              <option value="3-5">3–5 pages</option>
+              <option value="6-10">6–10 pages</option>
+              <option value="10+">10+ pages</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-colors">Color scheme</label>
+            <input id="lp-colors" name="color_scheme" type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors mb-2" placeholder="e.g. dark & moody, match my logo">
+            <div class="flex flex-wrap gap-1.5" role="group" aria-label="Quick color scheme picks">
+              <button type="button" data-scheme="Warm & earthy (tan, rust, cream)" class="lp-scheme-chip text-[11px] px-2.5 py-1 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Warm &amp; Earthy</button>
+              <button type="button" data-scheme="Bold & modern (black, white, one bright accent)" class="lp-scheme-chip text-[11px] px-2.5 py-1 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Bold &amp; Modern</button>
+              <button type="button" data-scheme="Clean & minimal (white, soft gray, single accent)" class="lp-scheme-chip text-[11px] px-2.5 py-1 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Clean &amp; Minimal</button>
+              <button type="button" data-scheme="Dark & moody (charcoal, deep tones, metallic accent)" class="lp-scheme-chip text-[11px] px-2.5 py-1 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Dark &amp; Moody</button>
+              <button type="button" data-scheme="Bright & playful (saturated colors, high energy)" class="lp-scheme-chip text-[11px] px-2.5 py-1 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Bright &amp; Playful</button>
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-reference">A site you like the look of <span class="normal-case text-fog/60">(optional)</span></label>
+            <textarea id="lp-reference" name="reference_sites" rows="2" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors resize-y" placeholder="A link, or just describe the vibe"></textarea>
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-notes">Anything else? <span class="normal-case text-fog/60">(optional)</span></label>
+            <textarea id="lp-notes" name="notes" rows="2" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors resize-y" placeholder="Online store, booking system, gallery..."></textarea>
+          </div>
+          <p id="lead-popup-step1-status" class="text-xs text-center text-copper-light" role="status" aria-live="polite"></p>
+          <button type="button" id="lead-popup-next" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
+            Next: Your Info
+          </button>
         </div>
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-phone">Phone</label>
-          <input id="lp-phone" name="phone" type="tel" autocomplete="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
+      </div>
+      <div id="lead-popup-step-2" class="hidden">
+        <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Step 2 of 2</p>
+        <h2 class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-2">How do we reach you?</h2>
+        <p class="text-sm text-fog leading-[1.6] mb-6">We'll build your mockup within 2–3 days and send it straight to your inbox.</p>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-name">Name</label>
+            <input required id="lp-name" name="name" type="text" autocomplete="name" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Jane Rivera">
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-business">Business Name</label>
+            <input required id="lp-business" name="business" type="text" autocomplete="organization" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Rivera Concrete Co.">
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-email">Email</label>
+              <input required id="lp-email" name="email" type="email" autocomplete="email" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="jane@rivera.com">
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-phone">Phone</label>
+              <input id="lp-phone" name="phone" type="tel" autocomplete="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-captcha-answer">Quick check: <span id="lp-captcha-question">loading…</span></label>
+            <input required id="lp-captcha-answer" name="captcha_answer" type="text" inputmode="numeric" autocomplete="off" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Your answer">
+            <input type="hidden" name="captcha_token" id="lp-captcha-token">
+          </div>
+          <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
+            <label for="lp-company-site">Leave this field blank</label>
+            <input id="lp-company-site" name="company_site" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="flex gap-3">
+            <button type="button" id="lead-popup-back" class="text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-3 rounded-full text-sm">
+              Back
+            </button>
+            <button type="submit" class="btn-primary shadow-btn flex-1 bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
+              Get My Free Mockup
+            </button>
+          </div>
+          <p id="lead-popup-status" class="text-xs text-center text-fog" role="status" aria-live="polite"></p>
         </div>
       </div>
-      <div>
-        <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-captcha-answer">Quick check: <span id="lp-captcha-question">loading…</span></label>
-        <input required id="lp-captcha-answer" name="captcha_answer" type="text" inputmode="numeric" autocomplete="off" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Your answer">
-        <input type="hidden" name="captcha_token" id="lp-captcha-token">
-      </div>
-      <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
-        <label for="lp-company-site">Leave this field blank</label>
-        <input id="lp-company-site" name="company_site" type="text" tabindex="-1" autocomplete="off">
-      </div>
-      <button type="submit" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
-        Get My Free Mockup
-      </button>
-      <p id="lead-popup-status" class="text-xs text-center text-fog" role="status" aria-live="polite"></p>
     </form>
   </div>
 </div>`;
@@ -197,8 +593,15 @@ function leadPopupScript() {
     var overlay = document.getElementById('lead-popup-overlay');
     if (!overlay) return;
     var form = document.getElementById('lead-popup-form');
+    var step1 = document.getElementById('lead-popup-step-1');
+    var step2 = document.getElementById('lead-popup-step-2');
+    var step1Status = document.getElementById('lead-popup-step1-status');
     var status = document.getElementById('lead-popup-status');
     var closeBtn = document.getElementById('lead-popup-close');
+    var nextBtn = document.getElementById('lead-popup-next');
+    var backBtn = document.getElementById('lead-popup-back');
+    var nicheField = document.getElementById('lp-niche');
+    var nicheOtherWrap = document.getElementById('lp-niche-other-wrap');
     var DISMISSED_KEY = 'a2h_popup_dismissed';
     var SUBMITTED_KEY = 'a2h_popup_submitted';
 
@@ -219,6 +622,38 @@ function leadPopupScript() {
     }
     loadCaptcha();
 
+    if (nicheField && nicheOtherWrap) {
+      nicheField.addEventListener('change', function () {
+        nicheOtherWrap.classList.toggle('hidden', nicheField.value !== 'other');
+      });
+    }
+
+    document.querySelectorAll('.lp-scheme-chip').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var input = document.getElementById('lp-colors');
+        if (input) input.value = chip.getAttribute('data-scheme') || '';
+      });
+    });
+
+    function showStep(n) {
+      step1.classList.toggle('hidden', n !== 1);
+      step2.classList.toggle('hidden', n !== 2);
+      var first = (n === 1 ? step1 : step2).querySelector('input, select, textarea');
+      if (first) first.focus();
+    }
+
+    nextBtn.addEventListener('click', function () {
+      if (!nicheField.value) {
+        step1Status.textContent = 'Please choose a niche to continue.';
+        nicheField.focus();
+        return;
+      }
+      step1Status.textContent = '';
+      showStep(2);
+    });
+
+    backBtn.addEventListener('click', function () { showStep(1); });
+
     function alreadyHandled() {
       try {
         return sessionStorage.getItem(DISMISSED_KEY) === '1' || localStorage.getItem(SUBMITTED_KEY) === '1';
@@ -227,12 +662,14 @@ function leadPopupScript() {
 
     function open() {
       if (alreadyHandled()) return;
+      showStep(1);
       overlay.classList.remove('hidden');
       overlay.classList.add('flex');
       document.body.classList.add('overflow-hidden');
       requestAnimationFrame(function () { overlay.classList.add('is-open'); });
-      var first = form.querySelector('input');
+      var first = form.querySelector('input, select');
       if (first) first.focus();
+      document.dispatchEvent(new Event('a2h:popup-toggle'));
     }
 
     function close(remember) {
@@ -240,6 +677,7 @@ function leadPopupScript() {
       document.body.classList.remove('overflow-hidden');
       setTimeout(function () { overlay.classList.add('hidden'); overlay.classList.remove('flex'); }, 250);
       if (remember) { try { sessionStorage.setItem(DISMISSED_KEY, '1'); } catch (e) {} }
+      document.dispatchEvent(new Event('a2h:popup-toggle'));
     }
 
     closeBtn.addEventListener('click', function () { close(true); });
@@ -250,35 +688,28 @@ function leadPopupScript() {
 
     if (!alreadyHandled()) setTimeout(open, 10000);
 
+    var ERROR_COPY = {
+      captcha_failed: "That answer didn't match — double-check and try again.",
+      invalid_email: 'That email address looks invalid — please double-check it.',
+      disposable_email: 'Please use a permanent email address, not a temporary/disposable one.',
+      email_domain_unreachable: "That email's domain doesn't appear to accept mail — please double-check it.",
+    };
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var btn = form.querySelector('button[type="submit"]');
       btn.disabled = true;
       status.textContent = 'Sending…';
-      var payload = {
-        name: form.name.value,
-        business: form.business.value,
-        email: form.email.value,
-        phone: form.phone.value,
-        landing_page: window.location.pathname,
-        captcha_token: form.captcha_token.value,
-        captcha_answer: form.captcha_answer.value,
-        company_site: form.company_site.value,
-        elapsed_ms: Date.now() - captchaLoadedAt,
-      };
+      var data = Object.fromEntries(new FormData(form).entries());
+      data.landing_page = window.location.pathname;
+      data.elapsed_ms = Date.now() - captchaLoadedAt;
       ['gclid', 'fbclid', 'utm_source', 'utm_campaign'].forEach(function (k) {
-        try { var v = sessionStorage.getItem('a2h_' + k); if (v) payload[k] = v; } catch (e) {}
+        try { var v = sessionStorage.getItem('a2h_' + k); if (v) data[k] = v; } catch (e) {}
       });
-      var ERROR_COPY = {
-        captcha_failed: "That answer didn't match — double-check and try again.",
-        invalid_email: 'That email address looks invalid — please double-check it.',
-        disposable_email: 'Please use a permanent email address, not a temporary/disposable one.',
-        email_domain_unreachable: "That email's domain doesn't appear to accept mail — please double-check it.",
-      };
       fetch('/api/mockup-request', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(data),
       }).then(function (res) {
         return res.json().catch(function () { return {}; }).then(function (result) {
           if (!res.ok) {
@@ -288,11 +719,7 @@ function leadPopupScript() {
             return;
           }
           try { localStorage.setItem(SUBMITTED_KEY, '1'); } catch (e) {}
-          // Carries name/business/email into mockup.html's optional
-          // "give us a head start" brief form so the lead doesn't have to
-          // retype what they just typed here.
-          var qs = '?name=' + encodeURIComponent(payload.name) + '&business=' + encodeURIComponent(payload.business) + '&email=' + encodeURIComponent(payload.email);
-          window.location.href = '/mockup.html' + qs;
+          window.location.href = '/mockup.html';
         });
       }).catch(function () {
         btn.disabled = false;
@@ -417,9 +844,11 @@ ${nav(slug)}
 ${body}
 
 ${footer()}
+${scorePopup()}
 ${noPopup ? '' : `\n${leadPopup()}`}
 
 ${scripts()}
+${scorePopupScript()}
 ${noPopup ? '' : leadPopupScript()}
 ${extraScripts}
 </body>
@@ -427,4 +856,4 @@ ${extraScripts}
 `;
 }
 
-module.exports = { page, head, nav, footer, scripts, leadPopup, leadPopupScript, SITE, EMAIL, GA4 };
+module.exports = { page, head, nav, footer, scripts, leadPopup, leadPopupScript, scorePopup, scorePopupScript, exampleScoreCard, SITE, EMAIL, GA4 };

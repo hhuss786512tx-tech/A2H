@@ -1,8 +1,12 @@
-// Vercel Node serverless function — powers the "Let's get to know you" lead
-// popup (see build/partials.js leadPopup/leadPopupScript). Sends two emails
-// via Resend: a notification to Haider with the lead's details so the free
-// mockup can actually get built, and an immediate auto-reply to the lead
-// confirming next steps and pointing them at mockup.html to book a time.
+// Vercel Node serverless function — powers the two-step "What kind of
+// website do you want?" / "How do we reach you?" mockup popup (see
+// build/partials.js leadPopup/leadPopupScript). A single submit carries
+// both the creative brief (niche, page count, color scheme, reference
+// sites, notes) and the contact info gathered across the two steps.
+// Sends two emails via Resend: one notification to Haider with
+// everything needed to actually start building, and an immediate
+// auto-reply to the lead confirming next steps and pointing them at
+// mockup.html to book a time.
 //
 // Requires RESEND_API_KEY as a Vercel env var — same key already used by
 // api/score-request.js.
@@ -28,6 +32,24 @@ const FROM_ADDRESS = 'A2H <hello@a2h.info>';
 const escapeHtml = (str) =>
   String(str).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
+const NICHE_LABELS = {
+  construction: 'Construction & Contracting',
+  medical: 'Medical & Healthcare',
+  restaurant: 'Restaurant & Food Service',
+  retail: 'Retail & Local Shop',
+  professional: 'Professional Services',
+  beauty: 'Beauty & Wellness',
+  other: 'Other',
+};
+
+const PAGE_COUNT_LABELS = {
+  '1': 'Just 1 (single-page site)',
+  '3-5': '3–5 pages',
+  '6-10': '6–10 pages',
+  '10+': '10+ pages',
+  unsure: 'Not sure yet',
+};
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'method not allowed' });
@@ -52,6 +74,16 @@ module.exports = async function handler(req, res) {
   const email = String(body.email || '').trim().slice(0, 200);
   const phone = String(body.phone || '').trim().slice(0, 60);
   const landingPage = String(body.landing_page || '').trim().slice(0, 200);
+
+  // The "what kind of website" brief, gathered in step 1 of the popup.
+  const nicheRaw = String(body.niche || '').trim().toLowerCase();
+  const niche = NICHE_LABELS[nicheRaw] ? nicheRaw : '';
+  const nicheOther = String(body.niche_other || '').trim().slice(0, 150);
+  const pageCountRaw = String(body.page_count || '').trim();
+  const pageCount = PAGE_COUNT_LABELS[pageCountRaw] ? pageCountRaw : 'unsure';
+  const colorScheme = String(body.color_scheme || '').trim().slice(0, 300);
+  const referenceSites = String(body.reference_sites || '').trim().slice(0, 1000);
+  const notes = String(body.notes || '').trim().slice(0, 2000);
 
   // Ad attribution, mirroring score-request.js — absent for organic/direct
   // visitors, that's expected, not an error.
@@ -108,6 +140,9 @@ module.exports = async function handler(req, res) {
   const source = utmSource || (gclid ? 'google_ads' : fbclid ? 'meta_ads' : 'organic/direct');
   const sourceLine = `<p><strong>Source:</strong> ${escapeHtml(source)}${utmCampaign ? ` (${escapeHtml(utmCampaign)})` : ''}${landingPage ? ` — popup shown on ${escapeHtml(landingPage)}` : ''}</p>`;
 
+  const nicheLine = niche === 'other' && nicheOther ? nicheOther : (niche ? NICHE_LABELS[niche] : 'not specified');
+  const nl2br = (s) => escapeHtml(s).replace(/\n/g, '<br>');
+
   const notifyHtml = `
     <h2>${spamFlagged ? '🚩 Possibly spam — ' : ''}New Free Mockup Request</h2>
     ${spamFlagged ? '<p style="color:#b91c1c"><strong>Heads up:</strong> the business name looks auto-generated (unusual letter pattern) — worth a second look before treating this as a real lead.</p>' : ''}
@@ -116,6 +151,11 @@ module.exports = async function handler(req, res) {
     <p><strong>Business:</strong> ${escapeHtml(business)}</p>
     <p><strong>Email:</strong> ${escapeHtml(email)}</p>
     <p><strong>Phone:</strong> ${escapeHtml(phone) || '—'}</p>
+    <p><strong>Niche/Industry:</strong> ${escapeHtml(nicheLine)}</p>
+    <p><strong>Pages wanted:</strong> ${escapeHtml(PAGE_COUNT_LABELS[pageCount])}</p>
+    <p><strong>Color scheme:</strong> ${escapeHtml(colorScheme) || '—'}</p>
+    <p><strong>Sites they like:</strong><br>${referenceSites ? nl2br(referenceSites) : '—'}</p>
+    <p><strong>Anything else:</strong><br>${notes ? nl2br(notes) : '—'}</p>
     <p>Build them a homepage mockup within 2–3 days, then get them on the Calendly call they were routed to on mockup.html.</p>
   `;
 

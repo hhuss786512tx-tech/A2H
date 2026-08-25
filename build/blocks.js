@@ -163,8 +163,8 @@ function tierCard(t) {
     ? 'rounded-2xl bg-elevated border border-copper/40 shadow-floating card-hover p-8 flex flex-col relative'
     : 'rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col';
   const btn = t.featured
-    ? 'plan-cta btn-primary block w-full shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm text-center mt-6'
-    : 'plan-cta btn-primary block w-full text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm text-center mt-6';
+    ? 'plan-cta score-trigger btn-primary block w-full shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm text-center mt-6'
+    : 'plan-cta score-trigger btn-primary block w-full text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm text-center mt-6';
   const priceBlock = t.note
     ? `        <p class="font-display text-3xl text-copper-light mb-1">${t.price}<span class="price-period text-base text-fog font-sans"> one-time</span></p>
         <p class="text-xs text-fog mb-4">${t.note}</p>`
@@ -178,7 +178,7 @@ ${t.features.map((f) => `          <li>${f}</li>`).join('\n')}
         <div class="mt-5 pt-4 border-t border-white/10 space-y-2">
 ${t.addons.map((a) => `          <div class="flex items-center gap-2">${LEAF}<p class="text-xs text-fog">${a}</p></div>`).join('\n')}
         </div>
-        <a href="index.html#contact" data-plan="${t.name}" class="${btn}">${t.cta}</a>
+        <a href="#" data-plan="${t.name}" class="${btn}">${t.cta}</a>
       </div>`;
 }
 
@@ -199,285 +199,6 @@ ${TIERS.map(tierCard).join('\n')}
 </section>`;
 }
 
-// ------------------------------------------------------------------ form ---
-
-// A worked example so a visitor sees the payoff before typing anything —
-// shown inline, always visible, rather than gated behind a click or an
-// auto-triggered popup (popups on a lead form fight the form for attention
-// and read as spammy; showing the result up front removes friction instead).
-function exampleScoreCard() {
-  const factor = (icon, tone, name, status) => `          <div class="rounded-xl bg-surface border border-white/5 p-4 flex items-center gap-3">
-            <span class="h-9 w-9 shrink-0 rounded-full bg-${tone}/10 border border-${tone}/30 flex items-center justify-center text-base">${icon}</span>
-            <div><p class="text-sm text-sand font-semibold leading-tight">${name}</p><p class="text-xs text-fog">${status}</p></div>
-          </div>`;
-  const finding = (title, body) => `        <div class="px-5 py-4">
-          <p class="text-sm text-sand font-semibold mb-1">${title}</p>
-          <p class="text-xs text-fog leading-[1.6]">${body}</p>
-        </div>`;
-  return `    <div class="reveal mb-10 rounded-2xl bg-elevated border border-white/5 shadow-elevated overflow-hidden">
-      <div class="flex items-center gap-1.5 px-4 py-2.5 bg-surface border-b border-white/5">
-        <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
-        <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
-        <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
-        <span class="ml-2 text-xs text-fog/70">a2h.info/score</span>
-      </div>
-
-      <div class="flex items-center justify-between px-5 sm:px-8 py-4 border-b border-white/5">
-        <p class="font-display text-lg text-sand">A2H<span class="text-copper">.</span></p>
-        <div class="hidden sm:flex items-center gap-5 text-xs text-fog">
-          <span>Work</span><span>Process</span><span>Pricing</span>
-        </div>
-        <span class="text-xs font-semibold text-ink bg-copper px-3 py-1.5 rounded-full">Get My Free Score</span>
-      </div>
-
-      <div class="px-5 sm:px-8 py-7">
-        <p class="text-[10px] tracking-[0.2em] uppercase text-fog/60 mb-1">Example Result</p>
-        <h3 class="font-display text-xl text-sand mb-1">Your Score Report</h3>
-        <p class="text-sm text-fog mb-6">Example check for Rivera Concrete Co.</p>
-
-        <div class="grid sm:grid-cols-[auto_1fr] gap-4 mb-6">
-          <div class="rounded-xl bg-surface border border-white/5 p-6 flex flex-col items-center justify-center text-center sm:w-48">
-            <p class="text-xs uppercase tracking-wider text-fog mb-4">Overall Score</p>
-            <div class="relative mb-4 h-24 w-24 rounded-full" style="background: conic-gradient(#c9702f 0% 38%, rgba(255,255,255,0.08) 38% 100%);">
-              <div class="absolute inset-[6px] rounded-full bg-surface flex flex-col items-center justify-center">
-                <span class="font-display text-2xl text-sand">38</span>
-                <span class="text-[10px] text-fog">/ 100</span>
-              </div>
-            </div>
-            <span class="text-[10px] font-semibold uppercase tracking-wide text-copper-light bg-copper/10 border border-copper/30 rounded-full px-3 py-1">Needs Work</span>
-          </div>
-          <div class="grid grid-cols-2 gap-3">
-${factor('❌', 'copper', 'Website', 'Missing')}
-${factor('⚠️', 'brass', 'Lead Capture', 'Needs work')}
-${factor('⚠️', 'brass', 'Mobile', 'Needs work')}
-${factor('✅', 'live', 'Google Business', 'Claimed')}
-          </div>
-        </div>
-
-        <div class="rounded-xl bg-surface border border-white/5 overflow-hidden">
-          <div class="flex items-center justify-between px-5 py-3 border-b border-white/5">
-            <p class="text-sm font-semibold text-sand">The Breakdown</p>
-            <p class="text-[10px] uppercase tracking-wider text-copper-light font-semibold">What's Costing You</p>
-          </div>
-          <div class="divide-y divide-white/5">
-${finding('❌ No professional website', "Nothing to send an interested customer to — most of the gap starts here.")}
-${finding('⚠️ Missing lead capture', "No clear way for someone who finds you to actually become a lead.")}
-${finding('⚠️ Poor mobile presence', "Most local searches happen on a phone — this is where you're losing them.")}
-${finding('✅ Google Business Profile claimed', "Good — you already show up on Maps. That's the one thing already working in your favor.")}
-          </div>
-        </div>
-      </div>
-
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 px-5 sm:px-8 py-4 border-t border-white/5 text-[11px] text-fog/70">
-        <p class="font-display text-sand">A2H<span class="text-copper">.</span></p>
-        <div class="flex items-center gap-4">
-          <span>Privacy Policy</span>
-          <span>Terms of Service</span>
-        </div>
-        <p>&copy; 2026 A2H Agency</p>
-      </div>
-    </div>
-    <p class="reveal text-center text-sm text-fog mb-10">That's a real example. Want to see how we can get <span class="text-sand font-semibold">your</span> score to 90+? Fill out the form below.</p>`;
-}
-
-function scoreForm({
-  plan = '',
-  vertical = '',
-  heading = "How Strong Is Your Business's Online Presence?",
-  intro = "Enter your business info — with or without a site — and get your Online Presence Score out of 100 instantly. No charge, no obligation.",
-} = {}) {
-  return `<section id="contact" class="py-20 px-6">
-  <div class="max-w-2xl mx-auto">
-    <div class="reveal mb-10 text-center">
-      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Free Website Score</p>
-      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">${heading}</h2>
-      <p class="text-fog leading-[1.7]">${intro}</p>
-    </div>
-${exampleScoreCard()}
-    <form id="score-form" class="reveal rounded-2xl bg-elevated border border-white/5 shadow-floating p-8 space-y-5">
-      <input type="hidden" id="plan" name="plan" value="${plan}">
-${vertical ? `      <input type="hidden" name="vertical" value="${vertical}">\n` : ''}      <div class="grid sm:grid-cols-2 gap-5">
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="name">Name</label>
-          <input required id="name" name="name" type="text" autocomplete="name" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Jane Rivera">
-        </div>
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="business">Business Name</label>
-          <input required id="business" name="business" type="text" autocomplete="organization" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Rivera Concrete Co.">
-        </div>
-      </div>
-      <div>
-        <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="url">Website URL <span class="normal-case text-fog/60">(optional — leave blank if you don't have one yet)</span></label>
-        <input id="url" name="url" type="text" autocomplete="url" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="yourbusiness.com">
-      </div>
-      <div class="grid sm:grid-cols-2 gap-5">
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="email">Email</label>
-          <input required id="email" name="email" type="email" autocomplete="email" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="jane@rivera.com">
-        </div>
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="phone">Phone</label>
-          <input id="phone" name="phone" type="tel" autocomplete="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
-        </div>
-      </div>
-      <div>
-        <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="gbp">Have you claimed your Google Business Profile?</label>
-        <select id="gbp" name="gbp" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand focus:border-copper-light/60 transition-colors">
-          <option value="unsure" selected>Not sure</option>
-          <option value="yes">Yes, it's claimed</option>
-          <option value="no">No / not yet</option>
-        </select>
-      </div>
-      <div>
-        <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="captcha_answer">Quick check: <span id="captcha-question">loading…</span></label>
-        <input required id="captcha_answer" name="captcha_answer" type="text" inputmode="numeric" autocomplete="off" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Your answer">
-        <input type="hidden" name="captcha_token" id="captcha_token">
-      </div>
-      <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
-        <label for="company_site">Leave this field blank</label>
-        <input id="company_site" name="company_site" type="text" tabindex="-1" autocomplete="off">
-      </div>
-      <span class="cta-ring rounded-full p-[2px] block w-full">
-        <button type="submit" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px]">
-          Get My Free Score
-        </button>
-      </span>
-      <p class="text-xs text-fog/70 text-center leading-[1.6]">We use your details only to calculate and send your score. No lists, no resale. See our <a href="privacy.html" class="link-underline text-copper-light hover:text-sand transition-colors">Privacy Policy</a>.</p>
-      <p id="form-status" class="text-sm text-center text-fog" role="status" aria-live="polite"></p>
-    </form>
-    <div id="score-success" class="hidden reveal rounded-2xl bg-elevated border border-white/5 shadow-floating p-8 sm:p-12 text-center">
-      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Your Online Presence Score</p>
-      <p id="score-total" class="font-display text-6xl sm:text-7xl tracking-[-0.02em] text-sand mb-8">—<span class="text-2xl text-fog font-sans">/100</span></p>
-      <ul id="score-breakdown" class="text-left max-w-sm mx-auto space-y-2.5 text-sm text-fog mb-8"></ul>
-      <p class="text-fog leading-[1.7] max-w-md mx-auto mb-6">Want to see how we can get you to <span class="text-copper-light font-semibold">90+</span>?</p>
-      <span class="cta-ring rounded-full p-[2px] inline-block mb-4">
-        <a href="pricing.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">
-          Show Me How to Get to 90+
-        </a>
-      </span>
-      <p class="text-xs text-fog/70 mb-6">We'll also follow up by email with your full breakdown within 24 hours.</p>
-      <button type="button" id="score-success-reset" class="text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm">
-        Check Another Business
-      </button>
-    </div>
-  </div>
-</section>`;
-}
-
-// Mirrors the index.html submit path exactly, including the mailto fallback
-// so a lead is never silently dropped when the backend is unreachable.
-const FORM_SCRIPT = `<script>
-(function () {
-  var form = document.getElementById('score-form');
-  if (!form) return;
-  var status = document.getElementById('form-status');
-  var successBlock = document.getElementById('score-success');
-  var successReset = document.getElementById('score-success-reset');
-  var scoreTotal = document.getElementById('score-total');
-  var scoreBreakdown = document.getElementById('score-breakdown');
-  var submitBtn = form.querySelector('button[type="submit"]');
-  var AD_PARAMS = ['gclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
-  var BADGE = { pass: '✅', warn: '⚠️', fail: '❌' };
-
-  // Self-hosted captcha (see api/captcha-challenge.js) — no third-party
-  // script/signup. Fetched once on load and refreshed after every
-  // submit/failed-captcha since each challenge is meant to be answered once.
-  var captchaLoadedAt = 0;
-  var captchaQuestionEl = document.getElementById('captcha-question');
-  var captchaTokenEl = document.getElementById('captcha_token');
-  function loadCaptcha() {
-    captchaLoadedAt = Date.now();
-    fetch('/api/captcha-challenge').then(function (r) { return r.json(); }).then(function (d) {
-      if (captchaQuestionEl) captchaQuestionEl.textContent = d.question ? 'What is ' + d.question + '?' : 'skip this — verification unavailable';
-      if (captchaTokenEl) captchaTokenEl.value = d.token || '';
-    }).catch(function () {
-      if (captchaQuestionEl) captchaQuestionEl.textContent = 'skip this — verification unavailable';
-    });
-  }
-  loadCaptcha();
-
-  var ERROR_COPY = {
-    captcha_failed: "That answer didn't match — double-check and try again.",
-    invalid_email: 'That email address looks invalid — please double-check it.',
-    disposable_email: 'Please use a permanent email address, not a temporary/disposable one.',
-    email_domain_unreachable: "That email's domain doesn't appear to accept mail — please double-check it.",
-    website_domain_unreachable: "That website URL doesn't appear to exist — check it or leave it blank.",
-  };
-
-  function renderScore(score, breakdown) {
-    scoreTotal.innerHTML = score + '<span class="text-2xl text-fog font-sans">/100</span>';
-    scoreBreakdown.innerHTML = (breakdown || []).map(function (item) {
-      return '<li>' + (BADGE[item.status] || '⚠️') + ' ' + item.label + '</li>';
-    }).join('');
-  }
-
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    var data = Object.fromEntries(new FormData(form).entries());
-    data.elapsed_ms = Date.now() - captchaLoadedAt;
-    AD_PARAMS.concat(['landing_page']).forEach(function (key) {
-      var val = null;
-      try { val = sessionStorage.getItem('a2h_' + key); } catch (err) {}
-      if (val) data[key] = val;
-    });
-
-    status.textContent = 'Calculating your score…';
-    submitBtn.disabled = true;
-
-    try {
-      var res = await fetch('/api/score-request', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      var result = await res.json().catch(function () { return {}; });
-
-      if (result.score === undefined) {
-        status.textContent = ERROR_COPY[result.error] || 'Something went wrong. Email ${EMAIL} directly.';
-        if (result.error === 'captcha_failed') loadCaptcha();
-        return;
-      }
-
-      renderScore(result.score, result.breakdown);
-      if (typeof gtag === 'function') {
-        gtag('event', 'generate_lead', {
-          plan: data.plan || '',
-          source: data.utm_source || (data.gclid ? 'google_ads' : 'organic'),
-          score: result.score,
-        });
-      }
-
-      if (result.reason === 'not_configured') {
-        // No email backend configured — open a mailto so Haider still gets
-        // notified, but the visitor already has their score on screen.
-        var enc = encodeURIComponent;
-        var planLine = data.plan ? 'Plan: ' + enc(data.plan) + '%0A' : '';
-        var body = planLine + 'Business: ' + enc(data.business) + '%0AURL: ' + enc(data.url || 'none yet') + '%0APhone: ' + enc(data.phone || '') + '%0AScore: ' + result.score + '/100%0A%0ARequesting a free website score.';
-        window.location.href = 'mailto:${EMAIL}?subject=' + enc('Free Score Request — ' + data.business) + '&body=' + body;
-      }
-
-      status.textContent = '';
-      form.reset();
-      loadCaptcha();
-      form.classList.add('hidden');
-      successBlock.classList.remove('hidden');
-      successBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } catch (err) {
-      status.textContent = 'Something went wrong. Email ${EMAIL} directly.';
-    } finally {
-      submitBtn.disabled = false;
-    }
-  });
-
-  if (successReset) {
-    successReset.addEventListener('click', function () {
-      successBlock.classList.add('hidden');
-      form.classList.remove('hidden');
-    });
-  }
-})();
-</script>`;
-
 // ------------------------------------------------------------------ misc ---
 
 function ctaBand({ heading = 'Ready to see your <span class="italic">new site?</span>', sub = 'Free website score, fixed price, live in 2–3 days.' } = {}) {
@@ -486,7 +207,7 @@ function ctaBand({ heading = 'Ready to see your <span class="italic">new site?</
     <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">${heading}</h2>
     <p class="text-fog leading-[1.7] mb-8">${sub}</p>
     <span class="cta-ring rounded-full p-[2px] inline-block">
-      <a href="index.html#contact" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-8 py-4 rounded-full text-[15px] block">
+      <a href="#" class="score-trigger btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-8 py-4 rounded-full text-[15px] block">
         Get My Free Score
       </a>
     </span>
@@ -509,4 +230,4 @@ ${sections.map((s) => `      <div>
 </section>`;
 }
 
-module.exports = { PROJECTS, TIERS, portfolioGrid, projectCard, pricingTable, scoreForm, FORM_SCRIPT, ctaBand, legalShell };
+module.exports = { PROJECTS, TIERS, portfolioGrid, projectCard, pricingTable, ctaBand, legalShell };
