@@ -313,6 +313,15 @@
           <input id="lp-phone" name="phone" type="tel" autocomplete="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
         </div>
       </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-captcha-answer">Quick check: <span id="lp-captcha-question">loading…</span></label>
+        <input required id="lp-captcha-answer" name="captcha_answer" type="text" inputmode="numeric" autocomplete="off" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Your answer">
+        <input type="hidden" name="captcha_token" id="lp-captcha-token">
+      </div>
+      <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
+        <label for="lp-company-site">Leave this field blank</label>
+        <input id="lp-company-site" name="company_site" type="text" tabindex="-1" autocomplete="off">
+      </div>
       <button type="submit" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
         Get My Free Mockup
       </button>
@@ -425,6 +434,23 @@
     var DISMISSED_KEY = 'a2h_popup_dismissed';
     var SUBMITTED_KEY = 'a2h_popup_submitted';
 
+    // Self-hosted captcha (see api/captcha-challenge.js) — no third-party
+    // script/signup. Fetched immediately so it's ready by the time the
+    // popup opens 10s+ later.
+    var captchaLoadedAt = 0;
+    var captchaQuestionEl = document.getElementById('lp-captcha-question');
+    var captchaTokenEl = document.getElementById('lp-captcha-token');
+    function loadCaptcha() {
+      captchaLoadedAt = Date.now();
+      fetch('/api/captcha-challenge').then(function (r) { return r.json(); }).then(function (d) {
+        if (captchaQuestionEl) captchaQuestionEl.textContent = d.question ? 'What is ' + d.question + '?' : 'skip this — verification unavailable';
+        if (captchaTokenEl) captchaTokenEl.value = d.token || '';
+      }).catch(function () {
+        if (captchaQuestionEl) captchaQuestionEl.textContent = 'skip this — verification unavailable';
+      });
+    }
+    loadCaptcha();
+
     function alreadyHandled() {
       try {
         return sessionStorage.getItem(DISMISSED_KEY) === '1' || localStorage.getItem(SUBMITTED_KEY) === '1';
@@ -467,17 +493,35 @@
         email: form.email.value,
         phone: form.phone.value,
         landing_page: window.location.pathname,
+        captcha_token: form.captcha_token.value,
+        captcha_answer: form.captcha_answer.value,
+        company_site: form.company_site.value,
+        elapsed_ms: Date.now() - captchaLoadedAt,
       };
       ['gclid', 'fbclid', 'utm_source', 'utm_campaign'].forEach(function (k) {
         try { var v = sessionStorage.getItem('a2h_' + k); if (v) payload[k] = v; } catch (e) {}
       });
+      var ERROR_COPY = {
+        captcha_failed: "That answer didn't match — double-check and try again.",
+        invalid_email: 'That email address looks invalid — please double-check it.',
+        disposable_email: 'Please use a permanent email address, not a temporary/disposable one.',
+        email_domain_unreachable: "That email's domain doesn't appear to accept mail — please double-check it.",
+      };
       fetch('/api/mockup-request', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
-      }).then(function () {
-        try { localStorage.setItem(SUBMITTED_KEY, '1'); } catch (e) {}
-        window.location.href = '/mockup.html';
+      }).then(function (res) {
+        return res.json().catch(function () { return {}; }).then(function (result) {
+          if (!res.ok) {
+            btn.disabled = false;
+            status.textContent = ERROR_COPY[result.error] || 'Something went wrong — email us directly at hhuss786512tx@gmail.com.';
+            if (result.error === 'captcha_failed') loadCaptcha();
+            return;
+          }
+          try { localStorage.setItem(SUBMITTED_KEY, '1'); } catch (e) {}
+          window.location.href = '/mockup.html';
+        });
       }).catch(function () {
         btn.disabled = false;
         status.textContent = 'Something went wrong — email us directly at hhuss786512tx@gmail.com.';

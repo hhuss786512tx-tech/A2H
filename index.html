@@ -1131,6 +1131,15 @@
           <option value="no">No / not yet</option>
         </select>
       </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="captcha_answer">Quick check: <span id="captcha-question">loading…</span></label>
+        <input required id="captcha_answer" name="captcha_answer" type="text" inputmode="numeric" autocomplete="off" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Your answer">
+        <input type="hidden" name="captcha_token" id="captcha_token">
+      </div>
+      <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
+        <label for="company_site">Leave this field blank</label>
+        <input id="company_site" name="company_site" type="text" tabindex="-1" autocomplete="off">
+      </div>
       <span class="cta-ring rounded-full p-[2px] block w-full">
         <button type="submit" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px]">
           Get My Free Score
@@ -1289,6 +1298,15 @@
           <input id="lp-phone" name="phone" type="tel" autocomplete="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
         </div>
       </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-captcha-answer">Quick check: <span id="lp-captcha-question">loading…</span></label>
+        <input required id="lp-captcha-answer" name="captcha_answer" type="text" inputmode="numeric" autocomplete="off" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Your answer">
+        <input type="hidden" name="captcha_token" id="lp-captcha-token">
+      </div>
+      <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
+        <label for="lp-company-site">Leave this field blank</label>
+        <input id="lp-company-site" name="company_site" type="text" tabindex="-1" autocomplete="off">
+      </div>
       <button type="submit" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
         Get My Free Mockup
       </button>
@@ -1309,6 +1327,23 @@
     var closeBtn = document.getElementById('lead-popup-close');
     var DISMISSED_KEY = 'a2h_popup_dismissed';
     var SUBMITTED_KEY = 'a2h_popup_submitted';
+
+    // Self-hosted captcha (see api/captcha-challenge.js) — no third-party
+    // script/signup. Fetched immediately so it's ready by the time the
+    // popup opens 10s+ later.
+    var captchaLoadedAt = 0;
+    var captchaQuestionEl = document.getElementById('lp-captcha-question');
+    var captchaTokenEl = document.getElementById('lp-captcha-token');
+    function loadCaptcha() {
+      captchaLoadedAt = Date.now();
+      fetch('/api/captcha-challenge').then(function (r) { return r.json(); }).then(function (d) {
+        if (captchaQuestionEl) captchaQuestionEl.textContent = d.question ? 'What is ' + d.question + '?' : 'skip this — verification unavailable';
+        if (captchaTokenEl) captchaTokenEl.value = d.token || '';
+      }).catch(function () {
+        if (captchaQuestionEl) captchaQuestionEl.textContent = 'skip this — verification unavailable';
+      });
+    }
+    loadCaptcha();
 
     function alreadyHandled() {
       try {
@@ -1381,17 +1416,35 @@
         email: form.email.value,
         phone: form.phone.value,
         landing_page: window.location.pathname,
+        captcha_token: form.captcha_token.value,
+        captcha_answer: form.captcha_answer.value,
+        company_site: form.company_site.value,
+        elapsed_ms: Date.now() - captchaLoadedAt,
       };
       ['gclid', 'fbclid', 'utm_source', 'utm_campaign'].forEach(function (k) {
         try { var v = sessionStorage.getItem('a2h_' + k); if (v) payload[k] = v; } catch (e) {}
       });
+      var ERROR_COPY = {
+        captcha_failed: "That answer didn't match — double-check and try again.",
+        invalid_email: 'That email address looks invalid — please double-check it.',
+        disposable_email: 'Please use a permanent email address, not a temporary/disposable one.',
+        email_domain_unreachable: "That email's domain doesn't appear to accept mail — please double-check it.",
+      };
       fetch('/api/mockup-request', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
-      }).then(function () {
-        try { localStorage.setItem(SUBMITTED_KEY, '1'); } catch (e) {}
-        window.location.href = '/mockup.html';
+      }).then(function (res) {
+        return res.json().catch(function () { return {}; }).then(function (result) {
+          if (!res.ok) {
+            btn.disabled = false;
+            status.textContent = ERROR_COPY[result.error] || 'Something went wrong — email us directly at hhuss786512tx@gmail.com.';
+            if (result.error === 'captcha_failed') loadCaptcha();
+            return;
+          }
+          try { localStorage.setItem(SUBMITTED_KEY, '1'); } catch (e) {}
+          window.location.href = '/mockup.html';
+        });
       }).catch(function () {
         btn.disabled = false;
         status.textContent = 'Something went wrong — email us directly at hhuss786512tx@gmail.com.';
@@ -1783,6 +1836,24 @@
   const submitBtn = form.querySelector('button[type="submit"]');
   const SCORE_BADGE = { pass: '✅', warn: '⚠️', fail: '❌' };
 
+  // Self-hosted captcha (see api/captcha-challenge.js) — no third-party
+  // script/signup. Fetched once on load and refreshed after every
+  // submit/reset since each challenge is meant to be answered once.
+  let captchaLoadedAt = 0;
+  const captchaQuestionEl = document.getElementById('captcha-question');
+  const captchaTokenEl = document.getElementById('captcha_token');
+  const loadCaptcha = () => {
+    captchaLoadedAt = Date.now();
+    fetch('/api/captcha-challenge')
+      .then((r) => r.json())
+      .then((d) => {
+        if (captchaQuestionEl) captchaQuestionEl.textContent = d.question ? `What is ${d.question}?` : 'skip this — verification unavailable';
+        if (captchaTokenEl) captchaTokenEl.value = d.token || '';
+      })
+      .catch(() => { if (captchaQuestionEl) captchaQuestionEl.textContent = 'skip this — verification unavailable'; });
+  };
+  loadCaptcha();
+
   const renderScore = (score, breakdown) => {
     scoreTotal.innerHTML = `${score}<span class="text-2xl text-fog font-sans">/100</span>`;
     scoreBreakdown.innerHTML = (breakdown || [])
@@ -1820,6 +1891,7 @@
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(form).entries());
+    data.elapsed_ms = Date.now() - captchaLoadedAt;
     AD_PARAMS.concat(['landing_page']).forEach((key) => {
       const val = sessionStorage.getItem('a2h_' + key);
       if (val) data[key] = val;
@@ -1837,7 +1909,15 @@
       const result = await res.json().catch(() => ({}));
 
       if (result.score === undefined) {
-        status.textContent = "Something went wrong. Email hhuss786512tx@gmail.com directly.";
+        const ERROR_COPY = {
+          captcha_failed: "That answer didn't match — double-check and try again.",
+          invalid_email: 'That email address looks invalid — please double-check it.',
+          disposable_email: 'Please use a permanent email address, not a temporary/disposable one.',
+          email_domain_unreachable: "That email's domain doesn't appear to accept mail — please double-check it.",
+          website_domain_unreachable: "That website URL doesn't appear to exist — check it or leave it blank.",
+        };
+        status.textContent = ERROR_COPY[result.error] || 'Something went wrong. Email hhuss786512tx@gmail.com directly.';
+        if (result.error === 'captcha_failed') loadCaptcha();
         return;
       }
 
@@ -1865,6 +1945,7 @@
 
       status.textContent = '';
       form.reset();
+      loadCaptcha();
       showSuccess();
     } catch (err) {
       status.textContent = "Something went wrong. Email hhuss786512tx@gmail.com directly.";

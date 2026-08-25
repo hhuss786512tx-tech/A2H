@@ -328,6 +328,15 @@ ${vertical ? `      <input type="hidden" name="vertical" value="${vertical}">\n`
           <option value="no">No / not yet</option>
         </select>
       </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="captcha_answer">Quick check: <span id="captcha-question">loading…</span></label>
+        <input required id="captcha_answer" name="captcha_answer" type="text" inputmode="numeric" autocomplete="off" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Your answer">
+        <input type="hidden" name="captcha_token" id="captcha_token">
+      </div>
+      <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
+        <label for="company_site">Leave this field blank</label>
+        <input id="company_site" name="company_site" type="text" tabindex="-1" autocomplete="off">
+      </div>
       <span class="cta-ring rounded-full p-[2px] block w-full">
         <button type="submit" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px]">
           Get My Free Score
@@ -370,6 +379,31 @@ const FORM_SCRIPT = `<script>
   var AD_PARAMS = ['gclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
   var BADGE = { pass: '✅', warn: '⚠️', fail: '❌' };
 
+  // Self-hosted captcha (see api/captcha-challenge.js) — no third-party
+  // script/signup. Fetched once on load and refreshed after every
+  // submit/failed-captcha since each challenge is meant to be answered once.
+  var captchaLoadedAt = 0;
+  var captchaQuestionEl = document.getElementById('captcha-question');
+  var captchaTokenEl = document.getElementById('captcha_token');
+  function loadCaptcha() {
+    captchaLoadedAt = Date.now();
+    fetch('/api/captcha-challenge').then(function (r) { return r.json(); }).then(function (d) {
+      if (captchaQuestionEl) captchaQuestionEl.textContent = d.question ? 'What is ' + d.question + '?' : 'skip this — verification unavailable';
+      if (captchaTokenEl) captchaTokenEl.value = d.token || '';
+    }).catch(function () {
+      if (captchaQuestionEl) captchaQuestionEl.textContent = 'skip this — verification unavailable';
+    });
+  }
+  loadCaptcha();
+
+  var ERROR_COPY = {
+    captcha_failed: "That answer didn't match — double-check and try again.",
+    invalid_email: 'That email address looks invalid — please double-check it.',
+    disposable_email: 'Please use a permanent email address, not a temporary/disposable one.',
+    email_domain_unreachable: "That email's domain doesn't appear to accept mail — please double-check it.",
+    website_domain_unreachable: "That website URL doesn't appear to exist — check it or leave it blank.",
+  };
+
   function renderScore(score, breakdown) {
     scoreTotal.innerHTML = score + '<span class="text-2xl text-fog font-sans">/100</span>';
     scoreBreakdown.innerHTML = (breakdown || []).map(function (item) {
@@ -380,6 +414,7 @@ const FORM_SCRIPT = `<script>
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
     var data = Object.fromEntries(new FormData(form).entries());
+    data.elapsed_ms = Date.now() - captchaLoadedAt;
     AD_PARAMS.concat(['landing_page']).forEach(function (key) {
       var val = null;
       try { val = sessionStorage.getItem('a2h_' + key); } catch (err) {}
@@ -398,7 +433,8 @@ const FORM_SCRIPT = `<script>
       var result = await res.json().catch(function () { return {}; });
 
       if (result.score === undefined) {
-        status.textContent = 'Something went wrong. Email ${EMAIL} directly.';
+        status.textContent = ERROR_COPY[result.error] || 'Something went wrong. Email ${EMAIL} directly.';
+        if (result.error === 'captcha_failed') loadCaptcha();
         return;
       }
 
@@ -422,6 +458,7 @@ const FORM_SCRIPT = `<script>
 
       status.textContent = '';
       form.reset();
+      loadCaptcha();
       form.classList.add('hidden');
       successBlock.classList.remove('hidden');
       successBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
