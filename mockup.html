@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/tailwind.css?v=c9b9b344">
+<link rel="stylesheet" href="assets/tailwind.css?v=2be610cb">
 <link rel="stylesheet" href="assets/site.css?v=50e0a0f2">
 <script>document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">
@@ -109,6 +109,100 @@
       <div class="calendly-inline-widget" data-url="https://calendly.com/hhuss786512tx/new-meeting?hide_gdpr_banner=1&background_color=231c18&text_color=e9dfd2&primary_color=c9702f" style="min-width:280px;height:700px;"></div>
     </div>
     <p class="reveal text-center text-xs text-fog mt-6">Prefer email instead? Reach us at <a href="mailto:hhuss786512tx@gmail.com" class="link-underline text-copper-light">hhuss786512tx@gmail.com</a>.</p>
+  </div>
+</section>
+
+<section class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto reveal">
+    <div class="mb-8 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Optional</p>
+      <h2 class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-3">Give us a head start.</h2>
+      <p class="text-fog leading-[1.7]">The more you tell us, the closer your first mockup lands to what you actually want. Skip it and we'll design around what's proven to convert for your industry.</p>
+    </div>
+    <form id="brief-form" class="rounded-2xl bg-elevated border border-white/5 shadow-floating p-8 space-y-5">
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="brief-name">Name</label>
+          <input required id="brief-name" name="name" type="text" autocomplete="name" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Jane Rivera">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="brief-business">Business Name</label>
+          <input required id="brief-business" name="business" type="text" autocomplete="organization" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Rivera Concrete Co.">
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="brief-email">Email</label>
+        <input required id="brief-email" name="email" type="email" autocomplete="email" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="jane@rivera.com">
+      </div>
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="brief-niche">What's your niche?</label>
+          <select id="brief-niche" name="niche" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand focus:border-copper-light/60 transition-colors">
+            <option value="" selected disabled>Choose one</option>
+            <option value="construction">Construction &amp; Contracting</option>
+            <option value="medical">Medical &amp; Healthcare</option>
+            <option value="restaurant">Restaurant &amp; Food Service</option>
+            <option value="retail">Retail &amp; Local Shop</option>
+            <option value="professional">Professional Services</option>
+            <option value="beauty">Beauty &amp; Wellness</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="brief-pages">How many pages?</label>
+          <select id="brief-pages" name="page_count" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand focus:border-copper-light/60 transition-colors">
+            <option value="unsure" selected>Not sure yet</option>
+            <option value="1">Just 1 (single-page site)</option>
+            <option value="3-5">3–5 pages</option>
+            <option value="6-10">6–10 pages</option>
+            <option value="10+">10+ pages</option>
+          </select>
+        </div>
+      </div>
+      <div id="brief-niche-other-wrap" class="hidden">
+        <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="brief-niche-other">What's your industry?</label>
+        <input id="brief-niche-other" name="niche_other" type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="e.g. pet grooming, event rentals">
+      </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="brief-colors">Color scheme</label>
+        <input id="brief-colors" name="color_scheme" type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors mb-2.5" placeholder="e.g. dark & moody, warm earth tones, match my logo">
+        <div class="flex flex-wrap gap-2" role="group" aria-label="Quick color scheme picks">
+          <button type="button" data-scheme="Warm & earthy (tan, rust, cream)" class="brief-scheme-chip text-xs px-3 py-1.5 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Warm &amp; Earthy</button>
+          <button type="button" data-scheme="Bold & modern (black, white, one bright accent)" class="brief-scheme-chip text-xs px-3 py-1.5 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Bold &amp; Modern</button>
+          <button type="button" data-scheme="Clean & minimal (white, soft gray, single accent)" class="brief-scheme-chip text-xs px-3 py-1.5 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Clean &amp; Minimal</button>
+          <button type="button" data-scheme="Dark & moody (charcoal, deep tones, metallic accent)" class="brief-scheme-chip text-xs px-3 py-1.5 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Dark &amp; Moody</button>
+          <button type="button" data-scheme="Bright & playful (saturated colors, high energy)" class="brief-scheme-chip text-xs px-3 py-1.5 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Bright &amp; Playful</button>
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="brief-reference">Sites you like the look of <span class="normal-case text-fog/60">(optional)</span></label>
+        <textarea id="brief-reference" name="reference_sites" rows="2" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors resize-y" placeholder="Paste a link or two, or just describe the vibe — e.g. apple.com's simplicity"></textarea>
+      </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="brief-notes">Anything else we should know? <span class="normal-case text-fog/60">(optional)</span></label>
+        <textarea id="brief-notes" name="notes" rows="3" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors resize-y" placeholder="Online store, booking system, gallery, blog — anything you need this site to do"></textarea>
+      </div>
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-fog mb-2" for="brief-captcha-answer">Quick check: <span id="brief-captcha-question">loading…</span></label>
+        <input required id="brief-captcha-answer" name="captcha_answer" type="text" inputmode="numeric" autocomplete="off" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Your answer">
+        <input type="hidden" name="captcha_token" id="brief-captcha-token">
+      </div>
+      <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
+        <label for="brief-company-site">Leave this field blank</label>
+        <input id="brief-company-site" name="company_site" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <span class="cta-ring rounded-full p-[2px] block w-full">
+        <button type="submit" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px]">
+          Send My Brief
+        </button>
+      </span>
+      <p id="brief-status" class="text-sm text-center text-fog" role="status" aria-live="polite"></p>
+    </form>
+    <div id="brief-success" class="hidden rounded-2xl bg-elevated border border-white/5 shadow-floating p-8 sm:p-12 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Got It</p>
+      <h3 class="font-display text-2xl text-sand mb-3">Thanks — we'll build around this.</h3>
+      <p class="text-fog leading-[1.7]">We'll use everything you sent when we put your mockup together.</p>
+    </div>
   </div>
 </section>
 
@@ -252,5 +346,100 @@
 </script>
 
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+  // Prefill from the lead popup redirect (see build/partials.js
+  // leadPopupScript / index.html's popup script) — a query string is the
+  // simplest way to carry name/business/email across the page navigation
+  // without a shared client-side store.
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var map = { name: 'brief-name', business: 'brief-business', email: 'brief-email' };
+    Object.keys(map).forEach(function (key) {
+      var val = params.get(key);
+      var el = document.getElementById(map[key]);
+      if (val && el) el.value = val;
+    });
+  })();
+
+  // Niche "Other" reveal
+  (function () {
+    var select = document.getElementById('brief-niche');
+    var wrap = document.getElementById('brief-niche-other-wrap');
+    if (!select || !wrap) return;
+    select.addEventListener('change', function () {
+      wrap.classList.toggle('hidden', select.value !== 'other');
+    });
+  })();
+
+  // Color scheme quick-pick chips — click fills the text field, still
+  // freely editable afterward.
+  (function () {
+    var input = document.getElementById('brief-colors');
+    document.querySelectorAll('.brief-scheme-chip').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        if (input) input.value = chip.getAttribute('data-scheme') || '';
+      });
+    });
+  })();
+
+  // Brief form submit — same self-hosted captcha + honeypot pattern as
+  // the other two lead forms (see api/_lib/spam-guard.js).
+  (function () {
+    var form = document.getElementById('brief-form');
+    if (!form) return;
+    var status = document.getElementById('brief-status');
+    var successBlock = document.getElementById('brief-success');
+    var submitBtn = form.querySelector('button[type="submit"]');
+
+    var captchaLoadedAt = 0;
+    var captchaQuestionEl = document.getElementById('brief-captcha-question');
+    var captchaTokenEl = document.getElementById('brief-captcha-token');
+    function loadCaptcha() {
+      captchaLoadedAt = Date.now();
+      fetch('/api/captcha-challenge').then(function (r) { return r.json(); }).then(function (d) {
+        if (captchaQuestionEl) captchaQuestionEl.textContent = d.question ? 'What is ' + d.question + '?' : 'skip this — verification unavailable';
+        if (captchaTokenEl) captchaTokenEl.value = d.token || '';
+      }).catch(function () {
+        if (captchaQuestionEl) captchaQuestionEl.textContent = 'skip this — verification unavailable';
+      });
+    }
+    loadCaptcha();
+
+    var ERROR_COPY = {
+      captcha_failed: "That answer didn't match — double-check and try again.",
+      invalid_email: 'That email address looks invalid — please double-check it.',
+      disposable_email: 'Please use a permanent email address, not a temporary/disposable one.',
+      email_domain_unreachable: "That email's domain doesn't appear to accept mail — please double-check it.",
+    };
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var data = Object.fromEntries(new FormData(form).entries());
+      data.elapsed_ms = Date.now() - captchaLoadedAt;
+      submitBtn.disabled = true;
+      status.textContent = 'Sending…';
+      try {
+        var res = await fetch('/api/mockup-brief', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        var result = await res.json().catch(function () { return {}; });
+        if (!res.ok) {
+          status.textContent = ERROR_COPY[result.error] || 'Something went wrong — email us directly at hhuss786512tx@gmail.com.';
+          if (result.error === 'captcha_failed') loadCaptcha();
+          return;
+        }
+        status.textContent = '';
+        form.classList.add('hidden');
+        successBlock.classList.remove('hidden');
+      } catch (err) {
+        status.textContent = 'Something went wrong — email us directly at hhuss786512tx@gmail.com.';
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  })();
+</script>
 </body>
 </html>

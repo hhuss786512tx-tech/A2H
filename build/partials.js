@@ -288,7 +288,11 @@ function leadPopupScript() {
             return;
           }
           try { localStorage.setItem(SUBMITTED_KEY, '1'); } catch (e) {}
-          window.location.href = '/mockup.html';
+          // Carries name/business/email into mockup.html's optional
+          // "give us a head start" brief form so the lead doesn't have to
+          // retype what they just typed here.
+          var qs = '?name=' + encodeURIComponent(payload.name) + '&business=' + encodeURIComponent(payload.business) + '&email=' + encodeURIComponent(payload.email);
+          window.location.href = '/mockup.html' + qs;
         });
       }).catch(function () {
         btn.disabled = false;

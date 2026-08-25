@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- Tailwind is compiled ahead of time by tailwind.config.js (see README).
      Rebuild after changing any utility class:  npm run build:css -->
-<link rel="stylesheet" href="assets/tailwind.css?v=c9b9b344">
+<link rel="stylesheet" href="assets/tailwind.css?v=2be610cb">
 <link rel="stylesheet" href="assets/site.css?v=50e0a0f2">
 <!-- Gates the .reveal opacity:0 rule in site.css. If this never runs, the
      hiding rule never applies and all copy stays visible rather than being
@@ -1443,7 +1443,11 @@
             return;
           }
           try { localStorage.setItem(SUBMITTED_KEY, '1'); } catch (e) {}
-          window.location.href = '/mockup.html';
+          // Carries name/business/email into mockup.html's optional
+          // "give us a head start" brief form so the lead doesn't have to
+          // retype what they just typed here.
+          var qs = '?name=' + encodeURIComponent(payload.name) + '&business=' + encodeURIComponent(payload.business) + '&email=' + encodeURIComponent(payload.email);
+          window.location.href = '/mockup.html' + qs;
         });
       }).catch(function () {
         btn.disabled = false;
