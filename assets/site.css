@@ -440,6 +440,41 @@
     to { --cta-ring-angle: 360deg; }
   }
 
+  /* Pricing cards: a slow copper/brass light traveling around the card's
+     own border, same spinning-conic-gradient trick as .blueprint-ring and
+     .cta-ring above, but drawn as a true 1px ring via mask-composite so it
+     traces the card's rounded corners instead of glowing behind them —
+     ambient on both cards, brighter and faster on the featured plan. */
+  @property --pricing-ring-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+  }
+  .pricing-ring { position: relative; }
+  .pricing-ring::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(from var(--pricing-ring-angle), transparent 0deg, transparent 265deg, #c9702f 300deg, #e2924f 325deg, #fff8ef 340deg, #e2924f 352deg, transparent 360deg);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    animation: pricing-ring-spin 7s linear infinite;
+    will-change: --pricing-ring-angle;
+    pointer-events: none;
+  }
+  .pricing-ring-feature::before {
+    padding: 1.5px;
+    animation-duration: 4.5s;
+    background: conic-gradient(from var(--pricing-ring-angle), transparent 0deg, transparent 235deg, #c9702f 280deg, #e2924f 310deg, #fff8ef 330deg, #e2924f 345deg, #c9702f 355deg, transparent 360deg);
+  }
+  @keyframes pricing-ring-spin {
+    to { --pricing-ring-angle: 360deg; }
+  }
+
   /* Ghost footer wordmark — was relying on the <footer>'s own overflow:hidden
      to contain the ambient embers, but .ambient-embers already clips itself
      (position:absolute + inset:0 + overflow:hidden, see above), so that
@@ -501,7 +536,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .reveal, .card-hover, .stat-card, .btn-primary, .marquee-track, .pulse-dot, .blueprint-ring, .cta-ring {
+    .reveal, .card-hover, .stat-card, .btn-primary, .marquee-track, .pulse-dot, .blueprint-ring, .cta-ring, .pricing-ring::before, .pricing-ring-feature::before {
       animation: none !important;
       transition: none !important;
     }

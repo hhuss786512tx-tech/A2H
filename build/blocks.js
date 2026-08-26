@@ -144,8 +144,8 @@ const LEAF = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" class=
 
 function tierCard(t) {
   const shell = t.featured
-    ? 'rounded-2xl bg-elevated border border-copper/40 shadow-floating card-hover p-8 flex flex-col relative'
-    : 'rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col';
+    ? 'pricing-ring pricing-ring-feature rounded-2xl bg-elevated border border-copper/40 shadow-floating card-hover p-8 flex flex-col relative'
+    : 'pricing-ring rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col';
   const btn = t.featured
     ? 'plan-cta mockup-trigger btn-primary block w-full shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm text-center mt-6'
     : 'plan-cta mockup-trigger btn-primary block w-full text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm text-center mt-6';
