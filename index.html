@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- Tailwind is compiled ahead of time by tailwind.config.js (see README).
      Rebuild after changing any utility class:  npm run build:css -->
-<link rel="stylesheet" href="assets/tailwind.css?v=42ab84df">
+<link rel="stylesheet" href="assets/tailwind.css?v=ce3523a0">
 <link rel="stylesheet" href="assets/site.css?v=50e0a0f2">
 <!-- Gates the .reveal opacity:0 rule in site.css. If this never runs, the
      hiding rule never applies and all copy stays visible rather than being
@@ -179,12 +179,12 @@
            throw and take the whole nav script down with it. -->
       <a href="industries.html" class="link-underline hover:text-sand transition-colors">Industries</a>
       <a href="book-a-call.html" class="link-underline hover:text-sand transition-colors">Book A Call</a>
-      <a href="#" class="score-trigger link-underline hover:text-sand transition-colors">Contact</a>
+      <a href="#" class="mockup-trigger link-underline hover:text-sand transition-colors">Contact</a>
     </nav>
     <div class="flex items-center gap-3 shrink-0">
       <span class="cta-ring rounded-full p-[2px] hidden sm:inline-block">
-        <a href="#" class="score-trigger btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-2.5 rounded-full block">
-          Get My Free Score
+        <a href="#" class="mockup-trigger btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-2.5 rounded-full block">
+          Get My Free Mockup
         </a>
       </span>
       <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden h-10 w-10 flex items-center justify-center rounded-full border border-white/10 text-sand hover:border-copper-light/60 active:scale-95 transition-[border-color,transform] focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light focus-visible:outline-offset-2">
@@ -200,10 +200,10 @@
       <a href="#pricing" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">Pricing</a>
       <a href="industries.html" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">Industries</a>
       <a href="book-a-call.html" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">Book A Call</a>
-      <a href="#" class="score-trigger mobile-nav-link py-3 text-fog hover:text-sand transition-colors">Contact</a>
+      <a href="#" class="mockup-trigger mobile-nav-link py-3 text-fog hover:text-sand transition-colors">Contact</a>
       <span class="cta-ring rounded-full p-[2px] inline-block mt-4 mb-1">
-        <a href="#" class="score-trigger mobile-nav-link btn-primary shadow-btn block text-center bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-3 rounded-full">
-          Get My Free Score
+        <a href="#" class="mockup-trigger mobile-nav-link btn-primary shadow-btn block text-center bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-3 rounded-full">
+          Get My Free Mockup
         </a>
       </span>
     </nav>
@@ -213,9 +213,9 @@
 <!-- PERSISTENT FLOATING CTA (mobile) -->
 <div id="floating-cta" class="fixed bottom-6 right-6 z-40 pointer-events-none opacity-0 translate-y-4 transition-all duration-500 ease-out">
   <span class="cta-ring rounded-full p-[2px] inline-block pointer-events-auto">
-    <a href="#" class="score-trigger btn-primary shadow-floating bg-copper hover:bg-copper-light text-ink font-semibold pl-5 pr-6 py-3 rounded-full text-sm flex items-center gap-2 border border-black/10">
+    <a href="#" class="mockup-trigger btn-primary shadow-floating bg-copper hover:bg-copper-light text-ink font-semibold pl-5 pr-6 py-3 rounded-full text-sm flex items-center gap-2 border border-black/10">
       <span class="inline-flex h-2 w-2 rounded-full bg-ink/70"></span>
-      Get My Free Score
+      Get My Free Mockup
     </a>
   </span>
 </div>
@@ -288,8 +288,8 @@
     </p>
     <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
       <span class="cta-ring rounded-full p-[2px] inline-block">
-        <a href="#" class="score-trigger btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">
-          Get My Free Score
+        <a href="#" class="mockup-trigger btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">
+          Get My Free Mockup
         </a>
       </span>
       <a href="#work" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">
@@ -514,7 +514,7 @@
             <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Construction</p>
             <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Solid State <span class="italic text-copper-light">Construction.</span></h3>
             <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Full site rebuild for a growing construction crew — fast, mobile-first, built to convert.</p>
-            <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Professional Plan</p>
+            <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Base Plan</p>
           </div>
           <div class="mscroll-text-chapter" data-chapter="1">
             <p class="font-display text-3xl text-copper mb-4">02</p>
@@ -528,7 +528,7 @@
             <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Biotech / Clinical Research</p>
             <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Azul Bio <span class="italic text-copper-light">Research.</span></h3>
             <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Credibility-first site for a clinical research network — built to convert sponsor &amp; patient inquiries.</p>
-            <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Professional Plan</p>
+            <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Base Plan</p>
           </div>
           <div class="mscroll-text-chapter" data-chapter="3">
             <p class="font-display text-3xl text-copper mb-4">04</p>
@@ -546,7 +546,7 @@
         <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Construction</p>
         <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Solid State <span class="italic text-copper-light">Construction.</span></h3>
         <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Full site rebuild for a growing construction crew — fast, mobile-first, built to convert.</p>
-        <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Professional Plan</p>
+        <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Base Plan</p>
       </div>
       <div class="reveal mscroll-stage-block mscroll-phones-chapter xl:col-start-2 xl:py-24 flex items-center justify-center" data-chapter="0">
         <div class="mscroll-phones flex items-start justify-center gap-6">
@@ -592,7 +592,7 @@
         <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Biotech / Clinical Research</p>
         <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Azul Bio <span class="italic text-copper-light">Research.</span></h3>
         <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Credibility-first site for a clinical research network — built to convert sponsor &amp; patient inquiries.</p>
-        <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Professional Plan</p>
+        <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Base Plan</p>
       </div>
       <div class="reveal mscroll-stage-block mscroll-phones-chapter xl:col-start-2 xl:py-24 flex items-center justify-center" data-chapter="2">
         <div class="mscroll-phones flex items-start justify-center gap-6">
@@ -700,8 +700,8 @@
             <div class="w-16 h-16 rounded-full border-2 border-copper/60 bg-ink flex items-center justify-center mb-6 relative z-10">
               <span class="font-display text-lg font-semibold text-copper">01</span>
             </div>
-            <h3 class="text-sand font-semibold text-sm mb-2">We score what's broken</h3>
-            <p class="text-fog text-sm leading-[1.7]">Speed, mobile experience, what's costing you visitors — scored out of 100 before a line of code changes.</p>
+            <h3 class="text-sand font-semibold text-sm mb-2">We design your mockup</h3>
+            <p class="text-fog text-sm leading-[1.7]">Tell us your niche, color scheme and vibe — a free homepage mockup made for your business, before a line of real code gets written.</p>
           </div>
 
           <div class="flex flex-col items-center text-center px-2 relative">
@@ -751,14 +751,16 @@
       <p class="text-fog text-sm">Pay in full or spread it over 4 months &nbsp;·&nbsp; fixed scope, no surprises &nbsp;·&nbsp; Care Plan included with every tier</p>
     </div>
 
-    <div class="reveal grid sm:grid-cols-3 gap-6 items-stretch mt-8">
+    <div class="reveal grid sm:grid-cols-2 gap-6 items-stretch mt-8 max-w-3xl mx-auto">
       <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
-        <h3 class="text-sand font-semibold text-lg mb-1">Starter</h3>
+        <h3 class="text-sand font-semibold text-lg mb-1">Base</h3>
         <p class="font-display text-3xl text-copper-light mb-1">$1,500<span class="price-period text-base text-fog font-sans"> one-time</span></p>
-        <p class="text-xs text-fog mb-4">50% to start, 50% at launch</p>
+        <p class="text-xs text-fog mb-4">or <span class="text-sand font-semibold">$325</span>/mo &times; 4 <span class="text-fog">($1,300 total)</span></p>
         <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
-          <li>Custom 5-page website</li>
+          <li>Custom 10-page website</li>
           <li>Mobile-first responsive design</li>
+          <li>Logo design included</li>
+          <li>Full custom backend</li>
           <li>Contact form → email</li>
           <li>Google Business Profile / Maps setup</li>
           <li>90+ PageSpeed target</li>
@@ -774,58 +776,36 @@
             <p class="text-xs text-fog">+ Add 3D Company Card for <span class="text-copper-light font-semibold">$99</span></p>
           </div>
         </div>
-        <a href="#" data-plan="Starter" class="plan-cta score-trigger btn-primary block w-full text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm text-center mt-6">
-          Start with Starter
+        <a href="#" data-plan="Base" class="plan-cta mockup-trigger btn-primary block w-full text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm text-center mt-6">
+          Start with Base
         </a>
       </div>
       <div class="rounded-2xl bg-elevated border border-copper/40 shadow-floating card-hover p-8 flex flex-col relative">
-        <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">Most Popular</span>
-        <h3 class="text-sand font-semibold text-lg mb-1">Professional</h3>
-        <p class="font-display text-3xl text-copper-light mb-1">$3,000<span class="price-period text-base text-fog font-sans"> one-time</span></p>
-        <p class="text-xs text-fog mb-4">or <span class="text-sand font-semibold">$568.75</span>/mo &times; 4 <span class="text-fog">($2,275 total)</span></p>
-        <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
-          <li>Everything in Starter</li>
-          <li>Up to 10 pages</li>
-          <li>Custom animation &amp; interactions</li>
-          <li>Photo &amp; copy integration</li>
-          <li>Priority build &amp; launch support</li>
-          <li><span class="text-sand">3D interactive company card included</span></li>
-          <li><span class="text-sand">6 months of Care Plan included</span> — then $249/mo, cancel anytime</li>
-        </ul>
-        <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-copper-light shrink-0"><path d="M12 2C10 6 6 8 4 8C4 16 8 20 12 22C16 20 20 16 20 8C18 8 14 6 12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-          <p class="text-xs text-fog">+ Add AI Chatbot for <span class="text-copper-light font-semibold">$99/mo</span></p>
-        </div>
-        <a href="#" data-plan="Professional" class="plan-cta score-trigger btn-primary block w-full shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm text-center mt-6">
-          Go Professional
-        </a>
-      </div>
-      <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
+        <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">Full Service</span>
         <h3 class="text-sand font-semibold text-lg mb-1">Premium</h3>
         <p class="font-display text-3xl text-copper-light mb-1">$5,000<span class="price-period text-base text-fog font-sans"> one-time</span></p>
-        <p class="text-xs text-fog mb-4">or <span class="text-sand font-semibold">$875</span>/mo &times; 4 <span class="text-fog">($3,500 total)</span></p>
+        <p class="text-xs text-fog mb-4">or <span class="text-sand font-semibold">$1,000</span>/mo &times; 4 <span class="text-fog">($4,000 total)</span></p>
         <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
-          <li>Everything in Professional</li>
+          <li>Everything in Base</li>
           <li>Unlimited pages</li>
           <li>Custom functionality (booking, cart, calculators)</li>
-          <li>Logo design &amp; brand refresh included</li>
           <li>Full UI design pass + custom animation</li>
           <li><span class="text-sand">AI Chatbot included</span> — not a $99/mo add-on</li>
           <li><span class="text-sand">3D interactive company card included</span></li>
           <li>Dedicated launch support</li>
-          <li><span class="text-sand">12 months of Care Plan included</span> — then $249/mo, cancel anytime</li>
+          <li><span class="text-sand">2 years of Care Plan included</span> — then $249/mo, cancel anytime</li>
         </ul>
         <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-copper-light shrink-0"><path d="M12 2C10 6 6 8 4 8C4 16 8 20 12 22C16 20 20 16 20 8C18 8 14 6 12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
           <p class="text-xs text-fog">Full-service build — logo, UI, and motion all included</p>
         </div>
-        <a href="#" data-plan="Premium" class="plan-cta score-trigger btn-primary block w-full text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm text-center mt-6">
-          Start with Premium
+        <a href="#" data-plan="Premium" class="plan-cta mockup-trigger btn-primary block w-full shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm text-center mt-6">
+          Go Premium
         </a>
       </div>
     </div>
-    <p class="reveal text-center text-sm text-fog mt-8 mb-4">Every project starts with a free website score — fixed price, clear scope, no long-term contract.</p>
-    <p class="reveal text-center text-sm text-fog mb-4">Care Plan (hosting, maintenance &amp; monthly edits) is included with every tier — 2, 6, or 12 months depending on plan — then continues at <span class="text-copper-light font-semibold">$249/mo</span>, cancel anytime.</p>
+    <p class="reveal text-center text-sm text-fog mt-8 mb-4">Every project starts with a free website mockup — fixed price, clear scope, no long-term contract.</p>
+    <p class="reveal text-center text-sm text-fog mb-4">Care Plan (hosting, maintenance &amp; monthly edits) is included with every tier — 2 months or 2 years depending on plan — then continues at <span class="text-copper-light font-semibold">$249/mo</span>, cancel anytime.</p>
     <p class="reveal text-center mb-14">
       <a href="pricing.html" class="link-underline text-copper-light text-sm font-semibold hover:text-sand transition-colors">Full pricing details, add-ons &amp; FAQ &rarr;</a>
     </p>
@@ -866,13 +846,13 @@
               </div>
               <div class="chat-bubble flex justify-end">
                 <div class="max-w-[80%] bg-gradient-to-br from-[#0b93f6] to-[#0066e0] text-white rounded-2xl rounded-br-sm px-3 py-2">
-                  About 2–3 days — a fully custom site with an AI chatbot built in. Free score?
+                  About 2–3 days — a fully custom site with an AI chatbot built in. Free mockup, no charge — what's your business called?
                   <p class="text-[9px] text-white/70 mt-1 text-right">AI · 9:03 AM ✓✓</p>
                 </div>
               </div>
               <div class="chat-bubble flex justify-start">
                 <div class="max-w-[80%] bg-white/10 text-sand rounded-2xl rounded-bl-sm px-3 py-2">
-                  Sure, riveraconcreteco.com
+                  Rivera Concrete Co.
                   <p class="text-[9px] text-fog/70 mt-1">9:04 AM</p>
                 </div>
               </div>
@@ -948,9 +928,9 @@
   <div class="reveal flex flex-col items-center gap-1 mt-10">
     <div class="flex items-center gap-2">
       <p class="font-display text-2xl text-copper-light">$99</p>
-      <p class="text-xs text-fog uppercase tracking-wider">one-time, Starter plan</p>
+      <p class="text-xs text-fog uppercase tracking-wider">one-time, Base plan</p>
     </div>
-    <p class="text-xs text-fog/70">Included free on Professional &amp; Premium</p>
+    <p class="text-xs text-fog/70">Included free on Premium</p>
   </div>
 </section>
 
@@ -963,10 +943,10 @@
   <div class="reveal max-w-5xl mx-auto rounded-3xl bg-gradient-to-r from-copper to-brass px-8 py-14 sm:py-16 text-center relative overflow-hidden shadow-floating">
     <div class="grain opacity-10"></div>
     <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4 relative" style="text-shadow: 0 2px 10px rgba(20,17,16,0.35);">Ready to see your <span class="italic">new site?</span></h2>
-    <p class="text-sand/90 max-w-xl mx-auto mb-8 relative" style="text-shadow: 0 1px 6px rgba(20,17,16,0.3);">Free website score, no pressure, no obligation. We'll show you exactly what your current site is costing you.</p>
+    <p class="text-sand/90 max-w-xl mx-auto mb-8 relative" style="text-shadow: 0 1px 6px rgba(20,17,16,0.3);">Free website mockup, no pressure, no obligation. We'll show you exactly what your new site could look like.</p>
     <span class="relative inline-block rounded-full p-[2px] cta-ring">
-      <a href="#" class="score-trigger btn-primary relative inline-block bg-ink hover:bg-ink/90 text-sand font-semibold px-7 py-3.5 rounded-full text-[15px] shadow-btn">
-        Get My Free Score
+      <a href="#" class="mockup-trigger btn-primary relative inline-block bg-ink hover:bg-ink/90 text-sand font-semibold px-7 py-3.5 rounded-full text-[15px] shadow-btn">
+        Get My Free Mockup
       </a>
     </span>
   </div>
@@ -1006,7 +986,7 @@
         <ul class="space-y-2 text-sm text-fog">
           <li><a href="mailto:hhuss786512tx@gmail.com" class="link-underline hover:text-sand transition-colors break-all">hhuss786512tx@gmail.com</a></li>
           <li>Texas-based</li>
-          <li><a href="#" class="score-trigger link-underline text-copper-light hover:text-sand transition-colors">Get your free score</a></li>
+          <li><a href="#" class="mockup-trigger link-underline text-copper-light hover:text-sand transition-colors">Get your free mockup</a></li>
           <li><a href="book-a-call.html" class="link-underline text-copper-light hover:text-sand transition-colors">Book a call</a></li>
         </ul>
       </div>
@@ -1076,161 +1056,16 @@
   })();
 </script>
 
-<div id="score-popup-overlay" class="hidden fixed inset-0 z-[100] items-center justify-center bg-ink/80 backdrop-blur-sm px-4 py-8" role="dialog" aria-modal="true" aria-labelledby="score-popup-heading">
-  <div id="score-popup-card" class="relative w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-2xl bg-elevated border border-white/10 shadow-floating p-7 sm:p-8">
-    <button type="button" id="score-popup-close" aria-label="Close" class="absolute top-4 right-4 text-fog hover:text-sand transition-colors">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
-    </button>
-    <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Free Website Score</p>
-    <h2 id="score-popup-heading" class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-2">How Strong Is Your Business's Online Presence?</h2>
-    <p class="text-sm text-fog leading-[1.6] mb-6">Enter your business info — with or without a site — and get your Online Presence Score out of 100 instantly. No charge, no obligation.</p>
-    <div class="mb-8 rounded-2xl bg-surface border border-white/5 shadow-elevated overflow-hidden">
-      <div class="flex items-center gap-1.5 px-4 py-2.5 bg-ink/40 border-b border-white/5">
-        <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
-        <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
-        <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
-        <span class="ml-2 text-xs text-fog/70">a2h.info/score</span>
-      </div>
-      <div class="px-5 sm:px-8 py-6">
-        <p class="text-[10px] tracking-[0.2em] uppercase text-fog/60 mb-1">Example Result</p>
-        <h3 class="font-display text-lg text-sand mb-1">Your Score Report</h3>
-        <p class="text-sm text-fog mb-5">Example check for Rivera Concrete Co.</p>
-        <div class="grid sm:grid-cols-[auto_1fr] gap-4 mb-5">
-          <div class="rounded-xl bg-elevated border border-white/5 p-5 flex flex-col items-center justify-center text-center sm:w-40">
-            <p class="text-xs uppercase tracking-wider text-fog mb-3">Overall Score</p>
-            <div class="relative mb-3 h-20 w-20 rounded-full" style="background: conic-gradient(#c9702f 0% 38%, rgba(255,255,255,0.08) 38% 100%);">
-              <div class="absolute inset-[6px] rounded-full bg-elevated flex flex-col items-center justify-center">
-                <span class="font-display text-xl text-sand">38</span>
-                <span class="text-[10px] text-fog">/ 100</span>
-              </div>
-            </div>
-            <span class="text-[10px] font-semibold uppercase tracking-wide text-copper-light bg-copper/10 border border-copper/30 rounded-full px-3 py-1">Needs Work</span>
-          </div>
-          <div class="grid grid-cols-2 gap-3">
-            <div class="rounded-xl bg-elevated border border-white/5 p-4 flex items-center gap-3">
-              <span class="h-9 w-9 shrink-0 rounded-full bg-copper/10 border border-copper/30 flex items-center justify-center text-base">❌</span>
-              <div><p class="text-sm text-sand font-semibold leading-tight">Website</p><p class="text-xs text-fog">Missing</p></div>
-            </div>
-            <div class="rounded-xl bg-elevated border border-white/5 p-4 flex items-center gap-3">
-              <span class="h-9 w-9 shrink-0 rounded-full bg-brass/10 border border-brass/30 flex items-center justify-center text-base">⚠️</span>
-              <div><p class="text-sm text-sand font-semibold leading-tight">Lead Capture</p><p class="text-xs text-fog">Needs work</p></div>
-            </div>
-            <div class="rounded-xl bg-elevated border border-white/5 p-4 flex items-center gap-3">
-              <span class="h-9 w-9 shrink-0 rounded-full bg-brass/10 border border-brass/30 flex items-center justify-center text-base">⚠️</span>
-              <div><p class="text-sm text-sand font-semibold leading-tight">Mobile</p><p class="text-xs text-fog">Needs work</p></div>
-            </div>
-            <div class="rounded-xl bg-elevated border border-white/5 p-4 flex items-center gap-3">
-              <span class="h-9 w-9 shrink-0 rounded-full bg-live/10 border border-live/30 flex items-center justify-center text-base">✅</span>
-              <div><p class="text-sm text-sand font-semibold leading-tight">Google Business</p><p class="text-xs text-fog">Claimed</p></div>
-            </div>
-          </div>
-        </div>
-        <div class="rounded-xl bg-elevated border border-white/5 overflow-hidden">
-          <div class="flex items-center justify-between px-5 py-3 border-b border-white/5">
-            <p class="text-sm font-semibold text-sand">The Breakdown</p>
-            <p class="text-[10px] uppercase tracking-wider text-copper-light font-semibold">What's Costing You</p>
-          </div>
-          <div class="divide-y divide-white/5">
-            <div class="px-5 py-4">
-              <p class="text-sm text-sand font-semibold mb-1">❌ No professional website</p>
-              <p class="text-xs text-fog leading-[1.6]">Nothing to send an interested customer to — most of the gap starts here.</p>
-            </div>
-            <div class="px-5 py-4">
-              <p class="text-sm text-sand font-semibold mb-1">⚠️ Missing lead capture</p>
-              <p class="text-xs text-fog leading-[1.6]">No clear way for someone who finds you to actually become a lead.</p>
-            </div>
-            <div class="px-5 py-4">
-              <p class="text-sm text-sand font-semibold mb-1">⚠️ Poor mobile presence</p>
-              <p class="text-xs text-fog leading-[1.6]">Most local searches happen on a phone — this is where you're losing them.</p>
-            </div>
-            <div class="px-5 py-4">
-              <p class="text-sm text-sand font-semibold mb-1">✅ Google Business Profile claimed</p>
-              <p class="text-xs text-fog leading-[1.6]">Good — you already show up on Maps. That's the one thing already working in your favor.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p class="text-center text-sm text-fog mb-6">That's a real example. Want to see how we can get <span class="text-sand font-semibold">your</span> score to 90+? Fill out the form below.</p>
-    <form id="score-form" class="space-y-4">
-      <input type="hidden" id="plan" name="plan" value="">
-      <input type="hidden" id="score-vertical" name="vertical" value="">
-      <p id="plan-banner" class="hidden items-center gap-2 bg-copper/10 border border-copper/30 rounded-lg px-4 py-2.5 text-sm text-copper-light">
-        Inquiring about the <span id="plan-banner-name" class="font-semibold"></span> plan
-      </p>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="sp-name">Name</label>
-          <input required id="sp-name" name="name" type="text" autocomplete="name" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Jane Rivera">
-        </div>
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="sp-business">Business Name</label>
-          <input required id="sp-business" name="business" type="text" autocomplete="organization" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Rivera Concrete Co.">
-        </div>
-      </div>
-      <div>
-        <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="sp-url">Website URL <span class="normal-case text-fog/60">(optional — leave blank if you don't have one yet)</span></label>
-        <input id="sp-url" name="url" type="text" autocomplete="url" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="yourbusiness.com">
-      </div>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="sp-email">Email</label>
-          <input required id="sp-email" name="email" type="email" autocomplete="email" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="jane@rivera.com">
-        </div>
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="sp-phone">Phone</label>
-          <input id="sp-phone" name="phone" type="tel" autocomplete="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
-        </div>
-      </div>
-      <div>
-        <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="sp-gbp">Have you claimed your Google Business Profile?</label>
-        <select id="sp-gbp" name="gbp" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 transition-colors">
-          <option value="unsure" selected>Not sure</option>
-          <option value="yes">Yes, it's claimed</option>
-          <option value="no">No / not yet</option>
-        </select>
-      </div>
-      <div>
-        <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="sp-captcha-answer">Quick check: <span id="sp-captcha-question">loading…</span></label>
-        <input required id="sp-captcha-answer" name="captcha_answer" type="text" inputmode="numeric" autocomplete="off" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Your answer">
-        <input type="hidden" name="captcha_token" id="sp-captcha-token">
-      </div>
-      <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
-        <label for="sp-company-site">Leave this field blank</label>
-        <input id="sp-company-site" name="company_site" type="text" tabindex="-1" autocomplete="off">
-      </div>
-      <span class="cta-ring rounded-full p-[2px] block w-full">
-        <button type="submit" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3 rounded-full text-sm">
-          Get My Free Score
-        </button>
-      </span>
-      <p class="text-xs text-fog/70 text-center leading-[1.6]">We use your details only to calculate and send your score. No lists, no resale. See our <a href="privacy.html" class="link-underline text-copper-light hover:text-sand transition-colors">Privacy Policy</a>.</p>
-      <p id="score-popup-status" class="text-sm text-center text-fog" role="status" aria-live="polite"></p>
-    </form>
-    <div id="score-success" class="hidden text-center">
-      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Your Online Presence Score</p>
-      <p id="score-total" class="font-display text-6xl sm:text-7xl tracking-[-0.02em] text-sand mb-8">—<span class="text-2xl text-fog font-sans">/100</span></p>
-      <ul id="score-breakdown" class="text-left max-w-sm mx-auto space-y-2.5 text-sm text-fog mb-8"></ul>
-      <p class="text-fog leading-[1.7] max-w-md mx-auto mb-6">Want to see how we can get you to <span class="text-copper-light font-semibold">90+</span>?</p>
-      <span class="cta-ring rounded-full p-[2px] inline-block mb-4">
-        <a href="pricing.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">
-          Show Me How to Get to 90+
-        </a>
-      </span>
-      <p class="text-xs text-fog/70 mb-6">We'll also follow up by email with your full breakdown within 24 hours.</p>
-      <button type="button" id="score-success-reset" class="text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm">
-        Check Another Business
-      </button>
-    </div>
-  </div>
-</div>
-
 <div id="lead-popup-overlay" class="hidden fixed inset-0 z-[100] items-center justify-center bg-ink/80 backdrop-blur-sm px-4 py-8" role="dialog" aria-modal="true" aria-labelledby="lead-popup-heading">
   <div id="lead-popup-card" class="relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-elevated border border-white/10 shadow-floating p-7 sm:p-8">
     <button type="button" id="lead-popup-close" aria-label="Close" class="absolute top-4 right-4 text-fog hover:text-sand transition-colors">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
     <form id="lead-popup-form" class="space-y-4">
+      <input type="hidden" id="lp-plan" name="plan" value="">
+      <p id="lp-plan-banner" class="hidden items-center gap-2 bg-copper/10 border border-copper/30 rounded-lg px-4 py-2.5 text-sm text-copper-light">
+        Inquiring about the <span id="lp-plan-banner-name" class="font-semibold"></span> plan
+      </p>
       <div id="lead-popup-step-1">
         <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Step 1 of 2</p>
         <h2 id="lead-popup-heading" class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-2">What kind of website do you want?</h2>
@@ -1336,167 +1171,6 @@
 </div>
 
 <script>
-  // Score popup: click-to-open on any .score-trigger element (nav, footer,
-  // hero CTAs, cta bands, pricing tier buttons). Replaces the old inline
-  // #contact section.
-  (function () {
-    var overlay = document.getElementById('score-popup-overlay');
-    if (!overlay) return;
-    var form = document.getElementById('score-form');
-    var status = document.getElementById('score-popup-status');
-    var successBlock = document.getElementById('score-success');
-    var successReset = document.getElementById('score-success-reset');
-    var scoreTotal = document.getElementById('score-total');
-    var scoreBreakdown = document.getElementById('score-breakdown');
-    var submitBtn = form.querySelector('button[type="submit"]');
-    var closeBtn = document.getElementById('score-popup-close');
-    var planField = document.getElementById('plan');
-    var planBanner = document.getElementById('plan-banner');
-    var planBannerName = document.getElementById('plan-banner-name');
-    var verticalField = document.getElementById('score-vertical');
-    var BADGE = { pass: '✅', warn: '⚠️', fail: '❌' };
-    var AD_PARAMS = ['gclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
-
-    if (verticalField) verticalField.value = '';
-
-    var captchaLoadedAt = 0;
-    var captchaQuestionEl = document.getElementById('sp-captcha-question');
-    var captchaTokenEl = document.getElementById('sp-captcha-token');
-    function loadCaptcha() {
-      captchaLoadedAt = Date.now();
-      fetch('/api/captcha-challenge').then(function (r) { return r.json(); }).then(function (d) {
-        if (captchaQuestionEl) captchaQuestionEl.textContent = d.question ? 'What is ' + d.question + '?' : 'skip this — verification unavailable';
-        if (captchaTokenEl) captchaTokenEl.value = d.token || '';
-      }).catch(function () {
-        if (captchaQuestionEl) captchaQuestionEl.textContent = 'skip this — verification unavailable';
-      });
-    }
-    loadCaptcha();
-
-    function renderScore(score, breakdown) {
-      scoreTotal.innerHTML = score + '<span class="text-2xl text-fog font-sans">/100</span>';
-      scoreBreakdown.innerHTML = (breakdown || []).map(function (item) {
-        return '<li>' + (BADGE[item.status] || '⚠️') + ' ' + item.label + '</li>';
-      }).join('');
-    }
-
-    function open(plan) {
-      form.classList.remove('hidden');
-      successBlock.classList.add('hidden');
-      if (plan) {
-        planField.value = plan;
-        planBannerName.textContent = plan;
-        planBanner.classList.remove('hidden');
-        planBanner.classList.add('flex');
-      } else {
-        planField.value = '';
-        planBanner.classList.add('hidden');
-        planBanner.classList.remove('flex');
-      }
-      overlay.classList.remove('hidden');
-      overlay.classList.add('flex');
-      document.body.classList.add('overflow-hidden');
-      requestAnimationFrame(function () { overlay.classList.add('is-open'); });
-      var first = form.querySelector('input, select');
-      if (first) first.focus();
-      document.dispatchEvent(new Event('a2h:popup-toggle'));
-    }
-
-    function close() {
-      overlay.classList.remove('is-open');
-      document.body.classList.remove('overflow-hidden');
-      setTimeout(function () { overlay.classList.add('hidden'); overlay.classList.remove('flex'); }, 250);
-      document.dispatchEvent(new Event('a2h:popup-toggle'));
-    }
-
-    closeBtn.addEventListener('click', close);
-    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
-    });
-
-    document.querySelectorAll('.score-trigger').forEach(function (el) {
-      el.addEventListener('click', function (e) {
-        e.preventDefault();
-        open(el.dataset.plan || null);
-      });
-    });
-
-    var ERROR_COPY = {
-      captcha_failed: "That answer didn't match — double-check and try again.",
-      invalid_email: 'That email address looks invalid — please double-check it.',
-      disposable_email: 'Please use a permanent email address, not a temporary/disposable one.',
-      email_domain_unreachable: "That email's domain doesn't appear to accept mail — please double-check it.",
-      website_domain_unreachable: "That website URL doesn't appear to exist — check it or leave it blank.",
-    };
-
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      var data = Object.fromEntries(new FormData(form).entries());
-      data.elapsed_ms = Date.now() - captchaLoadedAt;
-      AD_PARAMS.concat(['landing_page']).forEach(function (key) {
-        var val = null;
-        try { val = sessionStorage.getItem('a2h_' + key); } catch (err) {}
-        if (val) data[key] = val;
-      });
-
-      status.textContent = 'Calculating your score…';
-      submitBtn.disabled = true;
-
-      try {
-        var res = await fetch('/api/score-request', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        });
-        var result = await res.json().catch(function () { return {}; });
-
-        if (result.score === undefined) {
-          status.textContent = ERROR_COPY[result.error] || 'Something went wrong. Email hhuss786512tx@gmail.com directly.';
-          if (result.error === 'captcha_failed') loadCaptcha();
-          return;
-        }
-
-        renderScore(result.score, result.breakdown);
-        if (typeof gtag === 'function') {
-          gtag('event', 'generate_lead', {
-            plan: data.plan || '',
-            source: data.utm_source || (data.gclid ? 'google_ads' : 'organic'),
-            score: result.score,
-          });
-        }
-
-        if (result.reason === 'not_configured') {
-          var enc = encodeURIComponent;
-          var planLine = data.plan ? 'Plan: ' + enc(data.plan) + '%0A' : '';
-          var body = planLine + 'Business: ' + enc(data.business) + '%0AURL: ' + enc(data.url || 'none yet') + '%0APhone: ' + enc(data.phone || '') + '%0AScore: ' + result.score + '/100%0A%0ARequesting a free website score.';
-          window.location.href = 'mailto:hhuss786512tx@gmail.com?subject=' + enc('Free Score Request — ' + data.business) + '&body=' + body;
-        }
-
-        status.textContent = '';
-        form.reset();
-        loadCaptcha();
-        form.classList.add('hidden');
-        successBlock.classList.remove('hidden');
-      } catch (err) {
-        status.textContent = 'Something went wrong. Email hhuss786512tx@gmail.com directly.';
-      } finally {
-        submitBtn.disabled = false;
-      }
-    });
-
-    if (successReset) {
-      successReset.addEventListener('click', function () {
-        successBlock.classList.add('hidden');
-        form.classList.remove('hidden');
-        planBanner.classList.add('hidden');
-        planBanner.classList.remove('flex');
-      });
-    }
-  })();
-</script>
-
-<script>
   // Mockup popup: two-step "what kind of website" / "how do we reach you"
   // lead capture. Fires 10s after load, then sends the visitor to
   // mockup.html. Suppressed for the session once dismissed, and
@@ -1514,6 +1188,9 @@
     var backBtn = document.getElementById('lead-popup-back');
     var nicheField = document.getElementById('lp-niche');
     var nicheOtherWrap = document.getElementById('lp-niche-other-wrap');
+    var planField = document.getElementById('lp-plan');
+    var planBanner = document.getElementById('lp-plan-banner');
+    var planBannerName = document.getElementById('lp-plan-banner-name');
     var DISMISSED_KEY = 'a2h_popup_dismissed';
     var SUBMITTED_KEY = 'a2h_popup_submitted';
 
@@ -1572,9 +1249,22 @@
       } catch (e) { return false; }
     }
 
-    function open() {
-      if (alreadyHandled()) return;
+    // plan is set when a pricing-tier button (.plan-cta, data-plan) opened
+    // this — shows a small "inquiring about X" banner and prefills the
+    // hidden field. Any other trigger (nav, footer, hero, ...) passes no
+    // plan, which clears it.
+    function openPopup(plan) {
       showStep(1);
+      if (plan) {
+        planField.value = plan;
+        planBannerName.textContent = plan;
+        planBanner.classList.remove('hidden');
+        planBanner.classList.add('flex');
+      } else {
+        planField.value = '';
+        planBanner.classList.add('hidden');
+        planBanner.classList.remove('flex');
+      }
       overlay.classList.remove('hidden');
       overlay.classList.add('flex');
       document.body.classList.add('overflow-hidden');
@@ -1584,6 +1274,14 @@
       // Lets the floating CTA hide itself while this is open — the two are
       // both fixed-position asks and can otherwise land on screen together.
       document.dispatchEvent(new Event('a2h:popup-toggle'));
+    }
+
+    // Passive auto-trigger (10s / scroll-past-hero) — respects dismissal
+    // and past submission. A deliberate click (openPopup above, wired to
+    // .mockup-trigger below) always opens regardless.
+    function open() {
+      if (alreadyHandled()) return;
+      openPopup(null);
     }
 
     function close(remember) {
@@ -1598,6 +1296,13 @@
     overlay.addEventListener('click', function (e) { if (e.target === overlay) close(true); });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && overlay.classList.contains('is-open')) close(true);
+    });
+
+    document.querySelectorAll('.mockup-trigger').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        openPopup(el.dataset.plan || null);
+      });
     });
 
     // Wait for whichever comes later of "10s elapsed" or "scrolled past the
@@ -1843,7 +1548,7 @@
   // buttons land right under this fixed button otherwise (same class of
   // bug as the chat-nudge-over-CTA fixes elsewhere on this page — a fixed
   // bottom-right element sitting on top of a real CTA). No longer tracks
-  // a "contact section" — that was the old inline score form, now a popup.
+  // a "contact section" — that was the old inline score form, since retired.
   const floatingCta = document.getElementById('floating-cta');
   const pricingSection = document.getElementById('pricing');
   const heroSection = document.getElementById('top');
@@ -1855,13 +1560,10 @@
     floatingCta.classList.toggle('pointer-events-none', !show);
   };
 
-  // Suppressed while either popup is open — both are fixed-position asks
-  // and could otherwise land on screen at the same time.
+  // Suppressed while the mockup popup is open — both are fixed-position
+  // asks and could otherwise land on screen at the same time.
   const leadPopupOverlay = document.getElementById('lead-popup-overlay');
-  const scorePopupOverlay = document.getElementById('score-popup-overlay');
-  const popupOpen = () =>
-    !!(leadPopupOverlay && leadPopupOverlay.classList.contains('is-open')) ||
-    !!(scorePopupOverlay && scorePopupOverlay.classList.contains('is-open'));
+  const popupOpen = () => !!(leadPopupOverlay && leadPopupOverlay.classList.contains('is-open'));
 
   const updateFloatingCta = () => {
     setFloatingCtaVisible(window.scrollY > heroSection.offsetHeight * 0.6 && !pricingVisible && !popupOpen());
@@ -2087,7 +1789,7 @@
       iconClose.classList.remove('hidden');
       if (!opened) {
         opened = true;
-        addBubble('ai', "Hi! I'm the A2H AI Agent. Ask me about pricing, turnaround, or what's included — or click \"Get My Free Score\" to get started.");
+        addBubble('ai', "Hi! I'm the A2H AI Agent. Ask me about pricing, turnaround, or what's included — or click \"Get My Free Mockup\" to get started.");
       }
       setTimeout(() => input && input.focus(), 300);
     };

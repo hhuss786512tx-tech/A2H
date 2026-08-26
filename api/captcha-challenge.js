@@ -3,7 +3,7 @@
 // correct answer is AES-256-GCM encrypted into the returned token (see
 // _lib/spam-guard.js issueCaptcha), so it never round-trips to the
 // browser in a form a bot could just read back out. Paired with
-// verifyCaptcha(), called from score-request.js and mockup-request.js.
+// verifyCaptcha(), called from mockup-request.js.
 //
 // Requires CAPTCHA_SECRET as a Vercel env var (32+ random bytes).
 

@@ -8,13 +8,14 @@
 // auto-reply to the lead confirming next steps and pointing them at
 // mockup.html to book a time.
 //
-// Requires RESEND_API_KEY as a Vercel env var — same key already used by
-// api/score-request.js.
+// Requires RESEND_API_KEY as a Vercel env var, and the a2h.info domain
+// verified in Resend (Domains → add a2h.info → add the DNS records it
+// gives you).
 //
 // Spam defense: honeypot + self-hosted captcha + fill-time check + email
-// syntax/disposable-domain/MX validation, mirroring score-request.js.
-// See _lib/spam-guard.js for the shared helpers and
-// api/captcha-challenge.js for the paired challenge issuer.
+// syntax/disposable-domain/MX validation. See _lib/spam-guard.js for the
+// shared helpers and api/captcha-challenge.js for the paired challenge
+// issuer.
 
 const {
   honeypotTripped,
@@ -85,8 +86,8 @@ module.exports = async function handler(req, res) {
   const referenceSites = String(body.reference_sites || '').trim().slice(0, 1000);
   const notes = String(body.notes || '').trim().slice(0, 2000);
 
-  // Ad attribution, mirroring score-request.js — absent for organic/direct
-  // visitors, that's expected, not an error.
+  // Ad attribution, captured client-side from the landing URL's querystring
+  // — absent for organic/direct visitors, that's expected, not an error.
   const gclid = String(body.gclid || '').trim().slice(0, 200);
   const fbclid = String(body.fbclid || '').trim().slice(0, 200);
   const utmSource = String(body.utm_source || '').trim().slice(0, 100);
@@ -198,8 +199,8 @@ module.exports = async function handler(req, res) {
       return;
     }
 
-    // The lead auto-reply is best-effort, same caveat as score-request.js —
-    // the notification to Haider (the important part) already went through.
+    // The lead auto-reply is best-effort — the notification to Haider
+    // (the important part) already went through.
     res.status(200).json({ success: true, leadEmailSent: leadRes.ok });
   } catch (err) {
     res.status(200).json({ success: false, reason: 'exception', detail: String(err).slice(0, 300) });

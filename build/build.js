@@ -56,7 +56,7 @@ const faqLd = (qas) => ({
   })),
 });
 
-const hero = ({ eyebrow, h1, sub, primary = 'Get My Free Score', secondary = null }) => `<section class="relative glow-copper pt-36 pb-20 px-6 overflow-hidden">
+const hero = ({ eyebrow, h1, sub, primary = 'Get My Free Mockup', secondary = null }) => `<section class="relative glow-copper pt-36 pb-20 px-6 overflow-hidden">
   <div class="grain"></div>
   <div class="max-w-4xl mx-auto text-center relative">
     <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">${eyebrow}</p>
@@ -64,7 +64,7 @@ const hero = ({ eyebrow, h1, sub, primary = 'Get My Free Score', secondary = nul
     <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto mb-10">${sub}</p>
     <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
       <span class="cta-ring rounded-full p-[2px] inline-block">
-        <a href="#" class="score-trigger btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">${primary}</a>
+        <a href="#" class="mockup-trigger btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">${primary}</a>
       </span>
 ${secondary ? `      <a href="${secondary[1]}" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">${secondary[0]}</a>\n` : ''}    </div>
   </div>
@@ -134,25 +134,25 @@ PAGES.push({
 
 // ---- pricing.html
 const PRICING_FAQ = [
-  ['How does payment work?', 'Starter is billed 50% to start and 50% at launch. Professional and Premium can be paid in full up front, or spread over 4 monthly payments instead — the scope is fixed in writing before any money changes hands either way, so the number you are quoted is the number you pay.'],
-  ['Can I pay monthly instead of all at once?', 'Yes, on Professional and Premium. Professional is $568.75/mo for 4 months ($2,275 total) instead of $3,000 in full; Premium is $875/mo for 4 months ($3,500 total) instead of $5,000 in full. Spreading it out is the cheaper route on those two tiers — Starter does not have a monthly option, but its 50/50 split already means you are never paying it all at once.'],
-  ['What is the Care Plan?', 'Hosting, maintenance and monthly content edits. It is included free for 2, 6 or 12 months depending on your tier, then continues at $249/mo. You can cancel it at any time and keep your site.'],
+  ['How does payment work?', 'Base and Premium can each be paid in full up front, or spread over 4 monthly payments instead — the scope is fixed in writing before any money changes hands either way, so the number you are quoted is the number you pay.'],
+  ['Can I pay monthly instead of all at once?', 'Yes, on both tiers. Base is $325/mo for 4 months ($1,300 total) instead of $1,500 in full; Premium is $1,000/mo for 4 months ($4,000 total) instead of $5,000 in full. Spreading it out is the cheaper route on both tiers.'],
+  ['What is the Care Plan?', 'Hosting, maintenance and monthly content edits. It is included free for 2 months on Base or 2 years on Premium, then continues at $249/mo. You can cancel it at any time and keep your site.'],
   ['Do I own the site?', 'Yes, completely. It is hand-coded static files — there is no proprietary platform to be locked into, and you get a walkthrough at handoff so you are never dependent on us to make a change.'],
-  ['How fast is "2–3 days"?', 'That is the build-and-launch window once we have your content, photos and brand assets in hand. Gathering those from you is usually the longer part, which is why the free score comes first.'],
-  ['What if I do not have a website yet?', 'That is the most common case. Leave the URL field blank on the score form and we will score your Google Business Profile and local search position instead.'],
-  ['Is the AI chatbot really $99/mo?', 'Yes, on Starter and Professional. It is trained on your business, answers FAQs and captures leads around the clock. It is included at no extra cost on Premium.'],
+  ['How fast is "2–3 days"?', 'That is the build-and-launch window once we have your content, photos and brand assets in hand. Gathering those from you is usually the longer part, which is why the free mockup comes first — it gets that conversation started.'],
+  ['What if I do not have a website yet?', 'That is the most common case. The free mockup does not require an existing site at all — just tell us your niche and what you want, and we design one from scratch.'],
+  ['Is the AI chatbot really $99/mo?', 'Yes, on Base. It is trained on your business, answers FAQs and captures leads around the clock. It is included at no extra cost on Premium.'],
 ];
 
 PAGES.push({
   slug: 'pricing.html',
   title: 'Pricing — Flat-Rate Websites from $1,500 | A2H',
-  description: 'Transparent flat-rate website pricing for Texas businesses: $1,500 Starter, $3,000 Professional, $5,000 Premium. Care Plan included, no long-term contract.',
+  description: 'Transparent flat-rate website pricing for Texas businesses: $1,500 Base, $5,000 Premium. Care Plan included, no long-term contract.',
   jsonLd: [ORG, faqLd(PRICING_FAQ)],
   body: [
     hero({
       eyebrow: 'Transparent Pricing',
       h1: 'One flat price. <span class="italic text-copper-light">No sales call required.</span>',
-      sub: 'Three tiers, published openly, fixed in writing before the work starts. Every tier includes Google Business Profile setup and a Care Plan.',
+      sub: 'Two tiers, published openly, fixed in writing before the work starts. Every tier includes Google Business Profile setup and a Care Plan.',
       secondary: ['See Our Work', 'work.html'],
     }),
     B.pricingTable({ heading: 'Pick the tier that fits' }),
@@ -176,29 +176,29 @@ PAGES.push({
         <p class="text-sm text-fog leading-[1.7] mb-5">An interactive business card built from your real card artwork — flips, tilts and tracks the cursor. A memorable thing to send a prospect.</p>
         <div class="flex items-baseline gap-2">
           <p class="font-display text-2xl text-copper-light">+$99</p>
-          <p class="text-xs text-fog uppercase tracking-wider">one-time · included on Professional &amp; Premium</p>
+          <p class="text-xs text-fog uppercase tracking-wider">one-time · included on Premium</p>
         </div>
       </div>
     </div>
   </div>
 </section>`,
     faqSection(PRICING_FAQ),
-    B.ctaBand({ heading: 'Not sure which tier <span class="italic">you need?</span>', sub: 'The free score tells you — no obligation either way.' }),
+    B.ctaBand({ heading: 'Not sure which tier <span class="italic">you need?</span>', sub: 'Tell us what you want to build — the free mockup gets the conversation started, no obligation either way.' }),
   ].join('\n\n'),
 });
 
 // ---- process.html
 PAGES.push({
   slug: 'process.html',
-  title: 'How We Work — From Free Score to Launch in 2–3 Days | A2H',
-  description: 'The A2H process: free website score, hand-coded build, launch and handoff, then proof with real data. Fixed scope, fixed price, no long-term contract.',
+  title: 'How We Work — From Free Mockup to Launch in 2–3 Days | A2H',
+  description: 'The A2H process: free website mockup, hand-coded build, launch and handoff, then proof with real data. Fixed scope, fixed price, no long-term contract.',
   jsonLd: [ORG, {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: 'How A2H builds and launches a website',
-    description: 'A four-step process from free website score to launch and reporting.',
+    description: 'A four-step process from free website mockup to launch and reporting.',
     step: [
-      { '@type': 'HowToStep', position: 1, name: 'Free website score', text: 'We score your current site and Google Business Profile out of 100 and show you what is costing you customers.' },
+      { '@type': 'HowToStep', position: 1, name: 'Free website mockup', text: 'Tell us your niche, your color scheme and what you want, and we design a free homepage mockup made specifically for your business.' },
       { '@type': 'HowToStep', position: 2, name: 'Hand-coded build', text: 'A conversion-first site is built by hand, wired to real lead capture from day one.' },
       { '@type': 'HowToStep', position: 3, name: 'Launch and handoff', text: 'Fully tested, live on your domain, with a walkthrough so you are never locked out of your own site.' },
       { '@type': 'HowToStep', position: 4, name: 'Prove it with data', text: 'Real performance numbers after launch, not projections.' },
@@ -212,7 +212,7 @@ PAGES.push({
       secondary: ['See Pricing', 'pricing.html'],
     }),
     cards('The Process', 'Four steps, start to finish', [
-      { tag: 'Free, no obligation', h: 'We score what you have', p: 'We look at your current site, your Google Business Profile and what your competitors rank for, then hand you a score out of 100 and show you specifically what is losing you customers. If the answer is "nothing, you are fine", we say that.' },
+      { tag: 'Free, no obligation', h: 'We build you a mockup', p: 'Tell us your niche, your color scheme and a site you like the look of — we design a free homepage mockup made specifically for your business, no charge, no obligation. If you love it, we build the rest.' },
       { tag: 'Hand-coded', h: 'We build it properly', p: 'No page builders, no templates. A conversion-first site wired to real lead capture from day one, built mobile-first and tested on real devices before you ever see it.' },
       { tag: 'Yours to keep', h: 'We launch and hand it off', p: 'Fully tested, live on your domain, plus a walkthrough so you are never locked out of your own site. Static files you own outright — no proprietary platform, no hostage situation.' },
       { tag: 'Real numbers', h: 'We prove it with data', p: 'A $200 Google Ads test on Solid State Construction\'s new site returned 270+ clicks in 14 days at $0.74 per click. Measured results after launch, never projections before it.' },
@@ -221,10 +221,10 @@ PAGES.push({
   <div class="max-w-3xl mx-auto text-center">
     <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Why It Is Fast</p>
     <h2 class="reveal font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-6">Because we cut the parts that do not build your site</h2>
-    <p class="reveal text-fog leading-[1.8]">Most agencies spend weeks on discovery decks, stakeholder workshops and revision rounds that exist to justify a retainer. We publish our prices, fix the scope in writing, and start building. The score is the discovery. The build takes 2–3 days once your content is in hand — gathering that from you is usually the longest part of the whole project.</p>
+    <p class="reveal text-fog leading-[1.8]">Most agencies spend weeks on discovery decks, stakeholder workshops and revision rounds that exist to justify a retainer. We publish our prices, fix the scope in writing, and start building. The mockup is the discovery. The build takes 2–3 days once your content is in hand — gathering that from you is usually the longest part of the whole project.</p>
   </div>
 </section>`,
-    B.ctaBand({ heading: 'Start with <span class="italic">your score.</span>', sub: 'It is free, it takes seconds, and there is no obligation attached to it.' }),
+    B.ctaBand({ heading: 'Start with <span class="italic">your mockup.</span>', sub: 'It is free, it takes a few minutes, and there is no obligation attached to it.' }),
   ].join('\n\n'),
 });
 
@@ -272,7 +272,7 @@ PAGES.push({
   slug: 'book-a-call.html',
   noPopup: true,
   title: 'Book A Call — Schedule Time With A2H | A2H',
-  description: 'Pick a time to talk through your free website score and what a hand-coded build would look like for your business. No forms, no phone tag.',
+  description: 'Pick a time to talk through your free website mockup and what a hand-coded build would look like for your business. No forms, no phone tag.',
   jsonLd: [ORG],
   body: [
     `<section class="relative glow-copper pt-36 pb-16 px-6 overflow-hidden">
@@ -280,7 +280,7 @@ PAGES.push({
   <div class="max-w-3xl mx-auto text-center relative">
     <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Book A Call</p>
     <h1 class="reveal font-display text-[2.5rem] leading-[1.1] sm:text-5xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">Let's talk about <span class="italic text-copper-light">your site.</span></h1>
-    <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto">Pick a time that works for you — no forms, no phone tag. 30 minutes to walk through your free score and what a build would look like for your business.</p>
+    <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto">Pick a time that works for you — no forms, no phone tag. 30 minutes to walk through your free mockup and what a build would look like for your business.</p>
   </div>
 </section>`,
     `<section class="px-6 pb-24">
@@ -442,13 +442,12 @@ PAGES.push({
     sections: [
       { h: 'Who we are', p: [`A2H Agency ("A2H", "we", "us") builds websites for businesses in Texas. This policy explains what we collect through a2h.info and what we do with it. You can reach us any time at <a href="mailto:${EMAIL}" class="link-underline text-copper-light">${EMAIL}</a>.`] },
       { h: 'What we collect', p: [
-        'When you submit the free website score form we collect the name, business name, email address, website URL and phone number you enter, plus whether you have claimed your Google Business Profile. All of these except the URL and phone number are required to respond to you.',
-        'If you provide a website URL, our server fetches the public homepage of that URL to check for basic signals like a mobile-friendly tag and a lead-capture form. We do not store the fetched page content beyond calculating your score.',
+        'When you submit the free website mockup form we collect the name, business name, email address and phone number you enter, plus details about the website you want — your niche/industry, how many pages, color scheme preferences, any example sites you like, and any other notes you provide. All of these except phone number and the optional detail fields are required to respond to you.',
         'If you use the AI chat widget, the messages you type are processed so the assistant can answer them. Do not enter sensitive personal, medical or financial information into the chat.',
         'We use Google Analytics 4, which sets cookies and records standard analytics data such as pages viewed, approximate location derived from IP address, referring site and device type. If you arrive from an advertisement we also record the campaign parameters in the link (for example utm_source or gclid) so we can tell which campaigns work.',
       ] },
       { h: 'How we use it', p: [
-        'Form submissions are used to calculate and send your free website score and to follow up about your enquiry. Analytics data is used in aggregate to understand how the site performs.',
+        'Form submissions are used to build and send your free website mockup and to follow up about your enquiry. Analytics data is used in aggregate to understand how the site performs.',
         'We do not sell your information, rent it, or add you to a marketing list you did not ask for. We do not share it with third parties except the service providers that operate this site — currently Vercel for hosting and Google for analytics — who process it only on our behalf.',
       ] },
       { h: 'How long we keep it', p: ['Enquiry details are kept for as long as needed to respond and for our business records. Google Analytics data is retained according to the retention period configured in that product. You can ask us to delete your enquiry at any time.'] },
@@ -475,10 +474,10 @@ PAGES.push({
     updated: 'August 19, 2026',
     sections: [
       { h: 'Using this site', p: ['By using a2h.info you agree to these terms. If you do not agree, please do not use the site. We may update these terms; the date at the top shows the current version.'] },
-      { h: 'What this site is', p: ['This site describes services A2H Agency offers and lets you get a free website score. Nothing here is a binding offer or a contract for work. A project only begins once we have agreed scope, price and timeline with you in writing.'] },
+      { h: 'What this site is', p: ['This site describes services A2H Agency offers and lets you get a free website mockup. Nothing here is a binding offer or a contract for work. A project only begins once we have agreed scope, price and timeline with you in writing.'] },
       { h: 'Pricing', p: ['Prices shown are current at the time of publication and apply to the scope described. The price for your project is the one stated in your written scope agreement, which takes precedence over anything on this page. Prices may change for new projects without notice.'] },
       { h: 'Work and payment', p: [
-        'Projects are billed 50% before work starts and 50% on launch, unless you choose the monthly payment plan offered on the Professional and Premium tiers, in which case the total is billed in 4 equal monthly installments starting when work begins. Scope is fixed in writing beforehand; changes to scope after that are quoted separately before any additional work is done.',
+        'Projects can be paid in full up front, or spread over 4 equal monthly installments starting when work begins — either way, scope is fixed in writing beforehand; changes to scope after that are quoted separately before any additional work is done.',
         'The Care Plan is a month-to-month service you can cancel at any time. Cancelling it does not affect your ownership of the delivered site.',
       ] },
       { h: 'Ownership', p: [
@@ -498,8 +497,8 @@ PAGES.push({
 PAGES.push({
   slug: 'thank-you.html',
   noPopup: true,
-  title: 'Thank You — Your Free Score Request Is In | A2H',
-  description: 'Your free website score request has been received. We follow up within 24 hours.',
+  title: 'Thank You — Your Free Mockup Request Is In | A2H',
+  description: 'Your free website mockup request has been received. We follow up within 24 hours.',
   jsonLd: [],
   body: `<section class="relative glow-copper pt-40 pb-24 px-6 overflow-hidden">
   <div class="grain"></div>
@@ -508,7 +507,7 @@ PAGES.push({
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L9.5 17L19 7" stroke="#7fb88a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
     <h1 class="font-display text-4xl sm:text-5xl tracking-[-0.03em] text-sand mb-5">Thank you.</h1>
-    <p class="text-lg text-fog leading-[1.7] mb-10">Your request is in. Check your inbox for a confirmation — we'll follow up with your free website score within 24 hours.</p>
+    <p class="text-lg text-fog leading-[1.7] mb-10">Your request is in. Check your inbox for a confirmation — we'll follow up with your free website mockup within 2–3 days.</p>
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
       <a href="work.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">See Our Work</a>
       <a href="pricing.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">See Pricing</a>
