@@ -141,6 +141,7 @@ const PRICING_FAQ = [
   ['How fast is "2–3 days"?', 'That is the build-and-launch window once we have your content, photos and brand assets in hand. Gathering those from you is usually the longer part, which is why the free mockup comes first — it gets that conversation started.'],
   ['What if I do not have a website yet?', 'That is the most common case. The free mockup does not require an existing site at all — just tell us your niche and what you want, and we design one from scratch.'],
   ['Is the AI chatbot really $99/mo?', 'Yes, on Base. It is trained on your business, answers FAQs and captures leads around the clock. It is included at no extra cost on Premium.'],
+  ['What is the AI Receptionist?', 'An add-on for businesses that get leads by phone. It texts back every missed call or website lead, asks real qualifying questions about the job, and books it straight onto your calendar — then texts you the moment it books or hits something it should not decide on its own. $997 setup, $297/mo, available on either tier.'],
 ];
 
 PAGES.push({
@@ -160,9 +161,9 @@ PAGES.push({
   <div class="max-w-4xl mx-auto">
     <div class="reveal text-center mb-10">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Add-Ons</p>
-      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Two upgrades, priced plainly</h2>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Three upgrades, priced plainly</h2>
     </div>
-    <div class="grid sm:grid-cols-2 gap-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8">
         <h3 class="text-sand font-semibold text-lg mb-2">AI Website Chatbot</h3>
         <p class="text-sm text-fog leading-[1.7] mb-5">Trained on your business — answers FAQs, qualifies visitors and captures leads 24/7, even after hours. Add it to any plan.</p>
@@ -177,6 +178,14 @@ PAGES.push({
         <div class="flex items-baseline gap-2">
           <p class="font-display text-2xl text-copper-light">+$99</p>
           <p class="text-xs text-fog uppercase tracking-wider">one-time · included on Premium</p>
+        </div>
+      </div>
+      <div class="reveal rounded-2xl bg-elevated border border-copper/30 shadow-elevated card-hover p-8">
+        <h3 class="text-sand font-semibold text-lg mb-2">AI Receptionist</h3>
+        <p class="text-sm text-fog leading-[1.7] mb-5">Texts back every missed call or lead, qualifies the job in a real conversation, and books it straight onto your calendar — with an instant alert to you the moment it does. Built for businesses that get leads by phone.</p>
+        <div class="flex items-baseline gap-2">
+          <p class="font-display text-2xl text-copper-light">+$297</p>
+          <p class="text-xs text-fog uppercase tracking-wider">per month · $997 setup</p>
         </div>
       </div>
     </div>
@@ -332,6 +341,7 @@ const CONSTRUCTION_FAQ = [
   ['Do I have to run ads to work with you?', 'No. The website build stands on its own and includes Google Business Profile setup, which brings in calls without any ad spend. Ad management is a separate service you can add if you want to accelerate.'],
   ['How fast do leads get answered?', 'Every form submission triggers a reply within minutes, day or night. In trades that single detail decides most jobs — the customer usually books whoever gets back to them first.'],
   ['What does a contractor site actually need?', 'A quote-request form above the fold, proof of past work, service areas stated plainly, and a phone number that is one tap away on mobile. Most contractor sites bury at least two of those.'],
+  ['Can the AI actually book the job, not just reply?', 'Yes, with the AI Receptionist add-on. It texts back missed calls and leads, asks what the job is and how urgent it is, and books an estimate straight onto your calendar — then alerts you the moment it books, or the moment it hits something only you should decide. $297/mo, $997 setup.'],
 ];
 
 PAGES.push({
@@ -358,7 +368,7 @@ PAGES.push({
     cards('The System', 'Everything between a search and a booked job', [
       { tag: 'Built to convert', h: 'Site or landing page', p: 'Hand-coded, mobile-first, quote-request form above the fold. No page-builder bloat dragging down your load time or your ad quality score.' },
       { tag: 'Found without ads', h: 'Google Business Profile', p: 'Claimed, categorised, and wired to your site so you show up in the Maps pack when someone searches your trade plus your city.' },
-      { tag: 'Answered in minutes', h: 'Instant lead response', p: 'Every form submission gets a reply in under five minutes, day or night, before the customer calls the next contractor on their list.' },
+      { tag: 'Answered in minutes', h: 'Instant lead response', p: 'Every form submission gets a reply in under five minutes, day or night, before the customer calls the next contractor on their list. Add the <a href="pricing.html#pricing" class="link-underline text-copper-light">AI Receptionist</a> to have it carry the whole text conversation and book the job for you.' },
       { tag: 'Compounds after', h: 'Local SEO foundation', p: 'Schema markup, service-area pages and a profile that keeps earning calls long after any ad budget stops.' },
     ]),
     B.portfolioGrid({ heading: 'Contractor work, <span class="italic text-copper-light">live right now.</span>', only: ['ssc'] }),

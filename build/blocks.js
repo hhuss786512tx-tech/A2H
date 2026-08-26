@@ -118,7 +118,7 @@ const TIERS = [
       '90+ PageSpeed target',
       '<span class="text-sand">2 months of Care Plan included</span> — then $249/mo, cancel anytime',
     ],
-    addons: ['+ Add AI Chatbot for <span class="text-copper-light font-semibold">$99/mo</span>', '+ Add 3D Company Card for <span class="text-copper-light font-semibold">$99 flat</span>'],
+    addons: ['+ Add AI Chatbot for <span class="text-copper-light font-semibold">$99/mo</span>', '+ Add 3D Company Card for <span class="text-copper-light font-semibold">$99 flat</span>', '+ Add AI Receptionist for <span class="text-copper-light font-semibold">$297/mo</span> <span class="text-fog">($997 setup)</span>'],
   },
   {
     name: 'Premium',
@@ -136,7 +136,7 @@ const TIERS = [
       'Dedicated launch support',
       '<span class="text-sand">2 years of Care Plan included</span> — then $249/mo, cancel anytime',
     ],
-    addons: ['Full-service build — logo, UI, and motion all included'],
+    addons: ['Full-service build — logo, UI, and motion all included', '+ Add AI Receptionist for <span class="text-copper-light font-semibold">$297/mo</span> <span class="text-fog">($997 setup)</span>'],
   },
 ];
 
