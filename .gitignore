@@ -1,3 +1,11 @@
 .vercel
 .env*
 node_modules
+
+# Real lead lists and send state stay out of this PUBLIC repo — only the
+# .example.csv templates in scripts/outreach/leads/ are tracked.
+scripts/outreach/leads/*.csv
+!scripts/outreach/leads/*.example.csv
+scripts/outreach/.sent-log.json
+scripts/outreach/.runs/
+scripts/outreach/preview/
