@@ -456,9 +456,13 @@ PAGES.push({
         'If you use the AI chat widget, the messages you type are processed so the assistant can answer them. Do not enter sensitive personal, medical or financial information into the chat.',
         'We use Google Analytics 4, which sets cookies and records standard analytics data such as pages viewed, approximate location derived from IP address, referring site and device type. If you arrive from an advertisement we also record the campaign parameters in the link (for example utm_source or gclid) so we can tell which campaigns work.',
       ] },
+      { h: 'SMS messaging', p: [
+        'If you provide your phone number on the free mockup form, you agree to receive SMS messages from A2H about your mockup request and project — this includes automated follow-up reminders and, if you reply, a live conversation (in part AI-assisted) to help scope your project and schedule a call. Message frequency varies; message and data rates may apply.',
+        'Reply STOP at any time to opt out, or HELP for help. We do not sell or share your phone number with third parties for their own marketing purposes.',
+      ] },
       { h: 'How we use it', p: [
-        'Form submissions are used to build and send your free website mockup and to follow up about your enquiry. Analytics data is used in aggregate to understand how the site performs.',
-        'We do not sell your information, rent it, or add you to a marketing list you did not ask for. We do not share it with third parties except the service providers that operate this site — currently Vercel for hosting and Google for analytics — who process it only on our behalf.',
+        'Form submissions are used to build and send your free website mockup and to follow up about your enquiry, including by SMS as described above. Analytics data is used in aggregate to understand how the site performs.',
+        'We do not sell your information, rent it, or add you to a marketing list you did not ask for. We do not share it with third parties except the service providers that operate this site — currently Vercel for hosting, Twilio for SMS delivery, Google for analytics and AI replies, and Resend for email — who process it only on our behalf.',
       ] },
       { h: 'How long we keep it', p: ['Enquiry details are kept for as long as needed to respond and for our business records. Google Analytics data is retained according to the retention period configured in that product. You can ask us to delete your enquiry at any time.'] },
       { h: 'Your choices', p: [
