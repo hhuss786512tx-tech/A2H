@@ -31,15 +31,20 @@ create table if not exists inbound_leads (
   fit_tier text,
   fit_flags text[],
 
-  -- nurture/booking state machine, driven by api/cron/process-nurture.js
-  -- and api/booking-confirmed.js
-  status text not null default 'new', -- new | nurturing | booked | reminded | completed
+  -- nurture/booking state machine, driven by api/cron/process-nurture.js,
+  -- api/sms-inbound.js, and api/booking-confirmed.js
+  status text not null default 'new', -- new | nurturing | engaged | booked | reminded | completed
   nurture_step int not null default 0,
   video_sent_at timestamptz,
   last_nurture_sent_at timestamptz,
   event_start_time timestamptz,
   reminded_at timestamptz,
-  booked_at timestamptz
+  booked_at timestamptz,
+
+  -- live two-way SMS thread with the AI receptionist (api/sms-inbound.js).
+  -- Array of {role: 'user'|'assistant', text, at}, newest last, capped at
+  -- 40 entries by the handler.
+  conversation jsonb not null default '[]'::jsonb
 );
 
 -- Dedup on repeat submissions with the same phone number. NULLs are not

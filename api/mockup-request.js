@@ -14,9 +14,11 @@
 //
 // Also writes a row to the `inbound_leads` CRM table via
 // lib/inboundLeads.js (SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY) so
-// api/cron/process-nurture.js can follow up and api/booking-confirmed.js
-// can mark it booked. Best-effort: a missing/misconfigured Supabase
-// project never blocks the response, since the emails above already sent.
+// api/cron/process-nurture.js can follow up by SMS, api/sms-inbound.js
+// can pick up the AI receptionist conversation when the lead texts back,
+// and api/booking-confirmed.js can mark it booked. Best-effort: a
+// missing/misconfigured Supabase project never blocks the response, since
+// the emails above already sent.
 //
 // Spam defense: honeypot + self-hosted captcha + fill-time check + email
 // syntax/disposable-domain/MX validation. See _lib/spam-guard.js for the
