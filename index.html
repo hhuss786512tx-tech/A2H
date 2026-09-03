@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A2H — Website Design &amp; Development for Texas Businesses</title>
-<meta name="description" content="Hand-coded websites and Google Maps setup for Texas businesses. Real launches, transparent pricing, zero page-builder bloat.">
+<title>A2H — AI Receptionist &amp; CRM for Texas Businesses</title>
+<meta name="description" content="An AI receptionist that answers every call and books the job, plus a CRM where every contact lands automatically. Built for Texas contractors, medical practices and local retail. We still build custom websites too.">
 <link rel="canonical" href="https://a2h.info/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141110'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-style='italic' fill='%23c9702f' text-anchor='middle'%3EA2H%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
-<meta property="og:title" content="A2H — Website Design &amp; Development for Texas Businesses">
-<meta property="og:description" content="Hand-coded websites and Google Maps setup for Texas businesses. Real launches, transparent pricing, zero page-builder bloat.">
+<meta property="og:title" content="A2H — AI Receptionist &amp; CRM for Texas Businesses">
+<meta property="og:description" content="An AI receptionist that answers every call and books the job, plus a CRM where every contact lands automatically. We still build custom websites too.">
 <meta property="og:image" content="https://a2h.info/assets/og-image.png">
 <meta property="og:url" content="https://a2h.info/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="A2H — Website Design &amp; Development for Texas Businesses">
-<meta name="twitter:description" content="Hand-coded websites and Google Maps setup for Texas businesses.">
+<meta name="twitter:title" content="A2H — AI Receptionist &amp; CRM for Texas Businesses">
+<meta name="twitter:description" content="An AI receptionist that answers every call and books the job, plus a CRM where every contact lands automatically.">
 <meta name="twitter:image" content="https://a2h.info/assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,10 +40,10 @@
   "name": "A2H Agency",
   "url": "https://a2h.info/",
   "email": "hhuss786512tx@gmail.com",
-  "description": "Hand-coded websites and Google Business Profile setup for Texas businesses.",
+  "description": "AI receptionist and CRM platform for Texas businesses — answers every call, books the job, and logs every contact automatically. Custom websites also available.",
   "areaServed": { "@type": "State", "name": "Texas" },
-  "serviceType": ["Website Design", "Website Development", "Local SEO", "Google Business Profile Setup"],
-  "knowsAbout": ["Web design", "Local SEO", "Google Business Profile", "Conversion optimization"]
+  "serviceType": ["AI Receptionist", "CRM", "Website Design", "Website Development", "Local SEO", "Google Business Profile Setup"],
+  "knowsAbout": ["AI voice receptionist", "CRM", "Appointment booking automation", "Web design", "Local SEO", "Google Business Profile", "Conversion optimization"]
 }
 </script>
 <!-- GA4 — real Measurement ID, property "A2H Agency Site". Keep in sync
@@ -171,20 +171,19 @@
       </span>
     </a>
     <nav class="hidden md:flex items-center gap-8 text-sm text-fog">
-      <a href="#work" data-nav-link class="link-underline hover:text-sand transition-colors">Work</a>
-      <a href="#process" data-nav-link class="link-underline hover:text-sand transition-colors">Process</a>
+      <a href="#how-it-works" data-nav-link class="link-underline hover:text-sand transition-colors">How It Works</a>
+      <a href="#live-test" data-nav-link class="link-underline hover:text-sand transition-colors">Live Test</a>
       <a href="#pricing" data-nav-link class="link-underline hover:text-sand transition-colors">Pricing</a>
+      <a href="#work" data-nav-link class="link-underline hover:text-sand transition-colors">Websites</a>
       <!-- No data-nav-link: the scroll-spy below feeds every marked href to
            querySelector(), and a filename is not a valid selector — it would
            throw and take the whole nav script down with it. -->
-      <a href="industries.html" class="link-underline hover:text-sand transition-colors">Industries</a>
       <a href="book-a-call.html" class="link-underline hover:text-sand transition-colors">Book A Call</a>
-      <a href="#" class="mockup-trigger link-underline hover:text-sand transition-colors">Contact</a>
     </nav>
     <div class="flex items-center gap-3 shrink-0">
       <span class="cta-ring rounded-full p-[2px] hidden sm:inline-block">
-        <a href="#" class="mockup-trigger btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-2.5 rounded-full block">
-          Get My Free Mockup
+        <a href="book-a-call.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-2.5 rounded-full block">
+          Book A Free Setup Call
         </a>
       </span>
       <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden h-10 w-10 flex items-center justify-center rounded-full border border-white/10 text-sand hover:border-copper-light/60 active:scale-95 transition-[border-color,transform] focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light focus-visible:outline-offset-2">
@@ -195,15 +194,15 @@
   </div>
   <div id="mobile-menu" class="md:hidden hidden border-t border-white/5 bg-ink/95 backdrop-blur-md">
     <nav class="max-w-6xl mx-auto px-6 py-3 flex flex-col text-[15px]">
-      <a href="#work" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">Work</a>
-      <a href="#process" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">Process</a>
+      <a href="#how-it-works" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">How It Works</a>
+      <a href="#live-test" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">Live Test</a>
       <a href="#pricing" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">Pricing</a>
+      <a href="#work" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">Websites</a>
       <a href="industries.html" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">Industries</a>
-      <a href="book-a-call.html" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">Book A Call</a>
-      <a href="#" class="mockup-trigger mobile-nav-link py-3 text-fog hover:text-sand transition-colors">Contact</a>
+      <a href="book-a-call.html" class="mobile-nav-link py-3 text-fog hover:text-sand transition-colors">Book A Call</a>
       <span class="cta-ring rounded-full p-[2px] inline-block mt-4 mb-1">
-        <a href="#" class="mockup-trigger mobile-nav-link btn-primary shadow-btn block text-center bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-3 rounded-full">
-          Get My Free Mockup
+        <a href="book-a-call.html" class="mobile-nav-link btn-primary shadow-btn block text-center bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-3 rounded-full">
+          Book A Free Setup Call
         </a>
       </span>
     </nav>
@@ -213,9 +212,9 @@
 <!-- PERSISTENT FLOATING CTA (mobile) -->
 <div id="floating-cta" class="fixed bottom-6 right-6 z-40 pointer-events-none opacity-0 translate-y-4 transition-all duration-500 ease-out">
   <span class="cta-ring rounded-full p-[2px] inline-block pointer-events-auto">
-    <a href="#" class="mockup-trigger btn-primary shadow-floating bg-copper hover:bg-copper-light text-ink font-semibold pl-5 pr-6 py-3 rounded-full text-sm flex items-center gap-2 border border-black/10">
+    <a href="book-a-call.html" class="btn-primary shadow-floating bg-copper hover:bg-copper-light text-ink font-semibold pl-5 pr-6 py-3 rounded-full text-sm flex items-center gap-2 border border-black/10">
       <span class="inline-flex h-2 w-2 rounded-full bg-ink/70"></span>
-      Get My Free Mockup
+      Book A Free Setup Call
     </a>
   </span>
 </div>
@@ -278,28 +277,180 @@
     <span class="ember" style="left:16%; width:4px; height:4px; animation-duration:8s;  animation-delay:-10s; --ember-drift:16px; --ember-rise:-290px;"></span>
   </div>
   <div class="max-w-4xl mx-auto text-center relative z-[1]">
-    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Websites &amp; Google Maps Listings for Contractors, Medical Practices &amp; Local Retail</p>
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">AI Receptionist &amp; CRM for Contractors, Medical Practices &amp; Local Retail</p>
     <h1 class="reveal font-display fire-glow text-[2.75rem] leading-[1.1] sm:text-6xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">
-      Websites that turn strangers into <span class="italic text-copper-light">paying customers.</span>
+      Every call answered. Every lead booked. <span class="italic text-copper-light">Automatically.</span>
     </h1>
     <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto mb-10">
-      Hand-coded, conversion-first sites for Texas businesses, plus a Google Business Profile set up
-      so you show up on Maps — no templates, no page-builder bloat, no ad spend required to get found.
+      Our AI receptionist picks up in 1–2 rings, day or night, has a real conversation, and books the
+      job straight into your calendar — every call and every contact lands in your own CRM automatically.
+      No voicemail, no sticky notes, nothing falls through the cracks.
     </p>
     <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
       <span class="cta-ring rounded-full p-[2px] inline-block">
-        <a href="#" class="mockup-trigger btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">
-          Get My Free Mockup
+        <a href="book-a-call.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">
+          Book A Free Setup Call
         </a>
       </span>
-      <a href="#work" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">
-        See Our Work
+      <a href="#how-it-works" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">
+        See How It Works
       </a>
     </div>
     <a href="#pricing" class="reveal inline-flex items-center gap-2 mt-7 bg-white/5 border border-white/10 hover:border-copper-light/40 hover:bg-white/[0.08] rounded-full px-4 py-2 text-xs text-fog transition-colors">
       <span class="h-1.5 w-1.5 rounded-full bg-live shrink-0"></span>
-      Flat-rate builds from <span class="text-sand font-semibold">$1,500</span> — see pricing
+      AI Receptionist + CRM from <span class="text-sand font-semibold">$1,500 setup + $397/mo</span> — see pricing
     </a>
+  </div>
+</section>
+
+<!-- HOW WE OPERATE -->
+<section id="how-it-works" class="relative py-28 px-6 bg-surface/40 border-y border-white/5 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:3%;  width:4px; height:4px; animation-duration:11s;  animation-delay:-3s; --ember-drift:14px;"></span>
+    <span class="ember" style="left:11%; width:3px; height:3px; animation-duration:13s;  animation-delay:-8s; --ember-drift:-10px;"></span>
+    <span class="ember" style="left:89%; width:3px; height:3px; animation-duration:12s;  animation-delay:-5s; --ember-drift:-12px;"></span>
+    <span class="ember" style="left:96%; width:4px; height:4px; animation-duration:10.5s; animation-delay:-1s; --ember-drift:12px;"></span>
+  </div>
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal mb-12 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">How We Operate</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">From ringing phone to <span class="italic text-copper-light">booked job.</span></h2>
+    </div>
+
+    <div class="reveal relative rounded-[34px] p-[2px] blueprint-ring">
+      <div class="relative rounded-[32px] bg-gradient-to-br from-elevated to-ink p-8 sm:p-10 md:p-14 overflow-hidden">
+        <div class="grain"></div>
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(50% 40% at 15% 0%, rgba(201,112,47,0.14), transparent 60%), radial-gradient(45% 35% at 90% 100%, rgba(127,184,138,0.10), transparent 60%);"></div>
+
+        <div class="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8">
+          <div class="hidden lg:block absolute top-8 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-copper/50 via-brass/50 to-live/50"></div>
+
+          <div class="flex flex-col items-center text-center px-2 relative">
+            <div class="w-16 h-16 rounded-full border-2 border-copper/60 bg-ink flex items-center justify-center mb-6 relative z-10">
+              <span class="font-display text-lg font-semibold text-copper">01</span>
+            </div>
+            <h3 class="text-sand font-semibold text-sm mb-2">A call comes in</h3>
+            <p class="text-fog text-sm leading-[1.7]">Answered in 1–2 rings — nights, weekends, lunch breaks, doesn't matter. No voicemail, ever.</p>
+          </div>
+
+          <div class="flex flex-col items-center text-center px-2 relative">
+            <div class="w-16 h-16 rounded-full border-2 border-copper-light/60 bg-ink flex items-center justify-center mb-6 relative z-10">
+              <span class="font-display text-lg font-semibold text-copper-light">02</span>
+            </div>
+            <h3 class="text-sand font-semibold text-sm mb-2">It has a real conversation</h3>
+            <p class="text-fog text-sm leading-[1.7]">Understands what the caller needs, answers questions about your business, and books the job right then — on the call.</p>
+          </div>
+
+          <div class="flex flex-col items-center text-center px-2 relative">
+            <div class="w-16 h-16 rounded-full border-2 border-brass/60 bg-ink flex items-center justify-center mb-6 relative z-10">
+              <span class="font-display text-lg font-semibold text-brass">03</span>
+            </div>
+            <h3 class="text-sand font-semibold text-sm mb-2">It lands in your CRM</h3>
+            <p class="text-fog text-sm leading-[1.7]">Every call, every contact, every booking — logged automatically. No data entry, nothing written on a sticky note.</p>
+          </div>
+
+          <div class="flex flex-col items-center text-center px-2 relative">
+            <div class="w-16 h-16 rounded-full border-2 border-live/60 bg-ink flex items-center justify-center mb-6 relative z-10">
+              <span class="font-display text-lg font-semibold text-live">04</span>
+            </div>
+            <h3 class="text-sand font-semibold text-sm mb-2">You stay in control</h3>
+            <p class="text-fog text-sm leading-[1.7]">See everything on one dashboard, jump into any conversation, and a real person can transfer in whenever it matters.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="reveal text-center mt-10">
+      <a href="#live-test" class="link-underline text-copper-light text-sm font-semibold hover:text-sand transition-colors">Hear what a call actually sounds like &rarr;</a>
+    </p>
+  </div>
+</section>
+
+<!-- LIVE TEST -->
+<section id="live-test" class="relative py-28 px-6 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:4%;  width:4px; height:4px; animation-duration:11s; animation-delay:-2s; --ember-drift:14px; --ember-rise:-140px;"></span>
+    <span class="ember" style="left:92%; width:3px; height:3px; animation-duration:12s; animation-delay:-6s; --ember-drift:-12px; --ember-rise:-130px;"></span>
+    <span class="ember" style="left:97%; width:4px; height:4px; animation-duration:9.5s; animation-delay:-4s; --ember-drift:12px; --ember-rise:-150px;"></span>
+  </div>
+  <div class="max-w-4xl mx-auto">
+    <div class="reveal mb-12 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Live Test</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">This is exactly what a call <span class="italic text-copper-light">sounds like.</span></h2>
+      <p class="text-fog text-sm max-w-xl mx-auto">A real call script, word for word — an AC repair call answered, booked, and confirmed in under a minute.</p>
+    </div>
+
+    <div class="reveal max-w-md mx-auto rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-6 sm:p-8">
+      <div class="phone-frame mx-auto">
+        <div class="phone-screen tall flex flex-col">
+          <div class="phone-notch"></div>
+          <div class="flex items-center justify-between px-4 pt-2.5 pb-1 text-[10px] font-semibold text-sand">
+            <span>9:41</span>
+            <span class="flex items-center gap-1">
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><rect x="0" y="6" width="2.5" height="4" rx="0.5" fill="#e9dfd2"/><rect x="4" y="4" width="2.5" height="6" rx="0.5" fill="#e9dfd2"/><rect x="8" y="2" width="2.5" height="8" rx="0.5" fill="#e9dfd2"/><rect x="12" y="0" width="2.5" height="10" rx="0.5" fill="#e9dfd2"/></svg>
+              <span class="inline-flex items-center border border-sand/70 rounded-[3px] px-[1.5px] py-[1px]"><span class="block w-[16px] h-[7px] bg-sand/90 rounded-[1px]"></span></span>
+            </span>
+          </div>
+          <div class="flex items-center gap-2.5 px-4 py-2.5 border-b border-white/10">
+            <span class="h-7 w-7 rounded-full bg-gradient-to-br from-copper to-brass flex items-center justify-center text-[10px] font-bold text-ink shrink-0">☎</span>
+            <div class="min-w-0">
+              <p class="text-xs font-semibold text-sand truncate">Apex Home Services</p>
+              <p class="text-[10px] text-live flex items-center gap-1"><span class="h-1.5 w-1.5 rounded-full bg-live inline-block"></span>Answered in 2 rings</p>
+            </div>
+          </div>
+          <div id="call-transcript-thread" class="bubble-thread flex-1 overflow-hidden px-3 py-2 space-y-2 text-[11px] leading-snug">
+            <div class="chat-bubble flex justify-start">
+              <div class="max-w-[85%] bg-white/10 text-sand rounded-2xl rounded-bl-sm px-3 py-2">
+                My AC stopped blowing cold air and it's like 95 degrees today — can someone come take a look?
+              </div>
+            </div>
+            <div class="chat-bubble flex justify-end">
+              <div class="max-w-[85%] bg-gradient-to-br from-[#0b93f6] to-[#0066e0] text-white rounded-2xl rounded-br-sm px-3 py-2">
+                Sorry to hear that — let's get someone out today if we can. Can I get your name and the address?
+              </div>
+            </div>
+            <div class="chat-bubble flex justify-start">
+              <div class="max-w-[85%] bg-white/10 text-sand rounded-2xl rounded-bl-sm px-3 py-2">
+                Mike Torres, 214 Willow Creek Drive.
+              </div>
+            </div>
+            <div class="chat-bubble flex justify-end">
+              <div class="max-w-[85%] bg-gradient-to-br from-[#0b93f6] to-[#0066e0] text-white rounded-2xl rounded-br-sm px-3 py-2">
+                Got it, Mike. We've got an opening this afternoon at 3:30, or tomorrow at 8 — which works better?
+              </div>
+            </div>
+            <div class="chat-bubble flex justify-start">
+              <div class="max-w-[85%] bg-white/10 text-sand rounded-2xl rounded-bl-sm px-3 py-2">
+                3:30 today's perfect.
+              </div>
+            </div>
+            <div class="chat-bubble flex justify-end">
+              <div class="max-w-[85%] bg-gradient-to-br from-[#0b93f6] to-[#0066e0] text-white rounded-2xl rounded-br-sm px-3 py-2">
+                You're all set for 3:30 — I'll text a confirmation to this number. See you then, Mike.
+              </div>
+            </div>
+          </div>
+          <div class="px-3 pb-3 pt-1">
+            <div class="flex items-center gap-2 bg-live/10 border border-live/30 rounded-full px-3 py-1.5">
+              <span class="h-1.5 w-1.5 rounded-full bg-live shrink-0"></span>
+              <span class="text-[10px] text-sand/90 flex-1">Booked — 3:30 PM today</span>
+              <span class="text-[10px] text-fog/60">47s</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="reveal text-center text-sm text-fog mt-8 max-w-lg mx-auto">
+      Want to hear this running on your own business line? <a href="book-a-call.html" class="link-underline text-copper-light font-semibold hover:text-sand transition-colors">Book a free setup call</a> and we'll run a real test call with you on it.
+    </p>
+  </div>
+</section>
+
+<!-- WEBSITES DIVIDER -->
+<section class="relative pt-4 pb-2 px-6">
+  <div class="reveal max-w-2xl mx-auto text-center">
+    <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Still Available</p>
+    <p class="text-sand/90 text-sm">We also still build custom websites — here's what's live.</p>
   </div>
 </section>
 
@@ -747,11 +898,32 @@
   <div class="max-w-5xl mx-auto">
     <div class="reveal mb-6 text-center">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Transparent Pricing</p>
-      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">One flat price. Your site, live in 2–3 days.</h2>
-      <p class="text-fog text-sm">Pay in full or spread it over 4 months &nbsp;·&nbsp; fixed scope, no surprises &nbsp;·&nbsp; Care Plan included with every tier</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">One AI receptionist. Every call answered.</h2>
+      <p class="text-fog text-sm">Cancel anytime, no long-term lock-in &nbsp;·&nbsp; custom websites also available below</p>
     </div>
 
-    <div class="reveal grid sm:grid-cols-2 gap-6 items-stretch mt-8 max-w-3xl mx-auto">
+    <div class="reveal max-w-md mx-auto mb-10">
+      <div class="pricing-ring pricing-ring-feature rounded-2xl bg-elevated border border-copper/40 shadow-floating card-hover p-8 flex flex-col relative">
+        <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">Our Main Offer</span>
+        <h3 class="text-sand font-semibold text-lg mb-1">AI Receptionist + CRM</h3>
+        <p class="font-display text-3xl text-copper-light mb-1">$1,500<span class="price-period text-base text-fog font-sans"> setup</span></p>
+        <p class="text-xs text-fog mb-4">then <span class="text-sand font-semibold">$397</span>/mo &nbsp;·&nbsp; <span class="text-sand font-semibold">$99</span>/mo per extra team seat</p>
+        <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
+          <li>Answers every call, day or night — no voicemail</li>
+          <li>Books appointments straight into your calendar</li>
+          <li>Every call and contact logged in your own CRM</li>
+          <li>Warm transfer to a real person when it's needed</li>
+          <li>Pipeline board — see every lead's stage at a glance</li>
+          <li><span class="text-sand">Cancel anytime</span> — no long-term contract</li>
+        </ul>
+        <a href="book-a-call.html" class="btn-primary block w-full shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm text-center mt-6">
+          Book A Free Setup Call
+        </a>
+      </div>
+    </div>
+
+    <p class="reveal text-center text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-6">Also Available — Custom Websites</p>
+    <div class="reveal grid sm:grid-cols-2 gap-6 items-stretch mt-2 max-w-3xl mx-auto">
       <div class="pricing-ring rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
         <h3 class="text-sand font-semibold text-lg mb-1">Base</h3>
         <p class="font-display text-3xl text-copper-light mb-1">$1,500<span class="price-period text-base text-fog font-sans"> one-time</span></p>
@@ -777,15 +949,14 @@
           </div>
           <div class="flex items-center gap-2">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-copper-light shrink-0"><path d="M12 2C10 6 6 8 4 8C4 16 8 20 12 22C16 20 20 16 20 8C18 8 14 6 12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            <p class="text-xs text-fog">+ Add AI Receptionist for <span class="text-copper-light font-semibold">$297/mo</span> <span class="text-fog">($997 setup)</span></p>
+            <p class="text-xs text-fog">+ Add the AI Receptionist + CRM for <span class="text-copper-light font-semibold">$397/mo</span> <span class="text-fog">($1,500 setup)</span></p>
           </div>
         </div>
         <a href="#" data-plan="Base" class="plan-cta mockup-trigger btn-primary block w-full text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm text-center mt-6">
           Start with Base
         </a>
       </div>
-      <div class="pricing-ring pricing-ring-feature rounded-2xl bg-elevated border border-copper/40 shadow-floating card-hover p-8 flex flex-col relative">
-        <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">Full Service</span>
+      <div class="pricing-ring rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col relative">
         <h3 class="text-sand font-semibold text-lg mb-1">Premium</h3>
         <p class="font-display text-3xl text-copper-light mb-1">$5,000<span class="price-period text-base text-fog font-sans"> one-time</span></p>
         <p class="text-xs text-fog mb-4">or <span class="text-sand font-semibold">$1,000</span>/mo &times; 4 <span class="text-fog">($4,000 total)</span></p>
@@ -806,7 +977,7 @@
           </div>
           <div class="flex items-center gap-2">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-copper-light shrink-0"><path d="M12 2C10 6 6 8 4 8C4 16 8 20 12 22C16 20 20 16 20 8C18 8 14 6 12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            <p class="text-xs text-fog">+ Add AI Receptionist for <span class="text-copper-light font-semibold">$297/mo</span> <span class="text-fog">($997 setup)</span></p>
+            <p class="text-xs text-fog">+ Add the AI Receptionist + CRM for <span class="text-copper-light font-semibold">$397/mo</span> <span class="text-fog">($1,500 setup)</span></p>
           </div>
         </div>
         <a href="#" data-plan="Premium" class="plan-cta mockup-trigger btn-primary block w-full shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm text-center mt-6">
@@ -842,7 +1013,7 @@
                 <p class="text-[10px] text-live flex items-center gap-1"><span class="h-1.5 w-1.5 rounded-full bg-live inline-block"></span>Active · Responding now</p>
               </div>
             </div>
-            <div id="chatbot-thread" class="flex-1 overflow-hidden px-3 py-2 space-y-2 text-[11px] leading-snug">
+            <div id="chatbot-thread" class="bubble-thread flex-1 overflow-hidden px-3 py-2 space-y-2 text-[11px] leading-snug">
               <div class="chat-bubble flex justify-start">
                 <div class="max-w-[80%] bg-white/10 text-sand rounded-2xl rounded-bl-sm px-3 py-2">
                   Hey, saw your site — what's turnaround on a new build?
@@ -902,6 +1073,176 @@
   </div>
 </section>
 
+<!-- COMPARISON -->
+<section id="compare" class="relative py-24 px-6 bg-surface/40 border-y border-white/5 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:4%;  width:4px; height:4px; animation-duration:11s;  animation-delay:-3s; --ember-drift:14px;"></span>
+    <span class="ember" style="left:93%; width:3px; height:3px; animation-duration:12s;  animation-delay:-6s; --ember-drift:-12px;"></span>
+  </div>
+  <div class="max-w-4xl mx-auto">
+    <div class="reveal mb-12 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Why Not Just...</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Voicemail and an answering service <span class="italic text-copper-light">aren't the same thing.</span></h2>
+    </div>
+    <div class="reveal grid sm:grid-cols-3 gap-4">
+      <div class="rounded-2xl bg-elevated border border-white/5 p-6">
+        <h3 class="text-sand font-semibold text-sm mb-4">Voicemail</h3>
+        <ul class="text-sm text-fog leading-[2] space-y-1">
+          <li class="flex items-center gap-2"><span class="text-fog/50">✕</span> Answers instantly</li>
+          <li class="flex items-center gap-2"><span class="text-fog/50">✕</span> Books the job</li>
+          <li class="flex items-center gap-2"><span class="text-fog/50">✕</span> Available 24/7</li>
+          <li class="flex items-center gap-2"><span class="text-fog/50">✕</span> Logs to a CRM</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-elevated border border-white/5 p-6">
+        <h3 class="text-sand font-semibold text-sm mb-4">Answering Service</h3>
+        <ul class="text-sm text-fog leading-[2] space-y-1">
+          <li class="flex items-center gap-2"><span class="text-live">✓</span> Answers instantly</li>
+          <li class="flex items-center gap-2"><span class="text-fog/50">✕</span> Books the job</li>
+          <li class="flex items-center gap-2"><span class="text-fog/50">✕</span> Available 24/7</li>
+          <li class="flex items-center gap-2"><span class="text-fog/50">✕</span> Logs to a CRM</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-elevated border border-copper/40 shadow-elevated p-6 relative">
+        <span class="absolute -top-3 left-6 bg-copper text-ink text-[10px] font-bold px-2.5 py-1 rounded-full">A2H</span>
+        <h3 class="text-sand font-semibold text-sm mb-4">AI Receptionist + CRM</h3>
+        <ul class="text-sm text-fog leading-[2] space-y-1">
+          <li class="flex items-center gap-2"><span class="text-live">✓</span> Answers instantly</li>
+          <li class="flex items-center gap-2"><span class="text-live">✓</span> Books the job</li>
+          <li class="flex items-center gap-2"><span class="text-live">✓</span> Available 24/7</li>
+          <li class="flex items-center gap-2"><span class="text-live">✓</span> Logs to a CRM</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS STRIP -->
+<section class="relative py-16 px-6 overflow-hidden">
+  <div class="max-w-4xl mx-auto">
+    <div class="reveal mb-8 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold">Works With What You Already Have</p>
+    </div>
+    <div class="reveal grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="rounded-xl bg-elevated border border-white/5 p-4 text-center">
+        <p class="text-sand text-sm font-medium mb-1">Your number</p>
+        <p class="text-fog text-xs">No number change needed</p>
+      </div>
+      <div class="rounded-xl bg-elevated border border-white/5 p-4 text-center">
+        <p class="text-sand text-sm font-medium mb-1">Google Calendar</p>
+        <p class="text-fog text-xs">Bookings sync automatically</p>
+      </div>
+      <div class="rounded-xl bg-elevated border border-white/5 p-4 text-center">
+        <p class="text-sand text-sm font-medium mb-1">Text follow-up</p>
+        <p class="text-fog text-xs">Missed context? It follows up by SMS</p>
+      </div>
+      <div class="rounded-xl bg-elevated border border-white/5 p-4 text-center">
+        <p class="text-sand text-sm font-medium mb-1">Your team</p>
+        <p class="text-fog text-xs">Add seats as you grow, $99/mo each</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI CALCULATOR -->
+<section id="calculator" class="relative py-24 px-6 bg-surface/40 border-y border-white/5 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:5%;  width:4px; height:4px; animation-duration:11s;  animation-delay:-3s; --ember-drift:14px;"></span>
+    <span class="ember" style="left:92%; width:3px; height:3px; animation-duration:12s;  animation-delay:-6s; --ember-drift:-12px;"></span>
+  </div>
+  <div class="max-w-2xl mx-auto">
+    <div class="reveal mb-10 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Do The Math Yourself</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">What are missed calls <span class="italic text-copper-light">actually costing you?</span></h2>
+      <p class="text-fog text-sm">Your own numbers, not ours — this is an estimate based on what you enter below.</p>
+    </div>
+    <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated p-6 sm:p-8">
+      <div class="grid sm:grid-cols-2 gap-5 mb-6">
+        <label class="block">
+          <span class="text-xs text-fog uppercase tracking-wider mb-2 block">Missed calls per week</span>
+          <input id="calc-missed" type="number" min="0" value="5" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 focus:outline-none transition-colors">
+        </label>
+        <label class="block">
+          <span class="text-xs text-fog uppercase tracking-wider mb-2 block">Average job value ($)</span>
+          <input id="calc-value" type="number" min="0" value="350" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 focus:outline-none transition-colors">
+        </label>
+      </div>
+      <div class="rounded-xl bg-ink/60 border border-copper/30 p-5 text-center mb-6">
+        <p class="text-xs text-fog uppercase tracking-wider mb-2">Estimated monthly loss</p>
+        <p class="font-display text-copper-light" style="font-size: clamp(2rem, 6vw, 3rem);" id="calc-result">$7,583</p>
+        <p class="text-xs text-fog/70 mt-1" id="calc-detail">5 missed calls/week × $350/job × 4.33 weeks</p>
+      </div>
+      <a href="book-a-call.html" class="btn-primary block w-full shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm text-center">
+        Stop Losing That — Book A Free Setup Call
+      </a>
+    </div>
+  </div>
+</section>
+<script>
+  (function () {
+    var missedInput = document.getElementById('calc-missed');
+    var valueInput = document.getElementById('calc-value');
+    var result = document.getElementById('calc-result');
+    var detail = document.getElementById('calc-detail');
+    if (!missedInput || !valueInput || !result || !detail) return;
+    var fmt = function (n) { return '$' + Math.round(n).toLocaleString('en-US'); };
+    var update = function () {
+      var missed = Math.max(0, Number(missedInput.value) || 0);
+      var value = Math.max(0, Number(valueInput.value) || 0);
+      var monthly = missed * value * 4.33;
+      result.textContent = fmt(monthly);
+      detail.textContent = missed + ' missed calls/week × $' + value.toLocaleString('en-US') + '/job × 4.33 weeks';
+    };
+    missedInput.addEventListener('input', update);
+    valueInput.addEventListener('input', update);
+    update();
+  })();
+</script>
+
+<!-- FAQ / OBJECTIONS -->
+<section id="faq" class="relative py-24 px-6 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:4%;  width:4px; height:4px; animation-duration:11s;  animation-delay:-3s; --ember-drift:14px;"></span>
+    <span class="ember" style="left:93%; width:3px; height:3px; animation-duration:12s;  animation-delay:-6s; --ember-drift:-12px;"></span>
+  </div>
+  <div class="max-w-2xl mx-auto">
+    <div class="reveal mb-12 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Questions</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Before you book a call</h2>
+    </div>
+    <div class="reveal space-y-3">
+      <details class="group rounded-xl bg-elevated border border-white/5 px-5 py-4 [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex items-center justify-between cursor-pointer text-sand font-medium text-sm list-none">
+          I already have an answering service — why switch?
+          <span class="text-copper-light group-open:rotate-45 transition-transform text-lg leading-none">+</span>
+        </summary>
+        <p class="text-fog text-sm leading-[1.7] mt-3">A human answering service is still a person reading a script off a sheet — it can't book directly into your calendar or log the call into a CRM automatically. This does both, on every call, without paying per-minute for a call center.</p>
+      </details>
+      <details class="group rounded-xl bg-elevated border border-white/5 px-5 py-4 [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex items-center justify-between cursor-pointer text-sand font-medium text-sm list-none">
+          What if it can't handle what the caller needs?
+          <span class="text-copper-light group-open:rotate-45 transition-transform text-lg leading-none">+</span>
+        </summary>
+        <p class="text-fog text-sm leading-[1.7] mt-3">It warm-transfers to a real person when a call needs one — it's not designed to handle everything on its own, it's designed to never let a call go unanswered.</p>
+      </details>
+      <details class="group rounded-xl bg-elevated border border-white/5 px-5 py-4 [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex items-center justify-between cursor-pointer text-sand font-medium text-sm list-none">
+          Do I have to change my phone number?
+          <span class="text-copper-light group-open:rotate-45 transition-transform text-lg leading-none">+</span>
+        </summary>
+        <p class="text-fog text-sm leading-[1.7] mt-3">No — your existing number stays yours. We wire the receptionist into it, we don't replace it.</p>
+      </details>
+      <details class="group rounded-xl bg-elevated border border-white/5 px-5 py-4 [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex items-center justify-between cursor-pointer text-sand font-medium text-sm list-none">
+          What if I want to cancel?
+          <span class="text-copper-light group-open:rotate-45 transition-transform text-lg leading-none">+</span>
+        </summary>
+        <p class="text-fog text-sm leading-[1.7] mt-3">Cancel anytime — no long-term lock-in. It's in the agreement.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- 3D COMPANY CARD -->
 <section id="card3d-section" class="relative py-24 px-6 overflow-hidden">
   <div class="ambient-embers" aria-hidden="true">
@@ -952,11 +1293,11 @@
   </div>
   <div class="reveal max-w-5xl mx-auto rounded-3xl bg-gradient-to-r from-copper to-brass px-8 py-14 sm:py-16 text-center relative overflow-hidden shadow-floating">
     <div class="grain opacity-10"></div>
-    <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4 relative" style="text-shadow: 0 2px 10px rgba(20,17,16,0.35);">Ready to see your <span class="italic">new site?</span></h2>
-    <p class="text-sand/90 max-w-xl mx-auto mb-8 relative" style="text-shadow: 0 1px 6px rgba(20,17,16,0.3);">Free website mockup, no pressure, no obligation. We'll show you exactly what your new site could look like.</p>
+    <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4 relative" style="text-shadow: 0 2px 10px rgba(20,17,16,0.35);">Ready to stop missing <span class="italic">calls?</span></h2>
+    <p class="text-sand/90 max-w-xl mx-auto mb-8 relative" style="text-shadow: 0 1px 6px rgba(20,17,16,0.3);">Book a free setup call — no pressure, no obligation. We'll show you exactly how it works on your own business.</p>
     <span class="relative inline-block rounded-full p-[2px] cta-ring">
-      <a href="#" class="mockup-trigger btn-primary relative inline-block bg-ink hover:bg-ink/90 text-sand font-semibold px-7 py-3.5 rounded-full text-[15px] shadow-btn">
-        Get My Free Mockup
+      <a href="book-a-call.html" class="btn-primary relative inline-block bg-ink hover:bg-ink/90 text-sand font-semibold px-7 py-3.5 rounded-full text-[15px] shadow-btn">
+        Book A Free Setup Call
       </a>
     </span>
   </div>
@@ -973,13 +1314,14 @@
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 pb-12">
       <div>
         <p class="font-display text-2xl text-sand mb-3">A2H<span class="text-copper">.</span></p>
-        <p class="text-sm text-fog leading-[1.7]">Hand-coded websites and Google Business Profile setup for Texas businesses.</p>
+        <p class="text-sm text-fog leading-[1.7]">AI receptionist &amp; CRM for Texas businesses — plus custom websites and Google Business Profile setup.</p>
       </div>
       <div>
         <p class="text-xs uppercase tracking-[0.2em] text-copper-light font-semibold mb-4">Services</p>
         <ul class="space-y-2 text-sm text-fog">
-          <li><a href="work.html" class="link-underline hover:text-sand transition-colors">Our Work</a></li>
-          <li><a href="process.html" class="link-underline hover:text-sand transition-colors">How We Work</a></li>
+          <li><a href="#how-it-works" class="link-underline hover:text-sand transition-colors">AI Receptionist</a></li>
+          <li><a href="#live-test" class="link-underline hover:text-sand transition-colors">Live Test</a></li>
+          <li><a href="work.html" class="link-underline hover:text-sand transition-colors">Website Work</a></li>
           <li><a href="pricing.html" class="link-underline hover:text-sand transition-colors">Pricing</a></li>
         </ul>
       </div>
@@ -996,8 +1338,8 @@
         <ul class="space-y-2 text-sm text-fog">
           <li><a href="mailto:hhuss786512tx@gmail.com" class="link-underline hover:text-sand transition-colors break-all">hhuss786512tx@gmail.com</a></li>
           <li>Texas-based</li>
-          <li><a href="#" class="mockup-trigger link-underline text-copper-light hover:text-sand transition-colors">Get your free mockup</a></li>
-          <li><a href="book-a-call.html" class="link-underline text-copper-light hover:text-sand transition-colors">Book a call</a></li>
+          <li><a href="book-a-call.html" class="link-underline text-copper-light hover:text-sand transition-colors">Book a free setup call</a></li>
+          <li><a href="#" class="mockup-trigger link-underline hover:text-sand transition-colors">Get a free website mockup</a></li>
         </ul>
       </div>
     </div>
@@ -1515,9 +1857,12 @@
   // the same time, silently leaving alternating bubbles stuck at opacity 0.
   // Typing-indicator items show a bouncing-dots bubble, then swap out for the
   // real AI reply right after, so the thread reads as a live conversation.
-  (function () {
-    const thread = document.getElementById('chatbot-thread');
-    if (!thread) return;
+  // Generalized over every ".bubble-thread" on the page (the pricing
+  // section's #chatbot-thread and the live-test section's
+  // #call-transcript-thread both use it) rather than one hardcoded id, so a
+  // new bubble-style demo just needs the shared class to get the same
+  // stagger-reveal for free.
+  document.querySelectorAll('.bubble-thread').forEach((thread) => {
     const items = Array.from(thread.children);
     if (!items.length) return;
     const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1551,7 +1896,7 @@
       });
     }, { threshold: 0.15 });
     bubbleIo.observe(container);
-  })();
+  });
 
   // Mobile floating CTA: hidden near the top (nav CTA already covers it)
   // and hidden once the pricing cards are on screen — those already have
