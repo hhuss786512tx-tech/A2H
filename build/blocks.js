@@ -19,26 +19,6 @@ const PROJECTS = [
     metric: '270+ clicks in 14 days · $0.74 cost per click on a $200 test budget',
   },
   {
-    name: 'Azul Bio Research',
-    href: 'https://azulbioresearch.com',
-    display: 'azulbioresearch.com',
-    img: 'azulbio',
-    category: 'Biotech / Research',
-    status: 'live',
-    blurb: 'Credibility-first site for a research lab — clean, technical, and quick to scan.',
-    metric: '',
-  },
-  {
-    name: 'Quality Halal Market',
-    href: 'https://hhuss786512tx-tech.github.io/Quality-Halal-Market/',
-    display: 'hhuss786512tx-tech.github.io/Quality-Halal-Market',
-    img: 'qhm',
-    category: 'Food & Retail — Meat Shop',
-    status: 'demo',
-    blurb: 'Custom build for a specialty grocer — product catalog, cart, and mobile-first checkout.',
-    metric: '',
-  },
-  {
     name: 'CareMedBill',
     href: 'https://hhuss786512tx-tech.github.io/Caremedbill/',
     display: 'hhuss786512tx-tech.github.io/Caremedbill',
@@ -103,40 +83,42 @@ ${list.map(projectCard).join('\n')}
 
 const TIERS = [
   {
-    name: 'Base',
+    name: 'AI Receptionist + CRM',
+    badge: 'Our Main Offer',
     price: '$1,500',
-    note: 'or <span class="text-sand font-semibold">$325</span>/mo &times; 4 <span class="text-fog">($1,300 total)</span>',
-    featured: false,
-    cta: 'Start with Base',
+    priceSuffix: ' setup',
+    note: 'then <span class="text-sand font-semibold">$397</span>/mo &nbsp;·&nbsp; <span class="text-sand font-semibold">$99</span>/mo per extra team seat',
+    featured: true,
+    cta: 'Book A Free Setup Call',
+    href: 'book-a-call.html',
     features: [
-      'Custom 10-page website',
-      'Mobile-first responsive design',
-      'Logo design included',
-      'Full custom backend',
-      'Contact form → email',
-      'Google Business Profile / Maps setup',
-      '90+ PageSpeed target',
-      '<span class="text-sand">2 months of Care Plan included</span> — then $249/mo, cancel anytime',
+      'Answers every call, day or night — no voicemail',
+      'Books appointments straight into your calendar',
+      'Every call and contact logged in your own CRM',
+      "Warm transfer to a real person when it's needed",
+      "Pipeline board — see every lead's stage at a glance",
+      '<span class="text-sand">Cancel anytime</span> — no long-term contract',
     ],
-    addons: ['+ Add AI Chatbot for <span class="text-copper-light font-semibold">$99/mo</span>', '+ Add 3D Company Card for <span class="text-copper-light font-semibold">$99 flat</span>', '+ Add AI Receptionist for <span class="text-copper-light font-semibold">$297/mo</span> <span class="text-fog">($997 setup)</span>'],
+    addons: [],
   },
   {
-    name: 'Premium',
-    price: '$5,000',
-    note: 'or <span class="text-sand font-semibold">$1,000</span>/mo &times; 4 <span class="text-fog">($4,000 total)</span>',
-    featured: true,
-    cta: 'Go Premium',
+    name: 'AI Receptionist + CRM + Custom Website',
+    badge: 'Most Complete',
+    price: '$2,000',
+    priceSuffix: ' setup',
+    note: 'then <span class="text-sand font-semibold">$400</span>/mo &nbsp;·&nbsp; <span class="text-sand font-semibold">$99</span>/mo per extra team seat',
+    featured: false,
+    cta: 'Book A Free Setup Call',
+    href: 'book-a-call.html',
     features: [
-      'Everything in Base',
-      'Unlimited pages',
-      'Custom functionality (booking, cart, calculators)',
-      'Full UI design pass + custom animation',
-      '<span class="text-sand">AI Chatbot included</span> — not a $99/mo add-on',
-      '<span class="text-sand">3D interactive company card included</span>',
-      'Dedicated launch support',
-      '<span class="text-sand">2 years of Care Plan included</span> — then $249/mo, cancel anytime',
+      'Everything in AI Receptionist + CRM',
+      'Custom hand-coded website (up to 10 pages)',
+      'Mobile-first responsive design + logo design included',
+      'Google Business Profile / Maps setup',
+      '90+ PageSpeed target',
+      '<span class="text-sand">Care Plan included</span> — then $249/mo, cancel anytime',
     ],
-    addons: ['Full-service build — logo, UI, and motion all included', '+ Add AI Receptionist for <span class="text-copper-light font-semibold">$297/mo</span> <span class="text-fog">($997 setup)</span>'],
+    addons: ['+ Add AI Website Chatbot for <span class="text-copper-light font-semibold">$99/mo</span>', '+ Add 3D Company Card for <span class="text-copper-light font-semibold">$99 flat</span>'],
   },
 ];
 
@@ -147,52 +129,48 @@ function tierCard(t) {
     ? 'pricing-ring pricing-ring-feature rounded-2xl bg-elevated border border-copper/40 shadow-floating card-hover p-8 flex flex-col relative'
     : 'pricing-ring rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col';
   const btn = t.featured
-    ? 'plan-cta mockup-trigger btn-primary block w-full shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm text-center mt-6'
-    : 'plan-cta mockup-trigger btn-primary block w-full text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm text-center mt-6';
-  const priceBlock = t.note
-    ? `        <p class="font-display text-3xl text-copper-light mb-1">${t.price}<span class="price-period text-base text-fog font-sans"> one-time</span></p>
-        <p class="text-xs text-fog mb-4">${t.note}</p>`
-    : `        <p class="font-display text-3xl text-copper-light mb-4">${t.price}<span class="price-period text-base text-fog font-sans"> one-time</span></p>`;
+    ? 'btn-primary block w-full shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm text-center mt-6'
+    : 'btn-primary block w-full text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm text-center mt-6';
+  const priceBlock = `        <p class="font-display text-3xl text-copper-light mb-1">${t.price}<span class="price-period text-base text-fog font-sans">${t.priceSuffix || ''}</span></p>
+        <p class="text-xs text-fog mb-4">${t.note}</p>`;
   return `      <div class="${shell}">
-${t.featured ? '        <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">Full Service</span>\n' : ''}        <h3 class="text-sand font-semibold text-lg mb-1">${t.name}</h3>
+${t.badge ? `        <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">${t.badge}</span>\n` : ''}        <h3 class="text-sand font-semibold text-lg mb-1">${t.name}</h3>
 ${priceBlock}
         <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
 ${t.features.map((f) => `          <li>${f}</li>`).join('\n')}
         </ul>
-        <div class="mt-5 pt-4 border-t border-white/10 space-y-2">
+${t.addons.length ? `        <div class="mt-5 pt-4 border-t border-white/10 space-y-2">
 ${t.addons.map((a) => `          <div class="flex items-center gap-2">${LEAF}<p class="text-xs text-fog">${a}</p></div>`).join('\n')}
-        </div>
-        <a href="#" data-plan="${t.name}" class="${btn}">${t.cta}</a>
+        </div>\n` : ''}        <a href="${t.href}" class="${btn}">${t.cta}</a>
       </div>`;
 }
 
-function pricingTable({ heading = 'One flat price. Your site, live in 2–3 days.' } = {}) {
+function pricingTable({ heading = 'Two ways to never miss a call again.' } = {}) {
   return `<section id="pricing" class="py-24 px-6">
   <div class="max-w-5xl mx-auto">
     <div class="reveal mb-6 text-center">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Transparent Pricing</p>
       <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">${heading}</h2>
-      <p class="text-fog text-sm">Pay in full or spread it over 4 months &nbsp;·&nbsp; fixed scope, no surprises &nbsp;·&nbsp; Care Plan included with every tier</p>
+      <p class="text-fog text-sm">Fixed setup fee, simple monthly rate &nbsp;·&nbsp; cancel anytime &nbsp;·&nbsp; no long-term contract</p>
     </div>
     <div class="reveal grid sm:grid-cols-2 gap-6 items-stretch mt-8 max-w-3xl mx-auto">
 ${TIERS.map(tierCard).join('\n')}
     </div>
-    <p class="reveal text-center text-sm text-fog mt-8">Every project starts with a free website mockup — fixed price, clear scope, no long-term contract.</p>
-    <p class="reveal text-center text-sm text-fog mt-3">Care Plan (hosting, maintenance &amp; monthly edits) is included with every tier — 2 months or 2 years depending on plan — then continues at <span class="text-copper-light font-semibold">$249/mo</span>, cancel anytime.</p>
+    <p class="reveal text-center text-sm text-fog mt-8">Both tiers include a dedicated onboarding call before anything goes live. Google Business Profile setup comes with the Custom Website tier.</p>
   </div>
 </section>`;
 }
 
 // ------------------------------------------------------------------ misc ---
 
-function ctaBand({ heading = 'Ready to see your <span class="italic">new site?</span>', sub = 'Free website mockup, fixed price, live in 2–3 days.' } = {}) {
+function ctaBand({ heading = 'Ready to stop missing calls?', sub = 'Free setup call, fixed pricing, no long-term contract.' } = {}) {
   return `<section class="px-6 py-20">
   <div class="max-w-3xl mx-auto text-center reveal">
     <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">${heading}</h2>
     <p class="text-fog leading-[1.7] mb-8">${sub}</p>
     <span class="cta-ring rounded-full p-[2px] inline-block">
-      <a href="#" class="mockup-trigger btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-8 py-4 rounded-full text-[15px] block">
-        Get My Free Mockup
+      <a href="book-a-call.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-8 py-4 rounded-full text-[15px] block">
+        Book A Free Setup Call
       </a>
     </span>
   </div>

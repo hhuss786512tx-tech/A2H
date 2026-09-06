@@ -75,8 +75,8 @@ ${NAV_ITEMS.map(link).join('\n')}
     </nav>
     <div class="flex items-center gap-3">
       <span class="cta-ring rounded-full p-[2px] hidden sm:inline-block">
-        <a href="#" class="mockup-trigger btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-2.5 rounded-full block">
-          Get My Free Mockup
+        <a href="book-a-call.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-2.5 rounded-full block">
+          Book A Free Setup Call
         </a>
       </span>
       <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-sand p-2 -mr-2">
@@ -87,7 +87,7 @@ ${NAV_ITEMS.map(link).join('\n')}
   </div>
   <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-ink/95 backdrop-blur-md pb-3">
 ${NAV_ITEMS.map(mobileLink).join('\n')}
-    <a href="#" class="mockup-trigger mobile-nav-link block px-6 py-3 text-sm text-copper-light font-semibold">Get My Free Mockup</a>
+    <a href="book-a-call.html" class="mobile-nav-link block px-6 py-3 text-sm text-copper-light font-semibold">Book A Free Setup Call</a>
   </div>
 </header>`;
 }
@@ -100,7 +100,7 @@ function footer() {
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 mb-12">
       <div>
         <p class="font-display text-2xl text-sand mb-3">A2H<span class="text-copper">.</span></p>
-        <p class="text-sm text-fog leading-[1.7]">Hand-coded websites and Google Business Profile setup for Texas businesses.</p>
+        <p class="text-sm text-fog leading-[1.7]">AI Receptionist + CRM for Texas businesses, with hand-coded custom websites available as an upgrade.</p>
       </div>
       <div>
         <p class="text-xs uppercase tracking-[0.2em] text-copper-light font-semibold mb-4">Services</p>
@@ -123,8 +123,7 @@ function footer() {
         <ul class="space-y-2 text-sm text-fog">
           <li><a href="mailto:${EMAIL}" class="link-underline hover:text-sand transition-colors break-all">${EMAIL}</a></li>
           <li>Texas-based</li>
-          <li><a href="#" class="mockup-trigger link-underline text-copper-light hover:text-sand transition-colors">Get your free mockup</a></li>
-          <li><a href="book-a-call.html" class="link-underline text-copper-light hover:text-sand transition-colors">Book a call</a></li>
+          <li><a href="book-a-call.html" class="link-underline text-copper-light hover:text-sand transition-colors">Book a free setup call</a></li>
         </ul>
       </div>
     </div>
@@ -396,7 +395,12 @@ function leadPopupScript() {
       });
     });
 
-    if (!alreadyHandled()) setTimeout(open, 10000);
+    // Only self-triggers if the page actually has a manual trigger button —
+    // pages that no longer promote the website mockup (the AI Receptionist +
+    // CRM pages) carry no .mockup-trigger element, so this stays dormant
+    // instead of popping an unprompted "what kind of website do you want?"
+    // form with no matching CTA on the page.
+    if (document.querySelectorAll('.mockup-trigger').length && !alreadyHandled()) setTimeout(open, 10000);
 
     var ERROR_COPY = {
       captcha_failed: "That answer didn't match — double-check and try again.",

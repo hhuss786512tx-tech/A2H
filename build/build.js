@@ -19,10 +19,10 @@ const ORG = {
   name: 'A2H Agency',
   url: SITE + '/',
   email: EMAIL,
-  description: 'Hand-coded websites and Google Business Profile setup for Texas businesses.',
+  description: 'AI receptionist and CRM for Texas businesses, with hand-coded custom websites available as an upgrade.',
   areaServed: { '@type': 'State', name: 'Texas' },
-  serviceType: ['Website Design', 'Website Development', 'Local SEO', 'Google Business Profile Setup'],
-  knowsAbout: ['Web design', 'Local SEO', 'Google Business Profile', 'Conversion optimization'],
+  serviceType: ['AI Receptionist', 'CRM Software', 'Website Design', 'Website Development', 'Google Business Profile Setup'],
+  knowsAbout: ['AI receptionist', 'CRM', 'Web design', 'Local SEO', 'Google Business Profile', 'Conversion optimization'],
 };
 
 const serviceLd = (name, description, audience) => ({
@@ -36,11 +36,11 @@ const serviceLd = (name, description, audience) => ({
   offers: {
     '@type': 'Offer',
     priceCurrency: 'USD',
-    price: '1497',
+    price: '1500',
     priceSpecification: {
       '@type': 'PriceSpecification',
-      minPrice: '1497',
-      maxPrice: '4997',
+      minPrice: '1500',
+      maxPrice: '2000',
       priceCurrency: 'USD',
     },
   },
@@ -56,7 +56,7 @@ const faqLd = (qas) => ({
   })),
 });
 
-const hero = ({ eyebrow, h1, sub, primary = 'Get My Free Mockup', secondary = null }) => `<section class="relative glow-copper pt-36 pb-20 px-6 overflow-hidden">
+const hero = ({ eyebrow, h1, sub, primary = 'Book A Free Setup Call', primaryHref = 'book-a-call.html', secondary = null }) => `<section class="relative glow-copper pt-36 pb-20 px-6 overflow-hidden">
   <div class="grain"></div>
   <div class="max-w-4xl mx-auto text-center relative">
     <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">${eyebrow}</p>
@@ -64,7 +64,7 @@ const hero = ({ eyebrow, h1, sub, primary = 'Get My Free Mockup', secondary = nu
     <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto mb-10">${sub}</p>
     <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
       <span class="cta-ring rounded-full p-[2px] inline-block">
-        <a href="#" class="mockup-trigger btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">${primary}</a>
+        <a href="${primaryHref}" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">${primary}</a>
       </span>
 ${secondary ? `      <a href="${secondary[1]}" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">${secondary[0]}</a>\n` : ''}    </div>
   </div>
@@ -109,13 +109,13 @@ const PAGES = [];
 PAGES.push({
   slug: 'work.html',
   title: 'Our Work — Websites Built for Texas Businesses | A2H',
-  description: 'Live sites and builds by A2H: Solid State Construction, Azul Bio Research, Quality Halal Market and CareMedBill. See what we ship and how it performs.',
+  description: 'Live sites and builds by A2H: Solid State Construction and CareMedBill. See what we ship as part of the AI Receptionist + CRM + Custom Website tier.',
   jsonLd: [ORG],
   body: [
     hero({
       eyebrow: 'Selected Work',
       h1: 'Every build, <span class="italic text-copper-light">start to launch.</span>',
-      sub: 'Four builds across construction, biotech, retail and medical billing. Two are live on client domains; two are complete builds hosted on our own account. Every one is hand-coded — no page builders anywhere.',
+      sub: 'Builds across construction and medical billing, shown here as part of the AI Receptionist + CRM + Custom Website tier. One is live on a client domain; one is a complete build hosted on our own account. Every one is hand-coded — no page builders anywhere.',
       secondary: ['See Pricing', 'pricing.html'],
     }),
     B.portfolioGrid({
@@ -134,26 +134,25 @@ PAGES.push({
 
 // ---- pricing.html
 const PRICING_FAQ = [
-  ['How does payment work?', 'Base and Premium can each be paid in full up front, or spread over 4 monthly payments instead — the scope is fixed in writing before any money changes hands either way, so the number you are quoted is the number you pay.'],
-  ['Can I pay monthly instead of all at once?', 'Yes, on both tiers. Base is $325/mo for 4 months ($1,300 total) instead of $1,500 in full; Premium is $1,000/mo for 4 months ($4,000 total) instead of $5,000 in full. Spreading it out is the cheaper route on both tiers.'],
-  ['What is the Care Plan?', 'Hosting, maintenance and monthly content edits. It is included free for 2 months on Base or 2 years on Premium, then continues at $249/mo. You can cancel it at any time and keep your site.'],
-  ['Do I own the site?', 'Yes, completely. It is hand-coded static files — there is no proprietary platform to be locked into, and you get a walkthrough at handoff so you are never dependent on us to make a change.'],
-  ['How fast is "2–3 days"?', 'That is the build-and-launch window once we have your content, photos and brand assets in hand. Gathering those from you is usually the longer part, which is why the free mockup comes first — it gets that conversation started.'],
-  ['What if I do not have a website yet?', 'That is the most common case. The free mockup does not require an existing site at all — just tell us your niche and what you want, and we design one from scratch.'],
-  ['Is the AI chatbot really $99/mo?', 'Yes, on Base. It is trained on your business, answers FAQs and captures leads around the clock. It is included at no extra cost on Premium.'],
-  ['What is the AI Receptionist?', 'An add-on for businesses that get leads by phone. It texts back every missed call or website lead, asks real qualifying questions about the job, and books it straight onto your calendar — then texts you the moment it books or hits something it should not decide on its own. $997 setup, $297/mo, available on either tier.'],
+  ['How does payment work?', 'Both tiers have a one-time setup fee, then a flat monthly rate — the scope is fixed in writing before any money changes hands, so the number you are quoted is the number you pay. Cancel the monthly plan at any time.'],
+  ['What is the difference between the two tiers?', 'AI Receptionist + CRM ($1,500 setup, $397/mo) answers and books every call and logs it in your own CRM — no website required. AI Receptionist + CRM + Custom Website ($2,000 setup, $400/mo) adds a hand-coded website built around that same system, so the calls and the site work together from day one.'],
+  ['What does "per extra team seat" mean?', 'Each tier includes CRM access for your core team. If more staff need their own CRM login to see and manage leads, each additional seat is $99/mo.'],
+  ['Do I need a website to use the AI Receptionist?', 'No. AI Receptionist + CRM stands on its own — it plugs into your existing phone number and calendar. The website is only part of the higher tier, for businesses that want both built together.'],
+  ['Do I own the site if I choose the higher tier?', 'Yes, completely. It is hand-coded static files — there is no proprietary platform to be locked into, and you get a walkthrough at handoff so you are never dependent on us to make a change.'],
+  ['What is the Care Plan?', 'Hosting, maintenance and monthly content edits for your website, included with the Custom Website tier, then continuing at $249/mo. You can cancel it at any time and keep your site.'],
+  ['Can I add a custom website later if I start with just the receptionist?', 'Yes. Start with AI Receptionist + CRM and upgrade to add the custom website whenever you are ready — you only pay the difference in setup fee at that point.'],
 ];
 
 PAGES.push({
   slug: 'pricing.html',
-  title: 'Pricing — Flat-Rate Websites from $1,500 | A2H',
-  description: 'Transparent flat-rate website pricing for Texas businesses: $1,500 Base, $5,000 Premium. Care Plan included, no long-term contract.',
+  title: 'Pricing — AI Receptionist + CRM from $1,500 | A2H',
+  description: 'Transparent pricing for Texas businesses: AI Receptionist + CRM from $1,500 setup + $397/mo, or add a custom hand-coded website for $2,000 setup + $400/mo.',
   jsonLd: [ORG, faqLd(PRICING_FAQ)],
   body: [
     hero({
       eyebrow: 'Transparent Pricing',
-      h1: 'One flat price. <span class="italic text-copper-light">No sales call required.</span>',
-      sub: 'Two tiers, published openly, fixed in writing before the work starts. Every tier includes Google Business Profile setup and a Care Plan.',
+      h1: 'Two tiers. <span class="italic text-copper-light">No sales call required.</span>',
+      sub: 'Published openly, fixed in writing before work starts. Start with the AI Receptionist + CRM, or add a custom website built around it.',
       secondary: ['See Our Work', 'work.html'],
     }),
     B.pricingTable({ heading: 'Pick the tier that fits' }),
@@ -161,38 +160,31 @@ PAGES.push({
   <div class="max-w-4xl mx-auto">
     <div class="reveal text-center mb-10">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Add-Ons</p>
-      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Three upgrades, priced plainly</h2>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">For the Custom Website tier</h2>
+      <p class="text-fog text-sm mt-3">Available on AI Receptionist + CRM + Custom Website</p>
     </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
       <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8">
         <h3 class="text-sand font-semibold text-lg mb-2">AI Website Chatbot</h3>
-        <p class="text-sm text-fog leading-[1.7] mb-5">Trained on your business — answers FAQs, qualifies visitors and captures leads 24/7, even after hours. Add it to any plan.</p>
+        <p class="text-sm text-fog leading-[1.7] mb-5">Trained on your business — answers FAQs, qualifies visitors and captures leads 24/7, even after hours.</p>
         <div class="flex items-baseline gap-2">
           <p class="font-display text-2xl text-copper-light">+$99</p>
-          <p class="text-xs text-fog uppercase tracking-wider">per month · included on Premium</p>
+          <p class="text-xs text-fog uppercase tracking-wider">per month</p>
         </div>
       </div>
       <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8">
         <h3 class="text-sand font-semibold text-lg mb-2">3D Company Card</h3>
-        <p class="text-sm text-fog leading-[1.7] mb-5">An interactive business card built from your real card artwork — flips, tilts and tracks the cursor. A memorable thing to send a prospect.</p>
+        <p class="text-sm text-fog leading-[1.7] mb-5">An interactive business card built from your real card artwork — flips, tilts and tracks the cursor.</p>
         <div class="flex items-baseline gap-2">
           <p class="font-display text-2xl text-copper-light">+$99</p>
-          <p class="text-xs text-fog uppercase tracking-wider">one-time · included on Premium</p>
-        </div>
-      </div>
-      <div class="reveal rounded-2xl bg-elevated border border-copper/30 shadow-elevated card-hover p-8">
-        <h3 class="text-sand font-semibold text-lg mb-2">AI Receptionist</h3>
-        <p class="text-sm text-fog leading-[1.7] mb-5">Texts back every missed call or lead, qualifies the job in a real conversation, and books it straight onto your calendar — with an instant alert to you the moment it does. Built for businesses that get leads by phone.</p>
-        <div class="flex items-baseline gap-2">
-          <p class="font-display text-2xl text-copper-light">+$297</p>
-          <p class="text-xs text-fog uppercase tracking-wider">per month · $997 setup</p>
+          <p class="text-xs text-fog uppercase tracking-wider">one-time</p>
         </div>
       </div>
     </div>
   </div>
 </section>`,
     faqSection(PRICING_FAQ),
-    B.ctaBand({ heading: 'Not sure which tier <span class="italic">you need?</span>', sub: 'Tell us what you want to build — the free mockup gets the conversation started, no obligation either way.' }),
+    B.ctaBand({ heading: 'Not sure which tier <span class="italic">you need?</span>', sub: 'Book a free setup call and we will walk through both — no obligation either way.' }),
   ].join('\n\n'),
 });
 
@@ -233,7 +225,7 @@ PAGES.push({
     <p class="reveal text-fog leading-[1.8]">Most agencies spend weeks on discovery decks, stakeholder workshops and revision rounds that exist to justify a retainer. We publish our prices, fix the scope in writing, and start building. The mockup is the discovery. The build takes 2–3 days once your content is in hand — gathering that from you is usually the longest part of the whole project.</p>
   </div>
 </section>`,
-    B.ctaBand({ heading: 'Start with <span class="italic">your mockup.</span>', sub: 'It is free, it takes a few minutes, and there is no obligation attached to it.' }),
+    B.ctaBand({ heading: 'Ready to <span class="italic">get started?</span>', sub: 'Book a free setup call — it takes a few minutes, and there is no obligation attached to it.' }),
   ].join('\n\n'),
 });
 
@@ -338,40 +330,40 @@ PAGES.push({
 
 // ---- construction.html (rebuilt on the shared chrome)
 const CONSTRUCTION_FAQ = [
-  ['Do I have to run ads to work with you?', 'No. The website build stands on its own and includes Google Business Profile setup, which brings in calls without any ad spend. Ad management is a separate service you can add if you want to accelerate.'],
-  ['How fast do leads get answered?', 'Every form submission triggers a reply within minutes, day or night. In trades that single detail decides most jobs — the customer usually books whoever gets back to them first.'],
-  ['What does a contractor site actually need?', 'A quote-request form above the fold, proof of past work, service areas stated plainly, and a phone number that is one tap away on mobile. Most contractor sites bury at least two of those.'],
-  ['Can the AI actually book the job, not just reply?', 'Yes, with the AI Receptionist add-on. It texts back missed calls and leads, asks what the job is and how urgent it is, and books an estimate straight onto your calendar — then alerts you the moment it books, or the moment it hits something only you should decide. $297/mo, $997 setup.'],
+  ['Does the AI actually book the job, not just reply?', 'Yes. It answers every call and text, asks what the job is and how urgent it is, and books an estimate straight onto your calendar — then alerts you the moment it books, or the moment it hits something only you should decide.'],
+  ['How fast do leads get answered?', 'Instantly — the AI Receptionist answers every call and text in real time, day or night. In trades that single detail decides most jobs — the customer usually books whoever gets back to them first.'],
+  ['Do I have to run ads to work with you?', 'No. AI Receptionist + CRM stands on its own. If you add the Custom Website tier it includes Google Business Profile setup too, which brings in calls without any ad spend.'],
+  ['What does a contractor site actually need?', 'A quote-request form above the fold, proof of past work, service areas stated plainly, and a phone number that is one tap away on mobile. That is what the Custom Website tier is built around — most contractor sites bury at least two of those.'],
 ];
 
 PAGES.push({
   slug: 'construction.html',
-  title: 'Websites for Texas Contractors — More Calls, Faster Follow-Up | A2H',
-  description: 'Hand-coded websites, Google Business Profile setup and instant lead response for Central Texas contractors. Built by the team behind Solid State Construction.',
-  jsonLd: [ORG, serviceLd('Website design for contractors', 'Hand-coded websites, Google Business Profile setup and instant lead response for Texas construction businesses.', 'Construction contractors'), faqLd(CONSTRUCTION_FAQ)],
+  title: 'AI Receptionist for Texas Contractors — More Calls Booked | A2H',
+  description: 'AI Receptionist + CRM for Central Texas contractors — every call answered and booked, day or night. Optional hand-coded website add-on. Built by the team behind Solid State Construction.',
+  jsonLd: [ORG, serviceLd('AI receptionist for contractors', 'AI Receptionist + CRM and optional hand-coded websites for Texas construction businesses.', 'Construction contractors'), faqLd(CONSTRUCTION_FAQ)],
   body: [
     hero({
       eyebrow: 'For Central Texas Contractors',
-      h1: 'More calls. Faster follow-up. <span class="italic text-copper-light">Nothing wasted.</span>',
-      sub: 'A done-for-you site with quote capture built in, a Google Business Profile that puts you on the map, and instant lead response — the same system already running live for <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" class="link-underline text-copper-light">Solid State Construction</a>.',
+      h1: 'More calls answered. Faster follow-up. <span class="italic text-copper-light">Nothing wasted.</span>',
+      sub: 'The AI Receptionist answers every call and text, books estimates straight onto your calendar, and logs every job in your own CRM — the same system already running live for <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" class="link-underline text-copper-light">Solid State Construction</a>.',
       secondary: ['See the build', '#work'],
     }),
     `<section class="py-12 px-6 border-y border-white/5 bg-surface/40">
   <div class="max-w-3xl mx-auto text-center">
     <p class="reveal text-sm text-fog leading-[1.8]">
-      A <span class="text-sand font-semibold">$200 Google Ads test</span> on a Central Texas contractor's new site delivered
+      A <span class="text-sand font-semibold">$200 Google Ads test</span> on a Central Texas contractor's new site (Custom Website tier) delivered
       <span class="text-sand font-semibold">270+ clicks in 14 days at $0.74 per click</span> — nearly 2× the industry projection.
       That is what a fast, mobile-first page does to your cost per click before a single lead is even followed up.
     </p>
   </div>
 </section>`,
-    cards('The System', 'Everything between a search and a booked job', [
-      { tag: 'Built to convert', h: 'Site or landing page', p: 'Hand-coded, mobile-first, quote-request form above the fold. No page-builder bloat dragging down your load time or your ad quality score.' },
-      { tag: 'Found without ads', h: 'Google Business Profile', p: 'Claimed, categorised, and wired to your site so you show up in the Maps pack when someone searches your trade plus your city.' },
-      { tag: 'Answered in minutes', h: 'Instant lead response', p: 'Every form submission gets a reply in under five minutes, day or night, before the customer calls the next contractor on their list. Add the <a href="pricing.html#pricing" class="link-underline text-copper-light">AI Receptionist</a> to have it carry the whole text conversation and book the job for you.' },
-      { tag: 'Compounds after', h: 'Local SEO foundation', p: 'Schema markup, service-area pages and a profile that keeps earning calls long after any ad budget stops.' },
+    cards('The System', 'Everything between a ringing phone and a booked job', [
+      { tag: 'Answered in seconds', h: 'AI Receptionist', p: 'Every call and text answered instantly, day or night, before the customer calls the next contractor on their list. Warm-transfers to a real person when it should.' },
+      { tag: 'Nothing falls through', h: 'CRM &amp; pipeline board', p: 'Every job logged automatically — see every lead\'s stage at a glance instead of digging through call logs and sticky notes.' },
+      { tag: 'Found without ads', h: 'Google Business Profile', p: 'On the Custom Website tier, your profile is claimed, categorised, and wired to your site so you show up in the Maps pack when someone searches your trade plus your city.' },
+      { tag: 'Built to convert', h: 'Site or landing page', p: 'Hand-coded, mobile-first, quote-request form above the fold — available on the Custom Website tier. No page-builder bloat dragging down your load time.' },
     ]),
-    B.portfolioGrid({ heading: 'Contractor work, <span class="italic text-copper-light">live right now.</span>', only: ['ssc'] }),
+    B.portfolioGrid({ heading: 'Contractor work, <span class="italic text-copper-light">live right now.</span>', sub: 'Built as part of the Custom Website tier.', only: ['ssc'] }),
     B.pricingTable({ heading: 'Same flat pricing, no trade surcharge' }),
     faqSection(CONSTRUCTION_FAQ),
   ].join('\n\n'),
@@ -379,30 +371,31 @@ PAGES.push({
 
 // ---- medical.html
 const MEDICAL_FAQ = [
-  ['Can you handle patient privacy requirements?', 'The sites we build are marketing sites — they do not store patient records or handle PHI. Contact forms collect only a name, email and phone so a member of your staff can call back. If you need a patient portal or intake that touches PHI, that belongs in dedicated HIPAA-compliant software, and we will integrate a link to it rather than rebuild it.'],
-  ['Do you set up online booking?', 'Yes. We integrate whatever scheduling tool you already use, or add booking as custom functionality on the Premium tier.'],
-  ['How do patients find the practice?', 'Google Business Profile is the single biggest lever for a local practice — it drives the map result and the reviews people read before they call. It is set up on every tier.'],
+  ['Can you handle patient privacy requirements?', 'The AI Receptionist and CRM handle scheduling, not clinical data — calls collect only a name, reason for the call and callback info so your staff can follow up. If you need a patient portal or intake that touches PHI, that belongs in dedicated HIPAA-compliant software, and we will integrate a link to it rather than rebuild it.'],
+  ['Do you set up online booking?', 'Yes. The AI Receptionist books straight onto your calendar, and we integrate whatever scheduling tool you already use.'],
+  ['How do patients find the practice?', 'Google Business Profile is the single biggest lever for a local practice — it drives the map result and the reviews people read before they call. It is included with the Custom Website tier.'],
+  ['What happens after hours?', 'The AI Receptionist still answers, takes the request, and books or flags it for your staff the next morning — instead of going to voicemail.'],
 ];
 
 PAGES.push({
   slug: 'medical.html',
-  title: 'Websites for Texas Medical Practices & Clinics | A2H',
-  description: 'Credibility-first websites and Google Business Profile setup for Texas medical practices, dental offices and clinics. Flat pricing from $1,500.',
-  jsonLd: [ORG, serviceLd('Website design for medical practices', 'Credibility-first websites and Google Business Profile setup for Texas medical and dental practices.', 'Medical practices and clinics'), faqLd(MEDICAL_FAQ)],
+  title: 'AI Receptionist for Texas Medical Practices & Clinics | A2H',
+  description: 'AI Receptionist + CRM for Texas medical practices, dental offices and clinics — every patient call answered and booked. Optional hand-coded website add-on.',
+  jsonLd: [ORG, serviceLd('AI receptionist for medical practices', 'AI Receptionist + CRM and optional hand-coded websites for Texas medical and dental practices.', 'Medical practices and clinics'), faqLd(MEDICAL_FAQ)],
   body: [
     hero({
       eyebrow: 'For Medical &amp; Dental Practices',
-      h1: 'A site patients trust <span class="italic text-copper-light">before they call.</span>',
-      sub: 'Patients decide in seconds whether a practice looks legitimate. Credentials, services and insurance answered up front, with booking or call-now never more than one tap away.',
+      h1: 'Every patient call answered. <span class="italic text-copper-light">Every time.</span>',
+      sub: 'A missed call is a patient calling the next practice on the list. The AI Receptionist answers day or night, books straight onto your calendar, and logs every patient contact in your own CRM.',
       secondary: ['See the build', '#work'],
     }),
     cards('What Changes For A Practice', 'Built around how patients actually choose', [
-      { tag: 'Trust first', h: 'Credentials above the fold', p: 'Names, qualifications, board certifications and years in practice — the things a patient scans for before anything else. Buried credentials cost you the call.' },
-      { tag: 'Answered up front', h: 'Insurance and services', p: '"Do you take my insurance?" is the question that decides whether they phone you or the next result. It gets answered on the page, not on hold.' },
-      { tag: 'One tap', h: 'Call or book instantly', p: 'A tap-to-call number fixed on mobile and booking wired to whatever scheduler you already run. No contact form as the only route in.' },
-      { tag: 'Found locally', h: 'Maps and reviews', p: 'Google Business Profile claimed and tuned, because the map pack and its review stars are what most patients see before your site.' },
+      { tag: 'Never voicemail', h: 'Answered around the clock', p: 'Every call answered instantly, day or night — no patient sent to voicemail because it was after hours or the front desk was on another line.' },
+      { tag: 'Booked, not just noted', h: 'Straight onto your calendar', p: 'The AI Receptionist books the appointment directly, and warm-transfers to a real person when the call needs one.' },
+      { tag: 'Nothing lost', h: 'Every contact logged', p: 'Names, reasons for calling, and follow-ups tracked automatically in your own CRM pipeline board — nothing relies on a sticky note.' },
+      { tag: 'Found locally', h: 'Maps and reviews', p: 'On the Custom Website tier, Google Business Profile is claimed and tuned, because the map pack and its review stars are what most patients see before your site.' },
     ]),
-    B.portfolioGrid({ heading: 'Medical work.', only: ['caremedbill'] }),
+    B.portfolioGrid({ heading: 'Medical work.', sub: 'Built as part of the Custom Website tier.', only: ['caremedbill'] }),
     B.pricingTable({ heading: 'Flat pricing, published openly' }),
     faqSection(MEDICAL_FAQ),
   ].join('\n\n'),
@@ -410,30 +403,30 @@ PAGES.push({
 
 // ---- retail.html
 const RETAIL_FAQ = [
-  ['Do I need an online store?', 'Often not. For most local shops the site\'s job is to get someone through the door — hours, directions, stock and a phone number. We add a cart when you actually sell online, not by default.'],
-  ['What matters most for a local shop?', 'Your Google Business Profile. Most "near me" searches never reach a website at all — they end at the map result. That gets set up on every tier.'],
-  ['Can you show products without a full catalog?', 'Yes. A simple browsable product or menu section covers most shops, and it is far cheaper to maintain than a full e-commerce build.'],
+  ['What kind of calls does the AI Receptionist handle for a shop?', '"Are you open," "do you have X in stock," "where are you located" — the questions that otherwise interrupt whoever is working the counter. It answers instantly and logs the contact in your CRM.'],
+  ['Do I need an online store?', 'Often not. For most local shops the priority is getting someone through the door — hours, directions, stock and a phone number that always gets answered. A catalog or cart is available as part of the Custom Website tier if you are ready to sell online.'],
+  ['What matters most for a local shop?', 'Your Google Business Profile, included with the Custom Website tier. Most "near me" searches never reach a website at all — they end at the map result.'],
+  ['Can you show products without a full catalog?', 'Yes. A simple browsable product or menu section covers most shops on the Custom Website tier, and it is far cheaper to maintain than a full e-commerce build.'],
 ];
 
 PAGES.push({
   slug: 'retail.html',
-  title: 'Websites for Texas Local Retail, Shops & Markets | A2H',
-  description: 'Websites and Google Maps setup for Texas shops, markets and local retail. Show hours, stock and directions, and win the "near me" search. From $1,500.',
-  jsonLd: [ORG, serviceLd('Website design for local retail', 'Websites and Google Business Profile setup for Texas shops, markets and local retail businesses.', 'Local retail businesses'), faqLd(RETAIL_FAQ)],
+  title: 'AI Receptionist for Texas Local Retail, Shops & Markets | A2H',
+  description: 'AI Receptionist + CRM for Texas shops, markets and local retail — every call about hours and stock answered instantly. Optional hand-coded website with Google Maps setup.',
+  jsonLd: [ORG, serviceLd('AI receptionist for local retail', 'AI Receptionist + CRM and optional hand-coded websites for Texas shops, markets and local retail businesses.', 'Local retail businesses'), faqLd(RETAIL_FAQ)],
   body: [
     hero({
       eyebrow: 'For Shops, Markets &amp; Local Retail',
-      h1: 'Win the <span class="italic text-copper-light">"near me"</span> search.',
-      sub: 'Someone half a mile away is searching for what you sell right now. Whether they walk into your shop or your competitor\'s comes down to hours, directions and whether Google knows you exist.',
-      secondary: ['See the build', '#work'],
+      h1: 'Every call about hours and stock, <span class="italic text-copper-light">answered instantly.</span>',
+      sub: 'Someone calling to ask if you\'re open or if you have something in stock does not want to wait on hold. The AI Receptionist answers every call day or night, and a Custom Website wins the "near me" search before they even pick up the phone.',
+      secondary: ['See our work', 'work.html'],
     }),
     cards('What Changes For Retail', 'Built for foot traffic, not page views', [
-      { tag: 'Instant answers', h: 'Hours and directions first', p: 'The two things every local searcher wants, visible without scrolling and correct on the day. Wrong hours on Google is the most expensive small error a shop makes.' },
-      { tag: 'Show the goods', h: 'Products or menu', p: 'A browsable section so people know what you stock before they drive over — without the cost and upkeep of a full e-commerce build you may not need.' },
-      { tag: 'Map pack', h: 'Google Business Profile', p: 'Claimed, categorised, photographed and tuned. Most "near me" searches end at the map result and never reach a website at all.' },
-      { tag: 'Sell online too', h: 'Cart when you want it', p: 'Full catalog, cart and mobile checkout available on the Premium tier — like the Quality Halal Market build — if you are ready to sell beyond the counter.' },
+      { tag: 'Never on hold', h: 'AI Receptionist', p: 'Answers "are you open," "do you carry X," and "where are you" instantly, day or night, without pulling staff off the floor.' },
+      { tag: 'Logged automatically', h: 'CRM &amp; pipeline board', p: 'Every caller and their question logged, so nothing about a regular customer or a big order gets forgotten.' },
+      { tag: 'Instant answers', h: 'Hours and directions first', p: 'On the Custom Website tier, the two things every local searcher wants are visible without scrolling and correct on the day.' },
+      { tag: 'Map pack', h: 'Google Business Profile', p: 'Included with the Custom Website tier — claimed, categorised, photographed and tuned. Most "near me" searches end at the map result and never reach a website at all.' },
     ]),
-    B.portfolioGrid({ heading: 'Retail work.', only: ['qhm'] }),
     B.pricingTable({ heading: 'Flat pricing, published openly' }),
     faqSection(RETAIL_FAQ),
   ].join('\n\n'),
