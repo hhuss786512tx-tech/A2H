@@ -444,6 +444,274 @@ function leadPopupScript() {
   </script>`;
 }
 
+// -------------------------------------------------- calls-cost lead popup ---
+
+// Two-step "How much are missed calls costing you?" popup — the lead-capture
+// mechanism for the AI Receptionist + CRM pitch (as opposed to leadPopup()
+// above, which is the free-website-mockup flow used on the pages that still
+// sell a custom site). Step 1 is a tiny calculator: pick a missed-calls
+// range and an average call/job value, see an instant dollar estimate, then
+// move to step 2 for contact info. Opens on-demand from any .calls-trigger
+// element and fires passively 10s after load if one exists on the page.
+function callsPopup() {
+  return `<div id="calls-popup-overlay" class="hidden fixed inset-0 z-[100] items-center justify-center bg-ink/80 backdrop-blur-sm px-4 py-8" role="dialog" aria-modal="true" aria-labelledby="calls-popup-heading">
+  <div id="calls-popup-card" class="relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-elevated border border-white/10 shadow-floating p-7 sm:p-8">
+    <button type="button" id="calls-popup-close" aria-label="Close" class="absolute top-4 right-4 text-fog hover:text-sand transition-colors">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <form id="calls-popup-form" class="space-y-4">
+      <div id="calls-popup-step-1">
+        <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Step 1 of 2</p>
+        <h2 id="calls-popup-heading" class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-2">How much are missed calls costing you?</h2>
+        <p class="text-sm text-fog leading-[1.6] mb-6">Answer two quick questions — we'll show you the number. No charge, no obligation.</p>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-calls-missed">Roughly how many calls do you miss per month?</label>
+            <select required id="cp-calls-missed" name="calls_missed" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 transition-colors">
+              <option value="" selected disabled>Choose one</option>
+              <option value="under-10">Fewer than 10</option>
+              <option value="10-25">10–25</option>
+              <option value="25-50">25–50</option>
+              <option value="50-plus">50 or more</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-call-value">What's an average job worth to you?</label>
+            <select required id="cp-call-value" name="call_value" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 transition-colors">
+              <option value="" selected disabled>Choose one</option>
+              <option value="under-200">Under $200</option>
+              <option value="200-500">$200–$500</option>
+              <option value="500-1500">$500–$1,500</option>
+              <option value="1500-plus">$1,500+</option>
+            </select>
+          </div>
+          <p id="calls-popup-step1-status" class="text-xs text-center text-copper-light" role="status" aria-live="polite"></p>
+          <div id="calls-popup-result" class="hidden rounded-xl bg-copper/10 border border-copper/30 px-5 py-4 text-center">
+            <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-1">You could be losing</p>
+            <p id="calls-popup-result-monthly" class="font-display text-3xl text-sand tracking-[-0.02em]"></p>
+            <p id="calls-popup-result-annual" class="text-xs text-fog mt-1"></p>
+          </div>
+          <button type="button" id="calls-popup-calc" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
+            See My Number
+          </button>
+          <button type="button" id="calls-popup-next" class="hidden btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
+            Show Me How To Fix This &rarr;
+          </button>
+        </div>
+      </div>
+      <div id="calls-popup-step-2" class="hidden">
+        <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Step 2 of 2</p>
+        <h2 class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-2">How do we reach you?</h2>
+        <p class="text-sm text-fog leading-[1.6] mb-6">We'll send your free call recovery plan and get you on a quick setup call.</p>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-name">Name</label>
+            <input required id="cp-name" name="name" type="text" autocomplete="name" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Jane Rivera">
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-business">Business Name</label>
+            <input required id="cp-business" name="business" type="text" autocomplete="organization" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Rivera Concrete Co.">
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-email">Email</label>
+              <input required id="cp-email" name="email" type="email" autocomplete="email" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="jane@rivera.com">
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-phone">Phone</label>
+              <input id="cp-phone" name="phone" type="tel" autocomplete="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
+            </div>
+          </div>
+          <p class="text-[11px] text-fog/70 leading-[1.5] -mt-2">By providing your number, you agree to receive SMS messages from A2H about your call recovery plan. Msg &amp; data rates may apply, msg frequency varies. Reply STOP to opt out, HELP for help.</p>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-captcha-answer">Quick check: <span id="cp-captcha-question">loading…</span></label>
+            <input required id="cp-captcha-answer" name="captcha_answer" type="text" inputmode="numeric" autocomplete="off" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Your answer">
+            <input type="hidden" name="captcha_token" id="cp-captcha-token">
+          </div>
+          <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
+            <label for="cp-company-site">Leave this field blank</label>
+            <input id="cp-company-site" name="company_site" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="flex gap-3">
+            <button type="button" id="calls-popup-back" class="text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-3 rounded-full text-sm">
+              Back
+            </button>
+            <button type="submit" class="btn-primary shadow-btn flex-1 bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
+              Get My Free Call Recovery Plan
+            </button>
+          </div>
+          <p id="calls-popup-status" class="text-xs text-center text-fog" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>`;
+}
+
+function callsPopupScript() {
+  return `<script>
+  (function () {
+    var overlay = document.getElementById('calls-popup-overlay');
+    if (!overlay) return;
+    var form = document.getElementById('calls-popup-form');
+    var step1 = document.getElementById('calls-popup-step-1');
+    var step2 = document.getElementById('calls-popup-step-2');
+    var step1Status = document.getElementById('calls-popup-step1-status');
+    var status = document.getElementById('calls-popup-status');
+    var closeBtn = document.getElementById('calls-popup-close');
+    var calcBtn = document.getElementById('calls-popup-calc');
+    var nextBtn = document.getElementById('calls-popup-next');
+    var backBtn = document.getElementById('calls-popup-back');
+    var callsField = document.getElementById('cp-calls-missed');
+    var valueField = document.getElementById('cp-call-value');
+    var resultBox = document.getElementById('calls-popup-result');
+    var resultMonthly = document.getElementById('calls-popup-result-monthly');
+    var resultAnnual = document.getElementById('calls-popup-result-annual');
+    var DISMISSED_KEY = 'a2h_calls_popup_dismissed';
+    var SUBMITTED_KEY = 'a2h_calls_popup_submitted';
+
+    var CALLS_MID = { 'under-10': 7, '10-25': 17, '25-50': 37, '50-plus': 60 };
+    var VALUE_MID = { 'under-200': 125, '200-500': 350, '500-1500': 1000, '1500-plus': 2000 };
+    var lastMonthly = 0, lastAnnual = 0;
+
+    // Self-hosted captcha (see api/captcha-challenge.js) — no third-party
+    // script/signup. Fetched immediately so it's ready by the time the
+    // popup opens 10s+ later.
+    var captchaLoadedAt = 0;
+    var captchaQuestionEl = document.getElementById('cp-captcha-question');
+    var captchaTokenEl = document.getElementById('cp-captcha-token');
+    function loadCaptcha() {
+      captchaLoadedAt = Date.now();
+      fetch('/api/captcha-challenge').then(function (r) { return r.json(); }).then(function (d) {
+        if (captchaQuestionEl) captchaQuestionEl.textContent = d.question ? 'What is ' + d.question + '?' : 'skip this — verification unavailable';
+        if (captchaTokenEl) captchaTokenEl.value = d.token || '';
+      }).catch(function () {
+        if (captchaQuestionEl) captchaQuestionEl.textContent = 'skip this — verification unavailable';
+      });
+    }
+    loadCaptcha();
+
+    function showStep(n) {
+      step1.classList.toggle('hidden', n !== 1);
+      step2.classList.toggle('hidden', n !== 2);
+      var first = (n === 1 ? step1 : step2).querySelector('input, select, textarea');
+      if (first) first.focus();
+    }
+
+    calcBtn.addEventListener('click', function () {
+      if (!callsField.value || !valueField.value) {
+        step1Status.textContent = 'Please answer both questions to see your number.';
+        (callsField.value ? valueField : callsField).focus();
+        return;
+      }
+      step1Status.textContent = '';
+      lastMonthly = CALLS_MID[callsField.value] * VALUE_MID[valueField.value];
+      lastAnnual = lastMonthly * 12;
+      resultMonthly.textContent = '$' + lastMonthly.toLocaleString() + '/mo';
+      resultAnnual.textContent = '~$' + lastAnnual.toLocaleString() + '/year walking out the door.';
+      resultBox.classList.remove('hidden');
+      calcBtn.classList.add('hidden');
+      nextBtn.classList.remove('hidden');
+      nextBtn.focus();
+    });
+
+    nextBtn.addEventListener('click', function () { showStep(2); });
+    backBtn.addEventListener('click', function () { showStep(1); });
+
+    function alreadyHandled() {
+      try {
+        return sessionStorage.getItem(DISMISSED_KEY) === '1' || localStorage.getItem(SUBMITTED_KEY) === '1';
+      } catch (e) { return false; }
+    }
+
+    function openPopup() {
+      showStep(1);
+      overlay.classList.remove('hidden');
+      overlay.classList.add('flex');
+      document.body.classList.add('overflow-hidden');
+      requestAnimationFrame(function () { overlay.classList.add('is-open'); });
+      var first = form.querySelector('select');
+      if (first) first.focus();
+      document.dispatchEvent(new Event('a2h:popup-toggle'));
+    }
+
+    // Passive auto-trigger (10s) — respects dismissal and past submission.
+    // A deliberate click (.calls-trigger) always opens it regardless.
+    function open() {
+      if (alreadyHandled()) return;
+      openPopup();
+    }
+
+    function close(remember) {
+      overlay.classList.remove('is-open');
+      document.body.classList.remove('overflow-hidden');
+      setTimeout(function () { overlay.classList.add('hidden'); overlay.classList.remove('flex'); }, 250);
+      if (remember) { try { sessionStorage.setItem(DISMISSED_KEY, '1'); } catch (e) {} }
+      document.dispatchEvent(new Event('a2h:popup-toggle'));
+    }
+
+    closeBtn.addEventListener('click', function () { close(true); });
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(true); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) close(true);
+    });
+
+    document.querySelectorAll('.calls-trigger').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        openPopup();
+      });
+    });
+
+    // Only self-triggers if the page actually has a manual trigger button —
+    // pages with no .calls-trigger element stay dormant instead of popping
+    // an unprompted calculator with no matching CTA on the page.
+    if (document.querySelectorAll('.calls-trigger').length && !alreadyHandled()) setTimeout(open, 10000);
+
+    var ERROR_COPY = {
+      captcha_failed: "That answer didn't match — double-check and try again.",
+      invalid_email: 'That email address looks invalid — please double-check it.',
+      disposable_email: 'Please use a permanent email address, not a temporary/disposable one.',
+      email_domain_unreachable: "That email's domain doesn't appear to accept mail — please double-check it.",
+    };
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      status.textContent = 'Sending…';
+      var data = Object.fromEntries(new FormData(form).entries());
+      data.landing_page = window.location.pathname;
+      data.elapsed_ms = Date.now() - captchaLoadedAt;
+      data.estimated_monthly = lastMonthly;
+      data.estimated_annual = lastAnnual;
+      ['gclid', 'fbclid', 'utm_source', 'utm_campaign'].forEach(function (k) {
+        try { var v = sessionStorage.getItem('a2h_' + k); if (v) data[k] = v; } catch (e) {}
+      });
+      fetch('/api/calls-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      }).then(function (res) {
+        return res.json().catch(function () { return {}; }).then(function (result) {
+          if (!res.ok) {
+            btn.disabled = false;
+            status.textContent = ERROR_COPY[result.error] || 'Something went wrong — email us directly at hhuss786512tx@gmail.com.';
+            if (result.error === 'captcha_failed') loadCaptcha();
+            return;
+          }
+          try { localStorage.setItem(SUBMITTED_KEY, '1'); } catch (e) {}
+          window.location.href = '/book-a-call.html';
+        });
+      }).catch(function () {
+        btn.disabled = false;
+        status.textContent = 'Something went wrong — email us directly at hhuss786512tx@gmail.com.';
+      });
+    });
+  })();
+  </script>`;
+}
+
 // --------------------------------------------------------- shared scripts ---
 
 function scripts() {
@@ -568,4 +836,4 @@ ${extraScripts}
 `;
 }
 
-module.exports = { page, head, nav, footer, scripts, leadPopup, leadPopupScript, SITE, EMAIL, GA4 };
+module.exports = { page, head, nav, footer, scripts, leadPopup, leadPopupScript, callsPopup, callsPopupScript, SITE, EMAIL, GA4 };

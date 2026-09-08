@@ -1231,7 +1231,7 @@
           <li><a href="mailto:hhuss786512tx@gmail.com" class="link-underline hover:text-sand transition-colors break-all">hhuss786512tx@gmail.com</a></li>
           <li>Texas-based</li>
           <li><a href="book-a-call.html" class="link-underline text-copper-light hover:text-sand transition-colors">Book a free setup call</a></li>
-          <li><a href="#" class="mockup-trigger link-underline hover:text-sand transition-colors">Get a free website mockup</a></li>
+          <li><a href="#" class="calls-trigger link-underline hover:text-sand transition-colors">See what missed calls are costing you</a></li>
         </ul>
       </div>
     </div>
@@ -1300,115 +1300,93 @@
   })();
 </script>
 
-<div id="lead-popup-overlay" class="hidden fixed inset-0 z-[100] items-center justify-center bg-ink/80 backdrop-blur-sm px-4 py-8" role="dialog" aria-modal="true" aria-labelledby="lead-popup-heading">
-  <div id="lead-popup-card" class="relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-elevated border border-white/10 shadow-floating p-7 sm:p-8">
-    <button type="button" id="lead-popup-close" aria-label="Close" class="absolute top-4 right-4 text-fog hover:text-sand transition-colors">
+<div id="calls-popup-overlay" class="hidden fixed inset-0 z-[100] items-center justify-center bg-ink/80 backdrop-blur-sm px-4 py-8" role="dialog" aria-modal="true" aria-labelledby="calls-popup-heading">
+  <div id="calls-popup-card" class="relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-elevated border border-white/10 shadow-floating p-7 sm:p-8">
+    <button type="button" id="calls-popup-close" aria-label="Close" class="absolute top-4 right-4 text-fog hover:text-sand transition-colors">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
-    <form id="lead-popup-form" class="space-y-4">
-      <input type="hidden" id="lp-plan" name="plan" value="">
-      <p id="lp-plan-banner" class="hidden items-center gap-2 bg-copper/10 border border-copper/30 rounded-lg px-4 py-2.5 text-sm text-copper-light">
-        Inquiring about the <span id="lp-plan-banner-name" class="font-semibold"></span> plan
-      </p>
-      <div id="lead-popup-step-1">
+    <form id="calls-popup-form" class="space-y-4">
+      <div id="calls-popup-step-1">
         <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Step 1 of 2</p>
-        <h2 id="lead-popup-heading" class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-2">What kind of website do you want?</h2>
-        <p class="text-sm text-fog leading-[1.6] mb-6">Tell us the vision — we'll put together a free homepage mockup made just for you, no charge, no obligation.</p>
+        <h2 id="calls-popup-heading" class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-2">How much are missed calls costing you?</h2>
+        <p class="text-sm text-fog leading-[1.6] mb-6">Answer two quick questions — we'll show you the number. No charge, no obligation.</p>
         <div class="space-y-4">
           <div>
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-niche">What's your niche?</label>
-            <select required id="lp-niche" name="niche" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 transition-colors">
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-calls-missed">Roughly how many calls do you miss per month?</label>
+            <select required id="cp-calls-missed" name="calls_missed" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 transition-colors">
               <option value="" selected disabled>Choose one</option>
-              <option value="construction">Construction &amp; Contracting</option>
-              <option value="medical">Medical &amp; Healthcare</option>
-              <option value="restaurant">Restaurant &amp; Food Service</option>
-              <option value="retail">Retail &amp; Local Shop</option>
-              <option value="professional">Professional Services</option>
-              <option value="beauty">Beauty &amp; Wellness</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div id="lp-niche-other-wrap" class="hidden">
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-niche-other">What's your industry?</label>
-            <input id="lp-niche-other" name="niche_other" type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="e.g. pet grooming, event rentals">
-          </div>
-          <div>
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-pages">How many pages?</label>
-            <select id="lp-pages" name="page_count" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 transition-colors">
-              <option value="unsure" selected>Not sure yet</option>
-              <option value="1">Just 1 (single-page site)</option>
-              <option value="3-5">3–5 pages</option>
-              <option value="6-10">6–10 pages</option>
-              <option value="10+">10+ pages</option>
+              <option value="under-10">Fewer than 10</option>
+              <option value="10-25">10–25</option>
+              <option value="25-50">25–50</option>
+              <option value="50-plus">50 or more</option>
             </select>
           </div>
           <div>
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-colors">Color scheme</label>
-            <input id="lp-colors" name="color_scheme" type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors mb-2" placeholder="e.g. dark & moody, match my logo">
-            <div class="flex flex-wrap gap-1.5" role="group" aria-label="Quick color scheme picks">
-              <button type="button" data-scheme="Warm & earthy (tan, rust, cream)" class="lp-scheme-chip text-[11px] px-2.5 py-1 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Warm &amp; Earthy</button>
-              <button type="button" data-scheme="Bold & modern (black, white, one bright accent)" class="lp-scheme-chip text-[11px] px-2.5 py-1 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Bold &amp; Modern</button>
-              <button type="button" data-scheme="Clean & minimal (white, soft gray, single accent)" class="lp-scheme-chip text-[11px] px-2.5 py-1 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Clean &amp; Minimal</button>
-              <button type="button" data-scheme="Dark & moody (charcoal, deep tones, metallic accent)" class="lp-scheme-chip text-[11px] px-2.5 py-1 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Dark &amp; Moody</button>
-              <button type="button" data-scheme="Bright & playful (saturated colors, high energy)" class="lp-scheme-chip text-[11px] px-2.5 py-1 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Bright &amp; Playful</button>
-            </div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-call-value">What's an average job worth to you?</label>
+            <select required id="cp-call-value" name="call_value" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 transition-colors">
+              <option value="" selected disabled>Choose one</option>
+              <option value="under-200">Under $200</option>
+              <option value="200-500">$200–$500</option>
+              <option value="500-1500">$500–$1,500</option>
+              <option value="1500-plus">$1,500+</option>
+            </select>
           </div>
-          <div>
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-reference">A site you like the look of <span class="normal-case text-fog/60">(optional)</span></label>
-            <textarea id="lp-reference" name="reference_sites" rows="2" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors resize-y" placeholder="A link, or just describe the vibe"></textarea>
+          <p id="calls-popup-step1-status" class="text-xs text-center text-copper-light" role="status" aria-live="polite"></p>
+          <div id="calls-popup-result" class="hidden rounded-xl bg-copper/10 border border-copper/30 px-5 py-4 text-center">
+            <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-1">You could be losing</p>
+            <p id="calls-popup-result-monthly" class="font-display text-3xl text-sand tracking-[-0.02em]"></p>
+            <p id="calls-popup-result-annual" class="text-xs text-fog mt-1"></p>
           </div>
-          <div>
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-notes">Anything else? <span class="normal-case text-fog/60">(optional)</span></label>
-            <textarea id="lp-notes" name="notes" rows="2" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors resize-y" placeholder="Online store, booking system, gallery..."></textarea>
-          </div>
-          <p id="lead-popup-step1-status" class="text-xs text-center text-copper-light" role="status" aria-live="polite"></p>
-          <button type="button" id="lead-popup-next" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
-            Next: Your Info
+          <button type="button" id="calls-popup-calc" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
+            See My Number
+          </button>
+          <button type="button" id="calls-popup-next" class="hidden btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
+            Show Me How To Fix This &rarr;
           </button>
         </div>
       </div>
-      <div id="lead-popup-step-2" class="hidden">
+      <div id="calls-popup-step-2" class="hidden">
         <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Step 2 of 2</p>
         <h2 class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-2">How do we reach you?</h2>
-        <p class="text-sm text-fog leading-[1.6] mb-6">We'll build your mockup within 2–3 days and send it straight to your inbox.</p>
+        <p class="text-sm text-fog leading-[1.6] mb-6">We'll send your free call recovery plan and get you on a quick setup call.</p>
         <div class="space-y-4">
           <div>
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-name">Name</label>
-            <input required id="lp-name" name="name" type="text" autocomplete="name" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Jane Rivera">
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-name">Name</label>
+            <input required id="cp-name" name="name" type="text" autocomplete="name" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Jane Rivera">
           </div>
           <div>
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-business">Business Name</label>
-            <input required id="lp-business" name="business" type="text" autocomplete="organization" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Rivera Concrete Co.">
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-business">Business Name</label>
+            <input required id="cp-business" name="business" type="text" autocomplete="organization" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Rivera Concrete Co.">
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-email">Email</label>
-              <input required id="lp-email" name="email" type="email" autocomplete="email" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="jane@rivera.com">
+              <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-email">Email</label>
+              <input required id="cp-email" name="email" type="email" autocomplete="email" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="jane@rivera.com">
             </div>
             <div>
-              <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-phone">Phone</label>
-              <input id="lp-phone" name="phone" type="tel" autocomplete="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
+              <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-phone">Phone</label>
+              <input id="cp-phone" name="phone" type="tel" autocomplete="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
             </div>
           </div>
-          <p class="text-[11px] text-fog/70 leading-[1.5] -mt-2">By providing your number, you agree to receive SMS messages from A2H about your mockup request and project. Msg &amp; data rates may apply, msg frequency varies. Reply STOP to opt out, HELP for help.</p>
+          <p class="text-[11px] text-fog/70 leading-[1.5] -mt-2">By providing your number, you agree to receive SMS messages from A2H about your call recovery plan. Msg &amp; data rates may apply, msg frequency varies. Reply STOP to opt out, HELP for help.</p>
           <div>
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-captcha-answer">Quick check: <span id="lp-captcha-question">loading…</span></label>
-            <input required id="lp-captcha-answer" name="captcha_answer" type="text" inputmode="numeric" autocomplete="off" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Your answer">
-            <input type="hidden" name="captcha_token" id="lp-captcha-token">
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-captcha-answer">Quick check: <span id="cp-captcha-question">loading…</span></label>
+            <input required id="cp-captcha-answer" name="captcha_answer" type="text" inputmode="numeric" autocomplete="off" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Your answer">
+            <input type="hidden" name="captcha_token" id="cp-captcha-token">
           </div>
           <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
-            <label for="lp-company-site">Leave this field blank</label>
-            <input id="lp-company-site" name="company_site" type="text" tabindex="-1" autocomplete="off">
+            <label for="cp-company-site">Leave this field blank</label>
+            <input id="cp-company-site" name="company_site" type="text" tabindex="-1" autocomplete="off">
           </div>
           <div class="flex gap-3">
-            <button type="button" id="lead-popup-back" class="text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-3 rounded-full text-sm">
+            <button type="button" id="calls-popup-back" class="text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-3 rounded-full text-sm">
               Back
             </button>
             <button type="submit" class="btn-primary shadow-btn flex-1 bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
-              Get My Free Mockup
+              Get My Free Call Recovery Plan
             </button>
           </div>
-          <p id="lead-popup-status" class="text-xs text-center text-fog" role="status" aria-live="polite"></p>
+          <p id="calls-popup-status" class="text-xs text-center text-fog" role="status" aria-live="polite"></p>
         </div>
       </div>
     </form>
@@ -1416,35 +1394,36 @@
 </div>
 
 <script>
-  // Mockup popup: two-step "what kind of website" / "how do we reach you"
-  // lead capture. Fires 10s after load, then sends the visitor to
-  // mockup.html. Suppressed for the session once dismissed, and
-  // permanently (localStorage) once submitted.
   (function () {
-    var overlay = document.getElementById('lead-popup-overlay');
+    var overlay = document.getElementById('calls-popup-overlay');
     if (!overlay) return;
-    var form = document.getElementById('lead-popup-form');
-    var step1 = document.getElementById('lead-popup-step-1');
-    var step2 = document.getElementById('lead-popup-step-2');
-    var step1Status = document.getElementById('lead-popup-step1-status');
-    var status = document.getElementById('lead-popup-status');
-    var closeBtn = document.getElementById('lead-popup-close');
-    var nextBtn = document.getElementById('lead-popup-next');
-    var backBtn = document.getElementById('lead-popup-back');
-    var nicheField = document.getElementById('lp-niche');
-    var nicheOtherWrap = document.getElementById('lp-niche-other-wrap');
-    var planField = document.getElementById('lp-plan');
-    var planBanner = document.getElementById('lp-plan-banner');
-    var planBannerName = document.getElementById('lp-plan-banner-name');
-    var DISMISSED_KEY = 'a2h_popup_dismissed';
-    var SUBMITTED_KEY = 'a2h_popup_submitted';
+    var form = document.getElementById('calls-popup-form');
+    var step1 = document.getElementById('calls-popup-step-1');
+    var step2 = document.getElementById('calls-popup-step-2');
+    var step1Status = document.getElementById('calls-popup-step1-status');
+    var status = document.getElementById('calls-popup-status');
+    var closeBtn = document.getElementById('calls-popup-close');
+    var calcBtn = document.getElementById('calls-popup-calc');
+    var nextBtn = document.getElementById('calls-popup-next');
+    var backBtn = document.getElementById('calls-popup-back');
+    var callsField = document.getElementById('cp-calls-missed');
+    var valueField = document.getElementById('cp-call-value');
+    var resultBox = document.getElementById('calls-popup-result');
+    var resultMonthly = document.getElementById('calls-popup-result-monthly');
+    var resultAnnual = document.getElementById('calls-popup-result-annual');
+    var DISMISSED_KEY = 'a2h_calls_popup_dismissed';
+    var SUBMITTED_KEY = 'a2h_calls_popup_submitted';
+
+    var CALLS_MID = { 'under-10': 7, '10-25': 17, '25-50': 37, '50-plus': 60 };
+    var VALUE_MID = { 'under-200': 125, '200-500': 350, '500-1500': 1000, '1500-plus': 2000 };
+    var lastMonthly = 0, lastAnnual = 0;
 
     // Self-hosted captcha (see api/captcha-challenge.js) — no third-party
     // script/signup. Fetched immediately so it's ready by the time the
     // popup opens 10s+ later.
     var captchaLoadedAt = 0;
-    var captchaQuestionEl = document.getElementById('lp-captcha-question');
-    var captchaTokenEl = document.getElementById('lp-captcha-token');
+    var captchaQuestionEl = document.getElementById('cp-captcha-question');
+    var captchaTokenEl = document.getElementById('cp-captcha-token');
     function loadCaptcha() {
       captchaLoadedAt = Date.now();
       fetch('/api/captcha-challenge').then(function (r) { return r.json(); }).then(function (d) {
@@ -1456,19 +1435,6 @@
     }
     loadCaptcha();
 
-    if (nicheField && nicheOtherWrap) {
-      nicheField.addEventListener('change', function () {
-        nicheOtherWrap.classList.toggle('hidden', nicheField.value !== 'other');
-      });
-    }
-
-    document.querySelectorAll('.lp-scheme-chip').forEach(function (chip) {
-      chip.addEventListener('click', function () {
-        var input = document.getElementById('lp-colors');
-        if (input) input.value = chip.getAttribute('data-scheme') || '';
-      });
-    });
-
     function showStep(n) {
       step1.classList.toggle('hidden', n !== 1);
       step2.classList.toggle('hidden', n !== 2);
@@ -1476,16 +1442,24 @@
       if (first) first.focus();
     }
 
-    nextBtn.addEventListener('click', function () {
-      if (!nicheField.value) {
-        step1Status.textContent = 'Please choose a niche to continue.';
-        nicheField.focus();
+    calcBtn.addEventListener('click', function () {
+      if (!callsField.value || !valueField.value) {
+        step1Status.textContent = 'Please answer both questions to see your number.';
+        (callsField.value ? valueField : callsField).focus();
         return;
       }
       step1Status.textContent = '';
-      showStep(2);
+      lastMonthly = CALLS_MID[callsField.value] * VALUE_MID[valueField.value];
+      lastAnnual = lastMonthly * 12;
+      resultMonthly.textContent = '$' + lastMonthly.toLocaleString() + '/mo';
+      resultAnnual.textContent = '~$' + lastAnnual.toLocaleString() + '/year walking out the door.';
+      resultBox.classList.remove('hidden');
+      calcBtn.classList.add('hidden');
+      nextBtn.classList.remove('hidden');
+      nextBtn.focus();
     });
 
+    nextBtn.addEventListener('click', function () { showStep(2); });
     backBtn.addEventListener('click', function () { showStep(1); });
 
     function alreadyHandled() {
@@ -1494,39 +1468,22 @@
       } catch (e) { return false; }
     }
 
-    // plan is set when a pricing-tier button (.plan-cta, data-plan) opened
-    // this — shows a small "inquiring about X" banner and prefills the
-    // hidden field. Any other trigger (nav, footer, hero, ...) passes no
-    // plan, which clears it.
-    function openPopup(plan) {
+    function openPopup() {
       showStep(1);
-      if (plan) {
-        planField.value = plan;
-        planBannerName.textContent = plan;
-        planBanner.classList.remove('hidden');
-        planBanner.classList.add('flex');
-      } else {
-        planField.value = '';
-        planBanner.classList.add('hidden');
-        planBanner.classList.remove('flex');
-      }
       overlay.classList.remove('hidden');
       overlay.classList.add('flex');
       document.body.classList.add('overflow-hidden');
       requestAnimationFrame(function () { overlay.classList.add('is-open'); });
-      var first = form.querySelector('input, select');
+      var first = form.querySelector('select');
       if (first) first.focus();
-      // Lets the floating CTA hide itself while this is open — the two are
-      // both fixed-position asks and can otherwise land on screen together.
       document.dispatchEvent(new Event('a2h:popup-toggle'));
     }
 
-    // Passive auto-trigger (10s / scroll-past-hero) — respects dismissal
-    // and past submission. A deliberate click (openPopup above, wired to
-    // .mockup-trigger below) always opens regardless.
+    // Passive auto-trigger (10s) — respects dismissal and past submission.
+    // A deliberate click (.calls-trigger) always opens it regardless.
     function open() {
       if (alreadyHandled()) return;
-      openPopup(null);
+      openPopup();
     }
 
     function close(remember) {
@@ -1543,41 +1500,19 @@
       if (e.key === 'Escape' && overlay.classList.contains('is-open')) close(true);
     });
 
-    document.querySelectorAll('.mockup-trigger').forEach(function (el) {
+    document.querySelectorAll('.calls-trigger').forEach(function (el) {
       el.addEventListener('click', function (e) {
         e.preventDefault();
-        openPopup(el.dataset.plan || null);
+        openPopup();
       });
     });
 
-    // Wait for whichever comes later of "10s elapsed" or "scrolled past the
-    // hero" — a fast scroller can otherwise get this before they've even
-    // read the headline.
-    if (!alreadyHandled()) {
-      var heroEl = document.getElementById('top');
-      var timerDone = false;
-      var pastHero = !heroEl;
-      var opened = false;
-      var maybeOpen = function () {
-        if (opened || !timerDone || !pastHero) return;
-        opened = true;
-        open();
-      };
-      setTimeout(function () { timerDone = true; maybeOpen(); }, 10000);
-      if (heroEl) {
-        var checkPastHero = function () {
-          if (window.scrollY > heroEl.offsetHeight * 0.6) {
-            pastHero = true;
-            window.removeEventListener('scroll', checkPastHero);
-            maybeOpen();
-          }
-        };
-        window.addEventListener('scroll', checkPastHero, { passive: true });
-        checkPastHero();
-      }
-    }
+    // Only self-triggers if the page actually has a manual trigger button —
+    // pages with no .calls-trigger element stay dormant instead of popping
+    // an unprompted calculator with no matching CTA on the page.
+    if (document.querySelectorAll('.calls-trigger').length && !alreadyHandled()) setTimeout(open, 10000);
 
-    var ERROR_COPY_LP = {
+    var ERROR_COPY = {
       captcha_failed: "That answer didn't match — double-check and try again.",
       invalid_email: 'That email address looks invalid — please double-check it.',
       disposable_email: 'Please use a permanent email address, not a temporary/disposable one.',
@@ -1592,10 +1527,12 @@
       var data = Object.fromEntries(new FormData(form).entries());
       data.landing_page = window.location.pathname;
       data.elapsed_ms = Date.now() - captchaLoadedAt;
+      data.estimated_monthly = lastMonthly;
+      data.estimated_annual = lastAnnual;
       ['gclid', 'fbclid', 'utm_source', 'utm_campaign'].forEach(function (k) {
         try { var v = sessionStorage.getItem('a2h_' + k); if (v) data[k] = v; } catch (e) {}
       });
-      fetch('/api/mockup-request', {
+      fetch('/api/calls-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -1603,12 +1540,12 @@
         return res.json().catch(function () { return {}; }).then(function (result) {
           if (!res.ok) {
             btn.disabled = false;
-            status.textContent = ERROR_COPY_LP[result.error] || 'Something went wrong — email us directly at hhuss786512tx@gmail.com.';
+            status.textContent = ERROR_COPY[result.error] || 'Something went wrong — email us directly at hhuss786512tx@gmail.com.';
             if (result.error === 'captcha_failed') loadCaptcha();
             return;
           }
           try { localStorage.setItem(SUBMITTED_KEY, '1'); } catch (e) {}
-          window.location.href = '/mockup.html';
+          window.location.href = '/book-a-call.html';
         });
       }).catch(function () {
         btn.disabled = false;
@@ -1616,7 +1553,7 @@
       });
     });
   })();
-</script>
+  </script>
 
 <script>
   // Header: shrink/shadow once the hero's own background stops showing
@@ -1808,9 +1745,9 @@
     floatingCta.classList.toggle('pointer-events-none', !show);
   };
 
-  // Suppressed while the mockup popup is open — both are fixed-position
+  // Suppressed while the calls-cost popup is open — both are fixed-position
   // asks and could otherwise land on screen at the same time.
-  const leadPopupOverlay = document.getElementById('lead-popup-overlay');
+  const leadPopupOverlay = document.getElementById('calls-popup-overlay');
   const popupOpen = () => !!(leadPopupOverlay && leadPopupOverlay.classList.contains('is-open'));
 
   const updateFloatingCta = () => {
