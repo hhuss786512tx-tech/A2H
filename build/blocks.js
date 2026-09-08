@@ -65,13 +65,14 @@ ${p.metric ? `          <p class="text-xs text-copper-light font-semibold mt-3 p
 
 function portfolioGrid({ heading = 'Real businesses, real launches.', sub = '', only = null } = {}) {
   const list = only ? PROJECTS.filter((p) => only.includes(p.img)) : PROJECTS;
+  const gridClass = list.length === 1 ? 'grid max-w-sm mx-auto' : 'grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto';
   return `<section id="work" class="py-20 px-6">
   <div class="max-w-6xl mx-auto">
     <div class="reveal mb-10 text-center">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Selected Work</p>
       <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">${heading}</h2>
 ${sub ? `      <p class="text-fog leading-[1.7] max-w-2xl mx-auto mt-4">${sub}</p>\n` : ''}    </div>
-    <div class="reveal grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="reveal ${gridClass}">
 ${list.map(projectCard).join('\n')}
     </div>
     <p class="reveal text-center text-xs text-fog/70 mt-6">Cards marked <span class="text-sand">DEMO BUILD</span> are complete builds hosted on our own GitHub Pages account rather than a client domain.</p>
