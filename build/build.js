@@ -278,16 +278,17 @@ PAGES.push({
 PAGES.push({
   slug: 'book-a-call.html',
   noPopup: true,
-  title: 'Book A Call — Schedule Time With A2H | A2H',
-  description: 'Pick a time to talk through your free website mockup and what a hand-coded build would look like for your business. No forms, no phone tag.',
+  title: 'Book A Free Setup Call — AI Receptionist + CRM | A2H',
+  description: 'Book a free 15-minute setup call. We look at how your calls come in today, show how the AI receptionist would answer and book them, and get you set up if it fits.',
   jsonLd: [ORG],
   body: [
     `<section class="relative glow-copper pt-36 pb-16 px-6 overflow-hidden">
   <div class="grain"></div>
   <div class="max-w-3xl mx-auto text-center relative">
-    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Book A Call</p>
-    <h1 class="reveal font-display text-[2.5rem] leading-[1.1] sm:text-5xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">Let's talk about <span class="italic text-copper-light">your site.</span></h1>
-    <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto">Pick a time that works for you — no forms, no phone tag. 30 minutes to walk through your free mockup and what a build would look like for your business.</p>
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Free Setup Call · 15 Minutes</p>
+    <h1 class="reveal font-display text-[2.5rem] leading-[1.1] sm:text-5xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">Let's get every call <span class="italic text-copper-light">answered.</span></h1>
+    <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto">Pick a time that works for you. In 15 minutes we'll look at how your calls come in today, show you how the AI receptionist would answer and book them, and get you set up if it's a fit.</p>
+    <p class="reveal text-sm text-fog mt-5">Haven't seen how it works yet? <a href="watch.html" class="link-underline text-copper-light">Watch the 2-minute video first</a>.</p>
   </div>
 </section>`,
     `<section class="px-6 pb-24">
