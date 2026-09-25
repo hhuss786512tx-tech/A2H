@@ -1,0 +1,28 @@
+# A2H Agency
+
+> AI Receptionist + CRM for Texas local service businesses, with hand-coded custom websites available as an upgrade. Answers every call and text, books directly onto the calendar, and logs every contact automatically.
+
+A2H builds an AI phone receptionist and CRM for businesses that lose revenue to missed calls: contractors, medical and dental practices, local retail, and mobile pet groomers/pet cleaning businesses. Flat, published pricing with no long-term contract.
+
+## Pricing
+- AI Receptionist + CRM: $1,500 one-time setup, then $397/month. Answers every call, books appointments, logs every contact in a CRM pipeline. Cancel anytime.
+- AI Receptionist + CRM + Custom Website: $2,000 one-time setup, then $400/month. Adds a hand-coded website (up to 10 pages) and Google Business Profile setup.
+- Extra CRM seat: $99/month per seat.
+- AI Website Chatbot add-on: $99/month (Custom Website tier only).
+- Care Plan (hosting, maintenance, monthly content edits): $249/month, included with Custom Website tier, cancel anytime.
+
+## Pages
+- [Homepage](https://a2h.info/): overview of the AI Receptionist + CRM offer.
+- [Pricing](https://a2h.info/pricing.html): full pricing breakdown and FAQ.
+- [Industries](https://a2h.info/industries.html): hub linking to industry-specific pages.
+- [Contractors](https://a2h.info/construction.html): AI Receptionist for Texas contractors and trades.
+- [Medical & Dental Practices](https://a2h.info/medical.html): AI Receptionist for medical and dental practices.
+- [Local Retail](https://a2h.info/retail.html): AI Receptionist for shops and markets.
+- [Mobile Pet Grooming](https://a2h.info/pet-grooming.html): AI Receptionist for mobile pet groomers and mobile pet cleaning businesses.
+- [Our Work](https://a2h.info/work.html): live builds and demos.
+- [How We Work](https://a2h.info/process.html): the build process, timeline and scope.
+- [Book A Call](https://a2h.info/book-a-call.html): free setup call scheduling.
+
+## Contact
+Email: hhuss786512tx@gmail.com
+Area served: Texas
