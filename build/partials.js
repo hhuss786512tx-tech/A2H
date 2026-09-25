@@ -814,11 +814,11 @@ function scripts() {
 
 // ----------------------------------------------------------------- shell ---
 
-function page({ title, description, slug, jsonLd, body, extraScripts = '', noPopup = false }) {
+function page({ title, description, slug, jsonLd, body, extraScripts = '', noPopup = false, ogImage }) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-${head({ title, description, slug, jsonLd })}
+${head({ title, description, slug, jsonLd, ogImage })}
 </head>
 <body class="text-sand antialiased">
 

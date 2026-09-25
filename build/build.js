@@ -302,6 +302,52 @@ PAGES.push({
   extraScripts: `<script src="https://assets.calendly.com/assets/external/widget.js" async></script>`,
 });
 
+// ---- watch.html — the pre-sale video sent to prospects before a call.
+// The video ends with "book below", so the calendar sits right under it.
+// Kept out of the sitemap: it is a link we send, not a page we rank.
+PAGES.push({
+  slug: 'watch.html',
+  noPopup: true,
+  title: 'How It Works + Pricing, In 2 Minutes | A2H',
+  description: 'A 2-minute walkthrough of the A2H AI receptionist and CRM: what it does, what it costs, and how to cancel. Book a 15-minute call right under the video.',
+  ogImage: '/assets/video/a2h-presale-poster.jpg',
+  jsonLd: [ORG],
+  body: [
+    `<section class="relative glow-copper pt-32 pb-10 px-6 overflow-hidden">
+  <div class="grain"></div>
+  <div class="max-w-4xl mx-auto text-center relative">
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Watch This First · 2 Minutes</p>
+    <h1 class="reveal font-display text-[2.25rem] leading-[1.1] sm:text-5xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-5">How it works, and <span class="italic text-copper-light">exactly what it costs.</span></h1>
+    <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto">No hidden fees and no pressure. If it makes sense for your business, book a call right below the video.</p>
+  </div>
+</section>`,
+    `<section class="px-6 pb-14">
+  <div class="max-w-4xl mx-auto reveal">
+    <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated overflow-hidden">
+      <video class="block w-full h-auto" controls playsinline preload="metadata" poster="assets/video/a2h-presale-poster.jpg" width="1920" height="1080">
+        <source src="assets/video/a2h-presale.mp4" type="video/mp4">
+        Your browser can't play this video. <a href="assets/video/a2h-presale.mp4">Download it here</a>.
+      </video>
+    </div>
+  </div>
+</section>`,
+    `<section id="book" class="px-6 pb-24">
+  <div class="max-w-3xl mx-auto">
+    <div class="reveal text-center mb-8">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-4">Book Below</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.03em] text-sand">Book your <span class="italic text-copper-light">15-minute</span> call.</h2>
+      <p class="text-fog leading-[1.7] mt-4">We'll look at what your business needs and get you set up.</p>
+    </div>
+    <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated overflow-hidden">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/hhuss786512tx/new-meeting?hide_gdpr_banner=1&background_color=231c18&text_color=e9dfd2&primary_color=c9702f" style="min-width:280px;height:700px;"></div>
+    </div>
+    <p class="reveal text-center text-xs text-fog mt-6">Prefer email instead? Reach us at <a href="mailto:${EMAIL}" class="link-underline text-copper-light">${EMAIL}</a>.</p>
+  </div>
+</section>`,
+  ].join('\n\n'),
+  extraScripts: `<script src="https://assets.calendly.com/assets/external/widget.js" async></script>`,
+});
+
 // ---- mockup.html — where the lead popup (partials.js leadPopup) sends
 // someone right after they submit their info.
 PAGES.push({
@@ -599,7 +645,7 @@ fs.readdirSync(OUT)
 console.log(`\n  stylesheet cache-busting: site.css?v=${cssHashes['assets/site.css']}  tailwind.css?v=${cssHashes['assets/tailwind.css']}`);
 
 // robots.txt + sitemap.xml
-const urls = ['index.html', ...PAGES.map((p) => p.slug)].filter((s) => s !== 'thank-you.html' && s !== 'mockup.html');
+const urls = ['index.html', ...PAGES.map((p) => p.slug)].filter((s) => s !== 'thank-you.html' && s !== 'mockup.html' && s !== 'watch.html');
 const today = new Date().toISOString().slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
