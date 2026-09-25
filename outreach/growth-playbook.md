@@ -116,6 +116,10 @@ Rotate across 15 DMs/day instead of sending one identical message — keeps it h
 > Worth a look?
 >
 > Abbas
+> A2H Agency · [your mailing address]
+> Not a fit? Reply "no thanks" and I won't email again.
+
+The address and opt-out line are required for US commercial email (CAN-SPAM). Send from secondary domains with warmed inboxes (~30–50/day each), never from a2h.info itself.
 
 ## Cold SMS (missed-call follow-up)
 
