@@ -242,7 +242,7 @@ PAGES.push({
       sub: 'A roofing company and a dental practice do not win business the same way. The build changes to match — what goes above the fold, what the form asks, and what we set up on Google.',
     }),
     `<section class="py-16 px-6">
-  <div class="max-w-5xl mx-auto grid sm:grid-cols-3 gap-6">
+  <div class="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
     <a href="construction.html" class="reveal group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
       <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Contractors</p>
       <h2 class="font-display text-2xl text-sand mb-3">Construction &amp; trades</h2>
@@ -261,6 +261,12 @@ PAGES.push({
       <p class="text-sm text-fog leading-[1.7] flex-1">Hours, directions and stock answered instantly, plus a Google Business Profile tuned so you turn up in the "near me" search that was going to your competitor.</p>
       <span class="link-underline text-copper-light text-sm font-semibold mt-5">See the retail build →</span>
     </a>
+    <a href="pet-grooming.html" class="reveal group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col" style="transition-delay:240ms">
+      <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Mobile Pet Care</p>
+      <h2 class="font-display text-2xl text-sand mb-3">Groomers &amp; pet cleaning</h2>
+      <p class="text-sm text-fog leading-[1.7] flex-1">Every call answered even when you're mid-groom or on the road, booked straight to your calendar so a missed call never becomes the next groomer's client.</p>
+      <span class="link-underline text-copper-light text-sm font-semibold mt-5">See how it works →</span>
+    </a>
   </div>
 </section>`,
     B.portfolioGrid({ heading: 'Work across all three.' }),
@@ -272,16 +278,17 @@ PAGES.push({
 PAGES.push({
   slug: 'book-a-call.html',
   noPopup: true,
-  title: 'Book A Call — Schedule Time With A2H | A2H',
-  description: 'Pick a time to talk through your free website mockup and what a hand-coded build would look like for your business. No forms, no phone tag.',
+  title: 'Book A Free Setup Call — AI Receptionist + CRM | A2H',
+  description: 'Book a free 15-minute setup call. We look at how your calls come in today, show how the AI receptionist would answer and book them, and get you set up if it fits.',
   jsonLd: [ORG],
   body: [
     `<section class="relative glow-copper pt-36 pb-16 px-6 overflow-hidden">
   <div class="grain"></div>
   <div class="max-w-3xl mx-auto text-center relative">
-    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Book A Call</p>
-    <h1 class="reveal font-display text-[2.5rem] leading-[1.1] sm:text-5xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">Let's talk about <span class="italic text-copper-light">your site.</span></h1>
-    <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto">Pick a time that works for you — no forms, no phone tag. 30 minutes to walk through your free mockup and what a build would look like for your business.</p>
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Free Setup Call · 15 Minutes</p>
+    <h1 class="reveal font-display text-[2.5rem] leading-[1.1] sm:text-5xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">Let's get every call <span class="italic text-copper-light">answered.</span></h1>
+    <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto">Pick a time that works for you. In 15 minutes we'll look at how your calls come in today, show you how the AI receptionist would answer and book them, and get you set up if it's a fit.</p>
+    <p class="reveal text-sm text-fog mt-5">Haven't seen how it works yet? <a href="watch.html" class="link-underline text-copper-light">Watch the 2-minute video first</a>.</p>
   </div>
 </section>`,
     `<section class="px-6 pb-24">
@@ -475,6 +482,37 @@ PAGES.push({
     ]),
     B.pricingTable({ heading: 'Flat pricing, published openly' }),
     faqSection(RETAIL_FAQ),
+  ].join('\n\n'),
+});
+
+// ---- pet-grooming.html
+const PET_FAQ = [
+  ['I already juggle calls between grooms, why do I need this?', 'Because "I\'ll call them back" loses the booking almost every time — the caller just calls the next mobile groomer on Google before you get a free minute. The AI Receptionist answers instantly and books it for you.'],
+  ['Do I have to change my business number?', 'No — your existing number stays yours. We wire the receptionist into it, we do not replace it.'],
+  ['What about clients with recurring appointments?', 'Every contact and appointment is logged automatically in your CRM pipeline, so repeat clients and their pet details are always on hand, not scattered across texts and voicemails.'],
+  ['What if a caller needs something the AI cannot handle?', 'It warm-transfers to you when a call needs a real person — it is designed to never let a call go unanswered, not to replace you.'],
+];
+
+PAGES.push({
+  slug: 'pet-grooming.html',
+  title: 'AI Receptionist for Mobile Pet Groomers & Pet Cleaning | A2H',
+  description: 'AI Receptionist + CRM for Texas mobile pet groomers and mobile pet cleaning businesses — every call answered and booked while you\'re mid-groom. Optional hand-coded website add-on.',
+  jsonLd: [ORG, serviceLd('AI receptionist for mobile pet groomers', 'AI Receptionist + CRM and optional hand-coded websites for Texas mobile pet grooming and mobile pet cleaning businesses.', 'Mobile pet groomers and mobile pet cleaning businesses'), faqLd(PET_FAQ)],
+  body: [
+    hero({
+      eyebrow: 'For Mobile Pet Groomers &amp; Mobile Pet Cleaning',
+      h1: 'Every call answered, even mid-groom. <span class="italic text-copper-light">Nothing missed.</span>',
+      sub: 'When you\'re elbow-deep in a groom, the phone goes unanswered — and that caller books the next mobile groomer on Google. The AI Receptionist answers day or night, books straight onto your calendar, and logs every contact in your own CRM.',
+      secondary: ['See Pricing', 'pricing.html'],
+    }),
+    cards('What Changes For Mobile Groomers', 'Built around a schedule that never stops moving', [
+      { tag: 'Never voicemail', h: 'Answered between appointments', p: 'Every call answered instantly, whether you\'re driving between jobs or hands-on with a groom — no client sent to voicemail because you couldn\'t grab the phone.' },
+      { tag: 'Booked, not just noted', h: 'Straight onto your calendar', p: 'The AI Receptionist books the appointment directly, and warm-transfers to you when a call needs a real person.' },
+      { tag: 'Nothing lost', h: 'Every contact logged', p: 'Names, pet details, and follow-ups tracked automatically in your own CRM pipeline board — nothing relies on a sticky note in the van.' },
+      { tag: 'Found locally', h: 'Maps and reviews', p: 'On the Custom Website tier, Google Business Profile is claimed and tuned, because most pet owners search "mobile groomer near me" before they ever see a website.' },
+    ]),
+    B.pricingTable({ heading: 'Flat pricing, published openly' }),
+    faqSection(PET_FAQ),
   ].join('\n\n'),
 });
 
