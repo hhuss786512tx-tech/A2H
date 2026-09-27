@@ -349,6 +349,9 @@ PAGES.push({
   extraScripts: `<script src="https://assets.calendly.com/assets/external/widget.js" async></script>`,
 });
 
+// ---- demo.html: a real recorded receptionist call, cut into chapters.
+PAGES.push(require('./demo')({ ORG, EMAIL }));
+
 // ---- mockup.html — where the lead popup (partials.js leadPopup) sends
 // someone right after they submit their info.
 PAGES.push({
