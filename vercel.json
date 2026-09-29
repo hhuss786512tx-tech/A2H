@@ -5,5 +5,19 @@
       "path": "/api/cron/process-nurture",
       "schedule": "0 15 * * *"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/watch",
+      "destination": "/watch.html"
+    },
+    {
+      "source": "/groomers",
+      "destination": "/groomers.html"
+    },
+    {
+      "source": "/dental",
+      "destination": "/dental.html"
+    }
   ]
 }

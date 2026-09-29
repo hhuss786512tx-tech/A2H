@@ -13,7 +13,7 @@ const META_PIXEL = '1760813911727113'; // Meta dataset "A2H Ads MCP", ad account
 
 // ---------------------------------------------------------------- <head> ---
 
-function head({ title, description, slug, ogImage = '/assets/og-image.png', jsonLd = [] }) {
+function head({ title, description, slug, ogImage = '/assets/og-image.png', jsonLd = [], noindex = false }) {
   const url = slug === 'index.html' ? SITE + '/' : `${SITE}/${slug}`;
   const ld = jsonLd.length
     ? jsonLd.map((o) => `<script type="application/ld+json">\n${JSON.stringify(o, null, 2)}\n</script>`).join('\n')
@@ -22,7 +22,7 @@ function head({ title, description, slug, ogImage = '/assets/og-image.png', json
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title}</title>
 <meta name="description" content="${description}">
-<link rel="canonical" href="${url}">
+${noindex ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<link rel="canonical" href="${url}">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141110'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-style='italic' fill='%23c9702f' text-anchor='middle'%3EA2H%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="${title}">
@@ -52,7 +52,7 @@ ${ld}
 fbq('init', '${META_PIXEL}');
 fbq('track', 'PageView');
 // Funnel events: video started/finished on the pre-call page, and a booked Calendly slot counts as a Lead.
-if (/watch(\.html)?$/.test(location.pathname)) fbq('track', 'ViewContent', { content_name: 'pre-call video page' });
+if (/(watch|groomers|dental)(\.html)?$/.test(location.pathname)) fbq('track', 'ViewContent', { content_name: 'pre-call video page' });
 window.addEventListener('message', function (e) {
   if (e.origin === 'https://calendly.com' && e.data && e.data.event === 'calendly.event_scheduled') {
     fbq('track', 'Lead', { content_name: 'call booked' });
@@ -835,19 +835,19 @@ function scripts() {
 
 // ----------------------------------------------------------------- shell ---
 
-function page({ title, description, slug, jsonLd, body, extraScripts = '', noPopup = false, ogImage }) {
+function page({ title, description, slug, jsonLd, body, extraScripts = '', noPopup = false, ogImage, funnel = false }) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-${head({ title, description, slug, jsonLd, ogImage })}
+${head({ title, description, slug, jsonLd, ogImage, noindex: funnel })}
 </head>
 <body class="text-sand antialiased">
 
-${nav(slug)}
+${funnel ? '' : nav(slug)}
 
 ${body}
 
-${footer()}
+${funnel ? '' : footer()}
 ${noPopup ? '' : `\n${leadPopup()}`}
 
 ${scripts()}
