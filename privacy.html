@@ -59,6 +59,26 @@
   gtag('js', new Date());
   gtag('config', 'G-L9L2CVTSBB');
 </script>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1760813911727113');
+fbq('track', 'PageView');
+// Funnel events: video started/finished on the pre-call page, and a booked Calendly slot counts as a Lead.
+if (/watch(.html)?$/.test(location.pathname)) fbq('track', 'ViewContent', { content_name: 'pre-call video page' });
+window.addEventListener('message', function (e) {
+  if (e.origin === 'https://calendly.com' && e.data && e.data.event === 'calendly.event_scheduled') {
+    fbq('track', 'Lead', { content_name: 'call booked' });
+    fbq('track', 'Schedule');
+  }
+});
+document.addEventListener('DOMContentLoaded', function () {
+  var v = document.querySelector('video[poster*="presale"]');
+  if (!v) return;
+  v.addEventListener('play', function () { fbq('trackCustom', 'VideoPlay'); }, { once: true });
+  v.addEventListener('ended', function () { fbq('trackCustom', 'VideoComplete'); }, { once: true });
+});
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1760813911727113&ev=PageView&noscript=1" alt=""></noscript>
 </head>
 <body class="text-sand antialiased">
 
@@ -107,7 +127,7 @@
         <h2 class="font-display text-xl text-sand mb-3">What we collect</h2>
         <p class="text-fog text-sm leading-[1.8] mb-3">When you submit the free website mockup form we collect the name, business name, email address and phone number you enter, plus details about the website you want — your niche/industry, how many pages, color scheme preferences, any example sites you like, and any other notes you provide. All of these except phone number and the optional detail fields are required to respond to you.</p>
         <p class="text-fog text-sm leading-[1.8] mb-3">If you use the AI chat widget, the messages you type are processed so the assistant can answer them. Do not enter sensitive personal, medical or financial information into the chat.</p>
-        <p class="text-fog text-sm leading-[1.8] mb-3">We use Google Analytics 4, which sets cookies and records standard analytics data such as pages viewed, approximate location derived from IP address, referring site and device type. If you arrive from an advertisement we also record the campaign parameters in the link (for example utm_source or gclid) so we can tell which campaigns work.</p>
+        <p class="text-fog text-sm leading-[1.8] mb-3">We use Google Analytics 4, which sets cookies and records standard analytics data such as pages viewed, approximate location derived from IP address, referring site and device type. We also use the Meta Pixel, which lets Meta record that you visited this site, watched our video or booked a call, so we can measure our Facebook and Instagram ads and show our ads to people who have visited. If you arrive from an advertisement we also record the campaign parameters in the link (for example utm_source or gclid) so we can tell which campaigns work.</p>
       </div>
       <div>
         <h2 class="font-display text-xl text-sand mb-3">SMS messaging</h2>
@@ -117,7 +137,7 @@
       <div>
         <h2 class="font-display text-xl text-sand mb-3">How we use it</h2>
         <p class="text-fog text-sm leading-[1.8] mb-3">Form submissions are used to build and send your free website mockup and to follow up about your enquiry, including by SMS as described above. Analytics data is used in aggregate to understand how the site performs.</p>
-        <p class="text-fog text-sm leading-[1.8] mb-3">We do not sell your information, rent it, or add you to a marketing list you did not ask for. We do not share it with third parties except the service providers that operate this site — currently Vercel for hosting, Twilio for SMS delivery, Google for analytics and AI replies, and Resend for email — who process it only on our behalf.</p>
+        <p class="text-fog text-sm leading-[1.8] mb-3">We do not sell your information, rent it, or add you to a marketing list you did not ask for. We do not share it with third parties except the service providers that operate this site — currently Vercel for hosting, Twilio for SMS delivery, Google for analytics and AI replies, Meta for ad measurement, and Resend for email — who process it only on our behalf.</p>
       </div>
       <div>
         <h2 class="font-display text-xl text-sand mb-3">How long we keep it</h2>
@@ -126,7 +146,7 @@
       <div>
         <h2 class="font-display text-xl text-sand mb-3">Your choices</h2>
         <p class="text-fog text-sm leading-[1.8] mb-3">You can ask us what we hold about you, ask us to correct it, or ask us to delete it, by emailing <a href="mailto:hhuss786512tx@gmail.com" class="link-underline text-copper-light">hhuss786512tx@gmail.com</a>. We will respond within 30 days.</p>
-        <p class="text-fog text-sm leading-[1.8] mb-3">You can block cookies in your browser settings, and you can opt out of Google Analytics using Google's browser add-on. The site works with cookies disabled.</p>
+        <p class="text-fog text-sm leading-[1.8] mb-3">You can block cookies in your browser settings, and you can opt out of Google Analytics using Google's browser add-on. You can opt out of Meta ad personalisation in your Facebook or Instagram ad settings. The site works with cookies disabled.</p>
         <p class="text-fog text-sm leading-[1.8] mb-3">If you are a Texas resident, the Texas Data Privacy and Security Act gives you rights to access, correct, delete and obtain a copy of your personal data, and to opt out of targeted advertising. Use the email above to exercise any of them.</p>
       </div>
       <div>

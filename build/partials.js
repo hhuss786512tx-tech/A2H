@@ -9,6 +9,7 @@
 const SITE = 'https://a2h.info';
 const EMAIL = 'hhuss786512tx@gmail.com';
 const GA4 = 'G-L9L2CVTSBB';
+const META_PIXEL = '1760813911727113'; // Meta dataset "A2H Ads MCP", ad account 1235578990336631
 
 // ---------------------------------------------------------------- <head> ---
 
@@ -45,7 +46,27 @@ ${ld}
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', '${GA4}');
-</script>`;
+</script>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '${META_PIXEL}');
+fbq('track', 'PageView');
+// Funnel events: video started/finished on the pre-call page, and a booked Calendly slot counts as a Lead.
+if (/watch(\.html)?$/.test(location.pathname)) fbq('track', 'ViewContent', { content_name: 'pre-call video page' });
+window.addEventListener('message', function (e) {
+  if (e.origin === 'https://calendly.com' && e.data && e.data.event === 'calendly.event_scheduled') {
+    fbq('track', 'Lead', { content_name: 'call booked' });
+    fbq('track', 'Schedule');
+  }
+});
+document.addEventListener('DOMContentLoaded', function () {
+  var v = document.querySelector('video[poster*="presale"]');
+  if (!v) return;
+  v.addEventListener('play', function () { fbq('trackCustom', 'VideoPlay'); }, { once: true });
+  v.addEventListener('ended', function () { fbq('trackCustom', 'VideoComplete'); }, { once: true });
+});
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=${META_PIXEL}&ev=PageView&noscript=1" alt=""></noscript>`;
 }
 
 // ------------------------------------------------------------------- nav ---
