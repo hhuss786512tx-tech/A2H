@@ -232,8 +232,8 @@ PAGES.push({
 // ---- industries.html (hub)
 PAGES.push({
   slug: 'industries.html',
-  title: 'Industries We Build For — Texas Contractors, Clinics & Retail | A2H',
-  description: 'Websites and Google Maps setup tailored to Texas contractors, medical practices and local retail. See the approach for your industry.',
+  title: 'AI Receptionist by Industry — Texas Trades, Clinics, Retail | A2H',
+  description: 'How A2H sets up an AI receptionist, CRM and website for Texas contractors, medical practices, local retail and mobile pet groomers. Find your industry.',
   jsonLd: [ORG],
   body: [
     hero({
@@ -269,6 +269,18 @@ PAGES.push({
     </a>
   </div>
 </section>`,
+    `<section class="px-6 pb-16">
+  <div class="max-w-5xl mx-auto">
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5 text-center">Find your trade</p>
+    <div class="reveal flex flex-wrap justify-center gap-3">
+      <a href="hvac.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">HVAC</a>
+      <a href="plumbing.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Plumbing</a>
+      <a href="roofing.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Roofing</a>
+      <a href="electrical.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Electrical</a>
+      <a href="dental-practices.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Dental practices</a>
+    </div>
+  </div>
+</section>`,
     B.portfolioGrid({ heading: 'Work across all three.' }),
     B.ctaBand({}),
   ].join('\n\n'),
@@ -279,7 +291,7 @@ PAGES.push({
   slug: 'book-a-call.html',
   noPopup: true,
   title: 'Book A Free Setup Call — AI Receptionist + CRM | A2H',
-  description: 'Book a free 15-minute setup call. We look at how your calls come in today, show how the AI receptionist would answer and book them, and get you set up if it fits.',
+  description: 'Book a free 15-minute setup call. We look at how your calls come in today, show how the AI receptionist would answer and book them, and set you up if it fits.',
   jsonLd: [ORG],
   body: [
     `<section class="relative glow-copper pt-36 pb-16 px-6 overflow-hidden">
@@ -397,8 +409,8 @@ const CONSTRUCTION_FAQ = [
 
 PAGES.push({
   slug: 'construction.html',
-  title: 'AI Receptionist for Texas Contractors — More Calls Booked | A2H',
-  description: 'AI Receptionist + CRM for Central Texas contractors — every call answered and booked, day or night. Optional hand-coded website add-on. Built by the team behind Solid State Construction.',
+  title: 'AI Receptionist for Texas Contractors — Book More Jobs | A2H',
+  description: 'AI Receptionist + CRM for Central Texas contractors: every call answered and booked, day or night. Optional website. From the Solid State Construction team.',
   jsonLd: [ORG, serviceLd('AI receptionist for contractors', 'AI Receptionist + CRM and optional hand-coded websites for Texas construction businesses.', 'Construction contractors'), faqLd(CONSTRUCTION_FAQ)],
   body: [
     hero({
@@ -470,8 +482,8 @@ const RETAIL_FAQ = [
 
 PAGES.push({
   slug: 'retail.html',
-  title: 'AI Receptionist for Texas Local Retail, Shops & Markets | A2H',
-  description: 'AI Receptionist + CRM for Texas shops, markets and local retail — every call about hours and stock answered instantly. Optional hand-coded website with Google Maps setup.',
+  title: 'AI Receptionist for Texas Retail, Shops & Markets | A2H',
+  description: 'AI Receptionist + CRM for Texas shops, markets and local retail: every call about hours and stock answered instantly. Optional website with Google Maps setup.',
   jsonLd: [ORG, serviceLd('AI receptionist for local retail', 'AI Receptionist + CRM and optional hand-coded websites for Texas shops, markets and local retail businesses.', 'Local retail businesses'), faqLd(RETAIL_FAQ)],
   body: [
     hero({
@@ -502,7 +514,7 @@ const PET_FAQ = [
 PAGES.push({
   slug: 'pet-grooming.html',
   title: 'AI Receptionist for Mobile Pet Groomers & Pet Cleaning | A2H',
-  description: 'AI Receptionist + CRM for Texas mobile pet groomers and mobile pet cleaning businesses — every call answered and booked while you\'re mid-groom. Optional hand-coded website add-on.',
+  description: 'AI Receptionist + CRM for Texas mobile pet groomers and pet cleaners: every call answered and booked while you\'re mid-groom. Optional custom website.',
   jsonLd: [ORG, serviceLd('AI receptionist for mobile pet groomers', 'AI Receptionist + CRM and optional hand-coded websites for Texas mobile pet grooming and mobile pet cleaning businesses.', 'Mobile pet groomers and mobile pet cleaning businesses'), faqLd(PET_FAQ)],
   body: [
     hero({
@@ -521,6 +533,9 @@ PAGES.push({
     faqSection(PET_FAQ),
   ].join('\n\n'),
 });
+
+// ---- hvac / plumbing / roofing / electrical / dental-practices (generated from one template)
+PAGES.push(...require('./verticals')({ SITE, ORG, serviceLd, faqLd, hero, cards, faqSection, B }));
 
 // ---- privacy.html
 PAGES.push({
