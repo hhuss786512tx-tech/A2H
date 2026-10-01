@@ -1,6 +1,28 @@
 User-agent: *
 Allow: /
-Disallow: /thank-you.html
-Disallow: /mockup.html
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
 
 Sitemap: https://a2h.info/sitemap.xml

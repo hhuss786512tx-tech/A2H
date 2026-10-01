@@ -840,11 +840,11 @@ function scripts() {
 
 // ----------------------------------------------------------------- shell ---
 
-function page({ title, description, slug, jsonLd, body, extraScripts = '', noPopup = false, ogImage, funnel = false }) {
+function page({ title, description, slug, jsonLd, body, extraScripts = '', noPopup = false, ogImage, funnel = false, noindex = false }) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-${head({ title, description, slug, jsonLd, ogImage, noindex: funnel })}
+${head({ title, description, slug, jsonLd, ogImage, noindex: funnel || noindex })}
 </head>
 <body class="text-sand antialiased">
 
