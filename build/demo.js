@@ -185,7 +185,7 @@ module.exports = function demoPage({ ORG, EMAIL }) {
     slug: 'demo.html',
     noPopup: true,
     title: 'Hear An AI Receptionist Book A Job — A Real Call | A2H',
-    description: `Listen to a real ${total} call: our AI receptionist answers, quotes a price, checks the schedule, books the visit and logs it in the CRM. Read the transcript and see the record it created.`,
+    description: `Hear a real ${total} call: our AI receptionist answers, quotes a price, books the visit and logs it in the CRM. Read the transcript and see the record.`,
     jsonLd: [
       ORG,
       {

@@ -19,6 +19,11 @@ A2H builds an AI phone receptionist and CRM for businesses that lose revenue to 
 - [Medical & Dental Practices](https://a2h.info/medical.html): AI Receptionist for medical and dental practices.
 - [Local Retail](https://a2h.info/retail.html): AI Receptionist for shops and markets.
 - [Mobile Pet Grooming](https://a2h.info/pet-grooming.html): AI Receptionist for mobile pet groomers and mobile pet cleaning businesses.
+- [HVAC](https://a2h.info/hvac.html): AI Receptionist for Texas HVAC companies.
+- [Plumbing](https://a2h.info/plumbing.html): AI Receptionist for Texas plumbers.
+- [Roofing](https://a2h.info/roofing.html): AI Receptionist for Texas roofing companies.
+- [Electrical](https://a2h.info/electrical.html): AI Receptionist for Texas electricians.
+- [Dental Practices](https://a2h.info/dental-practices.html): AI Receptionist for Texas dental practices.
 - [Our Work](https://a2h.info/work.html): live builds and demos.
 - [How We Work](https://a2h.info/process.html): the build process, timeline and scope.
 - [Book A Call](https://a2h.info/book-a-call.html): free setup call scheduling.
