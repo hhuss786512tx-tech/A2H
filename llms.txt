@@ -1,8 +1,8 @@
 # A2H Agency
 
-> AI Receptionist + CRM for Texas local service businesses, with hand-coded custom websites available as an upgrade. Answers every call and text, books directly onto the calendar, and logs every contact automatically.
+> AI Receptionist + CRM for Texas local service businesses, with hand-coded custom websites available as an upgrade. Answers every call, books the visit, and tracks every call and caller in a custom CRM.
 
-A2H builds an AI phone receptionist and CRM for businesses that lose revenue to missed calls: contractors, medical and dental practices, local retail, and mobile pet groomers/pet cleaning businesses. Flat, published pricing with no long-term contract.
+A2H builds an AI phone receptionist and CRM for businesses that lose revenue to missed calls: dental practices, orthodontic practices and non-medical home care agencies in Texas. A2H answers every call, books the visit, and tracks every call and caller in a custom CRM. It handles scheduling only, never clinical data. Pricing is covered on a free 15-minute call.
 
 ## Pricing
 - AI Receptionist + CRM: $1,500 one-time setup, then $397/month. Answers every call, books appointments, logs every contact in a CRM pipeline. Cancel anytime.
@@ -19,11 +19,11 @@ A2H builds an AI phone receptionist and CRM for businesses that lose revenue to 
 - [Medical & Dental Practices](https://a2h.info/medical.html): AI Receptionist for medical and dental practices.
 - [Local Retail](https://a2h.info/retail.html): AI Receptionist for shops and markets.
 - [Mobile Pet Grooming](https://a2h.info/pet-grooming.html): AI Receptionist for mobile pet groomers and mobile pet cleaning businesses.
-- [HVAC](https://a2h.info/hvac.html): AI Receptionist for Texas HVAC companies.
-- [Plumbing](https://a2h.info/plumbing.html): AI Receptionist for Texas plumbers.
-- [Roofing](https://a2h.info/roofing.html): AI Receptionist for Texas roofing companies.
-- [Electrical](https://a2h.info/electrical.html): AI Receptionist for Texas electricians.
 - [Dental Practices](https://a2h.info/dental-practices.html): AI Receptionist for Texas dental practices.
+- [Home Care Agencies](https://a2h.info/home-care-agencies.html): AI Receptionist for Texas non-medical home care agencies.
+- [Missed calls: dental practices](https://a2h.info/dental-missed-calls.html), [receptionist options](https://a2h.info/dental-receptionist-options.html)
+- [Orthodontic Practices](https://a2h.info/orthodontic-practices.html): AI Receptionist for Texas orthodontic practices. [Missed calls](https://a2h.info/orthodontic-missed-calls.html), [receptionist options](https://a2h.info/orthodontic-receptionist-options.html)
+- [Missed inquiries: home care](https://a2h.info/home-care-missed-calls.html), [receptionist options](https://a2h.info/home-care-receptionist-options.html)
 - [Our Work](https://a2h.info/work.html): live builds and demos.
 - [How We Work](https://a2h.info/process.html): the build process, timeline and scope.
 - [Book A Call](https://a2h.info/book-a-call.html): free setup call scheduling.

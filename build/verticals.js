@@ -2,12 +2,13 @@
 // gets the same structure: answer-first summary, 4 trade-specific cards,
 // published pricing, a real FAQ (with matching FAQPage schema) and sibling links.
 //
+// NOTE: all trade pages here are OFF-NICHE (noindex, out of the sitemap). Only dental-practices.html is an active niche.
 // Copy rule: only claim what the product does today (answers calls and texts,
 // asks what the job is and how urgent, books onto the calendar, logs the contact
 // in the CRM, warm-transfers, keeps the customer's own number, flat pricing).
 // No invented statistics, no named integrations, no compliance claims.
 
-module.exports = function verticals({ SITE, ORG, serviceLd, faqLd, hero, cards, faqSection, B }) {
+module.exports = function verticals({ SITE, ORG, serviceLd, faqLd, hero, cards, faqSection, B, guides, fit }) {
   const breadcrumbLd = (name, slug) => ({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -22,16 +23,14 @@ module.exports = function verticals({ SITE, ORG, serviceLd, faqLd, hero, cards, 
   // questions an AI assistant is most likely to be asked about the product.
   const sharedFaq = (who, callWord) => [
     [`How much does an AI receptionist cost for ${who}?`, 'A2H publishes its pricing: AI Receptionist + CRM is $1,500 one-time setup, then $397 per month, with no long-term contract. An extra CRM seat is $99 per month. Adding a hand-coded website with Google Business Profile setup is $2,000 setup and $400 per month.'],
-    ['Do I have to change my business number?', 'No. Your existing number stays yours. We wire the receptionist into it rather than replacing it.'],
-    [`What happens when a ${callWord} needs a real person?`, 'The AI Receptionist warm-transfers the call to you or your team when it needs a human. It is built so that no call goes unanswered, not to replace you.'],
+    ['Do I have to change my business number?', 'No porting and no new number for your callers. You set your existing line to forward to the receptionist when it is busy or unanswered.'],
+    [`What happens when a ${callWord} needs a real person?`, 'It can transfer the call to you or your team, or take a message and flag the contact in our custom CRM.'],
     ['Do I need a new website to use it?', 'No. AI Receptionist + CRM works on its own. The Custom Website tier is optional and adds a hand-coded site and Google Business Profile setup.'],
   ];
 
   const related = (current) => {
     const links = [
-      ['hvac.html', 'HVAC'], ['plumbing.html', 'Plumbing'], ['roofing.html', 'Roofing'],
-      ['electrical.html', 'Electrical'], ['dental-practices.html', 'Dental practices'],
-      ['construction.html', 'General contractors'], ['medical.html', 'Medical practices'],
+      ['dental-practices.html', 'Dental practices'], ['orthodontic-practices.html', 'Orthodontic practices'], ['home-care-agencies.html', 'Home care agencies'],
     ].filter(([s]) => s !== current);
     return `<section class="py-16 px-6">
   <div class="max-w-3xl mx-auto text-center">
@@ -39,7 +38,7 @@ module.exports = function verticals({ SITE, ORG, serviceLd, faqLd, hero, cards, 
     <div class="reveal flex flex-wrap justify-center gap-3">
 ${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">${n}</a>`).join('\n')}
     </div>
-    <p class="reveal text-sm text-fog mt-8">See a real call: <a href="demo.html" class="link-underline text-copper-light">hear the AI receptionist book a job</a>. Or compare everything on the <a href="pricing.html" class="link-underline text-copper-light">pricing page</a>.</p>
+    <p class="reveal text-sm text-fog mt-8">Hear a <a href="demo.html" class="link-underline text-copper-light">demo call</a> (a recorded test call with a fictional business and caller). Pricing is on the <a href="pricing.html" class="link-underline text-copper-light">pricing page</a>.</p>
   </div>
 </section>`;
   };
@@ -157,18 +156,19 @@ ${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand borde
       description: 'AI receptionist + CRM for Texas dental practices: every patient call answered and booked. $1,500 setup, $397/mo, no contract.',
       eyebrow: 'For Texas Dental Practices',
       h1: 'Every patient call answered, <span class="italic text-copper-light">even at lunch.</span>',
-      sub: 'The front desk cannot answer every line during check-in, lunch or after hours. The AI Receptionist answers instantly, books the appointment, and logs the patient contact in your own CRM.',
-      answer: 'An AI receptionist for a dental practice answers every inbound call and text, collects the patient\'s name and reason for calling, books the appointment onto the calendar, and logs the contact in a CRM. A2H sets this up for Texas dental practices for $1,500 one-time and $397 per month, with no long-term contract.',
+      sub: 'The front desk cannot answer every line during check-in, lunch or after hours. A2H answers instantly, books the appointment, and tracks every call and caller in our custom CRM.',
+      answer: 'An AI receptionist for a dental practice answers every inbound call, collects the patient\'s name and reason for calling, books the appointment, and tracks every call and caller in a custom CRM. It handles scheduling only, never clinical data. A2H sets this up for Texas dental practices for $1,500 one-time and $397 per month, with no long-term contract.',
       cardsHeading: 'Built around how patients actually choose a dentist',
       cards: [
         { tag: 'Never voicemail', h: 'Answered at lunch and after hours', p: 'No patient is sent to voicemail because the front desk was busy with check-in or the office was closed.' },
-        { tag: 'Booked, not just noted', h: 'Straight onto your calendar', p: 'The AI Receptionist books the appointment directly and warm-transfers to a real person when the call needs one.' },
-        { tag: 'Nothing lost', h: 'Every patient contact logged', p: 'Name, reason for calling and callback details tracked automatically in your own CRM pipeline board.' },
+        { tag: 'Booked, not just noted', h: 'The appointment, during the call', p: 'The AI Receptionist books the visit while the patient is on the line, and can transfer to your front desk when the call needs a person.' },
+        { tag: 'Nothing lost', h: 'Every caller in our custom CRM', p: 'Name, reason for calling and callback details tracked automatically in one place.' },
         { tag: 'Found locally', h: 'Maps and reviews', p: 'On the Custom Website tier Google Business Profile is claimed and tuned, because the map result and its reviews are what most patients see first.' },
       ],
       faq: [
         ['Is the AI receptionist HIPAA compliant?', 'The AI Receptionist and CRM handle scheduling, not clinical data. Calls collect only a name, the reason for the call and callback details so your staff can follow up. If you need intake that touches protected health information, that belongs in dedicated HIPAA-compliant software, and we link to it rather than rebuild it.'],
         ['Does it handle insurance or clinical questions?', 'It handles the front-desk call: answering, collecting the basics and booking. Anything clinical or insurance-specific is passed to your team rather than answered by the AI.'],
+        ['Do you work with dental practices across Texas?', 'A2H sets the receptionist up remotely for Texas practices, including those around Houston, Dallas, Austin, San Antonio and Fort Worth.'],
       ],
     },
   ];
@@ -178,6 +178,7 @@ ${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand borde
     const faq = [...d.faq, ...sharedFaq(who, callWord)];
     return {
       slug: d.slug,
+      noindex: d.slug !== 'dental-practices.html', // trades are off-niche: live but noindex
       title: d.title,
       description: d.description,
       jsonLd: [
@@ -187,10 +188,11 @@ ${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand borde
         breadcrumbLd(d.name, d.slug),
       ],
       body: [
-        hero({ eyebrow: d.eyebrow, h1: d.h1, sub: d.sub, secondary: ['Hear a real call', 'demo.html'] }),
+        hero({ eyebrow: d.eyebrow, h1: d.h1, sub: d.sub, secondary: ['Hear a demo call', 'demo.html'] }),
         answer(d.answer),
         cards('What Changes', d.cardsHeading, d.cards),
-        B.pricingTable({ heading: 'Flat pricing, published openly' }),
+        ...(d.slug === 'dental-practices.html' ? [fit('dental practices'), guides('dental')] : []),
+        ...(d.slug === 'dental-practices.html' ? [] : [B.pricingTable({ heading: 'Flat pricing, published openly' })]),
         faqSection(faq),
         related(d.slug),
       ].join('\n\n'),
