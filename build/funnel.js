@@ -3,8 +3,9 @@
 // video" and "book a call". Kept out of the sitemap and marked noindex, since
 // these are pages we send traffic to, not pages we rank.
 //
-// Pricing is deliberately absent from the copy: dental pricing is not locked,
-// and the video/call is where price is discussed.
+// Pricing is deliberately absent from the copy and is discussed on the call.
+// The shared video quotes one price, which differs by niche, so no page may say
+// the video covers pricing.
 
 const PHONE_DISPLAY = '(832) 743-3676';
 const PHONE_TEL = '+18327433676';
@@ -37,7 +38,7 @@ const NICHES = {
       ['Will pet owners know it is AI?', 'If they ask, it tells them. You choose the greeting, and it can offer to have you call back instead of finishing the booking.'],
       ['What if a call needs me?', 'It can transfer to your phone on the spot, or take a message and flag the contact for you.'],
       ['Does it use my prices and my calendar?', 'Yes. It quotes from your own price list and books into your Google Calendar. It never invents prices.'],
-      ['What does it cost, and can I cancel?', 'The video covers pricing. There is a real contract, and it includes a cancel-anytime clause. No long-term lock-in.'],
+      ['What does it cost, and can I cancel?', 'We cover pricing on the 15-minute call. There is a real contract, and it includes a cancel-anytime clause. No long-term lock-in.'],
     ],
   },
   dental: {
@@ -182,7 +183,7 @@ ${n.cards.map(([tag, h, p], i) => `      <div class="reveal rounded-2xl bg-eleva
   <div class="max-w-4xl mx-auto">
     <h2 class="reveal font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand text-center mb-10">What happens next</h2>
     <ol class="grid sm:grid-cols-3 gap-5">
-      <li class="reveal rounded-2xl bg-elevated border border-white/5 p-6"><p class="font-display text-3xl text-copper-light mb-2">1</p><p class="text-sand font-semibold mb-1">Watch the video</p><p class="text-fog text-sm leading-[1.7]">Two minutes on how it works and how it is priced.</p></li>
+      <li class="reveal rounded-2xl bg-elevated border border-white/5 p-6"><p class="font-display text-3xl text-copper-light mb-2">1</p><p class="text-sand font-semibold mb-1">Watch the video</p><p class="text-fog text-sm leading-[1.7]">Two minutes on how it works and what it does for your calls.</p></li>
       <li class="reveal rounded-2xl bg-elevated border border-white/5 p-6" style="transition-delay:70ms"><p class="font-display text-3xl text-copper-light mb-2">2</p><p class="text-sand font-semibold mb-1">Book a 15-minute call</p><p class="text-fog text-sm leading-[1.7]">We look at your calls and whether it is a fit. No obligation.</p></li>
       <li class="reveal rounded-2xl bg-elevated border border-white/5 p-6" style="transition-delay:140ms"><p class="font-display text-3xl text-copper-light mb-2">3</p><p class="text-sand font-semibold mb-1">We set it up</p><p class="text-fog text-sm leading-[1.7]">We configure it around your business and put it live on your number.</p></li>
     </ol>
