@@ -189,11 +189,29 @@ PAGES.push({
 });
 
 // ---- process.html
+// ---- shared by process.html and book-a-call.html (every answer is a documented fact)
+const SETUP_FAQ = [
+  ['How much does the AI Receptionist cost?', 'AI Receptionist + CRM is $1,500 one-time setup, then $397 per month, with no long-term contract and cancel anytime. An extra CRM seat is $99 per month. Adding a hand-coded website with Google Business Profile setup is $2,000 setup and $400 per month.'],
+  ['Do I have to change my business number?', 'No. Your existing number stays yours. We wire the receptionist into it rather than replacing it.'],
+  ['What happens when a call needs a real person?', 'The AI Receptionist warm-transfers the call to you or your team when it needs a human. It is built so that no call goes unanswered, not to replace you.'],
+  ['Do I need a new website to use it?', 'No. AI Receptionist + CRM works on its own. The Custom Website tier is optional and adds a hand-coded site and Google Business Profile setup.'],
+];
+
 PAGES.push({
   slug: 'process.html',
-  title: 'How We Work — From Free Mockup to Launch in 2–3 Days | A2H',
-  description: 'The A2H process: free website mockup, hand-coded build, launch and handoff, then proof with real data. Fixed scope, fixed price, no long-term contract.',
+  title: 'How It Works — AI Receptionist Setup + Website | A2H',
+  description: 'How A2H sets up an AI receptionist and CRM on your existing number, and how the optional custom website is built. Published pricing, no contract.',
   jsonLd: [ORG, {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How A2H sets up an AI receptionist and CRM',
+    description: 'Three steps from a free 15-minute setup call to every call answered and every contact logged.',
+    step: [
+      { '@type': 'HowToStep', position: 1, name: 'Free 15-minute setup call', text: 'We look at how your calls come in today and show you how the AI receptionist would answer and book them.' },
+      { '@type': 'HowToStep', position: 2, name: 'We set it up on your number', text: 'Your existing business number stays yours. We wire the receptionist into it and connect it to your calendar.' },
+      { '@type': 'HowToStep', position: 3, name: 'Every call answered, every contact logged', text: 'Calls and texts are answered, appointments are booked, every contact lands in your CRM, and calls that need a person are warm-transferred to you.' },
+    ],
+  }, faqLd(SETUP_FAQ), {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: 'How A2H builds and launches a website',
@@ -207,12 +225,17 @@ PAGES.push({
   }],
   body: [
     hero({
-      eyebrow: 'The Blueprint',
-      h1: 'From first look to live site, <span class="italic text-copper-light">in days.</span>',
-      sub: 'No discovery-call theatre, no six-week timeline, no invoice that grows after you sign. Four steps, fixed scope, and you own everything at the end.',
+      eyebrow: 'How It Works',
+      h1: 'From a 15-minute call to <span class="italic text-copper-light">every call answered.</span>',
+      sub: 'No discovery-call theatre and no invoice that grows after you sign. Published pricing, fixed scope, no long-term contract.',
       secondary: ['See Pricing', 'pricing.html'],
     }),
-    cards('The Process', 'Four steps, start to finish', [
+    cards('The AI Receptionist + CRM', 'Three steps, start to finish', [
+      { tag: 'Free, 15 minutes', h: 'We look at how your calls come in', p: 'On a free setup call we look at how calls reach you today, then show you how the AI receptionist would answer and book them. No obligation.' },
+      { tag: 'Your number stays yours', h: 'We set it up', p: 'We wire the receptionist into your existing business number and connect it to your calendar. Your number is not replaced or ported away.' },
+      { tag: 'Always on', h: 'Every call answered, every contact logged', p: 'Calls and texts are answered, appointments are booked, every contact lands in your own CRM pipeline, and calls that need a person are warm-transferred to you.' },
+    ], 3),
+    cards('Optional: The Custom Website', 'Four steps, start to finish', [
       { tag: 'Free, no obligation', h: 'We build you a mockup', p: 'Tell us your niche, your color scheme and a site you like the look of — we design a free homepage mockup made specifically for your business, no charge, no obligation. If you love it, we build the rest.' },
       { tag: 'Hand-coded', h: 'We build it properly', p: 'No page builders, no templates. A conversion-first site wired to real lead capture from day one, built mobile-first and tested on real devices before you ever see it.' },
       { tag: 'Yours to keep', h: 'We launch and hand it off', p: 'Fully tested, live on your domain, plus a walkthrough so you are never locked out of your own site. Static files you own outright — no proprietary platform, no hostage situation.' },
@@ -220,11 +243,12 @@ PAGES.push({
     ]),
     `<section class="py-20 px-6 bg-surface/40 border-y border-white/5">
   <div class="max-w-3xl mx-auto text-center">
-    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Why It Is Fast</p>
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Why The Website Build Is Fast</p>
     <h2 class="reveal font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-6">Because we cut the parts that do not build your site</h2>
     <p class="reveal text-fog leading-[1.8]">Most agencies spend weeks on discovery decks, stakeholder workshops and revision rounds that exist to justify a retainer. We publish our prices, fix the scope in writing, and start building. The mockup is the discovery. The build takes 2–3 days once your content is in hand — gathering that from you is usually the longest part of the whole project.</p>
   </div>
 </section>`,
+    faqSection(SETUP_FAQ),
     B.ctaBand({ heading: 'Ready to <span class="italic">get started?</span>', sub: 'Book a free setup call — it takes a few minutes, and there is no obligation attached to it.' }),
   ].join('\n\n'),
 });
@@ -292,7 +316,7 @@ PAGES.push({
   noPopup: true,
   title: 'Book A Free Setup Call — AI Receptionist + CRM | A2H',
   description: 'Book a free 15-minute setup call. We look at how your calls come in today, show how the AI receptionist would answer and book them, and set you up if it fits.',
-  jsonLd: [ORG],
+  jsonLd: [ORG, faqLd([...SETUP_FAQ, ['Is the setup call really free?', 'Yes. The 15-minute call is free and there is no obligation. We look at how your calls come in today, show you how the AI receptionist would answer and book them, and set you up if it is a fit.']])],
   body: [
     `<section class="relative glow-copper pt-36 pb-16 px-6 overflow-hidden">
   <div class="grain"></div>
@@ -311,6 +335,12 @@ PAGES.push({
     <p class="reveal text-center text-xs text-fog mt-6">Prefer email instead? Reach us at <a href="mailto:${EMAIL}" class="link-underline text-copper-light">${EMAIL}</a>.</p>
   </div>
 </section>`,
+    cards('The Call', 'What happens in 15 minutes', [
+      { tag: 'Your situation', h: 'We look at how calls reach you', p: 'We look at how your calls come in today, where they get missed, and what happens to them afterwards.' },
+      { tag: 'The product', h: 'We show how it would answer', p: 'You see how the AI receptionist would answer your calls and book them, so you can judge it before deciding anything.' },
+      { tag: 'Only if it fits', h: 'We set you up', p: 'If it is a fit, we get you set up. If it is not, the call was free and there is nothing further to do.' },
+    ], 3),
+    faqSection([...SETUP_FAQ, ['Is the setup call really free?', 'Yes. The 15-minute call is free and there is no obligation. We look at how your calls come in today, show you how the AI receptionist would answer and book them, and set you up if it is a fit.']]),
   ].join('\n\n'),
   extraScripts: `<script src="https://assets.calendly.com/assets/external/widget.js" async></script>`,
 });
