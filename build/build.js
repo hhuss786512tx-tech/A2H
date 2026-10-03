@@ -320,6 +320,7 @@ PAGES.push({
 // Kept out of the sitemap: it is a link we send, not a page we rank.
 PAGES.push({
   slug: 'watch.html',
+  noindex: true,
   noPopup: true,
   title: 'How It Works + Pricing, In 2 Minutes | A2H',
   description: 'A 2-minute walkthrough of the A2H AI receptionist and CRM: what it does, what it costs, and how to cancel. Book a 15-minute call right under the video.',
@@ -371,6 +372,7 @@ PAGES.push(...require('./funnel')({ ORG, EMAIL }));
 // someone right after they submit their info.
 PAGES.push({
   slug: 'mockup.html',
+  noindex: true,
   noPopup: true,
   title: "Let's Build Your Free Mockup — A2H",
   description: "You're in. Pick a time and we'll show up with a real homepage mockup built for your business — free, no obligation.",
@@ -608,6 +610,7 @@ PAGES.push({
 // ---- thank-you.html
 PAGES.push({
   slug: 'thank-you.html',
+  noindex: true,
   noPopup: true,
   title: 'Thank You — Your Free Mockup Request Is In | A2H',
   description: 'Your free website mockup request has been received. We follow up within 24 hours.',
@@ -623,6 +626,30 @@ PAGES.push({
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
       <a href="work.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">See Our Work</a>
       <a href="pricing.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">See Pricing</a>
+    </div>
+  </div>
+</section>`,
+});
+
+// ---- 404.html: Vercel serves this automatically for unknown URLs (status stays 404).
+PAGES.push({
+  slug: '404.html',
+  noPopup: true,
+  noindex: true,
+  title: 'Page Not Found | A2H',
+  description: 'That page does not exist. Try the homepage, pricing or the industry pages.',
+  jsonLd: [],
+  body: `<section class="relative glow-copper pt-40 pb-24 px-6 overflow-hidden">
+  <div class="grain"></div>
+  <div class="max-w-2xl mx-auto text-center relative">
+    <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">404</p>
+    <h1 class="font-display text-4xl sm:text-5xl tracking-[-0.03em] text-sand mb-5">That page <span class="italic text-copper-light">is not here.</span></h1>
+    <p class="text-lg text-fog leading-[1.7] mb-10">The link may be old or mistyped. These are the pages people usually want.</p>
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a href="/" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">Home</a>
+      <a href="/pricing.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">Pricing</a>
+      <a href="/industries.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">Industries</a>
+      <a href="/book-a-call.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">Book A Call</a>
     </div>
   </div>
 </section>`,
@@ -667,7 +694,7 @@ fs.readdirSync(OUT)
 console.log(`\n  stylesheet cache-busting: site.css?v=${cssHashes['assets/site.css']}  tailwind.css?v=${cssHashes['assets/tailwind.css']}`);
 
 // robots.txt + sitemap.xml
-const urls = ['index.html', ...PAGES.map((p) => p.slug)].filter((s) => s !== 'thank-you.html' && s !== 'mockup.html' && s !== 'watch.html' && s !== 'groomers.html' && s !== 'dental.html');
+const urls = ['index.html', ...PAGES.map((p) => p.slug)].filter((s) => s !== '404.html' && s !== 'thank-you.html' && s !== 'mockup.html' && s !== 'watch.html' && s !== 'groomers.html' && s !== 'dental.html');
 const today = new Date().toISOString().slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -682,8 +709,30 @@ fs.writeFileSync(path.join(OUT, 'sitemap.xml'), sitemap);
 
 fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *
 Allow: /
-Disallow: /thank-you.html
-Disallow: /mockup.html
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
 
 Sitemap: ${SITE}/sitemap.xml
 `);
