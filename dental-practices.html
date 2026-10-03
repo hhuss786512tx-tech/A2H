@@ -57,7 +57,7 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "AI receptionist for dental practices",
-  "description": "An AI receptionist for a dental practice answers every inbound call and text, collects the patient's name and reason for calling, books the appointment onto the calendar, and logs the contact in a CRM. A2H sets this up for Texas dental practices for $1,500 one-time and $397 per month, with no long-term contract.",
+  "description": "An AI receptionist for a dental practice answers every inbound call, collects the patient's name and reason for calling, books the appointment, and tracks every call and caller in a custom CRM. It handles scheduling only, never clinical data. A2H sets this up for Texas dental practices for $1,500 one-time and $397 per month, with no long-term contract.",
   "provider": {
     "@id": "https://a2h.info/#organization"
   },
@@ -124,7 +124,7 @@
       "name": "Do I have to change my business number?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Your existing number stays yours. We wire the receptionist into it rather than replacing it."
+        "text": "No porting and no new number for your callers. You set your existing line to forward to the receptionist when it is busy or unanswered."
       }
     },
     {
@@ -132,7 +132,7 @@
       "name": "What happens when a patient call needs a real person?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The AI Receptionist warm-transfers the call to you or your team when it needs a human. It is built so that no call goes unanswered, not to replace you."
+        "text": "It can transfer the call to you or your team, or take a message and flag the contact in our custom CRM."
       }
     },
     {
@@ -239,12 +239,12 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="max-w-4xl mx-auto text-center relative">
     <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">For Texas Dental Practices</p>
     <h1 class="reveal font-display text-[2.5rem] leading-[1.1] sm:text-5xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">Every patient call answered, <span class="italic text-copper-light">even at lunch.</span></h1>
-    <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto mb-10">The front desk cannot answer every line during check-in, lunch or after hours. The AI Receptionist answers instantly, books the appointment, and logs the patient contact in your own CRM.</p>
+    <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto mb-10">The front desk cannot answer every line during check-in, lunch or after hours. A2H answers instantly, books the appointment, and tracks every call and caller in our custom CRM.</p>
     <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
       <span class="cta-ring rounded-full p-[2px] inline-block">
         <a href="book-a-call.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">Book A Free Setup Call</a>
       </span>
-      <a href="demo.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">Hear a real call</a>
+      <a href="demo.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">Hear a demo call</a>
     </div>
   </div>
 </section>
@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="max-w-3xl mx-auto">
     <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated p-7">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">The short answer</p>
-      <p class="text-sand text-[15px] leading-[1.8]">An AI receptionist for a dental practice answers every inbound call and text, collects the patient's name and reason for calling, books the appointment onto the calendar, and logs the contact in a CRM. A2H sets this up for Texas dental practices for $1,500 one-time and $397 per month, with no long-term contract.</p>
+      <p class="text-sand text-[15px] leading-[1.8]">An AI receptionist for a dental practice answers every inbound call, collects the patient's name and reason for calling, books the appointment, and tracks every call and caller in a custom CRM. It handles scheduling only, never clinical data. A2H sets this up for Texas dental practices for $1,500 one-time and $397 per month, with no long-term contract.</p>
     </div>
   </div>
 </section>
@@ -272,19 +272,34 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
       <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-7" style="transition-delay:70ms">
         <p class="text-copper-light text-sm font-semibold mb-2">02 — Booked, not just noted</p>
-        <h3 class="font-display text-xl text-sand mb-2">Straight onto your calendar</h3>
-        <p class="text-fog text-sm leading-[1.7]">The AI Receptionist books the appointment directly and warm-transfers to a real person when the call needs one.</p>
+        <h3 class="font-display text-xl text-sand mb-2">The appointment, during the call</h3>
+        <p class="text-fog text-sm leading-[1.7]">The AI Receptionist books the visit while the patient is on the line, and can transfer to your front desk when the call needs a person.</p>
       </div>
       <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-7" style="transition-delay:140ms">
         <p class="text-copper-light text-sm font-semibold mb-2">03 — Nothing lost</p>
-        <h3 class="font-display text-xl text-sand mb-2">Every patient contact logged</h3>
-        <p class="text-fog text-sm leading-[1.7]">Name, reason for calling and callback details tracked automatically in your own CRM pipeline board.</p>
+        <h3 class="font-display text-xl text-sand mb-2">Every caller in our custom CRM</h3>
+        <p class="text-fog text-sm leading-[1.7]">Name, reason for calling and callback details tracked automatically in one place.</p>
       </div>
       <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-7" style="transition-delay:210ms">
         <p class="text-copper-light text-sm font-semibold mb-2">04 — Found locally</p>
         <h3 class="font-display text-xl text-sand mb-2">Maps and reviews</h3>
         <p class="text-fog text-sm leading-[1.7]">On the Custom Website tier Google Business Profile is claimed and tuned, because the map result and its reviews are what most patients see first.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="px-6 py-12">
+  <div class="max-w-3xl mx-auto">
+    <div class="reveal rounded-2xl border border-white/5 bg-surface/40 p-7">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Who this is for</p>
+      <p class="text-sand text-[15px] leading-[1.8] mb-3">A2H is a done-for-you service, not a self-serve app. It fits dental practices that:</p>
+      <ul class="text-fog text-sm leading-[1.9] list-disc pl-5 space-y-1">
+        <li>already get a steady flow of inbound calls, and know some go unanswered;</li>
+        <li>treat the phone as a revenue channel and are ready to invest in setup and a monthly service;</li>
+        <li>want it set up for them, with every call and caller tracked in one place.</li>
+      </ul>
+      <p class="text-fog text-sm leading-[1.8] mt-4">If you rarely miss a call, it will not move the needle for you.</p>
     </div>
   </div>
 </section>
@@ -296,53 +311,6 @@ document.addEventListener('DOMContentLoaded', function () {
       <a href="dental-missed-calls.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Stopping missed calls</a>
       <a href="dental-receptionist-options.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Receptionist options compared</a>
     </div>
-  </div>
-</section>
-
-<section id="pricing" class="py-24 px-6">
-  <div class="max-w-5xl mx-auto">
-    <div class="reveal mb-6 text-center">
-      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Transparent Pricing</p>
-      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Flat pricing, published openly</h2>
-      <p class="text-fog text-sm">Fixed setup fee, simple monthly rate &nbsp;·&nbsp; cancel anytime &nbsp;·&nbsp; no long-term contract</p>
-    </div>
-    <div class="reveal grid sm:grid-cols-2 gap-6 items-stretch mt-8 max-w-3xl mx-auto">
-      <div class="pricing-ring pricing-ring-feature rounded-2xl bg-elevated border border-copper/40 shadow-floating card-hover p-8 flex flex-col relative">
-        <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">Our Main Offer</span>
-        <h3 class="text-sand font-semibold text-lg mb-1">AI Receptionist + CRM</h3>
-        <p class="font-display text-3xl text-copper-light mb-1">$1,500<span class="price-period text-base text-fog font-sans"> setup</span></p>
-        <p class="text-xs text-fog mb-4">then <span class="text-sand font-semibold">$397</span>/mo &nbsp;·&nbsp; <span class="text-sand font-semibold">$99</span>/mo per extra team seat</p>
-        <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
-          <li>Answers every call, day or night — no voicemail</li>
-          <li>Books appointments straight into your calendar</li>
-          <li>Every call and contact logged in your own CRM</li>
-          <li>Warm transfer to a real person when it's needed</li>
-          <li>Pipeline board — see every lead's stage at a glance</li>
-          <li><span class="text-sand">Cancel anytime</span> — no long-term contract</li>
-        </ul>
-        <a href="book-a-call.html" class="btn-primary block w-full shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm text-center mt-6">Book A Free Setup Call</a>
-      </div>
-      <div class="pricing-ring rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
-        <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">Most Complete</span>
-        <h3 class="text-sand font-semibold text-lg mb-1">AI Receptionist + CRM + Custom Website</h3>
-        <p class="font-display text-3xl text-copper-light mb-1">$2,000<span class="price-period text-base text-fog font-sans"> setup</span></p>
-        <p class="text-xs text-fog mb-4">then <span class="text-sand font-semibold">$400</span>/mo &nbsp;·&nbsp; <span class="text-sand font-semibold">$99</span>/mo per extra team seat</p>
-        <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
-          <li>Everything in AI Receptionist + CRM</li>
-          <li>Custom hand-coded website (up to 10 pages)</li>
-          <li>Mobile-first responsive design + logo design included</li>
-          <li>Google Business Profile / Maps setup</li>
-          <li>90+ PageSpeed target</li>
-          <li><span class="text-sand">Care Plan included</span> — then $249/mo, cancel anytime</li>
-        </ul>
-        <div class="mt-5 pt-4 border-t border-white/10 space-y-2">
-          <div class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-copper-light shrink-0"><path d="M12 2C10 6 6 8 4 8C4 16 8 20 12 22C16 20 20 16 20 8C18 8 14 6 12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><p class="text-xs text-fog">+ Add AI Website Chatbot for <span class="text-copper-light font-semibold">$99/mo</span></p></div>
-          <div class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-copper-light shrink-0"><path d="M12 2C10 6 6 8 4 8C4 16 8 20 12 22C16 20 20 16 20 8C18 8 14 6 12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><p class="text-xs text-fog">+ Add 3D Company Card for <span class="text-copper-light font-semibold">$99 flat</span></p></div>
-        </div>
-        <a href="book-a-call.html" class="btn-primary block w-full text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm text-center mt-6">Book A Free Setup Call</a>
-      </div>
-    </div>
-    <p class="reveal text-center text-sm text-fog mt-8">Both tiers include a dedicated onboarding call before anything goes live. Google Business Profile setup comes with the Custom Website tier.</p>
   </div>
 </section>
 
@@ -383,14 +351,14 @@ document.addEventListener('DOMContentLoaded', function () {
           <span>Do I have to change my business number?</span>
           <svg class="shrink-0 ml-4 transition-transform duration-200 group-open:rotate-45 text-copper-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
         </summary>
-        <p class="text-fog text-sm leading-[1.8] mt-4">No. Your existing number stays yours. We wire the receptionist into it rather than replacing it.</p>
+        <p class="text-fog text-sm leading-[1.8] mt-4">No porting and no new number for your callers. You set your existing line to forward to the receptionist when it is busy or unanswered.</p>
       </details>
       <details class="reveal group rounded-2xl bg-elevated border border-white/5 px-6 py-5">
         <summary class="flex items-center justify-between cursor-pointer list-none text-sand font-semibold text-sm">
           <span>What happens when a patient call needs a real person?</span>
           <svg class="shrink-0 ml-4 transition-transform duration-200 group-open:rotate-45 text-copper-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
         </summary>
-        <p class="text-fog text-sm leading-[1.8] mt-4">The AI Receptionist warm-transfers the call to you or your team when it needs a human. It is built so that no call goes unanswered, not to replace you.</p>
+        <p class="text-fog text-sm leading-[1.8] mt-4">It can transfer the call to you or your team, or take a message and flag the contact in our custom CRM.</p>
       </details>
       <details class="reveal group rounded-2xl bg-elevated border border-white/5 px-6 py-5">
         <summary class="flex items-center justify-between cursor-pointer list-none text-sand font-semibold text-sm">
@@ -407,14 +375,10 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="max-w-3xl mx-auto text-center">
     <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-4">Other industries</p>
     <div class="reveal flex flex-wrap justify-center gap-3">
-      <a href="hvac.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">HVAC</a>
-      <a href="plumbing.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Plumbing</a>
-      <a href="roofing.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Roofing</a>
-      <a href="electrical.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Electrical</a>
-      <a href="construction.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">General contractors</a>
-      <a href="medical.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Medical practices</a>
+      <a href="orthodontic-practices.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Orthodontic practices</a>
+      <a href="home-care-agencies.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Home care agencies</a>
     </div>
-    <p class="reveal text-sm text-fog mt-8">See a real call: <a href="demo.html" class="link-underline text-copper-light">hear the AI receptionist book a job</a>. Or compare everything on the <a href="pricing.html" class="link-underline text-copper-light">pricing page</a>.</p>
+    <p class="reveal text-sm text-fog mt-8">Hear a <a href="demo.html" class="link-underline text-copper-light">demo call</a> (a recorded test call with a fictional business and caller). Pricing is on the <a href="pricing.html" class="link-underline text-copper-light">pricing page</a>.</p>
   </div>
 </section>
 
@@ -440,11 +404,8 @@ document.addEventListener('DOMContentLoaded', function () {
           <li><a href="medical.html" class="link-underline hover:text-sand transition-colors">Medical Practices</a></li>
           <li><a href="retail.html" class="link-underline hover:text-sand transition-colors">Local Retail</a></li>
           <li><a href="pet-grooming.html" class="link-underline hover:text-sand transition-colors">Mobile Pet Grooming</a></li>
-          <li><a href="hvac.html" class="link-underline hover:text-sand transition-colors">HVAC</a></li>
-          <li><a href="plumbing.html" class="link-underline hover:text-sand transition-colors">Plumbing</a></li>
-          <li><a href="roofing.html" class="link-underline hover:text-sand transition-colors">Roofing</a></li>
-          <li><a href="electrical.html" class="link-underline hover:text-sand transition-colors">Electrical</a></li>
           <li><a href="dental-practices.html" class="link-underline hover:text-sand transition-colors">Dental Practices</a></li>
+          <li><a href="orthodontic-practices.html" class="link-underline hover:text-sand transition-colors">Orthodontic Practices</a></li>
           <li><a href="home-care-agencies.html" class="link-underline hover:text-sand transition-colors">Home Care</a></li>
         </ul>
       </div>

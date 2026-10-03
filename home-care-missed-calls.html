@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Missed Family Inquiries for Home Care Agencies | A2H</title>
-<meta name="description" content="Families often call home care agencies after hours. See how an AI receptionist answers, captures the inquiry and books an assessment.">
+<meta name="description" content="An inquiry that hits voicemail becomes a call to the next agency. See how A2H answers family inquiries and books the assessment.">
 <link rel="canonical" href="https://a2h.info/home-care-missed-calls.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141110'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-style='italic' fill='%23c9702f' text-anchor='middle'%3EA2H%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Missed Family Inquiries for Home Care Agencies | A2H">
-<meta property="og:description" content="Families often call home care agencies after hours. See how an AI receptionist answers, captures the inquiry and books an assessment.">
+<meta property="og:description" content="An inquiry that hits voicemail becomes a call to the next agency. See how A2H answers family inquiries and books the assessment.">
 <meta property="og:image" content="https://a2h.info/assets/og-image.png">
 <meta property="og:url" content="https://a2h.info/home-care-missed-calls.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Missed Family Inquiries for Home Care Agencies | A2H">
-<meta name="twitter:description" content="Families often call home care agencies after hours. See how an AI receptionist answers, captures the inquiry and books an assessment.">
+<meta name="twitter:description" content="An inquiry that hits voicemail becomes a call to the next agency. See how A2H answers family inquiries and books the assessment.">
 <meta name="twitter:image" content="https://a2h.info/assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,7 +57,7 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "AI receptionist for home care agencies",
-  "description": "Home care agencies miss family inquiries in the evening, on weekends and whenever the office is busy, and a family comparing agencies may move on to the next one. An AI receptionist answers every call, captures the family's name, who needs care and a callback number, books an assessment onto your calendar, and logs the inquiry in a CRM.",
+  "description": "Home care agencies miss family inquiries in the evening, on weekends and whenever the office is busy, and an inquiry that hits voicemail becomes a call to the next agency. A2H answers every inquiry, takes the family's details, books the assessment, and tracks every inquiry in our custom CRM. It handles intake and scheduling only, never clinical records.",
   "provider": {
     "@id": "https://a2h.info/#organization"
   },
@@ -81,7 +81,7 @@
       "name": "Does it handle caregiver call-outs or shift scheduling?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. The AI Receptionist handles inquiry calls: answering, capturing the details and booking an assessment. It does not manage caregiver scheduling or call-out coverage."
+        "text": "No. A2H handles inquiry calls: answering, capturing the details and booking an assessment. It does not manage caregiver scheduling or call-out coverage."
       }
     },
     {
@@ -89,15 +89,7 @@
       "name": "Is this for medical home health agencies?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A2H is built for non-medical home care agencies. The receptionist does not give clinical advice, and calls that need a person are transferred."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does it collect health information?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It captures contact details and who needs care so your team can follow up. If you need to collect protected health information, use dedicated compliant software; we can link to it rather than rebuild it."
+        "text": "A2H is built for non-medical home care agencies. It handles intake and scheduling only, never clinical records, and does not give clinical advice."
       }
     },
     {
@@ -105,7 +97,7 @@
       "name": "Do I have to change my business number?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Your existing number stays yours. We wire the receptionist into it rather than replacing it."
+        "text": "No porting and no new number for your callers. You set your existing line to forward to the receptionist when it is busy or unanswered."
       }
     },
     {
@@ -113,7 +105,7 @@
       "name": "What happens when a inquiry call needs a real person?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The AI Receptionist warm-transfers the call to you or your team when it needs a human. It is built so that no call goes unanswered, not to replace you."
+        "text": "It can transfer the call to your office, or take a message and flag the contact in our custom CRM."
       }
     },
     {
@@ -122,6 +114,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "A2H sets the receptionist up remotely for Texas businesses, including those around Houston, Dallas, Austin, San Antonio and Fort Worth."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does it cost, and can I cancel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A2H covers pricing on a free 15-minute call. There is a real contract with a cancel-anytime clause, and no long-term lock-in."
       }
     }
   ]
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <span class="cta-ring rounded-full p-[2px] inline-block">
         <a href="book-a-call.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">Book A Free Setup Call</a>
       </span>
-      <a href="demo.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">Hear a real call</a>
+      <a href="demo.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">Hear a demo call</a>
     </div>
   </div>
 </section>
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="max-w-3xl mx-auto">
     <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated p-7">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">The short answer</p>
-      <p class="text-sand text-[15px] leading-[1.8]">Home care agencies miss family inquiries in the evening, on weekends and whenever the office is busy, and a family comparing agencies may move on to the next one. An AI receptionist answers every call, captures the family's name, who needs care and a callback number, books an assessment onto your calendar, and logs the inquiry in a CRM.</p>
+      <p class="text-sand text-[15px] leading-[1.8]">Home care agencies miss family inquiries in the evening, on weekends and whenever the office is busy, and an inquiry that hits voicemail becomes a call to the next agency. A2H answers every inquiry, takes the family's details, books the assessment, and tracks every inquiry in our custom CRM. It handles intake and scheduling only, never clinical records.</p>
     </div>
   </div>
 </section>
@@ -280,28 +280,28 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="max-w-5xl mx-auto">
     <div class="reveal mb-12 text-center">
       <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">The Fix</p>
-      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">What changes with an AI receptionist</h2>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">What changes with A2H</h2>
     </div>
     <div class="grid sm:grid-cols-2 gap-5">
       <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-7" style="transition-delay:0ms">
         <p class="text-copper-light text-sm font-semibold mb-2">01 — Answered</p>
-        <h3 class="font-display text-xl text-sand mb-2">Every call, day or night</h3>
+        <h3 class="font-display text-xl text-sand mb-2">Every inquiry, day or night</h3>
         <p class="text-fog text-sm leading-[1.7]">The family reaches someone on the first try, including after hours.</p>
       </div>
       <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-7" style="transition-delay:70ms">
         <p class="text-copper-light text-sm font-semibold mb-2">02 — Captured</p>
         <h3 class="font-display text-xl text-sand mb-2">Who needs care, and how to reach them</h3>
-        <p class="text-fog text-sm leading-[1.7]">The AI Receptionist collects the family's name, who needs care and a callback number.</p>
+        <p class="text-fog text-sm leading-[1.7]">It takes the family's name, who needs care and a callback number.</p>
       </div>
       <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-7" style="transition-delay:140ms">
         <p class="text-copper-light text-sm font-semibold mb-2">03 — Booked</p>
-        <h3 class="font-display text-xl text-sand mb-2">An assessment on your calendar</h3>
-        <p class="text-fog text-sm leading-[1.7]">It books the assessment directly, so the next step is set before the call ends.</p>
+        <h3 class="font-display text-xl text-sand mb-2">The assessment</h3>
+        <p class="text-fog text-sm leading-[1.7]">It books the assessment during the call, so the next step is set before the family hangs up.</p>
       </div>
       <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-7" style="transition-delay:210ms">
-        <p class="text-copper-light text-sm font-semibold mb-2">04 — Logged</p>
-        <h3 class="font-display text-xl text-sand mb-2">Every inquiry in your CRM</h3>
-        <p class="text-fog text-sm leading-[1.7]">Each inquiry lands in your own pipeline board, and calls that need a person are transferred.</p>
+        <p class="text-copper-light text-sm font-semibold mb-2">04 — Tracked</p>
+        <h3 class="font-display text-xl text-sand mb-2">Every inquiry in our custom CRM</h3>
+        <p class="text-fog text-sm leading-[1.7]">Each inquiry becomes a contact, and calls that need a person can be transferred or flagged.</p>
       </div>
     </div>
   </div>
@@ -316,35 +316,28 @@ document.addEventListener('DOMContentLoaded', function () {
           <span>Does it handle caregiver call-outs or shift scheduling?</span>
           <svg class="shrink-0 ml-4 transition-transform duration-200 group-open:rotate-45 text-copper-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
         </summary>
-        <p class="text-fog text-sm leading-[1.8] mt-4">No. The AI Receptionist handles inquiry calls: answering, capturing the details and booking an assessment. It does not manage caregiver scheduling or call-out coverage.</p>
+        <p class="text-fog text-sm leading-[1.8] mt-4">No. A2H handles inquiry calls: answering, capturing the details and booking an assessment. It does not manage caregiver scheduling or call-out coverage.</p>
       </details>
       <details class="reveal group rounded-2xl bg-elevated border border-white/5 px-6 py-5">
         <summary class="flex items-center justify-between cursor-pointer list-none text-sand font-semibold text-sm">
           <span>Is this for medical home health agencies?</span>
           <svg class="shrink-0 ml-4 transition-transform duration-200 group-open:rotate-45 text-copper-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
         </summary>
-        <p class="text-fog text-sm leading-[1.8] mt-4">A2H is built for non-medical home care agencies. The receptionist does not give clinical advice, and calls that need a person are transferred.</p>
-      </details>
-      <details class="reveal group rounded-2xl bg-elevated border border-white/5 px-6 py-5">
-        <summary class="flex items-center justify-between cursor-pointer list-none text-sand font-semibold text-sm">
-          <span>Does it collect health information?</span>
-          <svg class="shrink-0 ml-4 transition-transform duration-200 group-open:rotate-45 text-copper-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-        </summary>
-        <p class="text-fog text-sm leading-[1.8] mt-4">It captures contact details and who needs care so your team can follow up. If you need to collect protected health information, use dedicated compliant software; we can link to it rather than rebuild it.</p>
+        <p class="text-fog text-sm leading-[1.8] mt-4">A2H is built for non-medical home care agencies. It handles intake and scheduling only, never clinical records, and does not give clinical advice.</p>
       </details>
       <details class="reveal group rounded-2xl bg-elevated border border-white/5 px-6 py-5">
         <summary class="flex items-center justify-between cursor-pointer list-none text-sand font-semibold text-sm">
           <span>Do I have to change my business number?</span>
           <svg class="shrink-0 ml-4 transition-transform duration-200 group-open:rotate-45 text-copper-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
         </summary>
-        <p class="text-fog text-sm leading-[1.8] mt-4">No. Your existing number stays yours. We wire the receptionist into it rather than replacing it.</p>
+        <p class="text-fog text-sm leading-[1.8] mt-4">No porting and no new number for your callers. You set your existing line to forward to the receptionist when it is busy or unanswered.</p>
       </details>
       <details class="reveal group rounded-2xl bg-elevated border border-white/5 px-6 py-5">
         <summary class="flex items-center justify-between cursor-pointer list-none text-sand font-semibold text-sm">
           <span>What happens when a inquiry call needs a real person?</span>
           <svg class="shrink-0 ml-4 transition-transform duration-200 group-open:rotate-45 text-copper-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
         </summary>
-        <p class="text-fog text-sm leading-[1.8] mt-4">The AI Receptionist warm-transfers the call to you or your team when it needs a human. It is built so that no call goes unanswered, not to replace you.</p>
+        <p class="text-fog text-sm leading-[1.8] mt-4">It can transfer the call to your office, or take a message and flag the contact in our custom CRM.</p>
       </details>
       <details class="reveal group rounded-2xl bg-elevated border border-white/5 px-6 py-5">
         <summary class="flex items-center justify-between cursor-pointer list-none text-sand font-semibold text-sm">
@@ -352,6 +345,13 @@ document.addEventListener('DOMContentLoaded', function () {
           <svg class="shrink-0 ml-4 transition-transform duration-200 group-open:rotate-45 text-copper-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
         </summary>
         <p class="text-fog text-sm leading-[1.8] mt-4">A2H sets the receptionist up remotely for Texas businesses, including those around Houston, Dallas, Austin, San Antonio and Fort Worth.</p>
+      </details>
+      <details class="reveal group rounded-2xl bg-elevated border border-white/5 px-6 py-5">
+        <summary class="flex items-center justify-between cursor-pointer list-none text-sand font-semibold text-sm">
+          <span>What does it cost, and can I cancel?</span>
+          <svg class="shrink-0 ml-4 transition-transform duration-200 group-open:rotate-45 text-copper-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </summary>
+        <p class="text-fog text-sm leading-[1.8] mt-4">A2H covers pricing on a free 15-minute call. There is a real contract with a cancel-anytime clause, and no long-term lock-in.</p>
       </details>
     </div>
   </div>
@@ -375,10 +375,10 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="reveal flex flex-wrap justify-center gap-3">
       <a href="home-care-agencies.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Home care agencies</a>
       <a href="home-care-receptionist-options.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Receptionist options compared</a>
-      <a href="pet-grooming.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Mobile pet groomers</a>
       <a href="dental-practices.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Dental practices</a>
+      <a href="orthodontic-practices.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Orthodontic practices</a>
     </div>
-    <p class="reveal text-sm text-fog mt-8">See a real call: <a href="demo.html" class="link-underline text-copper-light">hear the AI receptionist book a job</a>. Pricing is on the <a href="pricing.html" class="link-underline text-copper-light">pricing page</a>.</p>
+    <p class="reveal text-sm text-fog mt-8">Hear a <a href="demo.html" class="link-underline text-copper-light">demo call</a> (a recorded test call with a fictional business and caller). Pricing is covered on a free 15-minute call.</p>
   </div>
 </section>
 
@@ -404,11 +404,8 @@ document.addEventListener('DOMContentLoaded', function () {
           <li><a href="medical.html" class="link-underline hover:text-sand transition-colors">Medical Practices</a></li>
           <li><a href="retail.html" class="link-underline hover:text-sand transition-colors">Local Retail</a></li>
           <li><a href="pet-grooming.html" class="link-underline hover:text-sand transition-colors">Mobile Pet Grooming</a></li>
-          <li><a href="hvac.html" class="link-underline hover:text-sand transition-colors">HVAC</a></li>
-          <li><a href="plumbing.html" class="link-underline hover:text-sand transition-colors">Plumbing</a></li>
-          <li><a href="roofing.html" class="link-underline hover:text-sand transition-colors">Roofing</a></li>
-          <li><a href="electrical.html" class="link-underline hover:text-sand transition-colors">Electrical</a></li>
           <li><a href="dental-practices.html" class="link-underline hover:text-sand transition-colors">Dental Practices</a></li>
+          <li><a href="orthodontic-practices.html" class="link-underline hover:text-sand transition-colors">Orthodontic Practices</a></li>
           <li><a href="home-care-agencies.html" class="link-underline hover:text-sand transition-colors">Home Care</a></li>
         </ul>
       </div>

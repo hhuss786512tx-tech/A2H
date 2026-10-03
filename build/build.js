@@ -195,8 +195,8 @@ PAGES.push({
 // ---- shared by process.html and book-a-call.html (every answer is a documented fact)
 const SETUP_FAQ = [
   ['How much does the AI Receptionist cost?', 'AI Receptionist + CRM is $1,500 one-time setup, then $397 per month, with no long-term contract and cancel anytime. An extra CRM seat is $99 per month. Adding a hand-coded website with Google Business Profile setup is $2,000 setup and $400 per month.'],
-  ['Do I have to change my business number?', 'No. Your existing number stays yours. We wire the receptionist into it rather than replacing it.'],
-  ['What happens when a call needs a real person?', 'The AI Receptionist warm-transfers the call to you or your team when it needs a human. It is built so that no call goes unanswered, not to replace you.'],
+  ['Do I have to change my business number?', 'No porting and no new number for your callers. You set your existing line to forward to the receptionist when it is busy or unanswered.'],
+  ['What happens when a call needs a real person?', 'It can transfer the call to you or your team, or take a message and flag the contact in our custom CRM.'],
   ['Do I need a new website to use it?', 'No. AI Receptionist + CRM works on its own. The Custom Website tier is optional and adds a hand-coded site and Google Business Profile setup.'],
 ];
 
@@ -211,8 +211,8 @@ PAGES.push({
     description: 'Three steps from a free 15-minute setup call to every call answered and every contact logged.',
     step: [
       { '@type': 'HowToStep', position: 1, name: 'Free 15-minute setup call', text: 'We look at how your calls come in today and show you how the AI receptionist would answer and book them.' },
-      { '@type': 'HowToStep', position: 2, name: 'We set it up on your number', text: 'Your existing business number stays yours. We wire the receptionist into it and connect it to your calendar.' },
-      { '@type': 'HowToStep', position: 3, name: 'Every call answered, every contact logged', text: 'Calls and texts are answered, appointments are booked, every contact lands in your CRM, and calls that need a person are warm-transferred to you.' },
+      { '@type': 'HowToStep', position: 2, name: 'We set it up on your number', text: 'You set your existing business line to forward to the receptionist when it is busy or unanswered. No number porting.' },
+      { '@type': 'HowToStep', position: 3, name: 'Every call answered, every contact logged', text: 'Every call is answered, the visit is booked, every call and caller is tracked in our custom CRM, and calls that need a person can be transferred to you.' },
     ],
   }, faqLd(SETUP_FAQ), {
     '@context': 'https://schema.org',
@@ -235,8 +235,8 @@ PAGES.push({
     }),
     cards('The AI Receptionist + CRM', 'Three steps, start to finish', [
       { tag: 'Free, 15 minutes', h: 'We look at how your calls come in', p: 'On a free setup call we look at how calls reach you today, then show you how the AI receptionist would answer and book them. No obligation.' },
-      { tag: 'Your number stays yours', h: 'We set it up', p: 'We wire the receptionist into your existing business number and connect it to your calendar. Your number is not replaced or ported away.' },
-      { tag: 'Always on', h: 'Every call answered, every contact logged', p: 'Calls and texts are answered, appointments are booked, every contact lands in your own CRM pipeline, and calls that need a person are warm-transferred to you.' },
+      { tag: 'Your number stays yours', h: 'We set it up', p: 'You set your existing business line to forward to the receptionist when it is busy or unanswered. No number porting and no new number for your callers.' },
+      { tag: 'Always on', h: 'Every call answered, every contact logged', p: 'Every call is answered, the visit is booked, and every call and caller is tracked in our custom CRM. Calls that need a person can be transferred to you.' },
     ], 3),
     cards('Optional: The Custom Website', 'Four steps, start to finish', [
       { tag: 'Free, no obligation', h: 'We build you a mockup', p: 'Tell us your niche, your color scheme and a site you like the look of — we design a free homepage mockup made specifically for your business, no charge, no obligation. If you love it, we build the rest.' },
@@ -298,13 +298,10 @@ PAGES.push({
 </section>`,
     `<section class="px-6 pb-16">
   <div class="max-w-5xl mx-auto">
-    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5 text-center">Find your trade</p>
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5 text-center">Find your practice</p>
     <div class="reveal flex flex-wrap justify-center gap-3">
-      <a href="hvac.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">HVAC</a>
-      <a href="plumbing.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Plumbing</a>
-      <a href="roofing.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Roofing</a>
-      <a href="electrical.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Electrical</a>
       <a href="dental-practices.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Dental practices</a>
+      <a href="orthodontic-practices.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Orthodontic practices</a>
       <a href="home-care-agencies.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Home care agencies</a>
     </div>
   </div>
@@ -545,7 +542,6 @@ const PET_FAQ = [
   ['Do I have to change my business number?', 'No — your existing number stays yours. We wire the receptionist into it, we do not replace it.'],
   ['What about clients with recurring appointments?', 'Every contact and appointment is logged automatically in your CRM pipeline, so repeat clients and their pet details are always on hand, not scattered across texts and voicemails.'],
   ['What if a caller needs something the AI cannot handle?', 'It warm-transfers to you when a call needs a real person — it is designed to never let a call go unanswered, not to replace you.'],
-  ['Do you work with groomers in my part of Texas?', 'A2H sets the receptionist up remotely for Texas businesses, including mobile groomers around Houston, Dallas, Austin, San Antonio and Fort Worth.'],
 ];
 
 PAGES.push({
@@ -566,14 +562,13 @@ PAGES.push({
       { tag: 'Nothing lost', h: 'Every contact logged', p: 'Names, pet details, and follow-ups tracked automatically in your own CRM pipeline board — nothing relies on a sticky note in the van.' },
       { tag: 'Found locally', h: 'Maps and reviews', p: 'On the Custom Website tier, Google Business Profile is claimed and tuned, because most pet owners search "mobile groomer near me" before they ever see a website.' },
     ]),
-    NP.guides('pet'),
     B.pricingTable({ heading: 'Flat pricing, published openly' }),
     faqSection(PET_FAQ),
   ].join('\n\n'),
 });
 
 // ---- hvac / plumbing / roofing / electrical / dental-practices (generated from one template)
-PAGES.push(...require('./verticals')({ SITE, ORG, serviceLd, faqLd, hero, cards, faqSection, B, guides: NP.guides }));
+PAGES.push(...require('./verticals')({ SITE, ORG, serviceLd, faqLd, hero, cards, faqSection, B, guides: NP.guides, fit: NP.fit }));
 PAGES.push(...NP.pages);
 
 // ---- privacy.html
@@ -731,7 +726,7 @@ fs.readdirSync(OUT)
 console.log(`\n  stylesheet cache-busting: site.css?v=${cssHashes['assets/site.css']}  tailwind.css?v=${cssHashes['assets/tailwind.css']}`);
 
 // robots.txt + sitemap.xml
-const urls = ['index.html', ...PAGES.filter((p) => !p.funnel).map((p) => p.slug)].filter((s) => s !== '404.html' && s !== 'thank-you.html' && s !== 'mockup.html' && s !== 'watch.html');
+const urls = ['index.html', ...PAGES.filter((p) => !p.funnel && !p.noindex).map((p) => p.slug)].filter((s) => s !== '404.html' && s !== 'thank-you.html' && s !== 'mockup.html' && s !== 'watch.html');
 const today = new Date().toISOString().slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

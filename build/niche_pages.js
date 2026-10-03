@@ -1,28 +1,31 @@
-// Niche landing pages for A2H's three niches: mobile pet groomers, dental practices, home care agencies.
-// For each niche: a "missed calls" guide and a "receptionist options" comparison, plus (for home care)
-// the hub page. Pet and dental hubs already exist (pet-grooming.html, dental-practices.html) and get a guides block.
+// Niche landing pages for A2H's active niches: dental practices, orthodontic practices, home care agencies.
+// (Mobile pet groomers are PAUSED as of 2026-10-03: no new pet pages; pet-grooming.html is left as it was.)
+// For each niche: a "missed calls" guide and a "receptionist options" comparison. Orthodontic + home care also get
+// a hub page; the dental hub is dental-practices.html (build/verticals.js) and uses guides()/fit() from here.
 //
-// COPY RULES (do not relax without checking the product):
-//  - Only claim what is documented: answers calls and texts, books onto the calendar, logs contacts in the CRM,
-//    warm-transfers to a person, keeps the customer's own number, works remotely for Texas businesses.
-//  - NO prices anywhere in copy or schema: per-niche pricing is not confirmed. Point to pricing.html / the setup call.
-//  - NO invented statistics, testimonials, compliance or licensing claims.
-//  - Home care: inquiry capture + assessment booking ONLY. No caregiver call-out coverage, shift scheduling,
-//    scheduling-software sync, SMS or deposits.
+// COPY RULES (do not relax without checking the product / the offers doc):
+//  - Use the decided pitch: "A2H answers, books the {visit}, and tracks every call and caller in our custom CRM.
+//    It handles scheduling only, never clinical data."
+//  - NEVER say "on your calendar" / "calendar sync" (real Google Calendar sync is not built), and NEVER mention
+//    texts/SMS (not available). Do not say it connects to practice-management software (it does not today).
+//  - Phone: the client forwards their existing line (when busy / no answer). No number porting.
+//  - NO prices in copy or schema: per-niche pricing is undecided. Say pricing is covered on the 15-minute call.
+//  - NO invented statistics, testimonials, guarantees, compliance or licensing claims.
+//  - Home care: intake + assessment booking ONLY. No caregiver call-out coverage or shift scheduling.
 
 module.exports = function nichePages({ SITE, ORG, faqLd, hero, cards, faqSection, B }) {
   const NICHES = {
-    pet: {
-      hub: 'pet-grooming.html', hubName: 'Mobile pet groomers', slug: 'pet-grooming',
-      who: 'a mobile pet groomer', callerWord: 'call', apptWord: 'appointment', audience: 'Mobile pet groomers',
-    },
     dental: {
       hub: 'dental-practices.html', hubName: 'Dental practices', slug: 'dental',
-      who: 'a dental practice', callerWord: 'patient call', apptWord: 'appointment', audience: 'Dental practices',
+      callerWord: 'patient call', apptWord: 'appointment', audience: 'Dental practices',
+    },
+    ortho: {
+      hub: 'orthodontic-practices.html', hubName: 'Orthodontic practices', slug: 'orthodontic',
+      callerWord: 'new-patient call', apptWord: 'new-patient exam', audience: 'Orthodontic practices',
     },
     home: {
       hub: 'home-care-agencies.html', hubName: 'Home care agencies', slug: 'home-care',
-      who: 'a home care agency', callerWord: 'inquiry call', apptWord: 'assessment', audience: 'Non-medical home care agencies',
+      callerWord: 'inquiry call', apptWord: 'assessment', audience: 'Non-medical home care agencies',
     },
   };
 
@@ -55,7 +58,22 @@ module.exports = function nichePages({ SITE, ORG, faqLd, hero, cards, faqSection
 
   const pill = (href, label) => `<a href="${href}" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">${label}</a>`;
 
-  // Guides block shown on each niche hub page.
+  // Who this is for: the ICP is an owner who treats the phone as a revenue channel and is ready to invest.
+  const fit = (noun) => `<section class="px-6 py-12">
+  <div class="max-w-3xl mx-auto">
+    <div class="reveal rounded-2xl border border-white/5 bg-surface/40 p-7">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Who this is for</p>
+      <p class="text-sand text-[15px] leading-[1.8] mb-3">A2H is a done-for-you service, not a self-serve app. It fits ${noun} that:</p>
+      <ul class="text-fog text-sm leading-[1.9] list-disc pl-5 space-y-1">
+        <li>already get a steady flow of inbound calls, and know some go unanswered;</li>
+        <li>treat the phone as a revenue channel and are ready to invest in setup and a monthly service;</li>
+        <li>want it set up for them, with every call and caller tracked in one place.</li>
+      </ul>
+      <p class="text-fog text-sm leading-[1.8] mt-4">If you rarely miss a call, it will not move the needle for you.</p>
+    </div>
+  </div>
+</section>`;
+
   const guides = (key) => {
     const n = NICHES[key];
     return `<section class="px-6 pb-16">
@@ -81,53 +99,37 @@ module.exports = function nichePages({ SITE, ORG, faqLd, hero, cards, faqSection
       ${sibling}
       ${others.join('\n      ')}
     </div>
-    <p class="reveal text-sm text-fog mt-8">See a real call: <a href="demo.html" class="link-underline text-copper-light">hear the AI receptionist book a job</a>. Pricing is on the <a href="pricing.html" class="link-underline text-copper-light">pricing page</a>.</p>
+    <p class="reveal text-sm text-fog mt-8">Hear a <a href="demo.html" class="link-underline text-copper-light">demo call</a> (a recorded test call with a fictional business and caller). Pricing is covered on a free 15-minute call.</p>
   </div>
 </section>`;
   };
 
-  const shared = (n) => [
-    ['Do I have to change my business number?', 'No. Your existing number stays yours. We wire the receptionist into it rather than replacing it.'],
-    [`What happens when a ${n.callerWord} needs a real person?`, 'The AI Receptionist warm-transfers the call to you or your team when it needs a human. It is built so that no call goes unanswered, not to replace you.'],
-    ['Where does A2H work?', 'A2H sets the receptionist up remotely for Texas businesses, including those around Houston, Dallas, Austin, San Antonio and Fort Worth.'],
-  ];
+  const forwarding = ['Do I have to change my business number?', 'No porting and no new number for your callers. You set your existing line to forward to the receptionist when it is busy or unanswered.'];
+  const transfer = (n, who) => [`What happens when a ${n.callerWord} needs a real person?`, `It can transfer the call to ${who}, or take a message and flag the contact in our custom CRM.`];
+  const where = ['Where does A2H work?', 'A2H sets the receptionist up remotely for Texas businesses, including those around Houston, Dallas, Austin, San Antonio and Fort Worth.'];
+  const cost = ['What does it cost, and can I cancel?', 'A2H covers pricing on a free 15-minute call. There is a real contract with a cancel-anytime clause, and no long-term lock-in.'];
+
+  const PRACTICE_SOFTWARE = {
+    dental: ['Does it work with my practice-management software?', 'Not directly today. Every call produces a summary your front desk can add in seconds, and your practice software stays your system of record.'],
+    ortho: ['Does it work with my practice software?', 'Not directly. It does not connect to Ortho2, Cloud 9, OrthoTrac or Dentrix today. Every call produces a summary your front desk can add in seconds, and your practice software stays your system of record.'],
+  };
+  const HIPAA = ['Is this HIPAA-safe?', 'It handles scheduling, not clinical data. Calls collect a name, the reason for the call and callback details. It should not be used to collect health or payment-card information. Anything that touches protected health information belongs in your existing compliant systems.'];
+
+  const shared = (key) => {
+    const n = NICHES[key];
+    const who = key === 'home' ? 'your office' : 'your front desk';
+    return [forwarding, transfer(n, who), where, cost];
+  };
 
   // ---------------------------------------------------------------- missed-calls guides
   const MISSED = {
-    pet: {
-      title: 'Missed Calls for Mobile Groomers: The Fix | A2H',
-      description: 'Mobile groomers miss calls mid-groom and on the road. See how an AI receptionist answers, books the appointment and logs the contact in a CRM.',
-      eyebrow: 'For Mobile Pet Groomers',
-      h1: 'Every missed call is a groom <span class="italic text-copper-light">you never booked.</span>',
-      sub: 'When your hands are on a dog or the van is moving, the phone goes unanswered, and the caller books the next mobile groomer on Google. Here is how to stop that.',
-      answer: 'Mobile pet groomers miss calls while grooming, while driving between jobs and after hours, and a caller who reaches voicemail will often try the next groomer. An AI receptionist answers every call and text, books the appointment onto your calendar, logs the contact in a CRM, and transfers to you when a call needs a person.',
-      problemHeading: 'Where mobile groomers lose calls',
-      problems: [
-        { tag: 'Hands on a dog', h: 'Mid-groom', p: 'You cannot safely answer while you are grooming. The call rings out or goes to voicemail.' },
-        { tag: 'Between jobs', h: 'On the road', p: 'Driving from one appointment to the next is half the day, and calls land when you cannot pick up.' },
-        { tag: 'Off the clock', h: 'Evenings and weekends', p: 'Pet owners search and call when they are home, which is often when you are not working.' },
-        { tag: 'Nothing to call back', h: 'No name, no number', p: 'A call that rings out with no voicemail leaves no record, so there is nobody to follow up with.' },
-      ],
-      fixHeading: 'What changes with an AI receptionist',
-      fixes: [
-        { tag: 'Answered', h: 'Every call and text, instantly', p: 'The caller reaches someone while they are still deciding who to book.' },
-        { tag: 'Booked', h: 'Straight onto your calendar', p: 'The AI Receptionist books the appointment itself instead of taking a message.' },
-        { tag: 'Logged', h: 'Every contact in your CRM', p: 'Name, what the caller wanted and a callback number are logged automatically in your pipeline board.' },
-        { tag: 'Backup', h: 'Transfers when it should', p: 'Calls that need you are warm-transferred, so unusual requests still reach a person.' },
-      ],
-      faq: [
-        ['Why do mobile groomers miss so many calls?', 'The work is hands-on and the day is spent moving between jobs, so there is rarely a moment to answer a phone. That is a feature of the job, not a flaw in how you run it.'],
-        ['Can I just call people back after the groom?', 'You can, and many groomers do. The risk is that a caller who reaches no one often tries the next groomer first. The AI answers while the caller is still on the line.'],
-        ['How do I see what calls came in?', 'Every contact is logged in your CRM pipeline board, so you can see who called and what they wanted without digging through a call log.'],
-      ],
-    },
     dental: {
       title: 'Missed Calls at the Dental Front Desk | A2H',
-      description: 'The front desk cannot answer every line during check-in, lunch or after hours. See how an AI receptionist answers and books the appointment.',
+      description: 'New-patient calls that hit voicemail at lunch, after hours or during a rush book the practice that picked up. See how A2H answers and books them.',
       eyebrow: 'For Dental Practices',
       h1: 'The front desk cannot answer <span class="italic text-copper-light">every line.</span>',
       sub: 'While one patient checks in, another line rings. At lunch and after hours, nobody picks up at all. Here is how to stop losing those calls.',
-      answer: 'Dental practices miss calls while the front desk is busy with check-in, during lunch and after hours, and a patient who cannot reach the office may call another practice. An AI receptionist answers every call and text, collects the patient\'s name and reason for calling, books the appointment onto your calendar, and logs the contact in a CRM.',
+      answer: 'Dental practices miss new-patient calls at lunch, after hours and during a rush at the front desk, and a caller who reaches voicemail often books the practice that picked up. A2H answers every call, books the appointment, and tracks every call and caller in our custom CRM. It handles scheduling only, never clinical data.',
       problemHeading: 'Where dental practices lose calls',
       problems: [
         { tag: 'Busy desk', h: 'During check-in', p: 'The person answering the phone is also greeting patients, so a second line rings out.' },
@@ -135,26 +137,47 @@ module.exports = function nichePages({ SITE, ORG, faqLd, hero, cards, faqSection
         { tag: 'Closed office', h: 'After hours', p: 'New patients searching in the evening reach a recording and may move on to another practice.' },
         { tag: 'Nothing captured', h: 'No callback details', p: 'A hang-up leaves no name and no number, so the front desk has nobody to follow up with.' },
       ],
-      fixHeading: 'What changes with an AI receptionist',
+      fixHeading: 'What changes with A2H',
       fixes: [
-        { tag: 'Answered', h: 'Every call and text, instantly', p: 'No patient is sent to voicemail because the desk was busy or the office was closed.' },
-        { tag: 'Booked', h: 'Straight onto your calendar', p: 'The appointment is booked directly, with the patient\'s name and reason for calling attached.' },
-        { tag: 'Logged', h: 'Every contact in your CRM', p: 'Names, reasons for calling and callback details are tracked in your own pipeline board.' },
-        { tag: 'Backup', h: 'Transfers when it should', p: 'Calls that need a person are warm-transferred to your team.' },
+        { tag: 'Answered', h: 'Every call, instantly', p: 'No patient is sent to voicemail because the desk was busy or the office was closed.' },
+        { tag: 'Booked', h: 'The appointment, during the call', p: 'It takes the patient\'s name, the reason for the call and a callback number, then books the visit.' },
+        { tag: 'Tracked', h: 'Every caller in our custom CRM', p: 'Each call becomes a contact with the reason for the visit, so nothing depends on a note passed between staff.' },
+        { tag: 'Backup', h: 'Hands off when it should', p: 'It can transfer to your front desk, or take a message and flag the contact.' },
       ],
-      faq: [
-        ['Is the AI receptionist HIPAA compliant?', 'The AI Receptionist and CRM handle scheduling, not clinical data. Calls collect only a name, the reason for the call and callback details so your staff can follow up. If you need intake that touches protected health information, that belongs in dedicated HIPAA-compliant software, and we link to it rather than rebuild it.'],
-        ['Does it handle insurance or clinical questions?', 'It handles the front-desk call: answering, collecting the basics and booking. Anything clinical or insurance-specific is passed to your team rather than answered by the AI.'],
-        ['What does the front desk see afterwards?', 'Every call is logged in your CRM pipeline board with the patient\'s name and reason for calling, so the team can follow up without a callback list on paper.'],
+      faq: [HIPAA, PRACTICE_SOFTWARE.dental,
+        ['Does it handle insurance or clinical questions?', 'No. It handles the front-desk call: answering, collecting the basics and booking. Anything clinical or insurance-specific is passed to your team rather than answered by the AI.']],
+    },
+    ortho: {
+      title: 'Missed New-Patient Calls at Orthodontic Practices | A2H',
+      description: 'A parent who reaches voicemail books the orthodontist who picked up. See how A2H answers new-patient calls and books the exam.',
+      eyebrow: 'For Orthodontic Practices',
+      h1: 'A parent who reaches voicemail <span class="italic text-copper-light">calls the next orthodontist.</span>',
+      sub: 'New-patient exam calls arrive at lunch, after school and after hours, when the team is with patients or gone for the day. Here is how to stop losing them.',
+      answer: 'Orthodontic practices miss new-patient exam calls while the team is with patients, at lunch and after hours, and a parent who reaches voicemail rarely leaves a message. A2H answers every call, books the new-patient exam, and tracks every call and caller in our custom CRM. It handles scheduling only, never clinical data.',
+      problemHeading: 'Where orthodontic practices lose calls',
+      problems: [
+        { tag: 'Chairside', h: 'While the team is with patients', p: 'The people who answer the phone are also running the schedule, so a second line rings out.' },
+        { tag: 'Midday gap', h: 'At lunch', p: 'Phones go to voicemail while staff are away from the desk.' },
+        { tag: 'After school and work', h: 'Evenings', p: 'Parents often call once the day is done, after the office has closed.' },
+        { tag: 'Nothing captured', h: 'No parent or child details', p: 'A hang-up leaves no name, no number and no sense of what the family wanted.' },
       ],
+      fixHeading: 'What changes with A2H',
+      fixes: [
+        { tag: 'Answered', h: 'Every call, at lunch and after hours', p: 'The parent gets a real conversation, not a beep.' },
+        { tag: 'Booked', h: 'The new-patient exam', p: 'It takes the parent\'s name, the child\'s name and age, the reason for the call and a callback number, then books the exam.' },
+        { tag: 'Tracked', h: 'Every caller in our custom CRM', p: 'Each call becomes a contact with the reason for the visit.' },
+        { tag: 'Backup', h: 'Hands off when it should', p: 'It can transfer to your front desk, or take a message and flag the contact.' },
+      ],
+      faq: [HIPAA, PRACTICE_SOFTWARE.ortho,
+        ['Will parents know it is AI?', 'If they ask, it tells them. You choose the greeting.']],
     },
     home: {
       title: 'Missed Family Inquiries for Home Care Agencies | A2H',
-      description: 'Families often call home care agencies after hours. See how an AI receptionist answers, captures the inquiry and books an assessment.',
+      description: 'An inquiry that hits voicemail becomes a call to the next agency. See how A2H answers family inquiries and books the assessment.',
       eyebrow: 'For Home Care Agencies',
       h1: 'Families call when they need help, <span class="italic text-copper-light">not when you are open.</span>',
       sub: 'A family looking for care often makes the first call in the evening or on a weekend. If nobody answers, they call the next agency. Here is how to stop losing those inquiries.',
-      answer: 'Home care agencies miss family inquiries in the evening, on weekends and whenever the office is busy, and a family comparing agencies may move on to the next one. An AI receptionist answers every call, captures the family\'s name, who needs care and a callback number, books an assessment onto your calendar, and logs the inquiry in a CRM.',
+      answer: 'Home care agencies miss family inquiries in the evening, on weekends and whenever the office is busy, and an inquiry that hits voicemail becomes a call to the next agency. A2H answers every inquiry, takes the family\'s details, books the assessment, and tracks every inquiry in our custom CRM. It handles intake and scheduling only, never clinical records.',
       problemHeading: 'Where home care agencies lose inquiries',
       problems: [
         { tag: 'Off hours', h: 'Evenings and weekends', p: 'Families researching care often call outside office hours and reach voicemail.' },
@@ -162,59 +185,55 @@ module.exports = function nichePages({ SITE, ORG, faqLd, hero, cards, faqSection
         { tag: 'First to answer', h: 'Families compare agencies', p: 'A family calling several agencies tends to stay with the one that picks up and makes the next step easy.' },
         { tag: 'Details lost', h: 'No inquiry on record', p: 'A missed call leaves no name, no number and no sense of what the family needed.' },
       ],
-      fixHeading: 'What changes with an AI receptionist',
+      fixHeading: 'What changes with A2H',
       fixes: [
-        { tag: 'Answered', h: 'Every call, day or night', p: 'The family reaches someone on the first try, including after hours.' },
-        { tag: 'Captured', h: 'Who needs care, and how to reach them', p: 'The AI Receptionist collects the family\'s name, who needs care and a callback number.' },
-        { tag: 'Booked', h: 'An assessment on your calendar', p: 'It books the assessment directly, so the next step is set before the call ends.' },
-        { tag: 'Logged', h: 'Every inquiry in your CRM', p: 'Each inquiry lands in your own pipeline board, and calls that need a person are transferred.' },
+        { tag: 'Answered', h: 'Every inquiry, day or night', p: 'The family reaches someone on the first try, including after hours.' },
+        { tag: 'Captured', h: 'Who needs care, and how to reach them', p: 'It takes the family\'s name, who needs care and a callback number.' },
+        { tag: 'Booked', h: 'The assessment', p: 'It books the assessment during the call, so the next step is set before the family hangs up.' },
+        { tag: 'Tracked', h: 'Every inquiry in our custom CRM', p: 'Each inquiry becomes a contact, and calls that need a person can be transferred or flagged.' },
       ],
       faq: [
-        ['Does it handle caregiver call-outs or shift scheduling?', 'No. The AI Receptionist handles inquiry calls: answering, capturing the details and booking an assessment. It does not manage caregiver scheduling or call-out coverage.'],
-        ['Is this for medical home health agencies?', 'A2H is built for non-medical home care agencies. The receptionist does not give clinical advice, and calls that need a person are transferred.'],
-        ['Does it collect health information?', 'It captures contact details and who needs care so your team can follow up. If you need to collect protected health information, use dedicated compliant software; we can link to it rather than rebuild it.'],
+        ['Does it handle caregiver call-outs or shift scheduling?', 'No. A2H handles inquiry calls: answering, capturing the details and booking an assessment. It does not manage caregiver scheduling or call-out coverage.'],
+        ['Is this for medical home health agencies?', 'A2H is built for non-medical home care agencies. It handles intake and scheduling only, never clinical records, and does not give clinical advice.'],
       ],
     },
   };
 
   // ---------------------------------------------------------------- receptionist-options comparisons
   const OPTIONS = {
-    pet: {
-      title: 'Receptionist Options for Mobile Pet Groomers | A2H',
-      description: 'Voicemail, hiring help, an answering service or an AI receptionist? Compare how each handles calls for a mobile pet groomer.',
-      eyebrow: 'For Mobile Pet Groomers',
-      h1: 'Four ways to answer the phone. <span class="italic text-copper-light">Which fits a mobile groomer?</span>',
-      sub: 'You cannot answer while you groom. Here is how voicemail, a hire, an answering service and an AI receptionist compare.',
-      costCell: 'One-time setup plus a flat monthly fee. See the pricing page.',
-      lead: 'Mobile groomers usually choose between voicemail, hiring help, a live answering service and an AI receptionist.',
-    },
     dental: {
       title: 'Receptionist Alternatives for Texas Dental Practices | A2H',
-      description: 'Voicemail, another front-desk hire, an answering service or an AI receptionist? Compare how each handles calls for a dental practice.',
+      description: 'Voicemail, another front-desk hire, an answering service or A2H? Compare how each handles calls for a dental practice.',
       eyebrow: 'For Dental Practices',
       h1: 'Four ways to cover the phones. <span class="italic text-copper-light">Which fits a dental practice?</span>',
-      sub: 'The front desk is busy and the office closes. Here is how voicemail, another hire, an answering service and an AI receptionist compare.',
-      costCell: 'One-time setup plus a flat monthly fee. See the pricing page.',
+      sub: 'The front desk is busy and the office closes. Here is how voicemail, another hire, an answering service and A2H compare.',
       lead: 'Dental practices usually choose between voicemail, another front-desk hire, a live answering service and an AI receptionist.',
+    },
+    ortho: {
+      title: 'Receptionist Alternatives for Orthodontic Practices | A2H',
+      description: 'Voicemail, another hire, an answering service or A2H? Compare how each handles new-patient calls for an orthodontic practice.',
+      eyebrow: 'For Orthodontic Practices',
+      h1: 'Four ways to answer new-patient calls. <span class="italic text-copper-light">Which fits an orthodontic practice?</span>',
+      sub: 'New-patient exam calls decide the schedule. Here is how voicemail, another hire, an answering service and A2H compare.',
+      lead: 'Orthodontic practices usually choose between voicemail, another front-desk hire, a live answering service and an AI receptionist.',
     },
     home: {
       title: 'Receptionist Options for Texas Home Care Agencies | A2H',
-      description: 'Voicemail, another hire, an answering service or an AI receptionist? Compare how each handles family inquiries for a home care agency.',
+      description: 'Voicemail, another hire, an answering service or A2H? Compare how each handles family inquiries for a home care agency.',
       eyebrow: 'For Home Care Agencies',
       h1: 'Four ways to answer family inquiries. <span class="italic text-copper-light">Which fits a home care agency?</span>',
-      sub: 'Families call at all hours. Here is how voicemail, another hire, an answering service and an AI receptionist compare.',
-      costCell: 'One-time setup plus a monthly fee. Ask for current pricing on a free setup call.',
+      sub: 'Families call at all hours. Here is how voicemail, another hire, an answering service and A2H compare.',
       lead: 'Home care agencies usually choose between voicemail, another hire for the office, a live answering service and an AI receptionist.',
     },
   };
 
-  const comparisonTable = (costCell) => {
-    const head = ['Option', 'Nights and weekends', 'Books the appointment', 'Logs the contact', 'How you pay'];
+  const comparisonTable = () => {
+    const head = ['Option', 'Nights and weekends', 'Books the visit', 'Tracks the caller', 'How you pay'];
     const rows = [
       ['Voicemail', 'Records a message; the caller waits for a reply', 'No', 'Only if you write it down', 'Usually free'],
       ['Hire help', 'Only during their hours', 'Yes', 'If they enter it', 'Wages, taxes and training'],
-      ['Live answering service', 'Often staffed around the clock', 'Depends on whether it connects to your calendar', 'Usually emailed notes', 'Typically a monthly fee plus per-call or per-minute charges'],
-      ['AI Receptionist + CRM (A2H)', 'Answers every call and text, day or night', 'Books onto your calendar', 'Every contact lands in your CRM', costCell],
+      ['Live answering service', 'Often staffed around the clock', 'Depends on whether it connects to your schedule', 'Usually emailed notes', 'Typically a monthly fee plus per-call or per-minute charges'],
+      ['A2H AI receptionist', 'Answers every call, day or night', 'Books the visit during the call', 'Every call and caller in our custom CRM', 'Setup plus a monthly service, covered on a 15-minute call'],
     ];
     return `<section class="py-16 px-6">
   <div class="max-w-5xl mx-auto">
@@ -235,97 +254,125 @@ ${rows.map((r, i) => `          <tr class="border-b border-white/5 ${i === 3 ? '
 </section>`;
   };
 
-  const optionsFaq = (key) => {
-    const n = NICHES[key];
-    return [
-      ['Is an AI receptionist cheaper than hiring someone?', 'It depends on your hours and call volume. A hire costs wages and covers only the hours they work. An AI receptionist is a one-time setup plus a monthly fee and answers around the clock. Compare it against your own payroll, not an industry average.'],
-      ['What does an AI receptionist not do?', 'It handles the front-desk call: answering, collecting details and booking. It does not do hands-on work, and anything it cannot handle is transferred to you or your team.'],
-      ...shared(n),
-    ];
-  };
+  const optionsFaq = (key) => [
+    ['Is an AI receptionist cheaper than hiring someone?', 'It depends on your hours and call volume. A hire costs wages and covers only the hours they work. A2H is a setup fee plus a monthly service and answers around the clock. Compare it against your own payroll, not an industry average.'],
+    ['What does an AI receptionist not do?', key === 'home'
+      ? 'It handles inquiry calls: answering, collecting details and booking the assessment. It does not manage caregiver schedules, and anything it cannot handle is passed to your team.'
+      : 'It handles the front-desk call: answering, collecting details and booking. It does not handle clinical questions or insurance, and anything it cannot handle is passed to your team.'],
+    ...shared(key),
+  ];
 
   const pages = [];
-  const push = (key, kind, content) => {
-    const n = NICHES[key];
-    const slug = `${n.slug}-${kind === 'missed' ? 'missed-calls' : 'receptionist-options'}.html`;
-    pages.push({ slug, ...content(slug) });
-  };
-
   Object.keys(NICHES).forEach((key) => {
     const n = NICHES[key];
     const m = MISSED[key];
-    push(key, 'missed', (slug) => {
-      const faq = [...m.faq, ...shared(n)];
-      return {
-        title: m.title,
-        description: m.description,
-        jsonLd: [ORG, svcLd(`AI receptionist for ${n.hubName.toLowerCase()}`, m.answer, n.audience), faqLd(faq),
-          crumbs([{ name: n.hubName, slug: n.hub }, { name: 'Missed calls', slug }])],
-        body: [
-          hero({ eyebrow: m.eyebrow, h1: m.h1, sub: m.sub, secondary: ['Hear a real call', 'demo.html'] }),
-          answer(m.answer),
-          cards('The Problem', m.problemHeading, m.problems),
-          cards('The Fix', m.fixHeading, m.fixes),
-          faqSection(faq),
-          B.ctaBand({}),
-          related(key, 'missed'),
-        ].join('\n\n'),
-      };
+    const o = OPTIONS[key];
+
+    const missedSlug = `${n.slug}-missed-calls.html`;
+    const missedFaq = [...m.faq, ...shared(key)];
+    pages.push({
+      slug: missedSlug,
+      title: m.title,
+      description: m.description,
+      jsonLd: [ORG, svcLd(`AI receptionist for ${n.hubName.toLowerCase()}`, m.answer, n.audience), faqLd(missedFaq),
+        crumbs([{ name: n.hubName, slug: n.hub }, { name: 'Missed calls', slug: missedSlug }])],
+      body: [
+        hero({ eyebrow: m.eyebrow, h1: m.h1, sub: m.sub, secondary: ['Hear a demo call', 'demo.html'] }),
+        answer(m.answer),
+        cards('The Problem', m.problemHeading, m.problems),
+        cards('The Fix', m.fixHeading, m.fixes),
+        faqSection(missedFaq),
+        B.ctaBand({}),
+        related(key, 'missed'),
+      ].join('\n\n'),
     });
-    push(key, 'options', (slug) => {
-      const o = OPTIONS[key];
-      const faq = optionsFaq(key);
-      const ans = `${o.lead} Voicemail books nothing, a hire covers only their working hours, an answering service covers more hours but may not connect to your calendar, and an AI receptionist answers every call, books the ${n.apptWord} and logs the contact. A2H charges a one-time setup fee plus a monthly fee.`;
-      return {
-        title: o.title,
-        description: o.description,
-        jsonLd: [ORG, svcLd(`AI receptionist for ${n.hubName.toLowerCase()}`, ans, n.audience), faqLd(faq),
-          crumbs([{ name: n.hubName, slug: n.hub }, { name: 'Receptionist options', slug }])],
-        body: [
-          hero({ eyebrow: o.eyebrow, h1: o.h1, sub: o.sub, secondary: ['Hear a real call', 'demo.html'] }),
-          answer(ans),
-          comparisonTable(o.costCell),
-          faqSection(faq),
-          B.ctaBand({}),
-          related(key, 'options'),
-        ].join('\n\n'),
-      };
+
+    const optSlug = `${n.slug}-receptionist-options.html`;
+    const optFaq = optionsFaq(key);
+    const ans = `${o.lead} Voicemail books nothing, a hire covers only their working hours, an answering service covers more hours but may not connect to your schedule, and A2H answers every call, books the ${n.apptWord} and tracks every call and caller in our custom CRM. A2H is a setup fee plus a monthly service, covered on a free 15-minute call.`;
+    pages.push({
+      slug: optSlug,
+      title: o.title,
+      description: o.description,
+      jsonLd: [ORG, svcLd(`AI receptionist for ${n.hubName.toLowerCase()}`, ans, n.audience), faqLd(optFaq),
+        crumbs([{ name: n.hubName, slug: n.hub }, { name: 'Receptionist options', slug: optSlug }])],
+      body: [
+        hero({ eyebrow: o.eyebrow, h1: o.h1, sub: o.sub, secondary: ['Hear a demo call', 'demo.html'] }),
+        answer(ans),
+        comparisonTable(),
+        faqSection(optFaq),
+        B.ctaBand({}),
+        related(key, 'options'),
+      ].join('\n\n'),
     });
+  });
+
+  // ---------------------------------------------------------------- orthodontic hub
+  const ORTHO_FAQ = [
+    PRACTICE_SOFTWARE.ortho, HIPAA,
+    ['Will parents know it is AI?', 'If they ask, it tells them. You choose the greeting.'],
+    transfer(NICHES.ortho, 'your front desk'), cost, forwarding, where,
+  ];
+  pages.push({
+    slug: 'orthodontic-practices.html',
+    title: 'AI Receptionist for Texas Orthodontic Practices | A2H',
+    description: 'A2H answers every new-patient call, books the exam and tracks every caller in our custom CRM. Scheduling only, never clinical data.',
+    jsonLd: [ORG, svcLd('AI receptionist for orthodontic practices', 'A2H answers every new-patient call for orthodontic practices, books the new-patient exam, and tracks every call and caller in a custom CRM. It handles scheduling only, never clinical data.', NICHES.ortho.audience), faqLd(ORTHO_FAQ),
+      crumbs([{ name: 'Orthodontic practices', slug: 'orthodontic-practices.html' }])],
+    body: [
+      hero({
+        eyebrow: 'For Texas Orthodontic Practices',
+        h1: 'Every new-patient exam call answered, <span class="italic text-copper-light">even when the desk is slammed.</span>',
+        sub: 'A parent who reaches voicemail at lunch or after hours books the practice that picked up. A2H answers, books the new-patient exam, and tracks every call and caller in our custom CRM. It handles scheduling only, never clinical data.',
+        secondary: ['Hear a demo call', 'demo.html'],
+      }),
+      answer('An AI receptionist for an orthodontic practice answers every new-patient call, takes the parent\'s name, the child\'s name and age, the reason for the call and a callback number, books the new-patient exam, and tracks every call and caller in a custom CRM. A2H sets this up for Texas orthodontic practices. It handles scheduling only, never clinical data, and it does not connect to practice software such as Ortho2, Cloud 9, OrthoTrac or Dentrix today.'),
+      cards('What Changes For A Practice', 'Built around how families choose an orthodontist', [
+        { tag: 'Never voicemail', h: 'Answered at lunch and after hours', p: 'Every call is picked up the same way, whether the team is with patients, on a break, or gone for the night.' },
+        { tag: 'Booked, not just noted', h: 'New-patient exams booked', p: 'It takes the parent\'s name, the child\'s name and age, the reason for the call and a callback number, then books the exam.' },
+        { tag: 'Nothing lost', h: 'Every caller in our custom CRM', p: 'Each call becomes a contact with the reason for the visit, so nothing depends on a note passed between staff.' },
+        { tag: 'Honest about the limits', h: 'A call inbox, not a practice-software link', p: 'Your practice software stays your system of record. Each call produces a summary your front desk can add in seconds.' },
+      ]),
+      fit('orthodontic practices'),
+      guides('ortho'),
+      faqSection(ORTHO_FAQ),
+      B.ctaBand({}),
+    ].join('\n\n'),
   });
 
   // ---------------------------------------------------------------- home care hub
   const HOME_FAQ = [
-    ['What does the AI Receptionist do for a home care agency?', 'It answers every inquiry call, captures the family\'s name, who needs care and a callback number, books an assessment onto your calendar, and logs the inquiry in your CRM. Calls that need a person are transferred to you or your team.'],
+    ['What does A2H do for a home care agency?', 'A2H answers every inquiry, takes the family\'s details, books the assessment, and tracks every inquiry in our custom CRM. Calls that need a person can be transferred to your office, or taken as a message and flagged.'],
     ['Does it manage caregiver scheduling or call-outs?', 'No. It handles inquiry calls and assessment booking. It does not manage caregiver schedules, shift coverage or call-outs.'],
-    ['Is this for non-medical or medical home care?', 'A2H is built for non-medical home care agencies. The receptionist does not give clinical advice.'],
-    ['Where can I see pricing?', 'Home care pricing is confirmed on a free 15-minute setup call, and the general pricing page lists the standard plans.'],
-    ...shared(NICHES.home),
+    ['Is this for non-medical or medical home care?', 'A2H is built for non-medical home care agencies. It handles intake and scheduling only, never clinical records, and does not give clinical advice.'],
+    ...shared('home'),
   ];
   pages.push({
     slug: 'home-care-agencies.html',
     title: 'AI Receptionist for Texas Home Care Agencies | A2H',
-    description: 'AI receptionist + CRM for Texas home care agencies: every family inquiry answered, an assessment booked, every contact logged.',
-    jsonLd: [ORG, svcLd('AI receptionist for home care agencies', 'An AI receptionist that answers family inquiry calls for non-medical home care agencies, books an assessment and logs the inquiry in a CRM.', NICHES.home.audience), faqLd(HOME_FAQ),
+    description: 'A2H answers every family inquiry, takes the details, books the assessment and tracks every inquiry in our custom CRM.',
+    jsonLd: [ORG, svcLd('AI receptionist for home care agencies', 'A2H answers every family inquiry for non-medical home care agencies, takes the details, books the assessment, and tracks every inquiry in a custom CRM. It handles intake and scheduling only, never clinical records.', NICHES.home.audience), faqLd(HOME_FAQ),
       crumbs([{ name: 'Home care agencies', slug: 'home-care-agencies.html' }])],
     body: [
       hero({
         eyebrow: 'For Texas Home Care Agencies',
         h1: 'Every family inquiry answered, <span class="italic text-copper-light">even at 8 p.m.</span>',
-        sub: 'Families looking for care call when they have a minute, not when your office is open. The AI Receptionist answers, captures the inquiry and books an assessment, and every contact lands in your CRM.',
-        secondary: ['Hear a real call', 'demo.html'],
+        sub: 'Families looking for care call when they have a minute, not when your office is open. A2H answers every inquiry, takes the family\'s details, books the assessment, and tracks every inquiry in our custom CRM. It handles intake and scheduling only, never clinical records.',
+        secondary: ['Hear a demo call', 'demo.html'],
       }),
-      answer('An AI receptionist for a home care agency answers every inquiry call and text, captures the family\'s name, who needs care and a callback number, books an assessment onto your calendar, and logs the inquiry in a CRM. A2H sets this up for non-medical home care agencies in Texas. It handles inquiries and assessment booking; it does not manage caregiver scheduling.'),
+      answer('An AI receptionist for a home care agency answers every family inquiry, takes the family\'s name, who needs care and a callback number, books the assessment, and tracks every inquiry in a custom CRM. A2H sets this up for non-medical home care agencies in Texas. It handles intake and scheduling; it does not manage caregiver scheduling.'),
       cards('What Changes For An Agency', 'Built around how families actually reach out', [
         { tag: 'Never voicemail', h: 'Answered day and night', p: 'Evenings, weekends and busy mornings: every inquiry reaches someone on the first call.' },
-        { tag: 'Next step set', h: 'An assessment on your calendar', p: 'The AI Receptionist books the assessment directly, so the family leaves the call with something scheduled.' },
-        { tag: 'Nothing lost', h: 'Every inquiry logged', p: 'Name, who needs care and a callback number are logged in your own CRM pipeline board.' },
+        { tag: 'Next step set', h: 'The assessment, booked', p: 'It books the assessment during the call, so the family leaves with the next step set.' },
+        { tag: 'Nothing lost', h: 'Every inquiry in our custom CRM', p: 'Name, who needs care and a callback number are tracked in one place.' },
         { tag: 'Found locally', h: 'Maps and reviews', p: 'On the Custom Website tier, Google Business Profile is claimed and tuned, because families often start with the map result.' },
       ]),
+      fit('home care agencies'),
       guides('home'),
       faqSection(HOME_FAQ),
       B.ctaBand({}),
     ].join('\n\n'),
   });
 
-  return { pages, guides };
+  return { pages, guides, fit };
 };
