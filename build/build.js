@@ -105,6 +105,9 @@ ${qas.map(([q, a]) => `      <details class="reveal group rounded-2xl bg-elevate
 
 const PAGES = [];
 
+// Niche guide pages (pet groomers, dental, home care): generated in build/niche_pages.js
+const NP = require('./niche_pages')({ SITE, ORG, faqLd, hero, cards, faqSection, B });
+
 // ---- work.html
 PAGES.push({
   slug: 'work.html',
@@ -302,6 +305,7 @@ PAGES.push({
       <a href="roofing.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Roofing</a>
       <a href="electrical.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Electrical</a>
       <a href="dental-practices.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Dental practices</a>
+      <a href="home-care-agencies.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Home care agencies</a>
     </div>
   </div>
 </section>`,
@@ -541,6 +545,7 @@ const PET_FAQ = [
   ['Do I have to change my business number?', 'No — your existing number stays yours. We wire the receptionist into it, we do not replace it.'],
   ['What about clients with recurring appointments?', 'Every contact and appointment is logged automatically in your CRM pipeline, so repeat clients and their pet details are always on hand, not scattered across texts and voicemails.'],
   ['What if a caller needs something the AI cannot handle?', 'It warm-transfers to you when a call needs a real person — it is designed to never let a call go unanswered, not to replace you.'],
+  ['Do you work with groomers in my part of Texas?', 'A2H sets the receptionist up remotely for Texas businesses, including mobile groomers around Houston, Dallas, Austin, San Antonio and Fort Worth.'],
 ];
 
 PAGES.push({
@@ -561,13 +566,15 @@ PAGES.push({
       { tag: 'Nothing lost', h: 'Every contact logged', p: 'Names, pet details, and follow-ups tracked automatically in your own CRM pipeline board — nothing relies on a sticky note in the van.' },
       { tag: 'Found locally', h: 'Maps and reviews', p: 'On the Custom Website tier, Google Business Profile is claimed and tuned, because most pet owners search "mobile groomer near me" before they ever see a website.' },
     ]),
+    NP.guides('pet'),
     B.pricingTable({ heading: 'Flat pricing, published openly' }),
     faqSection(PET_FAQ),
   ].join('\n\n'),
 });
 
 // ---- hvac / plumbing / roofing / electrical / dental-practices (generated from one template)
-PAGES.push(...require('./verticals')({ SITE, ORG, serviceLd, faqLd, hero, cards, faqSection, B }));
+PAGES.push(...require('./verticals')({ SITE, ORG, serviceLd, faqLd, hero, cards, faqSection, B, guides: NP.guides }));
+PAGES.push(...NP.pages);
 
 // ---- privacy.html
 PAGES.push({

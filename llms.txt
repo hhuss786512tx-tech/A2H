@@ -24,6 +24,10 @@ A2H builds an AI phone receptionist and CRM for businesses that lose revenue to 
 - [Roofing](https://a2h.info/roofing.html): AI Receptionist for Texas roofing companies.
 - [Electrical](https://a2h.info/electrical.html): AI Receptionist for Texas electricians.
 - [Dental Practices](https://a2h.info/dental-practices.html): AI Receptionist for Texas dental practices.
+- [Home Care Agencies](https://a2h.info/home-care-agencies.html): AI Receptionist for Texas non-medical home care agencies.
+- [Missed calls: mobile pet groomers](https://a2h.info/pet-grooming-missed-calls.html), [receptionist options](https://a2h.info/pet-grooming-receptionist-options.html)
+- [Missed calls: dental practices](https://a2h.info/dental-missed-calls.html), [receptionist options](https://a2h.info/dental-receptionist-options.html)
+- [Missed inquiries: home care](https://a2h.info/home-care-missed-calls.html), [receptionist options](https://a2h.info/home-care-receptionist-options.html)
 - [Our Work](https://a2h.info/work.html): live builds and demos.
 - [How We Work](https://a2h.info/process.html): the build process, timeline and scope.
 - [Book A Call](https://a2h.info/book-a-call.html): free setup call scheduling.

@@ -7,7 +7,7 @@
 // in the CRM, warm-transfers, keeps the customer's own number, flat pricing).
 // No invented statistics, no named integrations, no compliance claims.
 
-module.exports = function verticals({ SITE, ORG, serviceLd, faqLd, hero, cards, faqSection, B }) {
+module.exports = function verticals({ SITE, ORG, serviceLd, faqLd, hero, cards, faqSection, B, guides }) {
   const breadcrumbLd = (name, slug) => ({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -169,6 +169,7 @@ ${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand borde
       faq: [
         ['Is the AI receptionist HIPAA compliant?', 'The AI Receptionist and CRM handle scheduling, not clinical data. Calls collect only a name, the reason for the call and callback details so your staff can follow up. If you need intake that touches protected health information, that belongs in dedicated HIPAA-compliant software, and we link to it rather than rebuild it.'],
         ['Does it handle insurance or clinical questions?', 'It handles the front-desk call: answering, collecting the basics and booking. Anything clinical or insurance-specific is passed to your team rather than answered by the AI.'],
+        ['Do you work with dental practices across Texas?', 'A2H sets the receptionist up remotely for Texas practices, including those around Houston, Dallas, Austin, San Antonio and Fort Worth.'],
       ],
     },
   ];
@@ -190,6 +191,7 @@ ${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand borde
         hero({ eyebrow: d.eyebrow, h1: d.h1, sub: d.sub, secondary: ['Hear a real call', 'demo.html'] }),
         answer(d.answer),
         cards('What Changes', d.cardsHeading, d.cards),
+        ...(d.slug === 'dental-practices.html' ? [guides('dental')] : []),
         B.pricingTable({ heading: 'Flat pricing, published openly' }),
         faqSection(faq),
         related(d.slug),
