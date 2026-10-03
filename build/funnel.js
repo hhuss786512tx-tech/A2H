@@ -18,7 +18,7 @@ const NICHES = {
     description: 'Every call answered and booked while your hands are in a groom. Watch the 2-minute video, then book a 15-minute call.',
     eyebrow: 'For Texas mobile pet groomers',
     h1: 'Every call answered while your <span class="italic text-copper-light">hands are in a groom.</span>',
-    sub: 'When you are mid-groom or driving between stops, the phone goes to voicemail and that pet owner books the next groomer on Google. A2H answers, books the appointment on your calendar, and saves every pet owner in your client list.',
+    sub: 'When you are mid-groom or driving between stops, the phone goes to voicemail and that pet owner books the next groomer on Google. A2H answers, books the appointment on your calendar, and tracks every call, owner and pet in our custom CRM.',
     test: {
       h: 'Call your own number and count the rings.',
       p: 'Every ring is a pet owner deciding whether to hang up and call the next groomer. Now think about the calls you missed this week.',
@@ -31,7 +31,7 @@ const NICHES = {
     cards: [
       ['Never voicemail', 'Answered between appointments', 'Every call is picked up, whether you are driving between jobs or holding a wet dog. The caller gets a real conversation, not a beep.'],
       ['Booked, not just noted', 'Straight onto your calendar', 'It asks the pet\'s name, breed and size, quotes from your own price list, and books the slot. It warm-transfers to you when a call needs a real person.'],
-      ['Nothing lost', 'Every owner saved in one place', 'Names, pet details and notes (like "hates the dryer" or "matting behind the ears") land in your client list the moment the call ends. Nothing lives on a sticky note in the van.'],
+      ['Nothing lost', 'Every owner saved in one place', 'Names, pet details and notes (like "hates the dryer" or "matting behind the ears") land in our custom CRM the moment the call ends. Nothing lives on a sticky note in the van.'],
     ],
     proof: 'Hear a real call: the receptionist answers a mobile groomer\'s line, quotes a price and books the visit.',
     faq: [
@@ -47,7 +47,7 @@ const NICHES = {
     description: 'Every call answered and booked, even when the front desk is slammed or the office is closed. Watch the 2-minute video, then book a 15-minute call.',
     eyebrow: 'For Texas dental clinics',
     h1: 'Every call answered, even when the <span class="italic text-copper-light">front desk is slammed.</span>',
-    sub: 'New-patient calls that hit voicemail at lunch, after hours or during a rush book the practice that picked up. A2H answers, books the appointment, and logs every caller in one CRM. It handles scheduling only, never clinical data.',
+    sub: 'New-patient calls that hit voicemail at lunch, after hours or during a rush book the practice that picked up. A2H answers, books the appointment, and tracks every call and caller in our custom CRM. It handles scheduling only, never clinical data.',
     test: {
       h: 'Call your own front desk after closing and see what happens.',
       p: 'A new patient who reaches voicemail rarely leaves a message. They call the next practice on the list.',
@@ -60,7 +60,7 @@ const NICHES = {
     cards: [
       ['Never voicemail', 'Answered at lunch and after hours', 'Every call is picked up the same way, whether the team is with patients, on a break, or gone for the night.'],
       ['Booked, not just noted', 'Straight onto your schedule', 'It captures the caller\'s name, reason for the call and callback number, and books the slot. It transfers to a person when a call needs one.'],
-      ['Nothing lost', 'Every caller saved in one place', 'Each call becomes a contact in your CRM with the reason for the visit, so nothing depends on a note passed between staff.'],
+      ['Nothing lost', 'Every caller saved in one place', 'Each call becomes a contact in our custom CRM with the reason for the visit, so nothing depends on a note passed between staff.'],
     ],
     proof: 'Hear a real call: the receptionist answers, asks what is needed and books the visit (recorded on a groomer\'s line, same system).',
     faq: [
@@ -76,7 +76,7 @@ const NICHES = {
     description: 'Every family inquiry answered and booked, even after the office closes. Watch the 2-minute video, then book a 15-minute call.',
     eyebrow: 'For Texas home care agencies',
     h1: 'Every family call answered, even <span class="italic text-copper-light">after the office closes.</span>',
-    sub: 'Families often call in the evening, and an inquiry that hits voicemail becomes a call to the next agency. A2H answers every inquiry, takes the family\'s details, books the assessment, and logs it in one CRM. It handles intake and scheduling only, never clinical records.',
+    sub: 'Families often call in the evening, and an inquiry that hits voicemail becomes a call to the next agency. A2H answers every inquiry, takes the family\'s details, books the assessment, and tracks every inquiry in our custom CRM. It handles intake and scheduling only, never clinical records.',
     test: {
       h: 'Call your own agency at 7 PM and hear what a family hears.',
       p: 'A family that reaches voicemail rarely leaves a message. They call the next agency on the list. Now think about the inquiries you missed this month.',
@@ -89,7 +89,7 @@ const NICHES = {
     cards: [
       ['Never voicemail', 'Answered nights and weekends', 'Every inquiry is picked up, whether the office is closed, the scheduler is out, or you are with a client. The family gets a real conversation, not a beep.'],
       ['Booked, not just noted', 'Straight onto your calendar', 'It takes the family\'s name, who needs care, what kind of help they want and a callback number, then books the assessment. It transfers to you when a call needs a person.'],
-      ['Nothing lost', 'Every inquiry saved in one place', 'Each call becomes a contact in your CRM with the details the family gave, so nothing depends on a sticky note or whoever picked up last.'],
+      ['Nothing lost', 'Every inquiry saved in one place', 'Each call becomes a contact in our custom CRM with the details the family gave, so nothing depends on a sticky note or whoever picked up last.'],
     ],
     proof: 'Hear a real call: the receptionist answers, asks what is needed and books the visit (recorded on a groomer\'s line, same system).',
     faq: [
