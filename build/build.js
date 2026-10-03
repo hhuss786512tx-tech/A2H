@@ -724,7 +724,7 @@ fs.readdirSync(OUT)
 console.log(`\n  stylesheet cache-busting: site.css?v=${cssHashes['assets/site.css']}  tailwind.css?v=${cssHashes['assets/tailwind.css']}`);
 
 // robots.txt + sitemap.xml
-const urls = ['index.html', ...PAGES.map((p) => p.slug)].filter((s) => s !== '404.html' && s !== 'thank-you.html' && s !== 'mockup.html' && s !== 'watch.html' && s !== 'groomers.html' && s !== 'dental.html');
+const urls = ['index.html', ...PAGES.filter((p) => !p.funnel).map((p) => p.slug)].filter((s) => s !== '404.html' && s !== 'thank-you.html' && s !== 'mockup.html' && s !== 'watch.html');
 const today = new Date().toISOString().slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

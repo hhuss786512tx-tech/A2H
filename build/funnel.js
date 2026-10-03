@@ -1,5 +1,5 @@
-// Paid-traffic landing pages: /groomers and /dental.
-// One template, two niches. No site navigation: the only exits are "watch the
+// Paid-traffic landing pages: /groomers, /dental and /homecare.
+// One template, three niches. No site navigation: the only exits are "watch the
 // video" and "book a call". Kept out of the sitemap and marked noindex, since
 // these are pages we send traffic to, not pages we rank.
 //
@@ -25,6 +25,7 @@ const NICHES = {
       callsPh: 'e.g. 6',
       valueLabel: 'What a typical groom is worth ($)',
       valuePh: 'e.g. 95',
+      mult: 4.3, // calls are per week, results are per month
     },
     cards: [
       ['Never voicemail', 'Answered between appointments', 'Every call is picked up, whether you are driving between jobs or holding a wet dog. The caller gets a real conversation, not a beep.'],
@@ -53,6 +54,7 @@ const NICHES = {
       callsPh: 'e.g. 12',
       valueLabel: 'What a new patient is worth ($)',
       valuePh: 'e.g. 800',
+      mult: 1, // calls are already per month
     },
     cards: [
       ['Never voicemail', 'Answered at lunch and after hours', 'Every call is picked up the same way, whether the team is with patients, on a break, or gone for the night.'],
@@ -64,6 +66,36 @@ const NICHES = {
       ['Is this HIPAA-safe?', 'It handles scheduling, not clinical data. Calls collect a name, the reason for the call and callback details. It should not be used to collect health or payment-card information. Anything that touches PHI belongs in your existing compliant software.'],
       ['Will patients know it is AI?', 'If they ask, it tells them. You choose the greeting.'],
       ['What if a caller needs a person?', 'It can transfer to your front desk, or take a message and flag the contact in your CRM.'],
+      ['What does it cost, and can I cancel?', 'We cover that on the 15-minute call. There is a real contract with a cancel-anytime clause, and no long-term lock-in.'],
+    ],
+  },
+  homecare: {
+    slug: 'homecare.html',
+    title: 'AI Receptionist for Home Care Agencies | A2H',
+    description: 'Every family inquiry answered and booked, even after the office closes. Watch the 2-minute video, then book a 15-minute call.',
+    eyebrow: 'For Texas home care agencies',
+    h1: 'Every family call answered, even <span class="italic text-copper-light">after the office closes.</span>',
+    sub: 'Families often call in the evening, and an inquiry that hits voicemail becomes a call to the next agency. A2H answers every inquiry, takes the family\'s details, books the assessment, and logs it in one CRM. It handles intake and scheduling only, never clinical records.',
+    test: {
+      h: 'Call your own agency at 7 PM and hear what a family hears.',
+      p: 'A family that reaches voicemail rarely leaves a message. They call the next agency on the list. Now think about the inquiries you missed this month.',
+      callsLabel: 'Family inquiries missed this month',
+      callsPh: 'e.g. 6',
+      valueLabel: 'What one new client is worth in their first month ($)',
+      valuePh: 'e.g. 2770',
+      mult: 1, // calls are already per month
+    },
+    cards: [
+      ['Never voicemail', 'Answered nights and weekends', 'Every inquiry is picked up, whether the office is closed, the scheduler is out, or you are with a client. The family gets a real conversation, not a beep.'],
+      ['Booked, not just noted', 'Straight onto your calendar', 'It takes the family\'s name, who needs care, what kind of help they want and a callback number, then books the assessment. It transfers to you when a call needs a person.'],
+      ['Nothing lost', 'Every inquiry saved in one place', 'Each call becomes a contact in your CRM with the details the family gave, so nothing depends on a sticky note or whoever picked up last.'],
+    ],
+    proof: 'Hear a real call: the receptionist answers, asks what is needed and books the visit (recorded on a groomer\'s line, same system).',
+    faq: [
+      ['Does it handle caregiver call-outs?', 'Not yet. Today it answers family inquiries and books assessments. It can take a message from a caregiver and flag it for you, but it does not find replacement caregivers or connect to scheduling software.'],
+      ['What information does it collect?', 'A name, who needs care, the type of help and callback details. It should not be used to collect health records or payment-card information. Whether your agency has HIPAA obligations depends on how you bill, so we cover that on the call.'],
+      ['Will families know it is AI?', 'If they ask, it tells them. You choose the greeting.'],
+      ['What if a caller needs a person?', 'It can transfer to your phone on the spot, or take a message and flag the contact in your CRM.'],
       ['What does it cost, and can I cancel?', 'We cover that on the 15-minute call. There is a real contract with a cancel-anytime clause, and no long-term lock-in.'],
     ],
   },
@@ -197,7 +229,7 @@ ${n.faq.map(([q, a]) => `      <details class="reveal group rounded-2xl bg-eleva
   if (!c || !v || !o) return;
   var fired = false;
   function run() {
-    var m = Math.round((+c.value || 0) * (+v.value || 0) * 4.3);
+    var m = Math.round((+c.value || 0) * (+v.value || 0) * ${n.test.mult});
     o.textContent = '$' + m.toLocaleString('en-US');
     if (m > 0 && !fired && window.fbq) { fired = true; fbq('trackCustom', 'CalculatorUsed'); }
   }
