@@ -35,7 +35,7 @@ See the table at the bottom of this file; it is appended by the final QA run.
 | `/products` | 99 | 100 | 100 | 100 | 2.1 s | 0 | 50 ms |
 | `/products/halal-meat` | 94 | 100 | 100 | 100 | 2.9 s | 0.007 | 60 ms |
 | `/products/spices-masalas` | 94 | 100 | 100 | 100 | 3.0 s | 0.007 | 70 ms |
-| `/blog` | 97 | 98 | 100 | 100 | 2.4 s | 0 | 30 ms |
+| `/blog` | 99 | 100 | 100 | 100 | 2.4 s | 0 | 30 ms |
 | `/blog/what-zabiha-halal-means` | 93 | 100 | 100 | 100 | 3.1 s | 0.007 | 60 ms |
 | `/halal` | 94 | 100 | 100 | 100 | 3.0 s | 0.009 | 70 ms |
 | `/about` | 94 | 100 | 100 | 100 | 3.0 s | 0.014 | 50 ms |
