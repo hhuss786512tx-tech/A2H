@@ -100,6 +100,36 @@ const NICHES = {
       ['What does it cost, and can I cancel?', 'We cover that on the 15-minute call. There is a real contract with a cancel-anytime clause, and no long-term lock-in.'],
     ],
   },
+  orthodontists: {
+    slug: 'orthodontists.html',
+    title: 'AI Receptionist for Orthodontic Practices | A2H',
+    description: 'Every new-patient call answered and booked, even when the front desk is slammed or the office is closed. Watch the 2-minute video, then book a 15-minute call.',
+    eyebrow: 'For Texas orthodontic practices',
+    h1: 'Every new-patient call answered, even when the <span class="italic text-copper-light">desk is slammed.</span>',
+    sub: 'A parent who reaches voicemail at lunch or after hours books the practice that picked up. A2H answers, books the new-patient exam, and tracks every call and caller in our custom CRM. It handles scheduling only, never clinical data.',
+    test: {
+      h: 'Call your own office after closing and see what happens.',
+      p: 'A parent who reaches voicemail rarely leaves a message. They call the next orthodontist on the list. Now think about the exam calls you missed this month.',
+      callsLabel: 'New-patient exam calls missed this month',
+      callsPh: 'e.g. 10',
+      valueLabel: 'What a new-patient exam is worth to you ($)',
+      valuePh: 'e.g. 2000',
+      mult: 1, // calls are already per month
+    },
+    cards: [
+      ['Never voicemail', 'Answered at lunch and after hours', 'Every call is picked up the same way, whether the team is with patients, on a break, or gone for the night. The parent gets a real conversation, not a beep.'],
+      ['Booked, not just noted', 'New-patient exams booked', 'It takes the parent\'s name, the child\'s name and age, the reason for the call and a callback number, then books the exam. It transfers to a person when a call needs one.'],
+      ['Nothing lost', 'Every caller saved in one place', 'Each call becomes a contact in our custom CRM with the reason for the visit, so nothing depends on a note passed between staff.'],
+    ],
+    proof: 'Hear a real call: the receptionist answers, asks what is needed and books the visit (recorded on a groomer\'s line, same system).',
+    faq: [
+      ['Does it work with my practice software?', 'Not directly. It does not connect to Ortho2, Cloud 9, OrthoTrac or Dentrix today. Every call produces a summary your front desk can add in seconds, and your practice software stays your system of record.'],
+      ['Is this HIPAA-safe?', 'It handles scheduling, not clinical data. Calls collect a name, the reason for the call and callback details. It should not be used to collect health or payment-card information. Anything that touches PHI belongs in your existing compliant software.'],
+      ['Will parents know it is AI?', 'If they ask, it tells them. You choose the greeting.'],
+      ['What if a caller needs a person?', 'It can transfer to your front desk, or take a message and flag the contact in our custom CRM.'],
+      ['What does it cost, and can I cancel?', 'We cover that on the 15-minute call. There is a real contract with a cancel-anytime clause, and no long-term lock-in.'],
+    ],
+  },
 };
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
