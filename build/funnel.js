@@ -18,7 +18,7 @@ const NICHES = {
     description: 'Every call answered and booked while your hands are in a groom. Watch the 2-minute video, then book a 15-minute call.',
     eyebrow: 'For Texas mobile pet groomers',
     h1: 'Every call answered while your <span class="italic text-copper-light">hands are in a groom.</span>',
-    sub: 'When you are mid-groom or driving between stops, the phone goes to voicemail and that pet owner books the next groomer on Google. A2H answers, books the appointment on your calendar, and tracks every call, owner and pet in our custom CRM.',
+    sub: 'When you are mid-groom or driving between stops, the phone goes to voicemail and that pet owner books the next groomer on Google. A2H answers, books the appointment, and tracks every call, owner and pet in our custom CRM.',
     test: {
       h: 'Call your own number and count the rings.',
       p: 'Every ring is a pet owner deciding whether to hang up and call the next groomer. Now think about the calls you missed this week.',
@@ -30,14 +30,14 @@ const NICHES = {
     },
     cards: [
       ['Never voicemail', 'Answered between appointments', 'Every call is picked up, whether you are driving between jobs or holding a wet dog. The caller gets a real conversation, not a beep.'],
-      ['Booked, not just noted', 'Straight onto your calendar', 'It asks the pet\'s name, breed and size, quotes from your own price list, and books the slot. It warm-transfers to you when a call needs a real person.'],
+      ['Booked, not just noted', 'Booked during the call', 'It asks the pet\'s name, breed and size, quotes from your own price list, and books the slot. It warm-transfers to you when a call needs a real person.'],
       ['Nothing lost', 'Every owner saved in one place', 'Names, pet details and notes (like "hates the dryer" or "matting behind the ears") land in our custom CRM the moment the call ends. Nothing lives on a sticky note in the van.'],
     ],
     proof: 'Hear a real call: the receptionist answers a mobile groomer\'s line, quotes a price and books the visit.',
     faq: [
       ['Will pet owners know it is AI?', 'If they ask, it tells them. You choose the greeting, and it can offer to have you call back instead of finishing the booking.'],
       ['What if a call needs me?', 'It can transfer to your phone on the spot, or take a message and flag the contact for you.'],
-      ['Does it use my prices and my calendar?', 'Yes. It quotes from your own price list and books into your Google Calendar. It never invents prices.'],
+      ['Does it use my prices?', 'Yes. It quotes from your own price list. It never invents prices.'],
       ['What does it cost, and can I cancel?', 'We cover pricing on the 15-minute call. There is a real contract, and it includes a cancel-anytime clause. No long-term lock-in.'],
     ],
   },
@@ -88,7 +88,7 @@ const NICHES = {
     },
     cards: [
       ['Never voicemail', 'Answered nights and weekends', 'Every inquiry is picked up, whether the office is closed, the scheduler is out, or you are with a client. The family gets a real conversation, not a beep.'],
-      ['Booked, not just noted', 'Straight onto your calendar', 'It takes the family\'s name, who needs care, what kind of help they want and a callback number, then books the assessment. It transfers to you when a call needs a person.'],
+      ['Booked, not just noted', 'Booked during the call', 'It takes the family\'s name, who needs care, what kind of help they want and a callback number, then books the assessment. It transfers to you when a call needs a person.'],
       ['Nothing lost', 'Every inquiry saved in one place', 'Each call becomes a contact in our custom CRM with the details the family gave, so nothing depends on a sticky note or whoever picked up last.'],
     ],
     proof: 'Hear a real call: the receptionist answers, asks what is needed and books the visit (recorded on a groomer\'s line, same system).',

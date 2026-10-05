@@ -138,9 +138,9 @@ PAGES.push({
 // ---- pricing.html
 const PRICING_FAQ = [
   ['How does payment work?', 'Both tiers have a one-time setup fee, then a flat monthly rate — the scope is fixed in writing before any money changes hands, so the number you are quoted is the number you pay. Cancel the monthly plan at any time.'],
-  ['What is the difference between the two tiers?', 'AI Receptionist + CRM ($1,500 setup, $397/mo) answers and books every call and logs it in your own CRM — no website required. AI Receptionist + CRM + Custom Website ($2,000 setup, $400/mo) adds a hand-coded website built around that same system, so the calls and the site work together from day one.'],
+  ['What is the difference between the two tiers?', 'AI Receptionist + CRM ($1,500 setup, then $397/mo for dental or $697/mo for orthodontic and home care) answers and books every call and logs it in your own CRM — no website required. AI Receptionist + CRM + Custom Website ($2,000 setup, $400/mo) adds a hand-coded website built around that same system, so the calls and the site work together from day one.'],
   ['What does "per extra team seat" mean?', 'Each tier includes CRM access for your core team. If more staff need their own CRM login to see and manage leads, each additional seat is $99/mo.'],
-  ['Do I need a website to use the AI Receptionist?', 'No. AI Receptionist + CRM stands on its own — it plugs into your existing phone number and calendar. The website is only part of the higher tier, for businesses that want both built together.'],
+  ['Do I need a website to use the AI Receptionist?', 'No. AI Receptionist + CRM stands on its own — it works with your existing phone number. The website is only part of the higher tier, for businesses that want both built together.'],
   ['Do I own the site if I choose the higher tier?', 'Yes, completely. It is hand-coded static files — there is no proprietary platform to be locked into, and you get a walkthrough at handoff so you are never dependent on us to make a change.'],
   ['What is the Care Plan?', 'Hosting, maintenance and monthly content edits for your website, included with the Custom Website tier, then continuing at $249/mo. You can cancel it at any time and keep your site.'],
   ['Can I add a custom website later if I start with just the receptionist?', 'Yes. Start with AI Receptionist + CRM and upgrade to add the custom website whenever you are ready — you only pay the difference in setup fee at that point.'],
@@ -149,7 +149,7 @@ const PRICING_FAQ = [
 PAGES.push({
   slug: 'pricing.html',
   title: 'Pricing — AI Receptionist + CRM from $1,500 | A2H',
-  description: 'Transparent pricing for Texas businesses: AI Receptionist + CRM from $1,500 setup + $397/mo, or add a custom hand-coded website for $2,000 setup + $400/mo.',
+  description: 'Transparent pricing for Texas practices: AI Receptionist + CRM from $1,500 setup, then $397/mo for dental or $697/mo for orthodontic and home care.',
   jsonLd: [ORG, faqLd(PRICING_FAQ)],
   body: [
     hero({
@@ -194,7 +194,7 @@ PAGES.push({
 // ---- process.html
 // ---- shared by process.html and book-a-call.html (every answer is a documented fact)
 const SETUP_FAQ = [
-  ['How much does the AI Receptionist cost?', 'AI Receptionist + CRM is $1,500 one-time setup, then $397 per month, with no long-term contract and cancel anytime. An extra CRM seat is $99 per month. Adding a hand-coded website with Google Business Profile setup is $2,000 setup and $400 per month.'],
+  ['How much does the AI Receptionist cost?', 'AI Receptionist + CRM is a $1,500 one-time setup, then a flat monthly fee by practice type: $397 per month for dental, $697 per month for orthodontic and home care, with no long-term contract and cancel anytime. An extra CRM seat is $99 per month. Adding a hand-coded website with Google Business Profile setup is $2,000 setup and $400 per month.'],
   ['Do I have to change my business number?', 'No porting and no new number for your callers. You set your existing line to forward to the receptionist when it is busy or unanswered.'],
   ['What happens when a call needs a real person?', 'It can transfer the call to you or your team, or take a message and flag the contact in our custom CRM.'],
   ['Do I need a new website to use it?', 'No. AI Receptionist + CRM works on its own. The Custom Website tier is optional and adds a hand-coded site and Google Business Profile setup.'],
@@ -259,54 +259,48 @@ PAGES.push({
 // ---- industries.html (hub)
 PAGES.push({
   slug: 'industries.html',
-  title: 'AI Receptionist by Industry — Texas Trades, Clinics, Retail | A2H',
-  description: 'How A2H sets up an AI receptionist, CRM and website for Texas contractors, medical practices, local retail and mobile pet groomers. Find your industry.',
+  title: 'AI Receptionist for Dental, Orthodontic and Home Care | A2H',
+  description: 'How A2H answers, books and tracks every call for Texas dental practices, orthodontic practices and non-medical home care agencies.',
   jsonLd: [ORG],
   body: [
     hero({
       eyebrow: 'Industries',
-      h1: 'Built around <span class="italic text-copper-light">how you actually get customers.</span>',
-      sub: 'A roofing company and a dental practice do not win business the same way. The build changes to match — what goes above the fold, what the form asks, and what we set up on Google.',
+      h1: 'Built around <span class="italic text-copper-light">how your customers reach you.</span>',
+      sub: 'A dental practice, an orthodontist and a home care agency all lose business when a call goes unanswered, but not in the same way. Pick yours.',
     }),
     `<section class="py-16 px-6">
-  <div class="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-    <a href="construction.html" class="reveal group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
-      <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Contractors</p>
-      <h2 class="font-display text-2xl text-sand mb-3">Construction &amp; trades</h2>
-      <p class="text-sm text-fog leading-[1.7] flex-1">Quote-request forms above the fold, fast mobile pages, and instant lead response — because the contractor who replies first usually books the job.</p>
-      <span class="link-underline text-copper-light text-sm font-semibold mt-5">See the contractor build →</span>
+  <div class="max-w-5xl mx-auto grid sm:grid-cols-3 gap-6">
+    <a href="dental-practices.html" class="reveal group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
+      <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Dental</p>
+      <h2 class="font-display text-2xl text-sand mb-3">Dental practices</h2>
+      <p class="text-sm text-fog leading-[1.7] flex-1">New-patient calls that hit voicemail at lunch, after hours or during a rush book the practice that picked up. A2H answers, books the appointment and tracks every caller.</p>
+      <span class="link-underline text-copper-light text-sm font-semibold mt-5">See the dental page →</span>
     </a>
-    <a href="medical.html" class="reveal group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col" style="transition-delay:80ms">
-      <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Medical</p>
-      <h2 class="font-display text-2xl text-sand mb-3">Practices &amp; clinics</h2>
-      <p class="text-sm text-fog leading-[1.7] flex-1">Credibility first — credentials, services and insurance answered before the fold, with booking or call-now never more than one tap away.</p>
-      <span class="link-underline text-copper-light text-sm font-semibold mt-5">See the practice build →</span>
+    <a href="orthodontic-practices.html" class="reveal group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col" style="transition-delay:80ms">
+      <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Orthodontic</p>
+      <h2 class="font-display text-2xl text-sand mb-3">Orthodontic practices</h2>
+      <p class="text-sm text-fog leading-[1.7] flex-1">A parent who reaches voicemail calls the next orthodontist. A2H answers new-patient exam calls, books the exam and tracks every caller.</p>
+      <span class="link-underline text-copper-light text-sm font-semibold mt-5">See the orthodontic page →</span>
     </a>
-    <a href="retail.html" class="reveal group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col" style="transition-delay:160ms">
-      <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Local Retail</p>
-      <h2 class="font-display text-2xl text-sand mb-3">Shops &amp; markets</h2>
-      <p class="text-sm text-fog leading-[1.7] flex-1">Hours, directions and stock answered instantly, plus a Google Business Profile tuned so you turn up in the "near me" search that was going to your competitor.</p>
-      <span class="link-underline text-copper-light text-sm font-semibold mt-5">See the retail build →</span>
-    </a>
-    <a href="pet-grooming.html" class="reveal group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col" style="transition-delay:240ms">
-      <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Mobile Pet Care</p>
-      <h2 class="font-display text-2xl text-sand mb-3">Groomers &amp; pet cleaning</h2>
-      <p class="text-sm text-fog leading-[1.7] flex-1">Every call answered even when you're mid-groom or on the road, booked straight to your calendar so a missed call never becomes the next groomer's client.</p>
-      <span class="link-underline text-copper-light text-sm font-semibold mt-5">See how it works →</span>
+    <a href="home-care-agencies.html" class="reveal group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col" style="transition-delay:160ms">
+      <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Home Care</p>
+      <h2 class="font-display text-2xl text-sand mb-3">Home care agencies</h2>
+      <p class="text-sm text-fog leading-[1.7] flex-1">Families often call in the evening, and an inquiry that hits voicemail becomes a call to the next agency. A2H answers, books the assessment and tracks every inquiry.</p>
+      <span class="link-underline text-copper-light text-sm font-semibold mt-5">See the home care page →</span>
     </a>
   </div>
 </section>`,
     `<section class="px-6 pb-16">
-  <div class="max-w-5xl mx-auto">
-    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5 text-center">Find your practice</p>
+  <div class="max-w-5xl mx-auto text-center">
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Also serving</p>
     <div class="reveal flex flex-wrap justify-center gap-3">
-      <a href="dental-practices.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Dental practices</a>
-      <a href="orthodontic-practices.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Orthodontic practices</a>
-      <a href="home-care-agencies.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Home care agencies</a>
+      <a href="construction.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Contractors</a>
+      <a href="medical.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Medical practices</a>
+      <a href="retail.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">Local retail</a>
     </div>
   </div>
 </section>`,
-    B.portfolioGrid({ heading: 'Work across all three.' }),
+    B.portfolioGrid({ heading: 'Selected work.' }),
     B.ctaBand({}),
   ].join('\n\n'),
 });
@@ -434,8 +428,8 @@ PAGES.push({
 
 // ---- construction.html (rebuilt on the shared chrome)
 const CONSTRUCTION_FAQ = [
-  ['Does the AI actually book the job, not just reply?', 'Yes. It answers every call and text, asks what the job is and how urgent it is, and books an estimate straight onto your calendar — then alerts you the moment it books, or the moment it hits something only you should decide.'],
-  ['How fast do leads get answered?', 'Instantly — the AI Receptionist answers every call and text in real time, day or night. In trades that single detail decides most jobs — the customer usually books whoever gets back to them first.'],
+  ['Does the AI actually book the job, not just reply?', 'Yes. It answers every call, asks what the job is and how urgent it is, and books the estimate — then alerts you the moment it books, or the moment it hits something only you should decide.'],
+  ['How fast do leads get answered?', 'Instantly — the AI Receptionist answers every call in real time, day or night. In trades that single detail decides most jobs — the customer usually books whoever gets back to them first.'],
   ['Do I have to run ads to work with you?', 'No. AI Receptionist + CRM stands on its own. If you add the Custom Website tier it includes Google Business Profile setup too, which brings in calls without any ad spend.'],
   ['What does a contractor site actually need?', 'A quote-request form above the fold, proof of past work, service areas stated plainly, and a phone number that is one tap away on mobile. That is what the Custom Website tier is built around — most contractor sites bury at least two of those.'],
 ];
@@ -449,7 +443,7 @@ PAGES.push({
     hero({
       eyebrow: 'For Central Texas Contractors',
       h1: 'More calls answered. Faster follow-up. <span class="italic text-copper-light">Nothing wasted.</span>',
-      sub: 'The AI Receptionist answers every call and text, books estimates straight onto your calendar, and logs every job in your own CRM — the same system already running live for <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" class="link-underline text-copper-light">Solid State Construction</a>.',
+      sub: 'The AI Receptionist answers every call, books the estimate, and logs every job in your own CRM — the same system already running live for <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" class="link-underline text-copper-light">Solid State Construction</a>.',
       secondary: ['See the build', '#work'],
     }),
     `<section class="py-12 px-6 border-y border-white/5 bg-surface/40">
@@ -462,7 +456,7 @@ PAGES.push({
   </div>
 </section>`,
     cards('The System', 'Everything between a ringing phone and a booked job', [
-      { tag: 'Answered in seconds', h: 'AI Receptionist', p: 'Every call and text answered instantly, day or night, before the customer calls the next contractor on their list. Warm-transfers to a real person when it should.' },
+      { tag: 'Answered in seconds', h: 'AI Receptionist', p: 'Every call answered instantly, day or night, before the customer calls the next contractor on their list. Warm-transfers to a real person when it should.' },
       { tag: 'Nothing falls through', h: 'CRM &amp; pipeline board', p: 'Every job logged automatically — see every lead\'s stage at a glance instead of digging through call logs and sticky notes.' },
       { tag: 'Found without ads', h: 'Google Business Profile', p: 'On the Custom Website tier, your profile is claimed, categorised, and wired to your site so you show up in the Maps pack when someone searches your trade plus your city.' },
       { tag: 'Built to convert', h: 'Site or landing page', p: 'Hand-coded, mobile-first, quote-request form above the fold — available on the Custom Website tier. No page-builder bloat dragging down your load time.' },
@@ -476,7 +470,7 @@ PAGES.push({
 // ---- medical.html
 const MEDICAL_FAQ = [
   ['Can you handle patient privacy requirements?', 'The AI Receptionist and CRM handle scheduling, not clinical data — calls collect only a name, reason for the call and callback info so your staff can follow up. If you need a patient portal or intake that touches PHI, that belongs in dedicated HIPAA-compliant software, and we will integrate a link to it rather than rebuild it.'],
-  ['Do you set up online booking?', 'Yes. The AI Receptionist books straight onto your calendar, and we integrate whatever scheduling tool you already use.'],
+  ['Do you set up online booking?', 'Yes. The AI Receptionist books the visit, and we integrate whatever scheduling tool you already use.'],
   ['How do patients find the practice?', 'Google Business Profile is the single biggest lever for a local practice — it drives the map result and the reviews people read before they call. It is included with the Custom Website tier.'],
   ['What happens after hours?', 'The AI Receptionist still answers, takes the request, and books or flags it for your staff the next morning — instead of going to voicemail.'],
 ];
@@ -490,12 +484,12 @@ PAGES.push({
     hero({
       eyebrow: 'For Medical &amp; Dental Practices',
       h1: 'Every patient call answered. <span class="italic text-copper-light">Every time.</span>',
-      sub: 'A missed call is a patient calling the next practice on the list. The AI Receptionist answers day or night, books straight onto your calendar, and logs every patient contact in your own CRM.',
+      sub: 'A missed call is a patient calling the next practice on the list. The AI Receptionist answers day or night, books the visit, and logs every patient contact in your own CRM.',
       secondary: ['See the build', '#work'],
     }),
     cards('What Changes For A Practice', 'Built around how patients actually choose', [
       { tag: 'Never voicemail', h: 'Answered around the clock', p: 'Every call answered instantly, day or night — no patient sent to voicemail because it was after hours or the front desk was on another line.' },
-      { tag: 'Booked, not just noted', h: 'Straight onto your calendar', p: 'The AI Receptionist books the appointment directly, and warm-transfers to a real person when the call needs one.' },
+      { tag: 'Booked, not just noted', h: 'Booked during the call', p: 'The AI Receptionist books the appointment directly, and warm-transfers to a real person when the call needs one.' },
       { tag: 'Nothing lost', h: 'Every contact logged', p: 'Names, reasons for calling, and follow-ups tracked automatically in your own CRM pipeline board — nothing relies on a sticky note.' },
       { tag: 'Found locally', h: 'Maps and reviews', p: 'On the Custom Website tier, Google Business Profile is claimed and tuned, because the map pack and its review stars are what most patients see before your site.' },
     ]),
@@ -546,6 +540,7 @@ const PET_FAQ = [
 
 PAGES.push({
   slug: 'pet-grooming.html',
+  noindex: true, // niche paused 2026-10-03: live, not indexed
   title: 'AI Receptionist for Mobile Pet Groomers & Pet Cleaning | A2H',
   description: 'AI Receptionist + CRM for Texas mobile pet groomers and pet cleaners: every call answered and booked while you\'re mid-groom. Optional custom website.',
   jsonLd: [ORG, serviceLd('AI receptionist for mobile pet groomers', 'AI Receptionist + CRM and optional hand-coded websites for Texas mobile pet grooming and mobile pet cleaning businesses.', 'Mobile pet groomers and mobile pet cleaning businesses'), faqLd(PET_FAQ)],
@@ -553,12 +548,12 @@ PAGES.push({
     hero({
       eyebrow: 'For Mobile Pet Groomers &amp; Mobile Pet Cleaning',
       h1: 'Every call answered, even mid-groom. <span class="italic text-copper-light">Nothing missed.</span>',
-      sub: 'When you\'re elbow-deep in a groom, the phone goes unanswered — and that caller books the next mobile groomer on Google. The AI Receptionist answers day or night, books straight onto your calendar, and logs every contact in your own CRM.',
+      sub: 'When you\'re elbow-deep in a groom, the phone goes unanswered — and that caller books the next mobile groomer on Google. The AI Receptionist answers day or night, books the visit, and logs every contact in your own CRM.',
       secondary: ['See Pricing', 'pricing.html'],
     }),
     cards('What Changes For Mobile Groomers', 'Built around a schedule that never stops moving', [
       { tag: 'Never voicemail', h: 'Answered between appointments', p: 'Every call answered instantly, whether you\'re driving between jobs or hands-on with a groom — no client sent to voicemail because you couldn\'t grab the phone.' },
-      { tag: 'Booked, not just noted', h: 'Straight onto your calendar', p: 'The AI Receptionist books the appointment directly, and warm-transfers to you when a call needs a real person.' },
+      { tag: 'Booked, not just noted', h: 'Booked during the call', p: 'The AI Receptionist books the appointment directly, and warm-transfers to you when a call needs a real person.' },
       { tag: 'Nothing lost', h: 'Every contact logged', p: 'Names, pet details, and follow-ups tracked automatically in your own CRM pipeline board — nothing relies on a sticky note in the van.' },
       { tag: 'Found locally', h: 'Maps and reviews', p: 'On the Custom Website tier, Google Business Profile is claimed and tuned, because most pet owners search "mobile groomer near me" before they ever see a website.' },
     ]),

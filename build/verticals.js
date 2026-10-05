@@ -3,7 +3,7 @@
 // published pricing, a real FAQ (with matching FAQPage schema) and sibling links.
 //
 // NOTE: all trade pages here are OFF-NICHE (noindex, out of the sitemap). Only dental-practices.html is an active niche.
-// Copy rule: only claim what the product does today (answers calls and texts,
+// Copy rule: only claim what the product does today (answers calls,
 // asks what the job is and how urgent, books onto the calendar, logs the contact
 // in the CRM, warm-transfers, keeps the customer's own number, flat pricing).
 // No invented statistics, no named integrations, no compliance claims.
@@ -64,8 +64,8 @@ ${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand borde
       description: 'AI receptionist + CRM for Texas HVAC companies: every service call answered and booked, even at 2 a.m. in July. $1,500 setup, $397/mo.',
       eyebrow: 'For Texas HVAC Companies',
       h1: 'Every service call answered, <span class="italic text-copper-light">even in July.</span>',
-      sub: 'When a no-cool call comes in, your techs are on a roof or in an attic. The AI Receptionist answers instantly, finds out what is wrong and how urgent it is, and books the visit onto your calendar.',
-      answer: 'An AI receptionist for an HVAC company answers every inbound call and text, asks whether it is a no-cool or no-heat emergency or routine maintenance, books the service visit onto the calendar, and logs the customer in a CRM. A2H sets this up for Texas HVAC companies for $1,500 one-time and $397 per month, with no long-term contract.',
+      sub: 'When a no-cool call comes in, your techs are on a roof or in an attic. The AI Receptionist answers instantly, finds out what is wrong and how urgent it is, and books the visit.',
+      answer: 'An AI receptionist for an HVAC company answers every inbound call, asks whether it is a no-cool or no-heat emergency or routine maintenance, books the service visit, and logs the customer in a CRM. A2H sets this up for Texas HVAC companies for $1,500 one-time and $397 per month, with no long-term contract.',
       cardsHeading: 'Built for a business that gets slammed in bursts',
       cards: [
         { tag: 'Heat waves and cold snaps', h: 'Nobody waits for a tech to climb down', p: 'Calls arrive in bursts when the weather turns. The AI Receptionist answers each one instantly instead of letting it ring while your crew is on a job.' },
@@ -75,7 +75,7 @@ ${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand borde
       ],
       faq: [
         ['Can the AI tell an emergency AC call from a routine one?', 'It asks what the problem is and how urgent it is, then books the visit or alerts you right away when it hits something only you should decide. You decide how your business handles after-hours emergencies.'],
-        ['What about calls during a heat wave when everyone is booked?', 'Every call is still answered and logged. The AI books onto the calendar you give it, and anything it cannot place is flagged to you instead of going to voicemail.'],
+        ['What about calls during a heat wave when everyone is booked?', 'Every call is still answered and logged. The AI books the visit, and anything it cannot place is flagged to you instead of going to voicemail.'],
       ],
     },
     {
@@ -87,8 +87,8 @@ ${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand borde
       description: 'AI receptionist + CRM for Texas plumbers: every call answered and booked, burst pipes at midnight included. $1,500 setup, $397/mo.',
       eyebrow: 'For Texas Plumbers',
       h1: 'The burst pipe call at midnight <span class="italic text-copper-light">gets answered.</span>',
-      sub: 'Plumbing customers call whoever picks up first. The AI Receptionist answers every call and text, finds out what is leaking and how bad it is, and books the job or gets it to you.',
-      answer: 'An AI receptionist for a plumbing company answers every inbound call and text, asks what the problem is and how urgent it is, books the visit onto the calendar, and logs the customer in a CRM. A2H sets this up for Texas plumbers for $1,500 one-time and $397 per month, with no long-term contract.',
+      sub: 'Plumbing customers call whoever picks up first. The AI Receptionist answers every call, finds out what is leaking and how bad it is, and books the job or gets it to you.',
+      answer: 'An AI receptionist for a plumbing company answers every inbound call, asks what the problem is and how urgent it is, books the visit, and logs the customer in a CRM. A2H sets this up for Texas plumbers for $1,500 one-time and $397 per month, with no long-term contract.',
       cardsHeading: 'Built for a trade where the first answer wins the job',
       cards: [
         { tag: 'First to answer', h: 'No call goes to voicemail', p: 'A customer with water on the floor will call the next plumber on the list. The AI Receptionist picks up instantly, day or night, while you are under a sink.' },
@@ -110,17 +110,17 @@ ${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand borde
       description: 'AI receptionist + CRM for Texas roofing companies: every storm-season call answered and booked into an estimate. $1,500 setup, $397/mo.',
       eyebrow: 'For Texas Roofing Companies',
       h1: 'Storm season brings the calls. <span class="italic text-copper-light">Answer all of them.</span>',
-      sub: 'After a hailstorm the phones light up, and homeowners book whoever responds first. The AI Receptionist answers every call and text and books the estimate while your crews are on roofs.',
-      answer: 'An AI receptionist for a roofing company answers every inbound call and text, finds out what the roof problem is and how urgent it is, books an estimate onto the calendar, and logs the homeowner in a CRM. A2H sets this up for Texas roofers for $1,500 one-time and $397 per month, with no long-term contract.',
+      sub: 'After a hailstorm the phones light up, and homeowners book whoever responds first. The AI Receptionist answers every call and books the estimate while your crews are on roofs.',
+      answer: 'An AI receptionist for a roofing company answers every inbound call, finds out what the roof problem is and how urgent it is, books the estimate, and logs the homeowner in a CRM. A2H sets this up for Texas roofers for $1,500 one-time and $397 per month, with no long-term contract.',
       cardsHeading: 'Built for a business with sudden surges of leads',
       cards: [
         { tag: 'Hail and wind season', h: 'Every storm lead answered', p: 'When a storm hits, the calls come all at once. The AI Receptionist answers each one instead of letting leads roll over to the next roofer.' },
-        { tag: 'Estimate booked', h: 'Straight onto your calendar', p: 'It asks what happened to the roof and books the estimate directly, and warm-transfers to you when a call needs a person.' },
+        { tag: 'Estimate booked', h: 'Booked during the call', p: 'It asks what happened to the roof and books the estimate directly, and warm-transfers to you when a call needs a person.' },
         { tag: 'Nothing lost', h: 'Every lead in the CRM', p: 'Each homeowner is logged with what they reported, so a surge of leads becomes a pipeline you can work instead of a pile of missed calls.' },
         { tag: 'Found locally', h: 'Google Business Profile', p: 'Included on the Custom Website tier, so you appear in the Maps results when someone searches for a roofer in your city.' },
       ],
       faq: [
-        ['Can it handle a flood of calls after a storm?', 'Every call and text is answered and logged, and estimates are booked onto the calendar you provide. Anything it cannot place is flagged to you rather than dropped.'],
+        ['Can it handle a flood of calls after a storm?', 'Every call is answered and logged, and estimates are booked. Anything it cannot place is flagged to you rather than dropped.'],
         ['Does it work with insurance-claim roofing leads?', 'It captures the homeowner\'s name, what happened and a callback number, and books the estimate. How you handle the claim after that is up to you.'],
       ],
     },
@@ -133,8 +133,8 @@ ${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand borde
       description: 'AI receptionist + CRM for Texas electricians: every call answered and booked while you are on the job. $1,500 setup, $397/mo.',
       eyebrow: 'For Texas Electricians',
       h1: 'You cannot answer the phone <span class="italic text-copper-light">inside a panel.</span>',
-      sub: 'Electrical work needs your full attention, and missed calls go to the next electrician on Google. The AI Receptionist answers every call and text and books the job for you.',
-      answer: 'An AI receptionist for an electrical contractor answers every inbound call and text, asks what the job is and how urgent it is, books the visit onto the calendar, and logs the customer in a CRM. A2H sets this up for Texas electricians for $1,500 one-time and $397 per month, with no long-term contract.',
+      sub: 'Electrical work needs your full attention, and missed calls go to the next electrician on Google. The AI Receptionist answers every call and books the job for you.',
+      answer: 'An AI receptionist for an electrical contractor answers every inbound call, asks what the job is and how urgent it is, books the visit, and logs the customer in a CRM. A2H sets this up for Texas electricians for $1,500 one-time and $397 per month, with no long-term contract.',
       cardsHeading: 'Built for work you cannot pause to take a call',
       cards: [
         { tag: 'Hands on the job', h: 'Answered while you work', p: 'You should not stop mid-job to pick up. The AI Receptionist answers instantly so the caller is not left to try someone else.' },
@@ -143,7 +143,7 @@ ${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand borde
         { tag: 'Found locally', h: 'Google Business Profile', p: 'The Custom Website tier includes Google Business Profile setup, so you are visible when someone searches for an electrician near them.' },
       ],
       faq: [
-        ['Can it book different kinds of electrical jobs?', 'It asks what the job is, from a dead outlet to a panel upgrade, and books the visit onto your calendar. Jobs that need your judgment are passed to you.'],
+        ['Can it book different kinds of electrical jobs?', 'It asks what the job is, from a dead outlet to a panel upgrade, and books the visit. Jobs that need your judgment are passed to you.'],
         ['What if a caller reports a safety hazard?', 'It flags anything urgent to you immediately and warm-transfers when a call needs a person. You decide your own emergency process.'],
       ],
     },

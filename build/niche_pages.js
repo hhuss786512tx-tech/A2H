@@ -9,7 +9,8 @@
 //  - NEVER say "on your calendar" / "calendar sync" (real Google Calendar sync is not built), and NEVER mention
 //    texts/SMS (not available). Do not say it connects to practice-management software (it does not today).
 //  - Phone: the client forwards their existing line (when busy / no answer). No number porting.
-//  - NO prices in copy or schema: per-niche pricing is undecided. Say pricing is covered on the 15-minute call.
+//  - Prices (Option A, decided 2026-10-04): $1,500 setup, then $397/mo dental, $697/mo orthodontic and home care.
+//    Founding-client offer (30 days free, 10-second guarantee) is NOT public: setup fee unconfirmed, Phase 0 not done.
 //  - NO invented statistics, testimonials, guarantees, compliance or licensing claims.
 //  - Home care: intake + assessment booking ONLY. No caregiver call-out coverage or shift scheduling.
 
@@ -99,15 +100,16 @@ module.exports = function nichePages({ SITE, ORG, faqLd, hero, cards, faqSection
       ${sibling}
       ${others.join('\n      ')}
     </div>
-    <p class="reveal text-sm text-fog mt-8">Hear a <a href="demo.html" class="link-underline text-copper-light">demo call</a> (a recorded test call with a fictional business and caller). Pricing is covered on a free 15-minute call.</p>
+    <p class="reveal text-sm text-fog mt-8">Hear a <a href="demo.html" class="link-underline text-copper-light">demo call</a> (a recorded test call with a fictional business and caller). Pricing is on the <a href="pricing.html" class="link-underline text-copper-light">pricing page</a>.</p>
   </div>
 </section>`;
   };
 
+  const PRICE = { dental: '$397', ortho: '$697', home: '$697' };
   const forwarding = ['Do I have to change my business number?', 'No porting and no new number for your callers. You set your existing line to forward to the receptionist when it is busy or unanswered.'];
   const transfer = (n, who) => [`What happens when a ${n.callerWord} needs a real person?`, `It can transfer the call to ${who}, or take a message and flag the contact in our custom CRM.`];
   const where = ['Where does A2H work?', 'A2H sets the receptionist up remotely for Texas businesses, including those around Houston, Dallas, Austin, San Antonio and Fort Worth.'];
-  const cost = ['What does it cost, and can I cancel?', 'A2H covers pricing on a free 15-minute call. There is a real contract with a cancel-anytime clause, and no long-term lock-in.'];
+  const costFaq = (key) => ['What does it cost, and can I cancel?', `A2H is a $1,500 one-time setup plus ${PRICE[key]} per month. There is a real contract with a cancel-anytime clause, and no long-term lock-in.`];
 
   const PRACTICE_SOFTWARE = {
     dental: ['Does it work with my practice-management software?', 'Not directly today. Every call produces a summary your front desk can add in seconds, and your practice software stays your system of record.'],
@@ -118,7 +120,7 @@ module.exports = function nichePages({ SITE, ORG, faqLd, hero, cards, faqSection
   const shared = (key) => {
     const n = NICHES[key];
     const who = key === 'home' ? 'your office' : 'your front desk';
-    return [forwarding, transfer(n, who), where, cost];
+    return [forwarding, transfer(n, who), where, costFaq(key)];
   };
 
   // ---------------------------------------------------------------- missed-calls guides
@@ -227,13 +229,13 @@ module.exports = function nichePages({ SITE, ORG, faqLd, hero, cards, faqSection
     },
   };
 
-  const comparisonTable = () => {
+  const comparisonTable = (key) => {
     const head = ['Option', 'Nights and weekends', 'Books the visit', 'Tracks the caller', 'How you pay'];
     const rows = [
       ['Voicemail', 'Records a message; the caller waits for a reply', 'No', 'Only if you write it down', 'Usually free'],
       ['Hire help', 'Only during their hours', 'Yes', 'If they enter it', 'Wages, taxes and training'],
       ['Live answering service', 'Often staffed around the clock', 'Depends on whether it connects to your schedule', 'Usually emailed notes', 'Typically a monthly fee plus per-call or per-minute charges'],
-      ['A2H AI receptionist', 'Answers every call, day or night', 'Books the visit during the call', 'Every call and caller in our custom CRM', 'Setup plus a monthly service, covered on a 15-minute call'],
+      ['A2H AI receptionist', 'Answers every call, day or night', 'Books the visit during the call', 'Every call and caller in our custom CRM', `$1,500 setup, then ${PRICE[key]}/month`],
     ];
     return `<section class="py-16 px-6">
   <div class="max-w-5xl mx-auto">
@@ -255,7 +257,7 @@ ${rows.map((r, i) => `          <tr class="border-b border-white/5 ${i === 3 ? '
   };
 
   const optionsFaq = (key) => [
-    ['Is an AI receptionist cheaper than hiring someone?', 'It depends on your hours and call volume. A hire costs wages and covers only the hours they work. A2H is a setup fee plus a monthly service and answers around the clock. Compare it against your own payroll, not an industry average.'],
+    ['Is an AI receptionist cheaper than hiring someone?', `It depends on your hours and call volume. A hire costs wages and covers only the hours they work. A2H is a $1,500 setup plus ${PRICE[key]} per month and answers around the clock. Compare it against your own payroll, not an industry average.`],
     ['What does an AI receptionist not do?', key === 'home'
       ? 'It handles inquiry calls: answering, collecting details and booking the assessment. It does not manage caregiver schedules, and anything it cannot handle is passed to your team.'
       : 'It handles the front-desk call: answering, collecting details and booking. It does not handle clinical questions or insurance, and anything it cannot handle is passed to your team.'],
@@ -289,7 +291,7 @@ ${rows.map((r, i) => `          <tr class="border-b border-white/5 ${i === 3 ? '
 
     const optSlug = `${n.slug}-receptionist-options.html`;
     const optFaq = optionsFaq(key);
-    const ans = `${o.lead} Voicemail books nothing, a hire covers only their working hours, an answering service covers more hours but may not connect to your schedule, and A2H answers every call, books the ${n.apptWord} and tracks every call and caller in our custom CRM. A2H is a setup fee plus a monthly service, covered on a free 15-minute call.`;
+    const ans = `${o.lead} Voicemail books nothing, a hire covers only their working hours, an answering service covers more hours but may not connect to your schedule, and A2H answers every call, books the ${n.apptWord} and tracks every call and caller in our custom CRM. A2H is a $1,500 setup plus ${PRICE[key]} per month.`;
     pages.push({
       slug: optSlug,
       title: o.title,
@@ -299,7 +301,7 @@ ${rows.map((r, i) => `          <tr class="border-b border-white/5 ${i === 3 ? '
       body: [
         hero({ eyebrow: o.eyebrow, h1: o.h1, sub: o.sub, secondary: ['Hear a demo call', 'demo.html'] }),
         answer(ans),
-        comparisonTable(),
+        comparisonTable(key),
         faqSection(optFaq),
         B.ctaBand({}),
         related(key, 'options'),
@@ -311,7 +313,7 @@ ${rows.map((r, i) => `          <tr class="border-b border-white/5 ${i === 3 ? '
   const ORTHO_FAQ = [
     PRACTICE_SOFTWARE.ortho, HIPAA,
     ['Will parents know it is AI?', 'If they ask, it tells them. You choose the greeting.'],
-    transfer(NICHES.ortho, 'your front desk'), cost, forwarding, where,
+    transfer(NICHES.ortho, 'your front desk'), costFaq('ortho'), forwarding, where,
   ];
   pages.push({
     slug: 'orthodontic-practices.html',
@@ -326,7 +328,7 @@ ${rows.map((r, i) => `          <tr class="border-b border-white/5 ${i === 3 ? '
         sub: 'A parent who reaches voicemail at lunch or after hours books the practice that picked up. A2H answers, books the new-patient exam, and tracks every call and caller in our custom CRM. It handles scheduling only, never clinical data.',
         secondary: ['Hear a demo call', 'demo.html'],
       }),
-      answer('An AI receptionist for an orthodontic practice answers every new-patient call, takes the parent\'s name, the child\'s name and age, the reason for the call and a callback number, books the new-patient exam, and tracks every call and caller in a custom CRM. A2H sets this up for Texas orthodontic practices. It handles scheduling only, never clinical data, and it does not connect to practice software such as Ortho2, Cloud 9, OrthoTrac or Dentrix today.'),
+      answer('An AI receptionist for an orthodontic practice answers every new-patient call, takes the parent\'s name, the child\'s name and age, the reason for the call and a callback number, books the new-patient exam, and tracks every call and caller in a custom CRM. A2H sets this up for Texas orthodontic practices. It handles scheduling only, never clinical data, and it does not connect to practice software such as Ortho2, Cloud 9, OrthoTrac or Dentrix today. A2H is a $1,500 setup plus $697 per month.'),
       cards('What Changes For A Practice', 'Built around how families choose an orthodontist', [
         { tag: 'Never voicemail', h: 'Answered at lunch and after hours', p: 'Every call is picked up the same way, whether the team is with patients, on a break, or gone for the night.' },
         { tag: 'Booked, not just noted', h: 'New-patient exams booked', p: 'It takes the parent\'s name, the child\'s name and age, the reason for the call and a callback number, then books the exam.' },
@@ -360,7 +362,7 @@ ${rows.map((r, i) => `          <tr class="border-b border-white/5 ${i === 3 ? '
         sub: 'Families looking for care call when they have a minute, not when your office is open. A2H answers every inquiry, takes the family\'s details, books the assessment, and tracks every inquiry in our custom CRM. It handles intake and scheduling only, never clinical records.',
         secondary: ['Hear a demo call', 'demo.html'],
       }),
-      answer('An AI receptionist for a home care agency answers every family inquiry, takes the family\'s name, who needs care and a callback number, books the assessment, and tracks every inquiry in a custom CRM. A2H sets this up for non-medical home care agencies in Texas. It handles intake and scheduling; it does not manage caregiver scheduling.'),
+      answer('An AI receptionist for a home care agency answers every family inquiry, takes the family\'s name, who needs care and a callback number, books the assessment, and tracks every inquiry in a custom CRM. A2H sets this up for non-medical home care agencies in Texas. It handles intake and scheduling; it does not manage caregiver scheduling. A2H is a $1,500 setup plus $697 per month.'),
       cards('What Changes For An Agency', 'Built around how families actually reach out', [
         { tag: 'Never voicemail', h: 'Answered day and night', p: 'Evenings, weekends and busy mornings: every inquiry reaches someone on the first call.' },
         { tag: 'Next step set', h: 'The assessment, booked', p: 'It books the assessment during the call, so the family leaves with the next step set.' },
