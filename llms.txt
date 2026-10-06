@@ -5,7 +5,7 @@
 A2H builds an AI phone receptionist and CRM for businesses that lose revenue to missed calls: dental practices, orthodontic practices and non-medical home care agencies in Texas. A2H answers every call, books the visit, and tracks every call and caller in a custom CRM. It handles scheduling only, never clinical data. Pricing is covered on a free 15-minute call.
 
 ## Pricing
-- AI Receptionist + CRM: $1,500 one-time setup, then $397/month. Answers every call, books appointments, logs every contact in a CRM pipeline. Cancel anytime.
+- AI Receptionist + CRM: $1,500 one-time setup, then $397/month for dental practices or $697/month for orthodontic practices and home care agencies. Answers every call, books the visit, tracks every call and caller in a custom CRM. Cancel anytime.
 - AI Receptionist + CRM + Custom Website: $2,000 one-time setup, then $400/month. Adds a hand-coded website (up to 10 pages) and Google Business Profile setup.
 - Extra CRM seat: $99/month per seat.
 - AI Website Chatbot add-on: $99/month (Custom Website tier only).
@@ -18,7 +18,6 @@ A2H builds an AI phone receptionist and CRM for businesses that lose revenue to 
 - [Contractors](https://a2h.info/construction.html): AI Receptionist for Texas contractors and trades.
 - [Medical & Dental Practices](https://a2h.info/medical.html): AI Receptionist for medical and dental practices.
 - [Local Retail](https://a2h.info/retail.html): AI Receptionist for shops and markets.
-- [Mobile Pet Grooming](https://a2h.info/pet-grooming.html): AI Receptionist for mobile pet groomers and mobile pet cleaning businesses.
 - [Dental Practices](https://a2h.info/dental-practices.html): AI Receptionist for Texas dental practices.
 - [Home Care Agencies](https://a2h.info/home-care-agencies.html): AI Receptionist for Texas non-medical home care agencies.
 - [Missed calls: dental practices](https://a2h.info/dental-missed-calls.html), [receptionist options](https://a2h.info/dental-receptionist-options.html)
