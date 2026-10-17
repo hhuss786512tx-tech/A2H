@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Your Custom Demo | A2H</title>
+<meta name="description" content="Answer five quick questions about your business and book a call. We build your demo around your answers.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://a2h.info/get-started.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141110'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' text-anchor='middle' fill='%23e2924f'%3EA2H%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#141110; --raised:#1d1815; --line:#33292a; --sand:#e9dfd2; --muted:#a79d90;
+  --copper:#e2924f; --copper-deep:#c9702f; --ok:#7fc79a; --err:#ff9a85;
+  --display:"Fraunces",Georgia,serif; --body:"Hanken Grotesk",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:16px}
+body{margin:0;background:var(--ink);color:var(--sand);font:16px/1.6 var(--body);padding:0 16px 56px;
+  background-image:radial-gradient(60% 40% at 85% 0%,rgba(226,146,79,.14),transparent 60%),radial-gradient(50% 40% at 0% 100%,rgba(201,112,47,.08),transparent 60%);min-height:100vh}
+.wrap{max-width:640px;margin:0 auto}
+.brand{display:block;padding:22px 0 8px;font:600 22px var(--display);color:var(--sand);text-decoration:none;letter-spacing:-.01em}
+.brand span{color:var(--copper)}
+.prog{height:4px;background:var(--line);border-radius:4px;overflow:hidden;margin:14px 0 6px}
+.prog i{display:block;height:100%;width:0;background:var(--copper);transition:width .35s cubic-bezier(.2,.8,.2,1)}
+.count{font-size:13px;color:var(--muted);margin:0 0 26px;font-variant-numeric:tabular-nums}
+h1{font:600 clamp(26px,5.5vw,36px)/1.15 var(--display);letter-spacing:-.02em;margin:0 0 10px;text-wrap:balance}
+.lead{color:var(--muted);margin:0 0 24px;max-width:52ch}
+.opts{display:grid;gap:10px;margin:0 0 22px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--raised);color:var(--sand);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font:500 16px var(--body);cursor:pointer;transition:border-color .15s,transform .15s,background-color .15s}
+.opt:hover{border-color:var(--copper)}
+.opt:active{transform:translateY(1px)}
+.opt:focus-visible,.btn:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid var(--copper);outline-offset:2px}
+.opt[aria-pressed="true"]{border-color:var(--copper);background:rgba(226,146,79,.12)}
+.opt .dot{flex:none;width:18px;height:18px;border-radius:50%;border:2px solid var(--muted)}
+.opt.multi .dot{border-radius:5px}
+.opt[aria-pressed="true"] .dot{border-color:var(--copper);background:var(--copper);box-shadow:inset 0 0 0 3px var(--raised)}
+label.f{display:block;font-size:14px;color:var(--muted);margin:0 0 6px}
+input[type=text],input[type=email],input[type=tel],input[type=url],textarea{width:100%;background:var(--raised);color:var(--sand);border:1px solid var(--line);border-radius:10px;padding:13px 14px;font:16px var(--body);margin:0 0 16px}
+textarea{min-height:84px;resize:vertical}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{font:700 16px var(--body);background:var(--copper-deep);color:#fff;border:0;border-radius:999px;padding:14px 26px;cursor:pointer;transition:transform .15s,background-color .15s}
+.btn:hover{background:var(--copper)}
+.btn:active{transform:translateY(1px)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.back{background:none;border:0;color:var(--muted);font:500 15px var(--body);cursor:pointer;padding:12px 6px}
+.back:hover{color:var(--sand)}
+.msg{min-height:22px;font-size:14px;color:var(--err);margin:0 0 12px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.cap{background:var(--raised);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:0 0 16px}
+.cap input{margin:6px 0 0;max-width:140px}
+.step{display:none}
+.step.on{display:block}
+.fine{font-size:13px;color:var(--muted);margin-top:14px}
+.done h1 span{color:var(--ok)}
+.cal{margin-top:18px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--raised)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L9L2CVTSBB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L9L2CVTSBB');
+</script>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1760813911727113');
+fbq('track', 'PageView');
+window.addEventListener('message', function (e) {
+  if (e.origin === 'https://calendly.com' && e.data && e.data.event === 'calendly.event_scheduled') {
+    fbq('track', 'Lead', { content_name: 'quiz call booked' });
+    fbq('track', 'Schedule');
+  }
+});
+</script>
+</head>
+<body>
+<div class="wrap">
+  <a class="brand" href="/">A2H<span>.</span></a>
+  <div class="prog" aria-hidden="true"><i id="bar"></i></div>
+  <p class="count" id="count" aria-live="polite">Question 1 of 5</p>
+
+  <form id="quiz" novalidate>
+    <!-- 1 -->
+    <section class="step on" data-step="1" aria-labelledby="q1">
+      <h1 id="q1">What kind of business do you run?</h1>
+      <p class="lead">So we build your demo around your industry.</p>
+      <div class="opts" data-q="niche">
+        <button type="button" class="opt" aria-pressed="false" data-v="Dental or orthodontic"><span class="dot"></span>Dental or orthodontic practice</button>
+        <button type="button" class="opt" aria-pressed="false" data-v="Home care"><span class="dot"></span>Home care agency</button>
+        <button type="button" class="opt" aria-pressed="false" data-v="Foundation repair or restoration"><span class="dot"></span>Foundation repair or restoration</button>
+        <button type="button" class="opt" aria-pressed="false" data-v="Garage door or other trades"><span class="dot"></span>Garage door or another trade</button>
+        <button type="button" class="opt" aria-pressed="false" data-v="Other"><span class="dot"></span>Something else</button>
+      </div>
+      <div id="nicheOtherWrap" style="display:none">
+        <label class="f" for="nicheOther">What business?</label>
+        <input type="text" id="nicheOther" maxlength="150" autocomplete="off">
+      </div>
+      <p class="msg" role="alert"></p>
+      <div class="row"><button type="button" class="btn" data-next>Next</button></div>
+    </section>
+
+    <!-- 2 -->
+    <section class="step" data-step="2" aria-labelledby="q2">
+      <h1 id="q2">Why do you need a new website?</h1>
+      <p class="lead">Pick everything that applies.</p>
+      <div class="opts" data-q="why" data-multi="1">
+        <button type="button" class="opt multi" aria-pressed="false" data-v="I don't have a website"><span class="dot"></span>I don't have a website yet</button>
+        <button type="button" class="opt multi" aria-pressed="false" data-v="Mine looks outdated or is slow on phones"><span class="dot"></span>Mine looks outdated or is slow on phones</button>
+        <button type="button" class="opt multi" aria-pressed="false" data-v="It doesn't bring in leads"><span class="dot"></span>It doesn't bring in leads</button>
+        <button type="button" class="opt multi" aria-pressed="false" data-v="Want AI chat to answer visitors"><span class="dot"></span>I want a chat that answers visitors' questions</button>
+        <button type="button" class="opt multi" aria-pressed="false" data-v="Want a CRM to track every lead"><span class="dot"></span>I want a CRM that tracks every lead</button>
+      </div>
+      <label class="f" for="whyNote">Anything else we should know? (optional)</label>
+      <textarea id="whyNote" maxlength="1000"></textarea>
+      <p class="msg" role="alert"></p>
+      <div class="row"><button type="button" class="btn" data-next>Next</button><button type="button" class="back" data-back>Back</button></div>
+    </section>
+
+    <!-- 3 -->
+    <section class="step" data-step="3" aria-labelledby="q3">
+      <h1 id="q3">What budget are you working with?</h1>
+      <p class="lead">A rough range is fine. It helps us scope the demo honestly.</p>
+      <div class="opts" data-q="budget">
+        <button type="button" class="opt" aria-pressed="false" data-v="Under $1,000"><span class="dot"></span>Under $1,000</button>
+        <button type="button" class="opt" aria-pressed="false" data-v="$1,000 to $2,000"><span class="dot"></span>$1,000 to $2,000</button>
+        <button type="button" class="opt" aria-pressed="false" data-v="$2,000 or more"><span class="dot"></span>$2,000 or more</button>
+        <button type="button" class="opt" aria-pressed="false" data-v="Not sure yet"><span class="dot"></span>Not sure yet</button>
+      </div>
+      <p class="msg" role="alert"></p>
+      <div class="row"><button type="button" class="btn" data-next>Next</button><button type="button" class="back" data-back>Back</button></div>
+    </section>
+
+    <!-- 4 -->
+    <section class="step" data-step="4" aria-labelledby="q4">
+      <h1 id="q4">Do you have a site today?</h1>
+      <p class="lead">If you do, paste the address so we can look at it before the call.</p>
+      <label class="f" for="siteUrl">Current website (optional)</label>
+      <input type="url" id="siteUrl" maxlength="200" placeholder="https://" autocomplete="url">
+      <label class="f" for="when">When would you like it live?</label>
+      <div class="opts" data-q="timeline">
+        <button type="button" class="opt" aria-pressed="false" data-v="As soon as possible"><span class="dot"></span>As soon as possible</button>
+        <button type="button" class="opt" aria-pressed="false" data-v="Within a month or two"><span class="dot"></span>Within a month or two</button>
+        <button type="button" class="opt" aria-pressed="false" data-v="Just exploring"><span class="dot"></span>Just exploring</button>
+      </div>
+      <p class="msg" role="alert"></p>
+      <div class="row"><button type="button" class="btn" data-next>Next</button><button type="button" class="back" data-back>Back</button></div>
+    </section>
+
+    <!-- 5 -->
+    <section class="step" data-step="5" aria-labelledby="q5">
+      <h1 id="q5">Where should we send your demo?</h1>
+      <p class="lead">Last step. Then you pick a time on the calendar.</p>
+      <label class="f" for="name">Your name</label>
+      <input type="text" id="name" maxlength="200" autocomplete="name">
+      <label class="f" for="business">Business name</label>
+      <input type="text" id="business" maxlength="200" autocomplete="organization">
+      <label class="f" for="email">Email</label>
+      <input type="email" id="email" maxlength="200" autocomplete="email">
+      <label class="f" for="phone">Phone (optional)</label>
+      <input type="tel" id="phone" maxlength="60" autocomplete="tel">
+      <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" id="hpField" tabindex="-1" autocomplete="off"></label></div>
+      <div class="cap"><label class="f" for="capAnswer" id="capQ" style="margin:0">Loading a quick check…</label><input type="text" inputmode="numeric" id="capAnswer" autocomplete="off"></div>
+      <p class="msg" role="alert"></p>
+      <div class="row"><button type="submit" class="btn" id="submitBtn">See available times</button><button type="button" class="back" data-back>Back</button></div>
+      <p class="fine">We use your answers only to prepare your demo and follow up about it.</p>
+    </section>
+  </form>
+
+  <section id="done" class="done" style="display:none" aria-live="polite">
+    <h1><span>Got it.</span> Pick a time that works.</h1>
+    <p class="lead" id="doneLead">We'll build your demo from your answers and walk you through it live on the call.</p>
+    <div class="cal"><div class="calendly-inline-widget" id="calWidget" data-url="" style="min-width:280px;height:700px;"></div></div>
+    <p class="fine" id="calFallback" style="display:none">Calendar not loading? <a style="color:var(--copper)" href="https://calendly.com/hhuss786512tx/new-meeting" target="_blank" rel="noopener">Open it here</a>.</p>
+  </section>
+</div>
+
+<script>
+(function () {
+  var TOTAL = 5, step = 1;
+  var answers = { niche: '', why: [], budget: '', timeline: '' };
+  var form = document.getElementById('quiz');
+  var steps = form.querySelectorAll('.step');
+  var bar = document.getElementById('bar'), count = document.getElementById('count');
+  var captchaToken = '', loadedAt = Date.now();
+
+  fetch('/api/captcha-challenge').then(function (r) { return r.json(); }).then(function (d) {
+    document.getElementById('capQ').textContent = d.question ? 'Quick check: what is ' + d.question + '?' : 'Quick check unavailable, skip this';
+    captchaToken = d.token || '';
+  }).catch(function () {
+    document.getElementById('capQ').textContent = 'Quick check unavailable, skip this';
+  });
+
+  function show(n) {
+    step = n;
+    steps.forEach(function (s) { s.classList.toggle('on', +s.dataset.step === n); });
+    bar.style.width = ((n - 1) / TOTAL * 100 + 20 / 1) * 0 + (n / TOTAL * 100) + '%';
+    count.textContent = 'Question ' + n + ' of ' + TOTAL;
+    var first = form.querySelector('.step.on h1');
+    if (first) { first.setAttribute('tabindex', '-1'); first.focus({ preventScroll: true }); }
+    window.scrollTo({ top: 0 });
+  }
+  show(1); bar.style.width = (1 / TOTAL * 100) + '%';
+
+  form.addEventListener('click', function (e) {
+    var opt = e.target.closest('.opt');
+    if (opt) {
+      var group = opt.parentElement, q = group.dataset.q, v = opt.dataset.v;
+      if (group.dataset.multi) {
+        var on = opt.getAttribute('aria-pressed') !== 'true';
+        opt.setAttribute('aria-pressed', on);
+        answers.why = Array.prototype.filter.call(group.children, function (b) { return b.getAttribute('aria-pressed') === 'true'; }).map(function (b) { return b.dataset.v; });
+      } else {
+        Array.prototype.forEach.call(group.children, function (b) { b.setAttribute('aria-pressed', b === opt); });
+        answers[q] = v;
+        if (q === 'niche') document.getElementById('nicheOtherWrap').style.display = v === 'Other' ? 'block' : 'none';
+      }
+      return;
+    }
+    if (e.target.matches('[data-next]')) next();
+    if (e.target.matches('[data-back]') && step > 1) show(step - 1);
+  });
+
+  function msg(t) { var m = form.querySelector('.step.on .msg'); if (m) m.textContent = t || ''; }
+
+  function next() {
+    msg('');
+    if (step === 1) {
+      if (!answers.niche) return msg('Pick the one that fits best.');
+      if (answers.niche === 'Other' && !document.getElementById('nicheOther').value.trim()) return msg('Tell us what business you run.');
+    }
+    if (step === 2 && !answers.why.length) return msg('Pick at least one.');
+    if (step === 3 && !answers.budget) return msg('Pick a range, or "Not sure yet".');
+    if (step === 4 && !answers.timeline) return msg('Pick a timeline.');
+    show(step + 1);
+    bar.style.width = (step / TOTAL * 100) + '%';
+  }
+
+  function utm(k) { try { return new URLSearchParams(location.search).get(k) || ''; } catch (e) { return ''; } }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    msg('');
+    var name = document.getElementById('name').value.trim();
+    var business = document.getElementById('business').value.trim();
+    var email = document.getElementById('email').value.trim();
+    if (!name || !business) return msg('Add your name and business name.');
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return msg('Add a valid email so we can send your demo.');
+    var btn = document.getElementById('submitBtn'); btn.disabled = true; btn.textContent = 'Sending...';
+    var niche = answers.niche === 'Other' ? document.getElementById('nicheOther').value.trim() : answers.niche;
+    var payload = {
+      name: name, business: business, email: email,
+      phone: document.getElementById('phone').value.trim(),
+      niche: niche, why: answers.why, why_note: document.getElementById('whyNote').value.trim(),
+      budget: answers.budget, timeline: answers.timeline,
+      site_url: document.getElementById('siteUrl').value.trim(),
+      website: document.getElementById('hpField').value,
+      captcha_token: captchaToken, captcha_answer: document.getElementById('capAnswer').value.trim(),
+      elapsed_ms: Date.now() - loadedAt,
+      utm_source: utm('utm_source'), utm_campaign: utm('utm_campaign'), landing_page: location.pathname
+    };
+    fetch('/api/quiz-lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (res) {
+        if (!res.ok || res.d.success === false) {
+          var errs = { captcha_failed: 'That check answer was off. Try again.', too_fast: 'Please take a moment and try again.', invalid_email: 'That email looks off. Check it and try again.', disposable_email: 'Please use a work or personal email.', email_domain_unreachable: 'We could not reach that email domain. Check it and try again.' };
+          btn.disabled = false; btn.textContent = 'See available times';
+          return msg(errs[res.d.error] || 'Something went wrong. Try again, or book directly: calendly.com/hhuss786512tx/new-meeting');
+        }
+        finish(name, email, niche);
+      })
+      .catch(function () { btn.disabled = false; btn.textContent = 'See available times'; msg('Network problem. Try again in a moment.'); });
+  });
+
+  function finish(name, email, niche) {
+    if (window.fbq) fbq('track', 'CompleteRegistration', { content_name: 'quiz' });
+    if (window.gtag) gtag('event', 'quiz_complete', { niche: niche });
+    form.style.display = 'none'; count.style.display = 'none'; bar.style.width = '100%';
+    var done = document.getElementById('done'); done.style.display = 'block';
+    var summary = niche + ' | ' + answers.why.join(', ') + ' | ' + answers.budget;
+    var url = 'https://calendly.com/hhuss786512tx/new-meeting?hide_gdpr_banner=1&background_color=1d1815&text_color=e9dfd2&primary_color=c9702f'
+      + '&name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email) + '&a1=' + encodeURIComponent(summary.slice(0, 300));
+    var w = document.getElementById('calWidget'); w.setAttribute('data-url', url);
+    var s = document.createElement('script'); s.src = 'https://assets.calendly.com/assets/external/widget.js'; s.async = true;
+    s.onerror = function () { document.getElementById('calFallback').style.display = 'block'; };
+    document.body.appendChild(s);
+    setTimeout(function () { if (!w.querySelector('iframe')) document.getElementById('calFallback').style.display = 'block'; }, 6000);
+    window.scrollTo({ top: 0 });
+  }
+})();
+</script>
+</body>
+</html>
