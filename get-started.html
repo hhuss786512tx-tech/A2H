@@ -27,6 +27,8 @@ body{margin:0;background:var(--ink);color:var(--sand);font:16px/1.6 var(--body);
 .prog{height:4px;background:var(--line);border-radius:4px;overflow:hidden;margin:14px 0 6px}
 .prog i{display:block;height:100%;width:0;background:var(--copper);transition:width .35s cubic-bezier(.2,.8,.2,1)}
 .count{font-size:13px;color:var(--muted);margin:0 0 26px;font-variant-numeric:tabular-nums}
+h1:focus,h1:focus-visible{outline:none}
+h1:focus,h1:focus-visible{outline:none}
 h1{font:600 clamp(26px,5.5vw,36px)/1.15 var(--display);letter-spacing:-.02em;margin:0 0 10px;text-wrap:balance}
 .lead{color:var(--muted);margin:0 0 24px;max-width:52ch}
 .opts{display:grid;gap:10px;margin:0 0 22px}
@@ -195,16 +197,16 @@ window.addEventListener('message', function (e) {
     document.getElementById('capQ').textContent = 'Quick check unavailable, skip this';
   });
 
-  function show(n) {
+  function show(n, initial) {
     step = n;
     steps.forEach(function (s) { s.classList.toggle('on', +s.dataset.step === n); });
     bar.style.width = ((n - 1) / TOTAL * 100 + 20 / 1) * 0 + (n / TOTAL * 100) + '%';
     count.textContent = 'Question ' + n + ' of ' + TOTAL;
     var first = form.querySelector('.step.on h1');
-    if (first) { first.setAttribute('tabindex', '-1'); first.focus({ preventScroll: true }); }
+    if (first && !initial) { first.setAttribute('tabindex', '-1'); first.focus({ preventScroll: true }); }
     window.scrollTo({ top: 0 });
   }
-  show(1); bar.style.width = (1 / TOTAL * 100) + '%';
+  show(1, true); bar.style.width = (1 / TOTAL * 100) + '%';
 
   form.addEventListener('click', function (e) {
     var opt = e.target.closest('.opt');
