@@ -1,0 +1,32 @@
+# A2H Agency
+
+> AI Receptionist + CRM for Texas local service businesses, with hand-coded custom websites available as an upgrade. Answers every call, books the visit, and tracks every call and caller in a custom CRM.
+
+A2H builds an AI phone receptionist and CRM for businesses that lose revenue to missed calls: dental practices, orthodontic practices and non-medical home care agencies in Texas. A2H answers every call, books the visit, and tracks every call and caller in a custom CRM. It handles scheduling only, never clinical data. Pricing is covered on a free 15-minute call.
+
+## Pricing
+- AI Receptionist + CRM: $1,500 one-time setup, then $397/month for dental practices or $697/month for orthodontic practices and home care agencies. Answers every call, books the visit, tracks every call and caller in a custom CRM. Cancel anytime.
+- AI Receptionist + CRM + Custom Website: $2,000 one-time setup, then $400/month. Adds a hand-coded website (up to 10 pages) and Google Business Profile setup.
+- Extra CRM seat: $99/month per seat.
+- AI Website Chatbot add-on: $99/month (Custom Website tier only).
+- Care Plan (hosting, maintenance, monthly content edits): $249/month, included with Custom Website tier, cancel anytime.
+
+## Pages
+- [Homepage](https://a2h.info/): overview of the AI Receptionist + CRM offer.
+- [Pricing](https://a2h.info/pricing.html): full pricing breakdown and FAQ.
+- [Industries](https://a2h.info/industries.html): hub linking to industry-specific pages.
+- [Contractors](https://a2h.info/construction.html): AI Receptionist for Texas contractors and trades.
+- [Medical & Dental Practices](https://a2h.info/medical.html): AI Receptionist for medical and dental practices.
+- [Local Retail](https://a2h.info/retail.html): AI Receptionist for shops and markets.
+- [Dental Practices](https://a2h.info/dental-practices.html): AI Receptionist for Texas dental practices.
+- [Home Care Agencies](https://a2h.info/home-care-agencies.html): AI Receptionist for Texas non-medical home care agencies.
+- [Missed calls: dental practices](https://a2h.info/dental-missed-calls.html), [receptionist options](https://a2h.info/dental-receptionist-options.html)
+- [Orthodontic Practices](https://a2h.info/orthodontic-practices.html): AI Receptionist for Texas orthodontic practices. [Missed calls](https://a2h.info/orthodontic-missed-calls.html), [receptionist options](https://a2h.info/orthodontic-receptionist-options.html)
+- [Missed inquiries: home care](https://a2h.info/home-care-missed-calls.html), [receptionist options](https://a2h.info/home-care-receptionist-options.html)
+- [Our Work](https://a2h.info/work.html): live builds and demos.
+- [How We Work](https://a2h.info/process.html): the build process, timeline and scope.
+- [Book A Call](https://a2h.info/book-a-call.html): free setup call scheduling.
+
+## Contact
+Email: hhuss786512tx@gmail.com
+Area served: Texas

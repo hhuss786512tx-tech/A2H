@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A2H — AI Receptionist &amp; CRM for Texas Businesses</title>
+<meta name="description" content="An AI receptionist that answers every call and books the job, plus a CRM that logs every contact. Built for Texas contractors, clinics, retail and groomers.">
+<link rel="canonical" href="https://a2h.info/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141110'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-style='italic' fill='%23c9702f' text-anchor='middle'%3EA2H%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="A2H — AI Receptionist &amp; CRM for Texas Businesses">
+<meta property="og:description" content="An AI receptionist that answers every call and books the job, plus a CRM where every contact lands automatically. We still build custom websites too.">
+<meta property="og:image" content="https://a2h.info/assets/og-image.png">
+<meta property="og:url" content="https://a2h.info/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A2H — AI Receptionist &amp; CRM for Texas Businesses">
+<meta name="twitter:description" content="An AI receptionist that answers every call and books the job, plus a CRM where every contact lands automatically.">
+<meta name="twitter:image" content="https://a2h.info/assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Tailwind is compiled ahead of time by tailwind.config.js (see README).
+     Rebuild after changing any utility class:  npm run build:css -->
+<link rel="stylesheet" href="assets/tailwind.css?v=ff84ab98">
+<link rel="stylesheet" href="assets/site.css?v=76ffbf5b">
+<!-- Gates the .reveal opacity:0 rule in site.css. If this never runs, the
+     hiding rule never applies and all copy stays visible rather than being
+     stranded at opacity 0. -->
+<script>document.documentElement.classList.add('js');</script>
+<!-- LocalBusiness/ProfessionalService markup — this is the schema Google
+     uses for exactly the local-search service we sell, so its absence was
+     conspicuous. Kept in sync with build/build.js (ORG). Address and
+     telephone are deliberately omitted rather than invented: NAP data that
+     disagrees with the Google Business Profile actively hurts ranking. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://a2h.info/#organization",
+  "name": "A2H Agency",
+  "url": "https://a2h.info/",
+  "email": "hhuss786512tx@gmail.com",
+  "description": "AI receptionist and CRM platform for Texas businesses — answers every call, books the job, and logs every contact automatically. Custom websites also available.",
+  "areaServed": { "@type": "State", "name": "Texas" },
+  "serviceType": ["AI Receptionist", "CRM", "Website Design", "Website Development", "Local SEO", "Google Business Profile Setup"],
+  "knowsAbout": ["AI voice receptionist", "CRM", "Appointment booking automation", "Web design", "Local SEO", "Google Business Profile", "Conversion optimization"]
+}
+</script>
+<!-- GA4 — real Measurement ID, property "A2H Agency Site". Keep in sync
+     with build/partials.js if this ever changes. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L9L2CVTSBB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L9L2CVTSBB');
+</script>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1760813911727113');
+fbq('track', 'PageView');
+// Funnel events: video started/finished on the pre-call page, and a booked Calendly slot counts as a Lead.
+if (/watch(.html)?$/.test(location.pathname)) fbq('track', 'ViewContent', { content_name: 'pre-call video page' });
+window.addEventListener('message', function (e) {
+  if (e.origin === 'https://calendly.com' && e.data && e.data.event === 'calendly.event_scheduled') {
+    fbq('track', 'Lead', { content_name: 'call booked' });
+    fbq('track', 'Schedule');
+  }
+});
+document.addEventListener('DOMContentLoaded', function () {
+  var v = document.querySelector('video[poster*="presale"]');
+  if (!v) return;
+  v.addEventListener('play', function () { fbq('trackCustom', 'VideoPlay'); }, { once: true });
+  v.addEventListener('ended', function () { fbq('trackCustom', 'VideoComplete'); }, { once: true });
+});
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1760813911727113&ev=PageView&noscript=1" alt=""></noscript>
+</head>
+<body class="text-sand antialiased">
+
+<!-- INTRO -->
+<div id="intro-overlay" class="fixed inset-0 z-[100] bg-ink flex items-center justify-center px-6">
+  <div class="grain opacity-10"></div>
+  <p id="intro-mark" class="font-display italic tracking-tight text-sand relative text-center" style="font-size: clamp(2.25rem, 8vw, 5.5rem);" aria-label="A2H Agency">
+    <span class="intro-fire-letter">A</span><span class="intro-fire-letter">2</span><span class="intro-fire-letter">H</span><span class="intro-fire-space"></span><span class="intro-fire-letter">A</span><span class="intro-fire-letter">g</span><span class="intro-fire-letter">e</span><span class="intro-fire-letter">n</span><span class="intro-fire-letter">c</span><span class="intro-fire-letter">y</span>
+    <span id="intro-spark" class="intro-spark" aria-hidden="true"></span>
+  </p>
+</div>
+<script>
+  (function () {
+    var overlay = document.getElementById('intro-overlay');
+    if (!overlay) return;
+
+    // Overflow lock ALWAYS gets released — by the exit transition's
+    // transitionend when everything runs normally, or by the fallback
+    // timeout no matter what (a stalled transition must never leave the
+    // page unable to scroll to its own footer).
+    document.documentElement.style.overflow = 'hidden';
+    var cleaned = false;
+    var cleanup = function () {
+      if (cleaned) return;
+      cleaned = true;
+      document.documentElement.style.overflow = '';
+      overlay.remove();
+    };
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      cleanup();
+      return;
+    }
+
+    // Play the full intro once per session only. A returning visitor — anyone
+    // who navigates to a sub-page and comes back, or reloads — has already
+    // seen it, and making them sit through ~3s of locked scroll again is a
+    // straight conversion tax. Deep links (?utm, #pricing) skip it outright.
+    var seen;
+    try { seen = sessionStorage.getItem('a2h_intro_seen'); } catch (e) { seen = null; }
+    if (seen || window.location.hash) {
+      cleanup();
+      return;
+    }
+    try { sessionStorage.setItem('a2h_intro_seen', '1'); } catch (e) {}
+
+    var mark = document.getElementById('intro-mark');
+    var spark = document.getElementById('intro-spark');
+    var letters = Array.prototype.slice.call(mark.querySelectorAll('.intro-fire-letter'));
+    var markRect = mark.getBoundingClientRect();
+    var stagger = 60;
+    var startDelay = 150;
+    var timers = [];
+    var track = function (id) { timers.push(id); return id; };
+
+    letters.forEach(function (letter, i) {
+      var delay = startDelay + i * stagger;
+      track(setTimeout(function () {
+        var r = letter.getBoundingClientRect();
+        spark.style.left = (r.left - markRect.left + r.width / 2) + 'px';
+        spark.style.top = (r.top - markRect.top + r.height * 0.3) + 'px';
+        spark.style.opacity = '1';
+      }, delay));
+      track(setTimeout(function () {
+        letter.classList.add('lit');
+        spark.style.opacity = '0';
+      }, delay + stagger * 0.8));
+    });
+
+    var writeDone = startDelay + letters.length * stagger + 350;
+    var holdAfterWrite = 250;
+    var exitAt = writeDone + holdAfterWrite;
+    var dirs = ['exit-up', 'exit-down', 'exit-left', 'exit-right', 'exit-fade'];
+    var dir = dirs[Math.floor(Math.random() * dirs.length)];
+
+    var exit = function () {
+      overlay.classList.add(dir);
+      overlay.addEventListener('transitionend', cleanup, { once: true });
+      track(setTimeout(cleanup, 1500));
+    };
+
+    track(setTimeout(exit, exitAt));
+
+    // Skippable: a returning-ish visitor who clicks or presses a key mid-write
+    // shouldn't be stuck watching the rest of it. Cancel the remaining
+    // schedule, light every letter immediately so it doesn't look broken
+    // mid-word, then jump straight to the exit transition.
+    var skipped = false;
+    var skip = function () {
+      if (skipped || cleaned) return;
+      skipped = true;
+      timers.forEach(function (id) { clearTimeout(id); });
+      letters.forEach(function (letter) { letter.classList.add('lit'); });
+      spark.style.opacity = '0';
+      exit();
+    };
+    overlay.addEventListener('click', skip);
+    document.addEventListener('keydown', skip, { once: true });
+  })();
+</script>
+
+<!-- NAV -->
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 bg-ink/70 backdrop-blur-md transition-[box-shadow,background-color] duration-300">
+  <div class="h-px bg-gradient-to-r from-transparent via-copper-light/50 to-transparent"></div>
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
+    <a href="#top" class="font-display text-xl tracking-tight text-sand flex items-center gap-3 shrink-0">
+      A2H<span class="text-copper">.</span>
+      <span class="hidden lg:inline-flex items-center gap-1.5 text-[11px] font-sans font-medium tracking-wide text-fog border border-white/10 rounded-full pl-2 pr-2.5 py-1">
+        <span class="relative flex h-1.5 w-1.5">
+          <span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-live"></span>
+          <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-live"></span>
+        </span>
+        Open for new projects
+      </span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm text-fog">
+      <a href="#how-it-works" data-nav-link class="link-underline hover:text-sand transition-colors">How It Works</a>
+      <a href="#live-test" data-nav-link class="link-underline hover:text-sand transition-colors">Live Test</a>
+      <a href="#crm" data-nav-link class="link-underline hover:text-sand transition-colors">CRM</a>
+      <a href="#pricing" data-nav-link class="link-underline hover:text-sand transition-colors">Pricing</a>
+      <a href="#websites" data-nav-link class="link-underline hover:text-sand transition-colors">Websites</a>
+      <!-- No data-nav-link: the scroll-spy below feeds every marked href to
+           querySelector(), and a filename is not a valid selector — it would
+           throw and take the whole nav script down with it. -->
+      <a href="book-a-call.html" class="link-underline hover:text-sand transition-colors">Book A Call</a>
+    </nav>
+    <div class="flex items-center gap-3 shrink-0">
+      <span class="cta-ring rounded-full p-[2px] hidden sm:inline-block">
+        <a href="book-a-call.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-2.5 rounded-full block">
+          Book A Free Setup Call
+        </a>
+      </span>
+      <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden h-10 w-10 flex items-center justify-center rounded-full border border-white/10 text-sand hover:border-copper-light/60 active:scale-95 transition-[border-color,transform] focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light focus-visible:outline-offset-2">
+        <svg id="menu-icon-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg id="menu-icon-close" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="md:hidden hidden border-t border-white/5 bg-ink/95 backdrop-blur-md">
+    <nav class="max-w-6xl mx-auto px-6 py-3 flex flex-col text-[15px]">
+      <a href="#how-it-works" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">How It Works</a>
+      <a href="#live-test" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">Live Test</a>
+      <a href="#crm" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">CRM</a>
+      <a href="#pricing" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">Pricing</a>
+      <a href="#websites" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">Websites</a>
+      <a href="industries.html" class="mobile-nav-link py-3 border-b border-white/5 text-fog hover:text-sand transition-colors">Industries</a>
+      <a href="book-a-call.html" class="mobile-nav-link py-3 text-fog hover:text-sand transition-colors">Book A Call</a>
+      <span class="cta-ring rounded-full p-[2px] inline-block mt-4 mb-1">
+        <a href="book-a-call.html" class="mobile-nav-link btn-primary shadow-btn block text-center bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-3 rounded-full">
+          Book A Free Setup Call
+        </a>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<!-- PERSISTENT FLOATING CTA (mobile) -->
+<div id="floating-cta" class="fixed bottom-6 right-6 z-40 pointer-events-none opacity-0 translate-y-4 transition-all duration-500 ease-out">
+  <span class="cta-ring rounded-full p-[2px] inline-block pointer-events-auto">
+    <a href="book-a-call.html" class="btn-primary shadow-floating bg-copper hover:bg-copper-light text-ink font-semibold pl-5 pr-6 py-3 rounded-full text-sm flex items-center gap-2 border border-black/10">
+      <span class="inline-flex h-2 w-2 rounded-full bg-ink/70"></span>
+      Book A Free Setup Call
+    </a>
+  </span>
+</div>
+
+<!-- AI CHAT WIDGET -->
+<div class="fixed bottom-6 left-6 z-50">
+  <button id="chat-fab-btn" type="button" aria-label="Chat with the A2H AI Agent" aria-expanded="false" class="relative h-14 w-14 rounded-full bg-gradient-to-br from-copper to-brass shadow-floating flex items-center justify-center hover:scale-105 active:scale-95 transition-transform duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light focus-visible:outline-offset-2">
+    <span class="absolute -top-0.5 -right-0.5 flex h-3 w-3">
+      <span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-live"></span>
+      <span class="relative inline-flex h-3 w-3 rounded-full bg-live border-2 border-ink"></span>
+    </span>
+    <span id="chat-fab-icon-open" class="text-[26px] leading-none select-none" aria-hidden="true">👾</span>
+    <svg id="chat-fab-icon-close" class="hidden" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#141110" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+</div>
+
+<div id="chat-panel" class="fixed bottom-24 left-6 z-50 flex flex-col overflow-hidden rounded-2xl bg-elevated border border-white/10 shadow-floating opacity-0 translate-y-3 pointer-events-none transition-all duration-300 ease-out" style="width: 360px; max-width: calc(100vw - 32px); height: min(520px, 70vh);">
+  <div class="flex items-center gap-2.5 px-4 py-3 border-b border-white/10 bg-surface/60 shrink-0">
+    <span class="h-8 w-8 rounded-full bg-gradient-to-br from-copper to-brass flex items-center justify-center text-base shrink-0">👾</span>
+    <div class="min-w-0 flex-1">
+      <p class="text-xs font-semibold text-sand truncate">A2H AI Agent</p>
+      <p class="text-[10px] text-live flex items-center gap-1"><span class="h-1.5 w-1.5 rounded-full bg-live inline-block"></span>Active now</p>
+    </div>
+    <button id="chat-close-btn" type="button" aria-label="Close chat" class="text-fog hover:text-sand transition-colors p-1">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div id="chat-thread-live" class="flex-1 overflow-y-auto px-3 py-3 space-y-2.5 text-[13px] leading-snug"></div>
+  <form id="chat-form" class="flex items-center gap-2 px-3 py-3 border-t border-white/10 shrink-0">
+    <input id="chat-input" type="text" autocomplete="off" maxlength="600" placeholder="Ask about pricing, turnaround…" class="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2.5 text-sm text-sand placeholder:text-fog/60 focus:border-copper-light/60 focus:outline-none transition-colors">
+    <button type="submit" aria-label="Send message" class="h-9 w-9 rounded-full bg-copper hover:bg-copper-light flex items-center justify-center shrink-0 transition-colors">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12L20 4L14 20L11 13L4 12Z" fill="#141110"/></svg>
+    </button>
+  </form>
+</div>
+
+<!-- HERO -->
+<section id="top" class="relative glow-copper pt-40 pb-28 px-6 overflow-hidden">
+  <div class="grain"></div>
+  <div class="hero-embers" aria-hidden="true">
+    <span class="ember" style="left:4%;  width:6px; height:6px; animation-duration:7.5s; animation-delay:-2s;  --ember-drift:26px; --ember-rise:-320px;"></span>
+    <span class="ember ember-spark" style="left:11%; width:9px; height:9px; animation-duration:6s; animation-delay:-4.5s; --ember-drift:-18px; --ember-rise:-360px;"></span>
+    <span class="ember" style="left:18%; width:4px; height:4px; animation-duration:6.5s; animation-delay:-1s;  --ember-drift:14px; --ember-rise:-300px;"></span>
+    <span class="ember" style="left:25%; width:7px; height:7px; animation-duration:8.5s; animation-delay:-6s;  --ember-drift:12px; --ember-rise:-340px;"></span>
+    <span class="ember" style="left:32%; width:5px; height:5px; animation-duration:7s;  animation-delay:-3.5s; --ember-drift:-22px; --ember-rise:-310px;"></span>
+    <span class="ember ember-spark" style="left:39%; width:8px; height:8px; animation-duration:6.5s; animation-delay:-7s;  --ember-drift:20px; --ember-rise:-380px;"></span>
+    <span class="ember" style="left:46%; width:4px; height:4px; animation-duration:9s;  animation-delay:-2.5s; --ember-drift:-14px; --ember-rise:-280px;"></span>
+    <span class="ember" style="left:53%; width:6px; height:6px; animation-duration:7.5s; animation-delay:-5s;  --ember-drift:26px; --ember-rise:-330px;"></span>
+    <span class="ember" style="left:60%; width:5px; height:5px; animation-duration:8s;  animation-delay:-8.5s; --ember-drift:-18px; --ember-rise:-300px;"></span>
+    <span class="ember ember-spark" style="left:67%; width:9px; height:9px; animation-duration:6s;  animation-delay:-3s;  --ember-drift:16px; --ember-rise:-370px;"></span>
+    <span class="ember" style="left:74%; width:4px; height:4px; animation-duration:9.5s; animation-delay:-6.5s; --ember-drift:-24px; --ember-rise:-290px;"></span>
+    <span class="ember" style="left:81%; width:7px; height:7px; animation-duration:7s;  animation-delay:-1.5s; --ember-drift:18px; --ember-rise:-340px;"></span>
+    <span class="ember" style="left:88%; width:5px; height:5px; animation-duration:8.5s; animation-delay:-4s;  --ember-drift:-16px; --ember-rise:-310px;"></span>
+    <span class="ember ember-spark" style="left:94%; width:8px; height:8px; animation-duration:6.5s; animation-delay:-9s;  --ember-drift:22px; --ember-rise:-360px;"></span>
+    <span class="ember" style="left:8%;  width:5px; height:5px; animation-duration:7.5s; animation-delay:-7.5s; --ember-drift:20px; --ember-rise:-300px;"></span>
+    <span class="ember" style="left:97%; width:6px; height:6px; animation-duration:8s;  animation-delay:-2.8s; --ember-drift:-12px; --ember-rise:-320px;"></span>
+    <span class="ember" style="left:29%; width:3px; height:3px; animation-duration:9s;  animation-delay:-5.5s; --ember-drift:10px; --ember-rise:-270px;"></span>
+    <span class="ember" style="left:63%; width:3px; height:3px; animation-duration:9.5s; animation-delay:-1.2s; --ember-drift:-10px; --ember-rise:-270px;"></span>
+    <span class="ember ember-spark" style="left:50%; width:7px; height:7px; animation-duration:6.8s; animation-delay:-8s;  --ember-drift:-20px; --ember-rise:-350px;"></span>
+    <span class="ember" style="left:16%; width:4px; height:4px; animation-duration:8s;  animation-delay:-10s; --ember-drift:16px; --ember-rise:-290px;"></span>
+  </div>
+  <div class="max-w-4xl mx-auto text-center relative z-[1]">
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">AI Receptionist &amp; CRM for Contractors, Medical Practices &amp; Local Retail</p>
+    <h1 class="reveal font-display fire-glow text-[2.75rem] leading-[1.1] sm:text-6xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">
+      Every call answered. Every lead booked. <span class="italic text-copper-light">Automatically.</span>
+    </h1>
+    <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto mb-10">
+      Our AI receptionist picks up in 1–2 rings, day or night, has a real conversation, and books the
+      job during the call — every call and every contact lands in your own CRM automatically.
+      No voicemail, no sticky notes, nothing falls through the cracks.
+    </p>
+    <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+      <span class="cta-ring rounded-full p-[2px] inline-block">
+        <a href="book-a-call.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">
+          Book A Free Setup Call
+        </a>
+      </span>
+      <a href="#how-it-works" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">
+        See How It Works
+      </a>
+    </div>
+    <a href="#pricing" class="reveal inline-flex items-center gap-2 mt-7 bg-white/5 border border-white/10 hover:border-copper-light/40 hover:bg-white/[0.08] rounded-full px-4 py-2 text-xs text-fog transition-colors">
+      <span class="h-1.5 w-1.5 rounded-full bg-live shrink-0"></span>
+      AI Receptionist + CRM from <span class="text-sand font-semibold">$1,500 setup + $397/mo</span> (dental; $697/mo orthodontic &amp; home care) — see pricing
+    </a>
+  </div>
+</section>
+
+<!-- WEBSITES OFFER -->
+<section id="websites" class="relative py-24 px-6 bg-surface/40 border-y border-white/5 overflow-hidden">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal text-center max-w-3xl mx-auto mb-12">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Websites for Texas Dental, Orthodontic &amp; Home Care</p>
+      <h2 class="font-display text-3xl sm:text-5xl tracking-[-0.03em] text-sand mb-5">A website that answers the questions your patients are already <span class="italic text-copper-light">Googling.</span></h2>
+      <p class="text-fog leading-[1.7]">We design and hand-code your site, add an AI chatbot that answers questions after hours, and set up local SEO so new patients and families find you first. Need more behind it? We can add forms, booking and a CRM.</p>
+    </div>
+    <div class="reveal grid sm:grid-cols-3 gap-5 mb-10">
+      <div class="rounded-2xl bg-elevated border border-white/10 p-6"><p class="text-sand font-semibold mb-2">Dental practices</p><p class="text-sm text-fog leading-[1.7]">Insurance, pricing and booking questions answered on the first screen, on any phone.</p></div>
+      <div class="rounded-2xl bg-elevated border border-white/10 p-6"><p class="text-sand font-semibold mb-2">Orthodontists</p><p class="text-sm text-fog leading-[1.7]">Built so a parent can see who you treat, what the first visit looks like, and book a consultation in one tap.</p></div>
+      <div class="rounded-2xl bg-elevated border border-white/10 p-6"><p class="text-sand font-semibold mb-2">Home care agencies</p><p class="text-sm text-fog leading-[1.7]">Answers the late-night questions families ask and captures the inquiry for your team. No health advice, ever.</p></div>
+    </div>
+    <ul class="reveal grid sm:grid-cols-2 gap-x-10 gap-y-3 max-w-3xl mx-auto mb-10 text-sm text-fog">
+      <li class="flex gap-3"><span class="text-copper-light">—</span><span><span class="text-sand font-medium">AI chatbot included</span> on every site</span></li>
+      <li class="flex gap-3"><span class="text-copper-light">—</span><span><span class="text-sand font-medium">Local SEO</span> and Google Business Profile setup</span></li>
+      <li class="flex gap-3"><span class="text-copper-light">—</span><span><span class="text-sand font-medium">Hand-coded</span>, fast, mobile-first</span></li>
+      <li class="flex gap-3"><span class="text-copper-light">—</span><span><span class="text-sand font-medium">Optional backend:</span> forms, booking and CRM</span></li>
+    </ul>
+    <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+      <span class="cta-ring rounded-full p-[2px] inline-block"><a href="book-a-call.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">Book A Free Website Call</a></span>
+      <a href="#clients" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">See Our Clients</a>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS BANNER -->
+<section id="clients" class="relative py-16 overflow-hidden">
+  <div class="reveal text-center px-6 mb-8">
+    <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Clients</p>
+    <h2 class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand">Live sites we've built</h2>
+  </div>
+  <div class="marquee-mask">
+    <div class="marquee-track client-marquee flex items-stretch gap-6 w-max" style="animation-duration:60s;">
+      <div class="flex items-stretch gap-6 pr-6">
+        <a href="https://hahealthconsulting.com" target="_blank" rel="noopener" class="client-card group block shrink-0 w-[280px] sm:w-[340px] rounded-2xl overflow-hidden bg-elevated border border-white/10 hover:border-copper-light/50 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light">
+          <div class="aspect-[16/10] overflow-hidden bg-surface"><img src="assets/portfolio/hahealth.webp" alt="H&amp;A Healthcare Consulting website homepage" width="1440" height="900" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"></div>
+          <div class="px-4 py-3 whitespace-normal"><p class="text-sand text-sm font-semibold">H&amp;A Healthcare Consulting</p><p class="text-fog text-xs mt-0.5">eClinicalWorks consulting &amp; billing</p></div>
+        </a>
+        <a href="https://caremedbill.com" target="_blank" rel="noopener" class="client-card group block shrink-0 w-[280px] sm:w-[340px] rounded-2xl overflow-hidden bg-elevated border border-white/10 hover:border-copper-light/50 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light">
+          <div class="aspect-[16/10] overflow-hidden bg-surface"><img src="assets/portfolio/caremedbill.webp" alt="CareMedBill website homepage" width="1440" height="900" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"></div>
+          <div class="px-4 py-3 whitespace-normal"><p class="text-sand text-sm font-semibold">CareMedBill</p><p class="text-fog text-xs mt-0.5">Medical billing</p></div>
+        </a>
+        <a href="https://azul-bio-research.vercel.app" target="_blank" rel="noopener" class="client-card group block shrink-0 w-[280px] sm:w-[340px] rounded-2xl overflow-hidden bg-elevated border border-white/10 hover:border-copper-light/50 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light">
+          <div class="aspect-[16/10] overflow-hidden bg-surface"><img src="assets/portfolio/azulbio.webp" alt="Azul Bio website homepage" width="1440" height="900" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"></div>
+          <div class="px-4 py-3 whitespace-normal"><p class="text-sand text-sm font-semibold">Azul Bio</p><p class="text-fog text-xs mt-0.5">Biotech research</p></div>
+        </a>
+        <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" class="client-card group block shrink-0 w-[280px] sm:w-[340px] rounded-2xl overflow-hidden bg-elevated border border-white/10 hover:border-copper-light/50 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light">
+          <div class="aspect-[16/10] overflow-hidden bg-surface"><img src="assets/portfolio/ssc.webp" alt="Solid State Construction website homepage" width="1440" height="900" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"></div>
+          <div class="px-4 py-3 whitespace-normal"><p class="text-sand text-sm font-semibold">Solid State Construction</p><p class="text-fog text-xs mt-0.5">Construction</p></div>
+        </a>
+        <a href="https://hahealthconsulting.com" target="_blank" rel="noopener" class="client-card group block shrink-0 w-[280px] sm:w-[340px] rounded-2xl overflow-hidden bg-elevated border border-white/10 hover:border-copper-light/50 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light">
+          <div class="aspect-[16/10] overflow-hidden bg-surface"><img src="assets/portfolio/hahealth.webp" alt="H&amp;A Healthcare Consulting website homepage" width="1440" height="900" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"></div>
+          <div class="px-4 py-3 whitespace-normal"><p class="text-sand text-sm font-semibold">H&amp;A Healthcare Consulting</p><p class="text-fog text-xs mt-0.5">eClinicalWorks consulting &amp; billing</p></div>
+        </a>
+        <a href="https://caremedbill.com" target="_blank" rel="noopener" class="client-card group block shrink-0 w-[280px] sm:w-[340px] rounded-2xl overflow-hidden bg-elevated border border-white/10 hover:border-copper-light/50 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light">
+          <div class="aspect-[16/10] overflow-hidden bg-surface"><img src="assets/portfolio/caremedbill.webp" alt="CareMedBill website homepage" width="1440" height="900" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"></div>
+          <div class="px-4 py-3 whitespace-normal"><p class="text-sand text-sm font-semibold">CareMedBill</p><p class="text-fog text-xs mt-0.5">Medical billing</p></div>
+        </a>
+        <a href="https://azul-bio-research.vercel.app" target="_blank" rel="noopener" class="client-card group block shrink-0 w-[280px] sm:w-[340px] rounded-2xl overflow-hidden bg-elevated border border-white/10 hover:border-copper-light/50 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light">
+          <div class="aspect-[16/10] overflow-hidden bg-surface"><img src="assets/portfolio/azulbio.webp" alt="Azul Bio website homepage" width="1440" height="900" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"></div>
+          <div class="px-4 py-3 whitespace-normal"><p class="text-sand text-sm font-semibold">Azul Bio</p><p class="text-fog text-xs mt-0.5">Biotech research</p></div>
+        </a>
+        <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" class="client-card group block shrink-0 w-[280px] sm:w-[340px] rounded-2xl overflow-hidden bg-elevated border border-white/10 hover:border-copper-light/50 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light">
+          <div class="aspect-[16/10] overflow-hidden bg-surface"><img src="assets/portfolio/ssc.webp" alt="Solid State Construction website homepage" width="1440" height="900" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"></div>
+          <div class="px-4 py-3 whitespace-normal"><p class="text-sand text-sm font-semibold">Solid State Construction</p><p class="text-fog text-xs mt-0.5">Construction</p></div>
+        </a>
+      </div>
+      <div class="flex items-stretch gap-6 pr-6" aria-hidden="true">
+        <a href="https://hahealthconsulting.com" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1" class="client-card group block shrink-0 w-[280px] sm:w-[340px] rounded-2xl overflow-hidden bg-elevated border border-white/10 hover:border-copper-light/50 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light">
+          <div class="aspect-[16/10] overflow-hidden bg-surface"><img src="assets/portfolio/hahealth.webp" alt="" width="1440" height="900" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"></div>
+          <div class="px-4 py-3 whitespace-normal"><p class="text-sand text-sm font-semibold">H&amp;A Healthcare Consulting</p><p class="text-fog text-xs mt-0.5">eClinicalWorks consulting &amp; billing</p></div>
+        </a>
+        <a href="https://caremedbill.com" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1" class="client-card group block shrink-0 w-[280px] sm:w-[340px] rounded-2xl overflow-hidden bg-elevated border border-white/10 hover:border-copper-light/50 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light">
+          <div class="aspect-[16/10] overflow-hidden bg-surface"><img src="assets/portfolio/caremedbill.webp" alt="" width="1440" height="900" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"></div>
+          <div class="px-4 py-3 whitespace-normal"><p class="text-sand text-sm font-semibold">CareMedBill</p><p class="text-fog text-xs mt-0.5">Medical billing</p></div>
+        </a>
+        <a href="https://azul-bio-research.vercel.app" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1" class="client-card group block shrink-0 w-[280px] sm:w-[340px] rounded-2xl overflow-hidden bg-elevated border border-white/10 hover:border-copper-light/50 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light">
+          <div class="aspect-[16/10] overflow-hidden bg-surface"><img src="assets/portfolio/azulbio.webp" alt="" width="1440" height="900" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"></div>
+          <div class="px-4 py-3 whitespace-normal"><p class="text-sand text-sm font-semibold">Azul Bio</p><p class="text-fog text-xs mt-0.5">Biotech research</p></div>
+        </a>
+        <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1" class="client-card group block shrink-0 w-[280px] sm:w-[340px] rounded-2xl overflow-hidden bg-elevated border border-white/10 hover:border-copper-light/50 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light">
+          <div class="aspect-[16/10] overflow-hidden bg-surface"><img src="assets/portfolio/ssc.webp" alt="" width="1440" height="900" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"></div>
+          <div class="px-4 py-3 whitespace-normal"><p class="text-sand text-sm font-semibold">Solid State Construction</p><p class="text-fog text-xs mt-0.5">Construction</p></div>
+        </a>
+        <a href="https://hahealthconsulting.com" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1" class="client-card group block shrink-0 w-[280px] sm:w-[340px] rounded-2xl overflow-hidden bg-elevated border border-white/10 hover:border-copper-light/50 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light">
+          <div class="aspect-[16/10] overflow-hidden bg-surface"><img src="assets/portfolio/hahealth.webp" alt="" width="1440" height="900" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"></div>
+          <div class="px-4 py-3 whitespace-normal"><p class="text-sand text-sm font-semibold">H&amp;A Healthcare Consulting</p><p class="text-fog text-xs mt-0.5">eClinicalWorks consulting &amp; billing</p></div>
+        </a>
+        <a href="https://caremedbill.com" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1" class="client-card group block shrink-0 w-[280px] sm:w-[340px] rounded-2xl overflow-hidden bg-elevated border border-white/10 hover:border-copper-light/50 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light">
+          <div class="aspect-[16/10] overflow-hidden bg-surface"><img src="assets/portfolio/caremedbill.webp" alt="" width="1440" height="900" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"></div>
+          <div class="px-4 py-3 whitespace-normal"><p class="text-sand text-sm font-semibold">CareMedBill</p><p class="text-fog text-xs mt-0.5">Medical billing</p></div>
+        </a>
+        <a href="https://azul-bio-research.vercel.app" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1" class="client-card group block shrink-0 w-[280px] sm:w-[340px] rounded-2xl overflow-hidden bg-elevated border border-white/10 hover:border-copper-light/50 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light">
+          <div class="aspect-[16/10] overflow-hidden bg-surface"><img src="assets/portfolio/azulbio.webp" alt="" width="1440" height="900" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"></div>
+          <div class="px-4 py-3 whitespace-normal"><p class="text-sand text-sm font-semibold">Azul Bio</p><p class="text-fog text-xs mt-0.5">Biotech research</p></div>
+        </a>
+        <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1" class="client-card group block shrink-0 w-[280px] sm:w-[340px] rounded-2xl overflow-hidden bg-elevated border border-white/10 hover:border-copper-light/50 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-light">
+          <div class="aspect-[16/10] overflow-hidden bg-surface"><img src="assets/portfolio/ssc.webp" alt="" width="1440" height="900" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"></div>
+          <div class="px-4 py-3 whitespace-normal"><p class="text-sand text-sm font-semibold">Solid State Construction</p><p class="text-fog text-xs mt-0.5">Construction</p></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- H&A CASE STUDY -->
+<section id="ha-case" class="relative py-24 px-6 bg-surface/40 border-y border-white/5 overflow-hidden">
+  <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+    <div class="reveal order-2 md:order-1">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Case Study</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.03em] text-sand mb-5">H&amp;A Healthcare Consulting: site, chatbot and CRM, working together</h2>
+      <p class="text-fog leading-[1.7] mb-4">A visitor asks a question on the site. The chatbot answers, collects their details, and the lead lands in the practice's own CRM, ready for follow-up.</p>
+      <p class="text-fog leading-[1.7] mb-6">A short walkthrough of the live H&amp;A chatbot and its CRM. The conversation and lead shown are a test.</p>
+      <a href="https://hahealthconsulting.com" target="_blank" rel="noopener" class="link-underline text-sand hover:text-copper-light text-sm font-semibold transition-colors">Visit hahealthconsulting.com</a>
+    </div>
+    <div class="reveal order-1 md:order-2 rounded-2xl overflow-hidden border border-white/10 shadow-floating bg-ink">
+      <video class="w-full h-auto block lazy-video" data-src="assets/video/ha-chatbot-crm-demo.mp4" poster="assets/video/ha-chatbot-crm-demo-poster.jpg" muted loop playsinline preload="none" controls width="720" height="720" aria-label="Walkthrough of the H&amp;A Healthcare Consulting chatbot capturing a lead into the CRM (test conversation)"></video>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE OPERATE -->
+<section id="how-it-works" class="relative py-28 px-6 bg-surface/40 border-y border-white/5 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:3%;  width:4px; height:4px; animation-duration:11s;  animation-delay:-3s; --ember-drift:14px;"></span>
+    <span class="ember" style="left:11%; width:3px; height:3px; animation-duration:13s;  animation-delay:-8s; --ember-drift:-10px;"></span>
+    <span class="ember" style="left:89%; width:3px; height:3px; animation-duration:12s;  animation-delay:-5s; --ember-drift:-12px;"></span>
+    <span class="ember" style="left:96%; width:4px; height:4px; animation-duration:10.5s; animation-delay:-1s; --ember-drift:12px;"></span>
+  </div>
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal mb-12 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">How We Operate</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">From ringing phone to <span class="italic text-copper-light">booked job.</span></h2>
+    </div>
+
+    <div class="reveal relative rounded-[34px] p-[2px] blueprint-ring">
+      <div class="relative rounded-[32px] bg-gradient-to-br from-elevated to-ink p-8 sm:p-10 md:p-14 overflow-hidden">
+        <div class="grain"></div>
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(50% 40% at 15% 0%, rgba(201,112,47,0.14), transparent 60%), radial-gradient(45% 35% at 90% 100%, rgba(127,184,138,0.10), transparent 60%);"></div>
+
+        <div class="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8">
+          <div class="hidden lg:block absolute top-8 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-copper/50 via-brass/50 to-live/50"></div>
+
+          <div class="flex flex-col items-center text-center px-2 relative">
+            <div class="w-16 h-16 rounded-full border-2 border-copper/60 bg-ink flex items-center justify-center mb-6 relative z-10">
+              <span class="font-display text-lg font-semibold text-copper">01</span>
+            </div>
+            <h3 class="text-sand font-semibold text-sm mb-2">A call comes in</h3>
+            <p class="text-fog text-sm leading-[1.7]">Answered in 1–2 rings — nights, weekends, lunch breaks, doesn't matter. No voicemail, ever.</p>
+          </div>
+
+          <div class="flex flex-col items-center text-center px-2 relative">
+            <div class="w-16 h-16 rounded-full border-2 border-copper-light/60 bg-ink flex items-center justify-center mb-6 relative z-10">
+              <span class="font-display text-lg font-semibold text-copper-light">02</span>
+            </div>
+            <h3 class="text-sand font-semibold text-sm mb-2">It has a real conversation</h3>
+            <p class="text-fog text-sm leading-[1.7]">Understands what the caller needs, answers questions about your business, and books the job right then — on the call.</p>
+          </div>
+
+          <div class="flex flex-col items-center text-center px-2 relative">
+            <div class="w-16 h-16 rounded-full border-2 border-brass/60 bg-ink flex items-center justify-center mb-6 relative z-10">
+              <span class="font-display text-lg font-semibold text-brass">03</span>
+            </div>
+            <h3 class="text-sand font-semibold text-sm mb-2">It lands in your CRM</h3>
+            <p class="text-fog text-sm leading-[1.7]">Every call, every contact, every booking — logged automatically. No data entry, nothing written on a sticky note.</p>
+          </div>
+
+          <div class="flex flex-col items-center text-center px-2 relative">
+            <div class="w-16 h-16 rounded-full border-2 border-live/60 bg-ink flex items-center justify-center mb-6 relative z-10">
+              <span class="font-display text-lg font-semibold text-live">04</span>
+            </div>
+            <h3 class="text-sand font-semibold text-sm mb-2">You stay in control</h3>
+            <p class="text-fog text-sm leading-[1.7]">See everything on one dashboard, jump into any conversation, and a real person can transfer in whenever it matters.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="reveal text-center mt-10">
+      <a href="#live-test" class="link-underline text-copper-light text-sm font-semibold hover:text-sand transition-colors">Hear what a call actually sounds like &rarr;</a>
+    </p>
+  </div>
+</section>
+
+<!-- LIVE TEST -->
+<section id="live-test" class="relative py-28 px-6 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:4%;  width:4px; height:4px; animation-duration:11s; animation-delay:-2s; --ember-drift:14px; --ember-rise:-140px;"></span>
+    <span class="ember" style="left:92%; width:3px; height:3px; animation-duration:12s; animation-delay:-6s; --ember-drift:-12px; --ember-rise:-130px;"></span>
+    <span class="ember" style="left:97%; width:4px; height:4px; animation-duration:9.5s; animation-delay:-4s; --ember-drift:12px; --ember-rise:-150px;"></span>
+  </div>
+  <div class="max-w-4xl mx-auto">
+    <div class="reveal mb-12 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Live Test</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">This is exactly what a call <span class="italic text-copper-light">sounds like.</span></h2>
+      <p class="text-fog text-sm max-w-xl mx-auto">A real call script, word for word — an AC repair call answered, booked, and confirmed in under a minute.</p>
+    </div>
+
+    <div class="reveal max-w-md mx-auto rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-6 sm:p-8">
+      <div class="phone-frame mx-auto">
+        <div class="phone-screen tall flex flex-col">
+          <div class="phone-notch"></div>
+          <div class="flex items-center justify-between px-4 pt-2.5 pb-1 text-[10px] font-semibold text-sand">
+            <span>9:41</span>
+            <span class="flex items-center gap-1">
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><rect x="0" y="6" width="2.5" height="4" rx="0.5" fill="#e9dfd2"/><rect x="4" y="4" width="2.5" height="6" rx="0.5" fill="#e9dfd2"/><rect x="8" y="2" width="2.5" height="8" rx="0.5" fill="#e9dfd2"/><rect x="12" y="0" width="2.5" height="10" rx="0.5" fill="#e9dfd2"/></svg>
+              <span class="inline-flex items-center border border-sand/70 rounded-[3px] px-[1.5px] py-[1px]"><span class="block w-[16px] h-[7px] bg-sand/90 rounded-[1px]"></span></span>
+            </span>
+          </div>
+          <div class="flex items-center gap-2.5 px-4 py-2.5 border-b border-white/10">
+            <span class="h-7 w-7 rounded-full bg-gradient-to-br from-copper to-brass flex items-center justify-center text-[10px] font-bold text-ink shrink-0">☎</span>
+            <div class="min-w-0">
+              <p class="text-xs font-semibold text-sand truncate">Apex Home Services</p>
+              <p class="text-[10px] text-live flex items-center gap-1"><span class="h-1.5 w-1.5 rounded-full bg-live inline-block"></span>Answered in 2 rings</p>
+            </div>
+          </div>
+          <div id="call-transcript-thread" class="bubble-thread flex-1 overflow-hidden px-3 py-2 space-y-2 text-[11px] leading-snug">
+            <div class="chat-bubble flex justify-start">
+              <div class="max-w-[85%] bg-white/10 text-sand rounded-2xl rounded-bl-sm px-3 py-2">
+                My AC stopped blowing cold air and it's like 95 degrees today — can someone come take a look?
+              </div>
+            </div>
+            <div class="chat-bubble flex justify-end">
+              <div class="max-w-[85%] bg-gradient-to-br from-[#0b93f6] to-[#0066e0] text-white rounded-2xl rounded-br-sm px-3 py-2">
+                Sorry to hear that — let's get someone out today if we can. Can I get your name and the address?
+              </div>
+            </div>
+            <div class="chat-bubble flex justify-start">
+              <div class="max-w-[85%] bg-white/10 text-sand rounded-2xl rounded-bl-sm px-3 py-2">
+                Mike Torres, 214 Willow Creek Drive.
+              </div>
+            </div>
+            <div class="chat-bubble flex justify-end">
+              <div class="max-w-[85%] bg-gradient-to-br from-[#0b93f6] to-[#0066e0] text-white rounded-2xl rounded-br-sm px-3 py-2">
+                Got it, Mike. We've got an opening this afternoon at 3:30, or tomorrow at 8 — which works better?
+              </div>
+            </div>
+            <div class="chat-bubble flex justify-start">
+              <div class="max-w-[85%] bg-white/10 text-sand rounded-2xl rounded-bl-sm px-3 py-2">
+                3:30 today's perfect.
+              </div>
+            </div>
+            <div class="chat-bubble flex justify-end">
+              <div class="max-w-[85%] bg-gradient-to-br from-[#0b93f6] to-[#0066e0] text-white rounded-2xl rounded-br-sm px-3 py-2">
+                You're all set for 3:30 — I'll text a confirmation to this number. See you then, Mike.
+              </div>
+            </div>
+          </div>
+          <div class="px-3 pb-3 pt-1">
+            <div class="flex items-center gap-2 bg-live/10 border border-live/30 rounded-full px-3 py-1.5">
+              <span class="h-1.5 w-1.5 rounded-full bg-live shrink-0"></span>
+              <span class="text-[10px] text-sand/90 flex-1">Booked — 3:30 PM today</span>
+              <span class="text-[10px] text-fog/60">47s</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="reveal text-center text-sm text-fog mt-8 max-w-lg mx-auto">
+      Want to hear this running on your own business line? <a href="book-a-call.html" class="link-underline text-copper-light font-semibold hover:text-sand transition-colors">Book a free setup call</a> and we'll run a real test call with you on it.
+    </p>
+  </div>
+</section>
+
+<!-- CRM IN ACTION -->
+<section id="crm" class="relative py-28 px-6 bg-surface/40 border-y border-white/5 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:4%;  width:4px; height:4px; animation-duration:11s;  animation-delay:-3s; --ember-drift:14px;"></span>
+    <span class="ember" style="left:93%; width:3px; height:3px; animation-duration:12s;  animation-delay:-6s; --ember-drift:-12px;"></span>
+  </div>
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal mb-10 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">The Real Product</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Every call lands in your CRM. <span class="italic text-copper-light">Here's what that looks like.</span></h2>
+      <p class="text-fog text-sm max-w-xl mx-auto">Real screens from the actual product — not a mockup.</p>
+    </div>
+
+    <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated overflow-hidden max-w-3xl mx-auto mb-12">
+      <video class="w-full h-auto block lazy-video" data-src="assets/crm/crm-walkthrough.mp4" poster="assets/crm/crm-dashboard.webp" muted loop playsinline preload="none" width="1440" height="900" aria-label="Walkthrough of the A2H CRM: dashboard, contacts, pipeline, and contact detail"></video>
+    </div>
+
+    <div class="reveal grid sm:grid-cols-2 gap-6">
+      <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated overflow-hidden">
+        <img src="assets/crm/crm-dashboard.webp" alt="A2H CRM client dashboard showing every business this agency runs an AI receptionist for" loading="lazy" decoding="async" width="1440" height="900" class="w-full h-auto block">
+        <p class="text-sm text-fog leading-[1.6] p-5">Every client gets their own branded workspace — one dashboard across every business you run the receptionist for.</p>
+      </div>
+      <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated overflow-hidden">
+        <img src="assets/crm/crm-contacts.webp" alt="A2H CRM contacts list populated with real leads, stages, temperature and urgency" loading="lazy" decoding="async" width="1440" height="900" class="w-full h-auto block">
+        <p class="text-sm text-fog leading-[1.6] p-5">Every caller becomes a contact automatically — name, needs, urgency, and temperature, logged with zero data entry.</p>
+      </div>
+      <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated overflow-hidden">
+        <img src="assets/crm/crm-pipeline.webp" alt="A2H CRM pipeline board showing leads moving through new, contacted, scheduled and booked stages" loading="lazy" decoding="async" width="1800" height="1000" class="w-full h-auto block">
+        <p class="text-sm text-fog leading-[1.6] p-5">A real pipeline board — see every lead's stage at a glance and move them forward as they progress.</p>
+      </div>
+      <div class="rounded-2xl bg-elevated border border-white/5 shadow-elevated overflow-hidden">
+        <img src="assets/crm/crm-detail.webp" alt="A2H CRM contact detail page showing a lead's full info and call notes" loading="lazy" decoding="async" width="1440" height="962" class="w-full h-auto block">
+        <p class="text-sm text-fog leading-[1.6] p-5">Click into any contact for the full picture — what they need, notes from the call, and their current stage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WEBSITES DIVIDER -->
+<section class="relative pt-4 pb-2 px-6">
+  <div class="reveal max-w-2xl mx-auto text-center">
+    <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Still Available</p>
+    <p class="text-sand/90 text-sm">We also still build custom websites — here's what's live.</p>
+  </div>
+</section>
+
+<!-- STAT BAR -->
+<section class="relative py-20 px-6 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:3%;  width:4px; height:4px; animation-duration:10s; animation-delay:-2s;  --ember-drift:14px;"></span>
+    <span class="ember" style="left:12%; width:3px; height:3px; animation-duration:12.5s; animation-delay:-7s;  --ember-drift:-10px;"></span>
+    <span class="ember" style="left:22%; width:5px; height:5px; animation-duration:9.5s; animation-delay:-4s;  --ember-drift:12px;"></span>
+    <span class="ember" style="left:38%; width:3px; height:3px; animation-duration:11.5s; animation-delay:-9s;  --ember-drift:-14px;"></span>
+    <span class="ember" style="left:50%; width:4px; height:4px; animation-duration:11s;  animation-delay:-5.5s; --ember-drift:16px;"></span>
+    <span class="ember" style="left:63%; width:3px; height:3px; animation-duration:12s;  animation-delay:-3s;  --ember-drift:-10px;"></span>
+    <span class="ember" style="left:75%; width:5px; height:5px; animation-duration:10.5s; animation-delay:-6s;  --ember-drift:-12px;"></span>
+    <span class="ember" style="left:87%; width:3px; height:3px; animation-duration:13s;  animation-delay:-1s;  --ember-drift:16px;"></span>
+    <span class="ember" style="left:96%; width:4px; height:4px; animation-duration:9s;   animation-delay:-8s;  --ember-drift:-14px;"></span>
+  </div>
+  <div class="max-w-5xl mx-auto">
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3 text-center">What You Get</p>
+    <h2 class="reveal font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand text-center mb-10">Built to be found. No ad spend required.</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
+      <div class="stat-card reveal rounded-2xl bg-elevated border border-copper-light/30 shadow-elevated px-4 py-7 text-center" style="transition-delay:0ms">
+        <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);">2–3 Days</p>
+        <p class="text-xs text-fog uppercase tracking-wider">Fully custom site + AI chatbot, live</p>
+      </div>
+      <div class="stat-card reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center" style="transition-delay:90ms">
+        <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);"><span data-countup="2">0</span>+</p>
+        <p class="text-xs text-fog uppercase tracking-wider">Sites designed &amp; shipped</p>
+      </div>
+      <div class="stat-card reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center" style="transition-delay:180ms">
+        <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);"><span data-countup="90">0</span>+</p>
+        <p class="text-xs text-fog uppercase tracking-wider">PageSpeed target, every build</p>
+      </div>
+      <div class="stat-card reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center" style="transition-delay:270ms">
+        <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);">100%</p>
+        <p class="text-xs text-fog uppercase tracking-wider">Hand-coded, zero templates</p>
+      </div>
+      <div class="stat-card reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated px-4 py-7 text-center" style="transition-delay:360ms">
+        <p class="font-display text-copper-light leading-none mb-2" style="font-size: clamp(2rem, 5vw, 2.75rem);">Maps</p>
+        <p class="text-xs text-fog uppercase tracking-wider">Google Business Profile included</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="relative py-8 px-6 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:2%;  width:4px; height:4px; animation-duration:11s;  animation-delay:-3s; --ember-drift:14px;"></span>
+    <span class="ember" style="left:10%; width:3px; height:3px; animation-duration:13s;  animation-delay:-8s; --ember-drift:-10px;"></span>
+    <span class="ember" style="left:91%; width:3px; height:3px; animation-duration:12s;  animation-delay:-5s; --ember-drift:-12px;"></span>
+    <span class="ember" style="left:97%; width:4px; height:4px; animation-duration:10.5s; animation-delay:-1s; --ember-drift:12px;"></span>
+  </div>
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal mb-12 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Selected Work</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Real businesses, <span class="italic text-copper-light">real launches.</span></h2>
+      <p class="text-fog text-sm mt-4">Built by the same person now operating as A2H.</p>
+    </div>
+    <div class="reveal grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+
+      <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" class="group relative rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover overflow-hidden flex flex-col">
+        <span class="absolute top-3 right-3 z-10 flex items-center gap-1.5 rounded-full bg-ink/90 border border-white/10 pl-2 pr-2.5 py-1">
+          <span class="relative flex h-1.5 w-1.5"><span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-live"></span><span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-live"></span></span>
+          <span class="text-[10px] font-semibold tracking-wide text-sand/80">LIVE</span>
+        </span>
+        <div class="flex items-center gap-1.5 px-4 py-3 bg-surface border-b border-white/5">
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="ml-2 text-xs text-fog/70 truncate">solidstatesconstruction.com</span>
+        </div>
+        <div class="h-36 overflow-hidden">
+          <img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/ssc.webp" alt="Solid State Construction live website" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Construction</p>
+          <h3 class="font-display text-lg text-sand mb-2">Solid State Construction</h3>
+          <p class="text-sm text-fog leading-[1.6] flex-1">Full site rebuild for a growing construction crew — fast, mobile-first, built to convert.</p>
+          <p class="text-xs text-copper-light font-semibold mt-3 pt-3 border-t border-white/10">270+ clicks in 14 days · $0.74 cost per click on a $200 test budget</p>
+        </div>
+      </a>
+
+      <a href="https://hhuss786512tx-tech.github.io/Caremedbill/" target="_blank" rel="noopener" class="group relative rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover overflow-hidden flex flex-col">
+        <span class="absolute top-3 right-3 z-10 flex items-center gap-1.5 rounded-full bg-ink/90 border border-white/10 pl-2 pr-2.5 py-1">
+          <span class="relative flex h-1.5 w-1.5"><span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-fog/70"></span></span>
+          <span class="text-[10px] font-semibold tracking-wide text-sand/80">DEMO BUILD</span>
+        </span>
+        <div class="flex items-center gap-1.5 px-4 py-3 bg-surface border-b border-white/5">
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+          <span class="ml-2 text-xs text-fog/70 truncate">hhuss786512tx-tech.github.io/Caremedbill</span>
+        </div>
+        <div class="h-36 overflow-hidden">
+          <img width="1440" height="1024" loading="lazy" decoding="async" src="assets/portfolio/caremedbill.webp" alt="CareMedBill demo build" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Medical Billing</p>
+          <h3 class="font-display text-lg text-sand mb-2">CareMedBill</h3>
+          <p class="text-sm text-fog leading-[1.6] flex-1">Trust-first site for a medical billing platform — built to convert practice-owner visitors into calls.</p>
+        </div>
+      </a>
+
+    </div>
+    <p class="reveal text-center mt-8">
+      <a href="work.html" class="link-underline text-copper-light text-sm font-semibold hover:text-sand transition-colors">See every build in detail &rarr;</a>
+    </p>
+  </div>
+</section>
+
+<!-- MOBILE PREVIEW -->
+<section class="relative pt-24 pb-6 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:4%;  width:4px; height:4px; animation-duration:11s; animation-delay:-2s; --ember-drift:14px; --ember-rise:-140px;"></span>
+    <span class="ember" style="left:92%; width:3px; height:3px; animation-duration:12s; animation-delay:-6s; --ember-drift:-12px; --ember-rise:-130px;"></span>
+    <span class="ember" style="left:97%; width:4px; height:4px; animation-duration:9.5s; animation-delay:-4s; --ember-drift:12px; --ember-rise:-150px;"></span>
+  </div>
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Mobile-First, Always</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Every build. <span class="italic text-copper-light">Every phone.</span></h2>
+      <p class="text-xs text-fog/70 uppercase tracking-wider mt-3 hidden md:block">Drag to tilt</p>
+    </div>
+  </div>
+</section>
+
+<section id="mobile-scroll" class="relative px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid xl:grid-cols-2 gap-10 xl:gap-16">
+
+      <!-- Desktop-only: pinned chapter text, crossfades as phones scroll past on the right -->
+      <div class="hidden xl:block xl:sticky xl:top-32 xl:self-start" style="grid-column: 1; grid-row: 1 / span 4;">
+        <div class="relative" style="min-height: 260px;">
+          <div class="mscroll-text-chapter active" data-chapter="0">
+            <p class="font-display text-3xl text-copper mb-4">01</p>
+            <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Construction</p>
+            <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Solid State <span class="italic text-copper-light">Construction.</span></h3>
+            <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Full site rebuild for a growing construction crew — fast, mobile-first, built to convert.</p>
+            <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Custom Website Tier</p>
+          </div>
+          <div class="mscroll-text-chapter" data-chapter="1">
+            <p class="font-display text-3xl text-copper mb-4">02</p>
+            <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Medical Billing</p>
+            <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">CareMed<span class="italic text-copper-light">Bill.</span></h3>
+            <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Trust-first site for a medical billing platform — built to convert practice-owner visitors into calls.</p>
+            <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Custom Website Tier</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter 1: Solid State Construction -->
+      <div class="reveal xl:hidden">
+        <p class="font-display text-3xl text-copper mb-4">01</p>
+        <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Construction</p>
+        <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Solid State <span class="italic text-copper-light">Construction.</span></h3>
+        <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Full site rebuild for a growing construction crew — fast, mobile-first, built to convert.</p>
+        <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Custom Website Tier</p>
+      </div>
+      <div class="reveal mscroll-stage-block mscroll-phones-chapter xl:col-start-2 xl:py-24 flex items-center justify-center" data-chapter="0">
+        <div class="mscroll-phones flex items-start justify-center gap-6">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video data-src="assets/portfolio/video/mobile-ssc.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Solid State Construction on mobile"></video>
+            </div>
+          </div>
+          <div class="laptop-frame">
+            <div class="laptop-chrome"><span></span><span></span><span></span></div>
+            <video data-src="assets/portfolio/video/laptop-ssc.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="Solid State Construction on desktop"></video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter 2: CareMedBill -->
+      <div class="reveal xl:hidden">
+        <p class="font-display text-3xl text-copper mb-4">02</p>
+        <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">Medical Billing</p>
+        <h3 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">CareMed<span class="italic text-copper-light">Bill.</span></h3>
+        <p class="text-sm text-fog leading-[1.7] max-w-sm mb-5">Trust-first site for a medical billing platform — built to convert practice-owner visitors into calls.</p>
+        <p class="text-[10px] text-copper-light uppercase tracking-wider mb-4">Custom Website Tier</p>
+      </div>
+      <div class="reveal mscroll-stage-block mscroll-phones-chapter xl:col-start-2 xl:py-24 flex items-center justify-center" data-chapter="1">
+        <div class="mscroll-phones flex items-start justify-center gap-6">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video data-src="assets/portfolio/video/mobile-caremedbill.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="CareMedBill on mobile"></video>
+            </div>
+          </div>
+          <div class="laptop-frame">
+            <div class="laptop-chrome"><span></span><span></span><span></span></div>
+            <video data-src="assets/portfolio/video/laptop-caremedbill.mp4" muted loop playsinline preload="none" class="lazy-video" aria-label="CareMedBill on desktop"></video>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="relative py-24 px-6 bg-surface/40 border-y border-white/5 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:5%;  width:4px; height:4px; animation-duration:11s;  animation-delay:-3s;  --ember-drift:12px;"></span>
+    <span class="ember" style="left:16%; width:3px; height:3px; animation-duration:13s;  animation-delay:-8s;  --ember-drift:-10px;"></span>
+    <span class="ember" style="left:28%; width:5px; height:5px; animation-duration:10s;  animation-delay:-5s;  --ember-drift:14px;"></span>
+    <span class="ember" style="left:42%; width:3px; height:3px; animation-duration:12.5s; animation-delay:-2s;  --ember-drift:-12px;"></span>
+    <span class="ember" style="left:58%; width:4px; height:4px; animation-duration:10.5s; animation-delay:-6.5s; --ember-drift:16px;"></span>
+    <span class="ember" style="left:70%; width:3px; height:3px; animation-duration:12s;   animation-delay:-1s;  --ember-drift:-10px;"></span>
+    <span class="ember" style="left:82%; width:5px; height:5px; animation-duration:9.5s;  animation-delay:-4s;  --ember-drift:-14px;"></span>
+    <span class="ember" style="left:92%; width:3px; height:3px; animation-duration:11.5s; animation-delay:-9s;  --ember-drift:16px;"></span>
+  </div>
+  <div class="max-w-4xl mx-auto">
+    <div class="reveal mb-12 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Why A2H</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Not another page-builder shop</h2>
+    </div>
+    <div class="reveal grid sm:grid-cols-2 gap-x-10 gap-y-6">
+      <div class="flex gap-3">
+        <span class="text-copper-light mt-0.5">—</span>
+        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Found on Google Maps.</span> Every build includes a Google Business Profile setup, so customers find you right where they're already looking — no ad spend needed.</p>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-copper-light mt-0.5">—</span>
+        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Hand-coded, not templated.</span> No Divi, no Elementor, no bloated builders — clean, fast code.</p>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-copper-light mt-0.5">—</span>
+        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Texas-based.</span> We understand Texas businesses, Texas markets, and Texas customers.</p>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-copper-light mt-0.5">—</span>
+        <p class="text-sm text-fog leading-[1.7]"><span class="text-sand font-medium">Conversion-first.</span> We don't just build pretty sites — we build sites that turn visitors into customers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="relative py-28 px-6 bg-surface/40 border-y border-white/5 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:3%;  width:4px; height:4px; animation-duration:11s;  animation-delay:-3s; --ember-drift:14px;"></span>
+    <span class="ember" style="left:11%; width:3px; height:3px; animation-duration:13s;  animation-delay:-8s; --ember-drift:-10px;"></span>
+    <span class="ember" style="left:89%; width:3px; height:3px; animation-duration:12s;  animation-delay:-5s; --ember-drift:-12px;"></span>
+    <span class="ember" style="left:96%; width:4px; height:4px; animation-duration:10.5s; animation-delay:-1s; --ember-drift:12px;"></span>
+  </div>
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal mb-12 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">How It Works</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">The blueprint for <span class="italic text-copper-light">real results</span></h2>
+    </div>
+
+    <div class="reveal relative rounded-[34px] p-[2px] blueprint-ring">
+      <div class="relative rounded-[32px] bg-gradient-to-br from-elevated to-ink p-8 sm:p-10 md:p-14 overflow-hidden">
+        <div class="grain"></div>
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(50% 40% at 15% 0%, rgba(201,112,47,0.14), transparent 60%), radial-gradient(45% 35% at 90% 100%, rgba(127,184,138,0.10), transparent 60%);"></div>
+
+        <div class="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8">
+          <div class="hidden lg:block absolute top-8 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-copper/50 via-brass/50 to-live/50"></div>
+
+          <div class="flex flex-col items-center text-center px-2 relative">
+            <div class="w-16 h-16 rounded-full border-2 border-copper/60 bg-ink flex items-center justify-center mb-6 relative z-10">
+              <span class="font-display text-lg font-semibold text-copper">01</span>
+            </div>
+            <h3 class="text-sand font-semibold text-sm mb-2">We design your mockup</h3>
+            <p class="text-fog text-sm leading-[1.7]">Tell us your niche, color scheme and vibe — a free homepage mockup made for your business, before a line of real code gets written.</p>
+          </div>
+
+          <div class="flex flex-col items-center text-center px-2 relative">
+            <div class="w-16 h-16 rounded-full border-2 border-copper-light/60 bg-ink flex items-center justify-center mb-6 relative z-10">
+              <span class="font-display text-lg font-semibold text-copper-light">02</span>
+            </div>
+            <h3 class="text-sand font-semibold text-sm mb-2">We build it hand-coded</h3>
+            <p class="text-fog text-sm leading-[1.7]">No page builders, no templates. A conversion-first site wired to real lead capture from day one.</p>
+          </div>
+
+          <div class="flex flex-col items-center text-center px-2 relative">
+            <div class="w-16 h-16 rounded-full border-2 border-brass/60 bg-ink flex items-center justify-center mb-6 relative z-10">
+              <span class="font-display text-lg font-semibold text-brass">03</span>
+            </div>
+            <h3 class="text-sand font-semibold text-sm mb-2">We launch and hand it off</h3>
+            <p class="text-fog text-sm leading-[1.7]">Fully tested, live on your domain, plus a walkthrough so you're never locked out of your own site.</p>
+          </div>
+
+          <div class="flex flex-col items-center text-center px-2 relative">
+            <div class="w-16 h-16 rounded-full border-2 border-live/60 bg-ink flex items-center justify-center mb-6 relative z-10">
+              <span class="font-display text-lg font-semibold text-live">04</span>
+            </div>
+            <h3 class="text-sand font-semibold text-sm mb-2">We prove it with data</h3>
+            <p class="text-fog text-sm leading-[1.7]">270+ clicks in 14 days at $0.74 cost per click for Solid State Construction, on a $200 test budget — real numbers, not projections.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="reveal text-center mt-10">
+      <a href="process.html" class="link-underline text-copper-light text-sm font-semibold hover:text-sand transition-colors">How we work, step by step &rarr;</a>
+    </p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="relative py-28 px-6 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:2%;  width:4px; height:4px; animation-duration:11s;  animation-delay:-4s; --ember-drift:14px;"></span>
+    <span class="ember" style="left:9%;  width:3px; height:3px; animation-duration:13s;  animation-delay:-9s; --ember-drift:-10px;"></span>
+    <span class="ember" style="left:91%; width:3px; height:3px; animation-duration:12s;  animation-delay:-6s; --ember-drift:-12px;"></span>
+    <span class="ember" style="left:98%; width:4px; height:4px; animation-duration:10s;   animation-delay:-2s; --ember-drift:12px;"></span>
+  </div>
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal mb-6 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Transparent Pricing</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Two ways to never miss a call again.</h2>
+      <p class="text-fog text-sm">Fixed setup fee, simple monthly rate &nbsp;·&nbsp; cancel anytime &nbsp;·&nbsp; no long-term contract</p>
+    </div>
+
+    <div class="reveal grid sm:grid-cols-2 gap-6 items-stretch mt-2 max-w-3xl mx-auto">
+      <div class="pricing-ring pricing-ring-feature rounded-2xl bg-elevated border border-copper/40 shadow-floating card-hover p-8 flex flex-col relative">
+        <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">Our Main Offer</span>
+        <h3 class="text-sand font-semibold text-lg mb-1">AI Receptionist + CRM</h3>
+        <p class="font-display text-3xl text-copper-light mb-1">$1,500<span class="price-period text-base text-fog font-sans"> setup</span></p>
+        <p class="text-xs text-fog mb-4">then <span class="text-sand font-semibold">$397</span>/mo dental &nbsp;·&nbsp; <span class="text-sand font-semibold">$697</span>/mo orthodontic &amp; home care &nbsp;·&nbsp; <span class="text-sand font-semibold">$99</span>/mo per extra team seat</p>
+        <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
+          <li>Answers every call, day or night — no voicemail</li>
+          <li>Books the visit during the call</li>
+          <li>Every call and contact logged in your own CRM</li>
+          <li>Warm transfer to a real person when it's needed</li>
+          <li>Pipeline board — see every lead's stage at a glance</li>
+          <li><span class="text-sand">Cancel anytime</span> — no long-term contract</li>
+        </ul>
+        <a href="book-a-call.html" class="btn-primary block w-full shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm text-center mt-6">
+          Book A Free Setup Call
+        </a>
+      </div>
+      <div class="pricing-ring rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col relative">
+        <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">Most Complete</span>
+        <h3 class="text-sand font-semibold text-lg mb-1">+ Custom Website</h3>
+        <p class="font-display text-3xl text-copper-light mb-1">$2,000<span class="price-period text-base text-fog font-sans"> setup</span></p>
+        <p class="text-xs text-fog mb-4">then <span class="text-sand font-semibold">$400</span>/mo &nbsp;·&nbsp; <span class="text-sand font-semibold">$99</span>/mo per extra team seat</p>
+        <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
+          <li>Everything in AI Receptionist + CRM</li>
+          <li>Custom hand-coded website (up to 10 pages)</li>
+          <li>Mobile-first responsive design + logo design included</li>
+          <li>Google Business Profile / Maps setup</li>
+          <li>90+ PageSpeed target</li>
+          <li><span class="text-sand">Care Plan included</span> — then $249/mo, cancel anytime</li>
+        </ul>
+        <div class="mt-5 pt-4 border-t border-white/10 space-y-2">
+          <div class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-copper-light shrink-0"><path d="M12 2C10 6 6 8 4 8C4 16 8 20 12 22C16 20 20 16 20 8C18 8 14 6 12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <p class="text-xs text-fog">+ Add AI Website Chatbot for <span class="text-copper-light font-semibold">$99/mo</span></p>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-copper-light shrink-0"><path d="M12 2C10 6 6 8 4 8C4 16 8 20 12 22C16 20 20 16 20 8C18 8 14 6 12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <p class="text-xs text-fog">+ Add 3D Company Card for <span class="text-copper-light font-semibold">$99</span></p>
+          </div>
+        </div>
+        <a href="book-a-call.html" class="btn-primary block w-full text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm text-center mt-6">
+          Book A Free Setup Call
+        </a>
+      </div>
+    </div>
+    <p class="reveal text-center text-sm text-fog mt-8 mb-4">Both tiers include CRM access for your core team and a dedicated onboarding call before anything goes live.</p>
+    <p class="reveal text-center mb-14">
+      <a href="pricing.html" class="link-underline text-copper-light text-sm font-semibold hover:text-sand transition-colors">Full pricing details, add-ons &amp; FAQ &rarr;</a>
+    </p>
+
+    <div class="reveal">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5 text-center">See The Chatbot Upgrade In Action</p>
+      <div class="max-w-4xl mx-auto rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-6 sm:p-8 flex flex-col md:flex-row items-center gap-8">
+
+        <div class="phone-frame shrink-0">
+          <div class="phone-screen tall flex flex-col">
+            <div class="phone-notch"></div>
+            <div class="flex items-center justify-between px-4 pt-2.5 pb-1 text-[10px] font-semibold text-sand">
+              <span>9:41</span>
+              <span class="flex items-center gap-1">
+                <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><rect x="0" y="6" width="2.5" height="4" rx="0.5" fill="#e9dfd2"/><rect x="4" y="4" width="2.5" height="6" rx="0.5" fill="#e9dfd2"/><rect x="8" y="2" width="2.5" height="8" rx="0.5" fill="#e9dfd2"/><rect x="12" y="0" width="2.5" height="10" rx="0.5" fill="#e9dfd2"/></svg>
+                <svg width="14" height="10" viewBox="0 0 16 12" fill="none"><path d="M8 9.5C8.55 9.5 9 9.05 9 8.5C9 7.95 8.55 7.5 8 7.5C7.45 7.5 7 7.95 7 8.5C7 9.05 7.45 9.5 8 9.5Z" fill="#e9dfd2"/><path d="M5 6.3C5.75 5.6 6.8 5.2 8 5.2C9.2 5.2 10.25 5.6 11 6.3" stroke="#e9dfd2" stroke-width="1.1" stroke-linecap="round"/><path d="M2.5 3.7C4 2.3 5.9 1.5 8 1.5C10.1 1.5 12 2.3 13.5 3.7" stroke="#e9dfd2" stroke-width="1.1" stroke-linecap="round"/></svg>
+                <span class="inline-flex items-center border border-sand/70 rounded-[3px] px-[1.5px] py-[1px]"><span class="block w-[16px] h-[7px] bg-sand/90 rounded-[1px]"></span></span>
+              </span>
+            </div>
+            <div class="flex items-center gap-2.5 px-4 py-2.5 border-b border-white/10">
+              <span class="h-7 w-7 rounded-full bg-gradient-to-br from-copper to-brass flex items-center justify-center text-[10px] font-bold text-ink shrink-0">A2H</span>
+              <div class="min-w-0">
+                <p class="text-xs font-semibold text-sand truncate">A2H AI Agent</p>
+                <p class="text-[10px] text-live flex items-center gap-1"><span class="h-1.5 w-1.5 rounded-full bg-live inline-block"></span>Active · Responding now</p>
+              </div>
+            </div>
+            <div id="chatbot-thread" class="bubble-thread flex-1 overflow-hidden px-3 py-2 space-y-2 text-[11px] leading-snug">
+              <div class="chat-bubble flex justify-start">
+                <div class="max-w-[80%] bg-white/10 text-sand rounded-2xl rounded-bl-sm px-3 py-2">
+                  Hey, saw your site — what's turnaround on a new build?
+                  <p class="text-[9px] text-fog/70 mt-1">9:03 AM</p>
+                </div>
+              </div>
+              <div class="typing-indicator flex justify-end">
+                <div class="bg-gradient-to-br from-[#0b93f6] to-[#0066e0] text-white rounded-2xl rounded-br-sm px-3.5 py-2.5 flex items-center gap-1">
+                  <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+                </div>
+              </div>
+              <div class="chat-bubble flex justify-end">
+                <div class="max-w-[80%] bg-gradient-to-br from-[#0b93f6] to-[#0066e0] text-white rounded-2xl rounded-br-sm px-3 py-2">
+                  About 2–3 days — a fully custom site with an AI chatbot built in. Free mockup, no charge — what's your business called?
+                  <p class="text-[9px] text-white/70 mt-1 text-right">AI · 9:03 AM ✓✓</p>
+                </div>
+              </div>
+              <div class="chat-bubble flex justify-start">
+                <div class="max-w-[80%] bg-white/10 text-sand rounded-2xl rounded-bl-sm px-3 py-2">
+                  Rivera Concrete Co.
+                  <p class="text-[9px] text-fog/70 mt-1">9:04 AM</p>
+                </div>
+              </div>
+              <div class="typing-indicator flex justify-end">
+                <div class="bg-gradient-to-br from-[#0b93f6] to-[#0066e0] text-white rounded-2xl rounded-br-sm px-3.5 py-2.5 flex items-center gap-1">
+                  <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+                </div>
+              </div>
+              <div class="chat-bubble flex justify-end">
+                <div class="max-w-[80%] bg-gradient-to-br from-[#0b93f6] to-[#0066e0] text-white rounded-2xl rounded-br-sm px-3 py-2">
+                  Got it — booking you a call. Tomorrow 2pm or 4pm?
+                  <p class="text-[9px] text-white/70 mt-1 text-right">AI · 9:04 AM ✓✓</p>
+                </div>
+              </div>
+            </div>
+            <div class="px-3 pb-3 pt-1">
+              <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-3 py-1.5">
+                <span class="text-[10px] text-fog/60 flex-1 truncate">AI handling this conversation…</span>
+                <span class="h-5 w-5 rounded-full bg-copper flex items-center justify-center shrink-0">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 12L20 4L14 20L11 13L4 12Z" fill="#141110"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-1 text-center md:text-left">
+          <h3 class="text-sand font-semibold text-lg mb-2">AI Website Chatbot</h3>
+          <p class="text-sm text-fog leading-[1.7] mb-5">Trained on your business — answers FAQs, qualifies visitors, and captures leads 24/7, even after hours, right on your site. Available on the Custom Website tier.</p>
+          <div class="flex items-center justify-center md:justify-start gap-2">
+            <p class="font-display text-2xl text-copper-light">+$99</p>
+            <p class="text-xs text-fog uppercase tracking-wider">per month</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section id="compare" class="relative py-24 px-6 bg-surface/40 border-y border-white/5 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:4%;  width:4px; height:4px; animation-duration:11s;  animation-delay:-3s; --ember-drift:14px;"></span>
+    <span class="ember" style="left:93%; width:3px; height:3px; animation-duration:12s;  animation-delay:-6s; --ember-drift:-12px;"></span>
+  </div>
+  <div class="max-w-4xl mx-auto">
+    <div class="reveal mb-12 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Why Not Just...</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Voicemail and an answering service <span class="italic text-copper-light">aren't the same thing.</span></h2>
+    </div>
+    <div class="reveal grid sm:grid-cols-3 gap-4">
+      <div class="rounded-2xl bg-elevated border border-white/5 p-6">
+        <h3 class="text-sand font-semibold text-sm mb-4">Voicemail</h3>
+        <ul class="text-sm text-fog leading-[2] space-y-1">
+          <li class="flex items-center gap-2"><span class="text-fog/50">✕</span> Answers instantly</li>
+          <li class="flex items-center gap-2"><span class="text-fog/50">✕</span> Books the job</li>
+          <li class="flex items-center gap-2"><span class="text-fog/50">✕</span> Available 24/7</li>
+          <li class="flex items-center gap-2"><span class="text-fog/50">✕</span> Logs to a CRM</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-elevated border border-white/5 p-6">
+        <h3 class="text-sand font-semibold text-sm mb-4">Answering Service</h3>
+        <ul class="text-sm text-fog leading-[2] space-y-1">
+          <li class="flex items-center gap-2"><span class="text-live">✓</span> Answers instantly</li>
+          <li class="flex items-center gap-2"><span class="text-fog/50">✕</span> Books the job</li>
+          <li class="flex items-center gap-2"><span class="text-fog/50">✕</span> Available 24/7</li>
+          <li class="flex items-center gap-2"><span class="text-fog/50">✕</span> Logs to a CRM</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-elevated border border-copper/40 shadow-elevated p-6 relative">
+        <span class="absolute -top-3 left-6 bg-copper text-ink text-[10px] font-bold px-2.5 py-1 rounded-full">A2H</span>
+        <h3 class="text-sand font-semibold text-sm mb-4">AI Receptionist + CRM</h3>
+        <ul class="text-sm text-fog leading-[2] space-y-1">
+          <li class="flex items-center gap-2"><span class="text-live">✓</span> Answers instantly</li>
+          <li class="flex items-center gap-2"><span class="text-live">✓</span> Books the job</li>
+          <li class="flex items-center gap-2"><span class="text-live">✓</span> Available 24/7</li>
+          <li class="flex items-center gap-2"><span class="text-live">✓</span> Logs to a CRM</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS STRIP -->
+<section class="relative py-16 px-6 overflow-hidden">
+  <div class="max-w-4xl mx-auto">
+    <div class="reveal mb-8 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold">Works With What You Already Have</p>
+    </div>
+    <div class="reveal grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="rounded-xl bg-elevated border border-white/5 p-4 text-center">
+        <p class="text-sand text-sm font-medium mb-1">Your number</p>
+        <p class="text-fog text-xs">Forward your existing line, no new number</p>
+      </div>
+      <div class="rounded-xl bg-elevated border border-white/5 p-4 text-center">
+        <p class="text-sand text-sm font-medium mb-1">Custom CRM</p>
+        <p class="text-fog text-xs">Every call and caller tracked in one place</p>
+      </div>
+      <div class="rounded-xl bg-elevated border border-white/5 p-4 text-center">
+        <p class="text-sand text-sm font-medium mb-1">A real person</p>
+        <p class="text-fog text-xs">It can transfer or take a message when a call needs you</p>
+      </div>
+      <div class="rounded-xl bg-elevated border border-white/5 p-4 text-center">
+        <p class="text-sand text-sm font-medium mb-1">Your team</p>
+        <p class="text-fog text-xs">Add seats as you grow, $99/mo each</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI CALCULATOR -->
+<section id="calculator" class="relative py-24 px-6 bg-surface/40 border-y border-white/5 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:5%;  width:4px; height:4px; animation-duration:11s;  animation-delay:-3s; --ember-drift:14px;"></span>
+    <span class="ember" style="left:92%; width:3px; height:3px; animation-duration:12s;  animation-delay:-6s; --ember-drift:-12px;"></span>
+  </div>
+  <div class="max-w-2xl mx-auto">
+    <div class="reveal mb-10 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Do The Math Yourself</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">What are missed calls <span class="italic text-copper-light">actually costing you?</span></h2>
+      <p class="text-fog text-sm">Your own numbers, not ours — this is an estimate based on what you enter below.</p>
+    </div>
+    <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated p-6 sm:p-8">
+      <div class="grid sm:grid-cols-2 gap-5 mb-6">
+        <label class="block">
+          <span class="text-xs text-fog uppercase tracking-wider mb-2 block">Missed calls per week</span>
+          <input id="calc-missed" type="number" min="0" value="5" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 focus:outline-none transition-colors">
+        </label>
+        <label class="block">
+          <span class="text-xs text-fog uppercase tracking-wider mb-2 block">Average job value ($)</span>
+          <input id="calc-value" type="number" min="0" value="350" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 focus:outline-none transition-colors">
+        </label>
+      </div>
+      <div class="rounded-xl bg-ink/60 border border-copper/30 p-5 text-center mb-6">
+        <p class="text-xs text-fog uppercase tracking-wider mb-2">Estimated monthly loss</p>
+        <p class="font-display text-copper-light" style="font-size: clamp(2rem, 6vw, 3rem);" id="calc-result">$7,583</p>
+        <p class="text-xs text-fog/70 mt-1" id="calc-detail">5 missed calls/week × $350/job × 4.33 weeks</p>
+      </div>
+      <a href="book-a-call.html" class="btn-primary block w-full shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm text-center">
+        Stop Losing That — Book A Free Setup Call
+      </a>
+    </div>
+  </div>
+</section>
+<script>
+  (function () {
+    var missedInput = document.getElementById('calc-missed');
+    var valueInput = document.getElementById('calc-value');
+    var result = document.getElementById('calc-result');
+    var detail = document.getElementById('calc-detail');
+    if (!missedInput || !valueInput || !result || !detail) return;
+    var fmt = function (n) { return '$' + Math.round(n).toLocaleString('en-US'); };
+    var update = function () {
+      var missed = Math.max(0, Number(missedInput.value) || 0);
+      var value = Math.max(0, Number(valueInput.value) || 0);
+      var monthly = missed * value * 4.33;
+      result.textContent = fmt(monthly);
+      detail.textContent = missed + ' missed calls/week × $' + value.toLocaleString('en-US') + '/job × 4.33 weeks';
+    };
+    missedInput.addEventListener('input', update);
+    valueInput.addEventListener('input', update);
+    update();
+  })();
+</script>
+
+<!-- FAQ / OBJECTIONS -->
+<section id="faq" class="relative py-24 px-6 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:4%;  width:4px; height:4px; animation-duration:11s;  animation-delay:-3s; --ember-drift:14px;"></span>
+    <span class="ember" style="left:93%; width:3px; height:3px; animation-duration:12s;  animation-delay:-6s; --ember-drift:-12px;"></span>
+  </div>
+  <div class="max-w-2xl mx-auto">
+    <div class="reveal mb-12 text-center">
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Questions</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Before you book a call</h2>
+    </div>
+    <div class="reveal space-y-3">
+      <details class="group rounded-xl bg-elevated border border-white/5 px-5 py-4 [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex items-center justify-between cursor-pointer text-sand font-medium text-sm list-none">
+          I already have an answering service — why switch?
+          <span class="text-copper-light group-open:rotate-45 transition-transform text-lg leading-none">+</span>
+        </summary>
+        <p class="text-fog text-sm leading-[1.7] mt-3">A human answering service is still a person reading a script off a sheet — it can't book directly into your calendar or log the call into a CRM automatically. This does both, on every call, without paying per-minute for a call center.</p>
+      </details>
+      <details class="group rounded-xl bg-elevated border border-white/5 px-5 py-4 [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex items-center justify-between cursor-pointer text-sand font-medium text-sm list-none">
+          What if it can't handle what the caller needs?
+          <span class="text-copper-light group-open:rotate-45 transition-transform text-lg leading-none">+</span>
+        </summary>
+        <p class="text-fog text-sm leading-[1.7] mt-3">It warm-transfers to a real person when a call needs one — it's not designed to handle everything on its own, it's designed to never let a call go unanswered.</p>
+      </details>
+      <details class="group rounded-xl bg-elevated border border-white/5 px-5 py-4 [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex items-center justify-between cursor-pointer text-sand font-medium text-sm list-none">
+          Do I have to change my phone number?
+          <span class="text-copper-light group-open:rotate-45 transition-transform text-lg leading-none">+</span>
+        </summary>
+        <p class="text-fog text-sm leading-[1.7] mt-3">No — your existing number stays yours. We wire the receptionist into it, we don't replace it.</p>
+      </details>
+      <details class="group rounded-xl bg-elevated border border-white/5 px-5 py-4 [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex items-center justify-between cursor-pointer text-sand font-medium text-sm list-none">
+          What if I want to cancel?
+          <span class="text-copper-light group-open:rotate-45 transition-transform text-lg leading-none">+</span>
+        </summary>
+        <p class="text-fog text-sm leading-[1.7] mt-3">Cancel anytime — no long-term lock-in. It's in the agreement.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 3D COMPANY CARD -->
+<section id="card3d-section" class="relative py-24 px-6 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:3%;  width:4px; height:4px; animation-duration:11s;  animation-delay:-3s; --ember-drift:14px;"></span>
+    <span class="ember" style="left:12%; width:3px; height:3px; animation-duration:13s;  animation-delay:-8s; --ember-drift:-10px;"></span>
+    <span class="ember" style="left:88%; width:3px; height:3px; animation-duration:12s;  animation-delay:-5s; --ember-drift:-12px;"></span>
+    <span class="ember" style="left:96%; width:4px; height:4px; animation-duration:10.5s; animation-delay:-1s; --ember-drift:12px;"></span>
+  </div>
+  <div class="reveal max-w-2xl mx-auto text-center mb-12">
+    <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">New Add-On</p>
+    <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">Your brand, <span class="italic text-copper-light">in three dimensions.</span></h2>
+    <p class="text-fog leading-[1.7] max-w-xl mx-auto">An interactive 3D company card for your website — drag to rotate, spin it around to see the back. Here's a live example built for Quality Halal Market.</p>
+  </div>
+
+  <div class="reveal flex flex-wrap justify-center gap-x-14 gap-y-10 py-4">
+    <div class="flex flex-col items-center gap-3">
+      <div class="card3d-stage">
+        <div class="card3d card-qhm">
+          <div class="card3d-face card3d-front photo">
+            <img width="760" height="452" loading="lazy" decoding="async" src="assets/portfolio/qhm-card-front.webp" alt="Quality Halal Market business card front" class="card3d-photo">
+            <div class="card3d-sheen"></div>
+          </div>
+          <div class="card3d-face card3d-back photo card3d-back-light">
+            <img width="760" height="448" loading="lazy" decoding="async" src="assets/portfolio/qhm-card-back.webp" alt="Quality Halal Market business card back" class="card3d-photo">
+            <div class="card3d-sheen"></div>
+          </div>
+        </div>
+      </div>
+      <p class="text-xs text-fog/70 uppercase tracking-wider">Quality Halal Market</p>
+    </div>
+  </div>
+  <p class="reveal text-center text-xs text-fog/70 uppercase tracking-wider mt-2">Drag to rotate</p>
+
+  <div class="reveal flex flex-col items-center gap-1 mt-10">
+    <div class="flex items-center gap-2">
+      <p class="font-display text-2xl text-copper-light">$99</p>
+      <p class="text-xs text-fog uppercase tracking-wider">one-time add-on</p>
+    </div>
+    <p class="text-xs text-fog/70">Available on the AI Receptionist + CRM + Custom Website tier</p>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="relative px-6 py-20 overflow-hidden">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:2%;  width:4px; height:4px; animation-duration:11s; animation-delay:-4s; --ember-drift:14px; --ember-rise:-180px;"></span>
+    <span class="ember" style="left:98%; width:3px; height:3px; animation-duration:12s; animation-delay:-8s; --ember-drift:-10px; --ember-rise:-170px;"></span>
+  </div>
+  <div class="reveal max-w-5xl mx-auto rounded-3xl bg-gradient-to-r from-copper to-brass px-8 py-14 sm:py-16 text-center relative overflow-hidden shadow-floating">
+    <div class="grain opacity-10"></div>
+    <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4 relative" style="text-shadow: 0 2px 10px rgba(20,17,16,0.35);">Ready to stop missing <span class="italic">calls?</span></h2>
+    <p class="text-sand/90 max-w-xl mx-auto mb-8 relative" style="text-shadow: 0 1px 6px rgba(20,17,16,0.3);">Book a free setup call — no pressure, no obligation. We'll show you exactly how it works on your own business.</p>
+    <span class="relative inline-block rounded-full p-[2px] cta-ring">
+      <a href="book-a-call.html" class="btn-primary relative inline-block bg-ink hover:bg-ink/90 text-sand font-semibold px-7 py-3.5 rounded-full text-[15px] shadow-btn">
+        Book A Free Setup Call
+      </a>
+    </span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="relative border-t border-white/5 pt-10">
+  <div class="ambient-embers" aria-hidden="true">
+    <span class="ember" style="left:6%;  width:4px; height:4px; animation-duration:12s; animation-delay:-3s; --ember-drift:14px;"></span>
+    <span class="ember" style="left:50%; width:3px; height:3px; animation-duration:14s; animation-delay:-7s; --ember-drift:-10px;"></span>
+    <span class="ember" style="left:93%; width:4px; height:4px; animation-duration:11s; animation-delay:-1s; --ember-drift:-12px;"></span>
+  </div>
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 pb-12">
+      <div>
+        <p class="font-display text-2xl text-sand mb-3">A2H<span class="text-copper">.</span></p>
+        <p class="text-sm text-fog leading-[1.7]">AI receptionist &amp; CRM for Texas businesses — plus custom websites and Google Business Profile setup.</p>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-[0.2em] text-copper-light font-semibold mb-4">Services</p>
+        <ul class="space-y-2 text-sm text-fog">
+          <li><a href="#how-it-works" class="link-underline hover:text-sand transition-colors">AI Receptionist</a></li>
+          <li><a href="#crm" class="link-underline hover:text-sand transition-colors">CRM</a></li>
+          <li><a href="work.html" class="link-underline hover:text-sand transition-colors">Website Work</a></li>
+          <li><a href="pricing.html" class="link-underline hover:text-sand transition-colors">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-[0.2em] text-copper-light font-semibold mb-4">Industries</p>
+        <ul class="space-y-2 text-sm text-fog">
+          <li><a href="construction.html" class="link-underline hover:text-sand transition-colors">Contractors</a></li>
+          <li><a href="medical.html" class="link-underline hover:text-sand transition-colors">Medical Practices</a></li>
+          <li><a href="retail.html" class="link-underline hover:text-sand transition-colors">Local Retail</a></li>
+          <li><a href="dental-practices.html" class="link-underline hover:text-sand transition-colors">Dental Practices</a></li>
+          <li><a href="orthodontic-practices.html" class="link-underline hover:text-sand transition-colors">Orthodontic Practices</a></li>
+          <li><a href="home-care-agencies.html" class="link-underline hover:text-sand transition-colors">Home Care</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-[0.2em] text-copper-light font-semibold mb-4">Contact</p>
+        <ul class="space-y-2 text-sm text-fog">
+          <li><a href="mailto:hhuss786512tx@gmail.com" class="link-underline hover:text-sand transition-colors break-all">hhuss786512tx@gmail.com</a></li>
+          <li>Texas-based</li>
+          <li><a href="book-a-call.html" class="link-underline text-copper-light hover:text-sand transition-colors">Book a free setup call</a></li>
+          <li><a href="#" class="calls-trigger link-underline hover:text-sand transition-colors">See what missed calls are costing you</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/5 pt-6 pb-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-fog/70">
+      <p>&copy; <span data-year>2026</span> A2H Agency</p>
+      <div class="flex items-center gap-5">
+        <a href="privacy.html" class="link-underline hover:text-sand transition-colors">Privacy Policy</a>
+        <a href="terms.html" class="link-underline hover:text-sand transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+  <p id="footer-mark" class="ghost-word relative text-center select-none pointer-events-none" style="font-size: clamp(2.5rem, 10vw, 6.5rem);" aria-hidden="true"><span class="footer-fire-letter">A</span><span class="footer-fire-letter">2</span><span class="footer-fire-letter">H</span><span class="footer-fire-space"></span><span class="footer-fire-letter">A</span><span class="footer-fire-letter">g</span><span class="footer-fire-letter">e</span><span class="footer-fire-letter">n</span><span class="footer-fire-letter">c</span><span class="footer-fire-letter">y</span><span id="footer-fire-spark" class="footer-fire-spark"></span></p>
+</footer>
+
+<script>
+  // Footer wordmark: same letter-by-letter fire-write as the intro overlay,
+  // replayed once when it scrolls into view instead of on page load — it
+  // sits at the very bottom of the page, off-screen for most of a visit.
+  // Placed here (right after the footer markup) rather than up near the
+  // intro script — a plain inline script element runs the instant the
+  // parser reaches it, and #footer-mark didn't exist yet when this lived
+  // near the top of the body, so getElementById returned null and the
+  // whole IIFE silently no-opped on its `if (!mark) return;` guard.
+  // Confirmed via live QA: 0 of 9 letters ever got `.lit` even after
+  // scrolling the footer fully into view, while a freshly-created
+  // observer on the same element in the same session reported
+  // isIntersecting:true correctly — the element and IntersectionObserver
+  // mechanics were fine, only the original script's position was wrong.
+  (function () {
+    var mark = document.getElementById('footer-mark');
+    if (!mark) return;
+    var letters = Array.prototype.slice.call(mark.querySelectorAll('.footer-fire-letter'));
+    if (!letters.length) return;
+    var spark = document.getElementById('footer-fire-spark');
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var ignite = function () {
+      if (reduced) {
+        letters.forEach(function (l) { l.classList.add('lit'); });
+        return;
+      }
+      var markRect = mark.getBoundingClientRect();
+      var stagger = 60;
+      letters.forEach(function (letter, i) {
+        var delay = i * stagger;
+        setTimeout(function () {
+          if (!spark) return;
+          var r = letter.getBoundingClientRect();
+          spark.style.left = (r.left - markRect.left + r.width / 2) + 'px';
+          spark.style.top = (r.top - markRect.top + r.height * 0.3) + 'px';
+          spark.style.opacity = '1';
+        }, delay);
+        setTimeout(function () {
+          letter.classList.add('lit');
+          if (spark) spark.style.opacity = '0';
+        }, delay + stagger * 0.8);
+      });
+    };
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { ignite(); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.3 });
+    io.observe(mark);
+  })();
+</script>
+
+<div id="calls-popup-overlay" class="hidden fixed inset-0 z-[100] items-center justify-center bg-ink/80 backdrop-blur-sm px-4 py-8" role="dialog" aria-modal="true" aria-labelledby="calls-popup-heading">
+  <div id="calls-popup-card" class="relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-elevated border border-white/10 shadow-floating p-7 sm:p-8">
+    <button type="button" id="calls-popup-close" aria-label="Close" class="absolute top-4 right-4 text-fog hover:text-sand transition-colors">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <form id="calls-popup-form" class="space-y-4">
+      <div id="calls-popup-step-1">
+        <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Step 1 of 2</p>
+        <h2 id="calls-popup-heading" class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-2">How much are missed calls costing you?</h2>
+        <p class="text-sm text-fog leading-[1.6] mb-6">Answer two quick questions — we'll show you the number. No charge, no obligation.</p>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-calls-missed">Roughly how many calls do you miss per month?</label>
+            <select required id="cp-calls-missed" name="calls_missed" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 transition-colors">
+              <option value="" selected disabled>Choose one</option>
+              <option value="under-10">Fewer than 10</option>
+              <option value="10-25">10–25</option>
+              <option value="25-50">25–50</option>
+              <option value="50-plus">50 or more</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-call-value">What's an average job worth to you?</label>
+            <select required id="cp-call-value" name="call_value" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 transition-colors">
+              <option value="" selected disabled>Choose one</option>
+              <option value="under-200">Under $200</option>
+              <option value="200-500">$200–$500</option>
+              <option value="500-1500">$500–$1,500</option>
+              <option value="1500-plus">$1,500+</option>
+            </select>
+          </div>
+          <p id="calls-popup-step1-status" class="text-xs text-center text-copper-light" role="status" aria-live="polite"></p>
+          <div id="calls-popup-result" class="hidden rounded-xl bg-copper/10 border border-copper/30 px-5 py-4 text-center">
+            <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-1">You could be losing</p>
+            <p id="calls-popup-result-monthly" class="font-display text-3xl text-sand tracking-[-0.02em]"></p>
+            <p id="calls-popup-result-annual" class="text-xs text-fog mt-1"></p>
+          </div>
+          <button type="button" id="calls-popup-calc" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
+            See My Number
+          </button>
+          <button type="button" id="calls-popup-next" class="hidden btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
+            Show Me How To Fix This &rarr;
+          </button>
+        </div>
+      </div>
+      <div id="calls-popup-step-2" class="hidden">
+        <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Step 2 of 2</p>
+        <h2 class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-2">How do we reach you?</h2>
+        <p class="text-sm text-fog leading-[1.6] mb-6">We'll send your free call recovery plan and get you on a quick setup call.</p>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-name">Name</label>
+            <input required id="cp-name" name="name" type="text" autocomplete="name" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Jane Rivera">
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-business">Business Name</label>
+            <input required id="cp-business" name="business" type="text" autocomplete="organization" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Rivera Concrete Co.">
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-email">Email</label>
+              <input required id="cp-email" name="email" type="email" autocomplete="email" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="jane@rivera.com">
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-phone">Phone</label>
+              <input id="cp-phone" name="phone" type="tel" autocomplete="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
+            </div>
+          </div>
+          <p class="text-[11px] text-fog/70 leading-[1.5] -mt-2">By providing your number, you agree to receive SMS messages from A2H about your call recovery plan. Msg &amp; data rates may apply, msg frequency varies. Reply STOP to opt out, HELP for help.</p>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="cp-captcha-answer">Quick check: <span id="cp-captcha-question">loading…</span></label>
+            <input required id="cp-captcha-answer" name="captcha_answer" type="text" inputmode="numeric" autocomplete="off" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Your answer">
+            <input type="hidden" name="captcha_token" id="cp-captcha-token">
+          </div>
+          <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
+            <label for="cp-company-site">Leave this field blank</label>
+            <input id="cp-company-site" name="company_site" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="flex gap-3">
+            <button type="button" id="calls-popup-back" class="text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-3 rounded-full text-sm">
+              Back
+            </button>
+            <button type="submit" class="btn-primary shadow-btn flex-1 bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
+              Get My Free Call Recovery Plan
+            </button>
+          </div>
+          <p id="calls-popup-status" class="text-xs text-center text-fog" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var overlay = document.getElementById('calls-popup-overlay');
+    if (!overlay) return;
+    var form = document.getElementById('calls-popup-form');
+    var step1 = document.getElementById('calls-popup-step-1');
+    var step2 = document.getElementById('calls-popup-step-2');
+    var step1Status = document.getElementById('calls-popup-step1-status');
+    var status = document.getElementById('calls-popup-status');
+    var closeBtn = document.getElementById('calls-popup-close');
+    var calcBtn = document.getElementById('calls-popup-calc');
+    var nextBtn = document.getElementById('calls-popup-next');
+    var backBtn = document.getElementById('calls-popup-back');
+    var callsField = document.getElementById('cp-calls-missed');
+    var valueField = document.getElementById('cp-call-value');
+    var resultBox = document.getElementById('calls-popup-result');
+    var resultMonthly = document.getElementById('calls-popup-result-monthly');
+    var resultAnnual = document.getElementById('calls-popup-result-annual');
+    var DISMISSED_KEY = 'a2h_calls_popup_dismissed';
+    var SUBMITTED_KEY = 'a2h_calls_popup_submitted';
+
+    var CALLS_MID = { 'under-10': 7, '10-25': 17, '25-50': 37, '50-plus': 60 };
+    var VALUE_MID = { 'under-200': 125, '200-500': 350, '500-1500': 1000, '1500-plus': 2000 };
+    var lastMonthly = 0, lastAnnual = 0;
+
+    // Self-hosted captcha (see api/captcha-challenge.js) — no third-party
+    // script/signup. Fetched immediately so it's ready by the time the
+    // popup opens 10s+ later.
+    var captchaLoadedAt = 0;
+    var captchaQuestionEl = document.getElementById('cp-captcha-question');
+    var captchaTokenEl = document.getElementById('cp-captcha-token');
+    function loadCaptcha() {
+      captchaLoadedAt = Date.now();
+      fetch('/api/captcha-challenge').then(function (r) { return r.json(); }).then(function (d) {
+        if (captchaQuestionEl) captchaQuestionEl.textContent = d.question ? 'What is ' + d.question + '?' : 'skip this — verification unavailable';
+        if (captchaTokenEl) captchaTokenEl.value = d.token || '';
+      }).catch(function () {
+        if (captchaQuestionEl) captchaQuestionEl.textContent = 'skip this — verification unavailable';
+      });
+    }
+    loadCaptcha();
+
+    function showStep(n) {
+      step1.classList.toggle('hidden', n !== 1);
+      step2.classList.toggle('hidden', n !== 2);
+      var first = (n === 1 ? step1 : step2).querySelector('input, select, textarea');
+      if (first) first.focus();
+    }
+
+    calcBtn.addEventListener('click', function () {
+      if (!callsField.value || !valueField.value) {
+        step1Status.textContent = 'Please answer both questions to see your number.';
+        (callsField.value ? valueField : callsField).focus();
+        return;
+      }
+      step1Status.textContent = '';
+      lastMonthly = CALLS_MID[callsField.value] * VALUE_MID[valueField.value];
+      lastAnnual = lastMonthly * 12;
+      resultMonthly.textContent = '$' + lastMonthly.toLocaleString() + '/mo';
+      resultAnnual.textContent = '~$' + lastAnnual.toLocaleString() + '/year walking out the door.';
+      resultBox.classList.remove('hidden');
+      calcBtn.classList.add('hidden');
+      nextBtn.classList.remove('hidden');
+      nextBtn.focus();
+    });
+
+    nextBtn.addEventListener('click', function () { showStep(2); });
+    backBtn.addEventListener('click', function () { showStep(1); });
+
+    function alreadyHandled() {
+      try {
+        return sessionStorage.getItem(DISMISSED_KEY) === '1' || localStorage.getItem(SUBMITTED_KEY) === '1';
+      } catch (e) { return false; }
+    }
+
+    function openPopup() {
+      showStep(1);
+      overlay.classList.remove('hidden');
+      overlay.classList.add('flex');
+      document.body.classList.add('overflow-hidden');
+      requestAnimationFrame(function () { overlay.classList.add('is-open'); });
+      var first = form.querySelector('select');
+      if (first) first.focus();
+      document.dispatchEvent(new Event('a2h:popup-toggle'));
+    }
+
+    // Passive auto-trigger (10s) — respects dismissal and past submission.
+    // A deliberate click (.calls-trigger) always opens it regardless.
+    function open() {
+      if (alreadyHandled()) return;
+      openPopup();
+    }
+
+    function close(remember) {
+      overlay.classList.remove('is-open');
+      document.body.classList.remove('overflow-hidden');
+      setTimeout(function () { overlay.classList.add('hidden'); overlay.classList.remove('flex'); }, 250);
+      if (remember) { try { sessionStorage.setItem(DISMISSED_KEY, '1'); } catch (e) {} }
+      document.dispatchEvent(new Event('a2h:popup-toggle'));
+    }
+
+    closeBtn.addEventListener('click', function () { close(true); });
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(true); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) close(true);
+    });
+
+    document.querySelectorAll('.calls-trigger').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        openPopup();
+      });
+    });
+
+    // Only self-triggers if the page actually has a manual trigger button —
+    // pages with no .calls-trigger element stay dormant instead of popping
+    // an unprompted calculator with no matching CTA on the page.
+    if (document.querySelectorAll('.calls-trigger').length && !alreadyHandled()) setTimeout(open, 10000);
+
+    var ERROR_COPY = {
+      captcha_failed: "That answer didn't match — double-check and try again.",
+      invalid_email: 'That email address looks invalid — please double-check it.',
+      disposable_email: 'Please use a permanent email address, not a temporary/disposable one.',
+      email_domain_unreachable: "That email's domain doesn't appear to accept mail — please double-check it.",
+    };
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      status.textContent = 'Sending…';
+      var data = Object.fromEntries(new FormData(form).entries());
+      data.landing_page = window.location.pathname;
+      data.elapsed_ms = Date.now() - captchaLoadedAt;
+      data.estimated_monthly = lastMonthly;
+      data.estimated_annual = lastAnnual;
+      ['gclid', 'fbclid', 'utm_source', 'utm_campaign'].forEach(function (k) {
+        try { var v = sessionStorage.getItem('a2h_' + k); if (v) data[k] = v; } catch (e) {}
+      });
+      fetch('/api/calls-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      }).then(function (res) {
+        return res.json().catch(function () { return {}; }).then(function (result) {
+          if (!res.ok) {
+            btn.disabled = false;
+            status.textContent = ERROR_COPY[result.error] || 'Something went wrong — email us directly at hhuss786512tx@gmail.com.';
+            if (result.error === 'captcha_failed') loadCaptcha();
+            return;
+          }
+          try { localStorage.setItem(SUBMITTED_KEY, '1'); } catch (e) {}
+          window.location.href = '/book-a-call.html';
+        });
+      }).catch(function () {
+        btn.disabled = false;
+        status.textContent = 'Something went wrong — email us directly at hhuss786512tx@gmail.com.';
+      });
+    });
+  })();
+  </script>
+
+<script>
+  // Header: shrink/shadow once the hero's own background stops showing
+  // through the blur, and highlight whichever nav section is in view.
+  (function () {
+    const header = document.getElementById('site-header');
+    if (!header) return;
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    const navLinks = document.querySelectorAll('[data-nav-link]');
+    const sections = Array.from(navLinks)
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+    if (sections.length) {
+      const sectionIo = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          navLinks.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+          });
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      sections.forEach((section) => sectionIo.observe(section));
+    }
+  })();
+
+  // Mobile menu
+  (function () {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+    if (!btn || !menu) return;
+
+    const setOpen = (open) => {
+      btn.setAttribute('aria-expanded', String(open));
+      iconOpen.classList.toggle('hidden', open);
+      iconClose.classList.toggle('hidden', !open);
+      if (open) {
+        menu.classList.remove('hidden');
+        requestAnimationFrame(() => menu.classList.add('is-open'));
+      } else {
+        menu.classList.remove('is-open');
+        setTimeout(() => menu.classList.add('hidden'), 250);
+      }
+    };
+
+    btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
+    menu.querySelectorAll('.mobile-nav-link').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+  })();
+
+  // Scroll reveal.
+  // threshold 0 + a negative bottom margin rather than a fraction threshold:
+  // a fraction is measured against the element's own height, so a block
+  // taller than the viewport can never reach 0.15 and would stay invisible.
+  // Several sections here are exactly that tall.
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        // Stat cards get an extra "ignite" flare on their number the moment
+        // they land, timed to roughly the middle of the spring pop-in so it
+        // reads as the number catching light, not a separate effect.
+        if (entry.target.classList.contains('stat-card')) {
+          const num = entry.target.querySelector('.font-display');
+          if (num) setTimeout(() => num.classList.add('ignite'), 200);
+        }
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  // Safety sweep. The observer alone was leaving a number of blocks stuck at
+  // opacity 0 on this page — long sections, elements that were display:none
+  // at load and only became visible at another breakpoint, and anything the
+  // callback simply never fired for. Since .reveal now starts hidden, a miss
+  // means copy the visitor can never read, so anything already scrolled past
+  // or currently in view gets revealed outright.
+  (function revealSweep() {
+    var sweep = function () {
+      var vh = window.innerHeight;
+      revealEls.forEach(function (el) {
+        if (el.classList.contains('in')) return;
+        var r = el.getBoundingClientRect();
+        if (r.top < vh * 0.95) {
+          el.classList.add('in');
+          if (el.classList.contains('stat-card')) {
+            var num = el.querySelector('.font-display');
+            if (num) setTimeout(function () { num.classList.add('ignite'); }, 200);
+          }
+          io.unobserve(el);
+        }
+      });
+    };
+    var queued = false;
+    var onScroll = function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () { queued = false; sweep(); });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    window.addEventListener('load', sweep);
+    sweep();
+  })();
+
+  // Portfolio phone/laptop screen-capture videos: don't fetch any of them
+  // until their chapter is about to scroll into view, then play on a loop.
+  const lazyVideoIo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const video = entry.target;
+      lazyVideoIo.unobserve(video);
+      video.src = video.dataset.src;
+      video.load();
+      video.play().catch(() => {});
+    });
+  }, { threshold: 0.1, rootMargin: '200px 0px' });
+  document.querySelectorAll('video.lazy-video').forEach(v => lazyVideoIo.observe(v));
+
+  // Chatbot mockup: stagger each item in with JS-driven delays rather than
+  // CSS transition-delay nested under the parent .reveal fade — some browsers
+  // fail to fire a child's delayed transition when the parent is fading in at
+  // the same time, silently leaving alternating bubbles stuck at opacity 0.
+  // Typing-indicator items show a bouncing-dots bubble, then swap out for the
+  // real AI reply right after, so the thread reads as a live conversation.
+  // Generalized over every ".bubble-thread" on the page (the pricing
+  // section's #chatbot-thread and the live-test section's
+  // #call-transcript-thread both use it) rather than one hardcoded id, so a
+  // new bubble-style demo just needs the shared class to get the same
+  // stagger-reveal for free.
+  document.querySelectorAll('.bubble-thread').forEach((thread) => {
+    const items = Array.from(thread.children);
+    if (!items.length) return;
+    const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const container = thread.closest('.reveal') || thread;
+    const bubbleIo = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        bubbleIo.unobserve(entry.target);
+        if (noMotion) {
+          items.forEach(item => {
+            if (item.classList.contains('typing-indicator')) { item.style.display = 'none'; }
+            else { item.classList.add('in'); }
+          });
+          return;
+        }
+        // Typing indicator holds for ~2s before swapping to the reply, so
+        // visitors actually register the "AI is typing" beat instead of it
+        // reading as instant.
+        let delay = 100;
+        items.forEach((item) => {
+          if (item.classList.contains('typing-indicator')) {
+            setTimeout(() => item.classList.add('in'), delay);
+            delay += 2000;
+            setTimeout(() => { item.classList.remove('in'); item.style.display = 'none'; }, delay);
+            delay += 50;
+          } else {
+            setTimeout(() => item.classList.add('in'), delay);
+            delay += 280;
+          }
+        });
+      });
+    }, { threshold: 0.15 });
+    bubbleIo.observe(container);
+  });
+
+  // Mobile floating CTA: hidden near the top (nav CTA already covers it)
+  // and hidden once the pricing cards are on screen — those already have
+  // their own CTA buttons, and on mobile the pricing grid's per-tier
+  // buttons land right under this fixed button otherwise (same class of
+  // bug as the chat-nudge-over-CTA fixes elsewhere on this page — a fixed
+  // bottom-right element sitting on top of a real CTA). No longer tracks
+  // a "contact section" — that was the old inline score form, since retired.
+  const floatingCta = document.getElementById('floating-cta');
+  const pricingSection = document.getElementById('pricing');
+  const heroSection = document.getElementById('top');
+  let pricingVisible = false;
+
+  const setFloatingCtaVisible = (show) => {
+    floatingCta.classList.toggle('opacity-0', !show);
+    floatingCta.classList.toggle('translate-y-4', !show);
+    floatingCta.classList.toggle('pointer-events-none', !show);
+  };
+
+  // Suppressed while the calls-cost popup is open — both are fixed-position
+  // asks and could otherwise land on screen at the same time.
+  const leadPopupOverlay = document.getElementById('calls-popup-overlay');
+  const popupOpen = () => !!(leadPopupOverlay && leadPopupOverlay.classList.contains('is-open'));
+
+  const updateFloatingCta = () => {
+    setFloatingCtaVisible(window.scrollY > heroSection.offsetHeight * 0.6 && !pricingVisible && !popupOpen());
+  };
+
+  new IntersectionObserver((entries) => {
+    pricingVisible = entries[0].isIntersecting;
+    updateFloatingCta();
+  }, { threshold: 0.2 }).observe(pricingSection);
+
+  window.addEventListener('scroll', updateFloatingCta, { passive: true });
+  document.addEventListener('a2h:popup-toggle', updateFloatingCta);
+
+  // Mobile preview: each company's chapter is a plain stacked section now —
+  // it just scrolls into view normally and fades in via the .reveal observer
+  // above, same as every other section on the page.
+
+  // 3D company card(s): drag to rotate, slow idle spin when untouched.
+  document.querySelectorAll('.card3d').forEach((card) => {
+    const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let dragging = false, startX = 0, startY = 0;
+    let rotX = -8, rotY = 18, baseRotX = -8, baseRotY = 18;
+    let idleSpin = noMotion ? 0 : 0.06;
+    let cardVisible = true;
+
+    const setTransform = () => { card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`; };
+
+    new IntersectionObserver((entries) => { cardVisible = entries[0].isIntersecting; }, { threshold: 0 }).observe(card);
+
+    const tick = () => {
+      if (!dragging && cardVisible) rotY += idleSpin;
+      if (cardVisible) setTransform();
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+
+    card.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      idleSpin = 0;
+      card.classList.add('dragging');
+      startX = e.clientX;
+      startY = e.clientY;
+      baseRotX = rotX;
+      baseRotY = rotY;
+      try { card.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    card.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      rotY = baseRotY + dx * 0.4;
+      rotX = Math.max(-40, Math.min(40, baseRotX - dy * 0.4));
+    });
+    const endDrag = () => {
+      if (!dragging) return;
+      dragging = false;
+      card.classList.remove('dragging');
+      if (!noMotion) idleSpin = 0.06;
+    };
+    card.addEventListener('pointerup', endDrag);
+    card.addEventListener('pointerleave', endDrag);
+    card.addEventListener('pointercancel', endDrag);
+  });
+
+  // "Every build. Every phone." mockups: same drag-to-tilt interaction as
+  // the 3D company card, springing back to the baseline stagger on release.
+  // Matches the row-layout breakpoint (see the 640px media query) — below
+  // that, phones stack flat and skip the tilt.
+  if (window.matchMedia('(min-width: 641px)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.mscroll-phones .phone-frame, .mscroll-phones .laptop-frame').forEach((el) => {
+      const baseY = el.classList.contains('phone-frame') ? -18 : 30;
+      const baseRotZ = el.classList.contains('phone-frame') ? -3 : 3;
+      let dragging = false, startX = 0, startY = 0, rotX = 0, rotY = 0, baseRotX = 0, baseRotY = 0;
+
+      const setTransform = () => {
+        el.style.transform = `translateY(${baseY}px) rotate(${baseRotZ}deg) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+      };
+      setTransform();
+
+      el.addEventListener('pointerdown', (e) => {
+        dragging = true;
+        el.classList.add('dragging');
+        startX = e.clientX;
+        startY = e.clientY;
+        baseRotX = rotX;
+        baseRotY = rotY;
+        try { el.setPointerCapture(e.pointerId); } catch (err) {}
+      });
+      el.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        rotY = Math.max(-25, Math.min(25, baseRotY + dx * 0.3));
+        rotX = Math.max(-20, Math.min(20, baseRotX - dy * 0.3));
+        setTransform();
+      });
+      const endDrag = () => {
+        if (!dragging) return;
+        dragging = false;
+        el.classList.remove('dragging');
+        rotX = 0;
+        rotY = 0;
+        setTransform();
+      };
+      el.addEventListener('pointerup', endDrag);
+      el.addEventListener('pointerleave', endDrag);
+      el.addEventListener('pointercancel', endDrag);
+    });
+  }
+
+  // "Every build. Every phone." desktop scrollytelling: the left chapter
+  // text is pinned via CSS position:sticky (no JS needed for that part);
+  // this just crossfades which chapter's text is .active as its phone pair
+  // crosses the vertical center of the viewport while scrolling past.
+  (function () {
+    const textChapters = document.querySelectorAll('.mscroll-text-chapter');
+    const phoneChapters = document.querySelectorAll('.mscroll-phones-chapter');
+    if (!textChapters.length || !phoneChapters.length) return;
+    const setActive = (i) => {
+      textChapters.forEach((el) => el.classList.toggle('active', el.dataset.chapter === String(i)));
+    };
+    const chapterIo = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActive(entry.target.dataset.chapter);
+      });
+    }, { threshold: 0, rootMargin: '-45% 0px -45% 0px' });
+    phoneChapters.forEach((el) => chapterIo.observe(el));
+  })();
+
+  // Count-up stat numbers on scroll into view.
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const countEls = document.querySelectorAll('[data-countup]');
+  const countIo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseFloat(el.dataset.countup);
+      const decimals = parseInt(el.dataset.decimals || '0', 10);
+      countIo.unobserve(el);
+      if (reduceMotion) {
+        el.textContent = target.toFixed(decimals);
+        return;
+      }
+      const duration = 1200;
+      const start = performance.now();
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = (target * eased).toFixed(decimals);
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.5 });
+  countEls.forEach(el => countIo.observe(el));
+
+  // Paid-traffic attribution: capture whatever ad-platform params brought
+  // this visitor in, once, on page load, so a lead who converts minutes or
+  // days later still carries them. sessionStorage survives the in-page
+  // form submit; a fresh session (new tab, different day) re-captures from
+  // the URL if present. Without this every lead looks organic once the
+  // querystring is gone, which is exactly the "can't tell if ads worked"
+  // trap workflows/paid_ads_client_acquisition.md calls out.
+  const AD_PARAMS = ['gclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  (function captureAdAttribution() {
+    const params = new URLSearchParams(window.location.search);
+    let found = false;
+    AD_PARAMS.forEach((key) => {
+      const val = params.get(key);
+      if (val) {
+        sessionStorage.setItem('a2h_' + key, val);
+        found = true;
+      }
+    });
+    if (found) sessionStorage.setItem('a2h_landing_page', window.location.pathname);
+  })();
+
+  // Live AI chat widget — talks to /api/chat (Vercel serverless function
+  // proxying Gemini, key never touches the browser).
+  (function () {
+    const fabBtn = document.getElementById('chat-fab-btn');
+    const iconOpen = document.getElementById('chat-fab-icon-open');
+    const iconClose = document.getElementById('chat-fab-icon-close');
+    const panel = document.getElementById('chat-panel');
+    const closeBtn = document.getElementById('chat-close-btn');
+    const thread = document.getElementById('chat-thread-live');
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('chat-input');
+    if (!fabBtn || !panel || !form) return;
+
+    const history = [];
+    let opened = false;
+    let sending = false;
+
+    const scrollToBottom = () => { thread.scrollTop = thread.scrollHeight; };
+
+    const addBubble = (role, text) => {
+      const row = document.createElement('div');
+      row.className = 'flex ' + (role === 'user' ? 'justify-end' : 'justify-start');
+      const bubble = document.createElement('div');
+      bubble.className = 'chat-live-bubble ' + (role === 'user' ? 'user' : 'ai');
+      bubble.style.whiteSpace = 'pre-wrap';
+      bubble.textContent = text;
+      row.appendChild(bubble);
+      thread.appendChild(row);
+      scrollToBottom();
+    };
+
+    let typingEl = null;
+    const showTyping = () => {
+      typingEl = document.createElement('div');
+      typingEl.className = 'flex justify-start';
+      typingEl.innerHTML = '<div class="chat-live-bubble ai flex items-center gap-1 py-2.5"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>';
+      thread.appendChild(typingEl);
+      scrollToBottom();
+    };
+    const hideTyping = () => { if (typingEl) { typingEl.remove(); typingEl = null; } };
+
+    const openPanel = () => {
+      panel.classList.add('open');
+      fabBtn.setAttribute('aria-expanded', 'true');
+      iconOpen.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+      if (!opened) {
+        opened = true;
+        addBubble('ai', "Hi! I'm the A2H AI Agent. Ask me about pricing, turnaround, or what's included — or click \"Get My Free Mockup\" to get started.");
+      }
+      setTimeout(() => input && input.focus(), 300);
+    };
+    const closePanel = () => {
+      panel.classList.remove('open');
+      fabBtn.setAttribute('aria-expanded', 'false');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    };
+
+    fabBtn.addEventListener('click', () => {
+      panel.classList.contains('open') ? closePanel() : openPanel();
+    });
+    closeBtn && closeBtn.addEventListener('click', closePanel);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const message = input.value.trim();
+      if (!message || sending) return;
+      sending = true;
+      input.value = '';
+      addBubble('user', message);
+      history.push({ role: 'user', text: message });
+      showTyping();
+
+      // Floor the perceived reply time at ~2s (run alongside the fetch, not
+      // after it) so the typing indicator is on screen long enough to notice
+      // even when the API itself responds instantly.
+      const minDelay = new Promise((resolve) => setTimeout(resolve, 2000));
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message, history: history.slice(-6) }),
+        });
+        const data = await res.json();
+        await minDelay;
+        hideTyping();
+        const reply = (data && data.reply) || "Sorry, something went wrong — please use the contact form below.";
+        addBubble('ai', reply);
+        history.push({ role: 'ai', text: reply });
+      } catch (err) {
+        await minDelay;
+        hideTyping();
+        addBubble('ai', "Something went wrong on my end — please use the contact form below and Haider will get back to you directly.");
+      } finally {
+        sending = false;
+      }
+    });
+  })();
+
+  // Footer year — hardcoding it meant the site aged out every January 1.
+  (function () {
+    var y = String(new Date().getFullYear());
+    document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = y; });
+  })();
+</script>
+</body>
+</html>
