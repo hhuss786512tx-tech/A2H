@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/tailwind.css?v=ff84ab98">
+<link rel="stylesheet" href="assets/tailwind.css?v=53760979">
 <link rel="stylesheet" href="assets/site.css?v=76ffbf5b">
 <script>document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">
@@ -27,28 +27,46 @@
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "@id": "https://a2h.info/#organization",
-  "name": "A2H Agency",
+  "name": "A2H",
+  "alternateName": [
+    "A2H AI Consulting",
+    "A2H Agency"
+  ],
   "url": "https://a2h.info/",
   "email": "hhuss786512tx@gmail.com",
-  "description": "AI receptionist and CRM for Texas businesses, with hand-coded custom websites available as an upgrade.",
+  "founder": {
+    "@type": "Person",
+    "name": "Abbas Hussain",
+    "jobTitle": "Founder and AI Consultant",
+    "sameAs": [
+      "https://www.linkedin.com/in/abbas-hussain-1bb46b432/"
+    ]
+  },
+  "description": "A2H is an AI consulting studio in Houston, Texas, founded by Abbas Hussain. It builds websites with an AI chat and a CRM lead list for small Texas trade businesses, mainly foundation repair, water damage restoration and garage door companies. Abbas Hussain is an accepted developer on AI Frontrunners.",
   "areaServed": {
     "@type": "State",
     "name": "Texas"
   },
   "serviceType": [
-    "AI Receptionist",
-    "CRM Software",
     "Website Design",
     "Website Development",
-    "Google Business Profile Setup"
+    "AI Chatbot",
+    "CRM Setup",
+    "AI Receptionist"
   ],
   "knowsAbout": [
-    "AI receptionist",
-    "CRM",
-    "Web design",
-    "Local SEO",
-    "Google Business Profile",
-    "Conversion optimization"
+    "Websites for contractors",
+    "AI website chat",
+    "CRM lead management",
+    "Foundation repair marketing",
+    "Water damage restoration marketing",
+    "Garage door company marketing"
+  ],
+  "award": "Accepted developer, AI Frontrunners (October 2026)",
+  "sameAs": [
+    "https://www.linkedin.com/in/abbas-hussain-1bb46b432/",
+    "https://www.instagram.com/constructionsresponse/",
+    "https://www.tiktok.com/@a2h.info"
   ]
 }
 </script>
@@ -106,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="flex items-center gap-3">
       <span class="cta-ring rounded-full p-[2px] hidden sm:inline-block">
         <a href="book-a-call.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-2.5 rounded-full block">
-          Book A Free Setup Call
+          Get A Free Sample Site
         </a>
       </span>
       <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-sand p-2 -mr-2">
@@ -121,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <a href="pricing.html" class="mobile-nav-link block px-6 py-3 text-sm text-fog hover:text-sand transition-colors">Pricing</a>
       <a href="industries.html" class="mobile-nav-link block px-6 py-3 text-sm text-fog hover:text-sand transition-colors">Industries</a>
       <a href="book-a-call.html" class="mobile-nav-link block px-6 py-3 text-sm text-fog hover:text-sand transition-colors">Book A Call</a>
-    <a href="book-a-call.html" class="mobile-nav-link block px-6 py-3 text-sm text-copper-light font-semibold">Book A Free Setup Call</a>
+    <a href="book-a-call.html" class="mobile-nav-link block px-6 py-3 text-sm text-copper-light font-semibold">Get A Free Sample Site</a>
   </div>
 </header>
 
@@ -347,7 +365,8 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 mb-12">
       <div>
         <p class="font-display text-2xl text-sand mb-3">A2H<span class="text-copper">.</span></p>
-        <p class="text-sm text-fog leading-[1.7]">AI Receptionist + CRM for Texas businesses, with hand-coded custom websites available as an upgrade.</p>
+        <p class="text-sm text-fog leading-[1.7]">AI consulting studio in Houston, Texas. Websites with an AI chat and a CRM lead list for Texas foundation repair, restoration and garage door companies.</p>
+        <p class="text-xs text-fog/80 mt-3">Founder Abbas Hussain is an accepted developer on AI Frontrunners.</p>
       </div>
       <div>
         <p class="text-xs uppercase tracking-[0.2em] text-copper-light font-semibold mb-4">Services</p>
@@ -360,25 +379,24 @@ document.addEventListener('DOMContentLoaded', function () {
       <div>
         <p class="text-xs uppercase tracking-[0.2em] text-copper-light font-semibold mb-4">Industries</p>
         <ul class="space-y-2 text-sm text-fog">
-          <li><a href="construction.html" class="link-underline hover:text-sand transition-colors">Contractors</a></li>
-          <li><a href="medical.html" class="link-underline hover:text-sand transition-colors">Medical Practices</a></li>
-          <li><a href="retail.html" class="link-underline hover:text-sand transition-colors">Local Retail</a></li>
-          <li><a href="dental-practices.html" class="link-underline hover:text-sand transition-colors">Dental Practices</a></li>
-          <li><a href="orthodontic-practices.html" class="link-underline hover:text-sand transition-colors">Orthodontic Practices</a></li>
-          <li><a href="home-care-agencies.html" class="link-underline hover:text-sand transition-colors">Home Care</a></li>
+          <li><a href="foundation-repair-websites.html" class="link-underline hover:text-sand transition-colors">Foundation Repair</a></li>
+          <li><a href="restoration-websites.html" class="link-underline hover:text-sand transition-colors">Water Damage Restoration</a></li>
+          <li><a href="garage-door-websites.html" class="link-underline hover:text-sand transition-colors">Garage Door</a></li>
+          <li><a href="industries.html" class="link-underline hover:text-sand transition-colors">All Industries</a></li>
         </ul>
       </div>
       <div>
         <p class="text-xs uppercase tracking-[0.2em] text-copper-light font-semibold mb-4">Contact</p>
         <ul class="space-y-2 text-sm text-fog">
           <li><a href="mailto:hhuss786512tx@gmail.com" class="link-underline hover:text-sand transition-colors break-all">hhuss786512tx@gmail.com</a></li>
-          <li>Texas-based</li>
-          <li><a href="book-a-call.html" class="link-underline text-copper-light hover:text-sand transition-colors">Book a free setup call</a></li>
+          <li>Houston, Texas</li>
+          <li><a href="https://www.linkedin.com/in/abbas-hussain-1bb46b432/" target="_blank" rel="noopener" class="link-underline hover:text-sand transition-colors">Abbas Hussain on LinkedIn</a></li>
+          <li><a href="book-a-call.html" class="link-underline text-copper-light hover:text-sand transition-colors">Get a free sample site</a></li>
         </ul>
       </div>
     </div>
     <div class="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-fog/70">
-      <p>&copy; <span data-year>2026</span> A2H Agency</p>
+      <p>&copy; <span data-year>2026</span> A2H</p>
       <div class="flex items-center gap-5">
         <a href="privacy.html" class="link-underline hover:text-sand transition-colors">Privacy Policy</a>
         <a href="terms.html" class="link-underline hover:text-sand transition-colors">Terms of Service</a>

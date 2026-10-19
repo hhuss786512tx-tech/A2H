@@ -16,13 +16,17 @@ const ORG = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   '@id': SITE + '/#organization',
-  name: 'A2H Agency',
+  name: 'A2H',
+  alternateName: ['A2H AI Consulting', 'A2H Agency'],
   url: SITE + '/',
   email: EMAIL,
-  description: 'AI receptionist and CRM for Texas businesses, with hand-coded custom websites available as an upgrade.',
+  founder: { '@type': 'Person', name: 'Abbas Hussain', jobTitle: 'Founder and AI Consultant', sameAs: ['https://www.linkedin.com/in/abbas-hussain-1bb46b432/'] },
+  description: 'A2H is an AI consulting studio in Houston, Texas, founded by Abbas Hussain. It builds websites with an AI chat and a CRM lead list for small Texas trade businesses, mainly foundation repair, water damage restoration and garage door companies. Abbas Hussain is an accepted developer on AI Frontrunners.',
   areaServed: { '@type': 'State', name: 'Texas' },
-  serviceType: ['AI Receptionist', 'CRM Software', 'Website Design', 'Website Development', 'Google Business Profile Setup'],
-  knowsAbout: ['AI receptionist', 'CRM', 'Web design', 'Local SEO', 'Google Business Profile', 'Conversion optimization'],
+  serviceType: ['Website Design', 'Website Development', 'AI Chatbot', 'CRM Setup', 'AI Receptionist'],
+  knowsAbout: ['Websites for contractors', 'AI website chat', 'CRM lead management', 'Foundation repair marketing', 'Water damage restoration marketing', 'Garage door company marketing'],
+  award: 'Accepted developer, AI Frontrunners (October 2026)',
+  sameAs: ['https://www.linkedin.com/in/abbas-hussain-1bb46b432/', 'https://www.instagram.com/constructionsresponse/', 'https://www.tiktok.com/@a2h.info'],
 };
 
 const serviceLd = (name, description, audience) => ({
@@ -36,10 +40,9 @@ const serviceLd = (name, description, audience) => ({
   offers: {
     '@type': 'Offer',
     priceCurrency: 'USD',
-    price: '1500',
     priceSpecification: {
       '@type': 'PriceSpecification',
-      minPrice: '1500',
+      minPrice: '800',
       maxPrice: '2000',
       priceCurrency: 'USD',
     },
@@ -56,7 +59,7 @@ const faqLd = (qas) => ({
   })),
 });
 
-const hero = ({ eyebrow, h1, sub, primary = 'Book A Free Setup Call', primaryHref = 'book-a-call.html', secondary = null }) => `<section class="relative glow-copper pt-36 pb-20 px-6 overflow-hidden">
+const hero = ({ eyebrow, h1, sub, primary = 'Get A Free Sample Site', primaryHref = 'book-a-call.html', secondary = null }) => `<section class="relative glow-copper pt-36 pb-20 px-6 overflow-hidden">
   <div class="grain"></div>
   <div class="max-w-4xl mx-auto text-center relative">
     <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">${eyebrow}</p>
@@ -108,17 +111,20 @@ const PAGES = [];
 // Niche guide pages (pet groomers, dental, home care): generated in build/niche_pages.js
 const NP = require('./niche_pages')({ SITE, ORG, faqLd, hero, cards, faqSection, B });
 
+// Trade pages (current ICP: foundation repair, restoration, garage door): build/trades.js
+PAGES.push(...require('./trades')({ SITE, ORG, faqLd, hero, cards, faqSection, B }));
+
 // ---- work.html
 PAGES.push({
   slug: 'work.html',
   title: 'Our Work — Websites Built for Texas Businesses | A2H',
-  description: 'Live sites and builds by A2H: Solid State Construction and CareMedBill. See what we ship as part of the AI Receptionist + CRM + Custom Website tier.',
+  description: 'Live sites built by A2H for Texas businesses: H&A Healthcare Consulting (website, AI chat and CRM), CareMedBill, Azul Bio and Solid State Construction.',
   jsonLd: [ORG],
   body: [
     hero({
       eyebrow: 'Selected Work',
       h1: 'Every build, <span class="italic text-copper-light">start to launch.</span>',
-      sub: 'Builds across construction and medical billing, shown here as part of the AI Receptionist + CRM + Custom Website tier. One is live on a client domain; one is a complete build hosted on our own account. Every one is hand-coded — no page builders anywhere.',
+      sub: 'Websites we have built for Texas businesses, from construction to healthcare consulting. Every one is hand-coded, with no page builders anywhere.',
       secondary: ['See Pricing', 'pricing.html'],
     }),
     B.portfolioGrid({
@@ -137,47 +143,36 @@ PAGES.push({
 
 // ---- pricing.html
 const PRICING_FAQ = [
-  ['How does payment work?', 'Both tiers have a one-time setup fee, then a flat monthly rate — the scope is fixed in writing before any money changes hands, so the number you are quoted is the number you pay. Cancel the monthly plan at any time.'],
-  ['What is the difference between the two tiers?', 'AI Receptionist + CRM ($1,500 setup, then $397/mo for dental or $697/mo for orthodontic and home care) answers and books every call and logs it in your own CRM — no website required. AI Receptionist + CRM + Custom Website ($2,000 setup, $400/mo) adds a hand-coded website built around that same system, so the calls and the site work together from day one.'],
-  ['What does "per extra team seat" mean?', 'Each tier includes CRM access for your core team. If more staff need their own CRM login to see and manage leads, each additional seat is $99/mo.'],
-  ['Do I need a website to use the AI Receptionist?', 'No. AI Receptionist + CRM stands on its own — it works with your existing phone number. The website is only part of the higher tier, for businesses that want both built together.'],
-  ['Do I own the site if I choose the higher tier?', 'Yes, completely. It is hand-coded static files — there is no proprietary platform to be locked into, and you get a walkthrough at handoff so you are never dependent on us to make a change.'],
-  ['What is the Care Plan?', 'Hosting, maintenance and monthly content edits for your website, included with the Custom Website tier, then continuing at $249/mo. You can cancel it at any time and keep your site.'],
-  ['Can I add a custom website later if I start with just the receptionist?', 'Yes. Start with AI Receptionist + CRM and upgrade to add the custom website whenever you are ready — you only pay the difference in setup fee at that point.'],
+  ['How much does a website cost?', 'A2H websites are $800 to $2,000 one time, depending on the number of pages and features. Every build includes the AI chat and the CRM lead list. Hosting and monthly upkeep are quoted on the call.'],
+  ['Do I see anything before I pay?', 'Yes. We build a free sample site with your company name, trade and service area, then walk you through it on a 15-minute call. If you do not want it, you do not pay.'],
+  ['What does the AI chat do?', 'It answers common questions using the information you give us (services, service area, hours, how to reach you), takes the visitor\'s name, number and what they need, and saves it to your CRM. Anything it cannot answer goes to you.'],
+  ['What is in the CRM?', 'One lead list where every chat and form lands, with each lead tagged by how urgent it is and moved through stages: new, contacted, scheduled, booked. Spam form fills are filtered out.'],
+  ['Do you offer an AI phone receptionist?', 'Yes, as an add-on. It answers calls when you cannot, takes the caller\'s details and logs them to the same CRM. Pricing is quoted on the call.'],
+  ['Do I own the site?', 'Yes. It is hand-coded static files with no proprietary platform to be locked into, and you get a walkthrough at handoff.'],
 ];
 
 PAGES.push({
   slug: 'pricing.html',
-  title: 'Pricing — AI Receptionist + CRM from $1,500 | A2H',
-  description: 'Transparent pricing for Texas practices: AI Receptionist + CRM from $1,500 setup, then $397/mo for dental or $697/mo for orthodontic and home care.',
+  title: 'Pricing: Websites with AI Chat and CRM from $800 | A2H',
+  description: 'A2H websites with an AI chat and a CRM lead list are $800 to $2,000 one time. Free sample site first. AI phone receptionist and hosting available as add-ons.',
   jsonLd: [ORG, faqLd(PRICING_FAQ)],
   body: [
     hero({
-      eyebrow: 'Transparent Pricing',
-      h1: 'Two tiers. <span class="italic text-copper-light">No sales call required.</span>',
-      sub: 'Published openly, fixed in writing before work starts. Start with the AI Receptionist + CRM, or add a custom website built around it.',
+      eyebrow: 'Pricing',
+      h1: 'One-time price. <span class="italic text-copper-light">Free sample first.</span>',
+      sub: 'We build a sample site for your company before you pay anything. If you keep it, it is a one-time price based on size. Add-ons are quoted on the call.',
       secondary: ['See Our Work', 'work.html'],
     }),
-    B.pricingTable({ heading: 'Pick the tier that fits' }),
+    B.pricingTable({ heading: 'What it costs' }),
     `<section class="py-20 px-6 bg-surface/40 border-y border-white/5">
   <div class="max-w-4xl mx-auto">
     <div class="reveal text-center mb-10">
-      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Add-Ons</p>
-      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">For the Custom Website tier</h2>
-      <p class="text-fog text-sm mt-3">Available on AI Receptionist + CRM + Custom Website</p>
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Add-On</p>
+      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">3D Company Card</h2>
     </div>
-    <div class="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+    <div class="grid gap-6 max-w-md mx-auto">
       <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8">
-        <h3 class="text-sand font-semibold text-lg mb-2">AI Website Chatbot</h3>
-        <p class="text-sm text-fog leading-[1.7] mb-5">Trained on your business — answers FAQs, qualifies visitors and captures leads 24/7, even after hours.</p>
-        <div class="flex items-baseline gap-2">
-          <p class="font-display text-2xl text-copper-light">+$99</p>
-          <p class="text-xs text-fog uppercase tracking-wider">per month</p>
-        </div>
-      </div>
-      <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8">
-        <h3 class="text-sand font-semibold text-lg mb-2">3D Company Card</h3>
-        <p class="text-sm text-fog leading-[1.7] mb-5">An interactive business card built from your real card artwork — flips, tilts and tracks the cursor.</p>
+        <p class="text-sm text-fog leading-[1.7] mb-5">An interactive business card built from your real card artwork. It flips, tilts and tracks the cursor.</p>
         <div class="flex items-baseline gap-2">
           <p class="font-display text-2xl text-copper-light">+$99</p>
           <p class="text-xs text-fog uppercase tracking-wider">one-time</p>
@@ -187,106 +182,91 @@ PAGES.push({
   </div>
 </section>`,
     faqSection(PRICING_FAQ),
-    B.ctaBand({ heading: 'Not sure which tier <span class="italic">you need?</span>', sub: 'Book a free setup call and we will walk through both — no obligation either way.' }),
+    B.ctaBand({}),
   ].join('\n\n'),
 });
 
 // ---- process.html
 // ---- shared by process.html and book-a-call.html (every answer is a documented fact)
 const SETUP_FAQ = [
-  ['How much does the AI Receptionist cost?', 'AI Receptionist + CRM is a $1,500 one-time setup, then a flat monthly fee by practice type: $397 per month for dental, $697 per month for orthodontic and home care, with no long-term contract and cancel anytime. An extra CRM seat is $99 per month. Adding a hand-coded website with Google Business Profile setup is $2,000 setup and $400 per month.'],
-  ['Do I have to change my business number?', 'No porting and no new number for your callers. You set your existing line to forward to the receptionist when it is busy or unanswered.'],
-  ['What happens when a call needs a real person?', 'It can transfer the call to you or your team, or take a message and flag the contact in our custom CRM.'],
-  ['Do I need a new website to use it?', 'No. AI Receptionist + CRM works on its own. The Custom Website tier is optional and adds a hand-coded site and Google Business Profile setup.'],
+  ['How much does it cost?', 'A website with the AI chat and CRM lead list is $800 to $2,000 one time, depending on size. Hosting, upkeep and the AI phone receptionist add-on are quoted on the call.'],
+  ['What happens on the 15-minute call?', 'We show you the sample site we built for your company, walk through the chat and the lead list, and answer your questions. No obligation.'],
+  ['What do you need from me?', 'Your company name, the services you offer, your service area and how customers should reach you. A logo and photos help, but we can start without them.'],
+  ['Do I have to change my phone number?', 'No. Your number stays the same and goes at the top of the site, tappable on a phone.'],
 ];
 
 PAGES.push({
   slug: 'process.html',
-  title: 'How It Works — AI Receptionist Setup + Website | A2H',
-  description: 'How A2H sets up an AI receptionist and CRM on your existing number, and how the optional custom website is built. Published pricing, no contract.',
+  title: 'How It Works: Free Sample Site, Then Launch | A2H',
+  description: 'How A2H builds a website with an AI chat and CRM for Texas trade businesses: a free sample site first, a 15-minute walkthrough, then launch on your domain.',
   jsonLd: [ORG, {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: 'How A2H sets up an AI receptionist and CRM',
-    description: 'Three steps from a free 15-minute setup call to every call answered and every contact logged.',
-    step: [
-      { '@type': 'HowToStep', position: 1, name: 'Free 15-minute setup call', text: 'We look at how your calls come in today and show you how the AI receptionist would answer and book them.' },
-      { '@type': 'HowToStep', position: 2, name: 'We set it up on your number', text: 'You set your existing business line to forward to the receptionist when it is busy or unanswered. No number porting.' },
-      { '@type': 'HowToStep', position: 3, name: 'Every call answered, every contact logged', text: 'Every call is answered, the visit is booked, every call and caller is tracked in our custom CRM, and calls that need a person can be transferred to you.' },
-    ],
-  }, faqLd(SETUP_FAQ), {
-    '@context': 'https://schema.org',
-    '@type': 'HowTo',
     name: 'How A2H builds and launches a website',
-    description: 'A four-step process from free website mockup to launch and reporting.',
+    description: 'Four steps from a free sample site to launch.',
     step: [
-      { '@type': 'HowToStep', position: 1, name: 'Free website mockup', text: 'Tell us your niche, your color scheme and what you want, and we design a free homepage mockup made specifically for your business.' },
-      { '@type': 'HowToStep', position: 2, name: 'Hand-coded build', text: 'A conversion-first site is built by hand, wired to real lead capture from day one.' },
+      { '@type': 'HowToStep', position: 1, name: 'Free sample site', text: 'A2H builds a sample site with your company name, trade and service area, with the AI chat working, before you pay.' },
+      { '@type': 'HowToStep', position: 2, name: '15-minute walkthrough', text: 'You see the site, the chat and the CRM lead list on a short call, then decide whether to keep it.' },
       { '@type': 'HowToStep', position: 3, name: 'Launch and handoff', text: 'Fully tested, live on your domain, with a walkthrough so you are never locked out of your own site.' },
-      { '@type': 'HowToStep', position: 4, name: 'Prove it with data', text: 'Real performance numbers after launch, not projections.' },
+      { '@type': 'HowToStep', position: 4, name: 'Measure it', text: 'Real performance numbers after launch, not projections.' },
     ],
-  }],
+  }, faqLd(SETUP_FAQ)],
   body: [
     hero({
       eyebrow: 'How It Works',
-      h1: 'From a 15-minute call to <span class="italic text-copper-light">every call answered.</span>',
-      sub: 'No discovery-call theatre and no invoice that grows after you sign. Published pricing, fixed scope, no long-term contract.',
+      h1: 'Sample site first. <span class="italic text-copper-light">Then you decide.</span>',
+      sub: 'We build a sample site for your company before you pay, show it to you on a 15-minute call, and launch it on your domain if you keep it.',
       secondary: ['See Pricing', 'pricing.html'],
     }),
-    cards('The AI Receptionist + CRM', 'Three steps, start to finish', [
-      { tag: 'Free, 15 minutes', h: 'We look at how your calls come in', p: 'On a free setup call we look at how calls reach you today, then show you how the AI receptionist would answer and book them. No obligation.' },
-      { tag: 'Your number stays yours', h: 'We set it up', p: 'You set your existing business line to forward to the receptionist when it is busy or unanswered. No number porting and no new number for your callers.' },
-      { tag: 'Always on', h: 'Every call answered, every contact logged', p: 'Every call is answered, the visit is booked, and every call and caller is tracked in our custom CRM. Calls that need a person can be transferred to you.' },
-    ], 3),
-    cards('Optional: The Custom Website', 'Four steps, start to finish', [
-      { tag: 'Free, no obligation', h: 'We build you a mockup', p: 'Tell us your niche, your color scheme and a site you like the look of — we design a free homepage mockup made specifically for your business, no charge, no obligation. If you love it, we build the rest.' },
-      { tag: 'Hand-coded', h: 'We build it properly', p: 'No page builders, no templates. A conversion-first site wired to real lead capture from day one, built mobile-first and tested on real devices before you ever see it.' },
-      { tag: 'Yours to keep', h: 'We launch and hand it off', p: 'Fully tested, live on your domain, plus a walkthrough so you are never locked out of your own site. Static files you own outright — no proprietary platform, no hostage situation.' },
-      { tag: 'Real numbers', h: 'We prove it with data', p: 'A $200 Google Ads test on Solid State Construction\'s new site returned 270+ clicks in 14 days at $0.74 per click. Measured results after launch, never projections before it.' },
+    cards('The process', 'Four steps, start to finish', [
+      { tag: 'Free', h: 'We build your sample site', p: 'Your company name, trade and service area on a real site, with the AI chat working, before you pay anything.' },
+      { tag: '15 minutes', h: 'You see it on a call', p: 'We walk you through the site, the chat and the lead list. Keep it or walk away.' },
+      { tag: 'Yours to keep', h: 'We launch and hand it off', p: 'Fully tested, live on your domain, plus a walkthrough so you are never locked out of your own site. Static files you own outright.' },
+      { tag: 'Real numbers', h: 'We measure it', p: 'A $200 Google Ads test on Solid State Construction\'s new site returned 270+ clicks in 14 days at $0.74 per click. Measured results after launch, never projections before it.' },
     ]),
     `<section class="py-20 px-6 bg-surface/40 border-y border-white/5">
   <div class="max-w-3xl mx-auto text-center">
     <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Why The Website Build Is Fast</p>
     <h2 class="reveal font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-6">Because we cut the parts that do not build your site</h2>
-    <p class="reveal text-fog leading-[1.8]">Most agencies spend weeks on discovery decks, stakeholder workshops and revision rounds that exist to justify a retainer. We publish our prices, fix the scope in writing, and start building. The mockup is the discovery. The build takes 2–3 days once your content is in hand — gathering that from you is usually the longest part of the whole project.</p>
+    <p class="reveal text-fog leading-[1.8]">Most agencies spend weeks on discovery decks and revision rounds that exist to justify a retainer. We publish our prices, fix the scope in writing, and start building. The sample site is the discovery. Gathering your content is usually the longest part of the whole project.</p>
   </div>
 </section>`,
     faqSection(SETUP_FAQ),
-    B.ctaBand({ heading: 'Ready to <span class="italic">get started?</span>', sub: 'Book a free setup call — it takes a few minutes, and there is no obligation attached to it.' }),
+    B.ctaBand({}),
   ].join('\n\n'),
 });
 
 // ---- industries.html (hub)
 PAGES.push({
   slug: 'industries.html',
-  title: 'AI Receptionist for Dental, Orthodontic and Home Care | A2H',
-  description: 'How A2H answers, books and tracks every call for Texas dental practices, orthodontic practices and non-medical home care agencies.',
+  title: 'Websites for Texas Foundation, Restoration and Garage Door Companies | A2H',
+  description: 'A2H builds websites with an AI chat and CRM for Texas foundation repair, water damage restoration and garage door companies, plus other local businesses.',
   jsonLd: [ORG],
   body: [
     hero({
       eyebrow: 'Industries',
-      h1: 'Built around <span class="italic text-copper-light">how your customers reach you.</span>',
-      sub: 'A dental practice, an orthodontist and a home care agency all lose business when a call goes unanswered, but not in the same way. Pick yours.',
+      h1: 'Built for the trades that <span class="italic text-copper-light">get calls at night.</span>',
+      sub: 'A cracked slab, a flooded kitchen and a stuck garage door all send homeowners to a website after hours. Pick your trade.',
     }),
     `<section class="py-16 px-6">
   <div class="max-w-5xl mx-auto grid sm:grid-cols-3 gap-6">
-    <a href="dental-practices.html" class="reveal group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
-      <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Dental</p>
-      <h2 class="font-display text-2xl text-sand mb-3">Dental practices</h2>
-      <p class="text-sm text-fog leading-[1.7] flex-1">New-patient calls that hit voicemail at lunch, after hours or during a rush book the practice that picked up. A2H answers, books the appointment and tracks every caller.</p>
-      <span class="link-underline text-copper-light text-sm font-semibold mt-5">See the dental page →</span>
+    <a href="foundation-repair-websites.html" class="reveal group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col">
+      <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Foundation</p>
+      <h2 class="font-display text-2xl text-sand mb-3">Foundation repair</h2>
+      <p class="text-sm text-fog leading-[1.7] flex-1">Free inspection questions at 10 PM, answered on the spot, with the homeowner&#39;s address saved to your lead list.</p>
+      <span class="link-underline text-copper-light text-sm font-semibold mt-5">See the page &rarr;</span>
     </a>
-    <a href="orthodontic-practices.html" class="reveal group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col" style="transition-delay:80ms">
-      <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Orthodontic</p>
-      <h2 class="font-display text-2xl text-sand mb-3">Orthodontic practices</h2>
-      <p class="text-sm text-fog leading-[1.7] flex-1">A parent who reaches voicemail calls the next orthodontist. A2H answers new-patient exam calls, books the exam and tracks every caller.</p>
-      <span class="link-underline text-copper-light text-sm font-semibold mt-5">See the orthodontic page →</span>
+    <a href="restoration-websites.html" class="reveal group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col" style="transition-delay:80ms">
+      <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Restoration</p>
+      <h2 class="font-display text-2xl text-sand mb-3">Water damage restoration</h2>
+      <p class="text-sm text-fog leading-[1.7] flex-1">Midnight water calls answered in seconds, marked urgent, and moved through one pipeline.</p>
+      <span class="link-underline text-copper-light text-sm font-semibold mt-5">See the page &rarr;</span>
     </a>
-    <a href="home-care-agencies.html" class="reveal group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col" style="transition-delay:160ms">
-      <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Home Care</p>
-      <h2 class="font-display text-2xl text-sand mb-3">Home care agencies</h2>
-      <p class="text-sm text-fog leading-[1.7] flex-1">Families often call in the evening, and an inquiry that hits voicemail becomes a call to the next agency. A2H answers, books the assessment and tracks every inquiry.</p>
-      <span class="link-underline text-copper-light text-sm font-semibold mt-5">See the home care page →</span>
+    <a href="garage-door-websites.html" class="reveal group rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col" style="transition-delay:160ms">
+      <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-3">Garage door</p>
+      <h2 class="font-display text-2xl text-sand mb-3">Garage door</h2>
+      <p class="text-sm text-fog leading-[1.7] flex-1">Broken springs at 6 AM answered while you are on another job, at the top of your lead list.</p>
+      <span class="link-underline text-copper-light text-sm font-semibold mt-5">See the page &rarr;</span>
     </a>
   </div>
 </section>`,
@@ -309,17 +289,16 @@ PAGES.push({
 PAGES.push({
   slug: 'book-a-call.html',
   noPopup: true,
-  title: 'Book A Free Setup Call — AI Receptionist + CRM | A2H',
-  description: 'Book a free 15-minute setup call. We look at how your calls come in today, show how the AI receptionist would answer and book them, and set you up if it fits.',
-  jsonLd: [ORG, faqLd([...SETUP_FAQ, ['Is the setup call really free?', 'Yes. The 15-minute call is free and there is no obligation. We look at how your calls come in today, show you how the AI receptionist would answer and book them, and set you up if it is a fit.']])],
+  title: 'Book A 15-Minute Call: See Your Free Sample Site | A2H',
+  description: 'Book a free 15-minute call. A2H shows you a sample website built for your company, with the AI chat and CRM lead list working, and you decide if you want it.',
+  jsonLd: [ORG, faqLd([...SETUP_FAQ, ['Is the call really free?', 'Yes. The 15-minute call and the sample site are free, and there is no obligation. If you want to keep the site, it is a one-time price based on size.']])],
   body: [
     `<section class="relative glow-copper pt-36 pb-16 px-6 overflow-hidden">
   <div class="grain"></div>
   <div class="max-w-3xl mx-auto text-center relative">
-    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Free Setup Call · 15 Minutes</p>
-    <h1 class="reveal font-display text-[2.5rem] leading-[1.1] sm:text-5xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">Let's get every call <span class="italic text-copper-light">answered.</span></h1>
-    <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto">Pick a time that works for you. In 15 minutes we'll look at how your calls come in today, show you how the AI receptionist would answer and book them, and get you set up if it's a fit.</p>
-    <p class="reveal text-sm text-fog mt-5">Haven't seen how it works yet? <a href="watch.html" class="link-underline text-copper-light">Watch the 2-minute video first</a>.</p>
+    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">Free · 15 Minutes</p>
+    <h1 class="reveal font-display text-[2.5rem] leading-[1.1] sm:text-5xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">See your <span class="italic text-copper-light">sample site.</span></h1>
+    <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto">Pick a time that works for you. We'll build a sample site for your company before the call, then walk you through it, the AI chat and the lead list in 15 minutes. Keep it or walk away.</p>
   </div>
 </section>`,
     `<section class="px-6 pb-24">
@@ -331,11 +310,11 @@ PAGES.push({
   </div>
 </section>`,
     cards('The Call', 'What happens in 15 minutes', [
-      { tag: 'Your situation', h: 'We look at how calls reach you', p: 'We look at how your calls come in today, where they get missed, and what happens to them afterwards.' },
-      { tag: 'The product', h: 'We show how it would answer', p: 'You see how the AI receptionist would answer your calls and book them, so you can judge it before deciding anything.' },
-      { tag: 'Only if it fits', h: 'We set you up', p: 'If it is a fit, we get you set up. If it is not, the call was free and there is nothing further to do.' },
+      { tag: 'Your site', h: 'You see the sample', p: 'A real site with your company name, trade and service area, built before the call.' },
+      { tag: 'The system', h: 'We show the chat and CRM', p: 'You watch a test lead go from the chat into your lead list, so you can judge it before deciding anything.' },
+      { tag: 'Only if it fits', h: 'You decide', p: 'Keep it for a one-time price, or walk away. The sample and the call were free.' },
     ], 3),
-    faqSection([...SETUP_FAQ, ['Is the setup call really free?', 'Yes. The 15-minute call is free and there is no obligation. We look at how your calls come in today, show you how the AI receptionist would answer and book them, and set you up if it is a fit.']]),
+    faqSection([...SETUP_FAQ, ['Is the call really free?', 'Yes. The 15-minute call and the sample site are free, and there is no obligation. If you want to keep the site, it is a one-time price based on size.']]),
   ].join('\n\n'),
   extraScripts: `<script src="https://assets.calendly.com/assets/external/widget.js" async></script>`,
 });
@@ -683,6 +662,12 @@ PAGES.push({
 });
 
 // ================================================================= write ===
+
+// Retired 2026-10-19: dental / orthodontic / home care receptionist pages carry the old
+// $397-$697/mo receptionist offer. Kept live for old links, but noindexed (and so dropped from
+// the sitemap) so search and AI engines don't read two different A2H offers.
+const RETIRED = ['dental-practices.html', 'dental-missed-calls.html', 'dental-receptionist-options.html', 'orthodontic-missed-calls.html', 'orthodontic-receptionist-options.html', 'home-care-missed-calls.html', 'home-care-receptionist-options.html', 'orthodontic-practices.html', 'home-care-agencies.html'];
+PAGES.forEach((p) => { if (RETIRED.includes(p.slug)) p.noindex = true; });
 
 let written = 0;
 PAGES.forEach((p) => {

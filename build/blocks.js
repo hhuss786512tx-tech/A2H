@@ -84,42 +84,40 @@ ${list.map(projectCard).join('\n')}
 
 const TIERS = [
   {
-    name: 'AI Receptionist + CRM',
-    badge: 'Our Main Offer',
-    price: '$1,500',
-    priceSuffix: ' setup',
-    note: 'then <span class="text-sand font-semibold">$397</span>/mo dental &nbsp;·&nbsp; <span class="text-sand font-semibold">$697</span>/mo orthodontic &amp; home care &nbsp;·&nbsp; <span class="text-sand font-semibold">$99</span>/mo per extra team seat',
+    name: 'Website + AI Chat + CRM',
+    badge: 'Main Offer',
+    price: '$800&ndash;$2,000',
+    priceSuffix: ' one time',
+    note: 'Free sample site first &nbsp;·&nbsp; price depends on pages and features &nbsp;·&nbsp; hosting and upkeep quoted on the call',
     featured: true,
-    cta: 'Book A Free Setup Call',
+    cta: 'Get A Free Sample Site',
     href: 'book-a-call.html',
     features: [
-      'Answers every call, day or night — no voicemail',
-      'Books the visit during the call',
-      'Every call and contact logged in your own CRM',
-      "Warm transfer to a real person when it's needed",
-      "Pipeline board — see every lead's stage at a glance",
-      '<span class="text-sand">Cancel anytime</span> — no long-term contract',
+      'A free sample site for your company before you pay',
+      'Fast, hand-coded, mobile-first website',
+      'AI chat trained on your business, answers at any hour',
+      'Every chat and form saved to your own CRM lead list',
+      'Spam form fills filtered out',
+      'Launched on your domain, with a walkthrough',
     ],
     addons: [],
   },
   {
-    name: 'AI Receptionist + CRM + Custom Website',
-    badge: 'Most Complete',
-    price: '$2,000',
-    priceSuffix: ' setup',
-    note: 'then <span class="text-sand font-semibold">$400</span>/mo &nbsp;·&nbsp; <span class="text-sand font-semibold">$99</span>/mo per extra team seat',
+    name: 'Add-Ons',
+    badge: 'Optional',
+    price: 'Quoted',
+    priceSuffix: ' on the call',
+    note: 'Add any of these to a website build',
     featured: false,
-    cta: 'Book A Free Setup Call',
+    cta: 'Ask About Add-Ons',
     href: 'book-a-call.html',
     features: [
-      'Everything in AI Receptionist + CRM',
-      'Custom hand-coded website (up to 10 pages)',
-      'Mobile-first responsive design + logo design included',
-      'Google Business Profile / Maps setup',
-      '90+ PageSpeed target',
-      '<span class="text-sand">Care Plan included</span> — then $249/mo, cancel anytime',
+      'AI phone receptionist: answers calls when you cannot, logs them to the same CRM',
+      'Hosting and monthly upkeep',
+      'Extra CRM logins for your team',
+      'Google Business Profile setup',
     ],
-    addons: ['+ Add AI Website Chatbot for <span class="text-copper-light font-semibold">$99/mo</span>', '+ Add 3D Company Card for <span class="text-copper-light font-semibold">$99 flat</span>'],
+    addons: ['+ 3D Company Card for <span class="text-copper-light font-semibold">$99 flat</span>'],
   },
 ];
 
@@ -146,32 +144,32 @@ ${t.addons.map((a) => `          <div class="flex items-center gap-2">${LEAF}<p 
       </div>`;
 }
 
-function pricingTable({ heading = 'Two ways to never miss a call again.' } = {}) {
+function pricingTable({ heading = 'One-time price, free sample first.' } = {}) {
   return `<section id="pricing" class="py-24 px-6">
   <div class="max-w-5xl mx-auto">
     <div class="reveal mb-6 text-center">
-      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Transparent Pricing</p>
+      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Pricing</p>
       <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">${heading}</h2>
-      <p class="text-fog text-sm">Fixed setup fee, simple monthly rate &nbsp;·&nbsp; cancel anytime &nbsp;·&nbsp; no long-term contract</p>
+      <p class="text-fog text-sm">See it before you pay &nbsp;·&nbsp; one-time build price &nbsp;·&nbsp; scope fixed in writing</p>
     </div>
     <div class="reveal grid sm:grid-cols-2 gap-6 items-stretch mt-8 max-w-3xl mx-auto">
 ${TIERS.map(tierCard).join('\n')}
     </div>
-    <p class="reveal text-center text-sm text-fog mt-8">Both tiers include a dedicated onboarding call before anything goes live. Google Business Profile setup comes with the Custom Website tier.</p>
+    <p class="reveal text-center text-sm text-fog mt-8">Every build starts with a free sample site and a 15-minute walkthrough call.</p>
   </div>
 </section>`;
 }
 
 // ------------------------------------------------------------------ misc ---
 
-function ctaBand({ heading = 'Ready to stop missing calls?', sub = 'Free setup call, fixed pricing, no long-term contract.' } = {}) {
+function ctaBand({ heading = 'Want to see <span class="italic">your sample site?</span>', sub = 'We build it free, show it to you in 15 minutes, and you decide.' } = {}) {
   return `<section class="px-6 py-20">
   <div class="max-w-3xl mx-auto text-center reveal">
     <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">${heading}</h2>
     <p class="text-fog leading-[1.7] mb-8">${sub}</p>
     <span class="cta-ring rounded-full p-[2px] inline-block">
       <a href="book-a-call.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-8 py-4 rounded-full text-[15px] block">
-        Book A Free Setup Call
+        Get A Free Sample Site
       </a>
     </span>
   </div>

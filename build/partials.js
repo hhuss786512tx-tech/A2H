@@ -97,7 +97,7 @@ ${NAV_ITEMS.map(link).join('\n')}
     <div class="flex items-center gap-3">
       <span class="cta-ring rounded-full p-[2px] hidden sm:inline-block">
         <a href="book-a-call.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-2.5 rounded-full block">
-          Book A Free Setup Call
+          Get A Free Sample Site
         </a>
       </span>
       <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-sand p-2 -mr-2">
@@ -108,7 +108,7 @@ ${NAV_ITEMS.map(link).join('\n')}
   </div>
   <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-ink/95 backdrop-blur-md pb-3">
 ${NAV_ITEMS.map(mobileLink).join('\n')}
-    <a href="book-a-call.html" class="mobile-nav-link block px-6 py-3 text-sm text-copper-light font-semibold">Book A Free Setup Call</a>
+    <a href="book-a-call.html" class="mobile-nav-link block px-6 py-3 text-sm text-copper-light font-semibold">Get A Free Sample Site</a>
   </div>
 </header>`;
 }
@@ -121,7 +121,8 @@ function footer() {
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 mb-12">
       <div>
         <p class="font-display text-2xl text-sand mb-3">A2H<span class="text-copper">.</span></p>
-        <p class="text-sm text-fog leading-[1.7]">AI Receptionist + CRM for Texas businesses, with hand-coded custom websites available as an upgrade.</p>
+        <p class="text-sm text-fog leading-[1.7]">AI consulting studio in Houston, Texas. Websites with an AI chat and a CRM lead list for Texas foundation repair, restoration and garage door companies.</p>
+        <p class="text-xs text-fog/80 mt-3">Founder Abbas Hussain is an accepted developer on AI Frontrunners.</p>
       </div>
       <div>
         <p class="text-xs uppercase tracking-[0.2em] text-copper-light font-semibold mb-4">Services</p>
@@ -134,25 +135,24 @@ function footer() {
       <div>
         <p class="text-xs uppercase tracking-[0.2em] text-copper-light font-semibold mb-4">Industries</p>
         <ul class="space-y-2 text-sm text-fog">
-          <li><a href="construction.html" class="link-underline hover:text-sand transition-colors">Contractors</a></li>
-          <li><a href="medical.html" class="link-underline hover:text-sand transition-colors">Medical Practices</a></li>
-          <li><a href="retail.html" class="link-underline hover:text-sand transition-colors">Local Retail</a></li>
-          <li><a href="dental-practices.html" class="link-underline hover:text-sand transition-colors">Dental Practices</a></li>
-          <li><a href="orthodontic-practices.html" class="link-underline hover:text-sand transition-colors">Orthodontic Practices</a></li>
-          <li><a href="home-care-agencies.html" class="link-underline hover:text-sand transition-colors">Home Care</a></li>
+          <li><a href="foundation-repair-websites.html" class="link-underline hover:text-sand transition-colors">Foundation Repair</a></li>
+          <li><a href="restoration-websites.html" class="link-underline hover:text-sand transition-colors">Water Damage Restoration</a></li>
+          <li><a href="garage-door-websites.html" class="link-underline hover:text-sand transition-colors">Garage Door</a></li>
+          <li><a href="industries.html" class="link-underline hover:text-sand transition-colors">All Industries</a></li>
         </ul>
       </div>
       <div>
         <p class="text-xs uppercase tracking-[0.2em] text-copper-light font-semibold mb-4">Contact</p>
         <ul class="space-y-2 text-sm text-fog">
           <li><a href="mailto:${EMAIL}" class="link-underline hover:text-sand transition-colors break-all">${EMAIL}</a></li>
-          <li>Texas-based</li>
-          <li><a href="book-a-call.html" class="link-underline text-copper-light hover:text-sand transition-colors">Book a free setup call</a></li>
+          <li>Houston, Texas</li>
+          <li><a href="https://www.linkedin.com/in/abbas-hussain-1bb46b432/" target="_blank" rel="noopener" class="link-underline hover:text-sand transition-colors">Abbas Hussain on LinkedIn</a></li>
+          <li><a href="book-a-call.html" class="link-underline text-copper-light hover:text-sand transition-colors">Get a free sample site</a></li>
         </ul>
       </div>
     </div>
     <div class="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-fog/70">
-      <p>&copy; <span data-year>2026</span> A2H Agency</p>
+      <p>&copy; <span data-year>2026</span> A2H</p>
       <div class="flex items-center gap-5">
         <a href="privacy.html" class="link-underline hover:text-sand transition-colors">Privacy Policy</a>
         <a href="terms.html" class="link-underline hover:text-sand transition-colors">Terms of Service</a>

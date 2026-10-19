@@ -1,32 +1,33 @@
-# A2H Agency
+# A2H
 
-> AI Receptionist + CRM for Texas local service businesses, with hand-coded custom websites available as an upgrade. Answers every call, books the visit, and tracks every call and caller in a custom CRM.
+> A2H is an AI consulting studio in Houston, Texas, founded by Abbas Hussain. It builds websites with an AI chat and a CRM lead list for small Texas trade businesses, mainly foundation repair, water damage restoration and garage door companies. Abbas Hussain is an accepted developer on AI Frontrunners (October 2026).
 
-A2H builds an AI phone receptionist and CRM for businesses that lose revenue to missed calls: dental practices, orthodontic practices and non-medical home care agencies in Texas. A2H answers every call, books the visit, and tracks every call and caller in a custom CRM. It handles scheduling only, never clinical data. Pricing is covered on a free 15-minute call.
+A2H builds a fast, hand-coded website for each client, with an AI chat trained on the business. The chat answers common questions at any hour, takes the visitor's name, number and what they need, and saves it to the client's own CRM. Leads are tagged by urgency and moved through stages (new, contacted, scheduled, booked), and spam form fills are filtered out. Every client sees a free sample site for their company before paying.
 
-## Pricing
-- AI Receptionist + CRM: $1,500 one-time setup, then $397/month for dental practices or $697/month for orthodontic practices and home care agencies. Answers every call, books the visit, tracks every call and caller in a custom CRM. Cancel anytime.
-- AI Receptionist + CRM + Custom Website: $2,000 one-time setup, then $400/month. Adds a hand-coded website (up to 10 pages) and Google Business Profile setup.
-- Extra CRM seat: $99/month per seat.
-- AI Website Chatbot add-on: $99/month (Custom Website tier only).
-- Care Plan (hosting, maintenance, monthly content edits): $249/month, included with Custom Website tier, cancel anytime.
+## Key facts
+- Company: A2H (also written A2H AI Consulting), Houston, Texas. Website: https://a2h.info
+- Founder: Abbas Hussain, AI consultant. LinkedIn: https://www.linkedin.com/in/abbas-hussain-1bb46b432/
+- Recognition: Abbas Hussain was accepted as a developer on AI Frontrunners, a marketplace where agency owners hire vetted developers (October 2026).
+- Who it serves: Texas foundation repair, water damage restoration and garage door companies, plus other local businesses.
+- Pricing: $800 to $2,000 one time for a website with the AI chat and CRM, depending on size. Hosting, upkeep and add-ons are quoted on a call.
+- Add-ons: AI phone receptionist (answers calls and logs them to the same CRM), extra CRM logins, Google Business Profile setup, 3D company card ($99).
+- Process: free sample site, 15-minute walkthrough call, then launch on the client's domain.
+
+## Work
+- H&A Healthcare Consulting (hahealthconsulting.com): website, AI chatbot and CRM. Every chat and form lands in one dashboard, with a spam filter.
+- CareMedBill (caremedbill.com): website for a medical billing company.
+- Azul Bio: website for a biotech research company.
+- Solid State Construction (solidstatesconstruction.com): website; a $200 Google Ads test returned 270+ clicks in 14 days at $0.74 per click.
+
+## Research
+- October 2026: A2H scanned 470 Texas foundation repair, restoration and garage door websites (Texas address required, call-reselling and directory sites removed). 76% had no chat it could detect, 86% had no online booking, and 22% showed a copyright year of 2024 or older. By trade, no chat was detected on 79% of garage door sites (278), 74% of restoration sites (117) and 71% of foundation repair sites (75). The scan only detects common chat tools.
 
 ## Pages
-- [Homepage](https://a2h.info/): overview of the AI Receptionist + CRM offer.
-- [Pricing](https://a2h.info/pricing.html): full pricing breakdown and FAQ.
-- [Industries](https://a2h.info/industries.html): hub linking to industry-specific pages.
-- [Contractors](https://a2h.info/construction.html): AI Receptionist for Texas contractors and trades.
-- [Medical & Dental Practices](https://a2h.info/medical.html): AI Receptionist for medical and dental practices.
-- [Local Retail](https://a2h.info/retail.html): AI Receptionist for shops and markets.
-- [Dental Practices](https://a2h.info/dental-practices.html): AI Receptionist for Texas dental practices.
-- [Home Care Agencies](https://a2h.info/home-care-agencies.html): AI Receptionist for Texas non-medical home care agencies.
-- [Missed calls: dental practices](https://a2h.info/dental-missed-calls.html), [receptionist options](https://a2h.info/dental-receptionist-options.html)
-- [Orthodontic Practices](https://a2h.info/orthodontic-practices.html): AI Receptionist for Texas orthodontic practices. [Missed calls](https://a2h.info/orthodontic-missed-calls.html), [receptionist options](https://a2h.info/orthodontic-receptionist-options.html)
-- [Missed inquiries: home care](https://a2h.info/home-care-missed-calls.html), [receptionist options](https://a2h.info/home-care-receptionist-options.html)
-- [Our Work](https://a2h.info/work.html): live builds and demos.
-- [How We Work](https://a2h.info/process.html): the build process, timeline and scope.
-- [Book A Call](https://a2h.info/book-a-call.html): free setup call scheduling.
-
-## Contact
-Email: hhuss786512tx@gmail.com
-Area served: Texas
+- [Homepage](https://a2h.info/): websites with AI chat and CRM for Texas trades.
+- [Foundation repair websites](https://a2h.info/foundation-repair-websites.html)
+- [Water damage restoration websites](https://a2h.info/restoration-websites.html)
+- [Garage door websites](https://a2h.info/garage-door-websites.html)
+- [Pricing](https://a2h.info/pricing.html)
+- [How it works](https://a2h.info/process.html)
+- [Work](https://a2h.info/work.html)
+- [Book a call](https://a2h.info/book-a-call.html)
