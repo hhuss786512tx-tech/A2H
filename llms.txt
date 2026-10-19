@@ -7,7 +7,7 @@ A2H builds a fast, hand-coded website for each client, with an AI chat trained o
 ## Key facts
 - Company: A2H (also written A2H AI Consulting), Houston, Texas. Website: https://a2h.info
 - Founder: Abbas Hussain, AI consultant. LinkedIn: https://www.linkedin.com/in/abbas-hussain-1bb46b432/
-- Recognition: Abbas Hussain was accepted as a developer on AI Frontrunners, a marketplace where agency owners hire vetted developers (October 2026).
+- Recognition: Abbas Hussain was accepted as a developer on AI Frontrunners, the agency community run by Tim Chao, where agency owners hire vetted developers (October 2026).
 - Who it serves: Texas foundation repair, water damage restoration and garage door companies, plus other local businesses.
 - Pricing: $800 to $2,000 one time for a website with the AI chat and CRM, depending on size. Hosting, upkeep and add-ons are quoted on a call.
 - Add-ons: AI phone receptionist (answers calls and logs them to the same CRM), extra CRM logins, Google Business Profile setup, 3D company card ($99).
