@@ -20,8 +20,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/tailwind.css?v=53760979">
-<link rel="stylesheet" href="assets/site.css?v=76ffbf5b">
+<link rel="stylesheet" href="assets/tailwind.css?v=770224a9">
+<link rel="stylesheet" href="assets/site.css?v=ac40656e">
 <script>document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">
 {
@@ -220,49 +220,47 @@ document.addEventListener('DOMContentLoaded', function () {
 </head>
 <body class="text-sand antialiased">
 
-<header id="site-header" class="fixed top-0 inset-x-0 z-50 bg-ink/70 backdrop-blur-md transition-[box-shadow,background-color] duration-300">
-  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="/" class="font-display text-xl tracking-tight text-sand">A2H<span class="text-copper">.</span></a>
-    <nav class="hidden md:flex items-center gap-8 text-sm text-fog" aria-label="Primary">
-        <a href="work.html" class="link-underline  hover:text-sand transition-colors">Work</a>
-        <a href="process.html" class="link-underline  hover:text-sand transition-colors">Process</a>
-        <a href="pricing.html" class="link-underline  hover:text-sand transition-colors">Pricing</a>
-        <a href="industries.html" class="link-underline  hover:text-sand transition-colors">Industries</a>
-        <a href="book-a-call.html" class="link-underline  hover:text-sand transition-colors">Book A Call</a>
+<a href="#main" class="skip-link">Skip to content</a>
+<header id="site-header">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 h-16 flex items-center justify-between gap-4">
+    <a href="/" class="font-display text-[1.35rem] tracking-tight text-sand shrink-0" aria-label="A2H home">A2H<span class="text-copper">.</span></a>
+    <nav class="hidden md:flex items-center gap-7" aria-label="Primary">
+        <a href="work.html" class="nav-link">Work</a>
+        <a href="process.html" class="nav-link">Process</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="industries.html" class="nav-link">Industries</a>
     </nav>
-    <div class="flex items-center gap-3">
-      <span class="cta-ring rounded-full p-[2px] hidden sm:inline-block">
-        <a href="book-a-call.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink text-sm font-semibold px-4 py-2.5 rounded-full block">
-          Get A Free Sample Site
-        </a>
-      </span>
-      <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-sand p-2 -mr-2">
-        <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-        <svg id="menu-icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    <div class="flex items-center gap-3 shrink-0">
+      <a href="book-a-call.html" class="btn btn-solid btn-sm hidden sm:inline-flex">Get a free sample site</a>
+      <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="menu-btn md:hidden relative">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </button>
     </div>
   </div>
-  <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-ink/95 backdrop-blur-md pb-3">
-      <a href="work.html" class="mobile-nav-link block px-6 py-3 text-sm text-fog hover:text-sand transition-colors">Work</a>
-      <a href="process.html" class="mobile-nav-link block px-6 py-3 text-sm text-fog hover:text-sand transition-colors">Process</a>
-      <a href="pricing.html" class="mobile-nav-link block px-6 py-3 text-sm text-fog hover:text-sand transition-colors">Pricing</a>
-      <a href="industries.html" class="mobile-nav-link block px-6 py-3 text-sm text-fog hover:text-sand transition-colors">Industries</a>
-      <a href="book-a-call.html" class="mobile-nav-link block px-6 py-3 text-sm text-fog hover:text-sand transition-colors">Book A Call</a>
-    <a href="book-a-call.html" class="mobile-nav-link block px-6 py-3 text-sm text-copper-light font-semibold">Get A Free Sample Site</a>
+  <div id="mobile-menu" class="hidden md:hidden">
+    <nav class="max-w-6xl mx-auto px-5 pt-1 pb-5 flex flex-col" aria-label="Mobile">
+      <a href="work.html" class="mobile-nav-link">Work</a>
+      <a href="process.html" class="mobile-nav-link">Process</a>
+      <a href="pricing.html" class="mobile-nav-link">Pricing</a>
+      <a href="industries.html" class="mobile-nav-link">Industries</a>
+      <a href="book-a-call.html" class="mobile-nav-link">Book a call</a>
+      <a href="book-a-call.html" class="mobile-nav-link btn btn-solid mt-5 !border-0">Get a free sample site</a>
+    </nav>
   </div>
 </header>
 
-<section class="relative glow-copper pt-36 pb-20 px-6 overflow-hidden">
+<main id="main">
+<section class="relative glow-copper pt-32 sm:pt-40 pb-16 sm:pb-20 px-5 sm:px-6 overflow-hidden">
   <div class="grain"></div>
-  <div class="max-w-4xl mx-auto text-center relative">
-    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-5">For Texas Dental Practices</p>
-    <h1 class="reveal font-display text-[2.5rem] leading-[1.1] sm:text-5xl sm:leading-[1.05] tracking-[-0.03em] text-sand mb-6">Every patient call answered, <span class="italic text-copper-light">even at lunch.</span></h1>
-    <p class="reveal text-lg text-fog leading-[1.7] max-w-2xl mx-auto mb-10">The front desk cannot answer every line during check-in, lunch or after hours. A2H answers instantly, books the appointment, and tracks every call and caller in our custom CRM.</p>
-    <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
-      <span class="cta-ring rounded-full p-[2px] inline-block">
-        <a href="book-a-call.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-7 py-3.5 rounded-full text-[15px] block">Get A Free Sample Site</a>
-      </span>
-      <a href="demo.html" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-7 py-3.5 rounded-full text-[15px]">Hear a demo call</a>
+  <div class="max-w-6xl mx-auto relative grid lg:grid-cols-12 gap-10 items-end">
+    <div class="lg:col-span-9">
+      <p class="rise rise-1 eyebrow mb-5">For Texas Dental Practices</p>
+      <h1 class="rise rise-2 display-xl text-sand mb-6">Every patient call answered, <span class="italic text-copper-light">even at lunch.</span></h1>
+      <p class="rise rise-3 lede text-lg max-w-xl mb-9">The front desk cannot answer every line during check-in, lunch or after hours. A2H answers instantly, books the appointment, and tracks every call and caller in our custom CRM.</p>
+      <div class="rise rise-4 flex flex-col sm:flex-row sm:items-center gap-3">
+        <a href="book-a-call.html" class="btn btn-solid">Get a free sample site <span class="btn-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+        <a href="demo.html" class="btn btn-ghost">Hear a demo call</a>
+      </div>
     </div>
   </div>
 </section>
@@ -276,32 +274,43 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
 
-<section class="py-20 px-6">
-  <div class="max-w-5xl mx-auto">
-    <div class="reveal mb-12 text-center">
-      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">What Changes</p>
-      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">Built around how patients actually choose a dentist</h2>
+<section class="py-24 px-5 sm:px-6">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-10">
+    <div class="reveal lg:col-span-4">
+      <h2 class="display-lg text-sand lg:sticky lg:top-28">Built around how patients actually choose a dentist</h2>
     </div>
-    <div class="grid sm:grid-cols-2 gap-5">
-      <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-7" style="transition-delay:0ms">
-        <p class="text-copper-light text-sm font-semibold mb-2">01 — Never voicemail</p>
-        <h3 class="font-display text-xl text-sand mb-2">Answered at lunch and after hours</h3>
-        <p class="text-fog text-sm leading-[1.7]">No patient is sent to voicemail because the front desk was busy with check-in or the office was closed.</p>
+    <div class="stagger lg:col-span-8">
+      <div class="grid grid-cols-[3rem_1fr] sm:grid-cols-[4.5rem_1fr] gap-4 sm:gap-6 py-7 border-t hairline">
+        <p class="figure text-copper-light text-2xl sm:text-3xl pt-1">01</p>
+        <div>
+          <p class="text-xs text-fog mb-1.5">Never voicemail</p>
+          <h3 class="display-md text-sand mb-2">Answered at lunch and after hours</h3>
+          <p class="text-fog text-[15px] leading-[1.7] max-w-xl">No patient is sent to voicemail because the front desk was busy with check-in or the office was closed.</p>
+        </div>
       </div>
-      <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-7" style="transition-delay:70ms">
-        <p class="text-copper-light text-sm font-semibold mb-2">02 — Booked, not just noted</p>
-        <h3 class="font-display text-xl text-sand mb-2">The appointment, during the call</h3>
-        <p class="text-fog text-sm leading-[1.7]">The AI Receptionist books the visit while the patient is on the line, and can transfer to your front desk when the call needs a person.</p>
+      <div class="grid grid-cols-[3rem_1fr] sm:grid-cols-[4.5rem_1fr] gap-4 sm:gap-6 py-7 border-t hairline">
+        <p class="figure text-copper-light text-2xl sm:text-3xl pt-1">02</p>
+        <div>
+          <p class="text-xs text-fog mb-1.5">Booked, not just noted</p>
+          <h3 class="display-md text-sand mb-2">The appointment, during the call</h3>
+          <p class="text-fog text-[15px] leading-[1.7] max-w-xl">The AI Receptionist books the visit while the patient is on the line, and can transfer to your front desk when the call needs a person.</p>
+        </div>
       </div>
-      <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-7" style="transition-delay:140ms">
-        <p class="text-copper-light text-sm font-semibold mb-2">03 — Nothing lost</p>
-        <h3 class="font-display text-xl text-sand mb-2">Every caller in our custom CRM</h3>
-        <p class="text-fog text-sm leading-[1.7]">Name, reason for calling and callback details tracked automatically in one place.</p>
+      <div class="grid grid-cols-[3rem_1fr] sm:grid-cols-[4.5rem_1fr] gap-4 sm:gap-6 py-7 border-t hairline">
+        <p class="figure text-copper-light text-2xl sm:text-3xl pt-1">03</p>
+        <div>
+          <p class="text-xs text-fog mb-1.5">Nothing lost</p>
+          <h3 class="display-md text-sand mb-2">Every caller in our custom CRM</h3>
+          <p class="text-fog text-[15px] leading-[1.7] max-w-xl">Name, reason for calling and callback details tracked automatically in one place.</p>
+        </div>
       </div>
-      <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-7" style="transition-delay:210ms">
-        <p class="text-copper-light text-sm font-semibold mb-2">04 — Found locally</p>
-        <h3 class="font-display text-xl text-sand mb-2">Maps and reviews</h3>
-        <p class="text-fog text-sm leading-[1.7]">On the Custom Website tier Google Business Profile is claimed and tuned, because the map result and its reviews are what most patients see first.</p>
+      <div class="grid grid-cols-[3rem_1fr] sm:grid-cols-[4.5rem_1fr] gap-4 sm:gap-6 py-7 border-t hairline border-b">
+        <p class="figure text-copper-light text-2xl sm:text-3xl pt-1">04</p>
+        <div>
+          <p class="text-xs text-fog mb-1.5">Found locally</p>
+          <h3 class="display-md text-sand mb-2">Maps and reviews</h3>
+          <p class="text-fog text-[15px] leading-[1.7] max-w-xl">On the Custom Website tier Google Business Profile is claimed and tuned, because the map result and its reviews are what most patients see first.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -332,58 +341,39 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
 
-<section class="py-20 px-6 bg-surface/40 border-y border-white/5">
-  <div class="max-w-3xl mx-auto">
-    <h2 class="reveal font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-10 text-center">Common questions</h2>
-    <div class="space-y-4">
-      <details class="reveal group rounded-2xl bg-elevated border border-white/5 px-6 py-5">
-        <summary class="flex items-center justify-between cursor-pointer list-none text-sand font-semibold text-sm">
-          <span>Is the AI receptionist HIPAA compliant?</span>
-          <svg class="shrink-0 ml-4 transition-transform duration-200 group-open:rotate-45 text-copper-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-        </summary>
-        <p class="text-fog text-sm leading-[1.8] mt-4">The AI Receptionist and CRM handle scheduling, not clinical data. Calls collect only a name, the reason for the call and callback details so your staff can follow up. If you need intake that touches protected health information, that belongs in dedicated HIPAA-compliant software, and we link to it rather than rebuild it.</p>
+<section id="faq" class="py-24 px-5 sm:px-6">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-10">
+    <div class="reveal lg:col-span-4">
+      <h2 class="display-lg text-sand lg:sticky lg:top-28">Common questions</h2>
+    </div>
+    <div class="reveal faq lg:col-span-8">
+      <details>
+        <summary><span>Is the AI receptionist HIPAA compliant?</span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>The AI Receptionist and CRM handle scheduling, not clinical data. Calls collect only a name, the reason for the call and callback details so your staff can follow up. If you need intake that touches protected health information, that belongs in dedicated HIPAA-compliant software, and we link to it rather than rebuild it.</p>
       </details>
-      <details class="reveal group rounded-2xl bg-elevated border border-white/5 px-6 py-5">
-        <summary class="flex items-center justify-between cursor-pointer list-none text-sand font-semibold text-sm">
-          <span>Does it handle insurance or clinical questions?</span>
-          <svg class="shrink-0 ml-4 transition-transform duration-200 group-open:rotate-45 text-copper-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-        </summary>
-        <p class="text-fog text-sm leading-[1.8] mt-4">It handles the front-desk call: answering, collecting the basics and booking. Anything clinical or insurance-specific is passed to your team rather than answered by the AI.</p>
+      <details>
+        <summary><span>Does it handle insurance or clinical questions?</span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>It handles the front-desk call: answering, collecting the basics and booking. Anything clinical or insurance-specific is passed to your team rather than answered by the AI.</p>
       </details>
-      <details class="reveal group rounded-2xl bg-elevated border border-white/5 px-6 py-5">
-        <summary class="flex items-center justify-between cursor-pointer list-none text-sand font-semibold text-sm">
-          <span>Do you work with dental practices across Texas?</span>
-          <svg class="shrink-0 ml-4 transition-transform duration-200 group-open:rotate-45 text-copper-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-        </summary>
-        <p class="text-fog text-sm leading-[1.8] mt-4">A2H sets the receptionist up remotely for Texas practices, including those around Houston, Dallas, Austin, San Antonio and Fort Worth.</p>
+      <details>
+        <summary><span>Do you work with dental practices across Texas?</span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>A2H sets the receptionist up remotely for Texas practices, including those around Houston, Dallas, Austin, San Antonio and Fort Worth.</p>
       </details>
-      <details class="reveal group rounded-2xl bg-elevated border border-white/5 px-6 py-5">
-        <summary class="flex items-center justify-between cursor-pointer list-none text-sand font-semibold text-sm">
-          <span>How much does an AI receptionist cost for a dental practice?</span>
-          <svg class="shrink-0 ml-4 transition-transform duration-200 group-open:rotate-45 text-copper-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-        </summary>
-        <p class="text-fog text-sm leading-[1.8] mt-4">A2H publishes its pricing: AI Receptionist + CRM is $1,500 one-time setup, then $397 per month, with no long-term contract. An extra CRM seat is $99 per month. Adding a hand-coded website with Google Business Profile setup is $2,000 setup and $400 per month.</p>
+      <details>
+        <summary><span>How much does an AI receptionist cost for a dental practice?</span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>A2H publishes its pricing: AI Receptionist + CRM is $1,500 one-time setup, then $397 per month, with no long-term contract. An extra CRM seat is $99 per month. Adding a hand-coded website with Google Business Profile setup is $2,000 setup and $400 per month.</p>
       </details>
-      <details class="reveal group rounded-2xl bg-elevated border border-white/5 px-6 py-5">
-        <summary class="flex items-center justify-between cursor-pointer list-none text-sand font-semibold text-sm">
-          <span>Do I have to change my business number?</span>
-          <svg class="shrink-0 ml-4 transition-transform duration-200 group-open:rotate-45 text-copper-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-        </summary>
-        <p class="text-fog text-sm leading-[1.8] mt-4">No porting and no new number for your callers. You set your existing line to forward to the receptionist when it is busy or unanswered.</p>
+      <details>
+        <summary><span>Do I have to change my business number?</span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>No porting and no new number for your callers. You set your existing line to forward to the receptionist when it is busy or unanswered.</p>
       </details>
-      <details class="reveal group rounded-2xl bg-elevated border border-white/5 px-6 py-5">
-        <summary class="flex items-center justify-between cursor-pointer list-none text-sand font-semibold text-sm">
-          <span>What happens when a patient call needs a real person?</span>
-          <svg class="shrink-0 ml-4 transition-transform duration-200 group-open:rotate-45 text-copper-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-        </summary>
-        <p class="text-fog text-sm leading-[1.8] mt-4">It can transfer the call to you or your team, or take a message and flag the contact in our custom CRM.</p>
+      <details>
+        <summary><span>What happens when a patient call needs a real person?</span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>It can transfer the call to you or your team, or take a message and flag the contact in our custom CRM.</p>
       </details>
-      <details class="reveal group rounded-2xl bg-elevated border border-white/5 px-6 py-5">
-        <summary class="flex items-center justify-between cursor-pointer list-none text-sand font-semibold text-sm">
-          <span>Do I need a new website to use it?</span>
-          <svg class="shrink-0 ml-4 transition-transform duration-200 group-open:rotate-45 text-copper-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-        </summary>
-        <p class="text-fog text-sm leading-[1.8] mt-4">No. AI Receptionist + CRM works on its own. The Custom Website tier is optional and adds a hand-coded site and Google Business Profile setup.</p>
+      <details>
+        <summary><span>Do I need a new website to use it?</span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>No. AI Receptionist + CRM works on its own. The Custom Website tier is optional and adds a hand-coded site and Google Business Profile setup.</p>
       </details>
     </div>
   </div>
@@ -399,71 +389,73 @@ document.addEventListener('DOMContentLoaded', function () {
     <p class="reveal text-sm text-fog mt-8">Hear a <a href="demo.html" class="link-underline text-copper-light">demo call</a> (a recorded test call with a fictional business and caller). Pricing is on the <a href="pricing.html" class="link-underline text-copper-light">pricing page</a>.</p>
   </div>
 </section>
+</main>
 
-<footer class="relative border-t border-white/5 pt-14 pb-8 px-6 overflow-hidden">
-  <div class="max-w-6xl mx-auto relative">
-    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 mb-12">
-      <div>
-        <p class="font-display text-2xl text-sand mb-3">A2H<span class="text-copper">.</span></p>
-        <p class="text-sm text-fog leading-[1.7]">AI consulting studio in Houston, Texas. Websites with an AI chat and a CRM lead list for Texas foundation repair, restoration and garage door companies.</p>
-        <p class="text-xs text-fog/80 mt-3">Founder Abbas Hussain is an accepted developer on AI Frontrunners.</p>
+<footer class="relative mt-8">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6">
+    <div class="rule"></div>
+    <div class="grid gap-10 md:grid-cols-12 pt-14 pb-12">
+      <div class="md:col-span-5">
+        <p class="font-display text-[1.6rem] text-sand mb-4">A2H<span class="text-copper">.</span></p>
+        <p class="text-[15px] text-fog leading-[1.7] max-w-sm">Websites with an AI chat and a CRM lead list, built in Houston for Texas foundation repair, restoration and garage door companies.</p>
+        <p class="text-sm text-fog/80 mt-4 max-w-sm">Founder Abbas Hussain is an accepted developer on AI Frontrunners.</p>
       </div>
-      <div>
-        <p class="text-xs uppercase tracking-[0.2em] text-copper-light font-semibold mb-4">Services</p>
-        <ul class="space-y-2 text-sm text-fog">
-          <li><a href="work.html" class="link-underline hover:text-sand transition-colors">Our Work</a></li>
-          <li><a href="process.html" class="link-underline hover:text-sand transition-colors">How We Work</a></li>
-          <li><a href="pricing.html" class="link-underline hover:text-sand transition-colors">Pricing</a></li>
+      <div class="md:col-span-2 md:col-start-7">
+        <p class="text-sm font-semibold text-sand mb-4">Site</p>
+        <ul class="space-y-0.5 text-[15px] text-fog">
+          <li><a href="work.html" class="link-underline hover:text-sand inline-block py-1.5">Work</a></li>
+          <li><a href="process.html" class="link-underline hover:text-sand inline-block py-1.5">Process</a></li>
+          <li><a href="pricing.html" class="link-underline hover:text-sand inline-block py-1.5">Pricing</a></li>
+          <li><a href="industries.html" class="link-underline hover:text-sand inline-block py-1.5">Industries</a></li>
+          <li><a href="book-a-call.html" class="link-underline hover:text-sand inline-block py-1.5">Book a call</a></li>
         </ul>
       </div>
-      <div>
-        <p class="text-xs uppercase tracking-[0.2em] text-copper-light font-semibold mb-4">Industries</p>
-        <ul class="space-y-2 text-sm text-fog">
-          <li><a href="foundation-repair-websites.html" class="link-underline hover:text-sand transition-colors">Foundation Repair</a></li>
-          <li><a href="restoration-websites.html" class="link-underline hover:text-sand transition-colors">Water Damage Restoration</a></li>
-          <li><a href="garage-door-websites.html" class="link-underline hover:text-sand transition-colors">Garage Door</a></li>
-          <li><a href="industries.html" class="link-underline hover:text-sand transition-colors">All Industries</a></li>
+      <div class="md:col-span-2">
+        <p class="text-sm font-semibold text-sand mb-4">Trades</p>
+        <ul class="space-y-0.5 text-[15px] text-fog">
+          <li><a href="foundation-repair-websites.html" class="link-underline hover:text-sand inline-block py-1.5">Foundation repair</a></li>
+          <li><a href="restoration-websites.html" class="link-underline hover:text-sand inline-block py-1.5">Restoration</a></li>
+          <li><a href="garage-door-websites.html" class="link-underline hover:text-sand inline-block py-1.5">Garage door</a></li>
         </ul>
       </div>
-      <div>
-        <p class="text-xs uppercase tracking-[0.2em] text-copper-light font-semibold mb-4">Contact</p>
-        <ul class="space-y-2 text-sm text-fog">
-          <li><a href="mailto:hhuss786512tx@gmail.com" class="link-underline hover:text-sand transition-colors break-all">hhuss786512tx@gmail.com</a></li>
-          <li>Houston, Texas</li>
-          <li><a href="https://www.linkedin.com/in/abbas-hussain-1bb46b432/" target="_blank" rel="noopener" class="link-underline hover:text-sand transition-colors">Abbas Hussain on LinkedIn</a></li>
-          <li><a href="book-a-call.html" class="link-underline text-copper-light hover:text-sand transition-colors">Get a free sample site</a></li>
+      <div class="md:col-span-2">
+        <p class="text-sm font-semibold text-sand mb-4">Contact</p>
+        <ul class="space-y-0.5 text-[15px] text-fog">
+          <li><a href="mailto:hhuss786512tx@gmail.com" class="link-underline hover:text-sand inline-block py-1.5 break-all">hhuss786512tx@gmail.com</a></li>
+          <li class="py-1.5">Houston, Texas</li>
+          <li><a href="https://www.linkedin.com/in/abbas-hussain-1bb46b432/" target="_blank" rel="noopener" class="link-underline hover:text-sand inline-block py-1.5">LinkedIn</a></li>
         </ul>
       </div>
     </div>
-    <div class="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-fog/70">
-      <p>&copy; <span data-year>2026</span> A2H</p>
+    <div class="border-t hairline py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-fog/70">
+      <p>&copy; <span data-year>2026</span> A2H, Houston, Texas</p>
       <div class="flex items-center gap-5">
-        <a href="privacy.html" class="link-underline hover:text-sand transition-colors">Privacy Policy</a>
-        <a href="terms.html" class="link-underline hover:text-sand transition-colors">Terms of Service</a>
-        <a href="sms-terms.html" class="link-underline hover:text-sand transition-colors">SMS Terms</a>
+        <a href="privacy.html" class="link-underline hover:text-sand">Privacy</a>
+        <a href="terms.html" class="link-underline hover:text-sand">Terms</a>
+        <a href="sms-terms.html" class="link-underline hover:text-sand">SMS Terms</a>
       </div>
     </div>
   </div>
 </footer>
 
 <div id="lead-popup-overlay" class="hidden fixed inset-0 z-[100] items-center justify-center bg-ink/80 backdrop-blur-sm px-4 py-8" role="dialog" aria-modal="true" aria-labelledby="lead-popup-heading">
-  <div id="lead-popup-card" class="relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-elevated border border-white/10 shadow-floating p-7 sm:p-8">
+  <div id="lead-popup-card" class="relative w-full max-w-md max-h-[90vh] overflow-y-auto panel-elevated shadow-floating p-7 sm:p-8">
     <button type="button" id="lead-popup-close" aria-label="Close" class="absolute top-4 right-4 text-fog hover:text-sand transition-colors">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
     <form id="lead-popup-form" class="space-y-4">
       <input type="hidden" id="lp-plan" name="plan" value="">
-      <p id="lp-plan-banner" class="hidden items-center gap-2 bg-copper/10 border border-copper/30 rounded-lg px-4 py-2.5 text-sm text-copper-light">
+      <p id="lp-plan-banner" class="hidden items-center gap-2 bg-copper/10 border border-copper/30 rounded-[10px] px-4 py-2.5 text-sm text-copper-light">
         Inquiring about the <span id="lp-plan-banner-name" class="font-semibold"></span> plan
       </p>
       <div id="lead-popup-step-1">
-        <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Step 1 of 2</p>
-        <h2 id="lead-popup-heading" class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-2">What kind of website do you want?</h2>
-        <p class="text-sm text-fog leading-[1.6] mb-6">Tell us the vision — we'll put together a free homepage mockup made just for you, no charge, no obligation.</p>
+        <p class="eyebrow mb-3">Step 1 of 2</p>
+        <h2 id="lead-popup-heading" class="display-md text-sand mb-2">What kind of website do you want?</h2>
+        <p class="text-sm text-fog leading-[1.6] mb-6">Tell us what you have in mind. We'll put together a free homepage mockup for you, no charge, no obligation.</p>
         <div class="space-y-4">
           <div>
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-niche">What's your niche?</label>
-            <select required id="lp-niche" name="niche" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 transition-colors">
+            <label class="field-label" for="lp-niche">What's your niche?</label>
+            <select required id="lp-niche" name="niche" class="field">
               <option value="" selected disabled>Choose one</option>
               <option value="construction">Construction &amp; Contracting</option>
               <option value="medical">Medical &amp; Healthcare</option>
@@ -475,65 +467,65 @@ document.addEventListener('DOMContentLoaded', function () {
             </select>
           </div>
           <div id="lp-niche-other-wrap" class="hidden">
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-niche-other">What's your industry?</label>
-            <input id="lp-niche-other" name="niche_other" type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="e.g. pet grooming, event rentals">
+            <label class="field-label" for="lp-niche-other">What's your industry?</label>
+            <input id="lp-niche-other" name="niche_other" type="text" class="field" placeholder="e.g. pet grooming, event rentals">
           </div>
           <div>
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-pages">How many pages?</label>
-            <select id="lp-pages" name="page_count" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand focus:border-copper-light/60 transition-colors">
+            <label class="field-label" for="lp-pages">How many pages?</label>
+            <select id="lp-pages" name="page_count" class="field">
               <option value="unsure" selected>Not sure yet</option>
               <option value="1">Just 1 (single-page site)</option>
-              <option value="3-5">3–5 pages</option>
-              <option value="6-10">6–10 pages</option>
+              <option value="3-5">3 to 5 pages</option>
+              <option value="6-10">6 to 10 pages</option>
               <option value="10+">10+ pages</option>
             </select>
           </div>
           <div>
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-colors">Color scheme</label>
-            <input id="lp-colors" name="color_scheme" type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors mb-2" placeholder="e.g. dark & moody, match my logo">
+            <label class="field-label" for="lp-colors">Color scheme</label>
+            <input id="lp-colors" name="color_scheme" type="text" class="field mb-2" placeholder="e.g. dark & moody, match my logo">
             <div class="flex flex-wrap gap-1.5" role="group" aria-label="Quick color scheme picks">
-              <button type="button" data-scheme="Warm & earthy (tan, rust, cream)" class="lp-scheme-chip text-[11px] px-2.5 py-1 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Warm &amp; Earthy</button>
-              <button type="button" data-scheme="Bold & modern (black, white, one bright accent)" class="lp-scheme-chip text-[11px] px-2.5 py-1 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Bold &amp; Modern</button>
-              <button type="button" data-scheme="Clean & minimal (white, soft gray, single accent)" class="lp-scheme-chip text-[11px] px-2.5 py-1 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Clean &amp; Minimal</button>
-              <button type="button" data-scheme="Dark & moody (charcoal, deep tones, metallic accent)" class="lp-scheme-chip text-[11px] px-2.5 py-1 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Dark &amp; Moody</button>
-              <button type="button" data-scheme="Bright & playful (saturated colors, high energy)" class="lp-scheme-chip text-[11px] px-2.5 py-1 rounded-full border border-white/15 text-fog hover:border-copper-light/60 hover:text-sand transition-colors">Bright &amp; Playful</button>
+              <button type="button" data-scheme="Warm & earthy (tan, rust, cream)" class="lp-scheme-chip chip">Warm &amp; Earthy</button>
+              <button type="button" data-scheme="Bold & modern (black, white, one bright accent)" class="lp-scheme-chip chip">Bold &amp; Modern</button>
+              <button type="button" data-scheme="Clean & minimal (white, soft gray, single accent)" class="lp-scheme-chip chip">Clean &amp; Minimal</button>
+              <button type="button" data-scheme="Dark & moody (charcoal, deep tones, metallic accent)" class="lp-scheme-chip chip">Dark &amp; Moody</button>
+              <button type="button" data-scheme="Bright & playful (saturated colors, high energy)" class="lp-scheme-chip chip">Bright &amp; Playful</button>
             </div>
           </div>
           <div>
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-reference">A site you like the look of <span class="normal-case text-fog/60">(optional)</span></label>
-            <textarea id="lp-reference" name="reference_sites" rows="2" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors resize-y" placeholder="A link, or just describe the vibe"></textarea>
+            <label class="field-label" for="lp-reference">A site you like the look of <span class="normal-case text-fog/60">(optional)</span></label>
+            <textarea id="lp-reference" name="reference_sites" rows="2" class="field resize-y" placeholder="A link, or just describe the vibe"></textarea>
           </div>
           <div>
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-notes">Anything else? <span class="normal-case text-fog/60">(optional)</span></label>
-            <textarea id="lp-notes" name="notes" rows="2" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors resize-y" placeholder="Online store, booking system, gallery..."></textarea>
+            <label class="field-label" for="lp-notes">Anything else? <span class="normal-case text-fog/60">(optional)</span></label>
+            <textarea id="lp-notes" name="notes" rows="2" class="field resize-y" placeholder="Online store, booking system, gallery..."></textarea>
           </div>
           <p id="lead-popup-step1-status" class="text-xs text-center text-copper-light" role="status" aria-live="polite"></p>
-          <button type="button" id="lead-popup-next" class="btn-primary shadow-btn w-full bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
-            Next: Your Info
+          <button type="button" id="lead-popup-next" class="btn btn-solid w-full">
+            Next: your info
           </button>
         </div>
       </div>
       <div id="lead-popup-step-2" class="hidden">
-        <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-2">Step 2 of 2</p>
-        <h2 class="font-display text-2xl sm:text-3xl tracking-[-0.02em] text-sand mb-2">How do we reach you?</h2>
-        <p class="text-sm text-fog leading-[1.6] mb-6">We'll build your mockup within 2–3 days and send it straight to your inbox.</p>
+        <p class="eyebrow mb-3">Step 2 of 2</p>
+        <h2 class="display-md text-sand mb-2">How do we reach you?</h2>
+        <p class="text-sm text-fog leading-[1.6] mb-6">We'll build your mockup within 2 to 3 days and send it straight to your inbox.</p>
         <div class="space-y-4">
           <div>
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-name">Name</label>
-            <input required id="lp-name" name="name" type="text" autocomplete="name" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Jane Rivera">
+            <label class="field-label" for="lp-name">Name</label>
+            <input required id="lp-name" name="name" type="text" autocomplete="name" class="field" placeholder="Jane Rivera">
           </div>
           <div>
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-business">Business Name</label>
-            <input required id="lp-business" name="business" type="text" autocomplete="organization" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Rivera Concrete Co.">
+            <label class="field-label" for="lp-business">Business Name</label>
+            <input required id="lp-business" name="business" type="text" autocomplete="organization" class="field" placeholder="Rivera Concrete Co.">
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-email">Email</label>
-              <input required id="lp-email" name="email" type="email" autocomplete="email" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="jane@rivera.com">
+              <label class="field-label" for="lp-email">Email</label>
+              <input required id="lp-email" name="email" type="email" autocomplete="email" class="field" placeholder="jane@rivera.com">
             </div>
             <div>
-              <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-phone">Phone</label>
-              <input id="lp-phone" name="phone" type="tel" autocomplete="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
+              <label class="field-label" for="lp-phone">Phone</label>
+              <input id="lp-phone" name="phone" type="tel" autocomplete="tel" class="field" placeholder="(555) 555-0123">
             </div>
           </div>
           <label class="flex items-start gap-2.5 -mt-1 cursor-pointer text-[11px] text-fog/80 leading-[1.5]">
@@ -541,8 +533,8 @@ document.addEventListener('DOMContentLoaded', function () {
             <span>Yes, A2H can text me about my request. Msg frequency varies (up to 5 per request). Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Optional, not needed to submit. <a href="sms-terms.html" target="_blank" class="link-underline text-copper-light">SMS Terms</a> &amp; <a href="privacy.html" target="_blank" class="link-underline text-copper-light">Privacy</a>.</span>
           </label>
           <div>
-            <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-captcha-answer">Quick check: <span id="lp-captcha-question">loading…</span></label>
-            <input required id="lp-captcha-answer" name="captcha_answer" type="text" inputmode="numeric" autocomplete="off" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Your answer">
+            <label class="field-label" for="lp-captcha-answer">Quick check: <span id="lp-captcha-question">loading…</span></label>
+            <input required id="lp-captcha-answer" name="captcha_answer" type="text" inputmode="numeric" autocomplete="off" class="field" placeholder="Your answer">
             <input type="hidden" name="captcha_token" id="lp-captcha-token">
           </div>
           <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
@@ -550,11 +542,11 @@ document.addEventListener('DOMContentLoaded', function () {
             <input id="lp-company-site" name="company_site" type="text" tabindex="-1" autocomplete="off">
           </div>
           <div class="flex gap-3">
-            <button type="button" id="lead-popup-back" class="text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-3 rounded-full text-sm">
+            <button type="button" id="lead-popup-back" class="btn btn-ghost">
               Back
             </button>
-            <button type="submit" class="btn-primary shadow-btn flex-1 bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm">
-              Get My Free Mockup
+            <button type="submit" class="btn btn-solid flex-1">
+              Get my free mockup
             </button>
           </div>
           <p id="lead-popup-status" class="text-xs text-center text-fog" role="status" aria-live="polite"></p>
@@ -565,27 +557,28 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 
 <script>
-  // Header shadow on scroll
+  // Header hairline once the page has scrolled past a sentinel at the top.
   (function () {
     var header = document.getElementById('site-header');
     if (!header) return;
-    var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 40); };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
+    var sentinel = document.createElement('div');
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:48px;pointer-events:none;';
+    document.body.prepend(sentinel);
+    if (!('IntersectionObserver' in window)) { header.classList.add('is-scrolled'); return; }
+    new IntersectionObserver(function (entries) {
+      header.classList.toggle('is-scrolled', !entries[0].isIntersecting);
+    }).observe(sentinel);
   })();
 
   // Mobile menu
   (function () {
     var btn = document.getElementById('mobile-menu-btn');
     var menu = document.getElementById('mobile-menu');
-    var iconOpen = document.getElementById('menu-icon-open');
-    var iconClose = document.getElementById('menu-icon-close');
     if (!btn || !menu) return;
     var setOpen = function (open) {
       btn.setAttribute('aria-expanded', String(open));
       btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      iconOpen.classList.toggle('hidden', open);
-      iconClose.classList.toggle('hidden', !open);
       if (open) {
         menu.classList.remove('hidden');
         requestAnimationFrame(function () { menu.classList.add('is-open'); });
@@ -596,57 +589,124 @@ document.addEventListener('DOMContentLoaded', function () {
     };
     btn.addEventListener('click', function () { setOpen(btn.getAttribute('aria-expanded') !== 'true'); });
     menu.querySelectorAll('.mobile-nav-link').forEach(function (l) { l.addEventListener('click', function () { setOpen(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') setOpen(false); });
   })();
 
-  // Scroll reveal
+  // Scroll reveal (.reveal fades a block, .stagger cascades its children).
   (function () {
-    var els = document.querySelectorAll('.reveal');
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var els = document.querySelectorAll('.reveal, .stagger');
+    if (!els.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
       els.forEach(function (el) { el.classList.add('in'); });
       return;
     }
-    // threshold 0 + a negative bottom margin instead of a fraction threshold:
-    // a fraction is measured against the element's own height, so a block
-    // taller than the viewport can never reach it and would stay invisible
-    // forever. This fires once any part crosses 12% up from the bottom edge,
-    // which behaves the same for a one-line heading and a full-height card.
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
       });
-    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
     els.forEach(function (el) { io.observe(el); });
-
-    // Safety sweep: since .reveal starts hidden, an observer miss means copy
-    // the visitor can never read. Anything already scrolled past or currently
-    // in view gets revealed outright, on every scroll and resize.
+    // Safety sweep on load: anything already in or above the viewport shows at once.
     var sweep = function () {
       var vh = window.innerHeight;
       els.forEach(function (el) {
         if (el.classList.contains('in')) return;
-        var r = el.getBoundingClientRect();
-        if (r.top < vh * 0.95) { el.classList.add('in'); io.unobserve(el); }
+        if (el.getBoundingClientRect().top < vh * 0.95) { el.classList.add('in'); io.unobserve(el); }
       });
     };
-    var queued = false;
-    var onScroll = function () {
-      if (queued) return;
-      queued = true;
-      requestAnimationFrame(function () { queued = false; sweep(); });
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
     window.addEventListener('load', sweep);
     sweep();
   })();
 
-  // Footer year — never goes stale
+  // Lazy videos: fetch only when near the viewport, then loop muted.
+  // data-desktop-only videos stay as their poster on small screens.
+  (function () {
+    var vids = document.querySelectorAll('video.lazy-video');
+    if (!vids.length) return;
+    var small = window.matchMedia('(max-width: 767px)').matches;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var v = entry.target;
+        io.unobserve(v);
+        if (!v.dataset.src) return;
+        if ((small && v.hasAttribute('data-desktop-only')) || (reduced && !v.controls)) return;
+        v.src = v.dataset.src;
+        v.load();
+        if (v.hasAttribute('autoplay') || !v.controls) v.play().catch(function () {});
+      });
+    }, { threshold: 0.1, rootMargin: '240px 0px' });
+    vids.forEach(function (v) { io.observe(v); });
+  })();
+
+  // Count-up figures.
+  (function () {
+    var els = document.querySelectorAll('[data-countup]');
+    if (!els.length) return;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        io.unobserve(el);
+        var target = parseFloat(el.dataset.countup);
+        var decimals = parseInt(el.dataset.decimals || '0', 10);
+        if (reduced) { el.textContent = target.toFixed(decimals); return; }
+        var start = performance.now();
+        var tick = function (now) {
+          var p = Math.min((now - start) / 1100, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = (target * eased).toFixed(decimals);
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.5 });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+
+  // Chat demo threads: stagger bubbles in, with a typing beat before each reply.
+  document.querySelectorAll('.bubble-thread').forEach(function (thread) {
+    var items = Array.prototype.slice.call(thread.children);
+    if (!items.length) return;
+    var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var container = thread.closest('.reveal') || thread;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        io.unobserve(entry.target);
+        if (noMotion) {
+          items.forEach(function (item) {
+            if (item.classList.contains('typing-indicator')) item.style.display = 'none';
+            else item.classList.add('in');
+          });
+          return;
+        }
+        var delay = 150;
+        items.forEach(function (item) {
+          if (item.classList.contains('typing-indicator')) {
+            setTimeout(function () { item.classList.add('in'); }, delay);
+            delay += 1600;
+            setTimeout(function () { item.classList.remove('in'); item.style.display = 'none'; }, delay);
+            delay += 50;
+          } else {
+            setTimeout(function () { item.classList.add('in'); }, delay);
+            delay += 320;
+          }
+        });
+      });
+    }, { threshold: 0.2 });
+    io.observe(container);
+  });
+
+  // Footer year
   (function () {
     var y = String(new Date().getFullYear());
     document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = y; });
   })();
 
-  // Ad attribution capture, mirroring index.html
+  // Ad attribution capture
   (function () {
     var KEYS = ['gclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
     var params = new URLSearchParams(window.location.search);
@@ -687,10 +747,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function loadCaptcha() {
       captchaLoadedAt = Date.now();
       fetch('/api/captcha-challenge').then(function (r) { return r.json(); }).then(function (d) {
-        if (captchaQuestionEl) captchaQuestionEl.textContent = d.question ? 'What is ' + d.question + '?' : 'skip this — verification unavailable';
+        if (captchaQuestionEl) captchaQuestionEl.textContent = d.question ? 'What is ' + d.question + '?' : 'skip this, verification unavailable';
         if (captchaTokenEl) captchaTokenEl.value = d.token || '';
       }).catch(function () {
-        if (captchaQuestionEl) captchaQuestionEl.textContent = 'skip this — verification unavailable';
+        if (captchaQuestionEl) captchaQuestionEl.textContent = 'skip this, verification unavailable';
       });
     }
     loadCaptcha();
@@ -795,10 +855,10 @@ document.addEventListener('DOMContentLoaded', function () {
     if (document.querySelectorAll('.mockup-trigger').length && !alreadyHandled()) setTimeout(open, 10000);
 
     var ERROR_COPY = {
-      captcha_failed: "That answer didn't match — double-check and try again.",
-      invalid_email: 'That email address looks invalid — please double-check it.',
+      captcha_failed: "That answer didn't match. Check it and try again.",
+      invalid_email: 'That email address looks invalid. Please check it.',
       disposable_email: 'Please use a permanent email address, not a temporary/disposable one.',
-      email_domain_unreachable: "That email's domain doesn't appear to accept mail — please double-check it.",
+      email_domain_unreachable: "That email's domain doesn't appear to accept mail. Please check it.",
     };
 
     form.addEventListener('submit', function (e) {
@@ -820,7 +880,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return res.json().catch(function () { return {}; }).then(function (result) {
           if (!res.ok) {
             btn.disabled = false;
-            status.textContent = ERROR_COPY[result.error] || 'Something went wrong — email us directly at hhuss786512tx@gmail.com.';
+            status.textContent = ERROR_COPY[result.error] || 'Something went wrong. Email us directly at hhuss786512tx@gmail.com.';
             if (result.error === 'captcha_failed') loadCaptcha();
             return;
           }
@@ -829,7 +889,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       }).catch(function () {
         btn.disabled = false;
-        status.textContent = 'Something went wrong — email us directly at hhuss786512tx@gmail.com.';
+        status.textContent = 'Something went wrong. Email us directly at hhuss786512tx@gmail.com.';
       });
     });
   })();

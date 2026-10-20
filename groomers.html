@@ -20,8 +20,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/tailwind.css?v=53760979">
-<link rel="stylesheet" href="assets/site.css?v=76ffbf5b">
+<link rel="stylesheet" href="assets/tailwind.css?v=770224a9">
+<link rel="stylesheet" href="assets/site.css?v=ac40656e">
 <script>document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">
 {
@@ -103,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+<main id="main">
 
 <header class="fixed top-0 inset-x-0 z-50 bg-ink/80 backdrop-blur-md border-b border-white/5">
   <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -242,32 +243,34 @@ document.addEventListener('DOMContentLoaded', function () {
     <span>© 2026 A2H Agency</span>
   </div>
 </footer>
+</main>
 
 
 
 
 <script>
-  // Header shadow on scroll
+  // Header hairline once the page has scrolled past a sentinel at the top.
   (function () {
     var header = document.getElementById('site-header');
     if (!header) return;
-    var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 40); };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
+    var sentinel = document.createElement('div');
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:48px;pointer-events:none;';
+    document.body.prepend(sentinel);
+    if (!('IntersectionObserver' in window)) { header.classList.add('is-scrolled'); return; }
+    new IntersectionObserver(function (entries) {
+      header.classList.toggle('is-scrolled', !entries[0].isIntersecting);
+    }).observe(sentinel);
   })();
 
   // Mobile menu
   (function () {
     var btn = document.getElementById('mobile-menu-btn');
     var menu = document.getElementById('mobile-menu');
-    var iconOpen = document.getElementById('menu-icon-open');
-    var iconClose = document.getElementById('menu-icon-close');
     if (!btn || !menu) return;
     var setOpen = function (open) {
       btn.setAttribute('aria-expanded', String(open));
       btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      iconOpen.classList.toggle('hidden', open);
-      iconClose.classList.toggle('hidden', !open);
       if (open) {
         menu.classList.remove('hidden');
         requestAnimationFrame(function () { menu.classList.add('is-open'); });
@@ -278,57 +281,124 @@ document.addEventListener('DOMContentLoaded', function () {
     };
     btn.addEventListener('click', function () { setOpen(btn.getAttribute('aria-expanded') !== 'true'); });
     menu.querySelectorAll('.mobile-nav-link').forEach(function (l) { l.addEventListener('click', function () { setOpen(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') setOpen(false); });
   })();
 
-  // Scroll reveal
+  // Scroll reveal (.reveal fades a block, .stagger cascades its children).
   (function () {
-    var els = document.querySelectorAll('.reveal');
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var els = document.querySelectorAll('.reveal, .stagger');
+    if (!els.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
       els.forEach(function (el) { el.classList.add('in'); });
       return;
     }
-    // threshold 0 + a negative bottom margin instead of a fraction threshold:
-    // a fraction is measured against the element's own height, so a block
-    // taller than the viewport can never reach it and would stay invisible
-    // forever. This fires once any part crosses 12% up from the bottom edge,
-    // which behaves the same for a one-line heading and a full-height card.
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
       });
-    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
     els.forEach(function (el) { io.observe(el); });
-
-    // Safety sweep: since .reveal starts hidden, an observer miss means copy
-    // the visitor can never read. Anything already scrolled past or currently
-    // in view gets revealed outright, on every scroll and resize.
+    // Safety sweep on load: anything already in or above the viewport shows at once.
     var sweep = function () {
       var vh = window.innerHeight;
       els.forEach(function (el) {
         if (el.classList.contains('in')) return;
-        var r = el.getBoundingClientRect();
-        if (r.top < vh * 0.95) { el.classList.add('in'); io.unobserve(el); }
+        if (el.getBoundingClientRect().top < vh * 0.95) { el.classList.add('in'); io.unobserve(el); }
       });
     };
-    var queued = false;
-    var onScroll = function () {
-      if (queued) return;
-      queued = true;
-      requestAnimationFrame(function () { queued = false; sweep(); });
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
     window.addEventListener('load', sweep);
     sweep();
   })();
 
-  // Footer year — never goes stale
+  // Lazy videos: fetch only when near the viewport, then loop muted.
+  // data-desktop-only videos stay as their poster on small screens.
+  (function () {
+    var vids = document.querySelectorAll('video.lazy-video');
+    if (!vids.length) return;
+    var small = window.matchMedia('(max-width: 767px)').matches;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var v = entry.target;
+        io.unobserve(v);
+        if (!v.dataset.src) return;
+        if ((small && v.hasAttribute('data-desktop-only')) || (reduced && !v.controls)) return;
+        v.src = v.dataset.src;
+        v.load();
+        if (v.hasAttribute('autoplay') || !v.controls) v.play().catch(function () {});
+      });
+    }, { threshold: 0.1, rootMargin: '240px 0px' });
+    vids.forEach(function (v) { io.observe(v); });
+  })();
+
+  // Count-up figures.
+  (function () {
+    var els = document.querySelectorAll('[data-countup]');
+    if (!els.length) return;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        io.unobserve(el);
+        var target = parseFloat(el.dataset.countup);
+        var decimals = parseInt(el.dataset.decimals || '0', 10);
+        if (reduced) { el.textContent = target.toFixed(decimals); return; }
+        var start = performance.now();
+        var tick = function (now) {
+          var p = Math.min((now - start) / 1100, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = (target * eased).toFixed(decimals);
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.5 });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+
+  // Chat demo threads: stagger bubbles in, with a typing beat before each reply.
+  document.querySelectorAll('.bubble-thread').forEach(function (thread) {
+    var items = Array.prototype.slice.call(thread.children);
+    if (!items.length) return;
+    var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var container = thread.closest('.reveal') || thread;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        io.unobserve(entry.target);
+        if (noMotion) {
+          items.forEach(function (item) {
+            if (item.classList.contains('typing-indicator')) item.style.display = 'none';
+            else item.classList.add('in');
+          });
+          return;
+        }
+        var delay = 150;
+        items.forEach(function (item) {
+          if (item.classList.contains('typing-indicator')) {
+            setTimeout(function () { item.classList.add('in'); }, delay);
+            delay += 1600;
+            setTimeout(function () { item.classList.remove('in'); item.style.display = 'none'; }, delay);
+            delay += 50;
+          } else {
+            setTimeout(function () { item.classList.add('in'); }, delay);
+            delay += 320;
+          }
+        });
+      });
+    }, { threshold: 0.2 });
+    io.observe(container);
+  });
+
+  // Footer year
   (function () {
     var y = String(new Date().getFullYear());
     document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = y; });
   })();
 
-  // Ad attribution capture, mirroring index.html
+  // Ad attribution capture
   (function () {
     var KEYS = ['gclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
     var params = new URLSearchParams(window.location.search);

@@ -1,194 +1,182 @@
 // Reusable page sections. Anything that appears on more than one generated
-// page lives here so the copy and the numbers only exist once — the pricing
-// figures in particular were previously repeated by hand across index.html
-// and construction.html and had already drifted apart.
+// page lives here so the copy and the numbers only exist once.
 
 const { EMAIL } = require('./partials');
 
+const ARROW = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>`;
+const EXT = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg>`;
+
 // ------------------------------------------------------------- portfolio ---
 
+// Every entry is a live client site. Order is the order they appear on the
+// Work page. Azul Bio is kept here (and in the sitemap of links) but not
+// surfaced on the homepage.
 const PROJECTS = [
+  {
+    name: 'H&amp;A Healthcare Consulting',
+    href: 'https://hahealthconsulting.com',
+    display: 'hahealthconsulting.com',
+    img: 'hahealth',
+    category: 'Healthcare consulting',
+    blurb: 'Website, AI chat, spam filter and CRM. Every chat and form lands in one dashboard the practice checks each morning.',
+    metric: '',
+    video: { src: 'assets/video/ha-chatbot-crm-demo.mp4', poster: 'assets/video/ha-chatbot-crm-demo-poster.jpg', label: 'Walkthrough of the H&amp;A chatbot capturing a lead into the CRM (test conversation)' },
+  },
   {
     name: 'Solid State Construction',
     href: 'https://solidstatesconstruction.com',
     display: 'solidstatesconstruction.com',
     img: 'ssc',
     category: 'Construction',
-    status: 'live',
-    blurb: 'Full site rebuild for a growing construction crew — fast, mobile-first, built to convert.',
-    metric: '270+ clicks in 14 days · $0.74 cost per click on a $200 test budget',
+    blurb: 'Full site rebuild for a growing construction crew. Fast, mobile-first, built around the quote request.',
+    metric: '270+ clicks in 14 days at $0.74 per click, on a $200 Google Ads test',
   },
   {
     name: 'CareMedBill',
-    href: 'https://hhuss786512tx-tech.github.io/Caremedbill/',
-    display: 'hhuss786512tx-tech.github.io/Caremedbill',
+    href: 'https://caremedbill.com',
+    display: 'caremedbill.com',
     img: 'caremedbill',
-    category: 'Medical Billing',
-    status: 'demo',
-    blurb: 'Trust-first site for a medical billing platform — built to convert practice-owner visitors into calls.',
+    category: 'Medical billing',
+    blurb: 'Trust-first site for a medical billing company, built to turn practice owners into calls.',
+    metric: '',
+  },
+  {
+    name: 'Azul Bio',
+    href: 'https://azulbioresearch.com',
+    display: 'azulbioresearch.com',
+    img: 'azulbio',
+    category: 'Biotech research',
+    blurb: 'Research company site with a clear service catalogue and contact path.',
     metric: '',
   },
 ];
 
-function badge(status) {
-  return status === 'live'
-    ? `        <span class="absolute top-3 right-3 z-10 flex items-center gap-1.5 rounded-full bg-ink/90 border border-white/10 pl-2 pr-2.5 py-1">
-          <span class="relative flex h-1.5 w-1.5"><span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-live"></span><span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-live"></span></span>
-          <span class="text-[10px] font-semibold tracking-wide text-sand/80">LIVE</span>
-        </span>`
-    : `        <span class="absolute top-3 right-3 z-10 flex items-center gap-1.5 rounded-full bg-ink/90 border border-white/10 pl-2 pr-2.5 py-1">
-          <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-fog/70"></span>
-          <span class="text-[10px] font-semibold tracking-wide text-sand/80">DEMO BUILD</span>
-        </span>`;
-}
-
-function projectCard(p) {
-  const alt = p.status === 'live' ? `${p.name} live website` : `${p.name} demo build`;
-  return `      <a href="${p.href}" target="_blank" rel="noopener" class="group relative rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover overflow-hidden flex flex-col">
-${badge(p.status)}
-        <div class="flex items-center gap-1.5 px-4 py-3 bg-surface border-b border-white/5">
-          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
-          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
-          <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
-          <span class="ml-2 text-xs text-fog/70 truncate">${p.display}</span>
+function projectCard(p, { wide = false } = {}) {
+  const media = p.video && wide
+    ? `<video class="lazy-video w-full h-full object-cover" data-src="${p.video.src}" poster="${p.video.poster}" muted loop playsinline preload="none" width="720" height="720" aria-label="${p.video.label}"></video>`
+    : `<img loading="lazy" decoding="async" width="1440" height="900" src="assets/portfolio/${p.img}.webp" alt="${p.name.replace('&amp;', '&')} website homepage" class="w-full h-full object-cover object-top">`;
+  return `      <a href="${p.href}" target="_blank" rel="noopener" class="group panel card-hover media-zoom overflow-hidden flex flex-col ${wide ? 'md:col-span-2 md:flex-row' : ''}">
+        <div class="${wide ? 'md:w-1/2 aspect-[16/10] md:aspect-[5/4]' : 'aspect-[16/10]'} overflow-hidden bg-ink border-b hairline ${wide ? 'md:border-b-0 md:border-r' : ''}">${media}</div>
+        <div class="p-6 ${wide ? 'md:w-1/2 md:p-8 flex flex-col justify-center' : 'flex flex-col flex-1'}">
+          <p class="text-xs text-fog mb-2">${p.category}</p>
+          <h3 class="display-md text-sand mb-2">${p.name}</h3>
+          <p class="text-[15px] text-fog leading-[1.65] ${wide ? 'max-w-md' : 'flex-1'}">${p.blurb}</p>
+${p.metric ? `          <p class="text-sm text-sand mt-4 pt-4 border-t hairline tnum">${p.metric}</p>\n` : ''}          <span class="link-arrow text-sm mt-5">${p.display}${EXT}</span>
         </div>
-        <div class="h-36 overflow-hidden">
-          <img loading="lazy" decoding="async" width="1440" height="1024" src="assets/portfolio/${p.img}.webp" alt="${alt}" class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105">
-        </div>
-        <div class="p-5 flex flex-col flex-1">
-          <p class="text-xs uppercase tracking-wider text-copper-light font-semibold mb-2">${p.category}</p>
-          <h3 class="font-display text-lg text-sand mb-2">${p.name}</h3>
-          <p class="text-sm text-fog leading-[1.6] flex-1">${p.blurb}</p>
-${p.metric ? `          <p class="text-xs text-copper-light font-semibold mt-3 pt-3 border-t border-white/10">${p.metric}</p>\n` : ''}        </div>
       </a>`;
 }
 
-function portfolioGrid({ heading = 'Real businesses, real launches.', sub = '', only = null } = {}) {
+function portfolioGrid({ heading = 'Live sites we have built.', sub = '', only = null, featureFirst = true } = {}) {
   const list = only ? PROJECTS.filter((p) => only.includes(p.img)) : PROJECTS;
-  const gridClass = list.length === 1 ? 'grid max-w-sm mx-auto' : 'grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto';
-  return `<section id="work" class="py-20 px-6">
+  const wideFirst = featureFirst && list.length > 1 && list.length % 2 === 1;
+  const cards = list.map((p, i) => projectCard(p, { wide: wideFirst && i === 0 })).join('\n');
+  return `<section id="work" class="py-24 px-5 sm:px-6">
   <div class="max-w-6xl mx-auto">
-    <div class="reveal mb-10 text-center">
-      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Selected Work</p>
-      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand">${heading}</h2>
-${sub ? `      <p class="text-fog leading-[1.7] max-w-2xl mx-auto mt-4">${sub}</p>\n` : ''}    </div>
-    <div class="reveal ${gridClass}">
-${list.map(projectCard).join('\n')}
+    <div class="reveal max-w-2xl mb-12">
+      <h2 class="display-lg text-sand">${heading}</h2>
+${sub ? `      <p class="lede mt-4">${sub}</p>\n` : ''}    </div>
+    <div class="stagger grid md:grid-cols-2 gap-5">
+${cards}
     </div>
-    <p class="reveal text-center text-xs text-fog/70 mt-6">Cards marked <span class="text-sand">DEMO BUILD</span> are complete builds hosted on our own GitHub Pages account rather than a client domain.</p>
   </div>
 </section>`;
 }
 
 // --------------------------------------------------------------- pricing ---
 
-const TIERS = [
-  {
-    name: 'Website + AI Chat + CRM',
-    badge: 'Main Offer',
-    price: '$800&ndash;$2,000',
-    priceSuffix: ' one time',
-    note: 'Free sample site first &nbsp;·&nbsp; price depends on pages and features &nbsp;·&nbsp; hosting and upkeep quoted on the call',
-    featured: true,
-    cta: 'Get A Free Sample Site',
-    href: 'book-a-call.html',
-    features: [
-      'A free sample site for your company before you pay',
-      'Fast, hand-coded, mobile-first website',
-      'AI chat trained on your business, answers at any hour',
-      'Every chat and form saved to your own CRM lead list',
-      'Spam form fills filtered out',
-      'Launched on your domain, with a walkthrough',
-    ],
-    addons: [],
-  },
-  {
-    name: 'Add-Ons',
-    badge: 'Optional',
-    price: 'Quoted',
-    priceSuffix: ' on the call',
-    note: 'Add any of these to a website build',
-    featured: false,
-    cta: 'Ask About Add-Ons',
-    href: 'book-a-call.html',
-    features: [
-      'AI phone receptionist: answers calls when you cannot, logs them to the same CRM',
-      'Hosting and monthly upkeep',
-      'Extra CRM logins for your team',
-      'Google Business Profile setup',
-    ],
-    addons: ['+ 3D Company Card for <span class="text-copper-light font-semibold">$99 flat</span>'],
-  },
+const OFFER = {
+  name: 'Website + AI chat + CRM',
+  price: '$800 to $2,000',
+  priceSuffix: 'one time',
+  note: 'Price depends on pages and features. Hosting and upkeep are quoted on the call.',
+  features: [
+    'A free sample site for your company before you pay',
+    'Fast, hand-coded, mobile-first website',
+    'AI chat trained on your business, answers at any hour',
+    'Every chat and form saved to your own CRM lead list',
+    'Spam form fills filtered out',
+    'Launched on your domain, with a walkthrough',
+  ],
+};
+
+const ADDONS = [
+  ['AI phone receptionist', 'Answers calls when you cannot and logs them to the same CRM.'],
+  ['Hosting and monthly upkeep', 'We keep the site online, fast and updated.'],
+  ['Extra CRM logins', 'Seats for the people on your team who call leads back.'],
+  ['Google Business Profile setup', 'Claimed, categorised and wired to the site.'],
+  ['3D company card', 'An interactive card built from your real card artwork. $99 flat.'],
 ];
 
-const LEAF = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-copper-light shrink-0"><path d="M12 2C10 6 6 8 4 8C4 16 8 20 12 22C16 20 20 16 20 8C18 8 14 6 12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>`;
+const CHECK = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-copper-light shrink-0 mt-[3px]" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"/></svg>`;
 
-function tierCard(t) {
-  const shell = t.featured
-    ? 'pricing-ring pricing-ring-feature rounded-2xl bg-elevated border border-copper/40 shadow-floating card-hover p-8 flex flex-col relative'
-    : 'pricing-ring rounded-2xl bg-elevated border border-white/5 shadow-elevated card-hover p-8 flex flex-col';
-  const btn = t.featured
-    ? 'btn-primary block w-full shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-6 py-3 rounded-full text-sm text-center mt-6'
-    : 'btn-primary block w-full text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-6 py-3 rounded-full text-sm text-center mt-6';
-  const priceBlock = `        <p class="font-display text-3xl text-copper-light mb-1">${t.price}<span class="price-period text-base text-fog font-sans">${t.priceSuffix || ''}</span></p>
-        <p class="text-xs text-fog mb-4">${t.note}</p>`;
-  return `      <div class="${shell}">
-${t.badge ? `        <span class="absolute -top-3 left-8 bg-copper text-ink text-xs font-bold px-3 py-1 rounded-full">${t.badge}</span>\n` : ''}        <h3 class="text-sand font-semibold text-lg mb-1">${t.name}</h3>
-${priceBlock}
-        <ul class="text-sm text-fog leading-[1.9] flex-1 space-y-1">
-${t.features.map((f) => `          <li>${f}</li>`).join('\n')}
-        </ul>
-${t.addons.length ? `        <div class="mt-5 pt-4 border-t border-white/10 space-y-2">
-${t.addons.map((a) => `          <div class="flex items-center gap-2">${LEAF}<p class="text-xs text-fog">${a}</p></div>`).join('\n')}
-        </div>\n` : ''}        <a href="${t.href}" class="${btn}">${t.cta}</a>
-      </div>`;
-}
-
-function pricingTable({ heading = 'One-time price, free sample first.' } = {}) {
-  return `<section id="pricing" class="py-24 px-6">
-  <div class="max-w-5xl mx-auto">
-    <div class="reveal mb-6 text-center">
-      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">Pricing</p>
-      <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">${heading}</h2>
-      <p class="text-fog text-sm">See it before you pay &nbsp;·&nbsp; one-time build price &nbsp;·&nbsp; scope fixed in writing</p>
+function pricingTable({ heading = 'One price, paid once. Free sample first.', eyebrow = 'Pricing' } = {}) {
+  return `<section id="pricing" class="py-24 px-5 sm:px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal max-w-2xl mb-12">
+      <p class="eyebrow mb-4">${eyebrow}</p>
+      <h2 class="display-lg text-sand">${heading}</h2>
     </div>
-    <div class="reveal grid sm:grid-cols-2 gap-6 items-stretch mt-8 max-w-3xl mx-auto">
-${TIERS.map(tierCard).join('\n')}
+    <div class="reveal panel-elevated overflow-hidden">
+      <div class="grid lg:grid-cols-12">
+        <div class="lg:col-span-5 p-7 sm:p-10 border-b lg:border-b-0 lg:border-r hairline flex flex-col">
+          <p class="text-sm font-semibold text-sand mb-5">${OFFER.name}</p>
+          <p class="figure text-sand" style="font-size:clamp(2.4rem,4.2vw,3.4rem)">${OFFER.price}</p>
+          <p class="text-fog mt-2">${OFFER.priceSuffix}</p>
+          <p class="text-sm text-fog leading-[1.6] mt-5 max-w-xs">${OFFER.note}</p>
+          <div class="pt-8">
+            <a href="book-a-call.html" class="btn btn-solid w-full sm:w-auto">Get a free sample site <span class="btn-ico">${ARROW}</span></a>
+          </div>
+        </div>
+        <div class="lg:col-span-7 p-7 sm:p-10">
+          <p class="text-sm font-semibold text-sand mb-5">Every build includes</p>
+          <ul class="grid sm:grid-cols-2 gap-x-8 gap-y-3.5 text-[15px] text-fog leading-[1.55]">
+${OFFER.features.map((f) => `            <li class="flex gap-3">${CHECK}<span>${f}</span></li>`).join('\n')}
+          </ul>
+          <p class="text-sm font-semibold text-sand mt-10 mb-4">Add-ons, quoted on the call</p>
+          <ul class="divide-y divide-white/[0.06] border-y border-white/[0.06]">
+${ADDONS.map(([h, p]) => `            <li class="py-3 grid sm:grid-cols-[13rem_1fr] gap-x-6 gap-y-1 text-[15px]"><span class="text-sand">${h}</span><span class="text-fog">${p}</span></li>`).join('\n')}
+          </ul>
+        </div>
+      </div>
     </div>
-    <p class="reveal text-center text-sm text-fog mt-8">Every build starts with a free sample site and a 15-minute walkthrough call.</p>
+    <p class="reveal text-sm text-fog mt-6 max-w-xl">Every build starts with a free sample site and a 15-minute walkthrough call. Scope is fixed in writing before any money changes hands.</p>
   </div>
 </section>`;
 }
 
 // ------------------------------------------------------------------ misc ---
 
-function ctaBand({ heading = 'Want to see <span class="italic">your sample site?</span>', sub = 'We build it free, show it to you in 15 minutes, and you decide.' } = {}) {
-  return `<section class="px-6 py-20">
-  <div class="max-w-3xl mx-auto text-center reveal">
-    <h2 class="font-display text-3xl sm:text-4xl tracking-[-0.02em] text-sand mb-4">${heading}</h2>
-    <p class="text-fog leading-[1.7] mb-8">${sub}</p>
-    <span class="cta-ring rounded-full p-[2px] inline-block">
-      <a href="book-a-call.html" class="btn-primary shadow-btn bg-copper hover:bg-copper-light text-ink font-semibold px-8 py-4 rounded-full text-[15px] block">
-        Get A Free Sample Site
-      </a>
-    </span>
+function ctaBand({ heading = 'Want to see your sample site?', sub = 'We build it free, show it to you in 15 minutes, and you decide.' } = {}) {
+  return `<section class="px-5 sm:px-6 py-10">
+  <div class="reveal band max-w-6xl mx-auto rounded-2xl px-7 py-14 sm:px-14 sm:py-20">
+    <div class="relative z-[1] grid md:grid-cols-12 gap-8 items-end">
+      <div class="md:col-span-8">
+        <h2 class="display-lg text-ink">${heading}</h2>
+        <p class="text-ink/80 text-lg leading-[1.6] mt-4 max-w-lg">${sub}</p>
+      </div>
+      <div class="md:col-span-4 md:text-right">
+        <a href="book-a-call.html" class="btn btn-ink">Get a free sample site <span class="btn-ico !bg-white/10">${ARROW}</span></a>
+      </div>
+    </div>
   </div>
 </section>`;
 }
 
 function legalShell({ title, updated, sections }) {
-  return `<section class="pt-32 pb-20 px-6">
-  <div class="max-w-3xl mx-auto">
-    <h1 class="font-display text-4xl sm:text-5xl tracking-[-0.03em] text-sand mb-3">${title}</h1>
-    <p class="text-sm text-fog mb-12">Last updated ${updated}</p>
-    <div class="prose-a2h space-y-10">
+  return `<section class="pt-32 pb-20 px-5 sm:px-6">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-10">
+    <div class="lg:col-span-4">
+      <h1 class="display-lg text-sand mb-3">${title}</h1>
+      <p class="text-sm text-fog">Last updated ${updated}</p>
+    </div>
+    <div class="lg:col-span-7 lg:col-start-6 prose-a2h space-y-10">
 ${sections.map((s) => `      <div>
-        <h2 class="font-display text-xl text-sand mb-3">${s.h}</h2>
-        ${s.p.map((x) => `<p class="text-fog text-sm leading-[1.8] mb-3">${x}</p>`).join('\n        ')}
+        <h2 class="display-md text-sand mb-3">${s.h}</h2>
+        ${s.p.map((x) => `<p class="text-fog text-[15px] leading-[1.75] mb-3">${x}</p>`).join('\n        ')}
       </div>`).join('\n')}
     </div>
   </div>
 </section>`;
 }
 
-module.exports = { PROJECTS, TIERS, portfolioGrid, projectCard, pricingTable, ctaBand, legalShell };
+module.exports = { PROJECTS, OFFER, ADDONS, ARROW, EXT, CHECK, portfolioGrid, projectCard, pricingTable, ctaBand, legalShell };
