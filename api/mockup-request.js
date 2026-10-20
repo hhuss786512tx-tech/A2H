@@ -89,6 +89,9 @@ module.exports = async function handler(req, res) {
   const business = String(body.business || '').trim().slice(0, 200);
   const email = String(body.email || '').trim().slice(0, 200);
   const phone = String(body.phone || '').trim().slice(0, 60);
+  // Optional, unchecked-by-default SMS box in the popup (build/partials.js).
+  const smsConsent = body.sms_consent === 'yes' && !!normalizePhone(phone);
+  const smsConsentAt = smsConsent ? new Date().toISOString() : null;
   const landingPage = String(body.landing_page || '').trim().slice(0, 200);
 
   // The "what kind of website" brief, gathered in step 1 of the popup.
@@ -167,6 +170,7 @@ module.exports = async function handler(req, res) {
     <p><strong>Business:</strong> ${escapeHtml(business)}</p>
     <p><strong>Email:</strong> ${escapeHtml(email)}</p>
     <p><strong>Phone:</strong> ${escapeHtml(phone) || '—'}</p>
+    ${smsConsent ? `<p><strong>SMS consent:</strong> YES, ticked the optional checkbox at ${smsConsentAt} ("Yes, A2H can text me about my request..."). OK to text from the A2H number.</p>` : `<p><strong>SMS consent:</strong> No. Do not text this number (calling is fine).</p>`}
     <p><strong>Niche/Industry:</strong> ${escapeHtml(nicheLine)}</p>
     <p><strong>Pages wanted:</strong> ${escapeHtml(PAGE_COUNT_LABELS[pageCount])}</p>
     <p><strong>Color scheme:</strong> ${escapeHtml(colorScheme) || '—'}</p>
@@ -217,12 +221,15 @@ module.exports = async function handler(req, res) {
 
     // Best-effort CRM row — a missing/misconfigured Supabase project must
     // never block the response, the emails above already went out.
+    // phone_normalized is what api/cron/process-nurture.js texts. It is only
+    // set when the lead ticked the optional SMS box, so a number given
+    // without consent is kept for calling but never auto-texted.
     const phoneNormalized = normalizePhone(phone);
     const { fit_score, fit_tier, fit_flags } = computeFitScore({
       business, email, phoneNormalized, url: null, signals: null,
     });
     insertInboundLead({
-      name, business, email, phone, phone_normalized: phoneNormalized,
+      name, business, email, phone, phone_normalized: smsConsent ? phoneNormalized : null,
       niche: nicheLine, page_count: pageCount, color_scheme: colorScheme,
       reference_sites: referenceSites, notes, source,
       fit_score, fit_tier, fit_flags,

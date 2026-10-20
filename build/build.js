@@ -554,7 +554,7 @@ PAGES.push({
   jsonLd: [ORG],
   body: B.legalShell({
     title: 'Privacy Policy',
-    updated: 'August 19, 2026',
+    updated: 'October 19, 2026',
     sections: [
       { h: 'Who we are', p: [`A2H Agency ("A2H", "we", "us") builds websites for businesses in Texas. This policy explains what we collect through a2h.info and what we do with it. You can reach us any time at <a href="mailto:${EMAIL}" class="link-underline text-copper-light">${EMAIL}</a>.`] },
       { h: 'What we collect', p: [
@@ -563,8 +563,9 @@ PAGES.push({
         'We use Google Analytics 4, which sets cookies and records standard analytics data such as pages viewed, approximate location derived from IP address, referring site and device type. We also use the Meta Pixel, which lets Meta record that you visited this site, watched our video or booked a call, so we can measure our Facebook and Instagram ads and show our ads to people who have visited. If you arrive from an advertisement we also record the campaign parameters in the link (for example utm_source or gclid) so we can tell which campaigns work.',
       ] },
       { h: 'SMS messaging', p: [
-        'If you provide your phone number on the free mockup form, you agree to receive SMS messages from A2H about your mockup request and project — this includes automated follow-up reminders and, if you reply, a live conversation (in part AI-assisted) to help scope your project and schedule a call. Message frequency varies; message and data rates may apply.',
-        'Reply STOP at any time to opt out, or HELP for help. We do not sell or share your phone number with third parties for their own marketing purposes.',
+        'We only text you if you agree to it: by ticking the optional, unchecked SMS box on one of our forms, by saying yes when we ask on a phone call, or by texting a keyword such as SITE or DEMO to our number. Giving us your phone number on its own is not consent to texts, and agreeing to texts is never required to use our forms or our services.',
+        'Texts cover your request: a link to book a time, follow-ups about your free demo or mockup (usually up to 5 per request), appointment reminders and replies to your messages, some of which may be AI-assisted. Message frequency varies; message and data rates may apply. Reply STOP at any time to opt out, or HELP for help. Full details are in our <a href="sms-terms.html" class="link-underline text-copper-light">SMS Terms</a>.',
+        'Mobile information, including your phone number and SMS consent, will not be shared with or sold to third parties or affiliates for marketing or promotional purposes. Text messaging originator opt-in data and consent are never shared with any third party, except the SMS provider (Twilio) that delivers our messages on our behalf.',
       ] },
       { h: 'How we use it', p: [
         'Form submissions are used to build and send your free website mockup and to follow up about your enquiry, including by SMS as described above. Analytics data is used in aggregate to understand how the site performs.',
@@ -609,6 +610,32 @@ PAGES.push({
       { h: 'Liability', p: ['To the extent permitted by law, A2H\'s total liability arising from a project is limited to the amount you paid us for that project. We are not liable for indirect or consequential losses, including lost profits or lost business.'] },
       { h: 'Governing law', p: ['These terms are governed by the laws of the State of Texas.'] },
       { h: 'Contact', p: [`Questions about these terms: <a href="mailto:${EMAIL}" class="link-underline text-copper-light">${EMAIL}</a>.`] },
+    ],
+  }),
+});
+
+// ---- sms-terms.html
+PAGES.push({
+  slug: 'sms-terms.html',
+  noPopup: true,
+  title: 'SMS Terms | A2H Agency',
+  description: 'How A2H text messaging works: how you opt in, what we send, how often, and how to stop.',
+  jsonLd: [ORG],
+  body: B.legalShell({
+    title: 'SMS Terms',
+    updated: 'October 19, 2026',
+    sections: [
+      { h: 'The program', p: ['A2H Agency ("A2H") sends text messages to business owners who ask to hear from us about a free demo website, a website mockup or a call with us. The program name is A2H Texts.'] },
+      { h: 'How you opt in', p: [
+        'You only get texts from us if you agree to them in one of these ways: ticking the optional, unchecked SMS box on a form on a2h.info; saying yes when we ask on a phone call whether we can text you the link and a few follow-ups; or texting a keyword such as SITE or DEMO to our number.',
+        'Agreeing to texts is never a condition of using our forms or buying anything from us. Giving us your phone number on its own is not consent to texts.',
+      ] },
+      { h: 'What we send and how often', p: ['Texts are about your request: a link to book a time, up to 5 follow-ups over about 10 days, appointment reminders, and replies to anything you text us. Some replies may be AI-assisted. Message frequency varies. We text between 9am and 8pm Central, Monday to Saturday.'] },
+      { h: 'Cost', p: ['Message and data rates may apply, depending on your mobile plan. A2H does not charge for texts.'] },
+      { h: 'How to stop', p: ['Reply STOP (or STOPALL, UNSUBSCRIBE, CANCEL, END or QUIT) to any message and you will get one confirmation text, then nothing more. A plain-English request such as "please stop texting me" works too. To start again, reply START.'] },
+      { h: 'Help', p: [`Reply HELP to any message, or email <a href="mailto:${EMAIL}" class="link-underline text-copper-light">${EMAIL}</a>.`] },
+      { h: 'Carriers', p: ['Supported on major US carriers. Carriers are not liable for delayed or undelivered messages.'] },
+      { h: 'Privacy', p: ['Mobile information, including your phone number and SMS consent, will not be shared with or sold to third parties or affiliates for marketing or promotional purposes. See our <a href="privacy.html" class="link-underline text-copper-light">Privacy Policy</a> for everything else.'] },
     ],
   }),
 });

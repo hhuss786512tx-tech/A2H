@@ -41,6 +41,9 @@ h1{font:600 clamp(26px,5.5vw,36px)/1.15 var(--display);letter-spacing:-.02em;mar
 .opt.multi .dot{border-radius:5px}
 .opt[aria-pressed="true"] .dot{border-color:var(--copper);background:var(--copper);box-shadow:inset 0 0 0 3px var(--raised)}
 label.f{display:block;font-size:14px;color:var(--muted);margin:0 0 6px}
+label.sms{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;line-height:1.5;color:var(--muted);margin:-2px 0 16px;cursor:pointer}
+label.sms input{width:16px;height:16px;margin:2px 0 0;padding:0;flex-shrink:0;accent-color:var(--copper-deep);cursor:pointer}
+label.sms a{color:var(--copper)}
 input[type=text],input[type=email],input[type=tel],input[type=url],textarea{width:100%;background:var(--raised);color:var(--sand);border:1px solid var(--line);border-radius:10px;padding:13px 14px;font:16px var(--body);margin:0 0 16px}
 textarea{min-height:84px;resize:vertical}
 .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
@@ -165,6 +168,7 @@ window.addEventListener('message', function (e) {
       <input type="email" id="email" maxlength="200" autocomplete="email">
       <label class="f" for="phone">Phone (optional)</label>
       <input type="tel" id="phone" maxlength="60" autocomplete="tel">
+      <label class="sms"><input type="checkbox" id="smsConsent" value="yes"><span>Yes, A2H can text me about my request. Msg frequency varies (up to 5 per request). Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Optional, not needed to submit. <a href="sms-terms.html" target="_blank">SMS Terms</a> &amp; <a href="privacy.html" target="_blank">Privacy</a>.</span></label>
       <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" id="hpField" tabindex="-1" autocomplete="off"></label></div>
       <div class="cap"><label class="f" for="capAnswer" id="capQ" style="margin:0">Loading a quick check…</label><input type="text" inputmode="numeric" id="capAnswer" autocomplete="off"></div>
       <p class="msg" role="alert"></p>
@@ -257,6 +261,7 @@ window.addEventListener('message', function (e) {
     var payload = {
       name: name, business: business, email: email,
       phone: document.getElementById('phone').value.trim(),
+      sms_consent: document.getElementById('smsConsent').checked ? 'yes' : '',
       niche: niche, why: answers.why, why_note: document.getElementById('whyNote').value.trim(),
       budget: answers.budget, timeline: answers.timeline,
       site_url: document.getElementById('siteUrl').value.trim(),

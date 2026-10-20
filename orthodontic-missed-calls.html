@@ -456,6 +456,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <div class="flex items-center gap-5">
         <a href="privacy.html" class="link-underline hover:text-sand transition-colors">Privacy Policy</a>
         <a href="terms.html" class="link-underline hover:text-sand transition-colors">Terms of Service</a>
+        <a href="sms-terms.html" class="link-underline hover:text-sand transition-colors">SMS Terms</a>
       </div>
     </div>
   </div>
@@ -551,7 +552,10 @@ document.addEventListener('DOMContentLoaded', function () {
               <input id="lp-phone" name="phone" type="tel" autocomplete="tel" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="(555) 555-0123">
             </div>
           </div>
-          <p class="text-[11px] text-fog/70 leading-[1.5] -mt-2">By providing your number, you agree to receive SMS messages from A2H about your mockup request and project. Msg &amp; data rates may apply, msg frequency varies. Reply STOP to opt out, HELP for help.</p>
+          <label class="flex items-start gap-2.5 -mt-1 cursor-pointer text-[11px] text-fog/80 leading-[1.5]">
+            <input type="checkbox" name="sms_consent" value="yes" class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer" style="accent-color:#c9702f">
+            <span>Yes, A2H can text me about my request. Msg frequency varies (up to 5 per request). Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Optional, not needed to submit. <a href="sms-terms.html" target="_blank" class="link-underline text-copper-light">SMS Terms</a> &amp; <a href="privacy.html" target="_blank" class="link-underline text-copper-light">Privacy</a>.</span>
+          </label>
           <div>
             <label class="block text-xs uppercase tracking-wider text-fog mb-1.5" for="lp-captcha-answer">Quick check: <span id="lp-captcha-question">loading…</span></label>
             <input required id="lp-captcha-answer" name="captcha_answer" type="text" inputmode="numeric" autocomplete="off" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-sand placeholder:text-fog/50 focus:border-copper-light/60 transition-colors" placeholder="Your answer">

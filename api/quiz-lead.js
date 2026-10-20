@@ -47,6 +47,10 @@ module.exports = async function handler(req, res) {
   const business = clip(body.business, 200);
   const email = clip(body.email, 200);
   const phone = clip(body.phone, 60);
+  // Optional, unchecked-by-default SMS box on get-started.html. Only a ticked
+  // box plus a phone number counts; it's recorded in the email to Abbas.
+  const smsConsent = body.sms_consent === 'yes' && phone.replace(/\D/g, '').length >= 10;
+  const smsConsentAt = smsConsent ? new Date().toISOString() : null;
   const niche = clip(body.niche, 150);
   const why = (Array.isArray(body.why) ? body.why : []).slice(0, 8).map((w) => clip(w, 120)).filter(Boolean);
   const whyNote = clip(body.why_note, 1000);
@@ -103,6 +107,7 @@ module.exports = async function handler(req, res) {
     <p><strong>Business:</strong> ${escapeHtml(business)}</p>
     <p><strong>Email:</strong> ${escapeHtml(email)}</p>
     <p><strong>Phone:</strong> ${escapeHtml(phone) || '—'}</p>
+    ${smsConsent ? `<p><strong>SMS consent:</strong> YES, ticked the optional checkbox at ${smsConsentAt} ("Yes, A2H can text me about my request..."). OK to text from the A2H number.</p>` : `<p><strong>SMS consent:</strong> No. Do not text this number (calling is fine).</p>`}
     <hr>
     <p><strong>Industry:</strong> ${escapeHtml(niche) || '—'}</p>
     <p><strong>Why a new site:</strong> ${why.length ? why.map(escapeHtml).join('; ') : '—'}</p>

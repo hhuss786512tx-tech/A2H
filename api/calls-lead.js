@@ -87,6 +87,9 @@ module.exports = async function handler(req, res) {
   const business = String(body.business || '').trim().slice(0, 200);
   const email = String(body.email || '').trim().slice(0, 200);
   const phone = String(body.phone || '').trim().slice(0, 60);
+  // Optional, unchecked-by-default SMS box in the popup (build/partials.js).
+  const smsConsent = body.sms_consent === 'yes' && !!normalizePhone(phone);
+  const smsConsentAt = smsConsent ? new Date().toISOString() : null;
   const landingPage = String(body.landing_page || '').trim().slice(0, 200);
 
   const callsRaw = String(body.calls_missed || '').trim();
@@ -165,6 +168,7 @@ module.exports = async function handler(req, res) {
     <p><strong>Business:</strong> ${escapeHtml(business)}</p>
     <p><strong>Email:</strong> ${escapeHtml(email)}</p>
     <p><strong>Phone:</strong> ${escapeHtml(phone) || '—'}</p>
+    ${smsConsent ? `<p><strong>SMS consent:</strong> YES, ticked the optional checkbox at ${smsConsentAt} ("Yes, A2H can text me about my request..."). OK to text from the A2H number.</p>` : `<p><strong>SMS consent:</strong> No. Do not text this number (calling is fine).</p>`}
     <p><strong>Calls missed/month:</strong> ${escapeHtml(callsLine)}</p>
     <p><strong>Average job value:</strong> ${escapeHtml(valueLine)}</p>
     ${estimateLine}
@@ -213,6 +217,9 @@ module.exports = async function handler(req, res) {
 
     // Best-effort CRM row — a missing/misconfigured Supabase project must
     // never block the response, the emails above already went out.
+    // phone_normalized is what api/cron/process-nurture.js texts. It is only
+    // set when the lead ticked the optional SMS box, so a number given
+    // without consent is kept for calling but never auto-texted.
     const phoneNormalized = normalizePhone(phone);
     const { fit_score, fit_tier, fit_flags } = computeFitScore({
       business, email, phoneNormalized, url: null, signals: null,
@@ -220,7 +227,7 @@ module.exports = async function handler(req, res) {
     const notes = `Missed calls: ${callsLine}. Avg job value: ${valueLine}.` +
       (monthlyEstimate !== null ? ` Estimated loss: $${monthlyEstimate.toLocaleString()}/mo (~$${annualEstimate.toLocaleString()}/yr).` : '');
     insertInboundLead({
-      name, business, email, phone, phone_normalized: phoneNormalized,
+      name, business, email, phone, phone_normalized: smsConsent ? phoneNormalized : null,
       niche: 'AI Receptionist + CRM (missed-call calculator)', page_count: 'unsure', color_scheme: '',
       reference_sites: '', notes, source,
       fit_score, fit_tier, fit_flags,
