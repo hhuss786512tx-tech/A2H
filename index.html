@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- Tailwind is compiled ahead of time (npm run build). -->
 <link rel="preload" as="image" href="assets/portfolio/ssc.webp">
-<link rel="stylesheet" href="assets/tailwind.css?v=770224a9">
+<link rel="stylesheet" href="assets/tailwind.css?v=793edb51">
 <link rel="stylesheet" href="assets/site.css?v=ac40656e">
 <!-- Gates the .reveal opacity:0 rule in site.css. If this never runs, the
      hiding rule never applies and all copy stays visible rather than being
@@ -318,17 +318,24 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     <div class="reveal frame drift-slow">
       <div class="frame-bar"><span></span><span></span><span></span><em>crm.a2h.info, sample workspace</em></div>
-      <video class="lazy-video" data-src="assets/crm/crm-walkthrough.mp4" poster="assets/crm/crm-dashboard.webp" muted loop playsinline preload="none" width="1440" height="900" aria-label="Walkthrough of the A2H CRM: dashboard, contacts, pipeline, and contact detail"></video>
+      <img src="assets/crm/crm-contacts.webp" alt="A2H CRM contacts list with sample leads: name, phone, stage, temperature, urgency and what they need" loading="lazy" decoding="async" width="1440" height="900" class="w-full h-auto block">
     </div>
     <div class="stagger grid md:grid-cols-3 gap-5 mt-5">
       <figure class="md:col-span-2 panel overflow-hidden media-zoom">
-        <div class="overflow-hidden border-b hairline"><img src="assets/crm/crm-contacts.webp" alt="A2H CRM contacts list with sample leads, stages, temperature and urgency" loading="lazy" decoding="async" width="1440" height="900" class="w-full h-auto block"></div>
-        <figcaption class="p-5 text-[15px] text-fog leading-[1.6]">Every chat or form becomes a contact automatically, with name, what they need, urgency and temperature.</figcaption>
+        <div class="overflow-hidden border-b hairline"><img src="assets/crm/crm-pipeline.webp" alt="A2H CRM pipeline board showing leads moving through new, contacted, scheduled and booked stages" loading="lazy" decoding="async" width="1800" height="1000" class="w-full h-auto block"></div>
+        <figcaption class="p-5 text-[15px] text-fog leading-[1.6]">A pipeline board: new, contacted, scheduled, booked. Move a lead forward when you have called them.</figcaption>
       </figure>
-      <figure class="panel overflow-hidden media-zoom flex flex-col">
-        <div class="overflow-hidden border-b hairline flex-1"><img src="assets/crm/crm-pipeline.webp" alt="A2H CRM pipeline board showing leads moving through new, contacted, scheduled and booked stages" loading="lazy" decoding="async" width="1800" height="1000" class="w-full h-full object-cover object-left-top block"></div>
-        <figcaption class="p-5 text-[15px] text-fog leading-[1.6]">A pipeline board: new, contacted, scheduled, booked. Drag a lead forward.</figcaption>
-      </figure>
+      <div class="panel p-6 flex flex-col">
+        <p class="text-xs text-fog mb-3">What every lead carries</p>
+        <ul class="text-[15px] text-sand leading-[1.6] flex-1">
+          <li class="py-2.5 border-t hairline">Name and phone</li>
+          <li class="py-2.5 border-t hairline">What they need, in their words</li>
+          <li class="py-2.5 border-t hairline">Temperature: hot, warm or cold</li>
+          <li class="py-2.5 border-t hairline">Urgency: immediate, this week, this month</li>
+          <li class="py-2.5 border-t border-b hairline">Stage: new, contacted, scheduled, booked</li>
+        </ul>
+        <p class="text-sm text-fog mt-4">Every chat or form becomes a contact automatically. Spam is filtered out first.</p>
+      </div>
     </div>
   </div>
 </section>
