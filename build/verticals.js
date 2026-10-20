@@ -1,14 +1,16 @@
-// Trade / vertical landing pages, generated from one template so every page
-// gets the same structure: answer-first summary, 4 trade-specific cards,
-// published pricing, a real FAQ (with matching FAQPage schema) and sibling links.
+// Off-niche vertical pages (HVAC, plumbing, roofing, electrical) and the dental hub,
+// generated from one template so every page gets the same structure: hero,
+// answer-first summary, 4 trade-specific rows, published pricing, FAQ (with
+// matching FAQPage schema) and sibling links.
 //
-// NOTE: all trade pages here are OFF-NICHE (noindex, out of the sitemap). Only dental-practices.html is an active niche.
-// Copy rule: only claim what the product does today (answers calls,
-// asks what the job is and how urgent, books onto the calendar, logs the contact
-// in the CRM, warm-transfers, keeps the customer's own number, flat pricing).
-// No invented statistics, no named integrations, no compliance claims.
+// All of these are noindex and out of the sitemap (RETIRED list / off-niche).
+// They are kept live for old links only, so the copy here is deliberately neutral
+// and matches the current offer: a website with an AI chat and a CRM lead list,
+// $800-$2,000 one time, with the AI phone receptionist as an add-on quoted on
+// the call. Rules: no "books the job / on your calendar", no monthly prices,
+// no invented statistics, no named integrations, no compliance claims.
 
-module.exports = function verticals({ SITE, ORG, serviceLd, faqLd, hero, cards, faqSection, B, guides, fit }) {
+module.exports = function verticals({ SITE, ORG, serviceLd, faqLd, hero, cards, faqSection, answer, relatedLinks, B, guides, fit }) {
   const breadcrumbLd = (name, slug) => ({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -19,40 +21,16 @@ module.exports = function verticals({ SITE, ORG, serviceLd, faqLd, hero, cards, 
     ],
   });
 
-  // Same four answers on every page, worded for the trade. These are the
-  // questions an AI assistant is most likely to be asked about the product.
+  // Same answers on every page, worded for the trade.
   const sharedFaq = (who, callWord) => [
-    [`How much does an AI receptionist cost for ${who}?`, 'A2H publishes its pricing: AI Receptionist + CRM is $1,500 one-time setup, then $397 per month, with no long-term contract. An extra CRM seat is $99 per month. Adding a hand-coded website with Google Business Profile setup is $2,000 setup and $400 per month.'],
-    ['Do I have to change my business number?', 'No porting and no new number for your callers. You set your existing line to forward to the receptionist when it is busy or unanswered.'],
-    [`What happens when a ${callWord} needs a real person?`, 'It can transfer the call to you or your team, or take a message and flag the contact in our custom CRM.'],
-    ['Do I need a new website to use it?', 'No. AI Receptionist + CRM works on its own. The Custom Website tier is optional and adds a hand-coded site and Google Business Profile setup.'],
+    [`How much does a website cost for ${who}?`, 'A2H builds are $800 to $2,000 one time, depending on the number of pages and features, including the AI chat and the CRM lead list. Hosting and upkeep are quoted on the call. You see a free sample site first.'],
+    ['Do you offer an AI phone receptionist?', 'Yes, as an add-on to a website build. It answers calls when you cannot, takes the caller\'s name, number and what they need, and logs it to the same CRM. Pricing is quoted on the call.'],
+    ['Do I have to change my business number?', 'No. Your number stays the same and goes at the top of the site, tappable on a phone. If you add the phone receptionist, your existing line forwards to it when it is busy or unanswered.'],
+    [`What happens when a ${callWord} needs a real person?`, 'The chat passes anything it cannot answer to you, with the visitor\'s details. The phone receptionist add-on can transfer the call to you, or take a message and flag the contact in the CRM.'],
   ];
 
-  const related = (current) => {
-    const links = [
-      ['dental-practices.html', 'Dental practices'], ['orthodontic-practices.html', 'Orthodontic practices'], ['home-care-agencies.html', 'Home care agencies'],
-    ].filter(([s]) => s !== current);
-    return `<section class="py-16 px-6">
-  <div class="max-w-3xl mx-auto text-center">
-    <p class="reveal text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-4">Other industries</p>
-    <div class="reveal flex flex-wrap justify-center gap-3">
-${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand border border-white/15 hover:border-copper-light/60 font-semibold px-5 py-2.5 rounded-full text-sm">${n}</a>`).join('\n')}
-    </div>
-    <p class="reveal text-sm text-fog mt-8">Hear a <a href="demo.html" class="link-underline text-copper-light">demo call</a> (a recorded test call with a fictional business and caller). Pricing is on the <a href="pricing.html" class="link-underline text-copper-light">pricing page</a>.</p>
-  </div>
-</section>`;
-  };
-
-  // Answer-first block: one self-contained paragraph an AI assistant (or a
-  // searcher) can lift as the direct answer to "what is this / what does it cost".
-  const answer = (text) => `<section class="px-6 pb-4">
-  <div class="max-w-3xl mx-auto">
-    <div class="reveal rounded-2xl bg-elevated border border-white/5 shadow-elevated p-7">
-      <p class="text-xs tracking-[0.2em] uppercase text-copper-light font-semibold mb-3">The short answer</p>
-      <p class="text-sand text-[15px] leading-[1.8]">${text}</p>
-    </div>
-  </div>
-</section>`;
+  const TRADE_LINKS = [['industries.html', 'All industries'], ['foundation-repair-websites.html', 'Foundation repair'], ['restoration-websites.html', 'Restoration'], ['garage-door-websites.html', 'Garage door']];
+  const DEMO_NOTE = 'Hear the phone receptionist add-on on a <a href="demo.html" class="link-underline text-copper-light">recorded test call</a>. Pricing is on the <a href="pricing.html" class="link-underline text-copper-light">pricing page</a>.';
 
   const defs = [
     {
@@ -60,22 +38,22 @@ ${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand borde
       who: 'an HVAC company',
       callWord: 'call',
       name: 'HVAC',
-      title: 'AI Receptionist for Texas HVAC Companies | A2H',
-      description: 'AI receptionist + CRM for Texas HVAC companies: every service call answered and booked, even at 2 a.m. in July. $1,500 setup, $397/mo.',
-      eyebrow: 'For Texas HVAC Companies',
-      h1: 'Every service call answered, <span class="italic text-copper-light">even in July.</span>',
-      sub: 'When a no-cool call comes in, your techs are on a roof or in an attic. The AI Receptionist answers instantly, finds out what is wrong and how urgent it is, and books the visit.',
-      answer: 'An AI receptionist for an HVAC company answers every inbound call, asks whether it is a no-cool or no-heat emergency or routine maintenance, books the service visit, and logs the customer in a CRM. A2H sets this up for Texas HVAC companies for $1,500 one-time and $397 per month, with no long-term contract.',
+      title: 'Websites for Texas HVAC Companies | A2H',
+      description: 'Websites with an AI chat and a CRM lead list for Texas HVAC companies. No-cool questions answered at any hour. Free sample site first, $800 to $2,000 one time.',
+      eyebrow: 'HVAC, Texas',
+      h1: 'Websites for Texas HVAC companies.',
+      sub: 'When a no-cool message comes in, your techs are on a roof or in an attic. The chat on your site answers, takes the address and number, and puts the lead at the top of your list.',
+      answer: 'A2H builds websites for Texas HVAC companies: a fast, hand-coded site with an AI chat that answers common questions (service area, emergency hours, what you work on), takes the customer\'s address, number and what is wrong, and saves it to a CRM marked by urgency. You see a free sample site first. Builds are $800 to $2,000 one time, depending on size. An AI phone receptionist is available as an add-on.',
       cardsHeading: 'Built for a business that gets slammed in bursts',
       cards: [
-        { tag: 'Heat waves and cold snaps', h: 'Nobody waits for a tech to climb down', p: 'Calls arrive in bursts when the weather turns. The AI Receptionist answers each one instantly instead of letting it ring while your crew is on a job.' },
-        { tag: 'Emergency or routine', h: 'It asks how urgent it is', p: 'It finds out what the problem is and whether the customer has no cooling or no heat, then books the visit or flags it to you so an urgent job never sits until morning.' },
-        { tag: 'Nothing lost between jobs', h: 'Every call lands in the CRM', p: 'The caller\'s name, the problem and a callback number are logged automatically in your pipeline board, so follow-ups do not depend on a sticky note in the truck.' },
-        { tag: 'Found without ads', h: 'Google Business Profile', p: 'On the Custom Website tier your profile is claimed and tuned, so you show up in the Maps results for "AC repair near me" in your city.' },
+        { tag: 'Heat waves', h: 'Answered while the crew is on a job', p: 'Messages arrive in bursts when the weather turns. The chat answers each one instead of letting it sit until someone climbs down.' },
+        { tag: 'Urgency', h: 'It asks how urgent it is', p: 'No cooling in July is flagged hot and lands first in your list. Routine maintenance is logged as warm.' },
+        { tag: 'CRM', h: 'Every lead in one place', p: 'Name, problem and callback number saved automatically, so follow-ups do not depend on a sticky note in the truck.' },
+        { tag: 'Add-on', h: 'Google Business Profile', p: 'Claimed, categorised and wired to the site, so you show up in the map results for "AC repair near me" in your city. Quoted on the call.' },
       ],
       faq: [
-        ['Can the AI tell an emergency AC call from a routine one?', 'It asks what the problem is and how urgent it is, then books the visit or alerts you right away when it hits something only you should decide. You decide how your business handles after-hours emergencies.'],
-        ['What about calls during a heat wave when everyone is booked?', 'Every call is still answered and logged. The AI books the visit, and anything it cannot place is flagged to you instead of going to voicemail.'],
+        ['Can the chat tell an emergency AC job from a routine one?', 'It asks what the problem is and how urgent it is, then marks the lead hot or warm in your CRM. You decide how your business handles after-hours emergencies.'],
+        ['What about a heat wave when everyone is booked?', 'Every message is still answered and logged. Nothing goes to voicemail, and you call back from one list in the order you choose.'],
       ],
     },
     {
@@ -83,22 +61,22 @@ ${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand borde
       who: 'a plumbing company',
       callWord: 'call',
       name: 'Plumbing',
-      title: 'AI Receptionist for Texas Plumbers | A2H',
-      description: 'AI receptionist + CRM for Texas plumbers: every call answered and booked, burst pipes at midnight included. $1,500 setup, $397/mo.',
-      eyebrow: 'For Texas Plumbers',
-      h1: 'The burst pipe call at midnight <span class="italic text-copper-light">gets answered.</span>',
-      sub: 'Plumbing customers call whoever picks up first. The AI Receptionist answers every call, finds out what is leaking and how bad it is, and books the job or gets it to you.',
-      answer: 'An AI receptionist for a plumbing company answers every inbound call, asks what the problem is and how urgent it is, books the visit, and logs the customer in a CRM. A2H sets this up for Texas plumbers for $1,500 one-time and $397 per month, with no long-term contract.',
+      title: 'Websites for Texas Plumbers | A2H',
+      description: 'Websites with an AI chat and a CRM lead list for Texas plumbers. Burst-pipe messages answered at midnight. Free sample site first, $800 to $2,000 one time.',
+      eyebrow: 'Plumbing, Texas',
+      h1: 'Websites for Texas plumbers.',
+      sub: 'A customer with water on the floor messages whoever answers first. The chat on your site answers, takes the address and number, marks it urgent, and drops it in your lead list.',
+      answer: 'A2H builds websites for Texas plumbing companies: a fast, hand-coded site with an AI chat that answers common questions (service area, emergency hours, what you handle), takes the customer\'s address, number and what is leaking, and saves it to a CRM marked by urgency. You see a free sample site first. Builds are $800 to $2,000 one time, depending on size. An AI phone receptionist is available as an add-on.',
       cardsHeading: 'Built for a trade where the first answer wins the job',
       cards: [
-        { tag: 'First to answer', h: 'No call goes to voicemail', p: 'A customer with water on the floor will call the next plumber on the list. The AI Receptionist picks up instantly, day or night, while you are under a sink.' },
-        { tag: 'How bad is it', h: 'It asks about urgency', p: 'It finds out what the problem is and how urgent, then books the visit or alerts you straight away when it is something that cannot wait.' },
-        { tag: 'Nothing falls through', h: 'Every job in your CRM', p: 'Name, issue and callback number logged automatically in your own pipeline board, so quotes and follow-ups are not scattered across call logs.' },
-        { tag: 'Found locally', h: 'Maps and reviews', p: 'The Custom Website tier includes Google Business Profile setup, because most "plumber near me" searches end at the map result.' },
+        { tag: 'First to answer', h: 'No message goes unanswered', p: 'The chat replies in seconds, day or night, while you are under a sink.' },
+        { tag: 'How bad is it', h: 'It asks about urgency', p: 'A burst pipe is flagged hot and lands first in your list. A slow drain is logged as warm.' },
+        { tag: 'CRM', h: 'Every job in one list', p: 'Name, issue and callback number saved automatically, so quotes and follow-ups are not scattered across call logs.' },
+        { tag: 'Add-on', h: 'Google Business Profile', p: 'Most "plumber near me" searches end at the map result. Setup is quoted on the call.' },
       ],
       faq: [
-        ['Will the AI handle after-hours plumbing emergencies?', 'It answers every call after hours, asks what is happening and how urgent it is, and books the visit or flags it to you. You set how your business handles true emergencies.'],
-        ['Can it quote a price?', 'It books the visit and collects the details. Quoting is your call. Anything that needs a decision from you is passed to you rather than guessed at.'],
+        ['Does the chat handle after-hours plumbing emergencies?', 'It answers whenever someone types, takes the address, number and what is happening, and marks the lead urgent so you see it first. How you handle true emergencies is up to you.'],
+        ['Can it quote a price?', 'No. It collects the details and tells the customer you will call. Quoting is your call, and anything that needs a decision from you is passed to you rather than guessed at.'],
       ],
     },
     {
@@ -106,22 +84,22 @@ ${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand borde
       who: 'a roofing company',
       callWord: 'call',
       name: 'Roofing',
-      title: 'AI Receptionist for Texas Roofers | A2H',
-      description: 'AI receptionist + CRM for Texas roofing companies: every storm-season call answered and booked into an estimate. $1,500 setup, $397/mo.',
-      eyebrow: 'For Texas Roofing Companies',
-      h1: 'Storm season brings the calls. <span class="italic text-copper-light">Answer all of them.</span>',
-      sub: 'After a hailstorm the phones light up, and homeowners book whoever responds first. The AI Receptionist answers every call and books the estimate while your crews are on roofs.',
-      answer: 'An AI receptionist for a roofing company answers every inbound call, finds out what the roof problem is and how urgent it is, books the estimate, and logs the homeowner in a CRM. A2H sets this up for Texas roofers for $1,500 one-time and $397 per month, with no long-term contract.',
+      title: 'Websites for Texas Roofers | A2H',
+      description: 'Websites with an AI chat and a CRM lead list for Texas roofing companies. Storm-season messages answered and logged. Free sample site first, $800 to $2,000 one time.',
+      eyebrow: 'Roofing, Texas',
+      h1: 'Websites for Texas roofing companies.',
+      sub: 'After a hailstorm the messages come all at once, and homeowners go with whoever responds first. The chat on your site answers every one and lands it in your list while your crews are on roofs.',
+      answer: 'A2H builds websites for Texas roofing companies: a fast, hand-coded site with an AI chat that answers common questions (free inspections, service area, insurance claims), takes the homeowner\'s address, number and what happened to the roof, and saves it to a CRM. You see a free sample site first. Builds are $800 to $2,000 one time, depending on size. An AI phone receptionist is available as an add-on.',
       cardsHeading: 'Built for a business with sudden surges of leads',
       cards: [
-        { tag: 'Hail and wind season', h: 'Every storm lead answered', p: 'When a storm hits, the calls come all at once. The AI Receptionist answers each one instead of letting leads roll over to the next roofer.' },
-        { tag: 'Estimate booked', h: 'Booked during the call', p: 'It asks what happened to the roof and books the estimate directly, and warm-transfers to you when a call needs a person.' },
-        { tag: 'Nothing lost', h: 'Every lead in the CRM', p: 'Each homeowner is logged with what they reported, so a surge of leads becomes a pipeline you can work instead of a pile of missed calls.' },
-        { tag: 'Found locally', h: 'Google Business Profile', p: 'Included on the Custom Website tier, so you appear in the Maps results when someone searches for a roofer in your city.' },
+        { tag: 'Storm season', h: 'Every lead answered', p: 'When a storm hits, the chat answers each message instead of letting leads roll over to the next roofer.' },
+        { tag: 'Inspection', h: 'The offer, up top', p: 'Homeowners want to know if the first look is free. The site says so on the first screen, with a tappable number.' },
+        { tag: 'CRM', h: 'A surge becomes a pipeline', p: 'Each homeowner is logged with what they reported, so a flood of leads is a list you can work instead of a pile of missed messages.' },
+        { tag: 'Add-on', h: 'Google Business Profile', p: 'Claimed and wired to the site, so you appear in the map results when someone searches for a roofer in your city. Quoted on the call.' },
       ],
       faq: [
-        ['Can it handle a flood of calls after a storm?', 'Every call is answered and logged, and estimates are booked. Anything it cannot place is flagged to you rather than dropped.'],
-        ['Does it work with insurance-claim roofing leads?', 'It captures the homeowner\'s name, what happened and a callback number, and books the estimate. How you handle the claim after that is up to you.'],
+        ['Can it handle a flood of messages after a storm?', 'Yes. Every message is answered and logged in the order it arrived, with spam filtered out. Anything the chat cannot answer is passed to you with the homeowner\'s details.'],
+        ['Does it work with insurance-claim roofing leads?', 'It captures the homeowner\'s name, what happened and a callback number. How you handle the claim after that is up to you.'],
       ],
     },
     {
@@ -129,46 +107,46 @@ ${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand borde
       who: 'an electrical contractor',
       callWord: 'call',
       name: 'Electrical',
-      title: 'AI Receptionist for Texas Electricians | A2H',
-      description: 'AI receptionist + CRM for Texas electricians: every call answered and booked while you are on the job. $1,500 setup, $397/mo.',
-      eyebrow: 'For Texas Electricians',
-      h1: 'You cannot answer the phone <span class="italic text-copper-light">inside a panel.</span>',
-      sub: 'Electrical work needs your full attention, and missed calls go to the next electrician on Google. The AI Receptionist answers every call and books the job for you.',
-      answer: 'An AI receptionist for an electrical contractor answers every inbound call, asks what the job is and how urgent it is, books the visit, and logs the customer in a CRM. A2H sets this up for Texas electricians for $1,500 one-time and $397 per month, with no long-term contract.',
+      title: 'Websites for Texas Electricians | A2H',
+      description: 'Websites with an AI chat and a CRM lead list for Texas electricians. Messages answered while you are inside a panel. Free sample site first, $800 to $2,000 one time.',
+      eyebrow: 'Electrical, Texas',
+      h1: 'Websites for Texas electricians.',
+      sub: 'Electrical work needs your full attention, and an unanswered message goes to the next electrician on Google. The chat on your site answers, takes the details, and puts the lead in your list.',
+      answer: 'A2H builds websites for Texas electrical contractors: a fast, hand-coded site with an AI chat that answers common questions (service area, what you take on, how to reach you), takes the customer\'s address, number and what the job is, and saves it to a CRM. You see a free sample site first. Builds are $800 to $2,000 one time, depending on size. An AI phone receptionist is available as an add-on.',
       cardsHeading: 'Built for work you cannot pause to take a call',
       cards: [
-        { tag: 'Hands on the job', h: 'Answered while you work', p: 'You should not stop mid-job to pick up. The AI Receptionist answers instantly so the caller is not left to try someone else.' },
-        { tag: 'Urgent or scheduled', h: 'It asks what the job is', p: 'It finds out what is needed and how urgent, then books the visit or flags it to you when it cannot wait.' },
-        { tag: 'Nothing falls through', h: 'Every contact in the CRM', p: 'Name, the work needed and a callback number logged automatically in your own pipeline board.' },
-        { tag: 'Found locally', h: 'Google Business Profile', p: 'The Custom Website tier includes Google Business Profile setup, so you are visible when someone searches for an electrician near them.' },
+        { tag: 'Hands on the job', h: 'Answered while you work', p: 'You should not stop mid-job to reply. The chat answers so the customer is not left to try someone else.' },
+        { tag: 'Urgent or scheduled', h: 'It asks what the job is', p: 'A dead panel is flagged hot. A ceiling fan install is logged as warm. You call back in the order that makes sense.' },
+        { tag: 'CRM', h: 'Every contact in one list', p: 'Name, the work needed and a callback number saved automatically.' },
+        { tag: 'Add-on', h: 'Google Business Profile', p: 'Claimed and wired to the site, so you are visible when someone searches for an electrician near them. Quoted on the call.' },
       ],
       faq: [
-        ['Can it book different kinds of electrical jobs?', 'It asks what the job is, from a dead outlet to a panel upgrade, and books the visit. Jobs that need your judgment are passed to you.'],
-        ['What if a caller reports a safety hazard?', 'It flags anything urgent to you immediately and warm-transfers when a call needs a person. You decide your own emergency process.'],
+        ['Can it take different kinds of electrical jobs?', 'It asks what the job is, from a dead outlet to a panel upgrade, and logs it with the customer\'s details. Jobs that need your judgment are passed to you.'],
+        ['What if a customer reports a safety hazard?', 'It marks the lead urgent so it lands first in your list, and tells the customer you will call. You decide your own emergency process.'],
       ],
     },
     {
       slug: 'dental-practices.html',
       who: 'a dental practice',
-      callWord: 'patient call',
+      callWord: 'patient inquiry',
       name: 'Dental practices',
-      title: 'AI Receptionist for Texas Dental Practices | A2H',
-      description: 'AI receptionist + CRM for Texas dental practices: every patient call answered and booked. $1,500 setup, $397/mo, no contract.',
-      eyebrow: 'For Texas Dental Practices',
-      h1: 'Every patient call answered, <span class="italic text-copper-light">even at lunch.</span>',
-      sub: 'The front desk cannot answer every line during check-in, lunch or after hours. A2H answers instantly, books the appointment, and tracks every call and caller in our custom CRM.',
-      answer: 'An AI receptionist for a dental practice answers every inbound call, collects the patient\'s name and reason for calling, books the appointment, and tracks every call and caller in a custom CRM. It handles scheduling only, never clinical data. A2H sets this up for Texas dental practices for $1,500 one-time and $397 per month, with no long-term contract.',
+      title: 'Websites for Texas Dental Practices | A2H',
+      description: 'Websites with an AI chat and a CRM lead list for Texas dental practices. Patient questions answered at lunch and after hours, no clinical data. Free sample site first.',
+      eyebrow: 'Dental practices, Texas',
+      h1: 'Websites for Texas dental practices.',
+      sub: 'The front desk cannot answer every question during check-in, lunch or after hours. The chat on your site answers the common ones, takes the patient\'s details, and saves them to a list your front desk works each morning.',
+      answer: 'A2H builds websites for Texas dental practices: a fast, hand-coded site with hours, location and a tappable number first, an AI chat that answers common questions (hours, services, directions, new-patient steps) and takes the patient\'s name, reason for the inquiry and callback number, and a CRM where every inquiry lands. The chat and CRM handle inquiries, not clinical data. You see a free sample site first. Builds are $800 to $2,000 one time, depending on size. An AI phone receptionist is available as an add-on.',
       cardsHeading: 'Built around how patients actually choose a dentist',
       cards: [
-        { tag: 'Never voicemail', h: 'Answered at lunch and after hours', p: 'No patient is sent to voicemail because the front desk was busy with check-in or the office was closed.' },
-        { tag: 'Booked, not just noted', h: 'The appointment, during the call', p: 'The AI Receptionist books the visit while the patient is on the line, and can transfer to your front desk when the call needs a person.' },
-        { tag: 'Nothing lost', h: 'Every caller in our custom CRM', p: 'Name, reason for calling and callback details tracked automatically in one place.' },
-        { tag: 'Found locally', h: 'Maps and reviews', p: 'On the Custom Website tier Google Business Profile is claimed and tuned, because the map result and its reviews are what most patients see first.' },
+        { tag: 'First screen', h: 'Hours, location, phone', p: 'The three things a patient checks before anything else, visible without scrolling and tappable on a phone.' },
+        { tag: 'AI chat', h: 'Answered at lunch and after hours', p: 'Hours, services, directions, what to bring. It answers from what you give us and passes anything clinical or insurance-specific to your staff.' },
+        { tag: 'No clinical data', h: 'Inquiries, not records', p: 'The chat collects a name, the reason for the inquiry and callback details. Anything that touches protected health information stays in your compliant software.' },
+        { tag: 'CRM', h: 'Every inquiry in one list', p: 'Chats and form fills land in one place for your front desk, with spam filtered out first.' },
       ],
       faq: [
-        ['Is the AI receptionist HIPAA compliant?', 'The AI Receptionist and CRM handle scheduling, not clinical data. Calls collect only a name, the reason for the call and callback details so your staff can follow up. If you need intake that touches protected health information, that belongs in dedicated HIPAA-compliant software, and we link to it rather than rebuild it.'],
-        ['Does it handle insurance or clinical questions?', 'It handles the front-desk call: answering, collecting the basics and booking. Anything clinical or insurance-specific is passed to your team rather than answered by the AI.'],
-        ['Do you work with dental practices across Texas?', 'A2H sets the receptionist up remotely for Texas practices, including those around Houston, Dallas, Austin, San Antonio and Fort Worth.'],
+        ['Is this HIPAA compliant?', 'The chat and CRM handle inquiries and scheduling details, not clinical data. They collect a name, the reason for the inquiry and callback details so your staff can follow up. Anything that touches protected health information belongs in dedicated HIPAA-compliant software, and we link to it rather than rebuild it.'],
+        ['Does it answer insurance or clinical questions?', 'No. It answers the front-desk questions: hours, services, directions, how to get started. Anything clinical or insurance-specific is passed to your team rather than answered by the AI.'],
+        ['Do you work with dental practices across Texas?', 'Yes. A2H builds remotely for Texas practices, including those around Houston, Dallas, Austin, San Antonio and Fort Worth.'],
       ],
     },
   ];
@@ -176,25 +154,30 @@ ${links.map(([s, n]) => `      <a href="${s}" class="btn-primary text-sand borde
   return defs.map((d) => {
     const { who, callWord } = d;
     const faq = [...d.faq, ...sharedFaq(who, callWord)];
+    const isDental = d.slug === 'dental-practices.html';
+    const links = isDental
+      ? [['industries.html', 'All industries'], ['medical.html', 'Medical practices'], ['orthodontic-practices.html', 'Orthodontic practices'], ['home-care-agencies.html', 'Home care agencies']]
+      : TRADE_LINKS;
     return {
       slug: d.slug,
-      noindex: d.slug !== 'dental-practices.html', // trades are off-niche: live but noindex
+      noindex: true, // off-niche or retired: live for old links, out of the sitemap
       title: d.title,
       description: d.description,
       jsonLd: [
         ORG,
-        serviceLd(`AI receptionist for ${d.name.toLowerCase()}`, d.answer, d.name),
+        serviceLd(`Websites with AI chat and CRM for ${d.name.toLowerCase()}`, d.answer, d.name),
         faqLd(faq),
         breadcrumbLd(d.name, d.slug),
       ],
       body: [
-        hero({ eyebrow: d.eyebrow, h1: d.h1, sub: d.sub, secondary: ['Hear a demo call', 'demo.html'] }),
+        hero({ eyebrow: d.eyebrow, h1: d.h1, sub: d.sub, secondary: ['See pricing', 'pricing.html'] }),
         answer(d.answer),
-        cards('What Changes', d.cardsHeading, d.cards),
-        ...(d.slug === 'dental-practices.html' ? [fit('dental practices'), guides('dental')] : []),
-        ...(d.slug === 'dental-practices.html' ? [] : [B.pricingTable({ heading: 'Flat pricing, published openly' })]),
+        cards('What we build', d.cardsHeading, d.cards),
+        ...(isDental ? [fit('dental practices'), guides('dental')] : []),
+        B.pricingTable({ heading: 'One price, paid once. Free sample first.' }),
         faqSection(faq),
-        related(d.slug),
+        relatedLinks(links, DEMO_NOTE),
+        B.ctaBand({}),
       ].join('\n\n'),
     };
   });
