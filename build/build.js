@@ -393,37 +393,37 @@ PAGES.push({
 // ---- watch.html — the pre-sale video sent to prospects before a call.
 // The video ends with "book below", so the calendar sits right under it.
 // Kept out of the sitemap: it is a link we send, not a page we rank.
-// The recording pitches the AI phone receptionist as a standalone product and
-// quotes its old monthly price. Since 2026-10-19 the receptionist is an add-on
-// to a website build, so the page says so under the video instead of pretending.
+// The old pre-sale recording (assets/video/a2h-presale.mp4) pitched the phone
+// receptionist as a standalone product at its old monthly price, so it was
+// retired 2026-10-21. The page now shows the H&A chat-to-CRM demo instead.
 PAGES.push({
   slug: 'watch.html',
   noindex: true,
   noPopup: true,
-  title: 'The AI Phone Receptionist, In 2 Minutes | A2H',
-  description: 'A 2-minute walkthrough of the A2H AI phone receptionist and CRM, recorded before it became an add-on to our website builds. Book a 15-minute call right under the video.',
-  ogImage: '/assets/video/a2h-presale-poster.jpg',
+  title: 'From Chat To CRM, On A Live Client Site | A2H',
+  description: 'A test conversation on a live client site and the lead it creates in the CRM, in under 90 seconds. Book a 15-minute call right under the video.',
+  ogImage: '/assets/video/ha-chatbot-crm-demo-poster.jpg',
   jsonLd: [ORG],
   body: [
     `<section class="relative glow-copper pt-32 sm:pt-40 pb-12 px-5 sm:px-6 overflow-hidden">
   <div class="grain"></div>
   <div class="max-w-6xl mx-auto relative">
     <div class="max-w-2xl">
-      <p class="rise rise-1 eyebrow mb-5">Watch first, 2 minutes</p>
-      <h1 class="rise rise-2 display-xl text-sand mb-6">How the phone receptionist works.</h1>
+      <p class="rise rise-1 eyebrow mb-5">Watch first, under 90 seconds</p>
+      <h1 class="rise rise-2 display-xl text-sand mb-6">A lead, from the chat to the CRM.</h1>
       <p class="rise rise-3 lede text-lg">No pressure. If it makes sense for your business, book a call right under the video.</p>
     </div>
   </div>
 </section>`,
     `<section class="px-5 sm:px-6 pb-14">
   <div class="max-w-6xl mx-auto">
-    <div class="reveal frame drift">
-      <video class="block w-full h-auto" controls playsinline preload="metadata" poster="assets/video/a2h-presale-poster.jpg" width="1920" height="1080">
-        <source src="assets/video/a2h-presale.mp4" type="video/mp4">
-        Your browser can't play this video. <a href="assets/video/a2h-presale.mp4">Download it here</a>.
+    <div class="reveal frame drift max-w-2xl">
+      <video class="block w-full h-auto" controls playsinline preload="metadata" poster="assets/video/ha-chatbot-crm-demo-poster.jpg" width="720" height="720" data-track-media>
+        <source src="assets/video/ha-chatbot-crm-demo.mp4" type="video/mp4">
+        Your browser can't play this video. <a href="assets/video/ha-chatbot-crm-demo.mp4">Download it here</a>.
       </video>
     </div>
-    <p class="reveal text-sm text-fog leading-[1.65] mt-5 max-w-2xl">Recorded for our AI phone receptionist, which is now an add-on to an A2H website build. The price in the video no longer applies: the receptionist is quoted on the call, and website pricing is on the <a href="pricing.html" class="link-underline text-copper-light">pricing page</a>.</p>
+    <p class="reveal text-sm text-fog leading-[1.65] mt-5 max-w-2xl">A test conversation on the H&amp;A Healthcare Consulting site, which we built and run, and the lead it creates in their CRM. Website pricing is on the <a href="pricing.html" class="link-underline text-copper-light">pricing page</a>.</p>
   </div>
 </section>`,
     `<section id="book" class="px-5 sm:px-6 pb-24">

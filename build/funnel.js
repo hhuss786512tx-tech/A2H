@@ -1,12 +1,11 @@
 // Paid-traffic landing pages: /groomers, /dental, /homecare and /orthodontists.
-// One template, four niches. No site navigation: the only exits are "watch the
-// video" and "book a call". Kept out of the sitemap and marked noindex, since
+// One template, four niches. No site navigation: the only exits are "hear the
+// test call" and "book a call". Kept out of the sitemap and marked noindex, since
 // these are pages we send traffic to, not pages we rank.
 //
-// The shared video was recorded for the AI phone receptionist as a standalone
-// product and quotes its old monthly price. Since 2026-10-19 the receptionist is
-// an add-on to a website build, so every page says so under the video. Pricing is
-// otherwise absent from the copy and discussed on the call.
+// The old shared video quoted the receptionist's old standalone price, so it was
+// retired 2026-10-21. The pages now play the recorded test call from demo.html.
+// Pricing is absent from the copy and discussed on the call.
 // Copy rules: no "books the visit", no monthly prices, no invented numbers.
 
 const PHONE_DISPLAY = '(832) 743-3676';
@@ -17,7 +16,7 @@ const NICHES = {
   groomers: {
     slug: 'groomers.html',
     title: 'AI Phone Receptionist for Mobile Pet Groomers | A2H',
-    description: 'Calls answered while your hands are in a groom, logged to one list. Watch the 2-minute video, then book a 15-minute call.',
+    description: 'Calls answered while your hands are in a groom, logged to one list. Hear a recorded test call, then book a 15-minute call.',
     eyebrow: 'Mobile pet groomers, Texas',
     h1: 'Every call answered while your hands are in a groom.',
     sub: 'When you are mid-groom or driving between stops, the phone goes to voicemail and that pet owner calls the next groomer on Google. The A2H phone receptionist answers, takes the owner\'s and pet\'s details, and logs the call in your CRM.',
@@ -45,7 +44,7 @@ const NICHES = {
   dental: {
     slug: 'dental.html',
     title: 'AI Phone Receptionist for Dental Clinics | A2H',
-    description: 'Calls answered when the front desk is slammed or the office is closed, logged to one list. Watch the 2-minute video, then book a 15-minute call.',
+    description: 'Calls answered when the front desk is slammed or the office is closed, logged to one list. Hear a recorded test call, then book a 15-minute call.',
     eyebrow: 'Dental clinics, Texas',
     h1: 'Every call answered, even when the front desk is slammed.',
     sub: 'New-patient calls that hit voicemail at lunch, after hours or during a rush go to the practice that picked up. The A2H phone receptionist answers, takes the patient\'s details, and logs the call in your CRM. It handles inquiries only, never clinical data.',
@@ -74,7 +73,7 @@ const NICHES = {
   homecare: {
     slug: 'homecare.html',
     title: 'AI Phone Receptionist for Home Care Agencies | A2H',
-    description: 'Family inquiries answered after the office closes, logged to one list. Watch the 2-minute video, then book a 15-minute call.',
+    description: 'Family inquiries answered after the office closes, logged to one list. Hear a recorded test call, then book a 15-minute call.',
     eyebrow: 'Home care agencies, Texas',
     h1: 'Every family call answered, even after the office closes.',
     sub: 'Families often call in the evening, and an inquiry that hits voicemail becomes a call to the next agency. The A2H phone receptionist answers, takes the family\'s details, and logs the call in your CRM. It handles inquiry intake only, never clinical records.',
@@ -103,7 +102,7 @@ const NICHES = {
   orthodontists: {
     slug: 'orthodontists.html',
     title: 'AI Phone Receptionist for Orthodontic Practices | A2H',
-    description: 'New-patient calls answered when the front desk is slammed or the office is closed, logged to one list. Watch the 2-minute video, then book a 15-minute call.',
+    description: 'New-patient calls answered when the front desk is slammed or the office is closed, logged to one list. Hear a recorded test call, then book a 15-minute call.',
     eyebrow: 'Orthodontic practices, Texas',
     h1: 'Every new-patient call answered, even when the desk is slammed.',
     sub: 'A parent who reaches voicemail at lunch or after hours books the practice that picked up. The A2H phone receptionist answers, takes the family\'s details, and logs the call in your CRM. It handles inquiries only, never clinical data.',
@@ -150,7 +149,7 @@ function build(key, { ORG, EMAIL, cards, faqSection }) {
       <h1 class="rise rise-2 display-xl text-sand mb-6">${n.h1}</h1>
       <p class="rise rise-3 lede text-lg mb-9">${n.sub}</p>
       <div class="rise rise-4 flex flex-col sm:flex-row sm:items-center gap-3">
-        <a href="#video" class="btn btn-solid">Watch the 2-minute video <span class="btn-ico">${ARROW}</span></a>
+        <a href="#video" class="btn btn-solid">Hear a recorded test call <span class="btn-ico">${ARROW}</span></a>
         <a href="#book" class="btn btn-ghost">Book a 15-minute call</a>
       </div>
       <p class="rise rise-5 text-sm text-fog mt-7">Free 15-minute call. No obligation. Built in Houston for Texas businesses.</p>
@@ -160,13 +159,13 @@ function build(key, { ORG, EMAIL, cards, faqSection }) {
 
 <section id="video" class="px-5 sm:px-6 pb-16 scroll-mt-20">
   <div class="max-w-6xl mx-auto">
-    <div class="reveal frame drift">
-      <video class="block w-full h-auto" controls playsinline preload="metadata" poster="assets/video/a2h-presale-poster.jpg" width="1920" height="1080">
-        <source src="assets/video/a2h-presale.mp4" type="video/mp4">
-        Your browser can't play this video. <a href="assets/video/a2h-presale.mp4">Download it here</a>.
-      </video>
+    <div class="reveal panel-elevated p-6 sm:p-8 max-w-2xl">
+      <p class="eyebrow mb-4">Recorded test call</p>
+      <audio class="block w-full" controls preload="none" src="assets/demo/riley-demo-call.mp3" data-track-media>
+        Your browser can't play this audio. <a href="assets/demo/riley-demo-call.mp3">Download it here</a>.
+      </audio>
     </div>
-    <p class="reveal text-sm text-fog leading-[1.65] mt-5 max-w-2xl">How it works, in two minutes. Recorded for the phone receptionist as a standalone product. It is now an add-on to an A2H website build, so the price in the video no longer applies. We cover current pricing on the call.</p>
+    <p class="reveal text-sm text-fog leading-[1.65] mt-5 max-w-2xl">The receptionist answering a test caller, recorded on a groomer's line. It is an add-on to an A2H website build. The transcript and the CRM record are on the <a href="demo.html" class="link-underline text-copper-light">demo page</a>.</p>
   </div>
 </section>
 
@@ -206,7 +205,7 @@ ${cards('What you get', 'One receptionist. Every call handled.', n.cards)}
       <h2 class="display-lg text-sand lg:sticky lg:top-28">What happens next</h2>
     </div>
     <div class="stagger lg:col-span-8 steps">
-      <div class="step"><span class="step-n">1</span><div class="pt-1.5"><h3 class="text-sand font-semibold text-[17px] mb-1.5">Watch the video</h3><p class="text-fog text-[15px] leading-[1.7] max-w-md">Two minutes on how it works and what it does for your calls.</p></div></div>
+      <div class="step"><span class="step-n">1</span><div class="pt-1.5"><h3 class="text-sand font-semibold text-[17px] mb-1.5">Hear the test call</h3><p class="text-fog text-[15px] leading-[1.7] max-w-md">How it answers, what it asks and what it logs for you.</p></div></div>
       <div class="step"><span class="step-n">2</span><div class="pt-1.5"><h3 class="text-sand font-semibold text-[17px] mb-1.5">Book a 15-minute call</h3><p class="text-fog text-[15px] leading-[1.7] max-w-md">We look at your calls and whether it is a fit. No obligation.</p></div></div>
       <div class="step"><span class="step-n">3</span><div class="pt-1.5"><h3 class="text-sand font-semibold text-[17px] mb-1.5">We build it</h3><p class="text-fog text-[15px] leading-[1.7] max-w-md">A sample site for your business first, with the chat and lead list working. The phone receptionist is added on top and set up around your business and your number.</p></div></div>
     </div>
@@ -263,7 +262,7 @@ ${faqSection(n.faq, 'Questions')}
     funnel: true,
     title: n.title,
     description: n.description,
-    ogImage: '/assets/video/a2h-presale-poster.jpg',
+    ogImage: '/assets/og-image.png',
     jsonLd: [ORG],
     body,
     extraScripts: calc,

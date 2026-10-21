@@ -150,7 +150,7 @@ window.addEventListener('message', function (e) {
   }
 });
 document.addEventListener('DOMContentLoaded', function () {
-  var v = document.querySelector('video[poster*="presale"]');
+  var v = document.querySelector('[data-track-media]');
   if (!v) return;
   v.addEventListener('play', function () { fbq('trackCustom', 'VideoPlay'); }, { once: true });
   v.addEventListener('ended', function () { fbq('trackCustom', 'VideoComplete'); }, { once: true });
@@ -318,11 +318,11 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     <div class="reveal frame drift-slow">
       <div class="frame-bar"><span></span><span></span><span></span><em>crm.a2h.info, sample workspace</em></div>
-      <img src="assets/crm/crm-contacts.webp" alt="A2H CRM contacts list with sample leads: name, phone, stage, temperature, urgency and what they need" loading="lazy" decoding="async" width="1440" height="900" class="w-full h-auto block">
+      <img src="assets/crm/crm-contacts.webp" alt="A2H CRM contacts list for a demo foundation repair company, with sample leads: name, phone, email, open opportunities and stage" loading="lazy" decoding="async" width="1440" height="900" class="w-full h-auto block">
     </div>
     <div class="stagger grid md:grid-cols-3 gap-5 mt-5">
       <figure class="md:col-span-2 panel overflow-hidden media-zoom">
-        <div class="overflow-hidden border-b hairline"><img src="assets/crm/crm-pipeline.webp" alt="A2H CRM pipeline board showing leads moving through new, contacted, scheduled and booked stages" loading="lazy" decoding="async" width="1800" height="1000" class="w-full h-auto block"></div>
+        <div class="overflow-hidden border-b hairline"><img src="assets/crm/crm-pipeline.webp" alt="A2H CRM pipeline board for a demo foundation repair company, with sample leads in new, contacted, scheduled and booked stages and a job value on each" loading="lazy" decoding="async" width="1600" height="1016" class="w-full h-auto block"></div>
         <figcaption class="p-5 text-[15px] text-fog leading-[1.6]">A pipeline board: new, contacted, scheduled, booked. Move a lead forward when you have called them.</figcaption>
       </figure>
       <div class="panel p-6 flex flex-col">
@@ -560,7 +560,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <div class="md:col-span-2">
         <p class="text-sm font-semibold text-sand mb-4">Contact</p>
         <ul class="space-y-0.5 text-[15px] text-fog">
-          <li><a href="mailto:hhuss786512tx@gmail.com" class="link-underline hover:text-sand inline-block py-1.5 break-all">hhuss786512tx@gmail.com</a></li>
+          <li><a href="mailto:hhuss786512tx@gmail.com" class="link-underline hover:text-sand inline-block py-1.5">hhuss786512tx<wbr>@gmail.com</a></li>
           <li class="py-1.5">Houston, Texas</li>
           <li><a href="https://www.linkedin.com/in/abbas-hussain-1bb46b432/" target="_blank" rel="noopener" class="link-underline hover:text-sand inline-block py-1.5">LinkedIn</a></li>
           <li><a href="#" class="calls-trigger link-underline hover:text-sand inline-block py-1.5">What are missed calls costing you?</a></li>

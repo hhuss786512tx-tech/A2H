@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hear The AI Phone Receptionist On A Recorded Test Call | A2H</title>
 <meta name="description" content="A recorded 3:05 test call with the A2H phone receptionist add-on: it answers, takes the caller's details and logs the call in the CRM. Read the transcript and see the record.">
+<meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://a2h.info/demo.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141110'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-style='italic' fill='%23c9702f' text-anchor='middle'%3EA2H%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
@@ -101,7 +102,7 @@ window.addEventListener('message', function (e) {
   }
 });
 document.addEventListener('DOMContentLoaded', function () {
-  var v = document.querySelector('video[poster*="presale"]');
+  var v = document.querySelector('[data-track-media]');
   if (!v) return;
   v.addEventListener('play', function () { fbq('trackCustom', 'VideoPlay'); }, { once: true });
   v.addEventListener('ended', function () { fbq('trackCustom', 'VideoComplete'); }, { once: true });
@@ -395,7 +396,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <div class="md:col-span-2">
         <p class="text-sm font-semibold text-sand mb-4">Contact</p>
         <ul class="space-y-0.5 text-[15px] text-fog">
-          <li><a href="mailto:hhuss786512tx@gmail.com" class="link-underline hover:text-sand inline-block py-1.5 break-all">hhuss786512tx@gmail.com</a></li>
+          <li><a href="mailto:hhuss786512tx@gmail.com" class="link-underline hover:text-sand inline-block py-1.5">hhuss786512tx<wbr>@gmail.com</a></li>
           <li class="py-1.5">Houston, Texas</li>
           <li><a href="https://www.linkedin.com/in/abbas-hussain-1bb46b432/" target="_blank" rel="noopener" class="link-underline hover:text-sand inline-block py-1.5">LinkedIn</a></li>
         </ul>

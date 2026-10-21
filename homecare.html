@@ -4,19 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Phone Receptionist for Home Care Agencies | A2H</title>
-<meta name="description" content="Family inquiries answered after the office closes, logged to one list. Watch the 2-minute video, then book a 15-minute call.">
+<meta name="description" content="Family inquiries answered after the office closes, logged to one list. Hear a recorded test call, then book a 15-minute call.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://a2h.info/homecare.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141110'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-style='italic' fill='%23c9702f' text-anchor='middle'%3EA2H%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="AI Phone Receptionist for Home Care Agencies | A2H">
-<meta property="og:description" content="Family inquiries answered after the office closes, logged to one list. Watch the 2-minute video, then book a 15-minute call.">
-<meta property="og:image" content="https://a2h.info/assets/video/a2h-presale-poster.jpg">
+<meta property="og:description" content="Family inquiries answered after the office closes, logged to one list. Hear a recorded test call, then book a 15-minute call.">
+<meta property="og:image" content="https://a2h.info/assets/og-image.png">
 <meta property="og:url" content="https://a2h.info/homecare.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI Phone Receptionist for Home Care Agencies | A2H">
-<meta name="twitter:description" content="Family inquiries answered after the office closes, logged to one list. Watch the 2-minute video, then book a 15-minute call.">
-<meta name="twitter:image" content="https://a2h.info/assets/video/a2h-presale-poster.jpg">
+<meta name="twitter:description" content="Family inquiries answered after the office closes, logged to one list. Hear a recorded test call, then book a 15-minute call.">
+<meta name="twitter:image" content="https://a2h.info/assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -91,7 +91,7 @@ window.addEventListener('message', function (e) {
   }
 });
 document.addEventListener('DOMContentLoaded', function () {
-  var v = document.querySelector('video[poster*="presale"]');
+  var v = document.querySelector('[data-track-media]');
   if (!v) return;
   v.addEventListener('play', function () { fbq('trackCustom', 'VideoPlay'); }, { once: true });
   v.addEventListener('ended', function () { fbq('trackCustom', 'VideoComplete'); }, { once: true });
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <h1 class="rise rise-2 display-xl text-sand mb-6">Every family call answered, even after the office closes.</h1>
       <p class="rise rise-3 lede text-lg mb-9">Families often call in the evening, and an inquiry that hits voicemail becomes a call to the next agency. The A2H phone receptionist answers, takes the family's details, and logs the call in your CRM. It handles inquiry intake only, never clinical records.</p>
       <div class="rise rise-4 flex flex-col sm:flex-row sm:items-center gap-3">
-        <a href="#video" class="btn btn-solid">Watch the 2-minute video <span class="btn-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+        <a href="#video" class="btn btn-solid">Hear a recorded test call <span class="btn-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
         <a href="#book" class="btn btn-ghost">Book a 15-minute call</a>
       </div>
       <p class="rise rise-5 text-sm text-fog mt-7">Free 15-minute call. No obligation. Built in Houston for Texas businesses.</p>
@@ -130,13 +130,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <section id="video" class="px-5 sm:px-6 pb-16 scroll-mt-20">
   <div class="max-w-6xl mx-auto">
-    <div class="reveal frame drift">
-      <video class="block w-full h-auto" controls playsinline preload="metadata" poster="assets/video/a2h-presale-poster.jpg" width="1920" height="1080">
-        <source src="assets/video/a2h-presale.mp4" type="video/mp4">
-        Your browser can't play this video. <a href="assets/video/a2h-presale.mp4">Download it here</a>.
-      </video>
+    <div class="reveal panel-elevated p-6 sm:p-8 max-w-2xl">
+      <p class="eyebrow mb-4">Recorded test call</p>
+      <audio class="block w-full" controls preload="none" src="assets/demo/riley-demo-call.mp3" data-track-media>
+        Your browser can't play this audio. <a href="assets/demo/riley-demo-call.mp3">Download it here</a>.
+      </audio>
     </div>
-    <p class="reveal text-sm text-fog leading-[1.65] mt-5 max-w-2xl">How it works, in two minutes. Recorded for the phone receptionist as a standalone product. It is now an add-on to an A2H website build, so the price in the video no longer applies. We cover current pricing on the call.</p>
+    <p class="reveal text-sm text-fog leading-[1.65] mt-5 max-w-2xl">The receptionist answering a test caller, recorded on a groomer's line. It is an add-on to an A2H website build. The transcript and the CRM record are on the <a href="demo.html" class="link-underline text-copper-light">demo page</a>.</p>
   </div>
 </section>
 
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <h2 class="display-lg text-sand lg:sticky lg:top-28">What happens next</h2>
     </div>
     <div class="stagger lg:col-span-8 steps">
-      <div class="step"><span class="step-n">1</span><div class="pt-1.5"><h3 class="text-sand font-semibold text-[17px] mb-1.5">Watch the video</h3><p class="text-fog text-[15px] leading-[1.7] max-w-md">Two minutes on how it works and what it does for your calls.</p></div></div>
+      <div class="step"><span class="step-n">1</span><div class="pt-1.5"><h3 class="text-sand font-semibold text-[17px] mb-1.5">Hear the test call</h3><p class="text-fog text-[15px] leading-[1.7] max-w-md">How it answers, what it asks and what it logs for you.</p></div></div>
       <div class="step"><span class="step-n">2</span><div class="pt-1.5"><h3 class="text-sand font-semibold text-[17px] mb-1.5">Book a 15-minute call</h3><p class="text-fog text-[15px] leading-[1.7] max-w-md">We look at your calls and whether it is a fit. No obligation.</p></div></div>
       <div class="step"><span class="step-n">3</span><div class="pt-1.5"><h3 class="text-sand font-semibold text-[17px] mb-1.5">We build it</h3><p class="text-fog text-[15px] leading-[1.7] max-w-md">A sample site for your business first, with the chat and lead list working. The phone receptionist is added on top and set up around your business and your number.</p></div></div>
     </div>

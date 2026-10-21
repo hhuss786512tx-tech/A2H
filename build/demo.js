@@ -183,6 +183,9 @@ module.exports = function demoPage({ ORG, EMAIL }) {
 
   return {
     slug: 'demo.html',
+    // Noindexed 2026-10-21: the receptionist is an add-on now, so this is a proof
+    // page we link to from the funnels and trade pages, not one we rank.
+    noindex: true,
     noPopup: true,
     title: 'Hear The AI Phone Receptionist On A Recorded Test Call | A2H',
     description: `A recorded ${total} test call with the A2H phone receptionist add-on: it answers, takes the caller's details and logs the call in the CRM. Read the transcript and see the record.`,

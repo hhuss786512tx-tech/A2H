@@ -60,7 +60,7 @@ window.addEventListener('message', function (e) {
   }
 });
 document.addEventListener('DOMContentLoaded', function () {
-  var v = document.querySelector('video[poster*="presale"]');
+  var v = document.querySelector('[data-track-media]');
   if (!v) return;
   v.addEventListener('play', function () { fbq('trackCustom', 'VideoPlay'); }, { once: true });
   v.addEventListener('ended', function () { fbq('trackCustom', 'VideoComplete'); }, { once: true });
@@ -146,7 +146,7 @@ function footer() {
       <div class="md:col-span-2">
         <p class="text-sm font-semibold text-sand mb-4">Contact</p>
         <ul class="space-y-0.5 text-[15px] text-fog">
-          <li><a href="mailto:${EMAIL}" class="link-underline hover:text-sand inline-block py-1.5 break-all">${EMAIL}</a></li>
+          <li><a href="mailto:${EMAIL}" class="link-underline hover:text-sand inline-block py-1.5">${EMAIL.replace('@', '<wbr>@')}</a></li>
           <li class="py-1.5">Houston, Texas</li>
           <li><a href="https://www.linkedin.com/in/abbas-hussain-1bb46b432/" target="_blank" rel="noopener" class="link-underline hover:text-sand inline-block py-1.5">LinkedIn</a></li>
         </ul>
