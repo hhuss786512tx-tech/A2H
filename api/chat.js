@@ -17,7 +17,7 @@ DO NOT SAY: that anything books appointments on a calendar, that it sends text m
 
 WORK: A2H built the website, AI chatbot and CRM for H&A Healthcare Consulting, and websites for CareMedBill, Azul Bio and Solid State Construction. Abbas Hussain is an accepted developer on AI Frontrunners.
 
-CONTACT: click "Get A Free Sample Site" on this page to book the 15-minute call, or email hhuss786512tx@gmail.com.`;
+CONTACT: click "Get A Free Sample Site" on this page to book the 15-minute call, or email hello@a2h.info.`;
 
 const MODEL = 'gemini-flash-lite-latest';
 const MAX_MESSAGE_LEN = 600;

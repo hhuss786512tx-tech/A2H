@@ -69,7 +69,7 @@ FACTS:
 Turnaround: AI Receptionist + CRM can be live in days. A Custom Website build takes 2-3 days once content is in hand.
 Pricing: AI Receptionist + CRM is $1,500 setup + $397/mo (+$99/mo per extra seat). AI Receptionist + CRM + Custom Website is $2,000 setup + $400/mo (+$99/mo per extra seat) — this is the tier their mockup request is about. Exact quote comes after a quick call.
 Process: free homepage mockup first (already underway for them), then build, then launch.
-Contact: if they want a human now, tell them to reply "call me" or email hhuss786512tx@gmail.com.`;
+Contact: if they want a human now, tell them to reply "call me" or email hello@a2h.info.`;
 }
 
 module.exports = async function handler(req, res) {

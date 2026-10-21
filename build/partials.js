@@ -7,7 +7,7 @@
 // exist in one place.
 
 const SITE = 'https://a2h.info';
-const EMAIL = 'hhuss786512tx@gmail.com';
+const EMAIL = 'hello@a2h.info';
 const GA4 = 'G-L9L2CVTSBB';
 const META_PIXEL = '1760813911727113'; // Meta dataset "A2H Ads MCP", ad account 1235578990336631
 
@@ -146,7 +146,7 @@ function footer() {
       <div class="md:col-span-2">
         <p class="text-sm font-semibold text-sand mb-4">Contact</p>
         <ul class="space-y-0.5 text-[15px] text-fog">
-          <li><a href="mailto:${EMAIL}" class="link-underline hover:text-sand inline-block py-1.5">${EMAIL.replace('@', '<wbr>@')}</a></li>
+          <li><a href="mailto:${EMAIL}" class="link-underline hover:text-sand inline-block py-1.5">${EMAIL}</a></li>
           <li class="py-1.5">Houston, Texas</li>
           <li><a href="https://www.linkedin.com/in/abbas-hussain-1bb46b432/" target="_blank" rel="noopener" class="link-underline hover:text-sand inline-block py-1.5">LinkedIn</a></li>
         </ul>
@@ -457,7 +457,7 @@ function leadPopupScript() {
         return res.json().catch(function () { return {}; }).then(function (result) {
           if (!res.ok) {
             btn.disabled = false;
-            status.textContent = ERROR_COPY[result.error] || 'Something went wrong. Email us directly at hhuss786512tx@gmail.com.';
+            status.textContent = ERROR_COPY[result.error] || 'Something went wrong. Email us directly at hello@a2h.info.';
             if (result.error === 'captcha_failed') loadCaptcha();
             return;
           }
@@ -466,7 +466,7 @@ function leadPopupScript() {
         });
       }).catch(function () {
         btn.disabled = false;
-        status.textContent = 'Something went wrong. Email us directly at hhuss786512tx@gmail.com.';
+        status.textContent = 'Something went wrong. Email us directly at hello@a2h.info.';
       });
     });
   })();
@@ -728,7 +728,7 @@ function callsPopupScript() {
         return res.json().catch(function () { return {}; }).then(function (result) {
           if (!res.ok) {
             btn.disabled = false;
-            status.textContent = ERROR_COPY[result.error] || 'Something went wrong. Email us directly at hhuss786512tx@gmail.com.';
+            status.textContent = ERROR_COPY[result.error] || 'Something went wrong. Email us directly at hello@a2h.info.';
             if (result.error === 'captcha_failed') loadCaptcha();
             return;
           }
@@ -737,7 +737,7 @@ function callsPopupScript() {
         });
       }).catch(function () {
         btn.disabled = false;
-        status.textContent = 'Something went wrong. Email us directly at hhuss786512tx@gmail.com.';
+        status.textContent = 'Something went wrong. Email us directly at hello@a2h.info.';
       });
     });
   })();
