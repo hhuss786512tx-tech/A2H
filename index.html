@@ -6,7 +6,7 @@
 <title>A2H: Websites with AI Chat and CRM for Texas Trades | Houston</title>
 <meta name="description" content="Houston studio building websites with AI chat and a CRM lead list for Texas foundation repair, restoration and garage door companies. Free sample site first.">
 <link rel="canonical" href="https://a2h.info/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141110'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-style='italic' fill='%23c9702f' text-anchor='middle'%3EA2H%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b0b0d'/%3E%3Crect x='22' y='22' width='20' height='20' rx='6' fill='%23c9702f'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="A2H: Websites with AI Chat and CRM for Texas Trades">
 <meta property="og:description" content="Websites that answer homeowners at 10 PM and save every lead to one CRM. For Texas foundation repair, restoration and garage door companies. Free sample site first.">
@@ -18,11 +18,11 @@
 <meta name="twitter:image" content="https://a2h.info/assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <!-- Tailwind is compiled ahead of time (npm run build). -->
-<link rel="preload" as="image" href="assets/portfolio/ssc.webp">
-<link rel="stylesheet" href="assets/tailwind.css?v=8b906e65">
-<link rel="stylesheet" href="assets/site.css?v=ac40656e">
+<link rel="preload" as="image" href="assets/crm/crm-poster.webp" fetchpriority="high">
+<link rel="stylesheet" href="assets/tailwind.css?v=8e172d85">
+<link rel="stylesheet" href="assets/site.css?v=bc22f6cf">
 <!-- Gates the .reveal opacity:0 rule in site.css. If this never runs, the
      hiding rule never applies and all copy stays visible rather than being
      stranded at opacity 0. -->
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <!-- NAV -->
 <header id="site-header">
   <div class="max-w-6xl mx-auto px-5 sm:px-6 h-16 flex items-center justify-between gap-4">
-    <a href="#top" class="font-display text-[1.35rem] tracking-tight text-sand shrink-0" aria-label="A2H home">A2H<span class="text-copper">.</span></a>
+    <a href="#top" class="brand shrink-0" aria-label="A2H home"><span class="brand-mark" aria-hidden="true"></span>A2H</a>
     <nav class="hidden md:flex items-center gap-7" aria-label="Primary">
       <a href="#websites" data-nav-link class="nav-link">Trades</a>
       <a href="#how-it-works" data-nav-link class="nav-link">How it works</a>
@@ -197,40 +197,49 @@ document.addEventListener('DOMContentLoaded', function () {
 <main id="main">
 
 <!-- HERO -->
-<section id="top" class="relative glow-copper pt-28 sm:pt-36 lg:pt-40 pb-16 lg:pb-24 px-5 sm:px-6 overflow-hidden">
+<section id="top" class="relative glow-copper pt-32 sm:pt-40 lg:pt-44 pb-10 px-5 sm:px-6 overflow-hidden">
+  <div class="hero-grid"></div>
   <div class="grain"></div>
-  <div class="max-w-6xl mx-auto relative grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-    <div class="lg:col-span-7">
-      <h1 class="rise rise-1 display-xl text-sand">A website that answers at 10 PM. <span class="text-copper-light">A lead list you check at 7 AM.</span></h1>
-      <p class="rise rise-2 lede text-lg mt-6 max-w-lg">Websites with an AI chat and a CRM lead list for Texas foundation repair, restoration and garage door companies. Free sample site first.</p>
-      <div class="rise rise-3 mt-9 flex flex-col sm:flex-row sm:items-center gap-3">
-        <a href="book-a-call.html" class="btn btn-solid">Get a free sample site <span class="btn-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
-        <a href="#pricing" class="btn btn-ghost">See pricing</a>
+  <div class="max-w-6xl mx-auto relative text-center">
+    <p class="rise rise-1 eyebrow eyebrow-dot mb-7">Websites, AI chat and CRM for Texas trades</p>
+    <h1 class="rise rise-1 display-hero text-sand max-w-5xl mx-auto">A website that answers at 10&nbsp;PM. <span class="text-fog/70">A lead list you check at 7&nbsp;AM.</span></h1>
+    <p class="rise rise-2 lede text-lg mt-7 mx-auto max-w-xl">Websites with an AI chat and a CRM lead list for Texas foundation repair, restoration and garage door companies. Free sample site first.</p>
+    <div class="rise rise-3 mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
+      <a href="book-a-call.html" class="btn btn-solid w-full sm:w-auto">Get a free sample site <span class="btn-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+      <a href="#pricing" class="btn btn-ghost w-full sm:w-auto">See pricing</a>
+    </div>
+    <p class="rise rise-3 text-sm text-fog/80 mt-5">$800 to $2,000 one time. You see your sample site before you pay.</p>
+  </div>
+  <div class="rise rise-4 relative max-w-5xl mx-auto mt-14 sm:mt-16">
+    <div class="hero-window">
+      <div class="frame">
+        <div class="frame-bar"><span></span><span></span><span></span><em class="hidden sm:inline">Bluestem Foundation Repair, sample CRM workspace</em><a href="/crm-demo/" target="_blank" rel="noopener" class="demo-link">Click through the live demo <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a></div>
+        <video id="hero-crm-video" data-src="assets/crm/crm-walkthrough.mp4" poster="assets/crm/crm-poster.webp" muted loop playsinline preload="none" width="1600" height="1000" aria-label="Walkthrough of the A2H CRM with sample data: a lead dragged to contacted, a contact timeline with a call transcript, website visitors, chats, tasks and reports"></video>
       </div>
     </div>
-    <div class="lg:col-span-5 rise rise-4">
-      <div class="hero-devices">
-        <div class="laptop-frame">
-          <div class="laptop-chrome"><span></span><span></span><span></span></div>
-          <video class="lazy-video" data-src="assets/portfolio/video/laptop-ssc.mp4" data-desktop-only poster="assets/portfolio/ssc.webp" muted loop playsinline preload="none" width="1280" height="800" aria-label="Solid State Construction website on a laptop"></video>
-        </div>
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <div class="phone-notch"></div>
-            <video class="lazy-video" data-src="assets/portfolio/video/mobile-ssc.mp4" poster="assets/portfolio/mobile-ssc.webp" muted loop playsinline preload="none" width="390" height="844" aria-label="Solid State Construction website on a phone"></video>
-          </div>
-        </div>
-      </div>
-      <p class="text-xs text-fog mt-5 text-center lg:text-right"><a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" class="link-underline">solidstatesconstruction.com</a>, a live client site</p>
+    <p class="text-xs text-fog/80 mt-4 text-center">Our CRM with a fictional company and sample leads. Every client gets their own workspace.</p>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section aria-label="Clients" class="px-5 sm:px-6 pt-10 pb-16">
+  <div class="max-w-6xl mx-auto border-t hairline pt-10">
+    <p class="eyebrow text-center mb-7">Live client sites we build and maintain</p>
+    <div class="logo-strip">
+      <a href="https://hahealthconsulting.com" target="_blank" rel="noopener"><img src="assets/clients/ha.webp" alt="" width="34" height="34" loading="lazy" decoding="async">H&amp;A Health Consulting</a>
+      <a href="https://caremedbill.com" target="_blank" rel="noopener"><img src="assets/clients/cmb.webp" alt="" width="90" height="34" loading="lazy" decoding="async"><span class="sr-only">CareMedBill</span></a>
+      <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener"><img src="assets/clients/ssc.webp" alt="" width="34" height="34" loading="lazy" decoding="async">Solid State Construction</a>
+      <a href="https://azulbioresearch.com" target="_blank" rel="noopener"><img src="assets/clients/azul.webp" alt="" width="34" height="34" loading="lazy" decoding="async">Azul Bio Research</a>
     </div>
   </div>
 </section>
 
 <!-- TRADES -->
-<section id="websites" class="py-24 px-5 sm:px-6">
+<section id="websites" class="py-24 sm:py-28 px-5 sm:px-6">
   <div class="max-w-6xl mx-auto">
     <div class="reveal max-w-2xl mb-10">
-      <h2 class="display-lg text-sand">Cracks, floods and stuck doors don't wait for 9 AM.</h2>
+      <p class="eyebrow mb-5">Who it is for</p>
+      <h2 class="display-lg text-sand">Cracks, floods and stuck doors <span class="text-fog/70">don't wait for 9 AM.</span></h2>
       <p class="lede mt-4">Homeowners look you up after hours. The chat on your site answers, takes their details, and the lead is waiting in your CRM in the morning.</p>
     </div>
     <div class="stagger">
@@ -257,8 +266,10 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <!-- HOW IT WORKS -->
-<section id="how-it-works" class="relative py-24 px-5 sm:px-6 bg-surface/40 border-y hairline overflow-hidden">
-  <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+<section id="how-it-works" class="on-ink relative py-24 sm:py-32 px-5 sm:px-6 overflow-hidden">
+  <div class="glow-ink"></div>
+  <div class="grain"></div>
+  <div class="relative max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-8 items-start">
     <div class="reveal lg:col-span-5 flex justify-center lg:justify-start lg:sticky lg:top-28 order-2 lg:order-1">
       <div class="phone-frame drift">
         <div class="phone-screen tall flex flex-col">
@@ -282,7 +293,8 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     <div class="lg:col-span-6 lg:col-start-7 order-1 lg:order-2">
       <div class="reveal mb-10">
-        <h2 class="display-lg text-sand">From a homeowner at 10 PM to a lead on your list.</h2>
+        <p class="eyebrow mb-5">How it works</p>
+        <h2 class="display-lg text-sand">From a homeowner at 10 PM <span class="text-fog/80">to a lead on your list.</span></h2>
         <p class="text-sm text-fog/70 mt-4">Sample conversation on a sample site.</p>
       </div>
       <div class="stagger steps">
@@ -308,45 +320,80 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <!-- CRM -->
-<section id="crm" class="py-24 px-5 sm:px-6">
+<section id="crm" class="py-24 sm:py-32 px-5 sm:px-6">
   <div class="max-w-6xl mx-auto">
-    <div class="reveal grid lg:grid-cols-12 gap-6 mb-12">
-      <div class="lg:col-span-7">
-        <p class="eyebrow mb-4">The CRM</p>
-        <h2 class="display-lg text-sand">Every chat and form lands in your CRM.</h2>
+    <div class="reveal text-center max-w-3xl mx-auto mb-14 sm:mb-20">
+      <p class="eyebrow mb-5">The CRM</p>
+      <h2 class="display-xl text-sand">Every chat and form <span class="text-fog/70">lands in your CRM.</span></h2>
+      <p class="lede mt-6 mx-auto">Screens from our CRM. Bluestem Foundation Repair is a fictional company and every lead is sample data. Every client gets their own workspace, with their leads and nothing else.</p>
+      <p class="mt-6"><a href="/crm-demo/" target="_blank" rel="noopener" class="link-arrow text-[15px]">Click through the live demo, no login <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a></p>
+    </div>
+    <div class="crm-story">
+      <div>
+        <div class="crm-step reveal" data-crm-step="pipeline">
+          <p class="crm-when">Every lead</p>
+          <div class="crm-body">
+            <h3>Pipeline</h3>
+            <p class="mt-2">A pipeline board: new, contacted, scheduled, booked. Move a lead forward when you have called them. Drag a card and the stage updates.</p>
+            <div class="crm-shot"><img src="assets/crm/crm-pipeline.webp" alt="A2H CRM pipeline board with sample leads in new, contacted, scheduled, booked and completed, each with a job value, source and next step" loading="lazy" decoding="async" width="3200" height="2000"></div>
+          </div>
+        </div>
+        <div class="crm-step reveal" data-crm-step="contact">
+          <p class="crm-when">Every contact</p>
+          <div class="crm-body">
+            <h3>One timeline per person</h3>
+            <p class="mt-2">Name and phone, what they need in their words, hot, warm or cold, and how urgent it is. Every call, chat, form and quote sits on one timeline, with a suggested reply ready to send.</p>
+            <div class="crm-shot"><img src="assets/crm/crm-contact.webp" alt="A2H CRM contact drawer for a sample lead, with contact details, a suggested reply, the next task and a timeline with a call summary" loading="lazy" decoding="async" width="3200" height="2000"></div>
+          </div>
+        </div>
+        <div class="crm-step reveal" data-crm-step="visitors">
+          <p class="crm-when">Before they reach out</p>
+          <div class="crm-body">
+            <h3>Website visitors</h3>
+            <p class="mt-2">The pages each person read on your site before they called, chatted or filled in a form, and where they came from. You call back knowing what they looked at.</p>
+            <div class="crm-shot"><img src="assets/crm/crm-visitors.webp" alt="A2H CRM website visitors view showing the pages sample visitors read before they reached out" loading="lazy" decoding="async" width="3200" height="2000"></div>
+          </div>
+        </div>
+        <div class="crm-step reveal" data-crm-step="chats">
+          <p class="crm-when">Any hour</p>
+          <div class="crm-body">
+            <h3>Chats</h3>
+            <p class="mt-2">Every conversation from the website chat, and whether it became a lead. Spam is filtered out first.</p>
+            <div class="crm-shot"><img src="assets/crm/crm-chats.webp" alt="A2H CRM chats view with a sample website chat transcript that became a lead" loading="lazy" decoding="async" width="3200" height="2000"></div>
+          </div>
+        </div>
+        <div class="crm-step reveal" data-crm-step="reports">
+          <p class="crm-when">End of the month</p>
+          <div class="crm-body">
+            <h3>Reports</h3>
+            <p class="mt-2">Leads by source, deals by stage, quotes by status and which pages people read before reaching out.</p>
+            <div class="crm-shot"><img src="assets/crm/crm-reports.webp" alt="A2H CRM reports view with sample charts of leads by source and deals by stage" loading="lazy" decoding="async" width="3200" height="2000"></div>
+          </div>
+        </div>
       </div>
-      <p class="lede lg:col-span-4 lg:col-start-9 lg:self-end">Real screens from our CRM. The leads shown are sample data. Every client gets their own workspace, with their leads and nothing else.</p>
-    </div>
-    <div class="reveal frame drift-slow">
-      <div class="frame-bar"><span></span><span></span><span></span><em>crm.a2h.info, sample workspace</em></div>
-      <img src="assets/crm/crm-contacts.webp" alt="A2H CRM contacts list for a demo foundation repair company, with sample leads: name, phone, email, open opportunities and stage" loading="lazy" decoding="async" width="1440" height="900" class="w-full h-auto block">
-    </div>
-    <div class="stagger grid md:grid-cols-3 gap-5 mt-5">
-      <figure class="md:col-span-2 panel overflow-hidden media-zoom">
-        <div class="overflow-hidden border-b hairline"><img src="assets/crm/crm-pipeline.webp" alt="A2H CRM pipeline board for a demo foundation repair company, with sample leads in new, contacted, scheduled and booked stages and a job value on each" loading="lazy" decoding="async" width="1600" height="1016" class="w-full h-auto block"></div>
-        <figcaption class="p-5 text-[15px] text-fog leading-[1.6]">A pipeline board: new, contacted, scheduled, booked. Move a lead forward when you have called them.</figcaption>
-      </figure>
-      <div class="panel p-6 flex flex-col">
-        <p class="text-xs text-fog mb-3">What every lead carries</p>
-        <ul class="text-[15px] text-sand leading-[1.6] flex-1">
-          <li class="py-2.5 border-t hairline">Name and phone</li>
-          <li class="py-2.5 border-t hairline">What they need, in their words</li>
-          <li class="py-2.5 border-t hairline">Temperature: hot, warm or cold</li>
-          <li class="py-2.5 border-t hairline">Urgency: immediate, this week, this month</li>
-          <li class="py-2.5 border-t border-b hairline">Stage: new, contacted, scheduled, booked</li>
-        </ul>
-        <p class="text-sm text-fog mt-4">Every chat or form becomes a contact automatically. Spam is filtered out first.</p>
+      <div class="crm-sticky" aria-hidden="true">
+        <div class="frame">
+          <div class="frame-bar"><span></span><span></span><span></span><em>crm.a2h.info, sample workspace</em></div>
+          <div class="crm-screens">
+            <img src="assets/crm/crm-pipeline.webp" alt="" loading="lazy" decoding="async" width="3200" height="2000" data-crm-screen="pipeline" class="is-active">
+            <img src="assets/crm/crm-contact.webp" alt="" loading="lazy" decoding="async" width="3200" height="2000" data-crm-screen="contact">
+            <img src="assets/crm/crm-visitors.webp" alt="" loading="lazy" decoding="async" width="3200" height="2000" data-crm-screen="visitors">
+            <img src="assets/crm/crm-chats.webp" alt="" loading="lazy" decoding="async" width="3200" height="2000" data-crm-screen="chats">
+            <img src="assets/crm/crm-reports.webp" alt="" loading="lazy" decoding="async" width="3200" height="2000" data-crm-screen="reports">
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- WORK -->
-<section id="work" class="py-24 px-5 sm:px-6 bg-surface/40 border-y hairline">
+<section id="work" class="py-24 sm:py-32 px-5 sm:px-6 bg-surface border-y hairline">
   <div class="max-w-6xl mx-auto">
     <div class="reveal flex flex-wrap items-end justify-between gap-6 mb-12">
       <div class="max-w-2xl">
-        <h2 class="display-lg text-sand">Live sites we've built.</h2>
+        <p class="eyebrow mb-5">Work</p>
+        <h2 class="display-lg text-sand">Live sites <span class="text-fog/70">we've built.</span></h2>
         <p class="lede mt-4">Each card opens the real site in a new tab.</p>
       </div>
       <a href="work.html" class="link-arrow text-[15px]">Every build in detail <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
@@ -385,11 +432,11 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <!-- PROOF -->
-<section id="proof" class="py-24 px-5 sm:px-6">
+<section id="proof" class="py-24 sm:py-32 px-5 sm:px-6">
   <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12">
     <div class="reveal lg:col-span-5">
       <p class="eyebrow mb-4">Who's building it</p>
-      <h2 class="display-lg text-sand">One AI consultant in Houston, not a sales team.</h2>
+      <h2 class="display-lg text-sand">One AI consultant in Houston, <span class="text-fog/70">not a sales team.</span></h2>
       <p class="lede mt-5">A2H is run by Abbas Hussain. In October 2026 he was accepted as a developer on AI Frontrunners, the agency community run by Tim Chao, where agency owners hire a small group of vetted developers to build for them.</p>
       <p class="mt-6"><a href="https://www.linkedin.com/in/abbas-hussain-1bb46b432/" target="_blank" rel="noopener" class="link-arrow text-[15px]">Abbas on LinkedIn <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a></p>
     </div>
@@ -406,15 +453,15 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <!-- PRICING -->
-<section id="pricing" class="py-24 px-5 sm:px-6">
+<section id="pricing" class="py-24 sm:py-32 px-5 sm:px-6 bg-surface border-y hairline">
   <div class="max-w-6xl mx-auto">
     <div class="reveal max-w-2xl mb-12">
       <p class="eyebrow mb-4">Pricing</p>
-      <h2 class="display-lg text-sand">One price, paid once. Free sample first.</h2>
+      <h2 class="display-lg text-sand">One price, paid once. <span class="text-fog/70">Free sample first.</span></h2>
     </div>
     <div class="reveal panel-elevated overflow-hidden">
       <div class="grid lg:grid-cols-12">
-        <div class="lg:col-span-5 p-7 sm:p-10 border-b lg:border-b-0 lg:border-r hairline flex flex-col">
+        <div class="lg:col-span-5 p-7 sm:p-10 price-feature flex flex-col">
           <p class="text-sm font-semibold text-sand mb-5">Website + AI chat + CRM</p>
           <p class="figure text-sand" style="font-size:clamp(2.4rem,4.2vw,3.4rem)">$800 to $2,000</p>
           <p class="text-fog mt-2">one time</p>
@@ -449,7 +496,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <!-- 3D COMPANY CARD -->
-<section id="card3d-section" class="relative py-24 px-5 sm:px-6 bg-surface/40 border-y hairline overflow-hidden">
+<section id="card3d-section" class="relative py-24 sm:py-28 px-5 sm:px-6 overflow-hidden">
   <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
     <div class="reveal lg:col-span-6 flex flex-col items-center gap-4 py-6">
       <div class="card3d-stage">
@@ -479,10 +526,10 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="py-24 px-5 sm:px-6">
+<section id="faq" class="py-24 sm:py-32 px-5 sm:px-6 bg-surface border-y hairline">
   <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-10">
     <div class="reveal lg:col-span-4">
-      <h2 class="display-lg text-sand lg:sticky lg:top-28">Before you book a call</h2>
+      <div class="lg:sticky lg:top-28"><p class="eyebrow mb-5">FAQ</p><h2 class="display-lg text-sand">Before you <span class="text-fog/70">book a call</span></h2></div>
     </div>
     <div class="reveal faq lg:col-span-8">
       <details>
@@ -514,15 +561,15 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <!-- CTA BAND -->
-<section class="px-5 sm:px-6 py-10">
-  <div class="reveal band max-w-6xl mx-auto rounded-2xl px-7 py-14 sm:px-14 sm:py-20">
+<section class="px-5 sm:px-6 py-16 sm:py-24">
+  <div class="reveal band max-w-6xl mx-auto px-7 py-16 sm:px-14 sm:py-24">
     <div class="relative z-[1] grid md:grid-cols-12 gap-8 items-end">
       <div class="md:col-span-8">
         <h2 class="display-lg text-ink">Want to see your sample site?</h2>
         <p class="text-ink/80 text-lg leading-[1.6] mt-4 max-w-lg">We build it free, show it to you in 15 minutes, and you decide. No pressure, no obligation.</p>
       </div>
       <div class="md:col-span-4 md:text-right">
-        <a href="book-a-call.html" class="btn btn-ink">Get a free sample site <span class="btn-ico !bg-white/10"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+        <a href="book-a-call.html" class="btn btn-ink">Get a free sample site <span class="btn-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
       </div>
     </div>
   </div>
@@ -536,7 +583,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="rule"></div>
     <div class="grid gap-10 md:grid-cols-12 pt-14 pb-12">
       <div class="md:col-span-5">
-        <p class="font-display text-[1.6rem] text-sand mb-4">A2H<span class="text-copper">.</span></p>
+        <p class="brand text-[1.4rem] mb-4"><span class="brand-mark" aria-hidden="true"></span>A2H</p>
         <p class="text-[15px] text-fog leading-[1.7] max-w-sm">Websites with an AI chat and a CRM lead list, built in Houston for Texas foundation repair, restoration and garage door companies.</p>
         <p class="text-sm text-fog/80 mt-4 max-w-sm">Founder Abbas Hussain is an accepted developer on AI Frontrunners.</p>
       </div>
@@ -962,6 +1009,44 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }, { threshold: 0.1, rootMargin: '240px 0px' });
     vids.forEach(function (v) { io.observe(v); });
+  })();
+
+  // Hero CRM walkthrough: the poster is the LCP image; the video only starts
+  // after the page has loaded, and never on reduced motion or data saver.
+  (function () {
+    var v = document.getElementById('hero-crm-video');
+    if (!v) return;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var saveData = navigator.connection && navigator.connection.saveData;
+    if (reduced || saveData) return;
+    var start = function () {
+      new IntersectionObserver(function (entries, io) {
+        if (!entries[0].isIntersecting) return;
+        io.disconnect();
+        v.src = v.dataset.src;
+        v.load();
+        v.play().catch(function () {});
+      }, { threshold: 0.15 }).observe(v);
+    };
+    if (document.readyState === 'complete') setTimeout(start, 600);
+    else window.addEventListener('load', function () { setTimeout(start, 600); });
+  })();
+
+  // CRM story: highlight the step in the middle of the viewport and swap the
+  // sticky screenshot to match. Desktop only; mobile shows each shot inline.
+  (function () {
+    var steps = document.querySelectorAll('[data-crm-step]');
+    var screens = document.querySelectorAll('[data-crm-screen]');
+    if (!steps.length || !screens.length || !('IntersectionObserver' in window)) return;
+    var setActive = function (key) {
+      steps.forEach(function (s) { s.classList.toggle('is-active', s.dataset.crmStep === key); });
+      screens.forEach(function (img) { img.classList.toggle('is-active', img.dataset.crmScreen === key); });
+    };
+    setActive(steps[0].dataset.crmStep);
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.dataset.crmStep); });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    steps.forEach(function (s) { io.observe(s); });
   })();
 
   // Count-up figures.

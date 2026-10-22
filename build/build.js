@@ -380,7 +380,7 @@ PAGES.push({
     </div>
     <div class="lg:col-span-8 reveal">
       <div class="panel-elevated overflow-hidden">
-        <div class="calendly-inline-widget" data-url="https://calendly.com/hhuss786512tx/new-meeting?hide_gdpr_banner=1&background_color=231c18&text_color=e9dfd2&primary_color=c9702f" style="min-width:280px;height:700px;"></div>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/hhuss786512tx/new-meeting?hide_gdpr_banner=1&background_color=ffffff&text_color=0b0b0d&primary_color=c9702f" style="min-width:280px;height:700px;"></div>
       </div>
     </div>
   </div>
@@ -436,7 +436,7 @@ PAGES.push({
     </div>
     <div class="reveal lg:col-span-8">
       <div class="panel-elevated overflow-hidden">
-        <div class="calendly-inline-widget" data-url="https://calendly.com/hhuss786512tx/new-meeting?hide_gdpr_banner=1&background_color=231c18&text_color=e9dfd2&primary_color=c9702f" style="min-width:280px;height:700px;"></div>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/hhuss786512tx/new-meeting?hide_gdpr_banner=1&background_color=ffffff&text_color=0b0b0d&primary_color=c9702f" style="min-width:280px;height:700px;"></div>
       </div>
     </div>
   </div>
@@ -487,7 +487,7 @@ PAGES.push({
     </div>
     <div class="lg:col-span-8 reveal">
       <div class="panel-elevated overflow-hidden">
-        <div class="calendly-inline-widget" data-url="https://calendly.com/hhuss786512tx/new-meeting?hide_gdpr_banner=1&background_color=231c18&text_color=e9dfd2&primary_color=c9702f" style="min-width:280px;height:700px;"></div>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/hhuss786512tx/new-meeting?hide_gdpr_banner=1&background_color=ffffff&text_color=0b0b0d&primary_color=c9702f" style="min-width:280px;height:700px;"></div>
       </div>
     </div>
   </div>
