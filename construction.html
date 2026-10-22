@@ -43,6 +43,13 @@
     ]
   },
   "description": "A2H is an AI consulting studio in Houston, Texas, founded by Abbas Hussain. It builds websites with an AI chat and a CRM lead list for small Texas trade businesses, mainly foundation repair, water damage restoration and garage door companies. Abbas Hussain is an accepted developer on AI Frontrunners.",
+  "disambiguatingDescription": "A2H (a2h.info) is a Houston, Texas web studio founded by Abbas Hussain. It is not affiliated with A2 Hosting or with a2h.com.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Houston",
+    "addressRegion": "TX",
+    "addressCountry": "US"
+  },
   "areaServed": {
     "@type": "State",
     "name": "Texas"
@@ -240,9 +247,9 @@ document.addEventListener('DOMContentLoaded', function () {
       <p class="lede mt-4">A $200 Google Ads test on Solid State Construction's new site, over 14 days.</p>
     </div>
     <div class="stagger grid sm:grid-cols-3 gap-x-8 gap-y-10">
-      <div class="border-t border-copper-light/60 pt-6"><p class="figure text-sand" style="font-size:clamp(3rem,6vw,4.5rem)">$<span data-countup="200">0</span></p><p class="text-fog mt-3 max-w-[18rem]">spent on the test</p></div>
-      <div class="border-t hairline pt-6"><p class="figure text-sand" style="font-size:clamp(3rem,6vw,4.5rem)"><span data-countup="270">0</span>+</p><p class="text-fog mt-3 max-w-[18rem]">clicks in 14 days</p></div>
-      <div class="border-t hairline pt-6"><p class="figure text-sand" style="font-size:clamp(3rem,6vw,4.5rem)">$<span data-countup="0.74" data-decimals="2">0</span></p><p class="text-fog mt-3 max-w-[18rem]">per click</p></div>
+      <div class="border-t border-copper-light/60 pt-6"><p class="figure text-sand" style="font-size:clamp(3rem,6vw,4.5rem)">$<span data-countup="200">200</span></p><p class="text-fog mt-3 max-w-[18rem]">spent on the test</p></div>
+      <div class="border-t hairline pt-6"><p class="figure text-sand" style="font-size:clamp(3rem,6vw,4.5rem)"><span data-countup="270">270</span>+</p><p class="text-fog mt-3 max-w-[18rem]">clicks in 14 days</p></div>
+      <div class="border-t hairline pt-6"><p class="figure text-sand" style="font-size:clamp(3rem,6vw,4.5rem)">$<span data-countup="0.74" data-decimals="2">0.74</span></p><p class="text-fog mt-3 max-w-[18rem]">per click</p></div>
     </div>
     <p class="reveal text-xs text-fog/70 mt-10 max-w-xl">One client, one test. Your numbers depend on your market and your budget.</p>
   </div>
@@ -461,7 +468,7 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     </div>
     <div class="border-t hairline py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-fog/70">
-      <p>&copy; <span data-year>2026</span> A2H, Houston, Texas</p>
+      <p>&copy; <span data-year>2026</span> A2H (a2h.info), Houston, Texas. Not affiliated with A2 Hosting or a2h.com.</p>
       <div class="flex items-center gap-5">
         <a href="privacy.html" class="link-underline hover:text-sand">Privacy</a>
         <a href="terms.html" class="link-underline hover:text-sand">Terms</a>
@@ -696,7 +703,11 @@ document.addEventListener('DOMContentLoaded', function () {
         requestAnimationFrame(tick);
       });
     }, { threshold: 0.5 });
-    els.forEach(function (el) { io.observe(el); });
+    // The real figure ships in the HTML so crawlers and no-JS readers see it; reset to 0 only once JS is animating.
+    els.forEach(function (el) {
+      if (!reduced) el.textContent = (0).toFixed(parseInt(el.dataset.decimals || '0', 10));
+      io.observe(el);
+    });
   })();
 
   // Chat demo threads: stagger bubbles in, with a typing beat before each reply.

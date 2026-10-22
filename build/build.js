@@ -22,6 +22,8 @@ const ORG = {
   email: EMAIL,
   founder: { '@type': 'Person', name: 'Abbas Hussain', jobTitle: 'Founder and AI Consultant', sameAs: ['https://www.linkedin.com/in/abbas-hussain-1bb46b432/'] },
   description: 'A2H is an AI consulting studio in Houston, Texas, founded by Abbas Hussain. It builds websites with an AI chat and a CRM lead list for small Texas trade businesses, mainly foundation repair, water damage restoration and garage door companies. Abbas Hussain is an accepted developer on AI Frontrunners.',
+  disambiguatingDescription: 'A2H (a2h.info) is a Houston, Texas web studio founded by Abbas Hussain. It is not affiliated with A2 Hosting or with a2h.com.',
+  address: { '@type': 'PostalAddress', addressLocality: 'Houston', addressRegion: 'TX', addressCountry: 'US' },
   areaServed: { '@type': 'State', name: 'Texas' },
   serviceType: ['Website Design', 'Website Development', 'AI Chatbot', 'CRM Setup', 'AI Receptionist'],
   knowsAbout: ['Websites for contractors', 'AI website chat', 'CRM lead management', 'Foundation repair marketing', 'Water damage restoration marketing', 'Garage door company marketing'],
@@ -127,7 +129,7 @@ const figures = ({ eyebrow, heading, sub = '', items, note = '' }) => `<section 
       <h2 class="display-lg text-sand">${heading}</h2>
 ${sub ? `      <p class="lede mt-4">${sub}</p>\n` : ''}    </div>
     <div class="stagger grid sm:grid-cols-3 gap-x-8 gap-y-10">
-${items.map(([pre, val, dec, suf, label], i) => `      <div class="border-t ${i === 0 ? 'border-copper-light/60' : 'hairline'} pt-6"><p class="figure text-sand" style="font-size:clamp(3rem,6vw,4.5rem)">${pre}<span data-countup="${val}"${dec ? ` data-decimals="${dec}"` : ''}>0</span>${suf}</p><p class="text-fog mt-3 max-w-[18rem]">${label}</p></div>`).join('\n')}
+${items.map(([pre, val, dec, suf, label], i) => `      <div class="border-t ${i === 0 ? 'border-copper-light/60' : 'hairline'} pt-6"><p class="figure text-sand" style="font-size:clamp(3rem,6vw,4.5rem)">${pre}<span data-countup="${val}"${dec ? ` data-decimals="${dec}"` : ''}>${dec ? Number(val).toFixed(dec) : val}</span>${suf}</p><p class="text-fog mt-3 max-w-[18rem]">${label}</p></div>`).join('\n')}
     </div>
 ${note ? `    <p class="reveal text-xs text-fog/70 mt-10 max-w-xl">${note}</p>\n` : ''}  </div>
 </section>`;
@@ -857,12 +859,20 @@ console.log(`\n  stylesheet cache-busting: site.css?v=${cssHashes['assets/site.c
 // robots.txt + sitemap.xml
 const urls = ['index.html', ...PAGES.filter((p) => !p.funnel && !p.noindex).map((p) => p.slug)].filter((s) => s !== '404.html' && s !== 'thank-you.html' && s !== 'mockup.html' && s !== 'watch.html');
 const today = new Date().toISOString().slice(0, 10);
+// lastmod = the page's last commit date, or today if its built file differs from that commit,
+// so the sitemap only reports pages whose content actually changed.
+const { execFileSync } = require('child_process');
+const lastmod = (s) => {
+  const git = (args) => { try { return execFileSync('git', args, { cwd: OUT, encoding: 'utf8' }).trim(); } catch { return ''; } };
+  if (git(['status', '--porcelain', '--', s])) return today;
+  return git(['log', '-1', '--format=%cs', '--', s]) || today;
+};
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((s) => {
   const loc = s === 'index.html' ? SITE + '/' : `${SITE}/${s}`;
   const priority = s === 'index.html' ? '1.0' : (s === 'privacy.html' || s === 'terms.html') ? '0.3' : '0.8';
-  return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <priority>${priority}</priority>\n  </url>`;
+  return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod(s)}</lastmod>\n    <priority>${priority}</priority>\n  </url>`;
 }).join('\n')}
 </urlset>
 `;

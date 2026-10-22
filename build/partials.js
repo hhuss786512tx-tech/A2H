@@ -153,7 +153,7 @@ function footer() {
       </div>
     </div>
     <div class="border-t hairline py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-fog/70">
-      <p>&copy; <span data-year>2026</span> A2H, Houston, Texas</p>
+      <p>&copy; <span data-year>2026</span> A2H (a2h.info), Houston, Texas. Not affiliated with A2 Hosting or a2h.com.</p>
       <div class="flex items-center gap-5">
         <a href="privacy.html" class="link-underline hover:text-sand">Privacy</a>
         <a href="terms.html" class="link-underline hover:text-sand">Terms</a>
@@ -854,7 +854,11 @@ function scripts() {
         requestAnimationFrame(tick);
       });
     }, { threshold: 0.5 });
-    els.forEach(function (el) { io.observe(el); });
+    // The real figure ships in the HTML so crawlers and no-JS readers see it; reset to 0 only once JS is animating.
+    els.forEach(function (el) {
+      if (!reduced) el.textContent = (0).toFixed(parseInt(el.dataset.decimals || '0', 10));
+      io.observe(el);
+    });
   })();
 
   // Chat demo threads: stagger bubbles in, with a typing beat before each reply.
