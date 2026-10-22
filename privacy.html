@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/tailwind.css?v=01c3ce13">
+<link rel="stylesheet" href="assets/tailwind.css?v=865ca867">
 <link rel="stylesheet" href="assets/site.css?v=ac40656e">
 <script>document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">
@@ -43,6 +43,13 @@
     ]
   },
   "description": "A2H is an AI consulting studio in Houston, Texas, founded by Abbas Hussain. It builds websites with an AI chat and a CRM lead list for small Texas trade businesses, mainly foundation repair, water damage restoration and garage door companies. Abbas Hussain is an accepted developer on AI Frontrunners.",
+  "disambiguatingDescription": "A2H (a2h.info) is a Houston, Texas web studio founded by Abbas Hussain. It is not affiliated with A2 Hosting or with a2h.com.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Houston",
+    "addressRegion": "TX",
+    "addressCountry": "US"
+  },
   "areaServed": {
     "@type": "State",
     "name": "Texas"
@@ -219,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     </div>
     <div class="border-t hairline py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-fog/70">
-      <p>&copy; <span data-year>2026</span> A2H, Houston, Texas</p>
+      <p>&copy; <span data-year>2026</span> A2H (a2h.info), Houston, Texas. Not affiliated with A2 Hosting or a2h.com.</p>
       <div class="flex items-center gap-5">
         <a href="privacy.html" class="link-underline hover:text-sand">Privacy</a>
         <a href="terms.html" class="link-underline hover:text-sand">Terms</a>
@@ -337,7 +344,11 @@ document.addEventListener('DOMContentLoaded', function () {
         requestAnimationFrame(tick);
       });
     }, { threshold: 0.5 });
-    els.forEach(function (el) { io.observe(el); });
+    // The real figure ships in the HTML so crawlers and no-JS readers see it; reset to 0 only once JS is animating.
+    els.forEach(function (el) {
+      if (!reduced) el.textContent = (0).toFixed(parseInt(el.dataset.decimals || '0', 10));
+      io.observe(el);
+    });
   })();
 
   // Chat demo threads: stagger bubbles in, with a typing beat before each reply.

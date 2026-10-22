@@ -40,13 +40,13 @@ module.exports = function tradePages({ SITE, ORG, faqLd, hero, cards, faqSection
   <div class="max-w-6xl mx-auto">
     <div class="reveal max-w-2xl mb-12">
       <p class="eyebrow mb-4">Our own data</p>
-      <h2 class="display-lg text-sand">We scanned ${t.n} Texas ${t.plural} websites.</h2>
-      <p class="lede mt-4">October 2026. Each company's homepage and contact pages, Texas address required, call-reselling and directory sites removed.</p>
+      <h2 class="display-lg text-sand">How many Texas ${t.plural} websites have a chat or online booking?</h2>
+      <p class="lede mt-4">Few. Of ${t.n} Texas ${t.plural} websites A2H scanned in October 2026, ${t.noChat}% had no chat we could detect and ${t.noBook}% had no way to book online. We checked each company's homepage and contact pages, with a Texas address required and call-reselling and directory sites removed.</p>
     </div>
     <div class="stagger grid sm:grid-cols-3 gap-x-8 gap-y-10">
-      <div class="border-t border-copper-light/60 pt-6"><p class="figure text-sand" style="font-size:clamp(3rem,6vw,4.5rem)"><span data-countup="${t.noChat}">0</span>%</p><p class="text-fog mt-3 max-w-[18rem]">had no chat we could detect</p></div>
-      <div class="border-t hairline pt-6"><p class="figure text-sand" style="font-size:clamp(3rem,6vw,4.5rem)"><span data-countup="${t.noBook}">0</span>%</p><p class="text-fog mt-3 max-w-[18rem]">had no way to book online</p></div>
-      <div class="border-t hairline pt-6"><p class="figure text-sand" style="font-size:clamp(3rem,6vw,4.5rem)"><span data-countup="${t.third[0]}">0</span>%</p><p class="text-fog mt-3 max-w-[18rem]">${t.third[1]}</p></div>
+      <div class="border-t border-copper-light/60 pt-6"><p class="figure text-sand" style="font-size:clamp(3rem,6vw,4.5rem)"><span data-countup="${t.noChat}">${t.noChat}</span>%</p><p class="text-fog mt-3 max-w-[18rem]">had no chat we could detect</p></div>
+      <div class="border-t hairline pt-6"><p class="figure text-sand" style="font-size:clamp(3rem,6vw,4.5rem)"><span data-countup="${t.noBook}">${t.noBook}</span>%</p><p class="text-fog mt-3 max-w-[18rem]">had no way to book online</p></div>
+      <div class="border-t hairline pt-6"><p class="figure text-sand" style="font-size:clamp(3rem,6vw,4.5rem)"><span data-countup="${t.third[0]}">${t.third[0]}</span>%</p><p class="text-fog mt-3 max-w-[18rem]">${t.third[1]}</p></div>
     </div>
     <p class="reveal text-xs text-fog/70 mt-10 max-w-xl">The scan only spots common chat tools, so the real "no chat" share may be a little lower.</p>
   </div>
@@ -164,7 +164,7 @@ module.exports = function tradePages({ SITE, ORG, faqLd, hero, cards, faqSection
       answer(t.short),
       scan(t),
       chatDemo(t),
-      cards('What we build', `What a ${t.plural} site needs`, t.items),
+      cards('What we build', `What should a ${t.plural} website include?`, t.items),
       B.pricingTable({ heading: 'One price, paid once. Free sample first.' }),
       faqSection(t.faq),
       B.ctaBand({}),

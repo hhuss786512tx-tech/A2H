@@ -2,6 +2,8 @@
 
 > A2H is an AI consulting studio in Houston, Texas, founded by Abbas Hussain. It builds websites with an AI chat and a CRM lead list for small Texas trade businesses, mainly foundation repair, water damage restoration and garage door companies. Abbas Hussain is an accepted developer on AI Frontrunners (October 2026).
 
+A2H (a2h.info) is a Houston, Texas web studio founded by Abbas Hussain. It is not affiliated with A2 Hosting or with a2h.com.
+
 A2H builds a fast, hand-coded website for each client, with an AI chat trained on the business. The chat answers common questions at any hour, takes the visitor's name, number and what they need, and saves it to the client's own CRM. Leads are tagged by urgency and moved through stages (new, contacted, scheduled, booked), and spam form fills are filtered out. Every client sees a free sample site for their company before paying.
 
 ## Key facts
