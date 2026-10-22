@@ -26,7 +26,7 @@ const ORG = {
   serviceType: ['Website Design', 'Website Development', 'AI Chatbot', 'CRM Setup', 'AI Receptionist'],
   knowsAbout: ['Websites for contractors', 'AI website chat', 'CRM lead management', 'Foundation repair marketing', 'Water damage restoration marketing', 'Garage door company marketing'],
   award: 'Accepted developer, AI Frontrunners (October 2026)',
-  sameAs: ['https://www.linkedin.com/in/abbas-hussain-1bb46b432/', 'https://www.instagram.com/constructionsresponse/', 'https://www.tiktok.com/@a2h.info'],
+  sameAs: ['https://www.linkedin.com/company/a2h-info/', 'https://www.linkedin.com/in/abbas-hussain-1bb46b432/', 'https://www.instagram.com/constructionsresponse/', 'https://www.tiktok.com/@a2h.info'],
 };
 
 const serviceLd = (name, description, audience) => ({
