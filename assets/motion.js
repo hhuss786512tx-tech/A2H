@@ -47,7 +47,10 @@
       Array.prototype.forEach.call(followers, function (f) { f.classList.add('in'); });
     };
     if (reduced) { go(); return; }
-    if (el.hasAttribute('data-split-now')) requestAnimationFrame(function () { requestAnimationFrame(go); });
+    if (el.hasAttribute('data-split-now')) {
+      var now = function () { requestAnimationFrame(function () { requestAnimationFrame(go); }); };
+      if (document.documentElement.classList.contains('intro-on')) document.addEventListener('a2h:intro-done', now, { once: true }); else now();
+    }
     else onView(el, go);
   });
 
@@ -199,5 +202,61 @@
     if (rail.classList.contains('stagger-x')) {
       if (reduced) rail.classList.add('in'); else onView(rail, function () { rail.classList.add('in'); }, { threshold: 0.1 });
     }
+  });
+  // Custom product visuals play only while on screen.
+  document.querySelectorAll('[data-viz]').forEach(function (el) {
+    if (!('IntersectionObserver' in window)) { el.classList.add('in-view'); return; }
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { el.classList.toggle('in-view', e.isIntersecting); });
+    }, { threshold: 0.25 }).observe(el);
+  });
+
+  // Fire-write: letters ignite one by one behind a travelling spark.
+  var fireWrite = function (mark, done) {
+    var spark = mark.querySelector('.fire-spark');
+    var letters = Array.prototype.slice.call(mark.querySelectorAll('.fire-letter'));
+    var box = mark.getBoundingClientRect(), stagger = 60, start = 150;
+    letters.forEach(function (letter, i) {
+      var t = start + i * stagger;
+      setTimeout(function () {
+        if (spark) {
+          var r = letter.getBoundingClientRect();
+          spark.style.left = (r.left - box.left + r.width / 2) + 'px';
+          spark.style.top = (r.top - box.top + r.height * 0.3) + 'px';
+          spark.style.opacity = '1';
+        }
+      }, t);
+      setTimeout(function () { letter.classList.add('lit'); if (spark) spark.style.opacity = '0'; }, t + stagger * 0.8);
+    });
+    if (done) setTimeout(done, start + letters.length * stagger + 600);
+  };
+
+  // Intro overlay, once per session, skipped for deep links and reduced motion.
+  (function () {
+    var overlay = document.getElementById('intro-overlay');
+    if (!overlay) return;
+    var cleanup = function () {
+      document.documentElement.style.overflow = '';
+      if (overlay.parentNode) overlay.remove();
+      if (document.documentElement.classList.contains('intro-on')) { document.documentElement.classList.remove('intro-on'); document.dispatchEvent(new Event('a2h:intro-done')); }
+    };
+    var seen = null;
+    try { seen = sessionStorage.getItem('a2h_intro_seen'); } catch (e) {}
+    if (reduced || seen || window.location.hash) { cleanup(); return; }
+    try { sessionStorage.setItem('a2h_intro_seen', '1'); } catch (e) {}
+    document.documentElement.style.overflow = 'hidden';
+    var dirs = ['exit-up', 'exit-down', 'exit-left', 'exit-right', 'exit-fade'];
+    fireWrite(overlay.querySelector('.fire-mark'), function () {
+      overlay.classList.add(dirs[Math.floor(Math.random() * dirs.length)]);
+      overlay.addEventListener('transitionend', cleanup, { once: true });
+      setTimeout(cleanup, 1500);
+    });
+    setTimeout(cleanup, 4500);
+  })();
+
+  // Footer wordmark ignites when it scrolls into view.
+  document.querySelectorAll('.footer-word').forEach(function (mark) {
+    if (reduced) { mark.querySelectorAll('.fire-letter').forEach(function (l) { l.classList.add('lit'); }); return; }
+    onView(mark, function () { fireWrite(mark); }, { threshold: 0.4 });
   });
 })();
