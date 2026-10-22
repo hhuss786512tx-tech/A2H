@@ -130,9 +130,11 @@ function footer() {
         <p class="text-sm font-semibold text-sand mb-4">Site</p>
         <ul class="space-y-0.5 text-[15px] text-fog">
           <li><a href="work.html" class="link-underline hover:text-sand inline-block py-1.5">Work</a></li>
+          <li><a href="about.html" class="link-underline hover:text-sand inline-block py-1.5">About</a></li>
           <li><a href="process.html" class="link-underline hover:text-sand inline-block py-1.5">Process</a></li>
           <li><a href="pricing.html" class="link-underline hover:text-sand inline-block py-1.5">Pricing</a></li>
           <li><a href="industries.html" class="link-underline hover:text-sand inline-block py-1.5">Industries</a></li>
+          <li><a href="houston-trade-website-scan-2026.html" class="link-underline hover:text-sand inline-block py-1.5">2026 website scan</a></li>
           <li><a href="book-a-call.html" class="link-underline hover:text-sand inline-block py-1.5">Book a call</a></li>
         </ul>
       </div>
