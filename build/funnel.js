@@ -10,7 +10,7 @@
 
 const PHONE_DISPLAY = '(832) 743-3676';
 const PHONE_TEL = '+18327433676';
-const CALENDLY = 'https://calendly.com/hhuss786512tx/new-meeting?hide_gdpr_banner=1&background_color=ffffff&text_color=0b0b0d&primary_color=c9702f';
+const CALENDLY = 'https://calendly.com/hhuss786512tx/new-meeting?hide_gdpr_banner=1&background_color=231c18&text_color=e9dfd2&primary_color=c9702f';
 
 const NICHES = {
   groomers: {
@@ -136,7 +136,7 @@ function build(key, { ORG, EMAIL, cards, faqSection }) {
   const body = `
 <header id="site-header">
   <div class="max-w-6xl mx-auto px-5 sm:px-6 h-16 flex items-center justify-between gap-4">
-    <span class="brand" aria-label="A2H"><span class="brand-mark" aria-hidden="true"></span>A2H</span>
+    <span class="font-display text-[1.35rem] tracking-tight text-sand" aria-label="A2H">A2H<span class="text-copper">.</span></span>
     <a href="#book" class="btn btn-ghost btn-sm">Book a call</a>
   </div>
 </header>
@@ -234,7 +234,7 @@ ${faqSection(n.faq, 'Questions')}
   <div class="max-w-6xl mx-auto px-5 sm:px-6">
     <div class="rule"></div>
     <div class="py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-fog/70">
-      <span class="brand"><span class="brand-mark" aria-hidden="true"></span>A2H</span>
+      <span class="font-display text-lg text-sand">A2H<span class="text-copper">.</span></span>
       <div class="flex items-center gap-5"><a href="privacy.html" class="link-underline hover:text-sand">Privacy</a><a href="terms.html" class="link-underline hover:text-sand">Terms</a></div>
       <span>&copy; ${new Date().getFullYear()} A2H, Houston, Texas</span>
     </div>
