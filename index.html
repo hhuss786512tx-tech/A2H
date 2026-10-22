@@ -20,9 +20,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- Tailwind is compiled ahead of time (npm run build). -->
-<link rel="preload" as="image" href="assets/portfolio/ssc.webp">
-<link rel="stylesheet" href="assets/tailwind.css?v=8b906e65">
+<link rel="stylesheet" href="assets/tailwind.css?v=01c3ce13">
 <link rel="stylesheet" href="assets/site.css?v=ac40656e">
+<link rel="stylesheet" href="assets/motion.css?v=1">
 <!-- Gates the .reveal opacity:0 rule in site.css. If this never runs, the
      hiding rule never applies and all copy stays visible rather than being
      stranded at opacity 0. -->
@@ -159,8 +159,13 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1760813911727113&ev=PageView&noscript=1" alt=""></noscript>
 </head>
-<body class="text-sand antialiased">
+<body class="text-sand antialiased has-announce">
 <a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ANNOUNCE -->
+<div class="announce">
+  <a href="book-a-call.html"><span class="hidden sm:inline">Free sample site for your company, built before you pay.</span><span class="sm:hidden">Free sample site before you pay.</span> <span class="pill">Book 15 minutes <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+</div>
 
 <!-- NAV -->
 <header id="site-header">
@@ -175,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <a href="industries.html" class="nav-link">Industries</a>
     </nav>
     <div class="flex items-center gap-3 shrink-0">
-      <a href="book-a-call.html" class="btn btn-solid btn-sm hidden sm:inline-flex">Get a free sample site</a>
+      <a href="book-a-call.html" class="btn btn-solid btn-sm hidden sm:inline-flex">Get a free sample site <span class="btn-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
       <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="menu-btn md:hidden relative">
         <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </button>
@@ -197,31 +202,67 @@ document.addEventListener('DOMContentLoaded', function () {
 <main id="main">
 
 <!-- HERO -->
-<section id="top" class="relative glow-copper pt-28 sm:pt-36 lg:pt-40 pb-16 lg:pb-24 px-5 sm:px-6 overflow-hidden">
+<section id="top" class="relative pt-40 sm:pt-44 lg:pt-48 pb-20 lg:pb-28 px-5 sm:px-6 overflow-hidden">
+  <div class="hero-aura" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
   <div class="grain"></div>
-  <div class="max-w-6xl mx-auto relative grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-    <div class="lg:col-span-7">
-      <h1 class="rise rise-1 display-xl text-sand">A website that answers at 10 PM. <span class="text-copper-light">A lead list you check at 7 AM.</span></h1>
-      <p class="rise rise-2 lede text-lg mt-6 max-w-lg">Websites with an AI chat and a CRM lead list for Texas foundation repair, restoration and garage door companies. Free sample site first.</p>
-      <div class="rise rise-3 mt-9 flex flex-col sm:flex-row sm:items-center gap-3">
-        <a href="book-a-call.html" class="btn btn-solid">Get a free sample site <span class="btn-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
-        <a href="#pricing" class="btn btn-ghost">See pricing</a>
-      </div>
+  <div class="relative max-w-5xl mx-auto text-center" data-split-group>
+    <p class="mono-eyebrow after-split" style="--d:0s"><span class="dot"></span>Websites, AI chat and CRM for Texas trades</p>
+    <h1 class="display-hero text-sand mt-7" data-split data-split-now>A website that answers at 10&nbsp;PM. <span class="tone-copper">A lead list you check at 7&nbsp;AM.</span></h1>
+    <p class="after-split lede text-lg mx-auto mt-7 max-w-xl" style="--d:0.55s">Websites with an AI chat and a CRM lead list for Texas foundation repair, restoration and garage door companies. Free sample site first.</p>
+    <div class="after-split mt-9 flex flex-col sm:flex-row items-center justify-center gap-3" style="--d:0.7s">
+      <a href="book-a-call.html" class="btn btn-solid">Get a free sample site <span class="btn-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+      <a href="#how-it-works" class="btn btn-ghost">See how it works</a>
     </div>
-    <div class="lg:col-span-5 rise rise-4">
-      <div class="hero-devices">
-        <div class="laptop-frame">
-          <div class="laptop-chrome"><span></span><span></span><span></span></div>
-          <video class="lazy-video" data-src="assets/portfolio/video/laptop-ssc.mp4" data-desktop-only poster="assets/portfolio/ssc.webp" muted loop playsinline preload="none" width="1280" height="800" aria-label="Solid State Construction website on a laptop"></video>
+    <p class="after-split text-sm text-fog mt-5 tnum" style="--d:0.8s">$800 to $2,000 one time. You see your sample site before you pay.</p>
+  </div>
+
+  <div class="relative max-w-6xl mx-auto mt-16 lg:mt-20 rise rise-5">
+    <div class="live-window drift" data-live-window>
+      <div class="lw-bar"><i></i><i></i><i></i><span class="lw-title">Sample Foundation Co. &middot; website chat + CRM</span><span class="lw-status">Answering</span></div>
+      <div class="lw-body">
+        <aside class="lw-side" aria-hidden="true">
+          <div class="lw-item is-active"><span class="lw-av">MG</span><div class="min-w-0 flex-1"><p class="lw-name">Foundation &middot; Plano <em>10:14 PM</em></p><p class="lw-sub">Found a crack in my garage slab&hellip;</p></div></div>
+          <div class="lw-item"><span class="lw-av b">DR</span><div class="min-w-0 flex-1"><p class="lw-name">Water damage &middot; Katy <em>11:48 PM</em></p><p class="lw-sub">Water coming through the ceiling</p></div></div>
+          <div class="lw-item"><span class="lw-av c">TS</span><div class="min-w-0 flex-1"><p class="lw-name">Garage door &middot; Cypress <em>6:40 AM</em></p><p class="lw-sub">Spring snapped, door won't open</p></div></div>
+          <div class="lw-item"><span class="lw-av c">KB</span><div class="min-w-0 flex-1"><p class="lw-name">Foundation &middot; Frisco <em>Yesterday</em></p><p class="lw-sub">Called back, inspection booked</p></div></div>
+        </aside>
+        <div class="flex flex-col">
+          <div class="lw-chat" aria-live="off"></div>
+          <div class="lw-input" aria-hidden="true">Homeowner is typing<span class="caret"></span></div>
         </div>
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <div class="phone-notch"></div>
-            <video class="lazy-video" data-src="assets/portfolio/video/mobile-ssc.mp4" poster="assets/portfolio/mobile-ssc.webp" muted loop playsinline preload="none" width="390" height="844" aria-label="Solid State Construction website on a phone"></video>
+        <aside class="lw-crm" aria-hidden="true">
+          <h4>New lead</h4>
+          <div class="lw-card">
+            <b>Maria G. &middot; Plano</b>
+            Garage slab crack, wants a free inspection. 214-555-0118.
+            <div class="lw-tags"><span class="lw-tag hot">Hot</span><span class="lw-tag">Foundation</span><span class="lw-tag">This week</span></div>
           </div>
-        </div>
+          <div class="lw-stages"><span class="lw-stage">New</span><span class="lw-stage">Contacted</span><span class="lw-stage">Scheduled</span><span class="lw-stage">Booked</span></div>
+          <div class="lw-feed"><p>Spam check passed</p><p>Saved to your lead list</p><p>Waiting for you at 7 AM</p></div>
+        </aside>
       </div>
-      <p class="text-xs text-fog mt-5 text-center lg:text-right"><a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" class="link-underline">solidstatesconstruction.com</a>, a live client site</p>
+      <p class="lw-note">Sample conversation, sample data</p>
+      <template>{"convo":[{"who":"user","text":"Found a crack in my garage slab. Do you do free inspections?","time":"10:14 PM"},{"who":"ai","text":"We do. What's your address and a good number? The owner will call you in the morning.","time":"AI, 10:14 PM"},{"who":"user","text":"1418 Oak Run, Plano. 214-555-0118.","time":"10:15 PM"},{"who":"ai","text":"Got it. You're on the list for a call tomorrow morning.","time":"AI, 10:15 PM"}]}</template>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section aria-label="Client sites" class="px-5 sm:px-6 pb-20">
+  <div class="max-w-6xl mx-auto border-t hairline pt-10">
+    <p class="mono-eyebrow text-center mb-8">Live sites we've built</p>
+    <div class="marquee">
+      <div class="marquee-track">
+        <a href="https://hahealthconsulting.com" target="_blank" rel="noopener"><img src="assets/clients/ha.webp" alt="" width="34" height="34" loading="lazy" decoding="async">H&amp;A Healthcare Consulting</a>
+        <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener"><img src="assets/clients/ssc.webp" alt="" width="34" height="34" loading="lazy" decoding="async">Solid State Construction</a>
+        <a href="https://caremedbill.com" target="_blank" rel="noopener"><img src="assets/clients/cmb.webp" alt="" width="80" height="30" loading="lazy" decoding="async" class="wide">CareMedBill</a>
+        <a href="https://azulbioresearch.com" target="_blank" rel="noopener"><img src="assets/clients/azul.webp" alt="" width="34" height="34" loading="lazy" decoding="async">Azul Bio Research</a>
+        <a href="https://hahealthconsulting.com" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="assets/clients/ha.webp" alt="" width="34" height="34" loading="lazy" decoding="async">H&amp;A Healthcare Consulting</a>
+        <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="assets/clients/ssc.webp" alt="" width="34" height="34" loading="lazy" decoding="async">Solid State Construction</a>
+        <a href="https://caremedbill.com" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="assets/clients/cmb.webp" alt="" width="80" height="30" loading="lazy" decoding="async" class="wide">CareMedBill</a>
+        <a href="https://azulbioresearch.com" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="assets/clients/azul.webp" alt="" width="34" height="34" loading="lazy" decoding="async">Azul Bio Research</a>
+      </div>
     </div>
   </div>
 </section>
@@ -229,9 +270,31 @@ document.addEventListener('DOMContentLoaded', function () {
 <!-- TRADES -->
 <section id="websites" class="py-24 px-5 sm:px-6">
   <div class="max-w-6xl mx-auto">
-    <div class="reveal max-w-2xl mb-10">
-      <h2 class="display-lg text-sand">Cracks, floods and stuck doors don't wait for 9 AM.</h2>
-      <p class="lede mt-4">Homeowners look you up after hours. The chat on your site answers, takes their details, and the lead is waiting in your CRM in the morning.</p>
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center mb-14">
+      <div class="lg:col-span-6" data-split-group>
+        <p class="mono-eyebrow after-split" style="--d:0s">Who it's for</p>
+        <h2 class="display-lg text-sand mt-5" style="font-size:clamp(2.2rem,4.4vw,3.6rem)" data-split>Cracks, floods and stuck doors <span class="tone-muted">don't wait for 9&nbsp;AM.</span></h2>
+        <p class="after-split lede mt-6">Homeowners look you up after hours. The chat on your site answers, takes their details, and the lead is waiting in your CRM in the morning.</p>
+      </div>
+      <div class="reveal lg:col-span-6">
+        <div class="hub" data-hub>
+          <div class="hub-dots" aria-hidden="true"></div>
+          <div class="hub-head"><span>Three ways in, one list</span><span class="on">Any hour</span></div>
+          <div class="hub-stage">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <path class="hub-line" vector-effect="non-scaling-stroke" d="M18 22 C 18 50, 40 60, 50 74"/>
+              <path class="hub-line" vector-effect="non-scaling-stroke" d="M50 22 C 50 40, 50 55, 50 74"/>
+              <path class="hub-line" vector-effect="non-scaling-stroke" d="M82 22 C 82 50, 60 60, 50 74"/>
+              <circle class="hub-spark" r="1.4"/><circle class="hub-spark" r="1.4"/><circle class="hub-spark" r="1.4"/>
+            </svg>
+            <div class="hub-node" style="left:18%;top:16%"><span>Website chat</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 3.5V17H6.5A2.5 2.5 0 0 1 4 14.5z"/></svg></div></div>
+            <div class="hub-node" style="left:50%;top:16%"><span>Quote form</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4"/></svg></div></div>
+            <div class="hub-node" style="left:82%;top:16%"><span>Phone calls</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h2.7l1.4 4-2 1.3a11 11 0 0 0 6.5 6.5l1.3-2 4 1.4v2.7a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></svg></div></div>
+            <div class="hub-core"><div class="hub-ring"><div class="chip-core">A2H</div></div><p>Your lead list</p></div>
+          </div>
+          <p class="relative text-xs text-fog/70 mt-2 text-center">Phone calls come in through the AI receptionist add-on.</p>
+        </div>
+      </div>
     </div>
     <div class="stagger">
       <a href="foundation-repair-websites.html" class="rail-row group">
@@ -257,50 +320,61 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <!-- HOW IT WORKS -->
-<section id="how-it-works" class="relative py-24 px-5 sm:px-6 bg-surface/40 border-y hairline overflow-hidden">
-  <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-8 items-start">
-    <div class="reveal lg:col-span-5 flex justify-center lg:justify-start lg:sticky lg:top-28 order-2 lg:order-1">
-      <div class="phone-frame drift">
-        <div class="phone-screen tall flex flex-col">
-          <div class="phone-notch"></div>
-          <div class="flex items-center justify-between px-4 pt-3 pb-1 text-[10px] font-semibold text-sand tnum"><span>10:14</span><span></span></div>
-          <div class="flex items-center gap-2.5 px-4 py-2.5 border-b hairline">
-            <span class="h-7 w-7 rounded-full bg-copper flex items-center justify-center text-[10px] font-bold text-ink shrink-0">SF</span>
-            <div class="min-w-0"><p class="text-xs font-semibold text-sand truncate">Sample Foundation Co.</p><p class="text-[10px] text-fog">Website chat, replies any hour</p></div>
-          </div>
-          <div id="chatbot-thread" class="bubble-thread flex-1 overflow-hidden px-3 py-3 space-y-2 text-[11px] leading-snug">
-            <div class="chat-bubble flex justify-end"><div class="max-w-[82%] bubble-user px-3 py-2">Found a crack in my garage slab. Do you do free inspections?<p class="text-[9px] text-fog/70 mt-1 tnum">10:14 PM</p></div></div>
-            <div class="typing-indicator flex justify-start"><div class="bubble-ai px-3.5 py-2.5 flex items-center gap-1"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div></div>
-            <div class="chat-bubble flex justify-start"><div class="max-w-[82%] bubble-ai px-3 py-2">We do. What's your address and a good number? The owner will call you tomorrow morning.<p class="text-[9px] text-ink/60 mt-1 tnum">AI, 10:14 PM</p></div></div>
-            <div class="chat-bubble flex justify-end"><div class="max-w-[82%] bubble-user px-3 py-2">1418 Oak Run, Plano. 214-555-0118.<p class="text-[9px] text-fog/70 mt-1 tnum">10:15 PM</p></div></div>
-            <div class="typing-indicator flex justify-start"><div class="bubble-ai px-3.5 py-2.5 flex items-center gap-1"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div></div>
-            <div class="chat-bubble flex justify-start"><div class="max-w-[82%] bubble-ai px-3 py-2">Got it. You're on the list, and the owner has your details.<p class="text-[9px] text-ink/60 mt-1 tnum">AI, 10:15 PM</p></div></div>
-          </div>
-          <div class="px-3 pb-3 pt-1"><div class="flex items-center gap-2 bg-live/10 border border-live/30 rounded-full px-3 py-1.5"><span class="h-1.5 w-1.5 rounded-full bg-live shrink-0"></span><span class="text-[10px] text-sand/90 flex-1">Saved to lead list: warm, this week</span></div></div>
-        </div>
-      </div>
+<section id="how-it-works" class="relative py-24 lg:py-32 px-5 sm:px-6 bg-surface/40 border-y hairline">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-16" data-split-group>
+      <p class="mono-eyebrow after-split" style="--d:0s">How it works</p>
+      <h2 class="display-lg text-sand mt-5" style="font-size:clamp(2.2rem,4.6vw,3.8rem)" data-split>From a homeowner at 10&nbsp;PM <span class="tone-muted">to a lead on your list.</span></h2>
+      <p class="after-split text-sm text-fog/70 mt-5">Sample conversation on a sample site.</p>
     </div>
-    <div class="lg:col-span-6 lg:col-start-7 order-1 lg:order-2">
-      <div class="reveal mb-10">
-        <h2 class="display-lg text-sand">From a homeowner at 10 PM to a lead on your list.</h2>
-        <p class="text-sm text-fog/70 mt-4">Sample conversation on a sample site.</p>
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start" data-steps>
+      <div class="lg:col-span-5 steps-scroller">
+        <div class="step-row" tabindex="0" role="button">
+          <span class="when">Any hour</span>
+          <div><h3>A homeowner lands on your site</h3><p>It loads fast on a phone, with your number tappable at the top and your service area spelled out.</p></div>
+        </div>
+        <div class="step-row" tabindex="0" role="button">
+          <span class="when">In seconds</span>
+          <div><h3>The chat answers</h3><p>It answers common questions about your business and takes their name, number, address and what happened, at any hour.</p></div>
+        </div>
+        <div class="step-row" tabindex="0" role="button">
+          <span class="when">Automatic</span>
+          <div><h3>It lands in your CRM</h3><p>Every chat and form becomes a lead, tagged hot or warm with how urgent it is. Spam is filtered out first.</p></div>
+        </div>
+        <div class="step-row" tabindex="0" role="button">
+          <span class="when">Next morning</span>
+          <div><h3>You call back from one list</h3><p>Move each lead through new, contacted, scheduled and booked. One list, not voicemail, email and texts in three places.</p></div>
+        </div>
       </div>
-      <div class="stagger steps">
-        <div class="step">
-          <span class="step-n">1</span>
-          <div class="pt-1.5"><h3 class="text-sand font-semibold text-[17px] mb-1.5">A homeowner lands on your site</h3><p class="text-fog text-[15px] leading-[1.7] max-w-md">It loads fast on a phone, with your number tappable at the top and your service area spelled out.</p></div>
-        </div>
-        <div class="step">
-          <span class="step-n">2</span>
-          <div class="pt-1.5"><h3 class="text-sand font-semibold text-[17px] mb-1.5">The chat answers</h3><p class="text-fog text-[15px] leading-[1.7] max-w-md">It answers common questions about your business and takes their name, number, address and what happened, at any hour.</p></div>
-        </div>
-        <div class="step">
-          <span class="step-n">3</span>
-          <div class="pt-1.5"><h3 class="text-sand font-semibold text-[17px] mb-1.5">It lands in your CRM</h3><p class="text-fog text-[15px] leading-[1.7] max-w-md">Every chat and form becomes a lead, tagged hot or warm with how urgent it is. Spam is filtered out first.</p></div>
-        </div>
-        <div class="step">
-          <span class="step-n">4</span>
-          <div class="pt-1.5"><h3 class="text-sand font-semibold text-[17px] mb-1.5">You call back from one list</h3><p class="text-fog text-[15px] leading-[1.7] max-w-md">Move each lead through new, contacted, scheduled and booked. One list, not voicemail, email and texts in three places.</p></div>
+      <div class="hidden lg:block lg:col-span-7 lg:sticky lg:top-32">
+        <div class="steps-stage" aria-hidden="true">
+          <div class="glowbg"></div>
+          <div class="slide">
+            <div class="mini-phone"><div class="scr">
+              <div class="flex items-center justify-between text-[10px] text-fog"><span class="font-semibold text-sand">Sample Foundation Co.</span><span class="text-copper-light font-semibold">Call</span></div>
+              <div class="mini-site-hero"><b>Foundation repair in Plano and Dallas</b><p>Free inspections. Same-week appointments.</p><span class="mini-btn">Get a free inspection</span></div>
+              <div class="mini-row" style="width:90%"></div><div class="mini-row" style="width:70%"></div><div class="mini-row" style="width:80%"></div>
+              <div class="mt-auto self-end h-9 w-9 rounded-full bg-copper flex items-center justify-center text-ink"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 3.5V17H6.5A2.5 2.5 0 0 1 4 14.5z"/></svg></div>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="mini-phone"><div class="scr text-[11px] leading-snug">
+              <div class="flex items-center gap-2 pb-2 border-b hairline"><span class="h-6 w-6 rounded-full bg-copper flex items-center justify-center text-[9px] font-bold text-ink">SF</span><span class="text-sand font-semibold text-[11px]">Website chat</span></div>
+              <div class="self-end max-w-[85%] bubble-user px-3 py-2">Found a crack in my garage slab. Do you do free inspections?</div>
+              <div class="self-start max-w-[85%] bubble-ai px-3 py-2">We do. What's your address and a good number?</div>
+              <div class="self-end max-w-[85%] bubble-user px-3 py-2">1418 Oak Run, Plano. 214-555-0118.</div>
+              <div class="self-start max-w-[85%] bubble-ai px-3 py-2">Got it. You're on the list for a call tomorrow morning.</div>
+            </div></div>
+          </div>
+          <div class="slide">
+            <div class="mini-lead">
+              <div class="hd"><span class="lw-av">MG</span><div><p class="text-sand font-semibold text-sm">Maria G.</p><p class="text-xs text-fog">Website chat &middot; 10:15 PM</p></div><span class="ml-auto lw-tag hot">Hot</span></div>
+              <dl><dt>Needs</dt><dd>Garage slab crack, free inspection</dd><dt>Address</dt><dd>1418 Oak Run, Plano</dd><dt>Phone</dt><dd class="tnum">214-555-0118</dd><dt>Urgency</dt><dd>This week</dd><dt>Stage</dt><dd><span class="lw-tag hot">New</span></dd></dl>
+              <p class="text-[11px] text-fog/70 mt-4">Sample data</p>
+            </div>
+          </div>
+          <div class="slide"><img src="assets/crm/crm-pipeline.webp" alt="" width="3200" height="2000" loading="lazy" decoding="async"></div>
+          <div class="steps-progress"><i></i><i></i><i></i><i></i></div>
         </div>
       </div>
     </div>
@@ -308,75 +382,93 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <!-- CRM -->
-<section id="crm" class="py-24 px-5 sm:px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="reveal grid lg:grid-cols-12 gap-6 mb-12">
-      <div class="lg:col-span-7">
-        <p class="eyebrow mb-4">The CRM</p>
-        <h2 class="display-lg text-sand">Every chat and form lands in your CRM.</h2>
+<section id="crm" class="py-24 lg:py-32">
+  <div class="px-5 sm:px-6"><div class="max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-12 gap-8 items-end mb-12">
+      <div class="lg:col-span-7" data-split-group>
+        <p class="mono-eyebrow after-split" style="--d:0s">The CRM</p>
+        <h2 class="display-lg text-sand mt-5" style="font-size:clamp(2.2rem,4.4vw,3.6rem)" data-split>Every chat and form <span class="tone-muted">lands in your CRM.</span></h2>
       </div>
-      <p class="lede lg:col-span-4 lg:col-start-9 lg:self-end">Real screens from our CRM. The leads shown are sample data. Every client gets their own workspace, with their leads and nothing else.</p>
-    </div>
-    <div class="reveal frame drift-slow">
-      <div class="frame-bar"><span></span><span></span><span></span><em>crm.a2h.info, sample workspace</em></div>
-      <img src="assets/crm/crm-contacts.webp" alt="A2H CRM contacts list for a demo foundation repair company, with sample leads: name, phone, email, open opportunities and stage" loading="lazy" decoding="async" width="1440" height="900" class="w-full h-auto block">
-    </div>
-    <div class="stagger grid md:grid-cols-3 gap-5 mt-5">
-      <figure class="md:col-span-2 panel overflow-hidden media-zoom">
-        <div class="overflow-hidden border-b hairline"><img src="assets/crm/crm-pipeline.webp" alt="A2H CRM pipeline board for a demo foundation repair company, with sample leads in new, contacted, scheduled and booked stages and a job value on each" loading="lazy" decoding="async" width="1600" height="1016" class="w-full h-auto block"></div>
-        <figcaption class="p-5 text-[15px] text-fog leading-[1.6]">A pipeline board: new, contacted, scheduled, booked. Move a lead forward when you have called them.</figcaption>
-      </figure>
-      <div class="panel p-6 flex flex-col">
-        <p class="text-xs text-fog mb-3">What every lead carries</p>
-        <ul class="text-[15px] text-sand leading-[1.6] flex-1">
-          <li class="py-2.5 border-t hairline">Name and phone</li>
-          <li class="py-2.5 border-t hairline">What they need, in their words</li>
-          <li class="py-2.5 border-t hairline">Temperature: hot, warm or cold</li>
-          <li class="py-2.5 border-t hairline">Urgency: immediate, this week, this month</li>
-          <li class="py-2.5 border-t border-b hairline">Stage: new, contacted, scheduled, booked</li>
-        </ul>
-        <p class="text-sm text-fog mt-4">Every chat or form becomes a contact automatically. Spam is filtered out first.</p>
+      <div class="lg:col-span-5 reveal">
+        <p class="lede">Screens from our CRM. Bluestem Foundation Repair is a fictional company and every lead is sample data. Every client gets their own workspace, with their leads and nothing else.</p>
+        <div class="flex items-center justify-between gap-4 mt-6">
+          <a href="/crm-demo" class="link-arrow text-[15px]">Click through the live demo, no login <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
+                  </div>
       </div>
+    </div>
+  </div></div>
+  <div class="rail-wrap" data-rail>
+    <div class="px-5 sm:px-6"><div class="max-w-6xl mx-auto flex justify-end mb-4 -mt-2"><div class="rail-nav"><button type="button" data-rail-prev aria-label="Previous screens"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4"/></svg></button><button type="button" data-rail-next aria-label="Next screens"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button></div></div></div>
+    <div class="rail stagger-x">
+      <article class="rail-card"><div class="shot"><img src="assets/crm/crm-pipeline.webp" alt="A2H CRM pipeline board for a fictional foundation repair company, with sample leads in new, contacted, scheduled and booked" width="3200" height="2000" loading="lazy" decoding="async"></div><div class="bd"><p class="k">Every lead</p><h3>Pipeline</h3><p>New, contacted, scheduled, booked. Drag a card when you have called them and the stage updates.</p></div></article>
+      <article class="rail-card"><div class="shot"><img src="assets/crm/crm-contact.webp" alt="A2H CRM contact page with one timeline for a sample lead" width="3200" height="2000" loading="lazy" decoding="async"></div><div class="bd"><p class="k">Every contact</p><h3>One timeline per person</h3><p>Name, phone, what they need in their words, hot, warm or cold, and every chat, form and call on one timeline.</p></div></article>
+      <article class="rail-card"><div class="shot"><img src="assets/crm/crm-visitors.webp" alt="A2H CRM website visitors view showing pages each sample visitor read" width="3200" height="2000" loading="lazy" decoding="async"></div><div class="bd"><p class="k">Before they reach out</p><h3>Website visitors</h3><p>The pages each person read before they chatted or filled in a form, and where they came from.</p></div></article>
+      <article class="rail-card"><div class="shot"><img src="assets/crm/crm-chats.webp" alt="A2H CRM chats view with a sample website conversation" width="3200" height="2000" loading="lazy" decoding="async"></div><div class="bd"><p class="k">Any hour</p><h3>Chats</h3><p>Every conversation from the website chat, and whether it became a lead. Spam is filtered out first.</p></div></article>
+      <article class="rail-card"><div class="shot"><img src="assets/crm/crm-reports.webp" alt="A2H CRM reports view with sample leads by source and stage" width="3200" height="2000" loading="lazy" decoding="async"></div><div class="bd"><p class="k">End of the month</p><h3>Reports</h3><p>Leads by source, deals by stage, and which pages people read before reaching out.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section id="proof" class="deep py-24 lg:py-32 px-5 sm:px-6 border-y hairline">
+  <div class="relative max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-6" data-split-group>
+      <p class="mono-eyebrow after-split" style="--d:0s">Who's building it</p>
+      <h2 class="display-lg text-sand mt-5" style="font-size:clamp(2.2rem,4.6vw,3.8rem)" data-split>One AI consultant in Houston, <span class="tone-muted">not a sales team.</span></h2>
+    </div>
+    <div class="lg:col-span-5 lg:col-start-8 reveal">
+      <p class="lede">A2H is run by Abbas Hussain. In October 2026 he was accepted as a developer on AI Frontrunners, the agency community run by Tim Chao, where agency owners hire a small group of vetted developers to build for them.</p>
+      <p class="mt-6"><a href="https://www.linkedin.com/in/abbas-hussain-1bb46b432/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Abbas on LinkedIn <span class="btn-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a></p>
+    </div>
+    <div class="lg:col-span-12 mt-6">
+      <p class="reveal text-sm font-semibold text-sand mb-6">Our own research, October 2026</p>
+      <div class="stagger grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+        <div class="border-t border-copper-light/60 pt-5"><p class="figure text-sand" style="font-size:clamp(2.6rem,6vw,4.5rem)"><span data-countup="470">0</span></p><p class="text-sm text-fog mt-3">Texas foundation, restoration and garage door sites scanned</p></div>
+        <div class="border-t hairline pt-5"><p class="figure text-sand" style="font-size:clamp(2.6rem,6vw,4.5rem)"><span data-countup="76">0</span>%</p><p class="text-sm text-fog mt-3">had no chat we could detect</p></div>
+        <div class="border-t hairline pt-5"><p class="figure text-sand" style="font-size:clamp(2.6rem,6vw,4.5rem)"><span data-countup="86">0</span>%</p><p class="text-sm text-fog mt-3">had no online booking</p></div>
+      </div>
+      <p class="reveal text-xs text-fog/70 mt-8 max-w-lg">Method: each company's homepage and contact pages, Texas address required, call-reselling and directory sites removed. It only detects common chat tools, so the real "no chat" share may be slightly lower.</p>
     </div>
   </div>
 </section>
 
 <!-- WORK -->
-<section id="work" class="py-24 px-5 sm:px-6 bg-surface/40 border-y hairline">
+<section id="work" class="py-24 lg:py-32 px-5 sm:px-6">
   <div class="max-w-6xl mx-auto">
-    <div class="reveal flex flex-wrap items-end justify-between gap-6 mb-12">
-      <div class="max-w-2xl">
-        <h2 class="display-lg text-sand">Live sites we've built.</h2>
-        <p class="lede mt-4">Each card opens the real site in a new tab.</p>
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
+      <div class="max-w-2xl" data-split-group>
+        <p class="mono-eyebrow after-split" style="--d:0s">Work</p>
+        <h2 class="display-lg text-sand mt-5" style="font-size:clamp(2.2rem,4.4vw,3.6rem)" data-split>Live sites <span class="tone-muted">we've built.</span></h2>
+        <p class="after-split lede mt-4">Each card opens the real site in a new tab.</p>
       </div>
-      <a href="work.html" class="link-arrow text-[15px]">Every build in detail <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <a href="work.html" class="reveal link-arrow text-[15px]">Every build in detail <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
     </div>
     <div class="stagger grid md:grid-cols-2 gap-5">
-      <a href="https://hahealthconsulting.com" target="_blank" rel="noopener" class="group panel card-hover media-zoom overflow-hidden flex flex-col md:col-span-2 md:flex-row">
+      <a href="https://hahealthconsulting.com" target="_blank" rel="noopener" class="group rail-card feature md:col-span-2">
         <div class="md:w-1/2 aspect-[16/10] md:aspect-[5/4] overflow-hidden bg-ink border-b hairline md:border-b-0 md:border-r"><video class="lazy-video w-full h-full object-cover" data-src="assets/video/ha-chatbot-crm-demo.mp4" poster="assets/video/ha-chatbot-crm-demo-poster.jpg" muted loop playsinline preload="none" width="720" height="720" aria-label="Walkthrough of the H&amp;A Healthcare Consulting chatbot capturing a lead into the CRM (test conversation)"></video></div>
-        <div class="p-6 md:w-1/2 md:p-8 flex flex-col justify-center">
-          <p class="text-xs text-fog mb-2">Healthcare consulting</p>
-          <h3 class="display-md text-sand mb-2">H&amp;A Healthcare Consulting</h3>
-          <p class="text-[15px] text-fog leading-[1.65] max-w-md">Website, AI chat, spam filter and CRM. A visitor asks a question, the chat answers and collects their details, and the lead lands in the practice's own CRM. The conversation shown is a test.</p>
-          <span class="link-arrow text-sm mt-5">hahealthconsulting.com <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span>
+        <div class="bd md:w-1/2 md:!p-10 justify-center">
+          <p class="k">Healthcare consulting</p>
+          <h3>H&amp;A Healthcare Consulting</h3>
+          <p class="!flex-none max-w-md">Website, AI chat, spam filter and CRM. A visitor asks a question, the chat answers and collects their details, and the lead lands in the practice's own CRM. The conversation shown is a test.</p>
+          <span class="link-arrow text-sm mt-6">hahealthconsulting.com <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span>
         </div>
       </a>
-      <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" class="group panel card-hover media-zoom overflow-hidden flex flex-col">
-        <div class="aspect-[16/10] overflow-hidden bg-ink border-b hairline"><img loading="lazy" decoding="async" width="1440" height="900" src="assets/portfolio/ssc.webp" alt="Solid State Construction website homepage" class="w-full h-full object-cover object-top"></div>
-        <div class="p-6 flex flex-col flex-1">
-          <p class="text-xs text-fog mb-2">Construction</p>
-          <h3 class="display-md text-sand mb-2">Solid State Construction</h3>
-          <p class="text-[15px] text-fog leading-[1.65] flex-1">Full site rebuild for a growing construction crew. Fast, mobile-first, built around the quote request.</p>
-          <p class="text-sm text-sand mt-4 pt-4 border-t hairline tnum">270+ clicks in 14 days at $0.74 per click, on a $200 Google Ads test</p>
+      <a href="https://solidstatesconstruction.com" target="_blank" rel="noopener" class="group rail-card">
+        <div class="shot"><img loading="lazy" decoding="async" width="1440" height="900" src="assets/portfolio/ssc.webp" alt="Solid State Construction website homepage"></div>
+        <div class="bd">
+          <p class="k">Construction</p>
+          <h3>Solid State Construction</h3>
+          <p>Full site rebuild for a growing construction crew. Fast, mobile-first, built around the quote request.</p>
+          <p class="!text-sand !flex-none text-sm mt-4 pt-4 border-t hairline tnum">270+ clicks in 14 days at $0.74 per click, on a $200 Google Ads test</p>
           <span class="link-arrow text-sm mt-5">solidstatesconstruction.com <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span>
         </div>
       </a>
-      <a href="https://caremedbill.com" target="_blank" rel="noopener" class="group panel card-hover media-zoom overflow-hidden flex flex-col">
-        <div class="aspect-[16/10] overflow-hidden bg-ink border-b hairline"><img loading="lazy" decoding="async" width="1440" height="900" src="assets/portfolio/caremedbill.webp" alt="CareMedBill website homepage" class="w-full h-full object-cover object-top"></div>
-        <div class="p-6 flex flex-col flex-1">
-          <p class="text-xs text-fog mb-2">Medical billing</p>
-          <h3 class="display-md text-sand mb-2">CareMedBill</h3>
-          <p class="text-[15px] text-fog leading-[1.65] flex-1">Trust-first site for a medical billing company, built to turn practice owners into calls.</p>
+      <a href="https://caremedbill.com" target="_blank" rel="noopener" class="group rail-card">
+        <div class="shot"><img loading="lazy" decoding="async" width="1440" height="900" src="assets/portfolio/caremedbill.webp" alt="CareMedBill website homepage"></div>
+        <div class="bd">
+          <p class="k">Medical billing</p>
+          <h3>CareMedBill</h3>
+          <p>Trust-first site for a medical billing company, built to turn practice owners into calls.</p>
           <span class="link-arrow text-sm mt-5">caremedbill.com <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span>
         </div>
       </a>
@@ -384,72 +476,47 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
 
-<!-- PROOF -->
-<section id="proof" class="py-24 px-5 sm:px-6">
-  <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12">
-    <div class="reveal lg:col-span-5">
-      <p class="eyebrow mb-4">Who's building it</p>
-      <h2 class="display-lg text-sand">One AI consultant in Houston, not a sales team.</h2>
-      <p class="lede mt-5">A2H is run by Abbas Hussain. In October 2026 he was accepted as a developer on AI Frontrunners, the agency community run by Tim Chao, where agency owners hire a small group of vetted developers to build for them.</p>
-      <p class="mt-6"><a href="https://www.linkedin.com/in/abbas-hussain-1bb46b432/" target="_blank" rel="noopener" class="link-arrow text-[15px]">Abbas on LinkedIn <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a></p>
-    </div>
-    <div class="lg:col-span-6 lg:col-start-7">
-      <p class="reveal text-sm font-semibold text-sand mb-6">Our own research, October 2026</p>
-      <div class="stagger grid grid-cols-3 gap-x-5 sm:gap-x-8">
-        <div class="border-t border-copper-light/60 pt-5"><p class="figure text-sand" style="font-size:clamp(2.2rem,5vw,3.75rem)"><span data-countup="470">0</span></p><p class="text-sm text-fog mt-3">Texas foundation, restoration and garage door sites scanned</p></div>
-        <div class="border-t hairline pt-5"><p class="figure text-sand" style="font-size:clamp(2.2rem,5vw,3.75rem)"><span data-countup="76">0</span>%</p><p class="text-sm text-fog mt-3">had no chat we could detect</p></div>
-        <div class="border-t hairline pt-5"><p class="figure text-sand" style="font-size:clamp(2.2rem,5vw,3.75rem)"><span data-countup="86">0</span>%</p><p class="text-sm text-fog mt-3">had no online booking</p></div>
-      </div>
-      <p class="reveal text-xs text-fog/70 mt-8 max-w-lg">Method: each company's homepage and contact pages, Texas address required, call-reselling and directory sites removed. It only detects common chat tools, so the real "no chat" share may be slightly lower.</p>
-    </div>
-  </div>
-</section>
-
 <!-- PRICING -->
-<section id="pricing" class="py-24 px-5 sm:px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="reveal max-w-2xl mb-12">
-      <p class="eyebrow mb-4">Pricing</p>
-      <h2 class="display-lg text-sand">One price, paid once. Free sample first.</h2>
+<section id="pricing" class="py-24 lg:py-32 px-5 sm:px-6 bg-surface/40 border-y hairline">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-start">
+    <div class="lg:col-span-5 lg:sticky lg:top-32" data-split-group>
+      <p class="mono-eyebrow after-split" style="--d:0s">Pricing</p>
+      <h2 class="display-lg text-sand mt-5" style="font-size:clamp(2.2rem,4.6vw,3.8rem)" data-split>One price, paid once. <span class="tone-muted">Free sample first.</span></h2>
+      <p class="after-split lede mt-6">Every build starts with a free sample site and a 15-minute walkthrough call. Scope is fixed in writing before any money changes hands.</p>
+      <ul class="after-split mt-8 grid gap-3 text-[15px] text-fog leading-[1.55]" style="--d:0.5s">
+        <li class="flex gap-3"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-copper-light shrink-0 mt-[3px]" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"/></svg><span>A free sample site for your company before you pay</span></li>
+        <li class="flex gap-3"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-copper-light shrink-0 mt-[3px]" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"/></svg><span>Fast, hand-coded, mobile-first website</span></li>
+        <li class="flex gap-3"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-copper-light shrink-0 mt-[3px]" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"/></svg><span>AI chat trained on your business, answers at any hour</span></li>
+        <li class="flex gap-3"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-copper-light shrink-0 mt-[3px]" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"/></svg><span>Every chat and form saved to your own CRM lead list</span></li>
+        <li class="flex gap-3"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-copper-light shrink-0 mt-[3px]" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"/></svg><span>Spam form fills filtered out</span></li>
+        <li class="flex gap-3"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-copper-light shrink-0 mt-[3px]" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"/></svg><span>Launched on your domain, with a walkthrough</span></li>
+      </ul>
     </div>
-    <div class="reveal panel-elevated overflow-hidden">
-      <div class="grid lg:grid-cols-12">
-        <div class="lg:col-span-5 p-7 sm:p-10 border-b lg:border-b-0 lg:border-r hairline flex flex-col">
-          <p class="text-sm font-semibold text-sand mb-5">Website + AI chat + CRM</p>
-          <p class="figure text-sand" style="font-size:clamp(2.4rem,4.2vw,3.4rem)">$800 to $2,000</p>
-          <p class="text-fog mt-2">one time</p>
-          <p class="text-sm text-fog leading-[1.6] mt-5 max-w-xs">Price depends on pages and features. Hosting and upkeep are quoted on the call.</p>
-          <div class="pt-8">
-            <a href="book-a-call.html" class="btn btn-solid w-full sm:w-auto">Get a free sample site <span class="btn-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
-          </div>
-        </div>
-        <div class="lg:col-span-7 p-7 sm:p-10">
-          <p class="text-sm font-semibold text-sand mb-5">Every build includes</p>
-          <ul class="grid sm:grid-cols-2 gap-x-8 gap-y-3.5 text-[15px] text-fog leading-[1.55]">
-            <li class="flex gap-3"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-copper-light shrink-0 mt-[3px]" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"/></svg><span>A free sample site for your company before you pay</span></li>
-            <li class="flex gap-3"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-copper-light shrink-0 mt-[3px]" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"/></svg><span>Fast, hand-coded, mobile-first website</span></li>
-            <li class="flex gap-3"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-copper-light shrink-0 mt-[3px]" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"/></svg><span>AI chat trained on your business, answers at any hour</span></li>
-            <li class="flex gap-3"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-copper-light shrink-0 mt-[3px]" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"/></svg><span>Every chat and form saved to your own CRM lead list</span></li>
-            <li class="flex gap-3"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-copper-light shrink-0 mt-[3px]" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"/></svg><span>Spam form fills filtered out</span></li>
-            <li class="flex gap-3"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-copper-light shrink-0 mt-[3px]" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"/></svg><span>Launched on your domain, with a walkthrough</span></li>
-          </ul>
-          <p class="text-sm font-semibold text-sand mt-10 mb-4">Add-ons, quoted on the call</p>
-          <ul class="divide-y divide-white/[0.06] border-y border-white/[0.06]">
-            <li class="py-3 grid sm:grid-cols-[13rem_1fr] gap-x-6 gap-y-1 text-[15px]"><span class="text-sand">AI phone receptionist</span><span class="text-fog">Answers calls when you cannot and logs them to the same CRM.</span></li>
-            <li class="py-3 grid sm:grid-cols-[13rem_1fr] gap-x-6 gap-y-1 text-[15px]"><span class="text-sand">Hosting and monthly upkeep</span><span class="text-fog">We keep the site online, fast and updated.</span></li>
-            <li class="py-3 grid sm:grid-cols-[13rem_1fr] gap-x-6 gap-y-1 text-[15px]"><span class="text-sand">Extra CRM logins</span><span class="text-fog">Seats for the people on your team who call leads back.</span></li>
-            <li class="py-3 grid sm:grid-cols-[13rem_1fr] gap-x-6 gap-y-1 text-[15px]"><span class="text-sand">Google Business Profile setup</span><span class="text-fog">Claimed, categorised and wired to the site.</span></li>
-            <li class="py-3 grid sm:grid-cols-[13rem_1fr] gap-x-6 gap-y-1 text-[15px]"><span class="text-sand">3D company card</span><span class="text-fog">An interactive card built from your real card artwork. $99 flat.</span></li>
-          </ul>
-        </div>
+    <div class="lg:col-span-7 stagger grid sm:grid-cols-2 gap-5">
+      <div class="price-card accent">
+        <p class="k">Website + AI chat + CRM</p>
+        <p class="figure text-sand mt-6" style="font-size:clamp(2.1rem,3.1vw,2.7rem)">$800<span class="text-fog font-sans text-lg font-normal mx-1.5">to</span>$2,000</p>
+        <p class="text-fog mt-2">one time</p>
+        <p class="text-[15px] text-fog leading-[1.65] mt-6 flex-1">Price depends on pages and features. Hosting and upkeep are quoted on the call.</p>
+        <a href="book-a-call.html" class="btn btn-solid w-full mt-8">Get a free sample site <span class="btn-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+      </div>
+      <div class="price-card base">
+        <p class="k">Add-ons, quoted on the call</p>
+        <ul class="mt-6 divide-y divide-white/[0.06] text-[15px] flex-1">
+          <li class="py-3"><span class="text-sand block">AI phone receptionist</span><span class="text-fog text-sm">Answers calls when you cannot and logs them to the same CRM.</span></li>
+          <li class="py-3"><span class="text-sand block">Hosting and monthly upkeep</span><span class="text-fog text-sm">We keep the site online, fast and updated.</span></li>
+          <li class="py-3"><span class="text-sand block">Extra CRM logins</span><span class="text-fog text-sm">Seats for the people who call leads back.</span></li>
+          <li class="py-3"><span class="text-sand block">Google Business Profile setup</span><span class="text-fog text-sm">Claimed, categorised and wired to the site.</span></li>
+          <li class="py-3"><span class="text-sand block">3D company card</span><span class="text-fog text-sm">Built from your real card artwork. $99 flat.</span></li>
+        </ul>
+        <a href="pricing.html" class="link-arrow text-sm mt-6">Full pricing and FAQ <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
       </div>
     </div>
-    <p class="reveal text-sm text-fog mt-6 max-w-xl">Every build starts with a free sample site and a 15-minute walkthrough call. Scope is fixed in writing before any money changes hands. <a href="pricing.html" class="link-underline text-copper-light">Full pricing and FAQ</a>.</p>
   </div>
 </section>
 
 <!-- 3D COMPANY CARD -->
-<section id="card3d-section" class="relative py-24 px-5 sm:px-6 bg-surface/40 border-y hairline overflow-hidden">
+<section id="card3d-section" class="relative py-24 lg:py-32 px-5 sm:px-6 overflow-hidden">
   <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
     <div class="reveal lg:col-span-6 flex flex-col items-center gap-4 py-6">
       <div class="card3d-stage">
@@ -466,11 +533,11 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
       <p class="text-xs text-fog">Drag to rotate. Built for Quality Halal Market.</p>
     </div>
-    <div class="reveal lg:col-span-5 lg:col-start-8">
-      <p class="text-xs text-fog mb-3">Add-on</p>
-      <h2 class="display-lg text-sand">Your card, in three dimensions.</h2>
-      <p class="lede mt-5">An interactive 3D company card for your website, built from your real card artwork. Visitors spin it around to see the back.</p>
-      <div class="flex items-baseline gap-3 mt-7">
+    <div class="lg:col-span-5 lg:col-start-8" data-split-group>
+      <p class="mono-eyebrow after-split" style="--d:0s">Add-on</p>
+      <h2 class="display-lg text-sand mt-5" data-split>Your card, <span class="tone-muted">in three dimensions.</span></h2>
+      <p class="after-split lede mt-5">An interactive 3D company card for your website, built from your real card artwork. Visitors spin it around to see the back.</p>
+      <div class="after-split flex items-baseline gap-3 mt-7" style="--d:0.5s">
         <p class="figure text-sand text-4xl">$99</p>
         <p class="text-sm text-fog">one time, added to any build</p>
       </div>
@@ -479,12 +546,15 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="py-24 px-5 sm:px-6">
+<section id="faq" class="py-24 lg:py-32 px-5 sm:px-6 bg-surface/40 border-y hairline">
   <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-10">
-    <div class="reveal lg:col-span-4">
-      <h2 class="display-lg text-sand lg:sticky lg:top-28">Before you book a call</h2>
+    <div class="lg:col-span-4">
+      <div class="lg:sticky lg:top-32" data-split-group>
+        <h2 class="display-lg text-sand" style="font-size:clamp(2.2rem,4.4vw,3.6rem)" data-split>Questions <span class="tone-muted">before you book.</span></h2>
+        <p class="after-split text-sm text-fog mt-5">Short answers to what people ask first. Prices are on the <a href="pricing.html" class="link-underline text-copper-light">pricing page</a>.</p>
+      </div>
     </div>
-    <div class="reveal faq lg:col-span-8">
+    <div class="reveal faq lg:col-span-7 lg:col-start-6">
       <details>
         <summary><span>Who is A2H?</span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
         <p>A2H is an AI consulting studio in Houston, Texas, founded by Abbas Hussain. We build websites with an AI chat and a CRM lead list for small Texas trade businesses, mainly foundation repair, water damage restoration and garage door companies. Abbas Hussain is an accepted developer on AI Frontrunners.</p>
@@ -513,16 +583,17 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
 
-<!-- CTA BAND -->
-<section class="px-5 sm:px-6 py-10">
-  <div class="reveal band max-w-6xl mx-auto rounded-2xl px-7 py-14 sm:px-14 sm:py-20">
-    <div class="relative z-[1] grid md:grid-cols-12 gap-8 items-end">
-      <div class="md:col-span-8">
-        <h2 class="display-lg text-ink">Want to see your sample site?</h2>
-        <p class="text-ink/80 text-lg leading-[1.6] mt-4 max-w-lg">We build it free, show it to you in 15 minutes, and you decide. No pressure, no obligation.</p>
-      </div>
-      <div class="md:col-span-4 md:text-right">
-        <a href="book-a-call.html" class="btn btn-ink">Get a free sample site <span class="btn-ico !bg-white/10"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+<!-- CTA -->
+<section class="px-5 sm:px-6 py-20 lg:py-28">
+  <div class="reveal cta-deep max-w-6xl mx-auto px-7 py-16 sm:px-14 sm:py-24 text-center">
+    <div class="aura" aria-hidden="true"></div>
+    <div class="grain"></div>
+    <div class="relative" data-split-group>
+      <h2 class="display-hero text-sand mx-auto max-w-3xl" style="font-size:clamp(2.4rem,5.6vw,4.6rem)" data-split>Want to see <span class="tone-copper">your sample site?</span></h2>
+      <p class="after-split lede mx-auto mt-6 text-lg">We build it free, show it to you in 15 minutes, and you decide. No pressure, no obligation.</p>
+      <div class="after-split mt-9 flex flex-col sm:flex-row items-center justify-center gap-3" style="--d:0.55s">
+        <a href="book-a-call.html" class="btn btn-solid">Get a free sample site <span class="btn-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+        <a href="/crm-demo" class="btn btn-ghost">Try the CRM demo</a>
       </div>
     </div>
   </div>
@@ -887,13 +958,20 @@ document.addEventListener('DOMContentLoaded', function () {
     var navLinks = document.querySelectorAll('[data-nav-link]');
     var sections = Array.prototype.map.call(navLinks, function (link) { return document.querySelector(link.getAttribute('href')); }).filter(Boolean);
     if (!sections.length) return;
-    var spy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        navLinks.forEach(function (link) { link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id); });
+    // Highlight the link whose section spans the middle of the viewport, and
+    // nothing while the hero (not in the nav) is there.
+    var spyQueued = false;
+    var spy = function () {
+      spyQueued = false;
+      var mid = window.innerHeight * 0.5, currentId = '';
+      sections.forEach(function (section) {
+        var r = section.getBoundingClientRect();
+        if (r.top <= mid && r.bottom > mid) currentId = section.id;
       });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    sections.forEach(function (section) { spy.observe(section); });
+      navLinks.forEach(function (link) { link.classList.toggle('active', link.getAttribute('href') === '#' + currentId); });
+    };
+    window.addEventListener('scroll', function () { if (!spyQueued) { spyQueued = true; requestAnimationFrame(spy); } }, { passive: true });
+    spy();
   })();
 
   // Mobile menu
@@ -1215,5 +1293,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = y; });
   })();
 </script>
+<script src="assets/motion.js?v=1" defer></script>
 </body>
 </html>
