@@ -22,13 +22,14 @@ A2H builds a fast, hand-coded website for each client, with an AI chat trained o
 - Solid State Construction (solidstatesconstruction.com): website; a $200 Google Ads test returned 270+ clicks in 14 days at $0.74 per click.
 
 ## Research
-- October 2026: A2H scanned 470 Texas foundation repair, restoration and garage door websites (Texas address required, call-reselling and directory sites removed). 76% had no chat it could detect, 86% had no online booking, and 22% showed a copyright year of 2024 or older. By trade, no chat was detected on 79% of garage door sites (278), 74% of restoration sites (117) and 71% of foundation repair sites (75). The scan only detects common chat tools.
+- October 2026: A2H scanned 470 Texas foundation repair, restoration and garage door websites (Texas address required, call-reselling and directory sites removed). 76% had no chat it could detect, 86% had no online booking, and 22% showed a copyright year of 2024 or older. By trade, no chat was detected on 79% of garage door sites (278), 74% of restoration sites (117) and 71% of foundation repair sites (75). The scan only detects common chat tools. Full results, per-trade table and method: https://a2h.info/houston-trade-website-scan-2026.html (published October 22, 2026; the scan covered 58 cities in the Houston area and Southeast Texas, October 10-11, 2026).
 
 ## Pages
 - [Homepage](https://a2h.info/): websites with AI chat and CRM for Texas trades.
 - [Foundation repair websites](https://a2h.info/foundation-repair-websites.html)
 - [Water damage restoration websites](https://a2h.info/restoration-websites.html)
 - [Garage door websites](https://a2h.info/garage-door-websites.html)
+- [2026 Houston-area trade website scan](https://a2h.info/houston-trade-website-scan-2026.html): original research, 470 sites, method and limits
 - [Pricing](https://a2h.info/pricing.html)
 - [How it works](https://a2h.info/process.html)
 - [Work](https://a2h.info/work.html)

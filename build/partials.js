@@ -132,6 +132,7 @@ function footer() {
           <li><a href="process.html" class="link-underline hover:text-sand inline-block py-1.5">Process</a></li>
           <li><a href="pricing.html" class="link-underline hover:text-sand inline-block py-1.5">Pricing</a></li>
           <li><a href="industries.html" class="link-underline hover:text-sand inline-block py-1.5">Industries</a></li>
+          <li><a href="houston-trade-website-scan-2026.html" class="link-underline hover:text-sand inline-block py-1.5">2026 website scan</a></li>
           <li><a href="book-a-call.html" class="link-underline hover:text-sand inline-block py-1.5">Book a call</a></li>
         </ul>
       </div>

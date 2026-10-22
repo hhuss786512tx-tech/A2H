@@ -183,6 +183,9 @@ const NP = require('./niche_pages')({ SITE, ORG, faqLd, hero, cards, faqSection,
 // Trade pages (current ICP: foundation repair, restoration, garage door): build/trades.js
 PAGES.push(...require('./trades')({ SITE, ORG, faqLd, hero, cards, faqSection, B }));
 
+// Original research: October 2026 scan of Houston-area trade websites: build/research.js
+PAGES.push(require('./research')({ SITE, ORG, faqLd, hero, answer, figures, faqSection, relatedLinks, B }));
+
 // ---- work.html
 PAGES.push({
   slug: 'work.html',
