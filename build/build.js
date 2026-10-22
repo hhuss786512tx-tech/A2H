@@ -20,7 +20,7 @@ const ORG = {
   alternateName: ['A2H AI Consulting', 'A2H Agency'],
   url: SITE + '/',
   email: EMAIL,
-  founder: { '@type': 'Person', name: 'Abbas Hussain', jobTitle: 'Founder and AI Consultant', sameAs: ['https://www.linkedin.com/in/abbas-hussain-1bb46b432/'] },
+  founder: { '@type': 'Person', '@id': SITE + '/#abbas', url: SITE + '/about.html', name: 'Abbas Hussain', jobTitle: 'Founder and AI Consultant', sameAs: ['https://www.linkedin.com/in/abbas-hussain-1bb46b432/'] },
   description: 'A2H is an AI consulting studio in Houston, Texas, founded by Abbas Hussain. It builds websites with an AI chat and a CRM lead list for small Texas trade businesses, mainly foundation repair, water damage restoration and garage door companies. Abbas Hussain is an accepted developer on AI Frontrunners.',
   disambiguatingDescription: 'A2H (a2h.info) is a Houston, Texas web studio founded by Abbas Hussain. It is not affiliated with A2 Hosting or with a2h.com.',
   address: { '@type': 'PostalAddress', addressLocality: 'Houston', addressRegion: 'TX', addressCountry: 'US' },
@@ -185,6 +185,9 @@ PAGES.push(...require('./trades')({ SITE, ORG, faqLd, hero, cards, faqSection, B
 
 // Original research: October 2026 scan of Houston-area trade websites: build/research.js
 PAGES.push(require('./research')({ SITE, ORG, faqLd, hero, answer, figures, faqSection, relatedLinks, B }));
+
+// About / founder page: build/about.js
+PAGES.push(require('./about')({ SITE, ORG, faqLd, hero, answer, faqSection, B }));
 
 // ---- work.html
 PAGES.push({

@@ -85,7 +85,7 @@ ${paras.map((p) => `      <p>${p}</p>`).join('\n')}
       headline: title,
       datePublished: published,
       dateModified: published,
-      author: { '@type': 'Person', name: 'Abbas Hussain', url: 'https://www.linkedin.com/in/abbas-hussain-1bb46b432/' },
+      author: { '@type': 'Person', '@id': SITE + '/#abbas', name: 'Abbas Hussain', url: SITE + '/about.html' },
       publisher: { '@id': SITE + '/#organization' },
       mainEntityOfPage: url,
       about: ['Website design for contractors', 'Website chat', 'Online booking'],

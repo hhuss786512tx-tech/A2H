@@ -29,6 +29,7 @@ A2H builds a fast, hand-coded website for each client, with an AI chat trained o
 - [Foundation repair websites](https://a2h.info/foundation-repair-websites.html)
 - [Water damage restoration websites](https://a2h.info/restoration-websites.html)
 - [Garage door websites](https://a2h.info/garage-door-websites.html)
+- [About A2H and Abbas Hussain](https://a2h.info/about.html): who runs A2H, what he builds, sites shipped
 - [2026 Houston-area trade website scan](https://a2h.info/houston-trade-website-scan-2026.html): original research, 470 sites, method and limits
 - [Pricing](https://a2h.info/pricing.html)
 - [How it works](https://a2h.info/process.html)
