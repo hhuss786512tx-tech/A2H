@@ -20,8 +20,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/tailwind.css?v=865ca867">
+<link rel="stylesheet" href="assets/tailwind.css?v=3786410f">
 <link rel="stylesheet" href="assets/site.css?v=ac40656e">
+<link rel="stylesheet" href="assets/motion.css?v=2ba8d875">
 <script>document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">
 {
@@ -170,32 +171,35 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
 
-<section class="py-24 px-5 sm:px-6">
+<section class="py-20 lg:py-24 px-5 sm:px-6">
   <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-10">
-    <div class="reveal lg:col-span-4">
-      <h2 class="display-lg text-sand lg:sticky lg:top-28">One receptionist. Every call handled.</h2>
+    <div class="lg:col-span-4">
+      <div class="lg:sticky lg:top-28">
+        <p class="kicker mb-5">What you get</p>
+        <h2 class="display-lg text-sand" data-split>One receptionist. <span class="tone-muted">Every call handled.</span></h2>
+      </div>
     </div>
     <div class="stagger lg:col-span-8">
-      <div class="grid grid-cols-[3rem_1fr] sm:grid-cols-[4.5rem_1fr] gap-4 sm:gap-6 py-7 border-t hairline">
+      <div class="num-row grid grid-cols-[3rem_1fr] sm:grid-cols-[4.5rem_1fr] gap-4 sm:gap-6 py-7 border-t hairline">
         <p class="figure text-copper-light text-2xl sm:text-3xl pt-1">01</p>
         <div>
-          <p class="text-xs text-fog mb-1.5">Never voicemail</p>
+          <p class="kicker-sm mb-1.5">Never voicemail</p>
           <h3 class="display-md text-sand mb-2">Answered at lunch and after hours</h3>
           <p class="text-fog text-[15px] leading-[1.7] max-w-xl">Every call is picked up the same way, whether the team is with patients, on a break, or gone for the night.</p>
         </div>
       </div>
-      <div class="grid grid-cols-[3rem_1fr] sm:grid-cols-[4.5rem_1fr] gap-4 sm:gap-6 py-7 border-t hairline">
+      <div class="num-row grid grid-cols-[3rem_1fr] sm:grid-cols-[4.5rem_1fr] gap-4 sm:gap-6 py-7 border-t hairline">
         <p class="figure text-copper-light text-2xl sm:text-3xl pt-1">02</p>
         <div>
-          <p class="text-xs text-fog mb-1.5">Details, not a beep</p>
+          <p class="kicker-sm mb-1.5">Details, not a beep</p>
           <h3 class="display-md text-sand mb-2">Name, reason, callback number</h3>
           <p class="text-fog text-[15px] leading-[1.7] max-w-xl">It takes the caller's name, the reason for the call and a number, and tells them the front desk will call back. It transfers to a person when a call needs one.</p>
         </div>
       </div>
-      <div class="grid grid-cols-[3rem_1fr] sm:grid-cols-[4.5rem_1fr] gap-4 sm:gap-6 py-7 border-t hairline border-b">
+      <div class="num-row grid grid-cols-[3rem_1fr] sm:grid-cols-[4.5rem_1fr] gap-4 sm:gap-6 py-7 border-t hairline border-b">
         <p class="figure text-copper-light text-2xl sm:text-3xl pt-1">03</p>
         <div>
-          <p class="text-xs text-fog mb-1.5">Nothing lost</p>
+          <p class="kicker-sm mb-1.5">Nothing lost</p>
           <h3 class="display-md text-sand mb-2">Every caller saved in one place</h3>
           <p class="text-fog text-[15px] leading-[1.7] max-w-xl">Each call becomes a contact in your CRM with the reason for the visit, so nothing depends on a note passed between staff.</p>
         </div>
@@ -223,10 +227,10 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
 
-<section id="faq" class="py-24 px-5 sm:px-6">
+<section id="faq" class="py-20 lg:py-24 px-5 sm:px-6 bg-surface/40 border-y hairline">
   <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-10">
-    <div class="reveal lg:col-span-4">
-      <h2 class="display-lg text-sand lg:sticky lg:top-28">Questions</h2>
+    <div class="lg:col-span-4">
+      <h2 class="display-lg text-sand lg:sticky lg:top-28" data-split>Questions</h2>
     </div>
     <div class="reveal faq lg:col-span-8">
       <details>
@@ -276,6 +280,8 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </footer>
 </main>
+
+
 
 
 
@@ -446,6 +452,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (found) { try { sessionStorage.setItem('a2h_landing_page', window.location.pathname); } catch (e) {} }
   })();
 </script>
+
+<script src="assets/motion.js?v=2e08a774" defer></script>
 
 <script>
 (function () {

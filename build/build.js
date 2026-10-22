@@ -4,7 +4,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { page, SITE, EMAIL } = require('./partials');
+const { page, SITE, EMAIL, tone } = require('./partials');
 const B = require('./blocks');
 
 const OUT = path.join(__dirname, '..');
@@ -63,12 +63,37 @@ const faqLd = (qas) => ({
 
 const ARROW = B.ARROW;
 
+const HERO_LEAD = `<div class="hero-lead" aria-hidden="true">
+      <div class="stack">
+        <div class="panel-box float-a">
+          <div class="row-h"><span class="agent-av">👾</span><div><b>Website chat</b><br>Sample site &middot; 10:14 PM</div><span class="lw-status ml-auto">Answering</span></div>
+          <div class="flex flex-col gap-2"><div class="lw-msg user">Can someone come out this week? <small>10:14 PM</small></div><div class="lw-msg ai">Yes. What's your address and best number? The owner will call you in the morning. <small>AI, 10:14 PM</small></div></div>
+        </div>
+        <div class="panel-box float-b">
+          <div class="lw-card"><b>New lead &middot; Maria G.</b>Wants a visit this week. 214-555-0118.<div class="lw-tags"><span class="lw-tag hot">Hot</span><span class="lw-tag">This week</span><span class="lw-tag">Spam check passed</span></div></div>
+          <p class="text-[10px] text-fog/70 mt-3 text-right">Sample conversation, sample data</p>
+        </div>
+      </div>
+    </div>`;
+
 // Left-aligned hero. The eyebrow is optional and most pages leave it out.
-const hero = ({ eyebrow = '', h1, sub, primary = 'Get a free sample site', primaryHref = 'book-a-call.html', secondary = null, aside = '' }) => `<section class="relative glow-copper pt-32 sm:pt-40 pb-16 sm:pb-20 px-5 sm:px-6 overflow-hidden">
+const hero = ({ eyebrow = '', h1, sub, primary = 'Get a free sample site', primaryHref = 'book-a-call.html', secondary = null, aside = HERO_LEAD }) => `<section class="relative glow-copper pt-32 sm:pt-40 pb-16 sm:pb-20 px-5 sm:px-6 overflow-hidden">
+  <div class="hero-aura" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-embers" aria-hidden="true">
+    <span class="ember" style="left:6%;width:6px;height:6px;animation-duration:7.5s;animation-delay:-2s;--ember-drift:26px;--ember-rise:-300px"></span>
+    <span class="ember ember-spark" style="left:17%;width:8px;height:8px;animation-duration:6.2s;animation-delay:-4.5s;--ember-drift:-18px;--ember-rise:-340px"></span>
+    <span class="ember" style="left:29%;width:4px;height:4px;animation-duration:8.5s;animation-delay:-1s;--ember-drift:14px;--ember-rise:-280px"></span>
+    <span class="ember" style="left:44%;width:5px;height:5px;animation-duration:7s;animation-delay:-6s;--ember-drift:-22px;--ember-rise:-310px"></span>
+    <span class="ember ember-spark" style="left:58%;width:7px;height:7px;animation-duration:6.6s;animation-delay:-3s;--ember-drift:20px;--ember-rise:-350px"></span>
+    <span class="ember" style="left:71%;width:4px;height:4px;animation-duration:9s;animation-delay:-7.5s;--ember-drift:-14px;--ember-rise:-270px"></span>
+    <span class="ember" style="left:83%;width:6px;height:6px;animation-duration:7.8s;animation-delay:-5s;--ember-drift:18px;--ember-rise:-320px"></span>
+    <span class="ember ember-spark" style="left:94%;width:8px;height:8px;animation-duration:6.4s;animation-delay:-8.5s;--ember-drift:-16px;--ember-rise:-360px"></span>
+  </div>
   <div class="grain"></div>
   <div class="max-w-6xl mx-auto relative grid lg:grid-cols-12 gap-10 items-end">
     <div class="lg:col-span-${aside ? '7' : '9'}">
-${eyebrow ? `      <p class="rise rise-1 eyebrow mb-5">${eyebrow}</p>\n` : ''}      <h1 class="rise rise-2 display-xl text-sand mb-6">${h1}</h1>
+${eyebrow ? `      <p class="rise rise-1 kicker mb-5">${eyebrow}</p>\n` : ''}      <h1 class="display-xl text-sand mb-6" style="font-size:clamp(2.5rem,5.4vw,4.6rem)" data-split data-split-now>${tone(h1, 'tone-copper hero-italic fire-glow')}</h1>
       <p class="rise rise-3 lede text-lg max-w-xl mb-9">${sub}</p>
       <div class="rise rise-4 flex flex-col sm:flex-row sm:items-center gap-3">
         <a href="${primaryHref}" class="btn btn-solid">${primary} <span class="btn-ico">${ARROW}</span></a>
@@ -79,16 +104,18 @@ ${aside ? `    <div class="rise rise-5 lg:col-span-5">${aside}</div>\n` : ''}  <
 
 // Numbered rows: a large number gutter, heading and one short paragraph.
 // Replaces the old equal-card grid, which repeated on every page.
-const cards = (eyebrow, heading, items) => `<section class="py-24 px-5 sm:px-6">
+const cards = (eyebrow, heading, items) => `<section class="py-20 lg:py-24 px-5 sm:px-6">
   <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-10">
-    <div class="reveal lg:col-span-4">
-      <h2 class="display-lg text-sand lg:sticky lg:top-28">${heading}</h2>
+    <div class="lg:col-span-4">
+      <div class="lg:sticky lg:top-28">
+${eyebrow ? `        <p class="kicker mb-5">${eyebrow}</p>\n` : ''}        <h2 class="display-lg text-sand" data-split>${tone(heading)}</h2>
+      </div>
     </div>
     <div class="stagger lg:col-span-8">
-${items.map((it, i) => `      <div class="grid grid-cols-[3rem_1fr] sm:grid-cols-[4.5rem_1fr] gap-4 sm:gap-6 py-7 border-t hairline${i === items.length - 1 ? ' border-b' : ''}">
+${items.map((it, i) => `      <div class="num-row grid grid-cols-[3rem_1fr] sm:grid-cols-[4.5rem_1fr] gap-4 sm:gap-6 py-7 border-t hairline${i === items.length - 1 ? ' border-b' : ''}">
         <p class="figure text-copper-light text-2xl sm:text-3xl pt-1">${String(i + 1).padStart(2, '0')}</p>
         <div>
-          <p class="text-xs text-fog mb-1.5">${it.tag}</p>
+          <p class="kicker-sm mb-1.5">${it.tag}</p>
           <h3 class="display-md text-sand mb-2">${it.h}</h3>
           <p class="text-fog text-[15px] leading-[1.7] max-w-xl">${it.p}</p>
         </div>
@@ -97,10 +124,10 @@ ${items.map((it, i) => `      <div class="grid grid-cols-[3rem_1fr] sm:grid-cols
   </div>
 </section>`;
 
-const faqSection = (qas, heading = 'Common questions') => `<section id="faq" class="py-24 px-5 sm:px-6">
+const faqSection = (qas, heading = 'Common questions') => `<section id="faq" class="py-20 lg:py-24 px-5 sm:px-6 bg-surface/40 border-y hairline">
   <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-10">
-    <div class="reveal lg:col-span-4">
-      <h2 class="display-lg text-sand lg:sticky lg:top-28">${heading}</h2>
+    <div class="lg:col-span-4">
+      <h2 class="display-lg text-sand lg:sticky lg:top-28" data-split>${tone(heading)}</h2>
     </div>
     <div class="reveal faq lg:col-span-8">
 ${qas.map(([q, a]) => `      <details>
@@ -122,11 +149,11 @@ const answer = (text) => `<section class="px-5 sm:px-6 pb-6">
 </section>`;
 
 // Three plain figures with a rule above each. items: [prefix, value, decimals, suffix, label].
-const figures = ({ eyebrow, heading, sub = '', items, note = '' }) => `<section class="py-24 px-5 sm:px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="reveal max-w-2xl mb-12">
-      <p class="eyebrow mb-4">${eyebrow}</p>
-      <h2 class="display-lg text-sand">${heading}</h2>
+const figures = ({ eyebrow, heading, sub = '', items, note = '' }) => `<section class="deep py-20 lg:py-24 px-5 sm:px-6 border-y hairline">
+  <div class="relative max-w-6xl mx-auto">
+    <div class="max-w-2xl mb-12">
+      <p class="kicker mb-5">${eyebrow}</p>
+      <h2 class="display-lg text-sand" data-split>${tone(heading)}</h2>
 ${sub ? `      <p class="lede mt-4">${sub}</p>\n` : ''}    </div>
     <div class="stagger grid sm:grid-cols-3 gap-x-8 gap-y-10">
 ${items.map(([pre, val, dec, suf, label], i) => `      <div class="border-t ${i === 0 ? 'border-copper-light/60' : 'hairline'} pt-6"><p class="figure text-sand" style="font-size:clamp(3rem,6vw,4.5rem)">${pre}<span data-countup="${val}"${dec ? ` data-decimals="${dec}"` : ''}>${dec ? Number(val).toFixed(dec) : val}</span>${suf}</p><p class="text-fog mt-3 max-w-[18rem]">${label}</p></div>`).join('\n')}
@@ -137,7 +164,7 @@ ${note ? `    <p class="reveal text-xs text-fog/70 mt-10 max-w-xl">${note}</p>\n
 // The three trade pages as rail rows, for pages that serve a wider audience.
 const tradeRail = (heading) => `<section class="py-12 px-5 sm:px-6">
   <div class="max-w-6xl mx-auto">
-    <h2 class="reveal display-lg text-sand max-w-2xl mb-8">${heading}</h2>
+    <h2 class="display-lg text-sand max-w-2xl mb-8" data-split>${tone(heading)}</h2>
     <div class="stagger">
       <a href="foundation-repair-websites.html" class="rail-row group">
         <p class="text-sm text-fog tnum">10:14 PM</p>
@@ -381,7 +408,7 @@ PAGES.push({
       </div>
     </div>
     <div class="lg:col-span-8 reveal">
-      <div class="panel-elevated overflow-hidden">
+      <div class="panel-elevated overflow-hidden cal-crop">
         <div class="calendly-inline-widget" data-url="https://calendly.com/hhuss786512tx/new-meeting?hide_gdpr_banner=1&background_color=231c18&text_color=e9dfd2&primary_color=c9702f" style="min-width:280px;height:700px;"></div>
       </div>
     </div>
@@ -437,7 +464,7 @@ PAGES.push({
       <p class="text-sm text-fog mt-6">Prefer email? <a href="mailto:${EMAIL}" class="link-underline text-copper-light">${EMAIL}</a></p>
     </div>
     <div class="reveal lg:col-span-8">
-      <div class="panel-elevated overflow-hidden">
+      <div class="panel-elevated overflow-hidden cal-crop">
         <div class="calendly-inline-widget" data-url="https://calendly.com/hhuss786512tx/new-meeting?hide_gdpr_banner=1&background_color=231c18&text_color=e9dfd2&primary_color=c9702f" style="min-width:280px;height:700px;"></div>
       </div>
     </div>
@@ -488,7 +515,7 @@ PAGES.push({
       </div>
     </div>
     <div class="lg:col-span-8 reveal">
-      <div class="panel-elevated overflow-hidden">
+      <div class="panel-elevated overflow-hidden cal-crop">
         <div class="calendly-inline-widget" data-url="https://calendly.com/hhuss786512tx/new-meeting?hide_gdpr_banner=1&background_color=231c18&text_color=e9dfd2&primary_color=c9702f" style="min-width:280px;height:700px;"></div>
       </div>
     </div>
@@ -839,6 +866,9 @@ const hashOf = (rel) =>
 const cssHashes = {
   'assets/tailwind.css': hashOf('assets/tailwind.css'),
   'assets/site.css': hashOf('assets/site.css'),
+  'assets/motion.css': hashOf('assets/motion.css'),
+  'assets/motion.js': hashOf('assets/motion.js'),
+  'assets/agent.js': hashOf('assets/agent.js'),
 };
 
 fs.readdirSync(OUT)
@@ -848,7 +878,7 @@ fs.readdirSync(OUT)
     let s = fs.readFileSync(p, 'utf8');
     let touched = false;
     Object.entries(cssHashes).forEach(([rel, hash]) => {
-      const re = new RegExp(`(href=")${rel.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')}(\\?v=[a-f0-9]+)?(")`, 'g');
+      const re = new RegExp(`((?:href|src)=")${rel.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')}(\\?v=[a-f0-9]+)?(")`, 'g');
       const next = s.replace(re, `$1${rel}?v=${hash}$3`);
       if (next !== s) { s = next; touched = true; }
     });

@@ -1,7 +1,7 @@
 // Reusable page sections. Anything that appears on more than one generated
 // page lives here so the copy and the numbers only exist once.
 
-const { EMAIL } = require('./partials');
+const { EMAIL, tone } = require('./partials');
 
 const ARROW = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>`;
 const EXT = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg>`;
@@ -55,10 +55,10 @@ function projectCard(p, { wide = false } = {}) {
   const media = p.video && wide
     ? `<video class="lazy-video w-full h-full object-cover" data-src="${p.video.src}" poster="${p.video.poster}" muted loop playsinline preload="none" width="720" height="720" aria-label="${p.video.label}"></video>`
     : `<img loading="lazy" decoding="async" width="1440" height="900" src="assets/portfolio/${p.img}.webp" alt="${p.name.replace('&amp;', '&')} website homepage" class="w-full h-full object-cover object-top">`;
-  return `      <a href="${p.href}" target="_blank" rel="noopener" class="group panel card-hover media-zoom overflow-hidden flex flex-col ${wide ? 'md:col-span-2 md:flex-row' : ''}">
+  return `      <a href="${p.href}" target="_blank" rel="noopener" class="group rail-card ${wide ? 'feature md:col-span-2' : ''}">
         <div class="${wide ? 'md:w-1/2 aspect-[16/10] md:aspect-[5/4]' : 'aspect-[16/10]'} overflow-hidden bg-ink border-b hairline ${wide ? 'md:border-b-0 md:border-r' : ''}">${media}</div>
         <div class="p-6 ${wide ? 'md:w-1/2 md:p-8 flex flex-col justify-center' : 'flex flex-col flex-1'}">
-          <p class="text-xs text-fog mb-2">${p.category}</p>
+          <p class="kicker-sm mb-2">${p.category}</p>
           <h3 class="display-md text-sand mb-2">${p.name}</h3>
           <p class="text-[15px] text-fog leading-[1.65] ${wide ? 'max-w-md' : 'flex-1'}">${p.blurb}</p>
 ${p.metric ? `          <p class="text-sm text-sand mt-4 pt-4 border-t hairline tnum">${p.metric}</p>\n` : ''}          <span class="link-arrow text-sm mt-5">${p.display}${EXT}</span>
@@ -70,10 +70,11 @@ function portfolioGrid({ heading = 'Live sites we have built.', sub = '', only =
   const list = only ? PROJECTS.filter((p) => only.includes(p.img)) : PROJECTS;
   const wideFirst = featureFirst && list.length > 1 && list.length % 2 === 1;
   const cards = list.map((p, i) => projectCard(p, { wide: wideFirst && i === 0 })).join('\n');
-  return `<section id="work" class="py-24 px-5 sm:px-6">
+  return `<section id="work" class="py-20 lg:py-24 px-5 sm:px-6">
   <div class="max-w-6xl mx-auto">
-    <div class="reveal max-w-2xl mb-12">
-      <h2 class="display-lg text-sand">${heading}</h2>
+    <div class="max-w-2xl mb-12">
+      <p class="kicker mb-5">Work</p>
+      <h2 class="display-lg text-sand" data-split>${tone(heading)}</h2>
 ${sub ? `      <p class="lede mt-4">${sub}</p>\n` : ''}    </div>
     <div class="stagger grid md:grid-cols-2 gap-5">
 ${cards}
@@ -110,36 +111,31 @@ const ADDONS = [
 const CHECK = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-copper-light shrink-0 mt-[3px]" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"/></svg>`;
 
 function pricingTable({ heading = 'One price, paid once. Free sample first.', eyebrow = 'Pricing' } = {}) {
-  return `<section id="pricing" class="py-24 px-5 sm:px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="reveal max-w-2xl mb-12">
-      <p class="eyebrow mb-4">${eyebrow}</p>
-      <h2 class="display-lg text-sand">${heading}</h2>
+  return `<section id="pricing" class="relative py-20 lg:py-24 px-5 sm:px-6 bg-surface/40 border-y hairline overflow-hidden">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-start">
+    <div class="lg:col-span-5 lg:self-center">
+      <p class="kicker mb-5">${eyebrow}</p>
+      <h2 class="display-lg text-sand" data-split>${tone(heading)}</h2>
+      <p class="lede mt-6">Every build starts with a free sample site and a 15-minute walkthrough call. Scope is fixed in writing before any money changes hands.</p>
     </div>
-    <div class="reveal panel-elevated overflow-hidden">
-      <div class="grid lg:grid-cols-12">
-        <div class="lg:col-span-5 p-7 sm:p-10 border-b lg:border-b-0 lg:border-r hairline flex flex-col">
-          <p class="text-sm font-semibold text-sand mb-5">${OFFER.name}</p>
-          <p class="figure text-sand" style="font-size:clamp(2.4rem,4.2vw,3.4rem)">${OFFER.price}</p>
-          <p class="text-fog mt-2">${OFFER.priceSuffix}</p>
-          <p class="text-sm text-fog leading-[1.6] mt-5 max-w-xs">${OFFER.note}</p>
-          <div class="pt-8">
-            <a href="book-a-call.html" class="btn btn-solid w-full sm:w-auto">Get a free sample site <span class="btn-ico">${ARROW}</span></a>
-          </div>
-        </div>
-        <div class="lg:col-span-7 p-7 sm:p-10">
-          <p class="text-sm font-semibold text-sand mb-5">Every build includes</p>
-          <ul class="grid sm:grid-cols-2 gap-x-8 gap-y-3.5 text-[15px] text-fog leading-[1.55]">
-${OFFER.features.map((f) => `            <li class="flex gap-3">${CHECK}<span>${f}</span></li>`).join('\n')}
-          </ul>
-          <p class="text-sm font-semibold text-sand mt-10 mb-4">Add-ons, quoted on the call</p>
-          <ul class="divide-y divide-white/[0.06] border-y border-white/[0.06]">
-${ADDONS.map(([h, p]) => `            <li class="py-3 grid sm:grid-cols-[13rem_1fr] gap-x-6 gap-y-1 text-[15px]"><span class="text-sand">${h}</span><span class="text-fog">${p}</span></li>`).join('\n')}
-          </ul>
-        </div>
+    <div class="lg:col-span-7 stagger grid sm:grid-cols-2 gap-5 items-stretch">
+      <div class="price-card accent">
+        <p class="k">${OFFER.name}</p>
+        <p class="figure text-sand mt-5" style="font-size:clamp(2.1rem,3.1vw,2.7rem)">${OFFER.price.replace(' to ', '<span class="text-fog font-sans text-lg font-normal mx-1.5">to</span>')}</p>
+        <p class="text-fog mt-2">${OFFER.priceSuffix}</p>
+        <p class="text-sm text-fog leading-[1.6] mt-4">${OFFER.note}</p>
+        <ul class="mt-6 pt-6 border-t hairline grid gap-2.5 text-sm text-fog leading-[1.5] flex-1">
+${OFFER.features.map((f) => `          <li class="flex gap-3">${CHECK}<span>${f}</span></li>`).join('\n')}
+        </ul>
+        <a href="book-a-call.html" class="btn btn-solid w-full mt-8">Get a free sample site <span class="btn-ico">${ARROW}</span></a>
+      </div>
+      <div class="price-card base">
+        <p class="k">Add-ons, quoted on the call</p>
+        <ul class="mt-6 divide-y divide-white/[0.06] text-[15px] flex-1">
+${ADDONS.map(([h, p]) => `          <li class="py-3"><span class="text-sand block">${h}</span><span class="text-fog text-sm">${p}</span></li>`).join('\n')}
+        </ul>
       </div>
     </div>
-    <p class="reveal text-sm text-fog mt-6 max-w-xl">Every build starts with a free sample site and a 15-minute walkthrough call. Scope is fixed in writing before any money changes hands.</p>
   </div>
 </section>`;
 }
@@ -147,15 +143,22 @@ ${ADDONS.map(([h, p]) => `            <li class="py-3 grid sm:grid-cols-[13rem_1
 // ------------------------------------------------------------------ misc ---
 
 function ctaBand({ heading = 'Want to see your sample site?', sub = 'We build it free, show it to you in 15 minutes, and you decide.' } = {}) {
-  return `<section class="px-5 sm:px-6 py-10">
-  <div class="reveal band max-w-6xl mx-auto rounded-2xl px-7 py-14 sm:px-14 sm:py-20">
-    <div class="relative z-[1] grid md:grid-cols-12 gap-8 items-end">
-      <div class="md:col-span-8">
-        <h2 class="display-lg text-ink">${heading}</h2>
-        <p class="text-ink/80 text-lg leading-[1.6] mt-4 max-w-lg">${sub}</p>
-      </div>
-      <div class="md:col-span-4 md:text-right">
-        <a href="book-a-call.html" class="btn btn-ink">Get a free sample site <span class="btn-ico !bg-white/10">${ARROW}</span></a>
+  return `<section class="px-5 sm:px-6 py-16 lg:py-20">
+  <div class="reveal cta-deep max-w-6xl mx-auto px-7 py-14 sm:px-14 sm:py-20 text-center">
+    <div class="aura" aria-hidden="true"></div>
+    <div class="grain"></div>
+    <div class="ambient-embers" aria-hidden="true">
+      <span class="ember" style="left:4%;width:4px;height:4px;animation-duration:11s;animation-delay:-3s;--ember-drift:14px"></span>
+      <span class="ember" style="left:14%;width:3px;height:3px;animation-duration:13s;animation-delay:-8s;--ember-drift:-10px"></span>
+      <span class="ember" style="left:86%;width:3px;height:3px;animation-duration:12s;animation-delay:-5s;--ember-drift:-12px"></span>
+      <span class="ember" style="left:95%;width:4px;height:4px;animation-duration:10.5s;animation-delay:-1s;--ember-drift:12px"></span>
+    </div>
+    <div class="relative">
+      <h2 class="display-hero text-sand mx-auto max-w-3xl" style="font-size:clamp(2.2rem,5vw,4rem)" data-split>${/[.?!:]\s/.test(heading) ? tone(heading, 'tone-copper') : heading.replace(/^(.*?)\s(\S+\s+\S+\s+\S+)$/, '$1 <span class="tone-copper">$2</span>')}</h2>
+      <p class="lede mx-auto mt-6 text-lg">${sub}</p>
+      <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="book-a-call.html" class="btn btn-solid">Get a free sample site <span class="btn-ico">${ARROW}</span></a>
+        <a href="/crm-demo" class="btn btn-ghost">Try the CRM demo</a>
       </div>
     </div>
   </div>
