@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Walkthrough | A2H</title>
+<meta name="description" content="A2H walkthrough: voice AI demo call, the A2H CRM, live client sites and a staged build plan.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0f0c0b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141110'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-style='italic' fill='%23c9702f' text-anchor='middle'%3EA2H%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+:root {
+  --bg: #0f0c0b; --surface: #1a1512; --elevated: #241d18;
+  --sand: #ede3d6; --fog: #a99c8e; --hair: rgba(233,223,210,.12);
+  --copper: #c9702f; --copper-light: #e2924f; --live: #7fb88a;
+  --display: 'Fraunces', Georgia, serif; --body: 'Hanken Grotesk', system-ui, -apple-system, sans-serif; --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --spring: cubic-bezier(.2,.8,.2,1);
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px -12px rgba(201,112,47,.18);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+body { margin: 0; background: radial-gradient(70% 50% at 15% 0%, rgba(201,112,47,.10), transparent 70%), var(--bg); background-color: var(--bg); color: var(--sand); font-family: var(--body); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+img, video { max-width: 100%; display: block; }
+h1, h2, h3 { font-family: var(--display); font-weight: 500; letter-spacing: -0.025em; line-height: 1.08; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(2.3rem, 5.4vw, 4rem); }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.25rem; }
+p { margin: 0; }
+a { color: var(--copper-light); }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--copper-light); outline-offset: 3px; border-radius: 8px; }
+.gut { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.in { max-width: 1040px; margin: 0 auto; }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(15,12,11,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--hair); }
+.nav .in { display: flex; align-items: center; gap: 20px; height: 64px; }
+.logo { font-family: var(--display); font-size: 1.5rem; color: var(--sand); text-decoration: none; }
+.logo i { color: var(--copper); font-style: normal; }
+.links { display: flex; gap: 4px; margin-left: auto; }
+.links a { color: var(--fog); text-decoration: none; font-size: .9rem; padding: 6px 12px; border-radius: 999px; transition: color .2s, background .2s; }
+.links a:hover, .links a.on { color: var(--sand); background: var(--elevated); }
+.links a:active { background: var(--surface); }
+@media (max-width: 860px) { .links { display: none; } .nav .btn { margin-left: auto; } }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; background: var(--copper); color: #1a0f08; font-weight: 600; font-size: .95rem; text-decoration: none; border: 0; cursor: pointer; transition: background .2s, transform .3s var(--spring); white-space: nowrap; }
+.btn:hover { background: var(--copper-light); transform: translateY(-1px); }
+.btn:active { transform: translateY(1px); }
+.btn.sm { padding: 9px 16px; font-size: .88rem; }
+.btn.ghost { background: transparent; color: var(--sand); border: 1px solid var(--hair); }
+.btn.ghost:hover { border-color: rgba(226,146,79,.55); }
+.btn svg { width: 14px; height: 14px; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+main { display: flex; flex-direction: column; }
+section { padding-block: 72px; border-bottom: 1px solid var(--hair); }
+section .in { display: flex; flex-direction: column; gap: 22px; }
+.k { font-family: var(--mono); font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--copper-light); }
+.lede { color: var(--fog); font-size: 1.1rem; max-width: 64ch; }
+.note { font-size: .9rem; color: var(--fog); border-left: 2px solid var(--copper); padding-left: 12px; max-width: 70ch; }
+
+.hero { padding-block: 72px 64px; }
+.agenda { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-top: 12px; }
+.agenda a { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; background: var(--surface); border: 1px solid var(--hair); border-radius: 16px; text-decoration: none; color: var(--sand); font-weight: 500; transition: border-color .25s, transform .35s var(--spring), box-shadow .35s; }
+.agenda a:hover { border-color: rgba(226,146,79,.5); transform: translateY(-3px); box-shadow: var(--shadow); }
+.agenda a:active { transform: translateY(0); }
+.agenda span { font-family: var(--mono); font-size: .7rem; color: var(--copper-light); }
+
+/* player */
+.player { background: var(--surface); border: 1px solid var(--hair); border-radius: 22px; padding: 24px; display: flex; flex-direction: column; gap: 18px; box-shadow: var(--shadow); }
+.pbar { display: flex; align-items: center; gap: 16px; }
+.play { flex: none; width: 60px; height: 60px; border-radius: 50%; border: 0; background: var(--copper); color: #1a0f08; cursor: pointer; display: grid; place-items: center; transition: transform .3s var(--spring), background .2s; }
+.play:hover { background: var(--copper-light); transform: scale(1.06); }
+.play:active { transform: scale(.95); }
+.play svg { width: 24px; height: 24px; }
+.track { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.track b { font-weight: 600; }
+.track input { width: 100%; accent-color: var(--copper); cursor: pointer; }
+.times { display: flex; justify-content: space-between; font-family: var(--mono); font-size: .75rem; color: var(--fog); font-variant-numeric: tabular-nums; }
+.meta { display: flex; gap: 8px; flex-wrap: wrap; }
+.chs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.ch { border-top: 1px solid var(--hair); padding: 12px 0; display: flex; flex-direction: column; gap: 6px; }
+.seek { all: unset; cursor: pointer; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; border-radius: 8px; padding: 4px 6px; margin: -4px -6px; transition: background .2s; }
+.seek:hover { background: var(--elevated); }
+.seek:active { background: var(--bg); }
+.seek:focus-visible { outline: 2px solid var(--copper-light); }
+.seek .tc { font-family: var(--mono); font-size: .78rem; color: var(--fog); width: 3.2em; font-variant-numeric: tabular-nums; }
+.seek .tt { font-weight: 600; }
+.seek .go { margin-left: auto; font-size: .78rem; color: var(--fog); }
+.seek:hover .tt, .ch.on .tt, .ch.on .tc { color: var(--copper-light); }
+.sum { color: var(--fog); font-size: .94rem; padding-left: calc(3.2em + 12px); }
+details { padding-left: calc(3.2em + 12px); }
+summary { cursor: pointer; color: var(--copper-light); font-size: .85rem; width: max-content; }
+summary:hover { color: var(--sand); }
+.ln { font-size: .92rem; margin-top: 6px; }
+.ln b { font-weight: 600; font-size: .78rem; margin-right: 6px; }
+.ln.ai b { color: var(--copper-light); }
+.ln.cl b { color: var(--fog); }
+.tag { font-family: var(--mono); font-size: .68rem; padding: 2px 8px; border-radius: 6px; background: rgba(201,112,47,.14); border: 1px solid rgba(226,146,79,.4); color: var(--copper-light); }
+
+/* clickable shots */
+.shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--hair); border-radius: 18px; overflow: hidden; text-decoration: none; color: var(--sand); transition: border-color .25s, transform .4s var(--spring), box-shadow .4s; }
+.card:hover { border-color: rgba(226,146,79,.5); transform: translateY(-4px); box-shadow: var(--shadow); }
+.card:active { transform: translateY(-1px); }
+.card .img { aspect-ratio: 16/10; overflow: hidden; background: #f3f0ea; }
+.card .img img { width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform .8s var(--spring); }
+.card:hover .img img { transform: scale(1.03); }
+.card .bd { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.card .bd b { font-weight: 600; }
+.card .bd span { color: var(--fog); font-size: .92rem; }
+.card .bd em { font-style: normal; margin-top: auto; padding-top: 10px; font-size: .85rem; color: var(--copper-light); }
+.card.big { grid-column: 1 / -1; }
+.card.big .img { aspect-ratio: 1200/825; max-height: 560px; }
+.vid { border-radius: 18px; overflow: hidden; border: 1px solid var(--hair); background: #000; }
+.vid video { width: 100%; height: auto; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
+.two > div { min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+@media (max-width: 760px) { .two { grid-template-columns: 1fr; } }
+
+/* plan */
+.plan { display: flex; flex-direction: column; }
+.step { display: grid; grid-template-columns: 9rem 1fr; gap: 20px; padding: 22px 0; border-top: 1px solid var(--hair); }
+.step > div { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.step ul { margin: 0; padding-left: 1.1em; color: var(--fog); }
+.step li { margin: 2px 0; }
+.when { font-family: var(--mono); font-size: .74rem; color: var(--copper-light); letter-spacing: .08em; text-transform: uppercase; padding-top: 5px; }
+.status { align-self: flex-start; font-size: .72rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--hair); color: var(--fog); }
+.status.live { color: var(--live); border-color: rgba(127,184,138,.4); background: rgba(127,184,138,.08); }
+.status.pilot { color: var(--copper-light); border-color: rgba(226,146,79,.4); background: rgba(201,112,47,.08); }
+.price { font-family: var(--display); font-size: 1.15rem; color: var(--sand); }
+.step a.see { font-size: .88rem; }
+.qs { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.qs p { background: var(--surface); border: 1px solid var(--hair); border-radius: 14px; padding: 16px 18px; font-size: .96rem; }
+footer { padding-block: 32px 48px; color: var(--fog); font-size: .88rem; }
+footer .in { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+footer a { color: var(--fog); }
+footer a:hover { color: var(--sand); }
+@media (max-width: 600px) { .step { grid-template-columns: 1fr; gap: 6px; } .sum, details { padding-left: 0; } .seek .go { display: none; } section { padding-block: 56px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
+</head>
+<body>
+<header class="nav gut">
+  <div class="in">
+    <a class="logo" href="/">A2H<i>.</i></a>
+    <nav class="links" aria-label="Sections">
+      <a href="#voice">Voice AI</a><a href="#crm">CRM</a><a href="#work">Live work</a><a href="#build">Your build</a><a href="#next">Next steps</a>
+    </nav>
+    <a class="btn sm" href="/crm-demo/#pipeline" target="_blank" rel="noopener">Open CRM demo <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero gut">
+    <div class="in">
+      <p class="k">A2H &middot; Walkthrough</p>
+      <h1>Every call and chat answered. <span style="color:var(--fog)">Every lead in one place.</span></h1>
+      <p class="lede">What A2H builds for a service business: a website that turns visitors into calls, a voice AI and website chat that answer at any hour, and a CRM where every lead lands. Everything below is clickable.</p>
+      <nav class="agenda" aria-label="Walkthrough">
+        <a href="#voice"><span>01 &middot; Hear it</span>Voice AI demo call</a>
+        <a href="#crm"><span>02 &middot; Click it</span>The CRM, live</a>
+        <a href="#work"><span>03 &middot; Open them</span>Live client sites</a>
+        <a href="#build"><span>04 &middot; Plan</span>What we build for you</a>
+      </nav>
+    </div>
+  </section>
+
+  <section id="voice" class="gut">
+    <div class="in">
+      <p class="k">01 &middot; Voice AI</p>
+      <h2>Hear it take a call, start to finish.</h2>
+      <p class="lede">A recorded demo call to a test business, Bluebonnet Mobile Grooming (fictional). The AI is named Riley. Press play, or click any part to jump to it.</p>
+      <div class="player">
+        <div class="pbar">
+          <button type="button" class="play" id="play" aria-label="Play the call"><svg id="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+          <div class="track">
+            <b>Demo call &middot; Riley answers for Bluebonnet Mobile Grooming</b>
+            <input type="range" id="scrub" min="0" max="185.4" step="0.1" value="0" aria-label="Position in the call">
+            <div class="times"><span id="cur">0:00</span><span>3:05</span></div>
+          </div>
+        </div>
+        <div class="meta"><span class="tag">Answers in under a second</span><span class="tag">Quotes from your price list</span><span class="tag">Says it is an AI when asked</span><span class="tag">Saves the lead to the CRM</span></div>
+        <ol class="chs" id="chs"><li class="ch"><button type="button" class="seek" data-t="0.0"><span class="tc">0:00</span><span class="tt">Answers instantly</span><span class="go">Play from here</span></button><p class="sum">Riley picks up in under a second, says the business name, and asks the caller what they need.</p><details><summary>Read the transcript</summary><p class="ln ai"><b>Riley (AI)</b> Hey. Bluebonnet Mobile Grooming. This is Riley. How can I help you?</p><p class="ln cl"><b>Caller</b> Hey. Yeah. I was wondering if you have any openings this week. My dog is way overdue for a groom.</p><p class="ln ai"><b>Riley (AI)</b> Yeah. We see a lot of those. Don&#x27;t worry. You&#x27;re not alone. Uh, what&#x27;s your pup&#x27;s name, and what kind of dog is he?</p></details></li><li class="ch"><button type="button" class="seek" data-t="19.6"><span class="tc">0:19</span><span class="tt">Quotes a price</span><span class="tag">Price list</span><span class="go">Play from here</span></button><p class="sum">Gives a starting price for a dog her size, from the business&#x27;s own price list, and mentions an add-on once without pushing it.</p><details><summary>Read the transcript</summary><p class="ln cl"><b>Caller</b> Her name&#x27;s Bella. She&#x27;s a goldendoodle about fifty pounds. How much is a full groom?</p><p class="ln ai"><b>Riley (AI)</b> Goldendoodle named Bella Nice. For a full groom on a dog her size, it starts at ninety five bucks.</p><p class="ln cl"><b>Caller</b> Yeah.</p><p class="ln ai"><b>Riley (AI)</b> the groomer will confirm the final price with the van. Just depends on on her coat and all that. Um, does Bella shed a lot or have a pretty thick coat? If so, there&#x27;s a deshedding add on we can do for twenty more. What do you think?</p><p class="ln cl"><b>Caller</b> She&#x27;s got a pretty thick coat, but she doesn&#x27;t really shed much. I think just the regular groom is fine.</p></details></li><li class="ch"><button type="button" class="seek" data-t="56.4"><span class="tc">0:56</span><span class="tt">Asks what the groomer should know</span><span class="go">Play from here</span></button><p class="sum">Asks about nerves, matting and coat so the groomer arrives prepared. The caller mentions the dryer, matting and nerves around men.</p><details><summary>Read the transcript</summary><p class="ln ai"><b>Riley (AI)</b> Alright. Regular full groom for Bella. Got it. Um, anything the the groomer should know about her? Like, is she nervous? has any matting, any skin stuff, hates dryers, anything like that.</p><p class="ln cl"><b>Caller</b> Yeah. She actually hates the dryer, and she&#x27;s got some matting behind her ears. She&#x27;s also kinda nervous around men. Oh, wait. Am I talking to a real person?</p></details></li><li class="ch"><button type="button" class="seek" data-t="79.4"><span class="tc">1:19</span><span class="tt">Tells the truth about being an AI</span><span class="tag">Built-in rule</span><span class="go">Play from here</span></button><p class="sum">The caller asks whether she is talking to a real person. Riley says it is an AI, offers a callback from a human, and carries on when the caller says to.</p><details><summary>Read the transcript</summary><p class="ln ai"><b>Riley (AI)</b> Yeah. I&#x27;m an AI. I I help with the phones while the groomer&#x27;s working. If you&#x27;d rather talk to a real person, I&#x27;ll have them call you back. Totally fine. or I can finish getting you booked. Your call. No hard feelings either way.</p><p class="ln cl"><b>Caller</b> No. That&#x27;s fine. You can keep going. That&#x27;s everything with Bella.</p></details></li><li class="ch"><button type="button" class="seek" data-t="99.2"><span class="tc">1:39</span><span class="tt">Confirms details and takes the address</span><span class="go">Play from here</span></button><p class="sum">Repeats back what it heard, then asks where the van should go.</p><details><summary>Read the transcript</summary><p class="ln ai"><b>Riley (AI)</b> Alright. Thanks for letting me know. So I&#x27;ve got hates the dryer, matting behind her ears, and she&#x27;s kinda nervous around men. That cover it. Um, and what address should the van come to?</p><p class="ln cl"><b>Caller</b> Sure. Yeah.</p><p class="ln ai"><b>Riley (AI)</b> Cool. Whenever you&#x27;re ready, go ahead and tell me the address.</p><p class="ln cl"><b>Caller</b> Yeah. Yeah. That&#x27;s it. The address is fourteen twenty seven Pecan Hollow Drive.</p></details></li><li class="ch"><button type="button" class="seek" data-t="123.8"><span class="tc">2:03</span><span class="tt">Checks the schedule, then books</span><span class="tag">Checks schedule</span><span class="tag">Books slot</span><span class="go">Play from here</span></button><p class="sum">Looks up open times, offers three, and books the caller&#x27;s pick. Riley interrupts itself at one point, the way a person would.</p><details><summary>Read the transcript</summary><p class="ln ai"><b>Riley (AI)</b> Alright. We come out that way. Let me take a peek at openings for this week.</p><p class="ln ai"><b>Riley (AI)</b> Alright. Thanks. We come out that way.</p><p class="ln cl"><b>Caller</b> Great. Thanks.</p><p class="ln ai"><b>Riley (AI)</b> So I&#x27;ve got Monday</p><p class="ln cl"><b>Caller</b> Oh,</p><p class="ln ai"><b>Riley (AI)</b> Oops, jumped in too quick there. Monday is wide open, ten, two, or four. Any of those work for you?</p><p class="ln cl"><b>Caller</b> I&#x27;ll take the ten o&#x27;clock spot. Earliest is best.</p><p class="ln ai"><b>Riley (AI)</b> Ten it is. And who am I putting this under?</p><p class="ln cl"><b>Caller</b> Chris Walker.</p></details></li><li class="ch"><button type="button" class="seek" data-t="159.9"><span class="tc">2:39</span><span class="tt">Confirms, logs it, and hangs up</span><span class="tag">Saves to CRM</span><span class="tag">Ends call</span><span class="go">Play from here</span></button><p class="sum">Reads back the booking, notes that the caller wants a groom every six weeks, and ends the call on its own.</p><details><summary>Read the transcript</summary><p class="ln ai"><b>Riley (AI)</b> Alright. You and Bella are all set for Monday at ten since it&#x27;s her first visit. Just bring proof of rabies for the groomer. Most doodles do best every four to six weeks. Want me to note that for the groomer or</p><p class="ln cl"><b>Caller</b> Every six weeks</p><p class="ln ai"><b>Riley (AI)</b> Cool. I&#x27;ll note every six weeks for Bella.</p><p class="ln cl"><b>Caller</b> Yeah. Go ahead and note it.</p><p class="ln ai"><b>Riley (AI)</b> Already got it down for you. So</p><p class="ln cl"><b>Caller</b> Perfect.</p></details></li></ol>
+        <audio id="aud" preload="metadata" src="assets/demo/riley-demo-call.mp3"></audio>
+      </div>
+      <p class="note">This is a demo. For your business it uses your name, services, prices, service area and hours, and hands off to you whenever a caller asks for a person.</p>
+      <div class="row"><a class="btn ghost" href="/demo" target="_blank" rel="noopener">Step-by-step version on a2h.info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a></div>
+    </div>
+  </section>
+
+  <section id="crm" class="gut">
+    <div class="in">
+      <p class="k">02 &middot; The CRM</p>
+      <h2>Every call, chat and form lands here.</h2>
+      <p class="lede">This is the real CRM with sample data for a fictional foundation repair company. Click any screen to open that part of the live demo. No login.</p>
+      <div class="shots">
+        <a class="card big" href="/crm-demo/#pipeline" target="_blank" rel="noopener"><div class="img"><img src="assets/crm/crm-step-pipeline.webp" alt="Pipeline: $50,400 open across 10 deals, with New, Contacted and Scheduled columns" width="1200" height="825"></div><div class="bd"><b>Pipeline</b><span>New, contacted, scheduled, booked, completed. Each card shows the job, its value and the next follow-up. Overdue ones turn red. Drag a card to move it.</span><em>Open the pipeline &rarr;</em></div></a>
+        <a class="card" href="/crm-demo/#contacts" target="_blank" rel="noopener"><div class="img"><img src="assets/crm/crm-card-contact.webp" alt="A contact record with phone, source, deal value, urgency, stage, call and text buttons" width="1080" height="676" loading="lazy"></div><div class="bd"><b>Contacts</b><span>Phone, source, job value and urgency, with every call, chat and form on one timeline.</span><em>Open contacts &rarr;</em></div></a>
+        <a class="card" href="/crm-demo/#visitors" target="_blank" rel="noopener"><div class="img"><img src="assets/crm/crm-card-visitors.webp" alt="Website visitors and the pages each read before reaching out" width="1200" height="750" loading="lazy"></div><div class="bd"><b>Website visitors</b><span>The pages each person read before they called or chatted, and where they came from.</span><em>Open visitors &rarr;</em></div></a>
+        <a class="card" href="/crm-demo/#chats" target="_blank" rel="noopener"><div class="img"><img src="assets/crm/crm-card-chats.webp" alt="A website chat where the visitor leaves a name and number and the lead is captured" width="1200" height="750" loading="lazy"></div><div class="bd"><b>Chats</b><span>Every website chat. A name and number become a contact and a deal on their own.</span><em>Open chats &rarr;</em></div></a>
+        <a class="card" href="/crm-demo/#reports" target="_blank" rel="noopener"><div class="img"><img src="assets/crm/crm-card-reports.webp" alt="Reports: won this month, leads, calls answered by AI, leads by source" width="1200" height="750" loading="lazy"></div><div class="bd"><b>Reports</b><span>Leads by source, deals by stage, quotes by status and calls by outcome.</span><em>Open reports &rarr;</em></div></a>
+        <a class="card" href="/crm-demo/#tasks" target="_blank" rel="noopener"><div class="img"><img src="assets/demo/crm-booked-contact.webp" alt="The CRM record created by the demo call, with the booked job and the caller's notes" width="1000" height="1190" loading="lazy" style="object-position:top center"></div><div class="bd"><b>What the demo call created</b><span>The contact, address and job with the caller's notes, saved before the call ended. Follow-ups show up in Tasks.</span><em>Open tasks &rarr;</em></div></a>
+      </div>
+      <div class="two" style="margin-top:28px">
+        <div class="vid"><video controls playsinline preload="none" poster="assets/video/ha-chatbot-crm-demo-poster.jpg" width="720" height="720"><source src="assets/video/ha-chatbot-crm-demo.mp4" type="video/mp4"></video></div>
+        <div>
+          <p class="k">Running for a client</p>
+          <h3>A real client's website chat feeding their CRM</h3>
+          <p class="muted" style="color:var(--fog)">H&amp;A Healthcare Consulting, an A2H client. The chat on their live site answers a question, takes the visitor's details, and the lead appears in their CRM. Recorded with a test conversation.</p>
+          <div class="row"><a class="btn ghost" href="https://hahealthconsulting.com" target="_blank" rel="noopener">Try the chat on their site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="gut">
+    <div class="in">
+      <p class="k">03 &middot; Live work</p>
+      <h2>Sites we built. Open them yourself.</h2>
+      <p class="lede">Each one opens the real, live site in a new tab. Try them on your phone too.</p>
+      <div class="shots">
+        <a class="card" href="https://hahealthconsulting.com" target="_blank" rel="noopener"><div class="img"><img src="assets/portfolio/hahealth.webp" alt="H&amp;A Healthcare Consulting homepage" width="1440" height="900" loading="lazy"></div><div class="bd"><b>H&amp;A Healthcare Consulting</b><span>Website, AI chat, spam filter and CRM. Every chat and form lands in one dashboard.</span><em>hahealthconsulting.com &nearr;</em></div></a>
+        <a class="card" href="https://solidstatesconstruction.com" target="_blank" rel="noopener"><div class="img"><img src="assets/portfolio/ssc.webp" alt="Solid State Construction homepage" width="1440" height="1024" loading="lazy"></div><div class="bd"><b>Solid State Construction</b><span>Full rebuild for a construction crew, built around the quote request. 270+ clicks in 14 days at $0.74 a click on a $200 Google Ads test.</span><em>solidstatesconstruction.com &nearr;</em></div></a>
+        <a class="card" href="https://caremedbill.com" target="_blank" rel="noopener"><div class="img"><img src="assets/portfolio/caremedbill.webp" alt="CareMedBill homepage" width="1440" height="1024" loading="lazy"></div><div class="bd"><b>CareMedBill</b><span>Trust-first site for a medical billing company, built to turn practice owners into calls.</span><em>caremedbill.com &nearr;</em></div></a>
+        
+      </div>
+    </div>
+  </section>
+
+  <section id="build" class="gut">
+    <div class="in">
+      <p class="k">04 &middot; What we build for you</p>
+      <h2>Built in stages, so you see each part working before you rely on it.</h2>
+      <div class="plan">
+        <div class="step"><p class="when">Week 1&ndash;2</p><div><h3>Website</h3><span class="status live">Live for clients today</span><ul><li>Fast on a phone, with your number tap-to-call at the top</li><li>Service and service-area pages written for local search</li><li>Quote form with spam protection, and tracking for Google and Meta ads</li><li>A free sample homepage first, so you see it before you pay</li></ul><p class="price">$800 to $2,000 one time, depending on pages and features</p><a class="see" href="#work">See live sites &darr;</a></div></div>
+        <div class="step"><p class="when">Week 2</p><div><h3>CRM and website chat</h3><span class="status live">Live for clients today</span><ul><li>Your own CRM workspace: pipeline, contacts, tasks, reports</li><li>Website chat trained on your services, prices and service area</li><li>Every chat and form becomes a lead, and you get an alert</li><li>Shows which pages a lead read and where they came from</li></ul><a class="see" href="/crm-demo/#pipeline" target="_blank" rel="noopener">Open the CRM demo &nearr;</a></div></div>
+        <div class="step"><p class="when">Week 3&ndash;4</p><div><h3>Voice AI on your phone line</h3><span class="status pilot">Pilot setup</span><ul><li>Answers missed and after-hours calls in your business name</li><li>Quotes from your price list, takes the job details and address</li><li>Always says it is an AI and offers a callback from you</li><li>Logs every call with a summary and transcript in the CRM</li><li>We connect your number and calendar, then run test calls with you before it takes real ones</li></ul><a class="see" href="#voice">Hear the demo call &uarr;</a></div></div>
+        <div class="step"><p class="when">Monthly</p><div><h3>Upkeep</h3><ul><li>Hosting, updates and fixes</li><li>Tuning the chat and voice AI from real conversations</li><li>A monthly report: leads by source, calls answered, deals won</li></ul></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="next" class="gut">
+    <div class="in">
+      <p class="k">05 &middot; Next steps</p>
+      <h2>A few questions, then a free sample.</h2>
+      <div class="qs">
+        <p>How many calls a week go to voicemail or come in after hours?</p>
+        <p>Where do leads come from today: Google, referrals, ads, a listing site?</p>
+        <p>Where do you keep leads now, and who calls them back?</p>
+        <p>What does a typical job pay, and what makes a lead a good one?</p>
+        <p>Which part do you want first: the website, the CRM and chat, or the phone?</p>
+      </div>
+      <div class="row">
+        <a class="btn" href="/get-started.html" target="_blank" rel="noopener">Get a free sample site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
+        <a class="btn ghost" href="/crm-demo/#pipeline" target="_blank" rel="noopener">Open the CRM demo <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
+        <a class="btn ghost" href="/pricing.html" target="_blank" rel="noopener">Pricing <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="gut">
+  <div class="in">
+    <span>A2H &middot; Abbas Hussain &middot; Houston, TX &middot; <a href="mailto:hello@a2h.info">hello@a2h.info</a></span>
+    <span><a href="/">a2h.info</a> &middot; <a href="/about.html">About</a> &middot; <a href="/work.html">Work</a></span>
+  </div>
+  <div class="in" style="margin-top:8px"><span>Demo businesses and leads on this page are fictional sample data.</span></div>
+</footer>
+
+<script>
+(function () {
+  var a = document.getElementById('aud'), btn = document.getElementById('play'), ico = document.getElementById('ico'), scrub = document.getElementById('scrub'), cur = document.getElementById('cur');
+  var chs = Array.prototype.slice.call(document.querySelectorAll('.ch'));
+  var starts = chs.map(function (c) { return parseFloat(c.querySelector('.seek').dataset.t); });
+  var fmt = function (t) { t = Math.floor(t || 0); return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); };
+  var setIcon = function (on) { ico.innerHTML = on ? '<path d="M7 5h4v14H7zM13 5h4v14h-4z"/>' : '<path d="M8 5v14l11-7z"/>'; btn.setAttribute('aria-label', on ? 'Pause the call' : 'Play the call'); };
+  btn.addEventListener('click', function () { if (a.paused) a.play().catch(function () {}); else a.pause(); });
+  a.addEventListener('play', function () { setIcon(true); });
+  a.addEventListener('pause', function () { setIcon(false); });
+  a.addEventListener('loadedmetadata', function () { if (isFinite(a.duration)) scrub.max = a.duration; });
+  a.addEventListener('timeupdate', function () {
+    scrub.value = a.currentTime; cur.textContent = fmt(a.currentTime);
+    var idx = 0; starts.forEach(function (s, i) { if (a.currentTime >= s) idx = i; });
+    chs.forEach(function (c, i) { c.classList.toggle('on', i === idx && a.currentTime > 0); });
+  });
+  scrub.addEventListener('input', function () { a.currentTime = parseFloat(scrub.value); });
+  document.querySelectorAll('.seek').forEach(function (s) { s.addEventListener('click', function () { a.currentTime = parseFloat(s.dataset.t); a.play().catch(function () {}); }); });
+  // highlight the section in the nav
+  var navs = document.querySelectorAll('.links a');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) navs.forEach(function (n) { n.classList.toggle('on', n.getAttribute('href') === '#' + e.target.id); }); }); }, { rootMargin: '-40% 0px -55% 0px' });
+    document.querySelectorAll('section[id]').forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>
