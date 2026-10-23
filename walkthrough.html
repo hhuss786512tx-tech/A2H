@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Walkthrough | A2H</title>
-<meta name="description" content="A2H walkthrough: voice AI demo call, the A2H CRM, live client sites and a staged build plan.">
+<meta name="description" content="A2H walkthrough for insurance and tax lead generation: voice AI demo call, CRM, live sites and a build plan.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0f0c0b">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141110'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-style='italic' fill='%23c9702f' text-anchor='middle'%3EA2H%3C/text%3E%3C/svg%3E">
@@ -133,7 +133,7 @@ summary:hover { color: var(--sand); }
 .status.pilot { color: var(--copper-light); border-color: rgba(226,146,79,.4); background: rgba(201,112,47,.08); }
 .price { font-family: var(--display); font-size: 1.15rem; color: var(--sand); }
 .step a.see { font-size: .88rem; }
-.qs { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.qs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
 .qs p { background: var(--surface); border: 1px solid var(--hair); border-radius: 14px; padding: 16px 18px; font-size: .96rem; }
 footer { padding-block: 32px 48px; color: var(--fog); font-size: .88rem; }
 footer .in { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
@@ -157,14 +157,14 @@ footer a:hover { color: var(--sand); }
 <main>
   <section class="hero gut">
     <div class="in">
-      <p class="k">A2H &middot; Walkthrough</p>
-      <h1>Every call and chat answered. <span style="color:var(--fog)">Every lead in one place.</span></h1>
-      <p class="lede">What A2H builds for a service business: a website that turns visitors into calls, a voice AI and website chat that answer at any hour, and a CRM where every lead lands. Everything below is clickable.</p>
+      <p class="k">Prepared for you &middot; Insurance and tax lead generation</p>
+      <h1>More booked calls from every lead you generate. <span style="color:var(--fog)">For your insurance and tax clients.</span></h1>
+      <p class="lede">You already find qualified leads with cold calls, and you are adding email automation. This is what A2H would put behind that: a CRM workspace for each client, a voice AI that answers callbacks and qualifies, a landing page for each client, and reports you can show them. Everything below is clickable.</p>
       <nav class="agenda" aria-label="Walkthrough">
         <a href="#voice"><span>01 &middot; Hear it</span>Voice AI demo call</a>
         <a href="#crm"><span>02 &middot; Click it</span>The CRM, live</a>
         <a href="#work"><span>03 &middot; Open them</span>Live client sites</a>
-        <a href="#build"><span>04 &middot; Plan</span>What we build for you</a>
+        <a href="#build"><span>04 &middot; Plan</span>Your build, step by step</a>
       </nav>
     </div>
   </section>
@@ -173,7 +173,7 @@ footer a:hover { color: var(--sand); }
     <div class="in">
       <p class="k">01 &middot; Voice AI</p>
       <h2>Hear it take a call, start to finish.</h2>
-      <p class="lede">A recorded demo call to a test business, Bluebonnet Mobile Grooming (fictional). The AI is named Riley. Press play, or click any part to jump to it.</p>
+      <p class="lede">A recorded demo call to a test business, Bluebonnet Mobile Grooming (fictional). The AI is named Riley. Press play, or click any part to jump to it. Listen for how it qualifies, handles "am I talking to a real person?", and books.</p>
       <div class="player">
         <div class="pbar">
           <button type="button" class="play" id="play" aria-label="Play the call"><svg id="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
@@ -187,7 +187,8 @@ footer a:hover { color: var(--sand); }
         <ol class="chs" id="chs"><li class="ch"><button type="button" class="seek" data-t="0.0"><span class="tc">0:00</span><span class="tt">Answers instantly</span><span class="go">Play from here</span></button><p class="sum">Riley picks up in under a second, says the business name, and asks the caller what they need.</p><details><summary>Read the transcript</summary><p class="ln ai"><b>Riley (AI)</b> Hey. Bluebonnet Mobile Grooming. This is Riley. How can I help you?</p><p class="ln cl"><b>Caller</b> Hey. Yeah. I was wondering if you have any openings this week. My dog is way overdue for a groom.</p><p class="ln ai"><b>Riley (AI)</b> Yeah. We see a lot of those. Don&#x27;t worry. You&#x27;re not alone. Uh, what&#x27;s your pup&#x27;s name, and what kind of dog is he?</p></details></li><li class="ch"><button type="button" class="seek" data-t="19.6"><span class="tc">0:19</span><span class="tt">Quotes a price</span><span class="tag">Price list</span><span class="go">Play from here</span></button><p class="sum">Gives a starting price for a dog her size, from the business&#x27;s own price list, and mentions an add-on once without pushing it.</p><details><summary>Read the transcript</summary><p class="ln cl"><b>Caller</b> Her name&#x27;s Bella. She&#x27;s a goldendoodle about fifty pounds. How much is a full groom?</p><p class="ln ai"><b>Riley (AI)</b> Goldendoodle named Bella Nice. For a full groom on a dog her size, it starts at ninety five bucks.</p><p class="ln cl"><b>Caller</b> Yeah.</p><p class="ln ai"><b>Riley (AI)</b> the groomer will confirm the final price with the van. Just depends on on her coat and all that. Um, does Bella shed a lot or have a pretty thick coat? If so, there&#x27;s a deshedding add on we can do for twenty more. What do you think?</p><p class="ln cl"><b>Caller</b> She&#x27;s got a pretty thick coat, but she doesn&#x27;t really shed much. I think just the regular groom is fine.</p></details></li><li class="ch"><button type="button" class="seek" data-t="56.4"><span class="tc">0:56</span><span class="tt">Asks what the groomer should know</span><span class="go">Play from here</span></button><p class="sum">Asks about nerves, matting and coat so the groomer arrives prepared. The caller mentions the dryer, matting and nerves around men.</p><details><summary>Read the transcript</summary><p class="ln ai"><b>Riley (AI)</b> Alright. Regular full groom for Bella. Got it. Um, anything the the groomer should know about her? Like, is she nervous? has any matting, any skin stuff, hates dryers, anything like that.</p><p class="ln cl"><b>Caller</b> Yeah. She actually hates the dryer, and she&#x27;s got some matting behind her ears. She&#x27;s also kinda nervous around men. Oh, wait. Am I talking to a real person?</p></details></li><li class="ch"><button type="button" class="seek" data-t="79.4"><span class="tc">1:19</span><span class="tt">Tells the truth about being an AI</span><span class="tag">Built-in rule</span><span class="go">Play from here</span></button><p class="sum">The caller asks whether she is talking to a real person. Riley says it is an AI, offers a callback from a human, and carries on when the caller says to.</p><details><summary>Read the transcript</summary><p class="ln ai"><b>Riley (AI)</b> Yeah. I&#x27;m an AI. I I help with the phones while the groomer&#x27;s working. If you&#x27;d rather talk to a real person, I&#x27;ll have them call you back. Totally fine. or I can finish getting you booked. Your call. No hard feelings either way.</p><p class="ln cl"><b>Caller</b> No. That&#x27;s fine. You can keep going. That&#x27;s everything with Bella.</p></details></li><li class="ch"><button type="button" class="seek" data-t="99.2"><span class="tc">1:39</span><span class="tt">Confirms details and takes the address</span><span class="go">Play from here</span></button><p class="sum">Repeats back what it heard, then asks where the van should go.</p><details><summary>Read the transcript</summary><p class="ln ai"><b>Riley (AI)</b> Alright. Thanks for letting me know. So I&#x27;ve got hates the dryer, matting behind her ears, and she&#x27;s kinda nervous around men. That cover it. Um, and what address should the van come to?</p><p class="ln cl"><b>Caller</b> Sure. Yeah.</p><p class="ln ai"><b>Riley (AI)</b> Cool. Whenever you&#x27;re ready, go ahead and tell me the address.</p><p class="ln cl"><b>Caller</b> Yeah. Yeah. That&#x27;s it. The address is fourteen twenty seven Pecan Hollow Drive.</p></details></li><li class="ch"><button type="button" class="seek" data-t="123.8"><span class="tc">2:03</span><span class="tt">Checks the schedule, then books</span><span class="tag">Checks schedule</span><span class="tag">Books slot</span><span class="go">Play from here</span></button><p class="sum">Looks up open times, offers three, and books the caller&#x27;s pick. Riley interrupts itself at one point, the way a person would.</p><details><summary>Read the transcript</summary><p class="ln ai"><b>Riley (AI)</b> Alright. We come out that way. Let me take a peek at openings for this week.</p><p class="ln ai"><b>Riley (AI)</b> Alright. Thanks. We come out that way.</p><p class="ln cl"><b>Caller</b> Great. Thanks.</p><p class="ln ai"><b>Riley (AI)</b> So I&#x27;ve got Monday</p><p class="ln cl"><b>Caller</b> Oh,</p><p class="ln ai"><b>Riley (AI)</b> Oops, jumped in too quick there. Monday is wide open, ten, two, or four. Any of those work for you?</p><p class="ln cl"><b>Caller</b> I&#x27;ll take the ten o&#x27;clock spot. Earliest is best.</p><p class="ln ai"><b>Riley (AI)</b> Ten it is. And who am I putting this under?</p><p class="ln cl"><b>Caller</b> Chris Walker.</p></details></li><li class="ch"><button type="button" class="seek" data-t="159.9"><span class="tc">2:39</span><span class="tt">Confirms, logs it, and hangs up</span><span class="tag">Saves to CRM</span><span class="tag">Ends call</span><span class="go">Play from here</span></button><p class="sum">Reads back the booking, notes that the caller wants a groom every six weeks, and ends the call on its own.</p><details><summary>Read the transcript</summary><p class="ln ai"><b>Riley (AI)</b> Alright. You and Bella are all set for Monday at ten since it&#x27;s her first visit. Just bring proof of rabies for the groomer. Most doodles do best every four to six weeks. Want me to note that for the groomer or</p><p class="ln cl"><b>Caller</b> Every six weeks</p><p class="ln ai"><b>Riley (AI)</b> Cool. I&#x27;ll note every six weeks for Bella.</p><p class="ln cl"><b>Caller</b> Yeah. Go ahead and note it.</p><p class="ln ai"><b>Riley (AI)</b> Already got it down for you. So</p><p class="ln cl"><b>Caller</b> Perfect.</p></details></li></ol>
         <audio id="aud" preload="metadata" src="assets/demo/riley-demo-call.mp3"></audio>
       </div>
-      <p class="note">This is a demo. For your business it uses your name, services, prices, service area and hours, and hands off to you whenever a caller asks for a person.</p>
+      <div class="two" style="align-items:start"><div class="player" style="gap:10px"><p class="k">Set up for your insurance client</p><ul style="margin:0;padding-left:1.1em;color:var(--fog)"><li>Answers when a prospect calls back the number they were cold-called from</li><li>Asks the brokerage's questions: personal or commercial, line of coverage, current carrier, renewal date</li><li>Books a call with a licensed agent. It never quotes a premium or gives advice</li></ul></div><div class="player" style="gap:10px"><p class="k">Set up for your tax client</p><ul style="margin:0;padding-left:1.1em;color:var(--fog)"><li>Answers replies from your email campaigns that come in by phone</li><li>Asks the firm's questions: individual or business, what they need (filing, IRS letter, planning), deadline</li><li>Books a consultation with the firm. It never gives tax advice</li></ul></div></div>
+      <p class="note">Every call is logged in the CRM with a summary and transcript, under the right client. The AI says it is an AI whenever it is asked, and offers a callback from a person.</p>
       <div class="row"><a class="btn ghost" href="/demo" target="_blank" rel="noopener">Step-by-step version on a2h.info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a></div>
     </div>
   </section>
@@ -196,7 +197,7 @@ footer a:hover { color: var(--sand); }
     <div class="in">
       <p class="k">02 &middot; The CRM</p>
       <h2>Every call, chat and form lands here.</h2>
-      <p class="lede">This is the real CRM with sample data for a fictional foundation repair company. Click any screen to open that part of the live demo. No login.</p>
+      <p class="lede">This is the real CRM with sample data for a fictional foundation repair company. Click any screen to open that part of the live demo, no login. For you, the brokerage and the tax firm each get their own workspace, with stages that fit outbound: called, interested, qualified, booked, showed.</p>
       <div class="shots">
         <a class="card big" href="/crm-demo/#pipeline" target="_blank" rel="noopener"><div class="img"><img src="assets/crm/crm-step-pipeline.webp" alt="Pipeline: $50,400 open across 10 deals, with New, Contacted and Scheduled columns" width="1200" height="825"></div><div class="bd"><b>Pipeline</b><span>New, contacted, scheduled, booked, completed. Each card shows the job, its value and the next follow-up. Overdue ones turn red. Drag a card to move it.</span><em>Open the pipeline &rarr;</em></div></a>
         <a class="card" href="/crm-demo/#contacts" target="_blank" rel="noopener"><div class="img"><img src="assets/crm/crm-card-contact.webp" alt="A contact record with phone, source, deal value, urgency, stage, call and text buttons" width="1080" height="676" loading="lazy"></div><div class="bd"><b>Contacts</b><span>Phone, source, job value and urgency, with every call, chat and form on one timeline.</span><em>Open contacts &rarr;</em></div></a>
@@ -220,8 +221,8 @@ footer a:hover { color: var(--sand); }
   <section id="work" class="gut">
     <div class="in">
       <p class="k">03 &middot; Live work</p>
-      <h2>Sites we built. Open them yourself.</h2>
-      <p class="lede">Each one opens the real, live site in a new tab. Try them on your phone too.</p>
+      <h2>Professional-services sites we built. Open them yourself.</h2>
+      <p class="lede">The same kind of site your clients need when a prospect looks them up after your call or email. Each one opens the real, live site in a new tab.</p>
       <div class="shots">
         <a class="card" href="https://hahealthconsulting.com" target="_blank" rel="noopener"><div class="img"><img src="assets/portfolio/hahealth.webp" alt="H&amp;A Healthcare Consulting homepage" width="1440" height="900" loading="lazy"></div><div class="bd"><b>H&amp;A Healthcare Consulting</b><span>Website, AI chat, spam filter and CRM. Every chat and form lands in one dashboard.</span><em>hahealthconsulting.com &nearr;</em></div></a>
         <a class="card" href="https://solidstatesconstruction.com" target="_blank" rel="noopener"><div class="img"><img src="assets/portfolio/ssc.webp" alt="Solid State Construction homepage" width="1440" height="1024" loading="lazy"></div><div class="bd"><b>Solid State Construction</b><span>Full rebuild for a construction crew, built around the quote request. 270+ clicks in 14 days at $0.74 a click on a $200 Google Ads test.</span><em>solidstatesconstruction.com &nearr;</em></div></a>
@@ -236,10 +237,10 @@ footer a:hover { color: var(--sand); }
       <p class="k">04 &middot; What we build for you</p>
       <h2>Built in stages, so you see each part working before you rely on it.</h2>
       <div class="plan">
-        <div class="step"><p class="when">Week 1&ndash;2</p><div><h3>Website</h3><span class="status live">Live for clients today</span><ul><li>Fast on a phone, with your number tap-to-call at the top</li><li>Service and service-area pages written for local search</li><li>Quote form with spam protection, and tracking for Google and Meta ads</li><li>A free sample homepage first, so you see it before you pay</li></ul><p class="price">$800 to $2,000 one time, depending on pages and features</p><a class="see" href="#work">See live sites &darr;</a></div></div>
-        <div class="step"><p class="when">Week 2</p><div><h3>CRM and website chat</h3><span class="status live">Live for clients today</span><ul><li>Your own CRM workspace: pipeline, contacts, tasks, reports</li><li>Website chat trained on your services, prices and service area</li><li>Every chat and form becomes a lead, and you get an alert</li><li>Shows which pages a lead read and where they came from</li></ul><a class="see" href="/crm-demo/#pipeline" target="_blank" rel="noopener">Open the CRM demo &nearr;</a></div></div>
-        <div class="step"><p class="when">Week 3&ndash;4</p><div><h3>Voice AI on your phone line</h3><span class="status pilot">Pilot setup</span><ul><li>Answers missed and after-hours calls in your business name</li><li>Quotes from your price list, takes the job details and address</li><li>Always says it is an AI and offers a callback from you</li><li>Logs every call with a summary and transcript in the CRM</li><li>We connect your number and calendar, then run test calls with you before it takes real ones</li></ul><a class="see" href="#voice">Hear the demo call &uarr;</a></div></div>
-        <div class="step"><p class="when">Monthly</p><div><h3>Upkeep</h3><ul><li>Hosting, updates and fixes</li><li>Tuning the chat and voice AI from real conversations</li><li>A monthly report: leads by source, calls answered, deals won</li></ul></div></div>
+        <div class="step"><p class="when">Week 1</p><div><h3>A CRM for your outbound pipeline</h3><span class="status live">CRM live for clients today</span><ul><li>One workspace per client: the insurance brokerage, the tax firm, and each client you add as you ramp up</li><li>Every lead tagged by source: cold call, email campaign, callback, landing page</li><li>Replies and form fills arrive on their own through our lead intake. We connect it to your dialer and email tool</li><li>Tasks and overdue follow-ups, so no interested lead goes cold</li></ul><a class="see" href="/crm-demo/#pipeline" target="_blank" rel="noopener">Open the CRM demo &nearr;</a></div></div>
+        <div class="step"><p class="when">Week 1&ndash;2</p><div><h3>A landing page for each client</h3><span class="status live">Live for clients today</span><ul><li>An insurance quote request page and a tax consultation page, in each client's brand</li><li>The link you put in your emails, with a short form that feeds the CRM</li><li>Fast on a phone, with tap-to-call, spam protection and ad tracking</li></ul><p class="price">$800 to $2,000 one time per site, depending on pages and features</p><a class="see" href="#work">See live sites &darr;</a></div></div>
+        <div class="step"><p class="when">Week 2&ndash;3</p><div><h3>Voice AI for callbacks</h3><span class="status pilot">Pilot setup</span><ul><li>Answers callbacks and inbound calls in your client's name, at any hour</li><li>Asks each client's qualifying questions and books the appointment</li><li>We connect the numbers and calendars, then run test calls with you before it takes real ones</li></ul><a class="see" href="#voice">Hear the demo call &uarr;</a></div></div>
+        <div class="step"><p class="when">Monthly</p><div><h3>Reports you can send your clients</h3><ul><li>Per client: leads by source, qualified, booked and showed</li><li>Which campaign or call list produced each booked appointment</li><li>Each client can log in to their own workspace and see their leads</li><li>Hosting, upkeep and tuning the voice AI from real calls</li></ul><a class="see" href="/crm-demo/#reports" target="_blank" rel="noopener">Open reports &nearr;</a></div></div>
       </div>
     </div>
   </section>
@@ -247,13 +248,14 @@ footer a:hover { color: var(--sand); }
   <section id="next" class="gut">
     <div class="in">
       <p class="k">05 &middot; Next steps</p>
-      <h2>A few questions, then a free sample.</h2>
+      <h2>A few questions about your setup.</h2>
       <div class="qs">
-        <p>How many calls a week go to voicemail or come in after hours?</p>
-        <p>Where do leads come from today: Google, referrals, ads, a listing site?</p>
-        <p>Where do you keep leads now, and who calls them back?</p>
-        <p>What does a typical job pay, and what makes a lead a good one?</p>
-        <p>Which part do you want first: the website, the CRM and chat, or the phone?</p>
+        <p>How many dials and emails a day today, and where do you want that in 90 days?</p>
+        <p>Which dialer and email tool do you use, and where do leads live right now?</p>
+        <p>What makes a lead qualified for the brokerage, and for the tax firm?</p>
+        <p>How do you hand a lead to the client, and how are you paid: per lead, per appointment or retainer?</p>
+        <p>What does your demo back end produce, and where should it plug in?</p>
+        <p>What happens today when a prospect calls back and nobody picks up?</p>
       </div>
       <div class="row">
         <a class="btn" href="/get-started.html" target="_blank" rel="noopener">Get a free sample site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
