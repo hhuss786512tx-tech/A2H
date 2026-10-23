@@ -135,6 +135,14 @@ summary:hover { color: var(--sand); }
 .step a.see { font-size: .88rem; }
 .qs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
 .qs p { background: var(--surface); border: 1px solid var(--hair); border-radius: 14px; padding: 16px 18px; font-size: .96rem; }
+.team { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.person { background: var(--surface); border: 1px solid var(--hair); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+.person .hd { display: flex; align-items: center; gap: 14px; }
+.av { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-size: 1.2rem; color: #1a0f08; background: var(--copper); flex: none; }
+.av.b { background: var(--sand); }
+.person .role { color: var(--copper-light); font-size: .85rem; font-weight: 600; }
+.person ul { margin: 0; padding-left: 1.1em; color: var(--fog); }
+.person li { margin: 3px 0; }
 footer { padding-block: 32px 48px; color: var(--fog); font-size: .88rem; }
 footer .in { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 footer a { color: var(--fog); }
@@ -148,7 +156,7 @@ footer a:hover { color: var(--sand); }
   <div class="in">
     <a class="logo" href="/">A2H<i>.</i></a>
     <nav class="links" aria-label="Sections">
-      <a href="#live">Live client</a><a href="#voice">Voice AI</a><a href="#crm">CRM</a><a href="#work">Live work</a><a href="#build">Your build</a><a href="#next">Next steps</a>
+      <a href="#live">Live client</a><a href="#voice">Voice AI</a><a href="#crm">CRM</a><a href="#work">Live work</a><a href="#build">Your build</a><a href="#team">Team</a><a href="#next">Next steps</a>
     </nav>
     <a class="btn sm" href="/crm-demo/#pipeline" target="_blank" rel="noopener">Open CRM demo <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
   </div>
@@ -254,6 +262,27 @@ footer a:hover { color: var(--sand); }
     </div>
   </section>
 
+  <section id="team" class="gut">
+    <div class="in">
+      <p class="k">Who you would work with</p>
+      <h2>Two people, one builds and one sells.</h2>
+      <p class="lede">A2H is a two-person team in Houston. You talk to the people doing the work, not an account manager.</p>
+      <div class="team">
+        <div class="person">
+          <div class="hd"><span class="av">HH</span><div><h3>Haider Hussain</h3><p class="role">Head developer</p></div></div>
+          <p style="color:var(--fog)">Builds everything you see on this page: the websites, the website chat, the CRM and the voice AI.</p>
+          <ul><li>Built H&amp;A Healthcare Consulting's website, chat and CRM</li><li>Built the A2H CRM: workspaces per client, pipeline, contacts, website visitors, chats, tasks and reports</li><li>Sets up and tests each voice AI before it takes real calls</li><li>Your contact for anything technical: integrations, data, changes</li></ul>
+        </div>
+        <div class="person">
+          <div class="hd"><span class="av b">AH</span><div><h3>Abbas Hussain</h3><p class="role">Founder &middot; Sales, SEO and marketing</p></div></div>
+          <p style="color:var(--fog)">The face of A2H. Runs sales, SEO and marketing, and is your main point of contact.</p>
+          <ul><li>Plans each build with you and keeps it on schedule</li><li>Handles search visibility: Google Business Profile, Bing, local search and AI search</li><li>Runs ad tests on Google and Meta</li><li>Accepted as a developer on AI Frontrunners, the agency community run by Tim Chao, in October 2026</li></ul>
+          <div class="row"><a class="btn ghost sm" href="/about.html" target="_blank" rel="noopener">More about Abbas <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a><a class="btn ghost sm" href="https://www.linkedin.com/in/abbas-hussain-1bb46b432/" target="_blank" rel="noopener">LinkedIn <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="next" class="gut">
     <div class="in">
       <p class="k">05 &middot; Next steps</p>
@@ -277,7 +306,7 @@ footer a:hover { color: var(--sand); }
 
 <footer class="gut">
   <div class="in">
-    <span>A2H &middot; Abbas Hussain &middot; Houston, TX &middot; <a href="mailto:hello@a2h.info">hello@a2h.info</a></span>
+    <span>A2H &middot; Haider Hussain and Abbas Hussain &middot; Houston, TX &middot; <a href="mailto:hello@a2h.info">hello@a2h.info</a></span>
     <span><a href="/">a2h.info</a> &middot; <a href="/about.html">About</a> &middot; <a href="/work.html">Work</a></span>
   </div>
   <div class="in" style="margin-top:8px"><span>Demo businesses and leads on this page are fictional sample data.</span></div>
