@@ -572,4 +572,7 @@
   window.addEventListener("hashchange", () => go(location.hash.slice(1)));
 
   go(location.hash.slice(1) || "pipeline");
+
+  // Small surface for the step-by-step guide (tour.js).
+  window.DEMO_API = { go, openDrawer, closeDrawer, view: () => view };
 })();
