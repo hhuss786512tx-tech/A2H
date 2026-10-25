@@ -73,6 +73,12 @@
       body: "Grouped into Overdue, Today and Coming up. Calls that need a human create their own task. Tick the box to mark one done and the counts update everywhere.",
     },
     {
+      view: "ads", target: ".ads-table", maxH: 420, top: true,
+      kicker: "Ads",
+      title: "Ads judged by booked jobs",
+      body: "Spend and leads come from Meta. Booked jobs and revenue come from the CRM, so every ad gets a cost per booked job and a verdict: Scale, Watch or Cut. Pause or resume an ad right here. When a Meta lead books, the CRM tells Meta, so the ads find more people who book.",
+    },
+    {
       view: "reports", target: ".kpis",
       kicker: "Reports",
       title: "Month to date",

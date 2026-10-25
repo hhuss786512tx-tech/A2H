@@ -145,7 +145,17 @@
     ["visitors", "Website visitors", I.visitors, () => deals.filter((d) => d.visit).length + D.anonymous.length],
     ["chats", "Chats", I.chats, () => deals.filter((d) => d.chat).length + D.extraChats.length],
     ["tasks", "Tasks", I.tasks, () => tasks.filter((t) => !t.done).length],
+    ["ads", "Ads", I.meta, () => ADS.filter((a) => a.status === "Active").length],
     ["reports", "Reports", I.reports, () => ""],
+  ];
+
+  // Sample Meta ads for the fictional client, last 30 days. Verdicts follow the
+  // same rules as the live portal (lib/meta/insights.ts VERDICT_RULES).
+  const ADS = [
+    { id: "a1", name: "Cracked slab? Free inspection", campaign: "Foundation leads · Austin", status: "Active", spend: 412, impr: 18200, clicks: 364, leads: 14, booked: 5, won: 1, wonValue: 9200 },
+    { id: "a2", name: "Doors sticking? It may be your foundation", campaign: "Foundation leads · Austin", status: "Active", spend: 298, impr: 14900, clicks: 251, leads: 9, booked: 1, won: 1, wonValue: 6850 },
+    { id: "a3", name: "Pier and beam repair, 0% financing", campaign: "Foundation leads · Round Rock", status: "Active", spend: 410, impr: 21400, clicks: 230, leads: 6, booked: 0, won: 0, wonValue: 0 },
+    { id: "a4", name: "Before and after drone video", campaign: "Foundation leads · Austin", status: "Paused", spend: 38, impr: 1900, clicks: 41, leads: 1, booked: 0, won: 0, wonValue: 0 },
   ];
   function renderNav() {
     $("#nav").innerHTML = VIEWS.map(([id, label, ico, count]) => {
@@ -389,6 +399,57 @@
       </div>`;
   }
 
+  function verdict(a, avg) {
+    const m = (n) => money(Math.round(n));
+    if (a.spend < 50 && a.leads < 3) return ["Watch", "warm", `Too early to call: ${m(a.spend)} spent so far.`];
+    const ld = (n) => `${n} ${n === 1 ? "lead" : "leads"}`;
+    if (a.booked >= 2 && (a.spend / a.booked <= avg || a.wonValue / a.spend >= 3)) return ["Scale", "green", `Books jobs at ${m(a.spend / a.booked)} each, at or better than your average.`];
+    if (!a.leads && a.spend >= 50) return ["Cut", "hot", `${m(a.spend)} spent with no leads.`];
+    if (!a.booked) return a.spend >= 2 * avg ? ["Cut", "hot", `${m(a.spend)} spent, ${ld(a.leads)}, none booked.`] : ["Watch", "warm", `${ld(a.leads)}, none booked yet.`];
+    if (a.spend / a.booked > 2 * avg) return ["Cut", "hot", `${m(a.spend / a.booked)} per booked job, over twice your average.`];
+    return ["Watch", "warm", `${a.booked} booked at ${m(a.spend / a.booked)} each. Needs more data.`];
+  }
+  function vAds() {
+    const sum = (k) => ADS.reduce((s, a) => s + a[k], 0);
+    const spend = sum("spend"), leads = sum("leads"), booked = sum("booked"), won = sum("won"), wonValue = sum("wonValue");
+    const avg = spend / booked;
+    const roas = wonValue / spend;
+    const rows = [...ADS]
+      .sort((a, b) => (a.booked && b.booked ? a.spend / a.booked - b.spend / b.booked : a.booked ? -1 : b.booked ? 1 : b.spend - a.spend))
+      .map((a) => {
+        const [v, cls, why] = verdict(a, avg);
+        const pill = a.status === "Active" ? '<span class="chip green">Active</span>' : '<span class="chip outline">Paused</span>';
+        return `<tr>
+          <td class="ad-name"><strong>${esc(a.name)}</strong><div class="ad-sub">${pill}<span class="muted">${esc(a.campaign)}</span></div></td>
+          <td class="num" data-label="Spend">${money(a.spend)}</td>
+          <td class="num hide-sm">${a.clicks} <span class="muted">(${((a.clicks / a.impr) * 100).toFixed(2)}%)</span></td>
+          <td class="num" data-label="Leads">${a.leads}</td>
+          <td class="num hide-sm">${money(Math.round(a.spend / a.leads))}</td>
+          <td class="num" data-label="Booked">${a.booked}</td>
+          <td class="num" data-label="Cost / booked job">${a.booked ? money(Math.round(a.spend / a.booked)) : '<span class="muted">None yet</span>'}</td>
+          <td class="num hide-sm">${a.wonValue ? money(a.wonValue) : '<span class="muted">$0</span>'}</td>
+          <td class="verdict" data-label="Verdict"><span class="chip ${cls}">${v}</span><div class="why">${why}</div></td>
+          <td class="act"><button class="btn sm" data-ad="${a.id}">${a.status === "Active" ? "Pause" : "Resume"}</button></td>
+        </tr>`;
+      }).join("");
+    const seg = `<div class="seg" role="group" aria-label="Date range">${["7", "30", "90"].map((d) => `<button ${d === "30" ? 'aria-pressed="true"' : `aria-pressed="false" data-demo="The demo has 30 days of sample data. The live portal switches between 7, 30 and 90 days."`}>Last ${d} days</button>`).join("")}</div>`;
+    return head("Ads", "Meta ads, judged by the jobs they book, not just the leads they get.", seg) +
+      `<div class="kpis kpis-ads">
+        <div class="kpi"><div class="label">Spend</div><div class="value">${money(spend)}</div><div class="hint">Last 30 days</div></div>
+        <div class="kpi"><div class="label">Leads</div><div class="value">${leads}</div><div class="hint">All landed in the CRM in seconds</div></div>
+        <div class="kpi"><div class="label">Cost per lead</div><div class="value">${money(Math.round(spend / leads))}</div><div class="hint">Spend ÷ leads</div></div>
+        <div class="kpi"><div class="label">Booked jobs</div><div class="value">${booked}</div><div class="hint">Leads now scheduled, booked or won</div></div>
+        <div class="kpi"><div class="label">Cost per booked job</div><div class="value">${money(Math.round(avg))}</div><div class="hint">Spend ÷ booked jobs</div></div>
+        <div class="kpi"><div class="label">Won revenue</div><div class="value">${money(wonValue)}</div><div class="hint">${won} jobs marked completed</div></div>
+        <div class="kpi"><div class="label">Return on ad spend</div><div class="value">${roas.toFixed(1)}x</div><div class="hint good">${money(Math.round(roas))} back for every $1 spent</div></div>
+      </div>
+      <div class="callout ads-loop">${I.spark}<div><strong>Your ads learn which leads book.</strong> When a Meta lead moves to Booked or Won here, the CRM tells Meta right away. Meta then shows your ads to more people like the ones who booked, not just the ones who fill in forms.</div></div>
+      <div class="panel"><div class="panel-head"><h2>Ads by cost per booked job</h2><p class="hide-sm">Scale: books jobs at or below your average. Cut: spending without booking. Watch: everything else.</p></div>
+        <div class="table-scroll"><table class="table ads-table"><thead><tr><th>Ad</th><th class="num">Spend</th><th class="num hide-sm">Clicks (CTR)</th><th class="num">Leads</th><th class="num hide-sm">Cost / lead</th><th class="num">Booked</th><th class="num">Cost / booked job</th><th class="num hide-sm">Won revenue</th><th>Verdict</th><th><span class="sr">Pause or resume</span></th></tr></thead><tbody>${rows}</tbody></table></div>
+      </div>
+      <p class="muted ads-foot">Spend, clicks and leads come from Meta. Booked jobs and revenue come from this CRM. Sample data for a fictional company.</p>`;
+  }
+
   // ---------- drawer ----------
   function timeline(d) {
     const ev = [];
@@ -399,6 +460,7 @@
     if (!d.call && !d.chat && !d.form) ev.push({ t: d.created, cls: "", ico: I.plus, title: `Added as a ${d.source.toLowerCase()}`, body: "" });
     if (d.notes) ev.push({ t: d.created - 1, cls: "", ico: I.note, title: "Note", body: esc(d.notes) });
     if (d.stage !== "new") ev.push({ t: Math.max(d.created - 24, 1), cls: "", ico: I.stage, title: `Stage changed to ${stageLabel(d.stage)}`, body: d.lostReason ? "Reason: " + esc(d.lostReason) : "" });
+    if (d.source === "Meta lead ad" && ["scheduled", "booked", "completed"].includes(d.stage)) ev.push({ t: Math.max(d.created - 24.01, 0.5), cls: "form", ico: I.meta, title: `Sent '${stageLabel(d.stage)}' to Meta`, body: "So the ads learn which leads book jobs, not just which ones fill in forms." });
     if (d.quote) {
       const q = d.quote;
       ev.push({ t: q.at ?? d.created - 30, cls: "quote", ico: I.quote, title: `Quote ${q.number} · ${q.status.toLowerCase()}`, body: `<table class="qtable">${q.lines.map(([l, n, p]) => `<tr><td>${esc(l)}${n > 1 ? ` × ${n}` : ""}</td><td>${money(n * p)}</td></tr>`).join("")}<tr class="total"><td>Total</td><td>${money(quoteTotal(q))}</td></tr></table>` });
@@ -480,7 +542,7 @@
   }
 
   // ---------- render ----------
-  const RENDER = { pipeline: vPipeline, contacts: vContacts, visitors: vVisitors, chats: vChats, tasks: vTasks, reports: vReports };
+  const RENDER = { pipeline: vPipeline, contacts: vContacts, visitors: vVisitors, chats: vChats, tasks: vTasks, ads: vAds, reports: vReports };
   function render(enter) {
     renderNav();
     const m = $("#main");
@@ -538,6 +600,13 @@
     if (t.closest("[data-close]") || t.id === "scrim") return closeDrawer();
     const demo = t.closest("[data-demo]");
     if (demo) return toast(demo.dataset.demo);
+    const adBtn = t.closest("[data-ad]");
+    if (adBtn) {
+      const ad = ADS.find((x) => x.id === adBtn.dataset.ad);
+      ad.status = ad.status === "Active" ? "Paused" : "Active";
+      render();
+      return toast(`"${ad.name}" ${ad.status === "Paused" ? "paused" : "resumed"}. In the live portal this changes the ad on Meta right away. Demo only, resets on reload.`);
+    }
     const chk = t.closest("[data-task]");
     if (chk) {
       const task = tasks.find((x) => x.id === chk.dataset.task);
