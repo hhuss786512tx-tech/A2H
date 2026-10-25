@@ -224,7 +224,7 @@ PAGES.push({
   jsonLd: [ORG],
   body: [
     hero({
-      h1: 'Every build, start to launch.',
+      h1: 'Websites we\'ve built, start to launch.',
       sub: 'Websites we have built for Texas businesses, from construction to healthcare consulting. Every one is hand-coded, with no page builders anywhere.',
       secondary: ['See pricing', 'pricing.html'],
     }),
@@ -259,7 +259,7 @@ PAGES.push({
   jsonLd: [ORG, faqLd(PRICING_FAQ)],
   body: [
     hero({
-      h1: 'One price, paid once. Free sample first.',
+      h1: 'Website pricing for Texas trades: one price, paid once.',
       sub: 'We build a sample site for your company before you pay anything. If you keep it, it is a one-time price based on size. Add-ons are quoted on the call.',
       secondary: ['See our work', 'work.html'],
     }),
@@ -311,7 +311,7 @@ PAGES.push({
   }, faqLd(SETUP_FAQ)],
   body: [
     hero({
-      h1: 'Sample site first. Then you decide.',
+      h1: 'How we build your website: sample site first.',
       sub: 'We build a sample site for your company before you pay, show it to you on a 15-minute call, and launch it on your domain if you keep it.',
       secondary: ['See pricing', 'pricing.html'],
     }),
@@ -344,7 +344,7 @@ PAGES.push({
   jsonLd: [ORG],
   body: [
     hero({
-      h1: 'Built for the trades that get calls at night.',
+      h1: 'Websites for foundation, restoration and garage door companies.',
       sub: 'A cracked slab, a flooded kitchen and a stuck garage door all send homeowners to a website after hours. Pick your trade.',
     }),
     `<section class="py-12 px-5 sm:px-6">
