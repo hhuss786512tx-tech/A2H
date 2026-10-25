@@ -254,7 +254,7 @@ const PRICING_FAQ = [
 
 PAGES.push({
   slug: 'pricing.html',
-  title: 'Pricing: Websites with AI Chat and CRM from $800 | A2H',
+  title: 'Contractor Website Cost in Texas: $800 to $2,000 with AI Chat | A2H',
   description: 'A2H websites with an AI chat and a CRM lead list are $800 to $2,000 one time. Free sample site first. AI phone receptionist and hosting available as add-ons.',
   jsonLd: [ORG, faqLd(PRICING_FAQ)],
   body: [
@@ -295,7 +295,7 @@ const SETUP_FAQ = [
 
 PAGES.push({
   slug: 'process.html',
-  title: 'How It Works: Free Sample Site, Then Launch | A2H',
+  title: 'How We Build Trade Company Websites: Free Sample First | A2H',
   description: 'How A2H builds a website with an AI chat and CRM for Texas trade businesses: a free sample site first, a 15-minute walkthrough, then launch on your domain.',
   jsonLd: [ORG, {
     '@context': 'https://schema.org',
@@ -916,6 +916,7 @@ fs.writeFileSync(path.join(OUT, 'sitemap.xml'), sitemap);
 
 fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *
 Allow: /
+Disallow: /api/
 
 User-agent: GPTBot
 Allow: /
