@@ -6,6 +6,98 @@
       "schedule": "0 15 * * *"
     }
   ],
+  "redirects": [
+    {
+      "source": "/dental-practices",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/dental-practices.html",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/dental-missed-calls",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/dental-missed-calls.html",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/dental-receptionist-options",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/dental-receptionist-options.html",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/orthodontic-missed-calls",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/orthodontic-missed-calls.html",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/orthodontic-receptionist-options",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/orthodontic-receptionist-options.html",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/home-care-missed-calls",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/home-care-missed-calls.html",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/home-care-receptionist-options",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/home-care-receptionist-options.html",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/orthodontic-practices",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/orthodontic-practices.html",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/home-care-agencies",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/home-care-agencies.html",
+      "destination": "/industries",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/:slug([a-z0-9-]+)",
@@ -16,16 +108,31 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), geolocation=(), payment=()" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), geolocation=(), payment=()"
+        }
       ]
     },
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
       ]
     }
   ]

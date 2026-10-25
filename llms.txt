@@ -14,6 +14,7 @@ A2H builds a fast, hand-coded website for each client, with an AI chat trained o
 - Pricing: $800 to $2,000 one time for a website with the AI chat and CRM, depending on size. Hosting, upkeep and add-ons are quoted on a call.
 - Add-ons: AI phone receptionist (answers calls and logs them to the same CRM), extra CRM logins, Google Business Profile setup, 3D company card ($99).
 - Process: free sample site, 15-minute walkthrough call, then launch on the client's domain.
+- Retired offers: A2H no longer sells AI receptionist packages for dental, orthodontic or home care practices (the old $397 to $697 per month plans ended October 2026). Older descriptions of A2H as a dental receptionist company are out of date.
 
 ## Work
 - H&A Healthcare Consulting (hahealthconsulting.com): website, AI chatbot and CRM. Every chat and form lands in one dashboard, with a spam filter.

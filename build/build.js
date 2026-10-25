@@ -260,9 +260,10 @@ PAGES.push({
   body: [
     hero({
       h1: 'Website pricing for Texas trades: one price, paid once.',
-      sub: 'We build a sample site for your company before you pay anything. If you keep it, it is a one-time price based on size. Add-ons are quoted on the call.',
+      sub: 'A contractor website from A2H costs $800 to $2,000 one time, including an AI chat and a CRM lead list. We build a sample site for your company before you pay anything. Add-ons are quoted on the call.',
       secondary: ['See our work', 'work.html'],
     }),
+    answer('How much does a contractor website cost in Texas? At A2H, $800 to $2,000 one time, depending on the number of pages and features, with the AI chat and CRM lead list included. For comparison, Project Cost Estimator puts 2026 freelancer builds for foundation repair sites at $2,900 to $9,450 and agency builds at $7,250 to $21,750, and Web Tonic puts restoration site builds at $2,000 to $5,000. Hosting and upkeep are separate everywhere, so ask what a quote includes.'),
     B.pricingTable({ heading: 'What it costs', eyebrow: 'Pricing' }),
     `<section class="py-10 px-5 sm:px-6">
   <div class="max-w-6xl mx-auto">
@@ -848,8 +849,8 @@ PAGES.push({
 // ================================================================= write ===
 
 // Retired 2026-10-19: dental / orthodontic / home care receptionist pages carry the old
-// $397-$697/mo receptionist offer. Kept live for old links, but noindexed (and so dropped from
-// the sitemap) so search and AI engines don't read two different A2H offers.
+// $397-$697/mo receptionist offer. Noindexed and 301-redirected to /industries in vercel.json (2026-10-25,
+// ChatGPT was still describing A2H as a dental receptionist company) so AI engines read one offer.
 const RETIRED = ['dental-practices.html', 'dental-missed-calls.html', 'dental-receptionist-options.html', 'orthodontic-missed-calls.html', 'orthodontic-receptionist-options.html', 'home-care-missed-calls.html', 'home-care-receptionist-options.html', 'orthodontic-practices.html', 'home-care-agencies.html'];
 PAGES.forEach((p) => { if (RETIRED.includes(p.slug)) p.noindex = true; });
 
