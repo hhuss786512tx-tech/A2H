@@ -1,12 +1,12 @@
 // "Call Sam": the one part of this demo that is not sample data. Sam, the AI
 // receptionist, answers a real phone line as Bailey's Garage Door Service
 // (inbound only; the speed-to-lead callback runs on the tree demo).
-// LINE is filled in once the number is provisioned
+// LINE is the Vapi free-pool number provisioned 2026-10-27
 // (receptionist-crm: scripts/provision-speed-to-lead-demo.ts --demo garage).
 (function () {
   "use strict";
 
-  const LINE = "";
+  const LINE = "+16823708137";
   const BOOK = "/book-a-call";
   const esc = (s) => String(s).replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
   const pretty = (e164) => {
