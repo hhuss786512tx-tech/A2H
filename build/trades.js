@@ -48,7 +48,7 @@ module.exports = function tradePages({ SITE, ORG, faqLd, hero, cards, faqSection
       <div class="border-t hairline pt-6"><p class="figure text-sand" style="font-size:clamp(3rem,6vw,4.5rem)"><span data-countup="${t.noBook}">${t.noBook}</span>%</p><p class="text-fog mt-3 max-w-[18rem]">had no way to book online</p></div>
       <div class="border-t hairline pt-6"><p class="figure text-sand" style="font-size:clamp(3rem,6vw,4.5rem)"><span data-countup="${t.third[0]}">${t.third[0]}</span>%</p><p class="text-fog mt-3 max-w-[18rem]">${t.third[1]}</p></div>
     </div>
-    <p class="reveal text-xs text-fog/70 mt-10 max-w-xl">The scan only spots common chat tools, so the real "no chat" share may be a little lower. <a href="houston-trade-website-scan-2026.html" class="link-underline text-sand">Full 2026 scan results and method</a>.</p>
+    <p class="reveal text-xs text-fog/70 mt-10 max-w-xl">The scan only spots common chat tools, so the real "no chat" share may be a little lower. <a href="houston-trade-website-scan-2026.html" class="link-underline text-sand">Full 2026 scan results and method</a>. Then check your own site against the <a href="contractor-website-checklist-2027.html" class="link-underline text-sand">2027 contractor website checklist</a>.</p>
   </div>
 </section>`;
 

@@ -213,6 +213,9 @@ PAGES.push(...require('./trades')({ SITE, ORG, faqLd, hero, cards, faqSection, B
 // Original research: October 2026 scan of Houston-area trade websites: build/research.js
 PAGES.push(require('./research')({ SITE, ORG, faqLd, hero, answer, figures, faqSection, relatedLinks, B }));
 
+// Guide: 2027 contractor website checklist, built on the scan numbers: build/checklist.js
+PAGES.push(require('./checklist')({ SITE, ORG, faqLd, hero, answer, faqSection, relatedLinks, B }));
+
 // About / founder page: build/about.js
 PAGES.push(require('./about')({ SITE, ORG, faqLd, hero, answer, faqSection, B }));
 

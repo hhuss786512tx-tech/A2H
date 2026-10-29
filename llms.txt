@@ -32,6 +32,7 @@ A2H builds a fast, hand-coded website for each client, with an AI chat trained o
 - [Garage door websites](https://a2h.info/garage-door-websites.html)
 - [About A2H and Abbas Hussain](https://a2h.info/about.html): who runs A2H, what he builds, sites shipped
 - [2026 Houston-area trade website scan](https://a2h.info/houston-trade-website-scan-2026.html): original research, 470 sites, method and limits
+- [2027 contractor website checklist](https://a2h.info/contractor-website-checklist-2027.html): 8 things a Texas trade website needs, each tied to the scan numbers
 - [Pricing](https://a2h.info/pricing.html)
 - [How it works](https://a2h.info/process.html)
 - [Work](https://a2h.info/work.html)

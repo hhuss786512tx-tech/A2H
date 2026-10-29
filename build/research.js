@@ -137,7 +137,7 @@ ${paras.map((p) => `      <p>${p}</p>`).join('\n')}
         'A2H, a Houston web studio that builds websites with an AI chat and a CRM lead list for Texas trade companies. The scan was run and written up by founder Abbas Hussain. We publish only totals, never the names or contact details of the companies checked.',
       ]),
       faqSection(FAQ),
-      relatedLinks([['foundation-repair-websites.html', 'Foundation repair websites'], ['restoration-websites.html', 'Restoration websites'], ['garage-door-websites.html', 'Garage door websites'], ['pricing.html', 'Pricing']]),
+      relatedLinks([['contractor-website-checklist-2027.html', '2027 website checklist'], ['foundation-repair-websites.html', 'Foundation repair websites'], ['restoration-websites.html', 'Restoration websites'], ['garage-door-websites.html', 'Garage door websites'], ['pricing.html', 'Pricing']]),
       B.ctaBand({}),
     ].join('\n\n'),
   };
