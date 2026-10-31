@@ -220,11 +220,32 @@ PAGES.push(require('./checklist')({ SITE, ORG, faqLd, hero, answer, faqSection, 
 PAGES.push(require('./about')({ SITE, ORG, faqLd, hero, answer, faqSection, B }));
 
 // ---- work.html
+const WORK_FAQ = [
+  ['Can I open the sites A2H has built?', 'Yes. Every card on this page links to the live site in a new tab: H&A Healthcare Consulting, Solid State Construction, CareMedBill and Azul Bio.'],
+  ['Are A2H websites hand-coded or built on a page builder?', 'Hand-coded. No Divi, Elementor or WordPress theme. Clean HTML, CSS and JavaScript that you own and can hand to anyone.'],
+  ['What does every A2H build include?', 'A mobile-first layout designed at 390px first, a Google Business Profile setup wired to the site, a 90+ PageSpeed target, and the AI chat and CRM lead list.'],
+];
 PAGES.push({
   slug: 'work.html',
   title: 'Our Work: Websites Built for Texas Businesses | A2H',
   description: 'Live sites built by A2H for Texas businesses: H&A Healthcare Consulting (website, AI chat and CRM), Solid State Construction, CareMedBill and Azul Bio.',
-  jsonLd: [ORG],
+  jsonLd: [ORG, {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${SITE}/work.html`,
+    url: `${SITE}/work.html`,
+    name: 'Websites Built by A2H for Texas Businesses',
+    about: { '@id': `${SITE}/#org` },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'H&A Healthcare Consulting', url: 'https://hahealthconsulting.com' },
+        { '@type': 'ListItem', position: 2, name: 'Solid State Construction', url: 'https://solidstatesconstruction.com' },
+        { '@type': 'ListItem', position: 3, name: 'CareMedBill', url: 'https://caremedbill.com' },
+        { '@type': 'ListItem', position: 4, name: 'Azul Bio', url: 'https://azulbioresearch.com' },
+      ],
+    },
+  }, faqLd(WORK_FAQ)],
   body: [
     hero({
       h1: 'Websites we\'ve built, start to launch.',
@@ -241,6 +262,7 @@ PAGES.push({
       { tag: 'Found on Maps', h: 'Google Business Profile setup', p: 'Your profile claimed, categorised and wired to the site, so you appear where customers are already searching.' },
       { tag: 'Fast', h: '90+ PageSpeed target', p: 'Compressed modern image formats, lazy loading, and an ahead-of-time CSS build. Speed is a ranking factor and a conversion factor.' },
     ]),
+    faqSection(WORK_FAQ, 'Questions about the work'),
     B.ctaBand({ heading: 'Want yours in this list?' }),
   ].join('\n\n'),
 });
@@ -316,7 +338,7 @@ PAGES.push({
   body: [
     hero({
       h1: 'How we build your website: sample site first.',
-      sub: 'We build a sample site for your company before you pay, show it to you on a 15-minute call, and launch it on your domain if you keep it.',
+      sub: 'We build a sample site for your Texas company before you pay, show it to you on a 15-minute call, and launch it on your domain if you keep it.',
       secondary: ['See pricing', 'pricing.html'],
     }),
     cards('The process', 'Four steps, start to finish', [
@@ -341,15 +363,35 @@ PAGES.push({
 });
 
 // ---- industries.html (hub)
+const INDUSTRIES_FAQ = [
+  ['Which trades does A2H build websites for?', 'Foundation repair, water damage restoration and garage door companies in Texas are the main three. A2H also builds for construction contractors, medical practices and local retail.'],
+  ['Does every trade website include the AI chat and CRM?', 'Yes. Every site A2H builds includes the AI chat that answers after-hours questions and takes the lead\'s name, number and job, plus the CRM lead list where every chat and form lands.'],
+  ['How much does a trade company website cost?', 'A2H websites are $800 to $2,000 one time, depending on pages and features. You see a free sample site for your company on a 15-minute call before you pay anything.'],
+];
 PAGES.push({
   slug: 'industries.html',
   title: 'Websites for Texas Foundation, Restoration and Garage Door Companies | A2H',
   description: 'A2H builds websites with an AI chat and CRM for Texas foundation repair, water damage restoration and garage door companies, plus other local businesses.',
-  jsonLd: [ORG],
+  jsonLd: [ORG, {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${SITE}/industries.html`,
+    url: `${SITE}/industries.html`,
+    name: 'Websites for Texas Foundation, Restoration and Garage Door Companies',
+    about: { '@id': `${SITE}/#org` },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Foundation repair websites', url: `${SITE}/foundation-repair-websites.html` },
+        { '@type': 'ListItem', position: 2, name: 'Water damage restoration websites', url: `${SITE}/restoration-websites.html` },
+        { '@type': 'ListItem', position: 3, name: 'Garage door websites', url: `${SITE}/garage-door-websites.html` },
+      ],
+    },
+  }, faqLd(INDUSTRIES_FAQ)],
   body: [
     hero({
       h1: 'Websites for foundation, restoration and garage door companies.',
-      sub: 'A cracked slab, a flooded kitchen and a stuck garage door all send homeowners to a website after hours. Pick your trade.',
+      sub: 'A cracked slab, a flooded kitchen and a stuck garage door all send Texas homeowners to a website after hours. Pick your trade.',
     }),
     `<section class="py-12 px-5 sm:px-6">
   <div class="max-w-6xl mx-auto stagger">
@@ -384,6 +426,7 @@ PAGES.push({
   </div>
 </section>`,
     B.portfolioGrid({ heading: 'Live sites we have built.', only: ['hahealth', 'ssc', 'caremedbill'] }),
+    faqSection(INDUSTRIES_FAQ, 'Questions trade owners ask'),
     B.ctaBand({}),
   ].join('\n\n'),
 });
@@ -402,7 +445,7 @@ PAGES.push({
     <div class="max-w-2xl">
       <p class="rise rise-1 eyebrow mb-5">Free, 15 minutes</p>
       <h1 class="rise rise-2 display-xl text-sand mb-6">See your sample site.</h1>
-      <p class="rise rise-3 lede text-lg">Pick a time that works. We build a sample site for your company before the call, then walk you through it, the AI chat and the lead list in 15 minutes. Keep it or walk away.</p>
+      <p class="rise rise-3 lede text-lg">Pick a time that works. We build a sample site for your Texas company before the call, then walk you through it, the AI chat and the lead list in 15 minutes. Keep it or walk away.</p>
     </div>
   </div>
 </section>`,
@@ -424,7 +467,7 @@ PAGES.push({
     </div>
   </div>
 </section>`,
-    faqSection([...SETUP_FAQ, ['Is the call really free?', 'Yes. The 15-minute call and the sample site are free, and there is no obligation. If you want to keep the site, it is a one-time price based on size.']]),
+    faqSection([...SETUP_FAQ, ['Is the call really free?', 'Yes. The 15-minute call and the sample site are free, and there is no obligation. If you want to keep the site, it is a one-time price based on size.']], 'What do people ask before booking?'),
   ].join('\n\n'),
   extraScripts: `<script src="https://assets.calendly.com/assets/external/widget.js" async></script>`,
 });

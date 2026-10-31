@@ -136,6 +136,19 @@ ${paras.map((p) => `      <p>${p}</p>`).join('\n')}
       prose('Who ran it?', [
         'A2H, a Houston web studio that builds websites with an AI chat and a CRM lead list for Texas trade companies. The scan was run and written up by founder Abbas Hussain. We publish only totals, never the names or contact details of the companies checked.',
       ]),
+      `<section class="px-5 sm:px-6 pb-16">
+  <div class="max-w-6xl mx-auto reveal border-t hairline pt-8 grid lg:grid-cols-12 gap-6">
+    <p class="lg:col-span-3 text-sm font-semibold text-sand">Related questions</p>
+    <ul class="lg:col-span-8 grid sm:grid-cols-2 gap-x-8 gap-y-3 text-[15px]">
+      <li><a href="contractor-website-checklist-2027.html" class="link-underline text-copper-light">What should a contractor website have in 2027?</a></li>
+      <li><a href="pricing.html" class="link-underline text-copper-light">How much does a contractor website cost in Texas?</a></li>
+      <li><a href="process.html" class="link-underline text-copper-light">How does an AI chat turn a website visit into a lead?</a></li>
+      <li><a href="foundation-repair-websites.html" class="link-underline text-copper-light">What should a foundation repair website include?</a></li>
+      <li><a href="restoration-websites.html" class="link-underline text-copper-light">What does a water damage restoration site need to answer at midnight?</a></li>
+      <li><a href="garage-door-websites.html" class="link-underline text-copper-light">Why do garage door websites lose after-hours leads?</a></li>
+    </ul>
+  </div>
+</section>`,
       faqSection(FAQ),
       relatedLinks([['contractor-website-checklist-2027.html', '2027 website checklist'], ['foundation-repair-websites.html', 'Foundation repair websites'], ['restoration-websites.html', 'Restoration websites'], ['garage-door-websites.html', 'Garage door websites'], ['pricing.html', 'Pricing']]),
       B.ctaBand({}),
