@@ -221,14 +221,14 @@ PAGES.push(require('./about')({ SITE, ORG, faqLd, hero, answer, faqSection, B })
 
 // ---- work.html
 const WORK_FAQ = [
-  ['Can I open the sites A2H has built?', 'Yes. Every card on this page links to the live site in a new tab: H&A Healthcare Consulting, Solid State Construction, CareMedBill and Azul Bio.'],
+  ['Can I open the sites A2H has built?', 'Yes. Every card on this page links to the live site in a new tab: H&A Healthcare Consulting, Solid State Construction, CareMedBill, Quality Halal Market and Azul Bio.'],
   ['Are A2H websites hand-coded or built on a page builder?', 'Hand-coded. No Divi, Elementor or WordPress theme. Clean HTML, CSS and JavaScript that you own and can hand to anyone.'],
   ['What does every A2H build include?', 'A mobile-first layout designed at 390px first, a Google Business Profile setup wired to the site, a 90+ PageSpeed target, and the AI chat and CRM lead list.'],
 ];
 PAGES.push({
   slug: 'work.html',
   title: 'Our Work: Websites Built for Texas Businesses | A2H',
-  description: 'Live sites built by A2H for Texas businesses: H&A Healthcare Consulting (website, AI chat and CRM), Solid State Construction, CareMedBill and Azul Bio.',
+  description: 'Live sites built by A2H for Texas businesses: H&A Healthcare Consulting (website, AI chat and CRM), Solid State Construction, CareMedBill, Quality Halal Market and Azul Bio.',
   jsonLd: [ORG, {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -242,7 +242,8 @@ PAGES.push({
         { '@type': 'ListItem', position: 1, name: 'H&A Healthcare Consulting', url: 'https://hahealthconsulting.com' },
         { '@type': 'ListItem', position: 2, name: 'Solid State Construction', url: 'https://solidstatesconstruction.com' },
         { '@type': 'ListItem', position: 3, name: 'CareMedBill', url: 'https://caremedbill.com' },
-        { '@type': 'ListItem', position: 4, name: 'Azul Bio', url: 'https://azulbioresearch.com' },
+        { '@type': 'ListItem', position: 4, name: 'Quality Halal Market', url: 'https://hhuss786512tx-tech.github.io/Quality-Halal-Market/' },
+        { '@type': 'ListItem', position: 5, name: 'Azul Bio', url: 'https://azulbioresearch.com' },
       ],
     },
   }, faqLd(WORK_FAQ)],
@@ -692,7 +693,7 @@ PAGES.push({
       <div class="md:col-span-8">
         <p class="text-xs text-fog mb-2">Add-on</p>
         <h2 class="display-md text-sand mb-3">3D company card</h2>
-        <p class="text-fog text-[15px] leading-[1.7] max-w-xl">An interactive business card built from your real card artwork. It flips, tilts and follows the cursor. There is a live one on the <a href="/#card3d-section" class="link-underline text-copper-light">homepage</a>, built for Quality Halal Market.</p>
+        <p class="text-fog text-[15px] leading-[1.7] max-w-xl">An interactive business card built from your real card artwork. It flips, tilts and follows the cursor. There is a live one on the <a href="/#card3d-section" class="link-underline text-copper-light">homepage</a>, built for <a href="https://hhuss786512tx-tech.github.io/Quality-Halal-Market/" target="_blank" rel="noopener" class="link-underline text-copper-light">Quality Halal Market</a>.</p>
       </div>
       <div class="md:col-span-4 md:text-right">
         <p class="figure text-sand text-4xl">$99</p>
@@ -701,6 +702,7 @@ PAGES.push({
     </div>
   </div>
 </section>`,
+    B.portfolioGrid({ heading: 'Retail work, live right now.', sub: 'Opens the real site in a new tab.', only: ['qhm'], featureFirst: false }),
     B.pricingTable({ heading: 'One price, paid once. Free sample first.' }),
     faqSection(RETAIL_FAQ),
     B.ctaBand({}),

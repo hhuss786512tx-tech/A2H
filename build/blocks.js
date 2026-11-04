@@ -41,6 +41,15 @@ const PROJECTS = [
     metric: '',
   },
   {
+    name: 'Quality Halal Market',
+    href: 'https://hhuss786512tx-tech.github.io/Quality-Halal-Market/',
+    display: 'Open the live site',
+    img: 'qhm',
+    category: 'Halal butcher and grocery, Cedar Park',
+    blurb: 'Store-first site for a Zabiha halal butcher: 58 cuts with live prices, a call-to-order flow, and an on-page "Ask the Butcher" helper that answers from the catalog.',
+    metric: '',
+  },
+  {
     name: 'Azul Bio',
     href: 'https://azulbioresearch.com',
     display: 'azulbioresearch.com',
